@@ -1,0 +1,60 @@
+---
+title: "How Do Household Energy Transitions Work?"
+format:
+  pdf:
+    toc: true
+bibliography: BHET.bib
+csl: american-medical-association.csl
+---
+#### Abstract
+
+What we did...[@bind2019b]
+
+## Chapter 1: Introduction
+
+Blah...
+
+## Chapter 2: Specific Aims and Overarching Approach
+
+Blah...
+
+## Chapter 3: Aim 1
+
+### Introduction
+
+Why we started...
+
+### Study Design and Methods
+
+What we did...
+
+### Data Analysis
+
+What we did...
+
+### Results
+
+What we found...
+
+### Discussion and Conclusions
+
+What it all means...
+
+## Chapter 4: Aim 2
+
+## Chapter 5: Aim 3
+
+## Chapter 6: Synthesis, Interpretation, and Implication of Findings
+
+## Data Availability Statement
+
+## Acknowledgements
+
+## References
+
+::: {#refs}
+:::
+
+## Appendices
+
+

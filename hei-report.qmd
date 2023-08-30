@@ -1,8 +1,8 @@
 ---
 title: "How Do Household Energy Transitions Work?"
-format: html
-#  pdf:
-#    toc: true
+format: 
+  pdf:
+    toc: true
 bibliography: hei-report.bib
 csl: american-medical-association.csl
 ---

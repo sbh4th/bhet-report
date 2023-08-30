@@ -1,32 +1,30 @@
-#  program:  epi-handbook-qmd-gdrive.R
+#  program:  qmd-gdrive.R
 #  task:     push and pull from Google Drive
-#  input:    handbook files (various files)
-#  author:   sam harper \ 2023-06-28
+#  input:    hei-report.qmd
+#  author:   sam harper \ 2023-08-28
 
 
 # load packages
 # remotes::install_github("claudiozandonella/trackdown")
 library(trackdown)
 
+my_client <- gargle::gargle_oauth_client(
+  name = "Desktop client 1",
+  id = "800379350069-17t98fv6o0eos001aq7lhe645asjjev7.apps.googleusercontent.com",
+  secret = "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"
+)
+trackdown_auth_configure(client = my_client)
 
-# Code to upload all handbook chapters as separate files
-# to google drive as google docs
-chapters <- c("01-intro", "02-supervision", 
-              "03-coursework", "04-concentrations", 
-              "05-comps", "06-protocol", "07-thesis", 
-              "08-policies", "09-funding")
 
-# loop over list of chapters (use `upload` for first
+# code to send to Google Drive (use `upload` for first
 # time or `update` to replace)
 
-for (c in chapters) {
-    # trackdown::upload_file(
-    trackdown::update_file(
-    file = paste(c, "qmd", sep = "."), 
-    gpath="mcgill-admin/epi-phd-handbook", 
-    gfile = c,
-    hide_code = TRUE)
-}
+trackdown::upload_file(
+# trackdown::update_file(
+  file = "hei-report.qmd", 
+  gpath="HEI-Final-Report", 
+  gfile = "hei-report",
+  hide_code = TRUE)
 
 
 # Download a google doc into your current working 

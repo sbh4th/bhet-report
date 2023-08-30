@@ -1,24 +1,24 @@
 ---
 title: "How Do Household Energy Transitions Work?"
-format:
-  pdf:
-    toc: true
-bibliography: BHET.bib
+format: html
+#  pdf:
+#    toc: true
+bibliography: hei-report.bib
 csl: american-medical-association.csl
 ---
-#### Abstract
+## Abstract
 
 What we did...[@bind2019b]
 
-## Chapter 1: Introduction
+## Introduction
 
 Blah...
 
-## Chapter 2: Specific Aims and Overarching Approach
+## Specific Aims and Overarching Approach
 
 Blah...
 
-## Chapter 3: Aim 1
+## Aim 1
 
 ### Introduction
 
@@ -40,15 +40,21 @@ What we found...
 
 What it all means...
 
-## Chapter 4: Aim 2
+## Aim 2
 
-## Chapter 5: Aim 3
+## Aim 3
 
-## Chapter 6: Synthesis, Interpretation, and Implication of Findings
+## Synthesis, Interpretation, and Implication of Findings
+
+What it all means, big picture...
 
 ## Data Availability Statement
 
+Lots of stuff about OSF...
+
 ## Acknowledgements
+
+Many thanks to give...
 
 ## References
 
@@ -56,5 +62,9 @@ What it all means...
 :::
 
 ## Appendices
+
+## About the authors
+
+## Other publications
 
 

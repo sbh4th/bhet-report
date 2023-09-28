@@ -1,5 +1,8 @@
 ---
 title: "How Do Household Energy Transitions Work?"
+author: 
+  - Sam Harper (Co-PI)
+  - Jill Baumgartner (Co-PI)
 format: 
   pdf:
     toc: true
@@ -8,15 +11,21 @@ csl: american-medical-association.csl
 ---
 ## Abstract
 
-What we did...[@bind2019b]
+What we did...[@li2022;@li2022a;@sternbach2022]
 
 ## Introduction
 
-Blah...
+China is deploying an ambitious plan to transition up to 70% of all households in northern China to clean space heating, including Beijing. To meet this target the Beijing municipal government announced a two-pronged program that designates coal-restricted areas and simultaneously offers subsidies to night-time electricity rates and for the purchase and installation of electric-powered, air-source heat pumps to replace traditional coal-heating stoves. The program is being rolled out on a village-by-village basis; however there is uncertainty as to when villages will receive the program. The variability in when the policy is applied to each village allows us to treat the roll-out of the program as a quasi-randomized intervention. Households may also be differentially affected by this program due to factors such as financial constraints, preferences and social capital, and there is uncertainty about whether and how this intervention may affect indoor and outdoor air pollution, as well as health behaviors and health outcomes.
 
 ## Specific Aims and Overarching Approach
 
-Blah...
+This study builds on three data collection campaigns in winter 2018/19, winter 2019/20, and winter 2021/22, as well as a partial campaign in winter 2020/21 (CIHR-funded) with the following specific aims:
+
+1. 	Estimate how much of the policy’s overall effect on health, including respiratory symptoms and cardiovascular outcomes (blood pressure, central hemodynamics, blood inflammatory and oxidative stress markers), can be attributed to its impact on changes in PM2.5;
+
+2. 	Quantify the contribution of changes in the chemical composition of PM2.5 from different sources to the overall effect on health outcomes;
+
+3. 	Quantify the impact of the policy on outdoor air quality and personal air pollution exposures, and specifically the source contribution from household coal burning.
 
 ## Aim 1
 

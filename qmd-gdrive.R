@@ -19,8 +19,8 @@ trackdown_auth_configure(client = my_client)
 # code to send to Google Drive (use `upload` for first
 # time or `update` to replace)
 
-trackdown::upload_file(
-# trackdown::update_file(
+trackdown::upload_file()
+trackdown::update_file(
   file = "hei-report.qmd", 
   gpath="HEI-Final-Report", 
   gfile = "hei-report",

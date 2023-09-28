@@ -1,7 +1,7 @@
 #  program:  qmd-gdrive.R
 #  task:     push and pull from Google Drive
 #  input:    hei-report.qmd
-#  author:   sam harper \ 2023-08-28
+#  author:   sam harper \ 2023-09-25
 
 
 # load packages
@@ -30,20 +30,13 @@ trackdown::update_file(
 # Download a google doc into your current working 
 # directory as an Rmd file
 
-# individual chapter
 trackdown::download_file(
-  gfile = "08-policies",
-  gpath = "mcgill-admin/epi-phd-handbook",
-  file = "08-policies.qmd") 
+  gfile = "hei-report",
+  gpath = "HEI-Final-Report",
+  file = "hei-report.qmd") 
 
 
 
-# update an individual chapter
-# individual chapter
-trackdown::update_file(
-  file = "08-policies.qmd",
-  path = "mcgill-admin/epi-phd-handbook",
-  gfile = "08-policies") 
 
 
 

@@ -3,15 +3,16 @@ title: "How Do Household Energy Transitions Work?"
 author: 
   - Sam Harper (Co-PI)
   - Jill Baumgartner (Co-PI)
-format: 
-  pdf:
-    toc: true
+format: html
+#format: 
+#  pdf:
+#    toc: true
 bibliography: hei-report.bib
 csl: american-medical-association.csl
 ---
 ## Abstract
 
-What we did...[@li2022;@li2022a;@sternbach2022]
+Brief summary of what we did.
 
 ## Introduction
 
@@ -27,43 +28,65 @@ This study builds on three data collection campaigns in winter 2018/19, winter 2
 
 3. 	Quantify the impact of the policy on outdoor air quality and personal air pollution exposures, and specifically the source contribution from household coal burning.
 
-## Aim 1
+## Aim 1: Health Impacts and Mechanisms
 
 ### Introduction
 
-Why we started...
-
 ### Study Design and Methods
 
-What we did...
+- Overview of rationale for Difference-in-Differences design.
+
+- Issues of staggered treatments
+
+- Discussion of model selection and parameterization.  
+
 
 ### Data Analysis
 
-What we did...
-
 ### Results
 
-What we found...
+
 
 ### Discussion and Conclusions
 
-What it all means...
 
-## Aim 2
 
-## Aim 3
+## Aim 2: Source Contributions
+
+### Introduction
+
+### Study Design and Methods
+
+### Data Analysis
+
+### Results
+
+### Discussion and Conclusions
+
+## Aim 3: Impacts on PM~2.5~
+
+### Introduction
+
+### Study Design and Methods
+
+### Data Analysis
+
+### Results
+
+### Discussion and Conclusions
+
 
 ## Synthesis, Interpretation, and Implication of Findings
 
-What it all means, big picture...
+
 
 ## Data Availability Statement
 
-Lots of stuff about OSF...
+
 
 ## Acknowledgements
 
-Many thanks to give...
+
 
 ## References
 
@@ -75,5 +98,7 @@ Many thanks to give...
 ## About the authors
 
 ## Other publications
+
+Other papers that have been published.[@li2022;@li2022a;@sternbach2022]
 
 

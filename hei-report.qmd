@@ -3,10 +3,11 @@ title: "How Do Household Energy Transitions Work?"
 author: 
   - Sam Harper (Co-PI)
   - Jill Baumgartner (Co-PI)
-format: html
-#format: 
-#  pdf:
-#    toc: true
+# format: html
+format: 
+  pdf:
+    toc: true
+    keep-tex: true
 bibliography: hei-report.bib
 csl: american-medical-association.csl
 ---
@@ -28,64 +29,72 @@ This study builds on three data collection campaigns in winter 2018/19, winter 2
 
 3. 	Quantify the impact of the policy on outdoor air quality and personal air pollution exposures, and specifically the source contribution from household coal burning.
 
-## Aim 1: Health Impacts and Mechanisms
+## Aim 1: Health Impacts and Mechanisms 
 
-### Introduction
+To come... 
 
-### Study Design and Methods
+### Introduction  
+To come... 
 
-- Overview of rationale for Difference-in-Differences design.
+### Study Design and Methods  
+To come... 
 
-- Issues of staggered treatments
+### Data Analysis  
+To come... 
 
-- Discussion of model selection and parameterization.  
+### Results  
+To come... 
 
+### Discussion and Conclusions  
+To come... 
 
-### Data Analysis
+## Aim 2: Source Contributions  
+To come... 
 
-### Results
+### Introduction  
+To come... 
 
+### Study Design and Methods  
+To come... 
 
+### Data Analysis  
+To come... 
 
-### Discussion and Conclusions
+### Results  
+To come... 
 
+### Discussion and Conclusions  
+To come... 
 
+## Aim 3: Impacts on PM~2.5~  
+To come... 
 
-## Aim 2: Source Contributions
+### Introduction  
+To come... 
+ 
+### Study Design and Methods  
+To come... 
 
-### Introduction
+### Data Analysis  
+To come... 
 
-### Study Design and Methods
+### Results  
+To come... 
 
-### Data Analysis
-
-### Results
-
-### Discussion and Conclusions
-
-## Aim 3: Impacts on PM~2.5~
-
-### Introduction
-
-### Study Design and Methods
-
-### Data Analysis
-
-### Results
-
-### Discussion and Conclusions
+### Discussion and Conclusions  
+To come... 
 
 
 ## Synthesis, Interpretation, and Implication of Findings
-
+To come... 
 
 
 ## Data Availability Statement
-
+To come... 
 
 
 ## Acknowledgements
-
+To come... 
 
 
 ## References

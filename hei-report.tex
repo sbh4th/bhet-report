@@ -1,0 +1,391 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={How Do Household Energy Transitions Work?},
+  pdfauthor={Sam Harper (Co-PI); Jill Baumgartner (Co-PI)},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{How Do Household Energy Transitions Work?}
+\author{Sam Harper (Co-PI) \and Jill Baumgartner (Co-PI)}
+\date{}
+
+\begin{document}
+\maketitle
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, boxrule=0pt, enhanced, breakable, borderline west={3pt}{0pt}{shadecolor}, sharp corners, frame hidden]}{\end{tcolorbox}}\fi
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\hypertarget{abstract}{%
+\subsection{Abstract}\label{abstract}}
+
+Brief summary of what we did.
+
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
+
+China is deploying an ambitious plan to transition up to 70\% of all
+households in northern China to clean space heating, including Beijing.
+To meet this target the Beijing municipal government announced a
+two-pronged program that designates coal-restricted areas and
+simultaneously offers subsidies to night-time electricity rates and for
+the purchase and installation of electric-powered, air-source heat pumps
+to replace traditional coal-heating stoves. The program is being rolled
+out on a village-by-village basis; however there is uncertainty as to
+when villages will receive the program. The variability in when the
+policy is applied to each village allows us to treat the roll-out of the
+program as a quasi-randomized intervention. Households may also be
+differentially affected by this program due to factors such as financial
+constraints, preferences and social capital, and there is uncertainty
+about whether and how this intervention may affect indoor and outdoor
+air pollution, as well as health behaviors and health outcomes.
+
+\hypertarget{specific-aims-and-overarching-approach}{%
+\subsection{Specific Aims and Overarching
+Approach}\label{specific-aims-and-overarching-approach}}
+
+This study builds on three data collection campaigns in winter 2018/19,
+winter 2019/20, and winter 2021/22, as well as a partial campaign in
+winter 2020/21 (CIHR-funded) with the following specific aims:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Estimate how much of the policy's overall effect on health, including
+  respiratory symptoms and cardiovascular outcomes (blood pressure,
+  central hemodynamics, blood inflammatory and oxidative stress
+  markers), can be attributed to its impact on changes in PM2.5;
+\item
+  Quantify the contribution of changes in the chemical composition of
+  PM2.5 from different sources to the overall effect on health outcomes;
+\item
+  Quantify the impact of the policy on outdoor air quality and personal
+  air pollution exposures, and specifically the source contribution from
+  household coal burning.
+\end{enumerate}
+
+\hypertarget{aim-1-health-impacts-and-mechanisms}{%
+\subsection{Aim 1: Health Impacts and
+Mechanisms}\label{aim-1-health-impacts-and-mechanisms}}
+
+To come\ldots{}
+
+\hypertarget{introduction-1}{%
+\subsubsection{Introduction}\label{introduction-1}}
+
+To come\ldots{}
+
+\hypertarget{study-design-and-methods}{%
+\subsubsection{Study Design and
+Methods}\label{study-design-and-methods}}
+
+To come\ldots{}
+
+\hypertarget{data-analysis}{%
+\subsubsection{Data Analysis}\label{data-analysis}}
+
+To come\ldots{}
+
+\hypertarget{results}{%
+\subsubsection{Results}\label{results}}
+
+To come\ldots{}
+
+\hypertarget{discussion-and-conclusions}{%
+\subsubsection{Discussion and
+Conclusions}\label{discussion-and-conclusions}}
+
+To come\ldots{}
+
+\hypertarget{aim-2-source-contributions}{%
+\subsection{Aim 2: Source
+Contributions}\label{aim-2-source-contributions}}
+
+To come\ldots{}
+
+\hypertarget{introduction-2}{%
+\subsubsection{Introduction}\label{introduction-2}}
+
+To come\ldots{}
+
+\hypertarget{study-design-and-methods-1}{%
+\subsubsection{Study Design and
+Methods}\label{study-design-and-methods-1}}
+
+To come\ldots{}
+
+\hypertarget{data-analysis-1}{%
+\subsubsection{Data Analysis}\label{data-analysis-1}}
+
+To come\ldots{}
+
+\hypertarget{results-1}{%
+\subsubsection{Results}\label{results-1}}
+
+To come\ldots{}
+
+\hypertarget{discussion-and-conclusions-1}{%
+\subsubsection{Discussion and
+Conclusions}\label{discussion-and-conclusions-1}}
+
+To come\ldots{}
+
+\hypertarget{aim-3-impacts-on-pm2.5}{%
+\subsection{\texorpdfstring{Aim 3: Impacts on
+PM\textsubscript{2.5}}{Aim 3: Impacts on PM2.5}}\label{aim-3-impacts-on-pm2.5}}
+
+To come\ldots{}
+
+\hypertarget{introduction-3}{%
+\subsubsection{Introduction}\label{introduction-3}}
+
+To come\ldots{}
+
+\hypertarget{study-design-and-methods-2}{%
+\subsubsection{Study Design and
+Methods}\label{study-design-and-methods-2}}
+
+To come\ldots{}
+
+\hypertarget{data-analysis-2}{%
+\subsubsection{Data Analysis}\label{data-analysis-2}}
+
+To come\ldots{}
+
+\hypertarget{results-2}{%
+\subsubsection{Results}\label{results-2}}
+
+To come\ldots{}
+
+\hypertarget{discussion-and-conclusions-2}{%
+\subsubsection{Discussion and
+Conclusions}\label{discussion-and-conclusions-2}}
+
+To come\ldots{}
+
+\hypertarget{synthesis-interpretation-and-implication-of-findings}{%
+\subsection{Synthesis, Interpretation, and Implication of
+Findings}\label{synthesis-interpretation-and-implication-of-findings}}
+
+To come\ldots{}
+
+\hypertarget{data-availability-statement}{%
+\subsection{Data Availability
+Statement}\label{data-availability-statement}}
+
+To come\ldots{}
+
+\hypertarget{acknowledgements}{%
+\subsection{Acknowledgements}\label{acknowledgements}}
+
+To come\ldots{}
+
+\hypertarget{references}{%
+\subsection{References}\label{references}}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-li2022}{}}%
+\CSLLeftMargin{1. }%
+\CSLRightInline{Li X, Baumgartner J, Barrington-Leigh C, et al.
+Socioeconomic and {Demographic Associations} with {Wintertime Air
+Pollution Exposures} at {Household}, {Community}, and {District Scales}
+in {Rural Beijing}, {China}. \emph{Environmental Science \& Technology}.
+2022;56(12):8308-8318.
+doi:\href{https://doi.org/10.1021/acs.est.1c07402}{10.1021/acs.est.1c07402}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-li2022a}{}}%
+\CSLLeftMargin{2. }%
+\CSLRightInline{Li X, Baumgartner J, Harper S, et al. Field measurements
+of indoor and community air quality in rural {Beijing} before, during,
+and after the {COVID-19} lockdown. \emph{Indoor Air}. 2022;32(8):e13095.
+doi:\href{https://doi.org/10.1111/ina.13095}{10.1111/ina.13095}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-sternbach2022}{}}%
+\CSLLeftMargin{3. }%
+\CSLRightInline{Sternbach TJ, Harper S, Li X, et al. Effects of indoor
+and outdoor temperatures on blood pressure and central hemodynamics in a
+wintertime longitudinal study of {Chinese} adults. \emph{Journal of
+Hypertension}. 2022;40(10):1950-1959.
+doi:\href{https://doi.org/10.1097/HJH.0000000000003198}{10.1097/HJH.0000000000003198}}
+
+\end{CSLReferences}
+
+\hypertarget{appendices}{%
+\subsection{Appendices}\label{appendices}}
+
+\hypertarget{about-the-authors}{%
+\subsection{About the authors}\label{about-the-authors}}
+
+\hypertarget{other-publications}{%
+\subsection{Other publications}\label{other-publications}}
+
+Other papers that have been published.\textsuperscript{1--3}
+
+
+
+\end{document}

@@ -7,12 +7,13 @@ date: today
 format: 
   report-typst:
     toc: true
+    keep-tex: true
 bibliography: hei-report.bib
 csl: american-medical-association.csl
 ---
 ## Abstract
 
-What we did...[@bind2019b]
+Brief summary of what we did.
 
 ## Introduction
 
@@ -20,45 +21,81 @@ Blah
 
 ## Specific Aims and Overarching Approach
 
-Blah...
+This study builds on three data collection campaigns in winter 2018/19, winter 2019/20, and winter 2021/22, as well as a partial campaign in winter 2020/21 (CIHR-funded) with the following specific aims:
 
-## Aim 1
+1. 	Estimate how much of the policy’s overall effect on health, including respiratory symptoms and cardiovascular outcomes (blood pressure, central hemodynamics, blood inflammatory and oxidative stress markers), can be attributed to its impact on changes in PM2.5;
 
-### Introduction
+2. 	Quantify the contribution of changes in the chemical composition of PM2.5 from different sources to the overall effect on health outcomes;
 
-Why we started...
+3. 	Quantify the impact of the policy on outdoor air quality and personal air pollution exposures, and specifically the source contribution from household coal burning.
 
-### Study Design and Methods
+## Aim 1: Health Impacts and Mechanisms 
 
-What we did...
+To come... 
 
-### Data Analysis
+### Introduction  
+To come... 
 
-What we did...
+### Study Design and Methods  
+To come... 
 
-### Results
+### Data Analysis  
+To come... 
 
-What we found...
+### Results  
+To come... 
 
-### Discussion and Conclusions
+### Discussion and Conclusions  
+To come... 
 
-What it all means...
+## Aim 2: Source Contributions  
+To come... 
 
-## Aim 2
+### Introduction  
+To come... 
 
-## Aim 3
+### Study Design and Methods  
+To come... 
+
+### Data Analysis  
+To come... 
+
+### Results  
+To come... 
+
+### Discussion and Conclusions  
+To come... 
+
+## Aim 3: Impacts on PM~2.5~  
+To come... 
+
+### Introduction  
+To come... 
+ 
+### Study Design and Methods  
+To come... 
+
+### Data Analysis  
+To come... 
+
+### Results  
+To come... 
+
+### Discussion and Conclusions  
+To come... 
+
 
 ## Synthesis, Interpretation, and Implication of Findings
+To come... 
 
-What it all means, big picture...
 
 ## Data Availability Statement
+To come... 
 
-Lots of stuff about OSF...
 
 ## Acknowledgements
+To come... 
 
-Many thanks to give...
 
 ## References
 
@@ -70,5 +107,7 @@ Many thanks to give...
 ## About the authors
 
 ## Other publications
+
+Other papers that have been published.[@li2022;@li2022a;@sternbach2022]
 
 

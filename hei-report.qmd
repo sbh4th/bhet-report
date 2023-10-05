@@ -1,7 +1,11 @@
 ---
 title: "How Do Household Energy Transitions Work?"
+author: 
+  - Sam Harper (Co-PI)
+  - Jill Baumgartner (Co-PI)
+date: today
 format: 
-  pdf:
+  report-typst:
     toc: true
 bibliography: hei-report.bib
 csl: american-medical-association.csl
@@ -12,7 +16,7 @@ What we did...[@bind2019b]
 
 ## Introduction
 
-Blah...
+Blah
 
 ## Specific Aims and Overarching Approach
 

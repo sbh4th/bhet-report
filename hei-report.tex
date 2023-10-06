@@ -9,7 +9,6 @@
   numbers=noendperiod]{scrartcl}
 
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -19,6 +18,10 @@
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -74,35 +77,41 @@
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
-\newlength{\cslentryspacingunit} % times entry-spacing
-\setlength{\cslentryspacingunit}{\parskip}
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
   % turn on hanging indent if param 1 is 1
   \ifodd #1
-  \let\oldpar\par
-  \def\par{\hangindent=\cslhangindent\oldpar}
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
   \fi
   % set entry spacing
-  \setlength{\parskip}{#2\cslentryspacingunit}
- }%
- {}
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
 \usepackage{calc}
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLBlock}[1]{\hfill\break#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \KOMAoption{captions}{tableheading}
-\makeatletter
-\makeatother
-\makeatletter
-\makeatother
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -139,16 +148,10 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \makeatother
 \makeatletter
+\makeatother
+\makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
-\makeatother
-\makeatletter
-\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
-\makeatother
-\makeatletter
-\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
-\makeatother
-\makeatletter
 \makeatother
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
@@ -168,45 +171,26 @@
 
 \title{How Do Household Energy Transitions Work?}
 \author{Sam Harper (Co-PI) \and Jill Baumgartner (Co-PI)}
-\date{}
+\date{2023-10-06}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, boxrule=0pt, enhanced, breakable, borderline west={3pt}{0pt}{shadecolor}, sharp corners, frame hidden]}{\end{tcolorbox}}\fi
-
 \renewcommand*\contentsname{Table of contents}
 {
 \hypersetup{linkcolor=}
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
-\hypertarget{abstract}{%
-\subsection{Abstract}\label{abstract}}
+\subsection{Abstract}\label{abstract}
 
 Brief summary of what we did.
 
-\hypertarget{introduction}{%
-\subsection{Introduction}\label{introduction}}
+\subsection{Introduction}\label{introduction}
 
-China is deploying an ambitious plan to transition up to 70\% of all
-households in northern China to clean space heating, including Beijing.
-To meet this target the Beijing municipal government announced a
-two-pronged program that designates coal-restricted areas and
-simultaneously offers subsidies to night-time electricity rates and for
-the purchase and installation of electric-powered, air-source heat pumps
-to replace traditional coal-heating stoves. The program is being rolled
-out on a village-by-village basis; however there is uncertainty as to
-when villages will receive the program. The variability in when the
-policy is applied to each village allows us to treat the roll-out of the
-program as a quasi-randomized intervention. Households may also be
-differentially affected by this program due to factors such as financial
-constraints, preferences and social capital, and there is uncertainty
-about whether and how this intervention may affect indoor and outdoor
-air pollution, as well as health behaviors and health outcomes.
+Blah
 
-\hypertarget{specific-aims-and-overarching-approach}{%
 \subsection{Specific Aims and Overarching
-Approach}\label{specific-aims-and-overarching-approach}}
+Approach}\label{specific-aims-and-overarching-approach}
 
 This study builds on three data collection campaigns in winter 2018/19,
 winter 2019/20, and winter 2021/22, as well as a partial campaign in
@@ -228,163 +212,142 @@ winter 2020/21 (CIHR-funded) with the following specific aims:
   household coal burning.
 \end{enumerate}
 
-\hypertarget{aim-1-health-impacts-and-mechanisms}{%
 \subsection{Aim 1: Health Impacts and
-Mechanisms}\label{aim-1-health-impacts-and-mechanisms}}
+Mechanisms}\label{aim-1-health-impacts-and-mechanisms}
 
 To come\ldots{}
 
-\hypertarget{introduction-1}{%
-\subsubsection{Introduction}\label{introduction-1}}
+\subsubsection{Introduction}\label{introduction-1}
 
 To come\ldots{}
 
-\hypertarget{study-design-and-methods}{%
-\subsubsection{Study Design and
-Methods}\label{study-design-and-methods}}
+\subsubsection{Study Design and Methods}\label{study-design-and-methods}
+
+Recent developments in the econometrics literature (Callaway and
+Sant'Anna 2021)
+
+\subsubsection{Data Analysis}\label{data-analysis}
 
 To come\ldots{}
 
-\hypertarget{data-analysis}{%
-\subsubsection{Data Analysis}\label{data-analysis}}
+\subsubsection{Results}\label{results}
 
 To come\ldots{}
 
-\hypertarget{results}{%
-\subsubsection{Results}\label{results}}
-
-To come\ldots{}
-
-\hypertarget{discussion-and-conclusions}{%
 \subsubsection{Discussion and
-Conclusions}\label{discussion-and-conclusions}}
+Conclusions}\label{discussion-and-conclusions}
 
 To come\ldots{}
 
-\hypertarget{aim-2-source-contributions}{%
 \subsection{Aim 2: Source
-Contributions}\label{aim-2-source-contributions}}
+Contributions}\label{aim-2-source-contributions}
 
 To come\ldots{}
 
-\hypertarget{introduction-2}{%
-\subsubsection{Introduction}\label{introduction-2}}
+\subsubsection{Introduction}\label{introduction-2}
 
 To come\ldots{}
 
-\hypertarget{study-design-and-methods-1}{%
 \subsubsection{Study Design and
-Methods}\label{study-design-and-methods-1}}
+Methods}\label{study-design-and-methods-1}
 
 To come\ldots{}
 
-\hypertarget{data-analysis-1}{%
-\subsubsection{Data Analysis}\label{data-analysis-1}}
+\subsubsection{Data Analysis}\label{data-analysis-1}
 
 To come\ldots{}
 
-\hypertarget{results-1}{%
-\subsubsection{Results}\label{results-1}}
+\subsubsection{Results}\label{results-1}
 
 To come\ldots{}
 
-\hypertarget{discussion-and-conclusions-1}{%
 \subsubsection{Discussion and
-Conclusions}\label{discussion-and-conclusions-1}}
+Conclusions}\label{discussion-and-conclusions-1}
 
 To come\ldots{}
 
-\hypertarget{aim-3-impacts-on-pm2.5}{%
 \subsection{\texorpdfstring{Aim 3: Impacts on
-PM\textsubscript{2.5}}{Aim 3: Impacts on PM2.5}}\label{aim-3-impacts-on-pm2.5}}
+PM\textsubscript{2.5}}{Aim 3: Impacts on PM2.5}}\label{aim-3-impacts-on-pm2.5}
 
 To come\ldots{}
 
-\hypertarget{introduction-3}{%
-\subsubsection{Introduction}\label{introduction-3}}
+\subsubsection{Introduction}\label{introduction-3}
 
 To come\ldots{}
 
-\hypertarget{study-design-and-methods-2}{%
 \subsubsection{Study Design and
-Methods}\label{study-design-and-methods-2}}
+Methods}\label{study-design-and-methods-2}
 
 To come\ldots{}
 
-\hypertarget{data-analysis-2}{%
-\subsubsection{Data Analysis}\label{data-analysis-2}}
+\subsubsection{Data Analysis}\label{data-analysis-2}
 
 To come\ldots{}
 
-\hypertarget{results-2}{%
-\subsubsection{Results}\label{results-2}}
+\subsubsection{Results}\label{results-2}
 
 To come\ldots{}
 
-\hypertarget{discussion-and-conclusions-2}{%
 \subsubsection{Discussion and
-Conclusions}\label{discussion-and-conclusions-2}}
+Conclusions}\label{discussion-and-conclusions-2}
 
 To come\ldots{}
 
-\hypertarget{synthesis-interpretation-and-implication-of-findings}{%
 \subsection{Synthesis, Interpretation, and Implication of
-Findings}\label{synthesis-interpretation-and-implication-of-findings}}
+Findings}\label{synthesis-interpretation-and-implication-of-findings}
 
 To come\ldots{}
 
-\hypertarget{data-availability-statement}{%
 \subsection{Data Availability
-Statement}\label{data-availability-statement}}
+Statement}\label{data-availability-statement}
 
 To come\ldots{}
 
-\hypertarget{acknowledgements}{%
-\subsection{Acknowledgements}\label{acknowledgements}}
+\subsection{Acknowledgements}\label{acknowledgements}
 
 To come\ldots{}
 
-\hypertarget{references}{%
-\subsection{References}\label{references}}
+\subsection{References}\label{references}
 
-\hypertarget{refs}{}
-\begin{CSLReferences}{0}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-li2022}{}}%
-\CSLLeftMargin{1. }%
-\CSLRightInline{Li X, Baumgartner J, Barrington-Leigh C, et al.
-Socioeconomic and {Demographic Associations} with {Wintertime Air
-Pollution Exposures} at {Household}, {Community}, and {District Scales}
-in {Rural Beijing}, {China}. \emph{Environmental Science \& Technology}.
-2022;56(12):8308-8318.
-doi:\href{https://doi.org/10.1021/acs.est.1c07402}{10.1021/acs.est.1c07402}}
+\subsection{Appendices}\label{appendices}
 
-\leavevmode\vadjust pre{\hypertarget{ref-li2022a}{}}%
-\CSLLeftMargin{2. }%
-\CSLRightInline{Li X, Baumgartner J, Harper S, et al. Field measurements
-of indoor and community air quality in rural {Beijing} before, during,
-and after the {COVID-19} lockdown. \emph{Indoor Air}. 2022;32(8):e13095.
-doi:\href{https://doi.org/10.1111/ina.13095}{10.1111/ina.13095}}
+\subsection{About the authors}\label{about-the-authors}
 
-\leavevmode\vadjust pre{\hypertarget{ref-sternbach2022}{}}%
-\CSLLeftMargin{3. }%
-\CSLRightInline{Sternbach TJ, Harper S, Li X, et al. Effects of indoor
-and outdoor temperatures on blood pressure and central hemodynamics in a
-wintertime longitudinal study of {Chinese} adults. \emph{Journal of
-Hypertension}. 2022;40(10):1950-1959.
-doi:\href{https://doi.org/10.1097/HJH.0000000000003198}{10.1097/HJH.0000000000003198}}
+\subsection{Other publications}\label{other-publications}
+
+Other papers that have been published.(Li et al. 2022a; Li et al. 2022b;
+Sternbach et al. 2022)
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{1}
+\bibitem[\citeproctext]{ref-callaway2021}
+Callaway B, Sant'Anna PHC. 2021. Difference-in-{Differences} with
+multiple time periods. Journal of Econometrics 225:200--230;
+doi:\href{https://doi.org/10.1016/j.jeconom.2020.12.001}{10.1016/j.jeconom.2020.12.001}.
+
+\bibitem[\citeproctext]{ref-li2022}
+Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G,
+et al. 2022a. Socioeconomic and {Demographic Associations} with
+{Wintertime Air Pollution Exposures} at {Household}, {Community}, and
+{District Scales} in {Rural Beijing}, {China}. Environmental Science \&
+Technology 56:8308--8318;
+doi:\href{https://doi.org/10.1021/acs.est.1c07402}{10.1021/acs.est.1c07402}.
+
+\bibitem[\citeproctext]{ref-li2022a}
+Li X, Baumgartner J, Harper S, Zhang X, Sternbach T, Barrington-Leigh C,
+et al. 2022b. Field measurements of indoor and community air quality in
+rural {Beijing} before, during, and after the {COVID-19} lockdown.
+Indoor Air 32:e13095;
+doi:\href{https://doi.org/10.1111/ina.13095}{10.1111/ina.13095}.
+
+\bibitem[\citeproctext]{ref-sternbach2022}
+Sternbach TJ, Harper S, Li X, Zhang X, Carter E, Zhang Y, et al. 2022.
+Effects of indoor and outdoor temperatures on blood pressure and central
+hemodynamics in a wintertime longitudinal study of {Chinese} adults.
+Journal of Hypertension 40:1950--1959;
+doi:\href{https://doi.org/10.1097/HJH.0000000000003198}{10.1097/HJH.0000000000003198}.
 
 \end{CSLReferences}
-
-\hypertarget{appendices}{%
-\subsection{Appendices}\label{appendices}}
-
-\hypertarget{about-the-authors}{%
-\subsection{About the authors}\label{about-the-authors}}
-
-\hypertarget{other-publications}{%
-\subsection{Other publications}\label{other-publications}}
-
-Other papers that have been published.\textsuperscript{1--3}
 
 
 

@@ -5,11 +5,12 @@ author:
   - Jill Baumgartner (Co-PI)
 date: today
 format: 
-  report-typst:
+  #report-typst:
+  pdf:
     toc: true
     keep-tex: true
 bibliography: hei-report.bib
-csl: american-medical-association.csl
+csl: environmental-health-perspectives.csl
 ---
 ## Abstract
 
@@ -37,7 +38,7 @@ To come...
 To come... 
 
 ### Study Design and Methods  
-To come... 
+Recent developments in the econometrics literature [@callaway2021]
 
 ### Data Analysis  
 To come... 

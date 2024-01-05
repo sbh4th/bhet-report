@@ -171,7 +171,7 @@
 
 \title{How Do Household Energy Transitions Work?}
 \author{Sam Harper (Co-PI) \and Jill Baumgartner (Co-PI)}
-\date{2023-10-06}
+\date{}
 
 \begin{document}
 \maketitle
@@ -187,7 +187,21 @@ Brief summary of what we did.
 
 \subsection{Introduction}\label{introduction}
 
-Blah
+China is deploying an ambitious plan to transition up to 70\% of all
+households in northern China to clean space heating, including Beijing.
+To meet this target the Beijing municipal government announced a
+two-pronged program that designates coal-restricted areas and
+simultaneously offers subsidies to night-time electricity rates and for
+the purchase and installation of electric-powered, air-source heat pumps
+to replace traditional coal-heating stoves. The program is being rolled
+out on a village-by-village basis; however there is uncertainty as to
+when villages will receive the program. The variability in when the
+policy is applied to each village allows us to treat the roll-out of the
+program as a quasi-randomized intervention. Households may also be
+differentially affected by this program due to factors such as financial
+constraints, preferences and social capital, and there is uncertainty
+about whether and how this intervention may affect indoor and outdoor
+air pollution, as well as health behaviors and health outcomes.
 
 \subsection{Specific Aims and Overarching
 Approach}\label{specific-aims-and-overarching-approach}
@@ -204,97 +218,143 @@ winter 2020/21 (CIHR-funded) with the following specific aims:
   central hemodynamics, blood inflammatory and oxidative stress
   markers), can be attributed to its impact on changes in PM2.5;
 \item
-  Quantify the contribution of changes in the chemical composition of
-  PM2.5 from different sources to the overall effect on health outcomes;
-\item
   Quantify the impact of the policy on outdoor air quality and personal
   air pollution exposures, and specifically the source contribution from
-  household coal burning.
+  household coal burning (Previously Aim 3);
+\item
+  Quantify the contribution of changes in the chemical composition of
+  PM2.5 from different sources to the overall effect on health outcomes
+  (Previously Aim 2).
 \end{enumerate}
 
-\subsection{Aim 1: Health Impacts and
-Mechanisms}\label{aim-1-health-impacts-and-mechanisms}
+\subsection{Study Design and Methods}\label{study-design-and-methods}
 
-To come\ldots{}
+\begin{itemize}
+\tightlist
+\item
+  Field equipment
+\item
+  DiD schematic
+\item
+  Mediation DAG
+\end{itemize}
 
-\subsubsection{Introduction}\label{introduction-1}
+To understand how Beijing's policy works we used a
+difference-in-differences design (Callaway 2020), leveraging the
+staggered rollout of the policy across multiple villages to estimate its
+impact on health outcomes and understand the mechanisms through which it
+works.
 
-To come\ldots{}
+\%\textbackslash begin\{wrapfigure\}{[}16{]}\{r\}{[}0pt{]}\{8cm\}
+\%\textbackslash begin\{center\}
 
-\subsubsection{Study Design and Methods}\label{study-design-and-methods}
+\begin{tikzpicture}
+        \draw[very thin,color=gray] (0,0) (6.9,4.9);
+    \draw[->] (0,0) -- (6.2,0) node[right] {};
+    \draw[->] (0,0) -- (0,4.2) node[above] {$outcome$};
+    \node at (1,-0.2) {Time 1};
+    \node at (5,-0.2) {Time 2};
+    \node at (3,-0.2) [color=gray] {Intervention};
+    \draw[-, dashed, color=gray] (3,0) -- (3,4);
+    \draw[-, thick, color=blue] (1,1) -- (5,2.5);
+    \filldraw[color=blue] (1,1) circle(0.8mm);
+    \filldraw[color=blue] (5,2.5) circle(0.8mm);
+    \node at(4.1,1.5) [color=blue] {\small{Control}};
+    \node at(4.1,1.1) [color=blue] {\small{group}};
+    \draw[-, thick, color=red] (1,2.5) -- (3,3.25);
+    \draw[-, thick, dashed, color=red!50] (3,3.25) -- (5,4);
+    \draw[-, thick, color=red] (3,3.25) -- (5,3.4);
+    \filldraw[color=red] (1,2.5) circle(0.8mm);
+    \filldraw[color=red!50] (5,4) circle(0.8mm);
+    \filldraw[color=red] (3,3.25) circle(0.8mm);
+    \filldraw[color=red] (5,3.4) circle(0.8mm);
+    \node at(1.5,3.25) [color=red] {\small{Treated group}};
+\end{tikzpicture}
 
-Recent developments in the econometrics literature (Callaway and
-Sant'Anna 2021)
+\%\textbackslash end\{center\} \%
 
-\subsubsection{Data Analysis}\label{data-analysis}
+\caption{Stylized example of difference-in-differences design.}
 
-To come\ldots{}
+\%\label{fig:DD} \%\textbackslash end\{wrapfigure\}
 
-\subsubsection{Results}\label{results}
+To estimate the overall impact of the policy, we will use a
+difference-in-differences approach (\textbf{Figure 3}), a
+quasi-experimental design that compares outcomes before and after an
+intervention in a treated group (one ``difference'') relative to the
+same outcomes measured in a control group (the second ``difference'').
+The control group trend provides the crucial ``counterfactual'' estimate
+of what would have happened in the treated group had it not been
+treated. By comparing each group to itself, this approach helps to
+control for both measured and unmeasured fixed differences between the
+treated and control groups. By measuring changes over time in outcomes
+in the control group unaffected by the treatment, this approach also
+controls for any unmeasured factors affecting outcome trends in both
+treated and control groups. This is important since there are often many
+potential factors affecting outcome trends that cannot be disentangled
+from the policy if one only studies the treated group (as in a
+traditional pre-post design).
 
-To come\ldots{}
+\subsection{Data Analysis}\label{data-analysis}
 
-\subsubsection{Discussion and
+\subsection{Results}\label{results}
+
+\subsubsection{Description of study sample
+(Table)}\label{description-of-study-sample-table}
+
+\begin{itemize}
+\tightlist
+\item
+  Study flowchart of participants (Figure)
+\item
+  Description of PM measurements (Figure)
+\item
+  Uptake of the policy (Sankey energy use)
+\item
+  Impact of `treatment assignment' on coal use
+\end{itemize}
+
+\subsubsection{Aim 1}\label{aim-1}
+
+\begin{itemize}
+\tightlist
+\item
+  Impact of policy on PM mass (Figure)
+\item
+  Table of CDEs (Central SBP, Central DBP, FeNO, Respiratory outcomes,
+  inflammatory markers), mediated by indoor PM (CDEs for personal and
+  outdoor in SI)
+\item
+  Table for multiple mediation analysis for BP
+\end{itemize}
+
+\subsubsection{Aim 2 (was Aim3)}\label{aim-2-was-aim3}
+
+\begin{itemize}
+\tightlist
+\item
+  Figure of source contributions (6 or fewer components)
+\item
+  Source contributions by treatment status
+\item
+  DiD for source contributions to PM
+\end{itemize}
+
+\subsubsection{Aim 3}\label{aim-3}
+
+\begin{itemize}
+\tightlist
+\item
+  Table of mediated health effects by source contribution (coal and
+  biomass)
+\end{itemize}
+
+\subsection{Discussion and
 Conclusions}\label{discussion-and-conclusions}
 
-To come\ldots{}
+Other relevant results (Tables or figures in SI) - Temperature - Heating
+room - Well-being
 
-\subsection{Aim 2: Source
-Contributions}\label{aim-2-source-contributions}
-
-To come\ldots{}
-
-\subsubsection{Introduction}\label{introduction-2}
-
-To come\ldots{}
-
-\subsubsection{Study Design and
-Methods}\label{study-design-and-methods-1}
-
-To come\ldots{}
-
-\subsubsection{Data Analysis}\label{data-analysis-1}
-
-To come\ldots{}
-
-\subsubsection{Results}\label{results-1}
-
-To come\ldots{}
-
-\subsubsection{Discussion and
-Conclusions}\label{discussion-and-conclusions-1}
-
-To come\ldots{}
-
-\subsection{\texorpdfstring{Aim 3: Impacts on
-PM\textsubscript{2.5}}{Aim 3: Impacts on PM2.5}}\label{aim-3-impacts-on-pm2.5}
-
-To come\ldots{}
-
-\subsubsection{Introduction}\label{introduction-3}
-
-To come\ldots{}
-
-\subsubsection{Study Design and
-Methods}\label{study-design-and-methods-2}
-
-To come\ldots{}
-
-\subsubsection{Data Analysis}\label{data-analysis-2}
-
-To come\ldots{}
-
-\subsubsection{Results}\label{results-2}
-
-To come\ldots{}
-
-\subsubsection{Discussion and
-Conclusions}\label{discussion-and-conclusions-2}
-
-To come\ldots{}
-
-\subsection{Synthesis, Interpretation, and Implication of
-Findings}\label{synthesis-interpretation-and-implication-of-findings}
+\subsection{Implications of Findings}\label{implications-of-findings}
 
 To come\ldots{}
 
@@ -320,10 +380,12 @@ Sternbach et al. 2022)
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{1}
-\bibitem[\citeproctext]{ref-callaway2021}
-Callaway B, Sant'Anna PHC. 2021. Difference-in-{Differences} with
-multiple time periods. Journal of Econometrics 225:200--230;
-doi:\href{https://doi.org/10.1016/j.jeconom.2020.12.001}{10.1016/j.jeconom.2020.12.001}.
+\bibitem[\citeproctext]{ref-callaway2020a}
+Callaway B. 2020.
+\href{https://doi.org/10.1007/978-3-319-57365-6_352-1}{Difference-in-{Differences}
+for {Policy Evaluation}}. In: \emph{Handbook of {Labor}, {Human
+Resources} and {Population Economics}} (K.F. Zimmermann, ed). {Springer
+International Publishing}:{Cham}. 1--61.
 
 \bibitem[\citeproctext]{ref-li2022}
 Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G,

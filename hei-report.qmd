@@ -3,9 +3,8 @@ title: "How Do Household Energy Transitions Work?"
 author: 
   - Sam Harper (Co-PI)
   - Jill Baumgartner (Co-PI)
-date: today
+# format: html
 format: 
-  #report-typst:
   pdf:
     toc: true
     keep-tex: true
@@ -18,75 +17,95 @@ Brief summary of what we did.
 
 ## Introduction
 
-Blah
+China is deploying an ambitious plan to transition up to 70% of all households in northern China to clean space heating, including Beijing. To meet this target the Beijing municipal government announced a two-pronged program that designates coal-restricted areas and simultaneously offers subsidies to night-time electricity rates and for the purchase and installation of electric-powered, air-source heat pumps to replace traditional coal-heating stoves. The program is being rolled out on a village-by-village basis; however there is uncertainty as to when villages will receive the program. The variability in when the policy is applied to each village allows us to treat the roll-out of the program as a quasi-randomized intervention. Households may also be differentially affected by this program due to factors such as financial constraints, preferences and social capital, and there is uncertainty about whether and how this intervention may affect indoor and outdoor air pollution, as well as health behaviors and health outcomes.
 
 ## Specific Aims and Overarching Approach
 
 This study builds on three data collection campaigns in winter 2018/19, winter 2019/20, and winter 2021/22, as well as a partial campaign in winter 2020/21 (CIHR-funded) with the following specific aims:
 
-1. 	Estimate how much of the policy’s overall effect on health, including respiratory symptoms and cardiovascular outcomes (blood pressure, central hemodynamics, blood inflammatory and oxidative stress markers), can be attributed to its impact on changes in PM2.5;
+1. Estimate how much of the policy’s overall effect on health, including respiratory symptoms and cardiovascular outcomes (blood pressure, central hemodynamics, blood inflammatory and oxidative stress markers), can be attributed to its impact on changes in PM2.5;
 
-2. 	Quantify the contribution of changes in the chemical composition of PM2.5 from different sources to the overall effect on health outcomes;
+2. Quantify the impact of the policy on outdoor air quality and personal air pollution exposures, and specifically the source contribution from household coal burning (Previously Aim 3);
 
-3. 	Quantify the impact of the policy on outdoor air quality and personal air pollution exposures, and specifically the source contribution from household coal burning.
-
-## Aim 1: Health Impacts and Mechanisms 
-
-To come... 
-
-### Introduction  
-To come... 
-
-### Study Design and Methods  
-Recent developments in the econometrics literature [@callaway2021]
-
-### Data Analysis  
-To come... 
-
-### Results  
-To come... 
-
-### Discussion and Conclusions  
-To come... 
-
-## Aim 2: Source Contributions  
-To come... 
-
-### Introduction  
-To come... 
-
-### Study Design and Methods  
-To come... 
-
-### Data Analysis  
-To come... 
-
-### Results  
-To come... 
-
-### Discussion and Conclusions  
-To come... 
-
-## Aim 3: Impacts on PM~2.5~  
-To come... 
-
-### Introduction  
-To come... 
- 
-### Study Design and Methods  
-To come... 
-
-### Data Analysis  
-To come... 
-
-### Results  
-To come... 
-
-### Discussion and Conclusions  
-To come... 
+3. Quantify the contribution of changes in the chemical composition of PM2.5 from different sources to the overall effect on health outcomes (Previously Aim 2).
 
 
-## Synthesis, Interpretation, and Implication of Findings
+## Study Design and Methods
+
+- Field equipment
+- DiD schematic
+- Mediation DAG
+
+To understand how Beijing’s policy works we used a difference-in-differences design [@callaway2020a], leveraging the staggered rollout of the policy across multiple villages to estimate its impact on health outcomes and understand the mechanisms through which it works.
+
+%\begin{wrapfigure}[16]{r}[0pt]{8cm}
+%\begin{center}
+\begin{tikzpicture}
+        \draw[very thin,color=gray] (0,0) (6.9,4.9);
+    \draw[->] (0,0) -- (6.2,0) node[right] {};
+    \draw[->] (0,0) -- (0,4.2) node[above] {$outcome$};
+    \node at (1,-0.2) {Time 1};
+    \node at (5,-0.2) {Time 2};
+    \node at (3,-0.2) [color=gray] {Intervention};
+    \draw[-, dashed, color=gray] (3,0) -- (3,4);
+    \draw[-, thick, color=blue] (1,1) -- (5,2.5);
+    \filldraw[color=blue] (1,1) circle(0.8mm);
+    \filldraw[color=blue] (5,2.5) circle(0.8mm);
+    \node at(4.1,1.5) [color=blue] {\small{Control}};
+    \node at(4.1,1.1) [color=blue] {\small{group}};
+    \draw[-, thick, color=red] (1,2.5) -- (3,3.25);
+    \draw[-, thick, dashed, color=red!50] (3,3.25) -- (5,4);
+    \draw[-, thick, color=red] (3,3.25) -- (5,3.4);
+    \filldraw[color=red] (1,2.5) circle(0.8mm);
+    \filldraw[color=red!50] (5,4) circle(0.8mm);
+    \filldraw[color=red] (3,3.25) circle(0.8mm);
+    \filldraw[color=red] (5,3.4) circle(0.8mm);
+    \node at(1.5,3.25) [color=red] {\small{Treated group}};
+\end{tikzpicture}
+%\end{center}
+%\caption{Stylized example of difference-in-differences design.}
+%\label{fig:DD}
+%\end{wrapfigure}
+
+To estimate the overall impact of the policy, we will use a difference-in-differences approach (**Figure 3**), a quasi-experimental design that compares outcomes before and after an intervention in a treated group (one "difference") relative to the same outcomes measured in a control group (the second "difference"). The control group trend provides the crucial "counterfactual" estimate of what would have happened in the treated group had it not been treated. By comparing each group to itself, this approach helps to control for both measured and unmeasured fixed differences between the treated and control groups. By measuring changes over time in outcomes in the control group unaffected by the treatment, this approach also controls for any unmeasured factors affecting outcome trends in both treated and control groups. This is important since there are often many potential factors affecting outcome trends that cannot be disentangled from the policy if one only studies the treated group (as in a traditional pre-post design).
+
+
+## Data Analysis
+
+## Results
+
+### Description of study sample (Table)
+
+- Study flowchart of participants (Figure)
+- Description of PM measurements (Figure)
+- Uptake of the policy (Sankey energy use)
+- Impact of ‘treatment assignment’ on coal use
+
+### Aim 1
+
+- Impact of policy on PM mass (Figure)
+- Table of CDEs (Central SBP, Central DBP, FeNO, Respiratory outcomes, inflammatory markers), mediated by indoor PM (CDEs for personal and outdoor in SI)
+- Table for multiple mediation analysis for BP
+
+### Aim 2 (was Aim3)
+
+- Figure of source contributions (6 or fewer components)
+- Source contributions by treatment status
+- DiD for source contributions to PM
+
+### Aim 3
+- Table of mediated health effects by source contribution (coal and biomass)
+
+
+## Discussion and Conclusions
+
+Other relevant results (Tables or figures in SI)
+- Temperature
+- Heating room
+- Well-being
+
+
+## Implications of Findings
 To come... 
 
 
@@ -110,5 +129,3 @@ To come...
 ## Other publications
 
 Other papers that have been published.[@li2022;@li2022a;@sternbach2022]
-
-

@@ -5,9 +5,9 @@ author:
   - Jill Baumgartner (Co-PI)
 # format: html
 format: 
-  pdf:
-    toc: true
-    keep-tex: true
+ pdf:
+   toc: true
+   keep-tex: true
 bibliography: hei-report.bib
 csl: environmental-health-perspectives.csl
 ---
@@ -66,6 +66,7 @@ To understand how Beijing’s policy works we used a difference-in-differences d
 %\caption{Stylized example of difference-in-differences design.}
 %\label{fig:DD}
 %\end{wrapfigure}
+
 
 To estimate the overall impact of the policy, we will use a difference-in-differences approach (**Figure 3**), a quasi-experimental design that compares outcomes before and after an intervention in a treated group (one "difference") relative to the same outcomes measured in a control group (the second "difference"). The control group trend provides the crucial "counterfactual" estimate of what would have happened in the treated group had it not been treated. By comparing each group to itself, this approach helps to control for both measured and unmeasured fixed differences between the treated and control groups. By measuring changes over time in outcomes in the control group unaffected by the treatment, this approach also controls for any unmeasured factors affecting outcome trends in both treated and control groups. This is important since there are often many potential factors affecting outcome trends that cannot be disentangled from the policy if one only studies the treated group (as in a traditional pre-post design).
 

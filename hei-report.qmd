@@ -3,6 +3,7 @@ title: "How Do Household Energy Transitions Work?"
 author: 
   - Sam Harper (Co-PI)
   - Jill Baumgartner (Co-PI)
+date: today
 # format: html
 format: 
   pdf:

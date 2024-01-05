@@ -77,41 +77,35 @@
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-% definitions for citeproc citations
-\NewDocumentCommand\citeproctext{}{}
-\NewDocumentCommand\citeproc{mm}{%
-  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
-\makeatletter
- % allow citations to break across lines
- \let\@cite@ofmt\@firstofone
- % avoid brackets around text for \cite:
- \def\@biblabel#1{}
- \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
-\makeatother
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
-\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
- {\begin{list}{}{%
-  \setlength{\itemindent}{0pt}
-  \setlength{\leftmargin}{0pt}
-  \setlength{\parsep}{0pt}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
   % turn on hanging indent if param 1 is 1
   \ifodd #1
-   \setlength{\leftmargin}{\cslhangindent}
-   \setlength{\itemindent}{-1\cslhangindent}
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
   \fi
   % set entry spacing
-  \setlength{\itemsep}{#2\baselineskip}}}
- {\end{list}}
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
 \usepackage{calc}
-\newcommand{\CSLBlock}[1]{\hfill\break#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \KOMAoption{captions}{tableheading}
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -148,10 +142,18 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \makeatother
 \makeatletter
-\makeatother
-\makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
 \makeatother
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
@@ -175,17 +177,21 @@
 
 \begin{document}
 \maketitle
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, interior hidden, boxrule=0pt, sharp corners, borderline west={3pt}{0pt}{shadecolor}, enhanced, frame hidden]}{\end{tcolorbox}}\fi
+
 \renewcommand*\contentsname{Table of contents}
 {
 \hypersetup{linkcolor=}
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
-\subsection{Abstract}\label{abstract}
+\hypertarget{abstract}{%
+\subsection{Abstract}\label{abstract}}
 
 Brief summary of what we did.
 
-\subsection{Introduction}\label{introduction}
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
 
 China is deploying an ambitious plan to transition up to 70\% of all
 households in northern China to clean space heating, including Beijing.
@@ -203,8 +209,9 @@ constraints, preferences and social capital, and there is uncertainty
 about whether and how this intervention may affect indoor and outdoor
 air pollution, as well as health behaviors and health outcomes.
 
+\hypertarget{specific-aims-and-overarching-approach}{%
 \subsection{Specific Aims and Overarching
-Approach}\label{specific-aims-and-overarching-approach}
+Approach}\label{specific-aims-and-overarching-approach}}
 
 This study builds on three data collection campaigns in winter 2018/19,
 winter 2019/20, and winter 2021/22, as well as a partial campaign in
@@ -227,7 +234,8 @@ winter 2020/21 (CIHR-funded) with the following specific aims:
   (Previously Aim 2).
 \end{enumerate}
 
-\subsection{Study Design and Methods}\label{study-design-and-methods}
+\hypertarget{study-design-and-methods}{%
+\subsection{Study Design and Methods}\label{study-design-and-methods}}
 
 \begin{itemize}
 \tightlist
@@ -245,37 +253,7 @@ staggered rollout of the policy across multiple villages to estimate its
 impact on health outcomes and understand the mechanisms through which it
 works.
 
-\%\textbackslash begin\{wrapfigure\}{[}16{]}\{r\}{[}0pt{]}\{8cm\}
-\%\textbackslash begin\{center\}
-
-\begin{tikzpicture}
-        \draw[very thin,color=gray] (0,0) (6.9,4.9);
-    \draw[->] (0,0) -- (6.2,0) node[right] {};
-    \draw[->] (0,0) -- (0,4.2) node[above] {$outcome$};
-    \node at (1,-0.2) {Time 1};
-    \node at (5,-0.2) {Time 2};
-    \node at (3,-0.2) [color=gray] {Intervention};
-    \draw[-, dashed, color=gray] (3,0) -- (3,4);
-    \draw[-, thick, color=blue] (1,1) -- (5,2.5);
-    \filldraw[color=blue] (1,1) circle(0.8mm);
-    \filldraw[color=blue] (5,2.5) circle(0.8mm);
-    \node at(4.1,1.5) [color=blue] {\small{Control}};
-    \node at(4.1,1.1) [color=blue] {\small{group}};
-    \draw[-, thick, color=red] (1,2.5) -- (3,3.25);
-    \draw[-, thick, dashed, color=red!50] (3,3.25) -- (5,4);
-    \draw[-, thick, color=red] (3,3.25) -- (5,3.4);
-    \filldraw[color=red] (1,2.5) circle(0.8mm);
-    \filldraw[color=red!50] (5,4) circle(0.8mm);
-    \filldraw[color=red] (3,3.25) circle(0.8mm);
-    \filldraw[color=red] (5,3.4) circle(0.8mm);
-    \node at(1.5,3.25) [color=red] {\small{Treated group}};
-\end{tikzpicture}
-
-\%\textbackslash end\{center\} \%
-
-\caption{Stylized example of difference-in-differences design.}
-
-\%\label{fig:DD} \%\textbackslash end\{wrapfigure\}
+\includegraphics{hei-report_files/figure-pdf/unnamed-chunk-1-1.pdf}
 
 To estimate the overall impact of the policy, we will use a
 difference-in-differences approach (\textbf{Figure 3}), a
@@ -294,12 +272,15 @@ potential factors affecting outcome trends that cannot be disentangled
 from the policy if one only studies the treated group (as in a
 traditional pre-post design).
 
-\subsection{Data Analysis}\label{data-analysis}
+\hypertarget{data-analysis}{%
+\subsection{Data Analysis}\label{data-analysis}}
 
-\subsection{Results}\label{results}
+\hypertarget{results}{%
+\subsection{Results}\label{results}}
 
+\hypertarget{description-of-study-sample-table}{%
 \subsubsection{Description of study sample
-(Table)}\label{description-of-study-sample-table}
+(Table)}\label{description-of-study-sample-table}}
 
 \begin{itemize}
 \tightlist
@@ -313,7 +294,8 @@ traditional pre-post design).
   Impact of `treatment assignment' on coal use
 \end{itemize}
 
-\subsubsection{Aim 1}\label{aim-1}
+\hypertarget{aim-1}{%
+\subsubsection{Aim 1}\label{aim-1}}
 
 \begin{itemize}
 \tightlist
@@ -327,7 +309,8 @@ traditional pre-post design).
   Table for multiple mediation analysis for BP
 \end{itemize}
 
-\subsubsection{Aim 2 (was Aim3)}\label{aim-2-was-aim3}
+\hypertarget{aim-2-was-aim3}{%
+\subsubsection{Aim 2 (was Aim3)}\label{aim-2-was-aim3}}
 
 \begin{itemize}
 \tightlist
@@ -339,7 +322,8 @@ traditional pre-post design).
   DiD for source contributions to PM
 \end{itemize}
 
-\subsubsection{Aim 3}\label{aim-3}
+\hypertarget{aim-3}{%
+\subsubsection{Aim 3}\label{aim-3}}
 
 \begin{itemize}
 \tightlist
@@ -348,46 +332,42 @@ traditional pre-post design).
   biomass)
 \end{itemize}
 
+\hypertarget{discussion-and-conclusions}{%
 \subsection{Discussion and
-Conclusions}\label{discussion-and-conclusions}
+Conclusions}\label{discussion-and-conclusions}}
 
 Other relevant results (Tables or figures in SI) - Temperature - Heating
 room - Well-being
 
-\subsection{Implications of Findings}\label{implications-of-findings}
+\hypertarget{implications-of-findings}{%
+\subsection{Implications of Findings}\label{implications-of-findings}}
 
 To come\ldots{}
 
+\hypertarget{data-availability-statement}{%
 \subsection{Data Availability
-Statement}\label{data-availability-statement}
+Statement}\label{data-availability-statement}}
 
 To come\ldots{}
 
-\subsection{Acknowledgements}\label{acknowledgements}
+\hypertarget{acknowledgements}{%
+\subsection{Acknowledgements}\label{acknowledgements}}
 
 To come\ldots{}
 
-\subsection{References}\label{references}
+\hypertarget{references}{%
+\subsection{References}\label{references}}
 
-\subsection{Appendices}\label{appendices}
-
-\subsection{About the authors}\label{about-the-authors}
-
-\subsection{Other publications}\label{other-publications}
-
-Other papers that have been published.(Li et al. 2022a; Li et al. 2022b;
-Sternbach et al. 2022)
-
-\phantomsection\label{refs}
-\begin{CSLReferences}{1}{1}
-\bibitem[\citeproctext]{ref-callaway2020a}
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-callaway2020a}{}}%
 Callaway B. 2020.
 \href{https://doi.org/10.1007/978-3-319-57365-6_352-1}{Difference-in-{Differences}
 for {Policy Evaluation}}. In: \emph{Handbook of {Labor}, {Human
 Resources} and {Population Economics}} (K.F. Zimmermann, ed). {Springer
 International Publishing}:{Cham}. 1--61.
 
-\bibitem[\citeproctext]{ref-li2022}
+\leavevmode\vadjust pre{\hypertarget{ref-li2022}{}}%
 Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G,
 et al. 2022a. Socioeconomic and {Demographic Associations} with
 {Wintertime Air Pollution Exposures} at {Household}, {Community}, and
@@ -395,14 +375,14 @@ et al. 2022a. Socioeconomic and {Demographic Associations} with
 Technology 56:8308--8318;
 doi:\href{https://doi.org/10.1021/acs.est.1c07402}{10.1021/acs.est.1c07402}.
 
-\bibitem[\citeproctext]{ref-li2022a}
+\leavevmode\vadjust pre{\hypertarget{ref-li2022a}{}}%
 Li X, Baumgartner J, Harper S, Zhang X, Sternbach T, Barrington-Leigh C,
 et al. 2022b. Field measurements of indoor and community air quality in
 rural {Beijing} before, during, and after the {COVID-19} lockdown.
 Indoor Air 32:e13095;
 doi:\href{https://doi.org/10.1111/ina.13095}{10.1111/ina.13095}.
 
-\bibitem[\citeproctext]{ref-sternbach2022}
+\leavevmode\vadjust pre{\hypertarget{ref-sternbach2022}{}}%
 Sternbach TJ, Harper S, Li X, Zhang X, Carter E, Zhang Y, et al. 2022.
 Effects of indoor and outdoor temperatures on blood pressure and central
 hemodynamics in a wintertime longitudinal study of {Chinese} adults.
@@ -410,6 +390,18 @@ Journal of Hypertension 40:1950--1959;
 doi:\href{https://doi.org/10.1097/HJH.0000000000003198}{10.1097/HJH.0000000000003198}.
 
 \end{CSLReferences}
+
+\hypertarget{appendices}{%
+\subsection{Appendices}\label{appendices}}
+
+\hypertarget{about-the-authors}{%
+\subsection{About the authors}\label{about-the-authors}}
+
+\hypertarget{other-publications}{%
+\subsection{Other publications}\label{other-publications}}
+
+Other papers that have been published.(Li et al. 2022a; Li et al. 2022b;
+Sternbach et al. 2022)
 
 
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,14 +19,15 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -40,8 +41,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="hei-report_files/libs/clipboard/clipboard.min.js"></script>
@@ -101,89 +101,92 @@ div.csl-indent {
 <p>This study builds on three data collection campaigns in winter 2018/19, winter 2019/20, and winter 2021/22, as well as a partial campaign in winter 2020/21 (CIHR-funded) with the following specific aims:</p>
 <ol type="1">
 <li><p>Estimate how much of the policy’s overall effect on health, including respiratory symptoms and cardiovascular outcomes (blood pressure, central hemodynamics, blood inflammatory and oxidative stress markers), can be attributed to its impact on changes in PM2.5;</p></li>
-<li><p>Quantify the contribution of changes in the chemical composition of PM2.5 from different sources to the overall effect on health outcomes;</p></li>
-<li><p>Quantify the impact of the policy on outdoor air quality and personal air pollution exposures, and specifically the source contribution from household coal burning.</p></li>
+<li><p>Quantify the impact of the policy on outdoor air quality and personal air pollution exposures, and specifically the source contribution from household coal burning (Previously Aim 3);</p></li>
+<li><p>Quantify the contribution of changes in the chemical composition of PM2.5 from different sources to the overall effect on health outcomes (Previously Aim 2).</p></li>
 </ol>
 </section>
-<section id="aim-1-health-impacts-and-mechanisms" class="level2">
-<h2 class="anchored" data-anchor-id="aim-1-health-impacts-and-mechanisms">Aim 1: Health Impacts and Mechanisms</h2>
-<section id="introduction-1" class="level3">
-<h3 class="anchored" data-anchor-id="introduction-1">Introduction</h3>
-</section>
-<section id="study-design-and-methods" class="level3">
-<h3 class="anchored" data-anchor-id="study-design-and-methods">Study Design and Methods</h3>
+<section id="study-design-and-methods" class="level2">
+<h2 class="anchored" data-anchor-id="study-design-and-methods">Study Design and Methods</h2>
 <ul>
-<li><p>Overview of rationale for Difference-in-Differences design.</p></li>
-<li><p>Issues of staggered treatments</p></li>
-<li><p>Discussion of model selection and parameterization.</p></li>
+<li>Field equipment</li>
+<li>DiD schematic</li>
+<li>Mediation DAG</li>
+</ul>
+<p>To understand how Beijing’s policy works we used a difference-in-differences design <span class="citation" data-cites="callaway2020a">(<a href="#ref-callaway2020a" role="doc-biblioref">Callaway 2020</a>)</span>, leveraging the staggered rollout of the policy across multiple villages to estimate its impact on health outcomes and understand the mechanisms through which it works.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="hei-report_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>To estimate the overall impact of the policy, we will use a difference-in-differences approach (<strong>Figure 3</strong>), a quasi-experimental design that compares outcomes before and after an intervention in a treated group (one “difference”) relative to the same outcomes measured in a control group (the second “difference”). The control group trend provides the crucial “counterfactual” estimate of what would have happened in the treated group had it not been treated. By comparing each group to itself, this approach helps to control for both measured and unmeasured fixed differences between the treated and control groups. By measuring changes over time in outcomes in the control group unaffected by the treatment, this approach also controls for any unmeasured factors affecting outcome trends in both treated and control groups. This is important since there are often many potential factors affecting outcome trends that cannot be disentangled from the policy if one only studies the treated group (as in a traditional pre-post design).</p>
+</section>
+<section id="data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="data-analysis">Data Analysis</h2>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<section id="description-of-study-sample-table" class="level3">
+<h3 class="anchored" data-anchor-id="description-of-study-sample-table">Description of study sample (Table)</h3>
+<ul>
+<li>Study flowchart of participants (Figure)</li>
+<li>Description of PM measurements (Figure)</li>
+<li>Uptake of the policy (Sankey energy use)</li>
+<li>Impact of ‘treatment assignment’ on coal use</li>
 </ul>
 </section>
-<section id="data-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="data-analysis">Data Analysis</h3>
+<section id="aim-1" class="level3">
+<h3 class="anchored" data-anchor-id="aim-1">Aim 1</h3>
+<ul>
+<li>Impact of policy on PM mass (Figure)</li>
+<li>Table of CDEs (Central SBP, Central DBP, FeNO, Respiratory outcomes, inflammatory markers), mediated by indoor PM (CDEs for personal and outdoor in SI)</li>
+<li>Table for multiple mediation analysis for BP</li>
+</ul>
 </section>
-<section id="results" class="level3">
-<h3 class="anchored" data-anchor-id="results">Results</h3>
+<section id="aim-2-was-aim3" class="level3">
+<h3 class="anchored" data-anchor-id="aim-2-was-aim3">Aim 2 (was Aim3)</h3>
+<ul>
+<li>Figure of source contributions (6 or fewer components)</li>
+<li>Source contributions by treatment status</li>
+<li>DiD for source contributions to PM</li>
+</ul>
 </section>
-<section id="discussion-and-conclusions" class="level3">
-<h3 class="anchored" data-anchor-id="discussion-and-conclusions">Discussion and Conclusions</h3>
-</section>
-</section>
-<section id="aim-2-source-contributions" class="level2">
-<h2 class="anchored" data-anchor-id="aim-2-source-contributions">Aim 2: Source Contributions</h2>
-<section id="introduction-2" class="level3">
-<h3 class="anchored" data-anchor-id="introduction-2">Introduction</h3>
-</section>
-<section id="study-design-and-methods-1" class="level3">
-<h3 class="anchored" data-anchor-id="study-design-and-methods-1">Study Design and Methods</h3>
-</section>
-<section id="data-analysis-1" class="level3">
-<h3 class="anchored" data-anchor-id="data-analysis-1">Data Analysis</h3>
-</section>
-<section id="results-1" class="level3">
-<h3 class="anchored" data-anchor-id="results-1">Results</h3>
-</section>
-<section id="discussion-and-conclusions-1" class="level3">
-<h3 class="anchored" data-anchor-id="discussion-and-conclusions-1">Discussion and Conclusions</h3>
+<section id="aim-3" class="level3">
+<h3 class="anchored" data-anchor-id="aim-3">Aim 3</h3>
+<ul>
+<li>Table of mediated health effects by source contribution (coal and biomass)</li>
+</ul>
 </section>
 </section>
-<section id="aim-3-impacts-on-pm2.5" class="level2">
-<h2 class="anchored" data-anchor-id="aim-3-impacts-on-pm2.5">Aim 3: Impacts on PM<sub>2.5</sub></h2>
-<section id="introduction-3" class="level3">
-<h3 class="anchored" data-anchor-id="introduction-3">Introduction</h3>
+<section id="discussion-and-conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-and-conclusions">Discussion and Conclusions</h2>
+<p>Other relevant results (Tables or figures in SI) - Temperature - Heating room - Well-being</p>
 </section>
-<section id="study-design-and-methods-2" class="level3">
-<h3 class="anchored" data-anchor-id="study-design-and-methods-2">Study Design and Methods</h3>
-</section>
-<section id="data-analysis-2" class="level3">
-<h3 class="anchored" data-anchor-id="data-analysis-2">Data Analysis</h3>
-</section>
-<section id="results-2" class="level3">
-<h3 class="anchored" data-anchor-id="results-2">Results</h3>
-</section>
-<section id="discussion-and-conclusions-2" class="level3">
-<h3 class="anchored" data-anchor-id="discussion-and-conclusions-2">Discussion and Conclusions</h3>
-</section>
-</section>
-<section id="synthesis-interpretation-and-implication-of-findings" class="level2">
-<h2 class="anchored" data-anchor-id="synthesis-interpretation-and-implication-of-findings">Synthesis, Interpretation, and Implication of Findings</h2>
+<section id="implications-of-findings" class="level2">
+<h2 class="anchored" data-anchor-id="implications-of-findings">Implications of Findings</h2>
+<p>To come…</p>
 </section>
 <section id="data-availability-statement" class="level2">
 <h2 class="anchored" data-anchor-id="data-availability-statement">Data Availability Statement</h2>
+<p>To come…</p>
 </section>
 <section id="acknowledgements" class="level2">
 <h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>To come…</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
-<div id="refs" class="references csl-bib-body" role="doc-bibliography">
-<div id="ref-li2022" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline">Li X, Baumgartner J, Barrington-Leigh C, et al. Socioeconomic and <span>Demographic Associations</span> with <span>Wintertime Air Pollution Exposures</span> at <span>Household</span>, <span>Community</span>, and <span>District Scales</span> in <span>Rural Beijing</span>, <span>China</span>. <em>Environmental Science &amp; Technology</em>. 2022;56(12):8308-8318. doi:<a href="https://doi.org/10.1021/acs.est.1c07402">10.1021/acs.est.1c07402</a></div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-callaway2020a" class="csl-entry" role="listitem">
+Callaway B. 2020. <a href="https://doi.org/10.1007/978-3-319-57365-6_352-1">Difference-in-<span>Differences</span> for <span>Policy Evaluation</span></a>. In: <em>Handbook of <span>Labor</span>, <span>Human Resources</span> and <span>Population Economics</span></em> (K.F. Zimmermann, ed). <span>Springer International Publishing</span>:<span>Cham</span>. 1–61.
 </div>
-<div id="ref-li2022a" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline">Li X, Baumgartner J, Harper S, et al. Field measurements of indoor and community air quality in rural <span>Beijing</span> before, during, and after the <span>COVID-19</span> lockdown. <em>Indoor Air</em>. 2022;32(8):e13095. doi:<a href="https://doi.org/10.1111/ina.13095">10.1111/ina.13095</a></div>
+<div id="ref-li2022" class="csl-entry" role="listitem">
+Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G, et al. 2022a. Socioeconomic and <span>Demographic Associations</span> with <span>Wintertime Air Pollution Exposures</span> at <span>Household</span>, <span>Community</span>, and <span>District Scales</span> in <span>Rural Beijing</span>, <span>China</span>. Environmental Science &amp; Technology 56:8308–8318; doi:<a href="https://doi.org/10.1021/acs.est.1c07402">10.1021/acs.est.1c07402</a>.
 </div>
-<div id="ref-sternbach2022" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">3. </div><div class="csl-right-inline">Sternbach TJ, Harper S, Li X, et al. Effects of indoor and outdoor temperatures on blood pressure and central hemodynamics in a wintertime longitudinal study of <span>Chinese</span> adults. <em>Journal of Hypertension</em>. 2022;40(10):1950-1959. doi:<a href="https://doi.org/10.1097/HJH.0000000000003198">10.1097/HJH.0000000000003198</a></div>
+<div id="ref-li2022a" class="csl-entry" role="listitem">
+Li X, Baumgartner J, Harper S, Zhang X, Sternbach T, Barrington-Leigh C, et al. 2022b. Field measurements of indoor and community air quality in rural <span>Beijing</span> before, during, and after the <span>COVID-19</span> lockdown. Indoor Air 32:e13095; doi:<a href="https://doi.org/10.1111/ina.13095">10.1111/ina.13095</a>.
+</div>
+<div id="ref-sternbach2022" class="csl-entry" role="listitem">
+Sternbach TJ, Harper S, Li X, Zhang X, Carter E, Zhang Y, et al. 2022. Effects of indoor and outdoor temperatures on blood pressure and central hemodynamics in a wintertime longitudinal study of <span>Chinese</span> adults. Journal of Hypertension 40:1950–1959; doi:<a href="https://doi.org/10.1097/HJH.0000000000003198">10.1097/HJH.0000000000003198</a>.
 </div>
 </div>
 </section>
@@ -195,7 +198,7 @@ div.csl-indent {
 </section>
 <section id="other-publications" class="level2">
 <h2 class="anchored" data-anchor-id="other-publications">Other publications</h2>
-<p>Other papers that have been published.<span class="citation" data-cites="li2022 li2022a sternbach2022"><sup><a href="#ref-li2022" role="doc-biblioref">1</a>–<a href="#ref-sternbach2022" role="doc-biblioref">3</a></sup></span></p>
+<p>Other papers that have been published.<span class="citation" data-cites="li2022 li2022a sternbach2022">(<a href="#ref-li2022" role="doc-biblioref">Li et al. 2022a</a>; <a href="#ref-li2022a" role="doc-biblioref">Li et al. 2022b</a>; <a href="#ref-sternbach2022" role="doc-biblioref">Sternbach et al. 2022</a>)</span></p>
 </section>
 
 </main>
@@ -227,9 +230,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -294,6 +311,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

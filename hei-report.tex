@@ -173,11 +173,11 @@
 
 \title{How Do Household Energy Transitions Work?}
 \author{Sam Harper (Co-PI) \and Jill Baumgartner (Co-PI)}
-\date{2024-01-05}
+\date{2024-01-07}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, interior hidden, frame hidden, boxrule=0pt, enhanced, breakable, sharp corners]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, enhanced, breakable, sharp corners]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -187,6 +187,14 @@
 }
 \hypertarget{abstract}{%
 \subsection{Abstract}\label{abstract}}
+
+\textbf{Introduction}
+
+\textbf{Methods}
+
+\textbf{Results}
+
+\textbf{Conclusions}
 
 Brief summary of what we did.
 
@@ -269,8 +277,80 @@ potential factors affecting outcome trends that cannot be disentangled
 from the policy if one only studies the treated group (as in a
 traditional pre-post design).
 
+The canonical DiD design (Card and Krueger 1994) compares two groups
+(treated and control) at two different time periods (pre- and
+post-intervention, Figure X). In the first time period both groups are
+untreated, and in the second time period one group is exposed to the
+intervention. If we assume that the differences between the groups would
+have remained constant in the absence of the intervention (parallel
+trends assumption), then an unbiased estimate of the impact of the
+intervention in the post period can be calculated by subtracting the
+pre-post difference in the untreated group from the pre-post difference
+in the treated group.
+
+However, when multiple groups are treated at different time periods, the
+most common approach has been to use a two-way fixed effects model to
+estimate the impact of the intervention which controls for secular
+trends and differences between districts. However, recent evidence
+suggests that the traditional two-way fixed effects estimation of the
+treatment effect may be biased in the context of heterogeneous treatment
+effects (Callaway and Sant'Anna 2021; Goodman-Bacon 2021)
+
 \hypertarget{data-analysis}{%
 \subsection{Data Analysis}\label{data-analysis}}
+
+\hypertarget{total-effect}{%
+\subsubsection{Total Effect}\label{total-effect}}
+
+To estimate the total effect of the policy we used a DiD analysis that
+accommodates staggered
+
+\hypertarget{mediation-analysis}{%
+\subsubsection{Mediation Analysis}\label{mediation-analysis}}
+
+To describe the causal mediation analysis we can represent the total
+effect with the following equation, noting that we simplify the DiD
+equation above by dropping the error terms and using \(X\) as a generic
+term to capture the village fixed effects (\(V_{j}\)), time fixed
+effects (\(P{j}\)) and other covariates (\(Z_{jt}\) and \(X_{ijt}\))
+that, as noted above, we assume are sufficient to estimate the total
+effect:
+
+\[E[Y|T,X]=\beta_{0}+\beta_{1}T +\beta_{2}X\]
+
+where \(\beta_{1}\) represents the impact of the intervention \(T\) and
+\(X\) represents a vector of pre-treatment covariates sufficient to
+estimate the total effect without bias. After estimating the total
+effect, we will estimate the controlled direct effect (\(CDE\)), which
+gives the effect of the intervention on outcomes through pathways other
+than the proposed mediator (i.e., the ``direct'' path \(T\rightarrow Y\)
+in the DAG (Figure ?) above), after setting the mediator to a specific
+value. The \(CDE\) can be derived after estimating the following
+equation:
+
+\[E[Y|T,X,M] = \gamma_{0} + \gamma_{1}T + \gamma_{2}M + \gamma_{3}TM + \gamma_{4}X + \gamma_{5}W\]
+
+Noting that \(\gamma_{3}\) allows for interaction between the exposure
+and mediator, the \(CDE\) is estimated as: \(\gamma_{1}+\gamma_{3}MT\).
+In the absence of interaction between the exposure and the mediator
+(i.e., \(\gamma_{3}=0\)) the \(CDE\) will simply be \(\gamma_{1}\),
+i.e., the effect of the policy holding \(M\) constant. For a valid
+estimate of the \(CDE\) we must account for confounding of the
+mediator-outcome effect, represented by \(W\) in the equation above. In
+our example this might include changes in cooking behavior, diet or
+tobacco smoking, or indoor temperature. Baseline measures of both the
+outcome and the proposed mediators will help to reduce the potential for
+unmeasured confounding of the mediator-outcome effect (Keele et al.
+2015). In addition to estimating the \(CDE\), we may also be interested
+in measures of how much of the of the policy's impact may be due to its
+impact on the mediator. One potential way of estimating this is to
+subtract the \(CDE\) from the \(TE\) and express this as a proportion
+(sometimes called the ``proportion eliminated''), i.e.,
+\(PE = [TE - CDE(m)] / TE\) or, using the two equations above,
+\((\beta_{1} - \gamma_{1}) / \beta_{1}\). In our example this
+corresponds to the proportion of the total effect of the CBHP policy on
+blood pressure that could be eliminated if we were to fix
+PM\textsubscript{2.5} at a certain value \(M=m\).
 
 \hypertarget{results}{%
 \subsection{Results}\label{results}}
@@ -357,12 +437,32 @@ To come\ldots{}
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-callaway2020a}{}}%
+\leavevmode\vadjust pre{\hypertarget{ref-callaway2020}{}}%
 Callaway B. 2020.
 \href{https://doi.org/10.1007/978-3-319-57365-6_352-1}{Difference-in-{Differences}
 for {Policy Evaluation}}. In: \emph{Handbook of {Labor}, {Human
 Resources} and {Population Economics}} (K.F. Zimmermann, ed). {Springer
 International Publishing}:{Cham}. 1--61.
+
+\leavevmode\vadjust pre{\hypertarget{ref-callaway2021}{}}%
+Callaway B, Sant'Anna PHC. 2021. Difference-in-{Differences} with
+multiple time periods. Journal of Econometrics 225:200--230;
+doi:\href{https://doi.org/10.1016/j.jeconom.2020.12.001}{10.1016/j.jeconom.2020.12.001}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-card1994}{}}%
+Card D, Krueger AB. 1994. Minimum {Wages} and {Employment}: {A Case
+Study} of the {Fast-Food Industry} in {New Jersey} and {Pennsylvania}.
+American Economic Review 84: 772--93.
+
+\leavevmode\vadjust pre{\hypertarget{ref-goodman-bacon2021}{}}%
+Goodman-Bacon A. 2021. Difference-in-differences with variation in
+treatment timing. Journal of Econometrics 225:254--277;
+doi:\href{https://doi.org/10.1016/j.jeconom.2021.03.014}{10.1016/j.jeconom.2021.03.014}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Keele:2015aa}{}}%
+Keele L, Tingley D, Yamamoto T. 2015. Identifying mechanisms behind
+policy interventions via causal mediation analysis. Journal of Policy
+Analysis and Management 34: 937--963.
 
 \leavevmode\vadjust pre{\hypertarget{ref-li2022}{}}%
 Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G,

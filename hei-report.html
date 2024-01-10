@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.398">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sam Harper (Co-PI)">
 <meta name="author" content="Jill Baumgartner (Co-PI)">
+<meta name="dcterms.date" content="2024-01-10">
 
 <title>How Do Household Energy Transitions Work?</title>
 <style>
@@ -55,6 +56,8 @@ div.csl-indent {
 <link href="hei-report_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="hei-report_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -81,15 +84,27 @@ div.csl-indent {
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 10, 2024</p>
+    </div>
+  </div>
   
     
   </div>
   
 
+
 </header>
+
 
 <section id="abstract" class="level2">
 <h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p><strong>Introduction</strong></p>
+<p><strong>Methods</strong></p>
+<p><strong>Results</strong></p>
+<p><strong>Conclusions</strong></p>
 <p>Brief summary of what we did.</p>
 </section>
 <section id="introduction" class="level2">
@@ -112,16 +127,39 @@ div.csl-indent {
 <li>DiD schematic</li>
 <li>Mediation DAG</li>
 </ul>
-<p>To understand how Beijing’s policy works we used a difference-in-differences design <span class="citation" data-cites="callaway2020a">(<a href="#ref-callaway2020a" role="doc-biblioref">Callaway 2020</a>)</span>, leveraging the staggered rollout of the policy across multiple villages to estimate its impact on health outcomes and understand the mechanisms through which it works.</p>
+<p>To understand how Beijing’s policy works we used a difference-in-differences (DiD) design <span class="citation" data-cites="callaway2020a">(<a href="#ref-callaway2020a" role="doc-biblioref">Callaway 2020</a>)</span>, leveraging the staggered rollout of the policy across multiple villages to estimate its impact on health outcomes and understand the mechanisms through which it works. Simple comparisons of treated and untreated (i.e., control) villages after the CBHP policy has been implemented are likely to be biased by unmeasured village-level characteristics (e.g., migration, average winter temperature) that are associated with health outcomes. Similarly, comparisons of only treated villages before and after exposure to the program are susceptible to bias by other factors associated with changes in outcomes over time (i.e., secular trends, impacts of the COVID-19 pandemic). By comparing <em>changes</em> in outcomes among treated villages to <em>changes</em> in outcomes among untreated villages, we can control for any unmeasured time-invariant characteristics of villages as well as any general secular trends affecting all villages that are unrelated to the policy</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="hei-report_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hei-report_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Stylized example of difference-in-differences</figcaption>
+</figure>
 </div>
 </div>
-<p>To estimate the overall impact of the policy, we will use a difference-in-differences approach (<strong>Figure 3</strong>), a quasi-experimental design that compares outcomes before and after an intervention in a treated group (one “difference”) relative to the same outcomes measured in a control group (the second “difference”). The control group trend provides the crucial “counterfactual” estimate of what would have happened in the treated group had it not been treated. By comparing each group to itself, this approach helps to control for both measured and unmeasured fixed differences between the treated and control groups. By measuring changes over time in outcomes in the control group unaffected by the treatment, this approach also controls for any unmeasured factors affecting outcome trends in both treated and control groups. This is important since there are often many potential factors affecting outcome trends that cannot be disentangled from the policy if one only studies the treated group (as in a traditional pre-post design).</p>
+</div>
+<p>The DiD design compares outcomes before and after an intervention in a treated group relative to the same outcomes measured in a control group. The control group trend provides the crucial “counterfactual” estimate of what would have happened in the treated group had it not been treated. By comparing each group to itself, this approach helps to control for both measured and unmeasured fixed differences between the treated and control groups. By measuring changes over time in outcomes in the control group unaffected by the treatment, this approach also controls for any unmeasured factors affecting outcome trends in both treated and control groups. This is important since there are often many potential factors affecting outcome trends that cannot be disentangled from the policy if one only studies the treated group (as in a traditional pre-post design).</p>
+<p>The canonical DiD design <span class="citation" data-cites="card1994">(<a href="#ref-card1994" role="doc-biblioref">Card and Krueger 1994</a>)</span> compares two groups (treated and control) at two different time periods (pre- and post-intervention, Figure X). In the first time period both groups are untreated, and in the second time period one group is exposed to the intervention. If we assume that the differences between the groups would have remained constant in the absence of the intervention (parallel trends assumption), then an unbiased estimate of the impact of the intervention in the post period can be calculated by subtracting the pre-post difference in the untreated group from the pre-post difference in the treated group.</p>
+<p>However, when multiple groups are treated at different time periods, the most common approach has been to use a two-way fixed effects model to estimate the impact of the intervention which controls for secular trends and differences between districts. However, recent evidence suggests that the traditional two-way fixed effects estimation of the treatment effect may be biased in the context of heterogeneous treatment effects <span class="citation" data-cites="callaway2021 goodman-bacon2021a">(<a href="#ref-callaway2021" role="doc-biblioref">Callaway and Sant’Anna 2021</a>; <a href="#ref-goodman-bacon2021a" role="doc-biblioref">Goodman-Bacon 2021</a>)</span></p>
 </section>
 <section id="data-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="data-analysis">Data Analysis</h2>
+<section id="total-effect" class="level3">
+<h3 class="anchored" data-anchor-id="total-effect">Total Effect</h3>
+<p>To estimate the total effect of the policy we used a DiD analysis that accommodates staggered treatment rollout. To allow for heterogeneity in the context of staggered rollout we used ‘extended’ two-way fixed effects (ETWFE) models <span class="citation" data-cites="wooldridge2021a">(<a href="#ref-wooldridge2021a" role="doc-biblioref">Wooldridge 2021</a>)</span> to estimate the total effect of the CBHP policy. The mean outcome (replaced by a suitable link function <span class="math inline">\(g(\cdot)\)</span> for binary or count outcomes) was defined using a set of linear predictors:</p>
+<p><span id="eq-etwfe"><span class="math display">\[Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) + \varepsilon_{ijt} \tag{1}\]</span></span></p>
+<p>where <span class="math inline">\(Y_{ijt}\)</span> is the outcome for individual <span class="math inline">\(i\)</span> in village <span class="math inline">\(j\)</span> at time <span class="math inline">\(t\)</span>, <span class="math inline">\(d_{r}\)</span> represent fixed effects for cohorts of villages that were exposed to the policy at the same time (e.g., in 2019, 2020, or 2021), <span class="math inline">\(fs_{t}\)</span> are time fixed effects corresponding to different winter data collection campaigns (2018-19, 2019-20, or 2021-22), and <span class="math inline">\(\tau_{rt}\)</span> are the cohort-time <em>ATTs</em>.</p>
+</section>
+<section id="mediation-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="mediation-analysis">Mediation Analysis</h3>
+<p>As noted above, with respect to the mediation analysis we are chiefly interested in the <span class="math inline">\(CDE\)</span>, which can be derived by adding relevant mediators <span class="math inline">\(M\)</span> to this model. If we also allow for exposure-mediator interaction and potentially allow for adjustment for confounders <span class="math inline">\(W\)</span> of the mediator-outcome effect, we can extend equation {#eq-etwfe} as follows:</p>
+<p><span id="eq-etwfem"><span class="math display">\[Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) \\ + \delta M_{it} + \sum_{r=q}^{T} \sum_{s=r}^{T} \eta_{rt} (d_{r} \times fs_{t} \times M_{it}) + \zeta \mathbf{W} + \varepsilon_{ijt} \tag{2}\]</span></span></p>
+<p>To conduct the causal mediation analysis we represent the total effect with the following equation, noting that we simplify the DiD equation for the total effect above by dropping the error terms and using the vector <span class="math inline">\(\mathbf{X}\)</span> as a generic term to capture the cohort fixed effects (<span class="math inline">\(V_{j}\)</span>), time fixed effects (<span class="math inline">\(P{j}\)</span>) and other covariates (<span class="math inline">\(Z_{jt}\)</span> and <span class="math inline">\(X_{ijt}\)</span>) that, as noted above, we assume are sufficient to estimate the total effect:</p>
+<p><span class="math display">\[E[Y|T,X]=\beta_{0}+\beta_{1}T +\beta_{2}\mathbf{X}\]</span></p>
+<p>where <span class="math inline">\(\beta_{1}\)</span> represents the impact of the intervention <span class="math inline">\(T\)</span> and <span class="math inline">\(X\)</span> represents a vector of pre-treatment covariates sufficient to estimate the total effect without bias. After estimating the total effect, we will estimate the controlled direct effect (<span class="math inline">\(CDE\)</span>), which gives the effect of the intervention on outcomes through pathways other than the proposed mediator (i.e., the “direct” path <span class="math inline">\(T\rightarrow Y\)</span> in the DAG (Figure ?) above), after setting the mediator to a specific value. The <span class="math inline">\(CDE\)</span> can be derived after estimating the following equation:</p>
+<p><span class="math display">\[E[Y|T,X,M] = \gamma_{0} + \gamma_{1}T + \gamma_{2}M + \gamma_{3}TM + \gamma_{4}X + \gamma_{5}W\]</span></p>
+<p>Noting that <span class="math inline">\(\gamma_{3}\)</span> allows for interaction between the exposure and mediator, the <span class="math inline">\(CDE\)</span> is estimated as: <span class="math inline">\(\gamma_{1}+\gamma_{3}MT\)</span>. In the absence of interaction between the exposure and the mediator (i.e., <span class="math inline">\(\gamma_{3}=0\)</span>) the <span class="math inline">\(CDE\)</span> will simply be <span class="math inline">\(\gamma_{1}\)</span>, i.e., the effect of the policy holding <span class="math inline">\(M\)</span> constant. For a valid estimate of the <span class="math inline">\(CDE\)</span> we must account for confounding of the mediator-outcome effect, represented by <span class="math inline">\(W\)</span> in the equation above. In our example this might include changes in cooking behavior, diet or tobacco smoking, or indoor temperature. Baseline measures of both the outcome and the proposed mediators will help to reduce the potential for unmeasured confounding of the mediator-outcome effect <span class="citation" data-cites="Keele:2015aa">(<a href="#ref-Keele:2015aa" role="doc-biblioref">Keele et al. 2015</a>)</span>. In addition to estimating the <span class="math inline">\(CDE\)</span>, we may also be interested in measures of how much of the of the policy’s impact may be due to its impact on the mediator. One potential way of estimating this is to subtract the <span class="math inline">\(CDE\)</span> from the <span class="math inline">\(TE\)</span> and express this as a proportion (sometimes called the “proportion eliminated”), i.e., <span class="math inline">\(PE = [TE - CDE(m)] / TE\)</span> or, using the two equations above, <span class="math inline">\((\beta_{1} - \gamma_{1}) / \beta_{1}\)</span>. In our example this corresponds to the proportion of the total effect of the CBHP policy on blood pressure that could be eliminated if we were to fix PM<sub>2.5</sub> at a certain value <span class="math inline">\(M=m\)</span>.</p>
+</section>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
@@ -130,8 +168,8 @@ div.csl-indent {
 <ul>
 <li>Study flowchart of participants (Figure)</li>
 <li>Description of PM measurements (Figure)</li>
-<li>Uptake of the policy (Sankey energy use)</li>
-<li>Impact of ‘treatment assignment’ on coal use</li>
+<li>Uptake of the policy (Sankey energy use Figure)</li>
+<li>Impact of ‘treatment assignment’ on coal use (Figure? Table?)</li>
 </ul>
 </section>
 <section id="aim-1" class="level3">
@@ -179,6 +217,18 @@ div.csl-indent {
 <div id="ref-callaway2020a" class="csl-entry" role="listitem">
 Callaway B. 2020. <a href="https://doi.org/10.1007/978-3-319-57365-6_352-1">Difference-in-<span>Differences</span> for <span>Policy Evaluation</span></a>. In: <em>Handbook of <span>Labor</span>, <span>Human Resources</span> and <span>Population Economics</span></em> (K.F. Zimmermann, ed). <span>Springer International Publishing</span>:<span>Cham</span>. 1–61.
 </div>
+<div id="ref-callaway2021" class="csl-entry" role="listitem">
+Callaway B, Sant’Anna PHC. 2021. Difference-in-<span>Differences</span> with multiple time periods. Journal of Econometrics 225:200–230; doi:<a href="https://doi.org/10.1016/j.jeconom.2020.12.001">10.1016/j.jeconom.2020.12.001</a>.
+</div>
+<div id="ref-card1994" class="csl-entry" role="listitem">
+Card D, Krueger AB. 1994. Minimum <span>Wages</span> and <span>Employment</span>: <span>A Case Study</span> of the <span>Fast-Food Industry</span> in <span>New Jersey</span> and <span>Pennsylvania</span>. American Economic Review 84: 772–93.
+</div>
+<div id="ref-goodman-bacon2021a" class="csl-entry" role="listitem">
+Goodman-Bacon A. 2021. Difference-in-differences with variation in treatment timing. Journal of Econometrics 225:254–277; doi:<a href="https://doi.org/10.1016/j.jeconom.2021.03.014">10.1016/j.jeconom.2021.03.014</a>.
+</div>
+<div id="ref-Keele:2015aa" class="csl-entry" role="listitem">
+Keele L, Tingley D, Yamamoto T. 2015. Identifying mechanisms behind policy interventions via causal mediation analysis. Journal of Policy Analysis and Management 34: 937–963.
+</div>
 <div id="ref-li2022" class="csl-entry" role="listitem">
 Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G, et al. 2022a. Socioeconomic and <span>Demographic Associations</span> with <span>Wintertime Air Pollution Exposures</span> at <span>Household</span>, <span>Community</span>, and <span>District Scales</span> in <span>Rural Beijing</span>, <span>China</span>. Environmental Science &amp; Technology 56:8308–8318; doi:<a href="https://doi.org/10.1021/acs.est.1c07402">10.1021/acs.est.1c07402</a>.
 </div>
@@ -187,6 +237,9 @@ Li X, Baumgartner J, Harper S, Zhang X, Sternbach T, Barrington-Leigh C, et al. 
 </div>
 <div id="ref-sternbach2022" class="csl-entry" role="listitem">
 Sternbach TJ, Harper S, Li X, Zhang X, Carter E, Zhang Y, et al. 2022. Effects of indoor and outdoor temperatures on blood pressure and central hemodynamics in a wintertime longitudinal study of <span>Chinese</span> adults. Journal of Hypertension 40:1950–1959; doi:<a href="https://doi.org/10.1097/HJH.0000000000003198">10.1097/HJH.0000000000003198</a>.
+</div>
+<div id="ref-wooldridge2021a" class="csl-entry" role="listitem">
+Wooldridge JM. 2021. Two-<span>Way Fixed Effects</span>, the <span>Two-Way Mundlak Regression</span>, and <span class="nocase">Difference-in-Differences Estimators</span>.; doi:<a href="https://doi.org/10.2139/ssrn.3906345">10.2139/ssrn.3906345</a>. [accessed 10 February 2023].
 </div>
 </div>
 </section>
@@ -282,10 +335,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -295,8 +347,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -309,6 +370,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -352,6 +535,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -377,6 +561,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -437,6 +647,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

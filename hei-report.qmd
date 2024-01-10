@@ -6,12 +6,16 @@ author:
 date: today
 # format: html
 format: 
-  pdf:
-    toc: true
-    keep-tex: true
+ pdf:
+   toc: true
+   keep-tex: true
 bibliography: hei-report.bib
 csl: environmental-health-perspectives.csl
 ---
+```{r setup, echo=F, message=F}
+library(here)
+```
+
 ## Abstract
 **Introduction**
 
@@ -44,9 +48,9 @@ This study builds on three data collection campaigns in winter 2018/19, winter 2
 - DiD schematic
 - Mediation DAG
 
-To understand how Beijing’s policy works we used a difference-in-differences (DiD) design [@callaway2020], leveraging the staggered rollout of the policy across multiple villages to estimate its impact on health outcomes and understand the mechanisms through which it works.
+To understand how Beijing’s policy works we used a difference-in-differences (DiD) design [@callaway2020a], leveraging the staggered rollout of the policy across multiple villages to estimate its impact on health outcomes and understand the mechanisms through which it works. Simple comparisons of treated and untreated (i.e., control) villages after the CBHP policy has been implemented are likely to be biased by unmeasured village-level characteristics (e.g., migration, average winter temperature) that are associated with health outcomes. Similarly, comparisons of only treated villages before and after exposure to the program are susceptible to bias by other factors associated with changes in outcomes over time (i.e., secular trends, impacts of the COVID-19 pandemic). By comparing *changes* in outcomes among treated villages to *changes* in outcomes among untreated villages, we can control for any unmeasured time-invariant characteristics of villages as well as any general secular trends affecting all villages that are unrelated to the policy
 
-```{r, engine='tikz', echo=F}
+```{r, engine='tikz', echo=F, out.width="70%", fig.cap = "Stylized example of difference-in-differences"}
 \begin{tikzpicture}
     \draw[very thin,color=gray] (0,0) (6.9,4.9);
     \draw[->] (0,0) -- (6.2,0) node[right] {};
@@ -71,23 +75,29 @@ To understand how Beijing’s policy works we used a difference-in-differences (
 \end{tikzpicture}
 ```
 
-
 The DiD design compares outcomes before and after an intervention in a treated group relative to the same outcomes measured in a control group. The control group trend provides the crucial "counterfactual" estimate of what would have happened in the treated group had it not been treated. By comparing each group to itself, this approach helps to control for both measured and unmeasured fixed differences between the treated and control groups. By measuring changes over time in outcomes in the control group unaffected by the treatment, this approach also controls for any unmeasured factors affecting outcome trends in both treated and control groups. This is important since there are often many potential factors affecting outcome trends that cannot be disentangled from the policy if one only studies the treated group (as in a traditional pre-post design).
 
 The canonical DiD design [@card1994] compares two groups (treated and control) at two different time periods (pre- and post-intervention, Figure X). In the first time period both groups are untreated, and in the second time period one group is exposed to the intervention. If we assume that the differences between the groups would have remained constant in the absence of the intervention (parallel trends assumption), then an unbiased estimate of the impact of the intervention in the post period can be calculated by subtracting the pre-post difference in the untreated group from the pre-post difference in the treated group. 
 
-However, when multiple groups are treated at different time periods, the most common approach has been to use a two-way fixed effects model to estimate the impact of the intervention which controls for secular trends and differences between districts. However, recent evidence suggests that the traditional two-way fixed effects estimation of the treatment effect may be biased in the context of heterogeneous treatment effects [@callaway2021;@goodman-bacon2021]
+However, when multiple groups are treated at different time periods, the most common approach has been to use a two-way fixed effects model to estimate the impact of the intervention which controls for secular trends and differences between districts. However, recent evidence suggests that the traditional two-way fixed effects estimation of the treatment effect may be biased in the context of heterogeneous treatment effects [@callaway2021;@goodman-bacon2021a]
 
 
 ## Data Analysis
 
 ### Total Effect
-To estimate the total effect of the policy we used a DiD analysis that accommodates staggered treatment rollout. Simple comparisons of treated and untreated (i.e., control) villages after the CBHP policy has been implemented are likely to be biased by unmeasured village-level characteristics (e.g., migration, average winter temperature) that are associated with health outcomes. Similarly, comparisons of only treated villages before and after exposure to the program are susceptible to bias by other factors associated with changes in outcomes over time (i.e., secular trends). By comparing *changes* in outcomes among treated villages to *changes* in outcomes among untreated villages, we can control for any unmeasured time-invariant characteristics of villages as well as any general secular trends affecting all villages that are unrelated to the policy. We will use basic two-way fixed effects models to estimate the total effect of the CBHP policy. The mean outcome will be defined using a set of linear predictors:
+To estimate the total effect of the policy we used a DiD analysis that accommodates staggered treatment rollout. To allow for heterogeneity in the context of staggered rollout we used 'extended' two-way fixed effects (ETWFE) models [@wooldridge2021a] to estimate the total effect of the CBHP policy. The mean outcome (replaced by a suitable link function $g(\cdot)$ for binary or count outcomes) was defined using a set of linear predictors:
 
-$$Y_{ijt}=g(\mu_{ijt})=\beta_{0}+\beta_{1}V_{j}+\beta_{2}P_{t}+\beta_{3}T_{jt}+\delta\mathrm{\mathbf{Z_{jt}}}+\eta\mathrm{\mathbf{W_{ijt}}}+ u_{j} + \varepsilon_{ijt}$$
+$$Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) + \varepsilon_{ijt}$$ {#eq-etwfe}
+
+where $Y_{ijt}$ is the outcome for individual $i$ in village $j$ at time $t$, $d_{r}$ represent fixed effects for cohorts of villages that were exposed to the policy at the same time (e.g., in 2019, 2020, or 2021), $fs_{t}$ are time fixed effects corresponding to different winter data collection campaigns (2018-19, 2019-20, or 2021-22), and $\tau_{rt}$ are the cohort-time *ATTs*.
 
 ### Mediation Analysis
-To describe the causal mediation analysis we represent the total effect with the following equation, noting that we simplify the DiD equation for the total effect above by dropping the error terms and using the vector $\mathbf{X}$ as a generic term to capture the cohort fixed effects ($V_{j}$), time fixed effects ($P{j}$) and other covariates ($Z_{jt}$ and $X_{ijt}$) that, as noted above, we assume are sufficient to estimate the total effect: 
+As noted above, with respect to the mediation analysis we are chiefly interested in the $CDE$, which can be derived by adding relevant mediators $M$ to this model. If we also allow for exposure-mediator interaction and potentially allow for adjustment for confounders $W$ of the mediator-outcome effect, we can extend equation {#eq-etwfe} as follows:
+
+$$Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) \\ + \delta M_{it} + \sum_{r=q}^{T} \sum_{s=r}^{T} \eta_{rt} (d_{r} \times fs_{t} \times M_{it}) + \zeta \mathbf{W} + \varepsilon_{ijt}$$ {#eq-etwfem}
+
+
+To conduct the causal mediation analysis we represent the total effect with the following equation, noting that we simplify the DiD equation for the total effect above by dropping the error terms and using the vector $\mathbf{X}$ as a generic term to capture the cohort fixed effects ($V_{j}$), time fixed effects ($P{j}$) and other covariates ($Z_{jt}$ and $X_{ijt}$) that, as noted above, we assume are sufficient to estimate the total effect: 
 
 $$E[Y|T,X]=\beta_{0}+\beta_{1}T +\beta_{2}\mathbf{X}$$
 

@@ -92,21 +92,17 @@ $$Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T
 where $Y_{ijt}$ is the outcome for individual $i$ in village $j$ at time $t$, $d_{r}$ represent fixed effects for cohorts of villages that were exposed to the policy at the same time (e.g., in 2019, 2020, or 2021), $fs_{t}$ are time fixed effects corresponding to different winter data collection campaigns (2018-19, 2019-20, or 2021-22), and $\tau_{rt}$ are the cohort-time *ATTs*.
 
 ### Mediation Analysis
-As noted above, with respect to the mediation analysis we are chiefly interested in the $CDE$, which can be derived by adding relevant mediators $M$ to this model. If we also allow for exposure-mediator interaction and potentially allow for adjustment for confounders $W$ of the mediator-outcome effect, we can extend equation {#eq-etwfe} as follows:
+As noted above, with respect to the mediation analysis we are chiefly interested in the $CDE$, which can be derived by adding relevant mediators $M$ to this model. If we also allow for exposure-mediator interaction and potentially allow for adjustment for confounders $W$ of the mediator-outcome effect, we can extend equation @eq-etwfe as follows:
 
-$$Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) \\ + \delta M_{it} + \sum_{r=q}^{T} \sum_{s=r}^{T} \eta_{rt} (d_{r} \times fs_{t} \times M_{it}) + \zeta \mathbf{W} + \varepsilon_{ijt}$$ {#eq-etwfem}
+$$
+\begin{aligned}
+Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) \\ + \delta M_{it} + \sum_{r=q}^{T} \sum_{s=r}^{T} \eta_{rt} (d_{r} \times fs_{t} \times M_{it}) + \zeta \mathbf{W} + \varepsilon_{ijt}
+\end{aligned}
+$$ {#eq-etwfem}
 
+where now $\delta$ is the conditional effect of the mediator $M$ at the reference level of the treatment (again, represented via the series of group-time interaction terms), and the collection of $\eta$ terms are coefficients for the product terms allowing for mediator-treatment interaction. Finally, $\zeta$ is a vector of coefficients for the set of confounders contained within $\mathbf{W}$. 
 
-To conduct the causal mediation analysis we represent the total effect with the following equation, noting that we simplify the DiD equation for the total effect above by dropping the error terms and using the vector $\mathbf{X}$ as a generic term to capture the cohort fixed effects ($V_{j}$), time fixed effects ($P{j}$) and other covariates ($Z_{jt}$ and $X_{ijt}$) that, as noted above, we assume are sufficient to estimate the total effect: 
-
-$$E[Y|T,X]=\beta_{0}+\beta_{1}T +\beta_{2}\mathbf{X}$$
-
-where $\beta_{1}$ represents the impact of the intervention $T$ and $X$ represents a vector of pre-treatment covariates sufficient to estimate the total effect without bias. After estimating the total effect, we will estimate the controlled direct effect ($CDE$), which gives the effect of the intervention on outcomes through pathways other than the proposed mediator (i.e., the “direct” path $T\rightarrow Y$ in the DAG (Figure ?) above), after setting the mediator to a specific value. The $CDE$ can be derived after estimating the following equation: 
-
-
-$$E[Y|T,X,M] = \gamma_{0} + \gamma_{1}T + \gamma_{2}M + \gamma_{3}TM + \gamma_{4}X + \gamma_{5}W$$
-
-Noting that $\gamma_{3}$ allows for interaction between the exposure and mediator, the $CDE$ is estimated as: $\gamma_{1}+\gamma_{3}MT$. In the absence of interaction between the exposure and the mediator (i.e., $\gamma_{3}=0$) the $CDE$ will simply be $\gamma_{1}$, i.e., the effect of the policy holding $M$ constant. For a valid estimate of the $CDE$ we must account for confounding of the mediator-outcome effect, represented by $W$ in the equation above. In our example this might include changes in cooking behavior, diet or tobacco smoking, or indoor temperature. Baseline measures of both the outcome and the proposed mediators will help to reduce the potential for unmeasured confounding of the mediator-outcome effect [@Keele:2015aa]. In addition to estimating the $CDE$, we may also be interested in measures of how much of the of the policy’s impact may be due to its impact on the mediator. One potential way of estimating this is to subtract the $CDE$ from the $TE$ and express this as a proportion (sometimes called the “proportion eliminated”), i.e., $PE = [TE - CDE(m)] / TE$ or, using the two equations above, $(\beta_{1} - \gamma_{1}) /  \beta_{1}$. In our example this corresponds to the proportion of the total effect of the CBHP policy on blood pressure that could be eliminated if we were to fix PM~2.5~ at a certain value $M=m$.
+As noted above, in the staggered DiD framework that allows for heterogeneity we do not have a single treatment effect but a collection of group-time treatment effects that may be averaged in different ways. This extends to the estimation of the $CDE$, in which case we will also have several $CDE$s that can be averaged to make inferences about the extent to which the policy's impact is mediated by *PM~2.5~*. Based on the setup in @eq-etwfem the $CDE$ is estimated as: $\delta + \eta_{rt}MT$. In the absence of interaction between the exposure and the mediator (i.e., $\eta_{rt}=0$) the $CDE$ will simply be the estimated treatment effects $\sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt}$, i.e., the effect of the policy holding $M$ constant. For a valid estimate of the $CDE$ we must account for confounding of the mediator-outcome effect, represented by $W$ in the equation above. Baseline measures of both the outcome and the proposed mediators inherent in our DiD strategy will help to reduce the potential for unmeasured confounding of the mediator-outcome effect [@Keele:2015aa]. 
 
 ## Results
 

@@ -77,41 +77,35 @@
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-% definitions for citeproc citations
-\NewDocumentCommand\citeproctext{}{}
-\NewDocumentCommand\citeproc{mm}{%
-  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
-\makeatletter
- % allow citations to break across lines
- \let\@cite@ofmt\@firstofone
- % avoid brackets around text for \cite:
- \def\@biblabel#1{}
- \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
-\makeatother
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
-\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
- {\begin{list}{}{%
-  \setlength{\itemindent}{0pt}
-  \setlength{\leftmargin}{0pt}
-  \setlength{\parsep}{0pt}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
   % turn on hanging indent if param 1 is 1
   \ifodd #1
-   \setlength{\leftmargin}{\cslhangindent}
-   \setlength{\itemindent}{-1\cslhangindent}
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
   \fi
   % set entry spacing
-  \setlength{\itemsep}{#2\baselineskip}}}
- {\end{list}}
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
 \usepackage{calc}
-\newcommand{\CSLBlock}[1]{\hfill\break#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \KOMAoption{captions}{tableheading}
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -148,10 +142,18 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \makeatother
 \makeatletter
-\makeatother
-\makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
 \makeatother
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
@@ -171,17 +173,20 @@
 
 \title{How Do Household Energy Transitions Work?}
 \author{Sam Harper (Co-PI) \and Jill Baumgartner (Co-PI)}
-\date{2024-01-10}
+\date{2024-01-11}
 
 \begin{document}
 \maketitle
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, sharp corners, enhanced, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, breakable, frame hidden]}{\end{tcolorbox}}\fi
+
 \renewcommand*\contentsname{Table of contents}
 {
 \hypersetup{linkcolor=}
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
-\subsection{Abstract}\label{abstract}
+\hypertarget{abstract}{%
+\subsection{Abstract}\label{abstract}}
 
 \textbf{Introduction}
 
@@ -193,7 +198,8 @@
 
 Brief summary of what we did.
 
-\subsection{Introduction}\label{introduction}
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
 
 China is deploying an ambitious plan to transition up to 70\% of all
 households in northern China to clean space heating, including Beijing.
@@ -211,8 +217,9 @@ constraints, preferences and social capital, and there is uncertainty
 about whether and how this intervention may affect indoor and outdoor
 air pollution, as well as health behaviors and health outcomes.
 
+\hypertarget{specific-aims-and-overarching-approach}{%
 \subsection{Specific Aims and Overarching
-Approach}\label{specific-aims-and-overarching-approach}
+Approach}\label{specific-aims-and-overarching-approach}}
 
 This study builds on three data collection campaigns in winter 2018/19,
 winter 2019/20, and winter 2021/22, as well as a partial campaign in
@@ -235,7 +242,8 @@ winter 2020/21 (CIHR-funded) with the following specific aims:
   (Previously Aim 2).
 \end{enumerate}
 
-\subsection{Study Design and Methods}\label{study-design-and-methods}
+\hypertarget{study-design-and-methods}{%
+\subsection{Study Design and Methods}\label{study-design-and-methods}}
 
 \begin{itemize}
 \tightlist
@@ -272,7 +280,7 @@ affecting all villages that are unrelated to the policy
 
 \caption{Stylized example of difference-in-differences}
 
-\end{figure}%
+\end{figure}
 
 The DiD design compares outcomes before and after an intervention in a
 treated group relative to the same outcomes measured in a control group.
@@ -307,9 +315,11 @@ suggests that the traditional two-way fixed effects estimation of the
 treatment effect may be biased in the context of heterogeneous treatment
 effects (Callaway and Sant'Anna 2021; Goodman-Bacon 2021)
 
-\subsection{Data Analysis}\label{data-analysis}
+\hypertarget{data-analysis}{%
+\subsection{Data Analysis}\label{data-analysis}}
 
-\subsubsection{Total Effect}\label{total-effect}
+\hypertarget{total-effect}{%
+\subsubsection{Total Effect}\label{total-effect}}
 
 To estimate the total effect of the policy we used a DiD analysis that
 accommodates staggered treatment rollout. To allow for heterogeneity in
@@ -319,7 +329,7 @@ the CBHP policy. The mean outcome (replaced by a suitable link function
 \(g(\cdot)\) for binary or count outcomes) was defined using a set of
 linear predictors:
 
-\begin{equation}\phantomsection\label{eq-etwfe}{Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) + \varepsilon_{ijt}}\end{equation}
+\begin{equation}\protect\hypertarget{eq-etwfe}{}{Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) + \varepsilon_{ijt}}\label{eq-etwfe}\end{equation}
 
 where \(Y_{ijt}\) is the outcome for individual \(i\) in village \(j\)
 at time \(t\), \(d_{r}\) represent fixed effects for cohorts of villages
@@ -328,65 +338,54 @@ or 2021), \(fs_{t}\) are time fixed effects corresponding to different
 winter data collection campaigns (2018-19, 2019-20, or 2021-22), and
 \(\tau_{rt}\) are the cohort-time \emph{ATTs}.
 
-\subsubsection{Mediation Analysis}\label{mediation-analysis}
+\hypertarget{mediation-analysis}{%
+\subsubsection{Mediation Analysis}\label{mediation-analysis}}
 
 As noted above, with respect to the mediation analysis we are chiefly
 interested in the \(CDE\), which can be derived by adding relevant
 mediators \(M\) to this model. If we also allow for exposure-mediator
 interaction and potentially allow for adjustment for confounders \(W\)
-of the mediator-outcome effect, we can extend equation \{\#eq-etwfe\} as
-follows:
+of the mediator-outcome effect, we can extend equation
+Equation~\ref{eq-etwfe} as follows:
 
-\begin{equation}\phantomsection\label{eq-etwfem}{Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) \\ + \delta M_{it} + \sum_{r=q}^{T} \sum_{s=r}^{T} \eta_{rt} (d_{r} \times fs_{t} \times M_{it}) + \zeta \mathbf{W} + \varepsilon_{ijt}}\end{equation}
+\begin{equation}\protect\hypertarget{eq-etwfem}{}{
+\begin{aligned}
+Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) \\ + \delta M_{it} + \sum_{r=q}^{T} \sum_{s=r}^{T} \eta_{rt} (d_{r} \times fs_{t} \times M_{it}) + \zeta \mathbf{W} + \varepsilon_{ijt}
+\end{aligned}
+}\label{eq-etwfem}\end{equation}
 
-To conduct the causal mediation analysis we represent the total effect
-with the following equation, noting that we simplify the DiD equation
-for the total effect above by dropping the error terms and using the
-vector \(\mathbf{X}\) as a generic term to capture the cohort fixed
-effects (\(V_{j}\)), time fixed effects (\(P{j}\)) and other covariates
-(\(Z_{jt}\) and \(X_{ijt}\)) that, as noted above, we assume are
-sufficient to estimate the total effect:
+where now \(\delta\) is the conditional effect of the mediator \(M\) at
+the reference level of the treatment (again, represented via the series
+of group-time interaction terms), and the collection of \(\eta\) terms
+are coefficients for the product terms allowing for mediator-treatment
+interaction. Finally, \(\zeta\) is a vector of coefficients for the set
+of confounders contained within \(\mathbf{W}\).
 
-\[E[Y|T,X]=\beta_{0}+\beta_{1}T +\beta_{2}\mathbf{X}\]
+As noted above, in the staggered DiD framework that allows for
+heterogeneity we do not have a single treatment effect but a collection
+of group-time treatment effects that may be averaged in different ways.
+This extends to the estimation of the \(CDE\), in which case we will
+also have several \(CDE\)s that can be averaged to make inferences about
+the extent to which the policy's impact is mediated by
+\emph{PM\textsubscript{2.5}}. Based on the setup in
+Equation~\ref{eq-etwfem} the \(CDE\) is estimated as:
+\(\delta + \eta_{rt}MT\). In the absence of interaction between the
+exposure and the mediator (i.e., \(\eta_{rt}=0\)) the \(CDE\) will
+simply be the estimated treatment effects
+\(\sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt}\), i.e., the effect of the
+policy holding \(M\) constant. For a valid estimate of the \(CDE\) we
+must account for confounding of the mediator-outcome effect, represented
+by \(W\) in the equation above. Baseline measures of both the outcome
+and the proposed mediators inherent in our DiD strategy will help to
+reduce the potential for unmeasured confounding of the mediator-outcome
+effect (Keele et al. 2015).
 
-where \(\beta_{1}\) represents the impact of the intervention \(T\) and
-\(X\) represents a vector of pre-treatment covariates sufficient to
-estimate the total effect without bias. After estimating the total
-effect, we will estimate the controlled direct effect (\(CDE\)), which
-gives the effect of the intervention on outcomes through pathways other
-than the proposed mediator (i.e., the ``direct'' path \(T\rightarrow Y\)
-in the DAG (Figure ?) above), after setting the mediator to a specific
-value. The \(CDE\) can be derived after estimating the following
-equation:
+\hypertarget{results}{%
+\subsection{Results}\label{results}}
 
-\[E[Y|T,X,M] = \gamma_{0} + \gamma_{1}T + \gamma_{2}M + \gamma_{3}TM + \gamma_{4}X + \gamma_{5}W\]
-
-Noting that \(\gamma_{3}\) allows for interaction between the exposure
-and mediator, the \(CDE\) is estimated as: \(\gamma_{1}+\gamma_{3}MT\).
-In the absence of interaction between the exposure and the mediator
-(i.e., \(\gamma_{3}=0\)) the \(CDE\) will simply be \(\gamma_{1}\),
-i.e., the effect of the policy holding \(M\) constant. For a valid
-estimate of the \(CDE\) we must account for confounding of the
-mediator-outcome effect, represented by \(W\) in the equation above. In
-our example this might include changes in cooking behavior, diet or
-tobacco smoking, or indoor temperature. Baseline measures of both the
-outcome and the proposed mediators will help to reduce the potential for
-unmeasured confounding of the mediator-outcome effect (Keele et al.
-2015). In addition to estimating the \(CDE\), we may also be interested
-in measures of how much of the of the policy's impact may be due to its
-impact on the mediator. One potential way of estimating this is to
-subtract the \(CDE\) from the \(TE\) and express this as a proportion
-(sometimes called the ``proportion eliminated''), i.e.,
-\(PE = [TE - CDE(m)] / TE\) or, using the two equations above,
-\((\beta_{1} - \gamma_{1}) / \beta_{1}\). In our example this
-corresponds to the proportion of the total effect of the CBHP policy on
-blood pressure that could be eliminated if we were to fix
-PM\textsubscript{2.5} at a certain value \(M=m\).
-
-\subsection{Results}\label{results}
-
+\hypertarget{description-of-study-sample-table}{%
 \subsubsection{Description of study sample
-(Table)}\label{description-of-study-sample-table}
+(Table)}\label{description-of-study-sample-table}}
 
 \begin{itemize}
 \tightlist
@@ -400,7 +399,8 @@ PM\textsubscript{2.5} at a certain value \(M=m\).
   Impact of `treatment assignment' on coal use (Figure? Table?)
 \end{itemize}
 
-\subsubsection{Aim 1}\label{aim-1}
+\hypertarget{aim-1}{%
+\subsubsection{Aim 1}\label{aim-1}}
 
 \begin{itemize}
 \tightlist
@@ -414,7 +414,8 @@ PM\textsubscript{2.5} at a certain value \(M=m\).
   Table for multiple mediation analysis for BP
 \end{itemize}
 
-\subsubsection{Aim 2 (was Aim3)}\label{aim-2-was-aim3}
+\hypertarget{aim-2-was-aim3}{%
+\subsubsection{Aim 2 (was Aim3)}\label{aim-2-was-aim3}}
 
 \begin{itemize}
 \tightlist
@@ -426,7 +427,8 @@ PM\textsubscript{2.5} at a certain value \(M=m\).
   DiD for source contributions to PM
 \end{itemize}
 
-\subsubsection{Aim 3}\label{aim-3}
+\hypertarget{aim-3}{%
+\subsubsection{Aim 3}\label{aim-3}}
 
 \begin{itemize}
 \tightlist
@@ -435,66 +437,62 @@ PM\textsubscript{2.5} at a certain value \(M=m\).
   biomass)
 \end{itemize}
 
+\hypertarget{discussion-and-conclusions}{%
 \subsection{Discussion and
-Conclusions}\label{discussion-and-conclusions}
+Conclusions}\label{discussion-and-conclusions}}
 
 Other relevant results (Tables or figures in SI) - Temperature - Heating
 room - Well-being
 
-\subsection{Implications of Findings}\label{implications-of-findings}
+\hypertarget{implications-of-findings}{%
+\subsection{Implications of Findings}\label{implications-of-findings}}
 
 To come\ldots{}
 
+\hypertarget{data-availability-statement}{%
 \subsection{Data Availability
-Statement}\label{data-availability-statement}
+Statement}\label{data-availability-statement}}
 
 To come\ldots{}
 
-\subsection{Acknowledgements}\label{acknowledgements}
+\hypertarget{acknowledgements}{%
+\subsection{Acknowledgements}\label{acknowledgements}}
 
 To come\ldots{}
 
-\subsection{References}\label{references}
+\hypertarget{references}{%
+\subsection{References}\label{references}}
 
-\subsection{Appendices}\label{appendices}
-
-\subsection{About the authors}\label{about-the-authors}
-
-\subsection{Other publications}\label{other-publications}
-
-Other papers that have been published.(Li et al. 2022a; Li et al. 2022b;
-Sternbach et al. 2022)
-
-\phantomsection\label{refs}
-\begin{CSLReferences}{1}{1}
-\bibitem[\citeproctext]{ref-callaway2020a}
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-callaway2020a}{}}%
 Callaway B. 2020.
 \href{https://doi.org/10.1007/978-3-319-57365-6_352-1}{Difference-in-{Differences}
 for {Policy Evaluation}}. In: \emph{Handbook of {Labor}, {Human
 Resources} and {Population Economics}} (K.F. Zimmermann, ed). {Springer
 International Publishing}:{Cham}. 1--61.
 
-\bibitem[\citeproctext]{ref-callaway2021}
+\leavevmode\vadjust pre{\hypertarget{ref-callaway2021}{}}%
 Callaway B, Sant'Anna PHC. 2021. Difference-in-{Differences} with
 multiple time periods. Journal of Econometrics 225:200--230;
 doi:\href{https://doi.org/10.1016/j.jeconom.2020.12.001}{10.1016/j.jeconom.2020.12.001}.
 
-\bibitem[\citeproctext]{ref-card1994}
+\leavevmode\vadjust pre{\hypertarget{ref-card1994}{}}%
 Card D, Krueger AB. 1994. Minimum {Wages} and {Employment}: {A Case
 Study} of the {Fast-Food Industry} in {New Jersey} and {Pennsylvania}.
 American Economic Review 84: 772--93.
 
-\bibitem[\citeproctext]{ref-goodman-bacon2021a}
+\leavevmode\vadjust pre{\hypertarget{ref-goodman-bacon2021a}{}}%
 Goodman-Bacon A. 2021. Difference-in-differences with variation in
 treatment timing. Journal of Econometrics 225:254--277;
 doi:\href{https://doi.org/10.1016/j.jeconom.2021.03.014}{10.1016/j.jeconom.2021.03.014}.
 
-\bibitem[\citeproctext]{ref-Keele:2015aa}
+\leavevmode\vadjust pre{\hypertarget{ref-Keele:2015aa}{}}%
 Keele L, Tingley D, Yamamoto T. 2015. Identifying mechanisms behind
 policy interventions via causal mediation analysis. Journal of Policy
 Analysis and Management 34: 937--963.
 
-\bibitem[\citeproctext]{ref-li2022}
+\leavevmode\vadjust pre{\hypertarget{ref-li2022}{}}%
 Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G,
 et al. 2022a. Socioeconomic and {Demographic Associations} with
 {Wintertime Air Pollution Exposures} at {Household}, {Community}, and
@@ -502,27 +500,39 @@ et al. 2022a. Socioeconomic and {Demographic Associations} with
 Technology 56:8308--8318;
 doi:\href{https://doi.org/10.1021/acs.est.1c07402}{10.1021/acs.est.1c07402}.
 
-\bibitem[\citeproctext]{ref-li2022a}
+\leavevmode\vadjust pre{\hypertarget{ref-li2022a}{}}%
 Li X, Baumgartner J, Harper S, Zhang X, Sternbach T, Barrington-Leigh C,
 et al. 2022b. Field measurements of indoor and community air quality in
 rural {Beijing} before, during, and after the {COVID-19} lockdown.
 Indoor Air 32:e13095;
 doi:\href{https://doi.org/10.1111/ina.13095}{10.1111/ina.13095}.
 
-\bibitem[\citeproctext]{ref-sternbach2022}
+\leavevmode\vadjust pre{\hypertarget{ref-sternbach2022}{}}%
 Sternbach TJ, Harper S, Li X, Zhang X, Carter E, Zhang Y, et al. 2022.
 Effects of indoor and outdoor temperatures on blood pressure and central
 hemodynamics in a wintertime longitudinal study of {Chinese} adults.
 Journal of Hypertension 40:1950--1959;
 doi:\href{https://doi.org/10.1097/HJH.0000000000003198}{10.1097/HJH.0000000000003198}.
 
-\bibitem[\citeproctext]{ref-wooldridge2021a}
+\leavevmode\vadjust pre{\hypertarget{ref-wooldridge2021a}{}}%
 Wooldridge JM. 2021. Two-{Way Fixed Effects}, the {Two-Way Mundlak
 Regression}, and {Difference-in-Differences Estimators}.;
 doi:\href{https://doi.org/10.2139/ssrn.3906345}{10.2139/ssrn.3906345}.
 {[}accessed 10 February 2023{]}.
 
 \end{CSLReferences}
+
+\hypertarget{appendices}{%
+\subsection{Appendices}\label{appendices}}
+
+\hypertarget{about-the-authors}{%
+\subsection{About the authors}\label{about-the-authors}}
+
+\hypertarget{other-publications}{%
+\subsection{Other publications}\label{other-publications}}
+
+Other papers that have been published.(Li et al. 2022a; Li et al. 2022b;
+Sternbach et al. 2022)
 
 
 

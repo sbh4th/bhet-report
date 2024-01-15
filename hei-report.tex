@@ -163,7 +163,7 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={How Do Household Energy Transitions Work?},
-  pdfauthor={Sam Harper (Co-PI); Jill Baumgartner (Co-PI)},
+  pdfauthor={Jill Baumgartner (Co-PI); Sam Harper (Co-PI)},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -172,12 +172,12 @@
   pdfcreator={LaTeX via pandoc}}
 
 \title{How Do Household Energy Transitions Work?}
-\author{Sam Harper (Co-PI) \and Jill Baumgartner (Co-PI)}
-\date{2024-01-11}
+\author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI)}
+\date{2024-01-15}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, sharp corners, enhanced, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, breakable, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, breakable, borderline west={3pt}{0pt}{shadecolor}, frame hidden, enhanced, boxrule=0pt, interior hidden]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -332,11 +332,12 @@ linear predictors:
 \begin{equation}\protect\hypertarget{eq-etwfe}{}{Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) + \varepsilon_{ijt}}\label{eq-etwfe}\end{equation}
 
 where \(Y_{ijt}\) is the outcome for individual \(i\) in village \(j\)
-at time \(t\), \(d_{r}\) represent fixed effects for cohorts of villages
-that were exposed to the policy at the same time (e.g., in 2019, 2020,
-or 2021), \(fs_{t}\) are time fixed effects corresponding to different
-winter data collection campaigns (2018-19, 2019-20, or 2021-22), and
-\(\tau_{rt}\) are the cohort-time \emph{ATTs}.
+at time \(t\), \(d_{r}\) represent treatment cohort dummies, i.e., fixed
+effects for cohorts of villages that were first exposed to the policy at
+the same time \(q\) (e.g., in 2019, 2020, or 2021), \(fs_{t}\) are time
+fixed effects corresponding to different winter data collection
+campaigns (2018-19, 2019-20, or 2021-22), and \(\tau_{rt}\) are the
+cohort-time \emph{ATTs}.
 
 \hypertarget{mediation-analysis}{%
 \subsubsection{Mediation Analysis}\label{mediation-analysis}}
@@ -414,8 +415,8 @@ effect (Keele et al. 2015).
   Table for multiple mediation analysis for BP
 \end{itemize}
 
-\hypertarget{aim-2-was-aim3}{%
-\subsubsection{Aim 2 (was Aim3)}\label{aim-2-was-aim3}}
+\hypertarget{aim-2}{%
+\subsubsection{Aim 2}\label{aim-2}}
 
 \begin{itemize}
 \tightlist
@@ -465,7 +466,7 @@ To come\ldots{}
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-callaway2020a}{}}%
+\leavevmode\vadjust pre{\hypertarget{ref-callaway2020}{}}%
 Callaway B. 2020.
 \href{https://doi.org/10.1007/978-3-319-57365-6_352-1}{Difference-in-{Differences}
 for {Policy Evaluation}}. In: \emph{Handbook of {Labor}, {Human
@@ -482,7 +483,7 @@ Card D, Krueger AB. 1994. Minimum {Wages} and {Employment}: {A Case
 Study} of the {Fast-Food Industry} in {New Jersey} and {Pennsylvania}.
 American Economic Review 84: 772--93.
 
-\leavevmode\vadjust pre{\hypertarget{ref-goodman-bacon2021a}{}}%
+\leavevmode\vadjust pre{\hypertarget{ref-goodman-bacon2021}{}}%
 Goodman-Bacon A. 2021. Difference-in-differences with variation in
 treatment timing. Journal of Econometrics 225:254--277;
 doi:\href{https://doi.org/10.1016/j.jeconom.2021.03.014}{10.1016/j.jeconom.2021.03.014}.
@@ -514,11 +515,10 @@ hemodynamics in a wintertime longitudinal study of {Chinese} adults.
 Journal of Hypertension 40:1950--1959;
 doi:\href{https://doi.org/10.1097/HJH.0000000000003198}{10.1097/HJH.0000000000003198}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-wooldridge2021a}{}}%
+\leavevmode\vadjust pre{\hypertarget{ref-wooldridge2021}{}}%
 Wooldridge JM. 2021. Two-{Way Fixed Effects}, the {Two-Way Mundlak
 Regression}, and {Difference-in-Differences Estimators}.;
 doi:\href{https://doi.org/10.2139/ssrn.3906345}{10.2139/ssrn.3906345}.
-{[}accessed 10 February 2023{]}.
 
 \end{CSLReferences}
 

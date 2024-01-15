@@ -102,7 +102,7 @@ $$ {#eq-etwfem}
 
 where now $\delta$ is the conditional effect of the mediator $M$ at the reference level of the treatment (again, represented via the series of group-time interaction terms), and the collection of $\eta$ terms are coefficients for the product terms allowing for mediator-treatment interaction. Finally, $\zeta$ is a vector of coefficients for the set of confounders contained within $\mathbf{W}$. 
 
-As noted above, in the staggered DiD framework that allows for heterogeneity we do not have a single treatment effect but a collection of group-time treatment effects that may be averaged in different ways. This extends to the estimation of the $CDE$, in which case we will also have several $CDE$s that can be averaged to make inferences about the extent to which the policy's impact is mediated by *PM~2.5~*. Based on the setup in @eq-etwfem the $CDE$ is estimated as: $\delta + \eta_{rt}MT$. In the absence of interaction between the exposure and the mediator (i.e., $\eta_{rt}=0$) the $CDE$ will simply be the estimated treatment effects $\sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt}$, i.e., the effect of the policy holding $M$ constant. For a valid estimate of the $CDE$ we must account for confounding of the mediator-outcome effect, represented by $W$ in the equation above. Baseline measures of both the outcome and the proposed mediators inherent in our DiD strategy will help to reduce the potential for unmeasured confounding of the mediator-outcome effect [@Keele:2015aa]. 
+As noted above, in the staggered DiD framework that allows for heterogeneity we do not have a single treatment effect but a collection of group-time treatment effects that may be averaged in different ways. This extends to the estimation of the $CDE$, in which case we will also have several $CDE$s that can be averaged to make inferences about the extent to which the policy's impact is mediated by *PM~2.5~*. Based on the setup in @eq-etwfem the $CDE$ is estimated as: $\delta + \eta_{rt}MT$. In the absence of interaction between the exposure and the mediator (i.e., $\eta_{rt}=0$) the $CDE$ will simply be the estimated treatment effects $\sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt}$, i.e., the effect of the policy holding $M$ constant. For a valid estimate of the $CDE$ we must account for confounding of the mediator-outcome effect, represented by $W$ in the equation above. Baseline measures of both the outcome and the proposed mediators inherent in our DiD strategy will help to reduce the potential for unmeasured confounding of the mediator-outcome effect [@keele2015]. 
 
 ## Results
 
@@ -113,32 +113,36 @@ As noted above, in the staggered DiD framework that allows for heterogeneity we 
 - Uptake of the policy (Sankey energy use Figure)
 - Impact of ‘treatment assignment’ on coal use (Figure? Table?)
 
-### Aim 1
+### Aim 1: Policy impacts and potential mediation
 
 - Impact of policy on PM mass (Figure)
 - Table of CDEs (Central SBP, Central DBP, FeNO, Respiratory outcomes, inflammatory markers), mediated by indoor PM (CDEs for personal and outdoor in SI)
 - Table for multiple mediation analysis for BP
 
-### Aim 2
+### Aim 2: Source contributions
 
 - Figure of source contributions (6 or fewer components)
 - Source contributions by treatment status
 - DiD for source contributions to PM
 
 ### Aim 3
+
 - Table of mediated health effects by source contribution (coal and biomass)
 
 
 ## Discussion and Conclusions
 
-Other relevant results (Tables or figures in SI)
+Other relevant results (Tables or figures in SI)  
+
+Policy impacts on other relevant outcomes: 
+
 - Temperature
 - Heating room
 - Well-being
 
 
 ## Implications of Findings
-To come... 
+
 
 
 ## Data Availability Statement
@@ -159,5 +163,3 @@ To come...
 ## About the authors
 
 ## Other publications
-
-Other papers that have been published.[@li2022;@li2022a;@sternbach2022]

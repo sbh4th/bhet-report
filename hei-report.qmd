@@ -31,9 +31,15 @@ Brief summary of what we did.
 
 China is deploying an ambitious plan to transition up to 70% of all households in northern China to clean space heating, including Beijing. To meet this target the Beijing municipal government announced a two-pronged program that designates coal-restricted areas and simultaneously offers subsidies to night-time electricity rates and for the purchase and installation of electric-powered, air-source heat pumps to replace traditional coal-heating stoves. The program is being rolled out on a village-by-village basis; however there is uncertainty as to when villages will receive the program. The variability in when the policy is applied to each village allows us to treat the roll-out of the program as a quasi-randomized intervention. Households may also be differentially affected by this program due to factors such as financial constraints, preferences and social capital, and there is uncertainty about whether and how this intervention may affect indoor and outdoor air pollution, as well as health behaviors and health outcomes.
 
+## Background
+
+- Context for the policy
+- Prior evidence on clean energy interventions
+- Importance of understanding mechanisms through which policies may affect outcomes. 
+
 ## Specific Aims and Overarching Approach
 
-This study builds on three data collection campaigns in winter 2018/19, winter 2019/20, and winter 2021/22, as well as a partial campaign in winter 2020/21 (CIHR-funded) with the following specific aims:
+This study used three data collection campaigns in winter 2018/19, winter 2019/20, and winter 2021/22, as well as a partial campaign in winter 2020/21 to advance the following aims:
 
 1. Estimate how much of the policy’s overall effect on health, including respiratory symptoms and cardiovascular outcomes (blood pressure, central hemodynamics, blood inflammatory and oxidative stress markers), can be attributed to its impact on changes in PM2.5;
 
@@ -47,6 +53,8 @@ This study builds on three data collection campaigns in winter 2018/19, winter 2
 - Field equipment
 - DiD schematic
 - Mediation DAG
+
+### Policy impacts
 
 To understand how Beijing’s policy works we used a difference-in-differences (DiD) design [@callaway2020], leveraging the staggered rollout of the policy across multiple villages to estimate its impact on health outcomes and understand the mechanisms through which it works. Simple comparisons of treated and untreated (i.e., control) villages after the CBHP policy has been implemented are likely to be biased by unmeasured village-level characteristics (e.g., migration, average winter temperature) that are associated with health outcomes. Similarly, comparisons of only treated villages before and after exposure to the program are susceptible to bias by other factors associated with changes in outcomes over time (i.e., secular trends, impacts of the COVID-19 pandemic). By comparing *changes* in outcomes among treated villages to *changes* in outcomes among untreated villages, we can control for any unmeasured time-invariant characteristics of villages as well as any general secular trends affecting all villages that are unrelated to the policy
 
@@ -81,6 +89,25 @@ The canonical DiD design [@card1994] compares two groups (treated and control) a
 
 However, when multiple groups are treated at different time periods, the most common approach has been to use a two-way fixed effects model to estimate the impact of the intervention which controls for secular trends and differences between districts. However, recent evidence suggests that the traditional two-way fixed effects estimation of the treatment effect may be biased in the context of heterogeneous treatment effects [@callaway2021;@goodman-bacon2021]
 
+### Pathways and mechanisms
+
+To estimate how much of the CBHP intervention may work through different mechanisms, we used causal mediation analysis. Causal approaches to mediation attempt to discern between, and clarify the necessary assumptions for identifying, different kinds of mediated effects. Taking as an example the DAG in **Figure X**, with $T$ as the policy, $M$ as PM~2.5~, and $Y$ as systolic blood pressure, we can define the controlled direct effect ($CDE$) as the effect of the CBHP policy on systolic blood pressure if we fix the value of PM~2.5~ to a certain reference level for the entire population. For example, we can estimate the impact of the policy on health outcomes while holding PM~2.5~ at a uniform level of average background exposure, or some other hypothetical level.
+
+```{r, engine='tikz', echo=F, out.width="70%", fig.cap = "Example of direct and indirect effects with outcome ($Y$), treatment ($T$), and mediator ($M$)"}
+\begin{tikzpicture}[shorten > = 1pt, line width=1.5pt]
+\tikzstyle{every node} = [rectangle, fill=white, draw=none]
+\node (t) at  (0,0) [align=center] {Policy\\($T$)};
+\node (m) at  (3,0) [align=center] {PM\textsubscript{2.5}\\($M$)};
+\node (y) at  (6,0) [align=center] {Blood\\pressure\\($Y$)};
+\node (de) at (3,1.6) [align=center, text=red!80] {\small{Direct effect}};
+\node (ie) at (3,-0.6) [align=center,text=red!80] {\small{Indirect effect}};
+\foreach \from/\to in {t/m, m/y}
+  \draw [->] (\from) -- (\to);
+\draw [->] (t) to [bend left=35] (y);
+\end{tikzpicture}
+```
+
+Although other mediated effects such as “natural” direct and indirect effects are theoretically estimable [@vanderweele2015], they involve challenging "cross-world" assumptions that are difficult to anchor in policy [@naimi2014]. Other approaches to mechanisms have focused on principal stratification [e.g., @zigler2016], although conceptual difficulties with identifying the (unverifiable) principal strata make it challenging for questions of mediation. Because controlled direct effects are considered more directly policy relevant for public health, we focus on estimating these mediated quantities.
 
 ## Data Analysis
 
@@ -89,7 +116,7 @@ To estimate the total effect of the policy we used a DiD analysis that accommoda
 
 $$Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) + \varepsilon_{ijt}$$ {#eq-etwfe}
 
-where $Y_{ijt}$ is the outcome for individual $i$ in village $j$ at time $t$, $d_{r}$ represent treatment cohort dummies, i.e., fixed effects for cohorts of villages that were first exposed to the policy at the same time $q$ (e.g., in 2019, 2020, or 2021), $fs_{t}$ are time fixed effects corresponding to different winter data collection campaigns (2018-19, 2019-20, or 2021-22), and $\tau_{rt}$ are the cohort-time *ATTs*. 
+where $Y_{ijt}$ is the outcome for individual $i$ in village $j$ at time $t$, $d_{r}$ represent treatment cohort dummies, i.e., fixed effects for cohorts of villages that were first exposed to the policy at the same time $q$ (e.g., in 2019, 2020, or 2021), $fs_{t}$ are time fixed effects corresponding to different winter data collection campaigns (2018-19, 2019-20, or 2021-22), and $\tau_{rt}$ are the cohort-time *ATTs*. The ETWFE and other approaches that allow for several (potentially heterogenous) treatment effects may also be averaged to provide a weighted $ATT$. Several potential possibilities are feasible, including weighting by treatment cohorts or time since policy adoption [@goin2023]
 
 ### Mediation Analysis
 As noted above, with respect to the mediation analysis we are chiefly interested in the $CDE$, which can be derived by adding relevant mediators $M$ to this model. If we also allow for exposure-mediator interaction and potentially allow for adjustment for confounders $W$ of the mediator-outcome effect, we can extend equation @eq-etwfe as follows:

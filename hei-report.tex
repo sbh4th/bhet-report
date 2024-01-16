@@ -173,11 +173,11 @@
 
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI)}
-\date{2024-01-15}
+\date{2024-01-16}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, frame hidden, enhanced, boxrule=0pt, breakable, borderline west={3pt}{0pt}{shadecolor}, sharp corners]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, interior hidden, enhanced, breakable, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, frame hidden]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -217,13 +217,27 @@ constraints, preferences and social capital, and there is uncertainty
 about whether and how this intervention may affect indoor and outdoor
 air pollution, as well as health behaviors and health outcomes.
 
+\hypertarget{background}{%
+\subsection{Background}\label{background}}
+
+\begin{itemize}
+\tightlist
+\item
+  Context for the policy
+\item
+  Prior evidence on clean energy interventions
+\item
+  Importance of understanding mechanisms through which policies may
+  affect outcomes.
+\end{itemize}
+
 \hypertarget{specific-aims-and-overarching-approach}{%
 \subsection{Specific Aims and Overarching
 Approach}\label{specific-aims-and-overarching-approach}}
 
-This study builds on three data collection campaigns in winter 2018/19,
+This study used three data collection campaigns in winter 2018/19,
 winter 2019/20, and winter 2021/22, as well as a partial campaign in
-winter 2020/21 (CIHR-funded) with the following specific aims:
+winter 2020/21 to advance the following aims:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -246,14 +260,57 @@ winter 2020/21 (CIHR-funded) with the following specific aims:
 \subsection{Study Design and Methods}\label{study-design-and-methods}}
 
 \begin{itemize}
+\item
+  Description of the study location, survey and measurement methods,
+\item
+  Measures
+\end{itemize}
+
+Village level:
+
+\begin{itemize}
 \tightlist
 \item
-  Field equipment
+  Outdoor air pollution
 \item
-  DiD schematic
-\item
-  Mediation DAG
+  Qualitative and quantitative information on current policies/programs
+  with government funding from local leaders
 \end{itemize}
+
+Household level:
+
+\begin{itemize}
+\tightlist
+\item
+  Questionnaire to assess energy use and related expenditures
+\item
+  Indoor air temperature (\textasciitilde75\% of homes for 2+ winter
+  months)
+\item
+  Indoor PM2.5 in \textasciitilde50\% of study homes
+\item
+  Electricity use based on meters
+\end{itemize}
+
+Individual level:
+
+\begin{itemize}
+\item
+  Questionnaires on health status, behaviors, and medication
+\item
+  Personal exposures to PM2.5 and black carbon (50\% of participants)
+\item
+  Health measurements including blood pressure (all), self-reported
+  respiratory symptoms (all), blood inflammatory and oxidative stress
+  markers (\textasciitilde70\% in first two campaigns only), grip
+  strength (\textasciitilde75\%), and airway inflammation
+  (\textasciitilde20\%).
+\item
+  Field equipment (Figure)
+\end{itemize}
+
+\hypertarget{policy-impacts}{%
+\subsubsection{Policy impacts}\label{policy-impacts}}
 
 To understand how Beijing's policy works we used a
 difference-in-differences (DiD) design (Callaway 2020), leveraging the
@@ -272,9 +329,15 @@ untreated villages, we can control for any unmeasured time-invariant
 characteristics of villages as well as any general secular trends
 affecting all villages that are unrelated to the policy
 
+\begin{itemize}
+\tightlist
+\item
+  DiD schematic (Figure)
+\end{itemize}
+
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\textwidth,height=\textheight]{hei-report_files/figure-pdf/unnamed-chunk-1-1.pdf}
+{\centering \includegraphics[width=0.7\textwidth,height=\textheight]{hei-report_files/figure-pdf/didfig-1.pdf}
 
 }
 
@@ -315,6 +378,49 @@ suggests that the traditional two-way fixed effects estimation of the
 treatment effect may be biased in the context of heterogeneous treatment
 effects (Callaway and Sant'Anna 2021; Goodman-Bacon 2021)
 
+\hypertarget{pathways-and-mechanisms}{%
+\subsubsection{Pathways and mechanisms}\label{pathways-and-mechanisms}}
+
+To estimate how much of the CBHP intervention may work through different
+mechanisms, we used causal mediation analysis. Causal approaches to
+mediation attempt to discern between, and clarify the necessary
+assumptions for identifying, different kinds of mediated effects. Taking
+as an example the DAG in \textbf{Figure X}, with \(T\) as the policy,
+\(M\) as PM\textsubscript{2.5}, and \(Y\) as systolic blood pressure, we
+can define the controlled direct effect (\(CDE\)) as the effect of the
+CBHP policy on systolic blood pressure if we fix the value of
+PM\textsubscript{2.5} to a certain reference level for the entire
+population. For example, we can estimate the impact of the policy on
+health outcomes while holding PM\textsubscript{2.5} at a uniform level
+of average background exposure, or some other hypothetical level.
+
+\begin{itemize}
+\tightlist
+\item
+  Mediation DAG (Figure)
+\end{itemize}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\textwidth,height=\textheight]{hei-report_files/figure-pdf/dag1-1.pdf}
+
+}
+
+\caption{Example of direct and indirect effects with outcome (\(Y\)),
+treatment (\(T\)), and mediator (\(M\))}
+
+\end{figure}
+
+Although other mediated effects such as ``natural'' direct and indirect
+effects are theoretically estimable (VanderWeele 2015), they involve
+challenging ``cross-world'' assumptions that are difficult to anchor in
+policy (Naimi et al. 2014). Other approaches to mechanisms have focused
+on principal stratification (e.g., Zigler et al. 2016), although
+conceptual difficulties with identifying the (unverifiable) principal
+strata make it challenging for questions of mediation. Because
+controlled direct effects are considered more directly policy relevant
+for public health, we focus on estimating these mediated quantities.
+
 \hypertarget{data-analysis}{%
 \subsection{Data Analysis}\label{data-analysis}}
 
@@ -337,7 +443,11 @@ effects for cohorts of villages that were first exposed to the policy at
 the same time \(q\) (e.g., in 2019, 2020, or 2021), \(fs_{t}\) are time
 fixed effects corresponding to different winter data collection
 campaigns (2018-19, 2019-20, or 2021-22), and \(\tau_{rt}\) are the
-cohort-time \emph{ATTs}.
+cohort-time \emph{ATTs}. The ETWFE and other approaches that allow for
+several (potentially heterogenous) treatment effects may also be
+averaged to provide a weighted \(ATT\). Several potential possibilities
+are feasible, including weighting by treatment cohorts or time since
+policy adoption (Goin and Riddell 2023)
 
 \hypertarget{mediation-analysis}{%
 \subsubsection{Mediation Analysis}\label{mediation-analysis}}
@@ -494,6 +604,12 @@ Card D, Krueger AB. 1994. Minimum {Wages} and {Employment}: {A Case
 Study} of the {Fast-Food Industry} in {New Jersey} and {Pennsylvania}.
 American Economic Review 84: 772--93.
 
+\leavevmode\vadjust pre{\hypertarget{ref-goin2023}{}}%
+Goin DE, Riddell CA. 2023. Comparing {Two-way Fixed Effects} and {New
+Estimators} for {Difference-in-Differences}: {A Simulation Study} and
+{Empirical Example}. Epidemiology 34:535;
+doi:\href{https://doi.org/10.1097/EDE.0000000000001611}{10.1097/EDE.0000000000001611}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-goodman-bacon2021}{}}%
 Goodman-Bacon A. 2021. Difference-in-differences with variation in
 treatment timing. Journal of Econometrics 225:254--277;
@@ -504,10 +620,26 @@ Keele L, Tingley D, Yamamoto T. 2015. Identifying mechanisms behind
 policy interventions via causal mediation analysis. Journal of Policy
 Analysis and Management 34: 937--963.
 
+\leavevmode\vadjust pre{\hypertarget{ref-naimi2014}{}}%
+Naimi AI, Kaufman JS, MacLehose RF. 2014. Mediation misgivings:
+Ambiguous clinical and public health interpretations of natural direct
+and indirect effects. International journal of epidemiology 43:1656--61;
+doi:\href{https://doi.org/10.1093/ije/dyu107}{10.1093/ije/dyu107}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-vanderweele2015}{}}%
+VanderWeele TJ. 2015. \emph{Explanation in causal inference: Methods for
+mediation and interaction}. {Oxford University Press}:{New York}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-wooldridge2021}{}}%
 Wooldridge JM. 2021. Two-{Way Fixed Effects}, the {Two-Way Mundlak
 Regression}, and {Difference-in-Differences Estimators}.;
 doi:\href{https://doi.org/10.2139/ssrn.3906345}{10.2139/ssrn.3906345}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-zigler2016}{}}%
+Zigler CM, Kim C, Choirat C, Hansen JB, Wang Y, Hund L, et al. 2016.
+\emph{Causal inference methods for estimating long-term health effects
+of air quality regulations. {Research} report 187.} {Health Effects
+Institute / Health Effects Institute}:{Boston, MA}.
 
 \end{CSLReferences}
 

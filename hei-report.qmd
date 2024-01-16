@@ -17,15 +17,14 @@ library(here)
 ```
 
 ## Abstract
-**Introduction**
+### Introduction
 
-**Methods**
+### Methods
 
-**Results**
+### Results
 
-**Conclusions**
+### Conclusions
 
-Brief summary of what we did.
 
 ## Introduction
 
@@ -166,10 +165,12 @@ As noted above, in the staggered DiD framework that allows for heterogeneity we 
 - Uptake of the policy (Sankey energy use Figure)
 - Impact of ‘treatment assignment’ on coal use (Figure? Table?)
 
+This part of the Results section will focus on the extent of field measurements and survey completeness (good retention), as well as describing the high degree of uptake and adherence to the policy as it was rolled out across villages.
+
 ### Aim 1: Policy impacts and potential mediation
 
-- Impact of policy on PM mass (Figure)
-- Table of CDEs (Central SBP, Central DBP, FeNO, Respiratory outcomes, inflammatory markers), mediated by indoor PM (CDEs for personal and outdoor in SI)
+- Impact of policy on PM mass (Figure, likely with panels), including personal, indoor, and outdoor.
+- Table of total effects of the policy as well as $CDE$s (Central SBP, Central DBP, FeNO, Respiratory outcomes, inflammatory markers), mediated by indoor PM and potentially temperature ($CDE$s for personal and outdoor perhaps moved to in SI)
 - Table for multiple mediation analysis for BP
 
 ### Aim 2: Source contributions
@@ -182,8 +183,11 @@ As noted above, in the staggered DiD framework that allows for heterogeneity we 
 
 - Table of mediated health effects by source contribution (coal and biomass)
 
-
 ## Discussion and Conclusions
+
+- Generally describing high take-up of the policy
+- Reductions in indoor PM~2.5~ but not personal or outdoor
+- Reduction in blood pressure and self-reported respiratory symptoms
 
 Other relevant results (Tables or figures in SI)  
 
@@ -199,7 +203,8 @@ Policy impacts on other relevant outcomes:
 
 
 ## Data Availability Statement
-To come... 
+
+- Description of datasets and code available on our project page at the Open Science Foundation
 
 
 ## Acknowledgements

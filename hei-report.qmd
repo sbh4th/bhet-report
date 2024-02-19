@@ -28,13 +28,31 @@ library(here)
 
 ## Introduction
 
-China is deploying an ambitious plan to transition up to 70% of all households in northern China to clean space heating, including Beijing. To meet this target the Beijing municipal government announced a two-pronged program that designates coal-restricted areas and simultaneously offers subsidies to night-time electricity rates and for the purchase and installation of electric-powered, air-source heat pumps to replace traditional coal-heating stoves. The program is being rolled out on a village-by-village basis; however there is uncertainty as to when villages will receive the program. The variability in when the policy is applied to each village allows us to treat the roll-out of the program as a quasi-randomized intervention. Households may also be differentially affected by this program due to factors such as financial constraints, preferences and social capital, and there is uncertainty about whether and how this intervention may affect indoor and outdoor air pollution, as well as health behaviors and health outcomes.
+China is deploying an ambitious policy to transition up to 70% of households in northern China to clean space heating, including Beijing. To meet this target the Beijing municipal government announced a two-pronged program that designates coal-restricted areas and simultaneously offers subsidies to night-time electricity rates and for the purchase and installation of electric-powered, air-source heat pumps to replace traditional coal-heating stoves. The program is being rolled out on a village-by-village basis; however there is uncertainty as to when villages will receive the program. The variability in when the policy is applied to each village allows us to treat the roll-out of the program as a quasi-randomized intervention. Households may also be differentially affected by this program due to factors such as financial constraints, preferences and social capital, and there is uncertainty about whether and how this intervention may affect indoor and outdoor air pollution, as well as health behaviors and health outcomes.
 
 ## Background
 
-- Context for the policy
-- Prior evidence on clean energy interventions
-- Importance of understanding mechanisms through which policies may affect outcomes. 
+### Context for the policy
+
+Household coal burning has been a major contributor to indoor and outdoor air pollution in northern China, especially in winter. Prior to 2016, coal fuel was used to meet over 80% of northern China’s space heating demand (ref NRDC doc). Household coal-fuelled heaters, common in peri-urban and rural areas without access to centralized heating, burned approximately half of the over 400 million tons of coal used for space heating (ref NRDC doc) and contributed to ~30% of northern China’s wintertime air pollution. [[[something on health impacts]]]
+
+Replacing household coal stoves with clean heating alternatives was considered a potentially impactful intervention to reduce outdoor PM2.5 and its health impacts. 
+
+A number of clean heating options including electric heat pumps, gas heaters, and electric resistance heaters with thermal storage were widely promoted by the Chinese government (ref NRDC doc). 
+
+By 2021, over 36 million households in northern China were treated by the policy and an estimated 21 million more households were expected to be treated by 2025. Whether this large-scale energy policy yielded health benefits remains a critical and unresolved question. 
+
+### Prior evidence of household energy interventions and air pollution 
+
+https://onlinelibrary.wiley.com/doi/epdf/10.1111/ina.12958 
+
+### Prior evidence on clean energy interventions 
+
+Most previous health assessments of household energy technologies have focused on cookstoves and not heating stoves. Randomized trials of less polluting cookstoves indicate a cardiovascular benefit of clean heating energy transition. In Guatemala, a chimney stove intervention lowered exposure to air pollution and reduced the occurrence of nonspecific ST-segment depression, an indicator of health conditions including myocardial ischemia, in older women. That same study and other trials in Nigeria and Ghana observed reductions in blood pressure (range: −3.7 to −1.3mmHg) in women assigned gas, ethanol, or improved combustion biomass stoves, and are supported by non-randomized, controlled intervention studies in Nicaragua and Bolivia (blood pressure reductions ranging −5.9 to −5.5mmHg). In contrast, a recent multi-country randomized trial did not observe a protective effect of gas stoves on gestational blood pressure despite large reductions in indoor and personal exposures to PM2.5, though the participants were younger (mean age: 25y) than in studies showing a blood pressure benefit of intervention (mean ages: 28 to 53y).
+
+The few previous evaluations of household energy policies, mostly in high-income countries, have also indicated some health benefit, though many did not control for secular changes in health over time. Residential wood-burning bans were associated with reductions in cardiovascular hospitalizations (-7%) in California’s San Joaquin Valley, and with reduced cardiovascular (17.9%) and respiratory (−22.8%) mortality in Launceston, Tasmania (Australia), though neither study fully controlled for secular improvements in health. Most relevant to our study are two quasi-experimental assessments of coal replacement policies. Small decreases in chronic lung diseases (-3.0 to -1.1%) were observed in a multi-city cohort of 8524 Chinese adults in cities where the coal-to-clean energy policy was piloted compared with adults in cities not included in the pilot. The study observed no change in physician-diagnosed cardiovascular diseases, potentially due to the only one-year post-policy period or confounding by other city-wide air quality and health-related policies. In a population-based study in Ireland, reductions in respiratory mortality were observed, but no effect was found for cardiovascular mortality after accounting for secular changes in health. 
+
+### Importance of understanding mechanisms through which policies may affect outcomes. 
 
 ## Specific Aims and Overarching Approach
 

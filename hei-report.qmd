@@ -9,6 +9,7 @@ format:
  pdf:
    toc: true
    keep-tex: true
+   number-sections: true
 bibliography: hei-report.bib
 csl: environmental-health-perspectives.csl
 ---
@@ -16,23 +17,23 @@ csl: environmental-health-perspectives.csl
 library(here)
 ```
 
-## Abstract
-### Introduction
+## Abstract {.unnumbered}
+### Introduction {.unnumbered}
 
-### Methods
+### Methods {.unnumbered}
 
-### Results
+### Results {.unnumbered}
 
-### Conclusions
+### Conclusions {.unnumbered}
 
 
-## Introduction
+# Introduction
 
 China is deploying an ambitious policy to transition up to 70% of households in northern China to clean space heating, including Beijing. To meet this target the Beijing municipal government announced a two-pronged program that designates coal-restricted areas and simultaneously offers subsidies to night-time electricity rates and for the purchase and installation of electric-powered, air-source heat pumps to replace traditional coal-heating stoves. The program is being rolled out on a village-by-village basis; however there is uncertainty as to when villages will receive the program. The variability in when the policy is applied to each village allows us to treat the roll-out of the program as a quasi-randomized intervention. Households may also be differentially affected by this program due to factors such as financial constraints, preferences and social capital, and there is uncertainty about whether and how this intervention may affect indoor and outdoor air pollution, as well as health behaviors and health outcomes.
 
-## Background
+# Background
 
-### Context for the policy
+## Context for the policy
 
 Household coal burning has been a major contributor to indoor and outdoor air pollution in northern China, especially in winter. Prior to 2016, coal fuel was used to meet over 80% of northern China’s space heating demand (ref NRDC doc). Household coal-fuelled heaters, common in peri-urban and rural areas without access to centralized heating, burned approximately half of the over 400 million tons of coal used for space heating (ref NRDC doc) and contributed to ~30% of northern China’s wintertime air pollution. [[[something on health impacts]]]
 
@@ -42,20 +43,20 @@ A number of clean heating options including electric heat pumps, gas heaters, an
 
 By 2021, over 36 million households in northern China were treated by the policy and an estimated 21 million more households were expected to be treated by 2025. Whether this large-scale energy policy yielded health benefits remains a critical and unresolved question. 
 
-### Prior evidence of household energy interventions and air pollution 
+## Prior evidence of household energy interventions and air pollution 
 
 See [report](https://onlinelibrary.wiley.com/doi/epdf/10.1111/ina.12958) from Woolley et al [@woolley2022]
  
 
-### Prior evidence on clean energy interventions 
+## Prior evidence on clean energy interventions 
 
 Most previous health assessments of household energy technologies have focused on cookstoves and not heating stoves. Randomized trials of less polluting cookstoves indicate a cardiovascular benefit of clean heating energy transition. In Guatemala, a chimney stove intervention lowered exposure to air pollution and reduced the occurrence of nonspecific ST-segment depression, an indicator of health conditions including myocardial ischemia, in older women. That same study and other trials in Nigeria and Ghana observed reductions in blood pressure (range: −3.7 to −1.3mmHg) in women assigned gas, ethanol, or improved combustion biomass stoves, and are supported by non-randomized, controlled intervention studies in Nicaragua and Bolivia (blood pressure reductions ranging −5.9 to −5.5mmHg). In contrast, a recent multi-country randomized trial did not observe a protective effect of gas stoves on gestational blood pressure despite large reductions in indoor and personal exposures to PM2.5, though the participants were younger (mean age: 25y) than in studies showing a blood pressure benefit of intervention (mean ages: 28 to 53y).
 
 The few previous evaluations of household energy policies, mostly in high-income countries, have also indicated some health benefit, though many did not control for secular changes in health over time. Residential wood-burning bans were associated with reductions in cardiovascular hospitalizations (-7%) in California’s San Joaquin Valley, and with reduced cardiovascular (17.9%) and respiratory (−22.8%) mortality in Launceston, Tasmania (Australia), though neither study fully controlled for secular improvements in health. Most relevant to our study are two quasi-experimental assessments of coal replacement policies. Small decreases in chronic lung diseases (-3.0 to -1.1%) were observed in a multi-city cohort of 8524 Chinese adults in cities where the coal-to-clean energy policy was piloted compared with adults in cities not included in the pilot. The study observed no change in physician-diagnosed cardiovascular diseases, potentially due to the only one-year post-policy period or confounding by other city-wide air quality and health-related policies. In a population-based study in Ireland, reductions in respiratory mortality were observed, but no effect was found for cardiovascular mortality after accounting for secular changes in health. 
 
-### Importance of understanding mechanisms through which policies may affect outcomes. 
+## Importance of understanding mechanisms through which policies may affect outcomes. 
 
-## Specific Aims and Overarching Approach
+# Specific Aims and Overarching Approach
 
 This study used three data collection campaigns in winter 2018/19, winter 2019/20, and winter 2021/22, as well as a partial campaign in winter 2020/21 to advance the following aims:
 
@@ -66,7 +67,7 @@ This study used three data collection campaigns in winter 2018/19, winter 2019/2
 3. Quantify the contribution of changes in the chemical composition of PM2.5 from different sources to the overall effect on health outcomes (Previously Aim 2).
 
 
-## Study Design and Methods
+# Study Design and Methods
 
 - Description of the study location, survey and measurement methods, 
 
@@ -94,7 +95,7 @@ Individual level:
 - Field equipment (Figure)
 
 
-### Policy impacts
+## Policy impacts
 
 To understand how Beijing’s policy works we used a difference-in-differences (DiD) design [@callaway2020], leveraging the staggered rollout of the policy across multiple villages to estimate its impact on health outcomes and understand the mechanisms through which it works. Simple comparisons of treated and untreated (i.e., control) villages after the CBHP policy has been implemented are likely to be biased by unmeasured village-level characteristics (e.g., migration, average winter temperature) that are associated with health outcomes. Similarly, comparisons of only treated villages before and after exposure to the program are susceptible to bias by other factors associated with changes in outcomes over time (i.e., secular trends, impacts of the COVID-19 pandemic). By comparing *changes* in outcomes among treated villages to *changes* in outcomes among untreated villages, we can control for any unmeasured time-invariant characteristics of villages as well as any general secular trends affecting all villages that are unrelated to the policy
 
@@ -131,7 +132,7 @@ The canonical DiD design [@card1994] compares two groups (treated and control) a
 
 However, when multiple groups are treated at different time periods, the most common approach has been to use a two-way fixed effects model to estimate the impact of the intervention which controls for secular trends and differences between districts. However, recent evidence suggests that the traditional two-way fixed effects estimation of the treatment effect may be biased in the context of heterogeneous treatment effects [@callaway2021;@goodman-bacon2021]
 
-### Pathways and mechanisms
+## Pathways and mechanisms
 
 To estimate how much of the CBHP intervention may work through different mechanisms, we used causal mediation analysis. Causal approaches to mediation attempt to discern between, and clarify the necessary assumptions for identifying, different kinds of mediated effects. Taking as an example the DAG in **Figure X**, with $T$ as the policy, $M$ as PM~2.5~, and $Y$ as systolic blood pressure, we can define the controlled direct effect ($CDE$) as the effect of the CBHP policy on systolic blood pressure if we fix the value of PM~2.5~ to a certain reference level for the entire population. For example, we can estimate the impact of the policy on health outcomes while holding PM~2.5~ at a uniform level of average background exposure, or some other hypothetical level.
 
@@ -153,16 +154,16 @@ To estimate how much of the CBHP intervention may work through different mechani
 
 Although other mediated effects such as “natural” direct and indirect effects are theoretically estimable [@vanderweele2015], they involve challenging "cross-world" assumptions that are difficult to anchor in policy [@naimi2014]. Other approaches to mechanisms have focused on principal stratification [e.g., @zigler2016], although conceptual difficulties with identifying the (unverifiable) principal strata make it challenging for questions of mediation. Because controlled direct effects are considered more directly policy relevant for public health, we focus on estimating these mediated quantities.
 
-## Data Analysis
+# Data Analysis
 
-### Total Effect
+## Total Effect
 To estimate the total effect of the policy we used a DiD analysis that accommodates staggered treatment rollout. To allow for heterogeneity in the context of staggered rollout we used 'extended' two-way fixed effects (ETWFE) models [@wooldridge2021] to estimate the total effect of the CBHP policy. The mean outcome (replaced by a suitable link function $g(\cdot)$ for binary or count outcomes) was defined using a set of linear predictors:
 
 $$Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) + \varepsilon_{ijt}$$ {#eq-etwfe}
 
 where $Y_{ijt}$ is the outcome for individual $i$ in village $j$ at time $t$, $d_{r}$ represent treatment cohort dummies, i.e., fixed effects for cohorts of villages that were first exposed to the policy at the same time $q$ (e.g., in 2019, 2020, or 2021), $fs_{t}$ are time fixed effects corresponding to different winter data collection campaigns (2018-19, 2019-20, or 2021-22), and $\tau_{rt}$ are the cohort-time *ATTs*. The ETWFE and other approaches that allow for several (potentially heterogenous) treatment effects may also be averaged to provide a weighted $ATT$. Several potential possibilities are feasible, including weighting by treatment cohorts or time since policy adoption [@goin2023]
 
-### Mediation Analysis
+## Mediation Analysis
 As noted above, with respect to the mediation analysis we are chiefly interested in the $CDE$, which can be derived by adding relevant mediators $M$ to this model. If we also allow for exposure-mediator interaction and potentially allow for adjustment for confounders $W$ of the mediator-outcome effect, we can extend equation @eq-etwfe as follows:
 
 $$
@@ -175,9 +176,9 @@ where now $\delta$ is the conditional effect of the mediator $M$ at the referenc
 
 As noted above, in the staggered DiD framework that allows for heterogeneity we do not have a single treatment effect but a collection of group-time treatment effects that may be averaged in different ways. This extends to the estimation of the $CDE$, in which case we will also have several $CDE$s that can be averaged to make inferences about the extent to which the policy's impact is mediated by *PM~2.5~*. Based on the setup in @eq-etwfem the $CDE$ is estimated as: $\delta + \eta_{rt}MT$. In the absence of interaction between the exposure and the mediator (i.e., $\eta_{rt}=0$) the $CDE$ will simply be the estimated treatment effects $\sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt}$, i.e., the effect of the policy holding $M$ constant. For a valid estimate of the $CDE$ we must account for confounding of the mediator-outcome effect, represented by $W$ in the equation above. Baseline measures of both the outcome and the proposed mediators inherent in our DiD strategy will help to reduce the potential for unmeasured confounding of the mediator-outcome effect [@keele2015]. 
 
-## Results
+# Results
 
-### Description of study sample (Table)
+## Description of study sample (Table)
 
 - Study flowchart of participants (Figure)
 - Description of PM measurements (Figure)
@@ -186,23 +187,23 @@ As noted above, in the staggered DiD framework that allows for heterogeneity we 
 
 This part of the Results section will focus on the extent of field measurements and survey completeness (good retention), as well as describing the high degree of uptake and adherence to the policy as it was rolled out across villages.
 
-### Aim 1: Policy impacts and potential mediation
+## Aim 1: Policy impacts and potential mediation
 
 - Impact of policy on PM mass (Figure, likely with panels), including personal, indoor, and outdoor.
 - Table of total effects of the policy as well as $CDE$s (Central SBP, Central DBP, FeNO, Respiratory outcomes, inflammatory markers), mediated by indoor PM and potentially temperature ($CDE$s for personal and outdoor perhaps moved to in SI)
 - Table for multiple mediation analysis for BP
 
-### Aim 2: Source contributions
+## Aim 2: Source contributions
 
 - Figure of source contributions (6 or fewer components)
 - Source contributions by treatment status
 - DiD for source contributions to PM
 
-### Aim 3
+## Aim 3
 
 - Table of mediated health effects by source contribution (coal and biomass)
 
-## Discussion and Conclusions
+# Discussion and Conclusions
 
 - Generally describing high take-up of the policy
 - Reductions in indoor PM~2.5~ but not personal or outdoor
@@ -217,26 +218,26 @@ Policy impacts on other relevant outcomes:
 - Well-being
 
 
-## Implications of Findings
+# Implications of Findings
 
 
 
-## Data Availability Statement
+# Data Availability Statement
 
 - Description of datasets and code available on our project page at the Open Science Foundation
 
 
-## Acknowledgements
+# Acknowledgements
 To come... 
 
 
-## References
+# References
 
 ::: {#refs}
 :::
 
-## Appendices
+# Appendices {.unnumbered}
 
-## About the authors
+# About the authors {.unnumbered}
 
-## Other publications
+# Other publications {.unnumbered}

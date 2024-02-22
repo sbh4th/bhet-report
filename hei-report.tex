@@ -41,7 +41,7 @@
 \makeatother
 \usepackage{xcolor}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
@@ -77,41 +77,35 @@
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-% definitions for citeproc citations
-\NewDocumentCommand\citeproctext{}{}
-\NewDocumentCommand\citeproc{mm}{%
-  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
-\makeatletter
- % allow citations to break across lines
- \let\@cite@ofmt\@firstofone
- % avoid brackets around text for \cite:
- \def\@biblabel#1{}
- \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
-\makeatother
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
-\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
- {\begin{list}{}{%
-  \setlength{\itemindent}{0pt}
-  \setlength{\leftmargin}{0pt}
-  \setlength{\parsep}{0pt}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
   % turn on hanging indent if param 1 is 1
   \ifodd #1
-   \setlength{\leftmargin}{\cslhangindent}
-   \setlength{\itemindent}{-1\cslhangindent}
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
   \fi
   % set entry spacing
-  \setlength{\itemsep}{#2\baselineskip}}}
- {\end{list}}
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
 \usepackage{calc}
-\newcommand{\CSLBlock}[1]{\hfill\break#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \KOMAoption{captions}{tableheading}
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -148,10 +142,18 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \makeatother
 \makeatletter
-\makeatother
-\makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
 \makeatother
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
@@ -171,27 +173,40 @@
 
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI)}
-\date{2024-02-19}
+\date{2024-02-22}
 
 \begin{document}
 \maketitle
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, interior hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners, boxrule=0pt, enhanced, breakable]}{\end{tcolorbox}}\fi
+
 \renewcommand*\contentsname{Table of contents}
 {
 \hypersetup{linkcolor=}
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
-\subsection{Abstract}\label{abstract}
+\hypertarget{abstract}{%
+\subsection*{Abstract}\label{abstract}}
+\addcontentsline{toc}{subsection}{Abstract}
 
-\subsubsection{Introduction}\label{introduction}
+\hypertarget{introduction}{%
+\subsubsection*{Introduction}\label{introduction}}
+\addcontentsline{toc}{subsubsection}{Introduction}
 
-\subsubsection{Methods}\label{methods}
+\hypertarget{methods}{%
+\subsubsection*{Methods}\label{methods}}
+\addcontentsline{toc}{subsubsection}{Methods}
 
-\subsubsection{Results}\label{results}
+\hypertarget{results}{%
+\subsubsection*{Results}\label{results}}
+\addcontentsline{toc}{subsubsection}{Results}
 
-\subsubsection{Conclusions}\label{conclusions}
+\hypertarget{conclusions}{%
+\subsubsection*{Conclusions}\label{conclusions}}
+\addcontentsline{toc}{subsubsection}{Conclusions}
 
-\subsection{Introduction}\label{introduction-1}
+\hypertarget{introduction-1}{%
+\section{Introduction}\label{introduction-1}}
 
 China is deploying an ambitious policy to transition up to 70\% of
 households in northern China to clean space heating, including Beijing.
@@ -209,9 +224,11 @@ constraints, preferences and social capital, and there is uncertainty
 about whether and how this intervention may affect indoor and outdoor
 air pollution, as well as health behaviors and health outcomes.
 
-\subsection{Background}\label{background}
+\hypertarget{background}{%
+\section{Background}\label{background}}
 
-\subsubsection{Context for the policy}\label{context-for-the-policy}
+\hypertarget{context-for-the-policy}{%
+\subsection{Context for the policy}\label{context-for-the-policy}}
 
 Household coal burning has been a major contributor to indoor and
 outdoor air pollution in northern China, especially in winter. Prior to
@@ -236,15 +253,17 @@ the policy and an estimated 21 million more households were expected to
 be treated by 2025. Whether this large-scale energy policy yielded
 health benefits remains a critical and unresolved question.
 
-\subsubsection{Prior evidence of household energy interventions and air
-pollution}\label{prior-evidence-of-household-energy-interventions-and-air-pollution}
+\hypertarget{prior-evidence-of-household-energy-interventions-and-air-pollution}{%
+\subsection{Prior evidence of household energy interventions and air
+pollution}\label{prior-evidence-of-household-energy-interventions-and-air-pollution}}
 
 See
 \href{https://onlinelibrary.wiley.com/doi/epdf/10.1111/ina.12958}{report}
 from Woolley et al (Woolley et al. 2022)
 
-\subsubsection{Prior evidence on clean energy
-interventions}\label{prior-evidence-on-clean-energy-interventions}
+\hypertarget{prior-evidence-on-clean-energy-interventions}{%
+\subsection{Prior evidence on clean energy
+interventions}\label{prior-evidence-on-clean-energy-interventions}}
 
 Most previous health assessments of household energy technologies have
 focused on cookstoves and not heating stoves. Randomized trials of less
@@ -284,12 +303,14 @@ Ireland, reductions in respiratory mortality were observed, but no
 effect was found for cardiovascular mortality after accounting for
 secular changes in health.
 
-\subsubsection{Importance of understanding mechanisms through which
+\hypertarget{importance-of-understanding-mechanisms-through-which-policies-may-affect-outcomes.}{%
+\subsection{Importance of understanding mechanisms through which
 policies may affect
-outcomes.}\label{importance-of-understanding-mechanisms-through-which-policies-may-affect-outcomes.}
+outcomes.}\label{importance-of-understanding-mechanisms-through-which-policies-may-affect-outcomes.}}
 
-\subsection{Specific Aims and Overarching
-Approach}\label{specific-aims-and-overarching-approach}
+\hypertarget{specific-aims-and-overarching-approach}{%
+\section{Specific Aims and Overarching
+Approach}\label{specific-aims-and-overarching-approach}}
 
 This study used three data collection campaigns in winter 2018/19,
 winter 2019/20, and winter 2021/22, as well as a partial campaign in
@@ -312,7 +333,8 @@ winter 2020/21 to advance the following aims:
   (Previously Aim 2).
 \end{enumerate}
 
-\subsection{Study Design and Methods}\label{study-design-and-methods}
+\hypertarget{study-design-and-methods}{%
+\section{Study Design and Methods}\label{study-design-and-methods}}
 
 \begin{itemize}
 \item
@@ -364,7 +386,8 @@ Individual level:
   Field equipment (Figure)
 \end{itemize}
 
-\subsubsection{Policy impacts}\label{policy-impacts}
+\hypertarget{policy-impacts}{%
+\subsection{Policy impacts}\label{policy-impacts}}
 
 To understand how Beijing's policy works we used a
 difference-in-differences (DiD) design (Callaway 2020), leveraging the
@@ -397,7 +420,7 @@ affecting all villages that are unrelated to the policy
 
 \caption{Stylized example of difference-in-differences}
 
-\end{figure}%
+\end{figure}
 
 The DiD design compares outcomes before and after an intervention in a
 treated group relative to the same outcomes measured in a control group.
@@ -432,7 +455,8 @@ suggests that the traditional two-way fixed effects estimation of the
 treatment effect may be biased in the context of heterogeneous treatment
 effects (Callaway and Sant'Anna 2021; Goodman-Bacon 2021)
 
-\subsubsection{Pathways and mechanisms}\label{pathways-and-mechanisms}
+\hypertarget{pathways-and-mechanisms}{%
+\subsection{Pathways and mechanisms}\label{pathways-and-mechanisms}}
 
 To estimate how much of the CBHP intervention may work through different
 mechanisms, we used causal mediation analysis. Causal approaches to
@@ -462,7 +486,7 @@ of average background exposure, or some other hypothetical level.
 \caption{Example of direct and indirect effects with outcome (\(Y\)),
 treatment (\(T\)), and mediator (\(M\))}
 
-\end{figure}%
+\end{figure}
 
 Although other mediated effects such as ``natural'' direct and indirect
 effects are theoretically estimable (VanderWeele 2015), they involve
@@ -474,9 +498,11 @@ strata make it challenging for questions of mediation. Because
 controlled direct effects are considered more directly policy relevant
 for public health, we focus on estimating these mediated quantities.
 
-\subsection{Data Analysis}\label{data-analysis}
+\hypertarget{data-analysis}{%
+\section{Data Analysis}\label{data-analysis}}
 
-\subsubsection{Total Effect}\label{total-effect}
+\hypertarget{total-effect}{%
+\subsection{Total Effect}\label{total-effect}}
 
 To estimate the total effect of the policy we used a DiD analysis that
 accommodates staggered treatment rollout. To allow for heterogeneity in
@@ -486,7 +512,7 @@ the CBHP policy. The mean outcome (replaced by a suitable link function
 \(g(\cdot)\) for binary or count outcomes) was defined using a set of
 linear predictors:
 
-\begin{equation}\phantomsection\label{eq-etwfe}{Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) + \varepsilon_{ijt}}\end{equation}
+\begin{equation}\protect\hypertarget{eq-etwfe}{}{Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) + \varepsilon_{ijt}}\label{eq-etwfe}\end{equation}
 
 where \(Y_{ijt}\) is the outcome for individual \(i\) in village \(j\)
 at time \(t\), \(d_{r}\) represent treatment cohort dummies, i.e., fixed
@@ -500,7 +526,8 @@ averaged to provide a weighted \(ATT\). Several potential possibilities
 are feasible, including weighting by treatment cohorts or time since
 policy adoption (Goin and Riddell 2023)
 
-\subsubsection{Mediation Analysis}\label{mediation-analysis}
+\hypertarget{mediation-analysis}{%
+\subsection{Mediation Analysis}\label{mediation-analysis}}
 
 As noted above, with respect to the mediation analysis we are chiefly
 interested in the \(CDE\), which can be derived by adding relevant
@@ -509,11 +536,11 @@ interaction and potentially allow for adjustment for confounders \(W\)
 of the mediator-outcome effect, we can extend equation
 Equation~\ref{eq-etwfe} as follows:
 
-\begin{equation}\phantomsection\label{eq-etwfem}{
+\begin{equation}\protect\hypertarget{eq-etwfem}{}{
 \begin{aligned}
 Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) \\ + \delta M_{it} + \sum_{r=q}^{T} \sum_{s=r}^{T} \eta_{rt} (d_{r} \times fs_{t} \times M_{it}) + \zeta \mathbf{W} + \varepsilon_{ijt}
 \end{aligned}
-}\end{equation}
+}\label{eq-etwfem}\end{equation}
 
 where now \(\delta\) is the conditional effect of the mediator \(M\) at
 the reference level of the treatment (again, represented via the series
@@ -541,10 +568,12 @@ and the proposed mediators inherent in our DiD strategy will help to
 reduce the potential for unmeasured confounding of the mediator-outcome
 effect (Keele et al. 2015).
 
-\subsection{Results}\label{results-1}
+\hypertarget{results-1}{%
+\section{Results}\label{results-1}}
 
-\subsubsection{Description of study sample
-(Table)}\label{description-of-study-sample-table}
+\hypertarget{description-of-study-sample-table}{%
+\subsection{Description of study sample
+(Table)}\label{description-of-study-sample-table}}
 
 \begin{itemize}
 \tightlist
@@ -563,8 +592,9 @@ measurements and survey completeness (good retention), as well as
 describing the high degree of uptake and adherence to the policy as it
 was rolled out across villages.
 
-\subsubsection{Aim 1: Policy impacts and potential
-mediation}\label{aim-1-policy-impacts-and-potential-mediation}
+\hypertarget{aim-1-policy-impacts-and-potential-mediation}{%
+\subsection{Aim 1: Policy impacts and potential
+mediation}\label{aim-1-policy-impacts-and-potential-mediation}}
 
 \begin{itemize}
 \tightlist
@@ -580,8 +610,9 @@ mediation}\label{aim-1-policy-impacts-and-potential-mediation}
   Table for multiple mediation analysis for BP
 \end{itemize}
 
-\subsubsection{Aim 2: Source
-contributions}\label{aim-2-source-contributions}
+\hypertarget{aim-2-source-contributions}{%
+\subsection{Aim 2: Source
+contributions}\label{aim-2-source-contributions}}
 
 \begin{itemize}
 \tightlist
@@ -593,7 +624,8 @@ contributions}\label{aim-2-source-contributions}
   DiD for source contributions to PM
 \end{itemize}
 
-\subsubsection{Aim 3}\label{aim-3}
+\hypertarget{aim-3}{%
+\subsection{Aim 3}\label{aim-3}}
 
 \begin{itemize}
 \tightlist
@@ -602,8 +634,8 @@ contributions}\label{aim-2-source-contributions}
   biomass)
 \end{itemize}
 
-\subsection{Discussion and
-Conclusions}\label{discussion-and-conclusions}
+\hypertarget{discussion-and-conclusions}{%
+\section{Discussion and Conclusions}\label{discussion-and-conclusions}}
 
 \begin{itemize}
 \tightlist
@@ -629,10 +661,12 @@ Policy impacts on other relevant outcomes:
   Well-being
 \end{itemize}
 
-\subsection{Implications of Findings}\label{implications-of-findings}
+\hypertarget{implications-of-findings}{%
+\section{Implications of Findings}\label{implications-of-findings}}
 
-\subsection{Data Availability
-Statement}\label{data-availability-statement}
+\hypertarget{data-availability-statement}{%
+\section{Data Availability
+Statement}\label{data-availability-statement}}
 
 \begin{itemize}
 \tightlist
@@ -641,70 +675,65 @@ Statement}\label{data-availability-statement}
   Open Science Foundation
 \end{itemize}
 
-\subsection{Acknowledgements}\label{acknowledgements}
+\hypertarget{acknowledgements}{%
+\section{Acknowledgements}\label{acknowledgements}}
 
 To come\ldots{}
 
-\subsection{References}\label{references}
+\hypertarget{references}{%
+\section{References}\label{references}}
 
-\subsection{Appendices}\label{appendices}
-
-\subsection{About the authors}\label{about-the-authors}
-
-\subsection*{Other publications}\label{other-publications}
-\addcontentsline{toc}{subsection}{Other publications}
-
-\phantomsection\label{refs}
-\begin{CSLReferences}{1}{1}
-\bibitem[\citeproctext]{ref-callaway2020}
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-callaway2020}{}}%
 Callaway B. 2020.
 \href{https://doi.org/10.1007/978-3-319-57365-6_352-1}{Difference-in-{Differences}
 for {Policy Evaluation}}. In: \emph{Handbook of {Labor}, {Human
 Resources} and {Population Economics}} (K.F. Zimmermann, ed). {Springer
 International Publishing}:{Cham}. 1--61.
 
-\bibitem[\citeproctext]{ref-callaway2021}
+\leavevmode\vadjust pre{\hypertarget{ref-callaway2021}{}}%
 Callaway B, Sant'Anna PHC. 2021. Difference-in-{Differences} with
 multiple time periods. Journal of Econometrics 225:200--230;
 doi:\href{https://doi.org/10.1016/j.jeconom.2020.12.001}{10.1016/j.jeconom.2020.12.001}.
 
-\bibitem[\citeproctext]{ref-card1994}
+\leavevmode\vadjust pre{\hypertarget{ref-card1994}{}}%
 Card D, Krueger AB. 1994. Minimum {Wages} and {Employment}: {A Case
 Study} of the {Fast-Food Industry} in {New Jersey} and {Pennsylvania}.
 American Economic Review 84: 772--93.
 
-\bibitem[\citeproctext]{ref-goin2023}
+\leavevmode\vadjust pre{\hypertarget{ref-goin2023}{}}%
 Goin DE, Riddell CA. 2023. Comparing {Two-way Fixed Effects} and {New
 Estimators} for {Difference-in-Differences}: {A Simulation Study} and
 {Empirical Example}. Epidemiology 34:535;
 doi:\href{https://doi.org/10.1097/EDE.0000000000001611}{10.1097/EDE.0000000000001611}.
 
-\bibitem[\citeproctext]{ref-goodman-bacon2021}
+\leavevmode\vadjust pre{\hypertarget{ref-goodman-bacon2021}{}}%
 Goodman-Bacon A. 2021. Difference-in-differences with variation in
 treatment timing. Journal of Econometrics 225:254--277;
 doi:\href{https://doi.org/10.1016/j.jeconom.2021.03.014}{10.1016/j.jeconom.2021.03.014}.
 
-\bibitem[\citeproctext]{ref-keele2015}
+\leavevmode\vadjust pre{\hypertarget{ref-keele2015}{}}%
 Keele L, Tingley D, Yamamoto T. 2015. Identifying mechanisms behind
 policy interventions via causal mediation analysis. Journal of Policy
 Analysis and Management 34: 937--963.
 
-\bibitem[\citeproctext]{ref-naimi2014}
+\leavevmode\vadjust pre{\hypertarget{ref-naimi2014}{}}%
 Naimi AI, Kaufman JS, MacLehose RF. 2014. Mediation misgivings:
 Ambiguous clinical and public health interpretations of natural direct
 and indirect effects. International journal of epidemiology 43:1656--61;
 doi:\href{https://doi.org/10.1093/ije/dyu107}{10.1093/ije/dyu107}.
 
-\bibitem[\citeproctext]{ref-vanderweele2015}
+\leavevmode\vadjust pre{\hypertarget{ref-vanderweele2015}{}}%
 VanderWeele TJ. 2015. \emph{Explanation in causal inference: Methods for
 mediation and interaction}. {Oxford University Press}:{New York}.
 
-\bibitem[\citeproctext]{ref-wooldridge2021}
+\leavevmode\vadjust pre{\hypertarget{ref-wooldridge2021}{}}%
 Wooldridge JM. 2021. Two-{Way Fixed Effects}, the {Two-Way Mundlak
 Regression}, and {Difference-in-Differences Estimators}.;
 doi:\href{https://doi.org/10.2139/ssrn.3906345}{10.2139/ssrn.3906345}.
 
-\bibitem[\citeproctext]{ref-woolley2022}
+\leavevmode\vadjust pre{\hypertarget{ref-woolley2022}{}}%
 Woolley KE, Dickinson-Craig E, Lawson HL, Sheikh J, Day R, Pope FD, et
 al. 2022. Effectiveness of interventions to reduce household air
 pollution from solid biomass fuels and improve maternal and child health
@@ -712,13 +741,25 @@ outcomes in low- and middle-income countries: {A} systematic review and
 meta-analysis. Indoor Air 32:e12958;
 doi:\href{https://doi.org/10.1111/ina.12958}{10.1111/ina.12958}.
 
-\bibitem[\citeproctext]{ref-zigler2016}
+\leavevmode\vadjust pre{\hypertarget{ref-zigler2016}{}}%
 Zigler CM, Kim C, Choirat C, Hansen JB, Wang Y, Hund L, et al. 2016.
 \emph{Causal inference methods for estimating long-term health effects
 of air quality regulations. {Research} report 187.} {Health Effects
 Institute / Health Effects Institute}:{Boston, MA}.
 
 \end{CSLReferences}
+
+\hypertarget{appendices}{%
+\section*{Appendices}\label{appendices}}
+\addcontentsline{toc}{section}{Appendices}
+
+\hypertarget{about-the-authors}{%
+\section*{About the authors}\label{about-the-authors}}
+\addcontentsline{toc}{section}{About the authors}
+
+\hypertarget{other-publications}{%
+\section*{Other publications}\label{other-publications}}
+\addcontentsline{toc}{section}{Other publications}
 
 
 

@@ -4,12 +4,16 @@ author:
   - Jill Baumgartner (Co-PI)
   - Sam Harper (Co-PI)
 date: today
-# format: html
 format: 
- pdf:
-   toc: true
-   keep-tex: true
-   number-sections: true
+  html:
+    toc: true
+    number-sections: true
+
+#format: 
+# pdf:
+#   toc: true
+#   keep-tex: true
+#   number-sections: true
 bibliography: hei-report.bib
 csl: environmental-health-perspectives.csl
 ---

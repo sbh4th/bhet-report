@@ -73,9 +73,14 @@ This study used three data collection campaigns in winter 2018/19, winter 2019/2
 
 # Study Design and Methods
 
-- Description of the study location, survey and measurement methods, 
+## Location, context, and recruitment
 
-- Measures
+In December 2018 we recruited 50 villages across 4 administrative divisions of peri-urban Beijing to participate in our study. Villages were selected on the basis of their residents primarily using household coal and/or biomass stoves, and because roughly half of the villages were expected to enter into the CBHP policy over the course of our study. We used local guides in each village to help determine a roster of households that were not vacant during the winter months, from which we selected households to recruit for participation. 
+
+We recruited approximately 20 households in each village and randomly selected one eligible person from each household to participate. Participants were eligible to participate if they were over 40 years old, lived in the study villages, were not planning to move out of the village in the next year, and were not on current immunotherapy or treatment with corticosteroids. Research staff introduced the study and its measurements to an eligible person in each household and answered any questions related to the study. All participants provided written informed consent prior to joining the study. The study protocols were approved by research ethics boards at Peking University (IRB00001052-18090) and McGill University (A08-E53-18B).
+
+
+## Measures
 
 Village level:  
 

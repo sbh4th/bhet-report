@@ -177,7 +177,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, interior hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners, boxrule=0pt, enhanced, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, boxrule=0pt, interior hidden, breakable, borderline west={3pt}{0pt}{shadecolor}, enhanced, sharp corners]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -336,14 +336,36 @@ winter 2020/21 to advance the following aims:
 \hypertarget{study-design-and-methods}{%
 \section{Study Design and Methods}\label{study-design-and-methods}}
 
-\begin{itemize}
-\item
-  Description of the study location, survey and measurement methods,
-\item
-  Measures
-\end{itemize}
+\hypertarget{location-context-and-recruitment}{%
+\subsection{Location, context, and
+recruitment}\label{location-context-and-recruitment}}
 
-Village level:
+In December 2018 we recruited 50 villages across 4 administrative
+divisions of peri-urban Beijing to participate in our study. Villages
+were selected on the basis of their residents primarily using household
+coal and/or biomass stoves, and because roughly half of the villages
+were expected to enter into the CBHP policy over the course of our
+study. We used local guides in each village to help determine a roster
+of households that were not vacant during the winter months, from which
+we selected households to recruit for participation.
+
+We recruited approximately 20 households in each village and randomly
+selected one eligible person from each household to participate.
+Participants were eligible to participate if they were over 40 years
+old, lived in the study villages, were not planning to move out of the
+village in the next year, and were not on current immunotherapy or
+treatment with corticosteroids. Research staff introduced the study and
+its measurements to an eligible person in each household and answered
+any questions related to the study. All participants provided written
+informed consent prior to joining the study. The study protocols were
+approved by research ethics boards at Peking University
+(IRB00001052-18090) and McGill University (A08-E53-18B).
+
+\hypertarget{measures}{%
+\subsection{Measures}\label{measures}}
+
+\hypertarget{village-level}{%
+\subsubsection{Village level:}\label{village-level}}
 
 \begin{itemize}
 \tightlist
@@ -354,7 +376,8 @@ Village level:
   with government funding from local leaders
 \end{itemize}
 
-Household level:
+\hypertarget{household-level}{%
+\subsubsection{Household level:}\label{household-level}}
 
 \begin{itemize}
 \tightlist
@@ -369,13 +392,82 @@ Household level:
   Electricity use based on meters
 \end{itemize}
 
-Individual level:
+\hypertarget{individual-level}{%
+\subsubsection{Individual level:}\label{individual-level}}
+
+\textbf{Questionnaires on health status, behaviors, and medication}
+
+Field staff administered questionnaires to assess household demographic
+information, household assets, house structure, stove and fuel use
+patterns (including a complete roster of heating methods and their
+contributions in each room), and smoking. We used Surveybe
+computer-assisted personal interview (CAPI) software to collect survey
+data via handheld electronic tablets. Questions were read to
+participants in Mandarin-Chinese, and their responses were recorded into
+tablets.
+
+The questionnaire and other study measurements were tested prior to the
+start of data collection for this study in 12 households located in
+Beijing village that was eligible for our study but was instead selected
+for testing prior to the study start. We used the test village to assess
+whether the questions were understandable and interpreted as intended
+and to identify any problems with the study measurements or their
+implementation. Study protocols were subsequently adapted prior to the
+start of data collection.
+
+\textbf{Personal exposures to PM2.5 and black carbon (50\% of
+participants)}\footnote{SH: Taken from Appendix from (Li et al. 2022),
+  needs to be re-written}
+
+To measure personal exposure we used two types of samplers: Personal
+Exposure Monitors (PEMs, Apex Pro; Casella, UK) and Ultrasonic Personal
+Aerosol Samplers (UPAS, Access Sensor Technologies, Fort Collins, CO,
+USA). PEMs actively sampled at a flow rate of 1.8 L/min, and UPAS was at
+1.0 L/min (Volckens et al. 2017). Both samplers housed 37 mm PTFE
+filters (VWR, 2.0-μm pore size) and were equipped with a cyclone inlet
+with a 2.5 μm cutpoint. Sampler flow rates were calibrated the night
+before deployment and also measured after the sampling period. Few
+post-sampling measurements (16 out of 494, 3\%) deviated from the target
+flow rate by \textgreater10\%. Participants were instructed to wear a
+small waistpack (for the PEM and sampling pump) or an arm bag (for the
+UPAS) for 24 hours, which they could place within 2 meters while
+sleeping, sitting, or bathing. Field blanks were collected at a rate of
+\textasciitilde10\% in each village. All filters were placed in
+individually labeled Petri dishes, sealed in plastic bags, and then
+transported to a field laboratory and immediately stored in a -20°C
+freezer. Following completion of the field sampling campaign, the
+samples and blanks were transported to Colorado State University, where
+they were stored in a -20°C freezer prior to PM\textsubscript{2.5} mass
+measurement and BC analysis.
+
+All filters were placed in an environmentally-controlled equilibration
+chamber (21-22 °C, 30-34\% relative humidity) for at least 24 hours
+before tare and gross weighing. Before each weight was taken, filters
+were discharged on a polonium-210 strip for at least 15 seconds. Filters
+were weighed on a microbalance (Mettler Toledo Inc., XS3DU, USA) with
+1-μg resolution in triplicate or more, until the differences among three
+weights were less than 3 μg. The average of three readings was used to
+determine filter mass, which was then blank-corrected using the median
+value of blank filters {[}3 μg for UPAS-collected filters (53\% of
+samples); 33 μg for PEM-collected filters (47\% of filter samples){]},
+and PM2.5 concentrations were calculated by dividing the mass by the
+sampled air volume.
+
+Filters were analyzed for black carbon (BC) using an optical
+transmissometer data acquisition system (SootScan\^{}TM OT21 Optical
+Transmissometer; Magee Scientific, Berkeley, CA, USA). Light attenuation
+through each filter was measured before and after sampling in the field.
+To calculate BC mass, the difference between the pre- and post- light
+attenuation was converted to a mass surface loading using the classical
+Magee mass absorption cross-sections of 16.6 m2/g for the 880 nm channel
+optical BC (Ahmed et al. 2009). BC concentrations were calculated by
+multiplying surface loadings by the sampled surface area of the filters
+(8.6 cm2 for UPAS-collected filters; 7.1 cm2 for PEM-collected filters),
+correcting for the field blank mass using the median value of blanks
+(0.31 μg for UPAS-collected filters; 0.01 μg for PEM-collected filters),
+and finally dividing by the sampled air volume.
 
 \begin{itemize}
-\item
-  Questionnaires on health status, behaviors, and medication
-\item
-  Personal exposures to PM2.5 and black carbon (50\% of participants)
 \item
   Health measurements including blood pressure (all), self-reported
   respiratory symptoms (all), blood inflammatory and oxidative stress
@@ -386,8 +478,8 @@ Individual level:
   Field equipment (Figure)
 \end{itemize}
 
-\hypertarget{policy-impacts}{%
-\subsection{Policy impacts}\label{policy-impacts}}
+\hypertarget{measuring-policy-impacts}{%
+\subsection{Measuring policy impacts}\label{measuring-policy-impacts}}
 
 To understand how Beijing's policy works we used a
 difference-in-differences (DiD) design (Callaway 2020), leveraging the
@@ -455,8 +547,9 @@ suggests that the traditional two-way fixed effects estimation of the
 treatment effect may be biased in the context of heterogeneous treatment
 effects (Callaway and Sant'Anna 2021; Goodman-Bacon 2021)
 
-\hypertarget{pathways-and-mechanisms}{%
-\subsection{Pathways and mechanisms}\label{pathways-and-mechanisms}}
+\hypertarget{measuring-pathways-and-mechanisms}{%
+\subsection{Measuring pathways and
+mechanisms}\label{measuring-pathways-and-mechanisms}}
 
 To estimate how much of the CBHP intervention may work through different
 mechanisms, we used causal mediation analysis. Causal approaches to
@@ -685,6 +778,13 @@ To come\ldots{}
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-ahmed2009}{}}%
+Ahmed T, Dutkiewicz VA, Shareef A, Tuncel G, Tuncel S, Husain L. 2009.
+Measurement of black carbon ({BC}) by an optical method and a
+thermal-optical method: {Intercomparison} for four sites. Atmospheric
+Environment 43:6305--6311;
+doi:\href{https://doi.org/10.1016/j.atmosenv.2009.09.031}{10.1016/j.atmosenv.2009.09.031}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-callaway2020}{}}%
 Callaway B. 2020.
 \href{https://doi.org/10.1007/978-3-319-57365-6_352-1}{Difference-in-{Differences}
@@ -718,6 +818,14 @@ Keele L, Tingley D, Yamamoto T. 2015. Identifying mechanisms behind
 policy interventions via causal mediation analysis. Journal of Policy
 Analysis and Management 34: 937--963.
 
+\leavevmode\vadjust pre{\hypertarget{ref-li2022}{}}%
+Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G,
+et al. 2022. Socioeconomic and {Demographic Associations} with
+{Wintertime Air Pollution Exposures} at {Household}, {Community}, and
+{District Scales} in {Rural Beijing}, {China}. Environmental Science \&
+Technology 56:8308--8318;
+doi:\href{https://doi.org/10.1021/acs.est.1c07402}{10.1021/acs.est.1c07402}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-naimi2014}{}}%
 Naimi AI, Kaufman JS, MacLehose RF. 2014. Mediation misgivings:
 Ambiguous clinical and public health interpretations of natural direct
@@ -727,6 +835,12 @@ doi:\href{https://doi.org/10.1093/ije/dyu107}{10.1093/ije/dyu107}.
 \leavevmode\vadjust pre{\hypertarget{ref-vanderweele2015}{}}%
 VanderWeele TJ. 2015. \emph{Explanation in causal inference: Methods for
 mediation and interaction}. {Oxford University Press}:{New York}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-volckens2017}{}}%
+Volckens J, Quinn C, Leith D, Mehaffy J, Henry CS, Miller-Lionberg D.
+2017. Development and evaluation of an ultrasonic personal aerosol
+sampler. Indoor air 27:409--416;
+doi:\href{https://doi.org/10.1111/ina.12318}{10.1111/ina.12318}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-wooldridge2021}{}}%
 Wooldridge JM. 2021. Two-{Way Fixed Effects}, the {Two-Way Mundlak

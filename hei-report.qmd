@@ -14,21 +14,36 @@ format:
    toc: true
    keep-tex: true
    number-sections: true
+   include-in-header:
+      - text: |
+          \usepackage{colortbl}
+   geometry: 
+      - right=1in
+      - left=1in
 bibliography: hei-report.bib
 csl: environmental-health-perspectives.csl
 ---
-```{r setup, echo=F, message=F}
+```{r setup, include=FALSE, cache=TRUE}
 library(here)
+library(osfr)
+
+# read in master data
+bhet_master_data <- osf_retrieve_node("vxur5")
+bhet_master_data %>%
+  osf_ls_files("Master Dataset (Seasons 1-4)",
+               pattern = "csv") %>%
+  osf_download(path = here("data-clean"),
+               conflicts = "overwrite")
 ```
 
-## Abstract {.unnumbered}
-### Introduction {.unnumbered}
+## Abstract {.unnumbered .unlisted}
+### Introduction {.unnumbered .unlisted}
 
-### Methods {.unnumbered}
+### Methods {.unnumbered .unlisted}
 
-### Results {.unnumbered}
+### Results {.unnumbered .unlisted}
 
-### Conclusions {.unnumbered}
+### Conclusions {.unnumbered .unlisted}
 
 
 # Introduction
@@ -203,12 +218,101 @@ As noted above, in the staggered DiD framework that allows for heterogeneity we 
 
 ## Description of study sample (Table)
 
+```{r table1, message=FALSE, cache=TRUE, echo=FALSE}
+#| label: tbl-table1
+#| tbl-cap: "Summary: Numeric variables"
+library(tidyverse)
+library(kableExtra)
+library(modelsummary)
+library(flextable)
+d <- read_csv(here("data-clean", 
+  "BHET_master_data_05Mar2024.csv"),
+  col_select = c("hh_id", "ptc_id", "gender_health",
+    "ban_status_no", "age_health", "education_health",
+    "smoking", "freq_drink", "sys_brachial", 
+    "dia_brachial", "waist_circ", "height",
+    "weight", "temp", "wave", "PM25conc_exposureugm3"))
+
+dt <- d %>%
+  # restrict to baseline
+  filter(wave==1) %>%
+  # select variables for inclusion
+  # select(ban_status_no, age_health, )
+  mutate(ever_trt = ifelse(ban_status_no==0, 1 ,0),
+    et = recode_factor(ever_trt, `0` = "Never treated", 
+      `1` = "Ever treated"),
+    `Age (years)` = age_health,
+    `Female (%)` = ifelse(gender_health==2, 100, 0),
+    `No education (%)` = ifelse(education_health==4, 100, 0),
+    `Primary education (%)` = ifelse(education_health==1, 100, 0),
+    `Secondary+ education (%)` = ifelse(
+      education_health %in% c(2,3), 100, 0),
+    `Never smoker (%)` = ifelse(smoking==3, 100, 0),
+    `Former smoker (%)` = ifelse(smoking==2, 100, 0),
+    `Current smoker (%)` = ifelse(smoking==1, 100, 0),
+    `Never drinker (%)` = ifelse(freq_drink==1, 100, 0),
+    `Occasional drinker (%)` = ifelse(freq_drink %in% 
+      c(2:8), 100, 0),
+    `Daily drinker (%)` = ifelse(freq_drink==9, 100, 0),
+    `Systolic (mmHg)` = sys_brachial,
+    `Diastolic (mmHg)` = dia_brachial,
+    `Waist circumference (cm)` = waist_circ,
+    `Body mass index (kg/m2)` = weight / (height/100)^2,
+    `Temperature (°C)` = temp,
+    `Personal PM2.5 (ug/m3)` = PM25conc_exposureugm3) %>%
+  select(et, `Age (years)`, `Female (%)`, `No education (%)`, 
+    `Primary education (%)`, `Secondary+ education (%)`, 
+    `Never smoker (%)`, `Former smoker (%)`, 
+    `Current smoker (%)`, `Never drinker (%)`, 
+    `Occasional drinker (%)`, `Daily drinker (%)`,
+    `Systolic (mmHg)`, `Diastolic (mmHg)`,
+    `Waist circumference (cm)`,
+    `Body mass index (kg/m2)`, `Temperature (°C)`,
+    `Personal PM2.5 (ug/m3)`)
+
+# caption <- '\\label{#tbl-table1}Descriptive statistics, by treatment status'
+reference <- 'Includes all individuals sampled at each of 3 waves'
+
+# add empty rows for categorical variables
+# grouped categories
+nrn <- c("Demographics:", "Health measures:",
+  "Environmental measures:")
+# empty data frame
+nr <- data.frame(matrix(ncol = 7, nrow = length(nrn)))
+nr$X1 <- nrn
+nr[is.na(nr)] <- " "
+
+# placement in table
+attr(nr, 'position') <- c(1, 7, 18)
+
+options(modelsummary_format_numeric_latex = "plain")
+
+t1 <- datasummary_balance(~et, data = dt, 
+  # caption = caption,
+  add_rows = nr, align = "rrrrrrr",
+  notes = reference, output = 'flextable')
+
+t1 <- set_header_labels(x = t1, values = c(" ", 
+  "Mean", "SD", "Mean", "SD", "Diff.", "SE"))
+t1 <- add_header_row(x = t1, values = c(" ", 
+  "Treated (n=603)", "Control (n=400)", " "),
+  colwidths = c(1,2,2,2))
+t1 <- fontsize(t1, size = 9)
+t1 <- fontsize(t1, size = 9, part = "header")
+t1 <- width(t1, j=c(1,2:7), 
+  width=c(2,0.5,0.5,0.5,0.5,0.5,0.5))
+# t1 <- align_text_col(t1, align = "right")
+t1
+```
+
 - Study flowchart of participants (Figure)
 - Description of PM measurements (Figure)
 - Uptake of the policy (Sankey energy use Figure)
 - Impact of ‘treatment assignment’ on coal use (Figure? Table?)
 
 This part of the Results section will focus on the extent of field measurements and survey completeness (good retention), as well as describing the high degree of uptake and adherence to the policy as it was rolled out across villages.
+
+@tbl-table1 shows the distribution of selected demographic, health, and environmental characteristics from the baseline survey, prior to any villages being enrolled in the ban. We provide means and standard deviations separately for villages that eventually enter into the ban with those that never do so. As noted above, although our DiD identification strategy allows for fixed differences between treated and untreated villages, overall the differences at baseline are generally small and the groups seem well balanced on most measures, with the exception of personal PM~2.5~ exposure, which was lower in villages that were eventually treated.
 
 ## Aim 1: Policy impacts and potential mediation
 

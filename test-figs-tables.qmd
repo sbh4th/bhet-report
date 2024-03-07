@@ -1,0 +1,203 @@
+---
+title: "Tests"
+format: 
+  pdf:
+    keep-tex: true
+  
+---
+
+```{r setup, include=FALSE, cache=TRUE}
+library(here)
+library(osfr)
+
+# read in master data
+bhet_master_data <- osf_retrieve_node("vxur5")
+bhet_master_data %>%
+  osf_ls_files("Master Dataset (Seasons 1-4)",
+               pattern = "csv") %>%
+  osf_download(path = here("data-clean"),
+               conflicts = "overwrite")
+```
+
+Read in data
+```{r data, include=FALSE, cache=TRUE}
+library(tidyverse)
+library(kableExtra)
+d <- read_csv(here("data-clean", 
+  "BHET_master_data_05Mar2024.csv"),
+  col_select = c("hh_id", "ptc_id", "gender_health",
+    "ban_status_no", "age_health", "education_health",
+    "smoking", "freq_drink", "sys_brachial", 
+    "dia_brachial", "waist_circ", "height",
+    "weight", "temp", "wave", "PM25conc_exposureugm3"))
+```
+
+Make a table
+```{r table, cache=TRUE, message=FALSE, echo=FALSE, eval=TRUE}
+#| label: tbl-table1
+#| tbl-cap: "Summary: Numeric variables"
+library(modelsummary)
+library(flextable)
+dt <- d %>%
+  # restrict to baseline
+  filter(wave==1) %>%
+  # select variables for inclusion
+  # select(ban_status_no, age_health, )
+  mutate(ever_trt = ifelse(ban_status_no==0, 1 ,0),
+    et = recode_factor(ever_trt, `0` = "Never treated", 
+      `1` = "Ever treated"),
+    `Age (years)` = age_health,
+    `Female (%)` = ifelse(gender_health==2, 100, 0),
+    `No education (%)` = ifelse(education_health==4, 100, 0),
+    `Primary education (%)` = ifelse(education_health==1, 100, 0),
+    `Secondary+ education (%)` = ifelse(
+      education_health %in% c(2,3), 100, 0),
+    `Never smoker (%)` = ifelse(smoking==3, 100, 0),
+    `Former smoker (%)` = ifelse(smoking==2, 100, 0),
+    `Current smoker (%)` = ifelse(smoking==1, 100, 0),
+    `Never drinker (%)` = ifelse(freq_drink==1, 100, 0),
+    `Occasional drinker (%)` = ifelse(freq_drink %in% 
+      c(2:8), 100, 0),
+    `Daily drinker (%)` = ifelse(freq_drink==9, 100, 0),
+    `Systolic (mmHg)` = sys_brachial,
+    `Diastolic (mmHg)` = dia_brachial,
+    `Waist circumference (cm)` = waist_circ,
+    `Body mass index (kg/m2)` = weight / (height/100)^2,
+    `Temperature (°C)` = temp,
+    `Personal PM~2.5~ (ug/m3)` = PM25conc_exposureugm3) %>%
+  select(et, `Age (years)`, `Female (%)`, `No education (%)`, 
+    `Primary education (%)`, `Secondary+ education (%)`, 
+    `Never smoker (%)`, `Former smoker (%)`, 
+    `Current smoker (%)`, `Never drinker (%)`, 
+    `Occasional drinker (%)`, `Daily drinker (%)`,
+    `Systolic (mmHg)`, `Diastolic (mmHg)`,
+    `Waist circumference (cm)`,
+    `Body mass index (kg/m2)`, `Temperature (°C)`,
+    `Personal PM~2.5~ (ug/m3)`)
+
+# caption <- '\\label{#tbl-table1}Descriptive statistics, by treatment status'
+reference <- 'Includes all individuals sampled at each of 3 waves'
+
+# add empty rows for categorical variables
+# grouped categories
+nrn <- c("Demographics:", "Health measures:",
+  "Environmental measures:")
+# empty data frame
+nr <- data.frame(matrix(ncol = 7, nrow = length(nrn)))
+nr$X1 <- nrn
+nr[is.na(nr)] <- " "
+
+# placement in table
+attr(nr, 'position') <- c(1, 7, 18)
+
+options(modelsummary_format_numeric_latex = "plain")
+
+t1 <- datasummary_balance(~et, data = dt, 
+  # caption = caption,
+  add_rows = nr, align = "rrrrrrr",
+  notes = reference, output = 'flextable')
+
+t1 <- set_header_labels(x = t1, values = c(" ", 
+  "Mean", "SD", "Mean", "SD", "Diff", "SE"))
+t1 <- add_header_row(x = t1, values = c(" ", 
+  "Treated (n=603)", "Control (n=400)", " "),
+  colwidths = c(1,2,2,2))
+t1 <- fontsize(t1, size = 9)
+t1 <- fontsize(t1, size = 9, part = "header")
+t1 <- width(t1, j=c(1,2:7), 
+  width=c(2,0.5,0.5,0.5,0.5,0.5,0.5))
+t1 <- align_text_col(t1, align = "right")
+t1 <- align_text_col(i = ~ !is.na(`Age (years)), align = "left")
+t1
+```
+See @tbl-table1 for details.
+
+```{r}
+#| label: tbl-2
+#| tbl-cap: "Summary: Numeric variables"
+library(modelsummary)
+datasummary_skim(swiss,
+                    type="numeric",
+                    histogram=F,
+                    output="flextable")
+# column widths
+# flextable::autofit()
+```
+
+Now see @tbl-2.
+
+```{r eval=FALSE, include=FALSE}
+dt1 <- d %>%
+  filter(asample==1) %>%
+  select(treatment, age_midline, hhsize, cbwaduse_23,
+         mbwaduse_23, unenrolled_1, school_1, female, ctime1,
+         shrsday_1, sdayswk_1, readwrite_1, block) %>%
+  # convert binary vars to percentages, create binary vars from categories
+  mutate(`Badgaon (%)` = if_else(block == 1, 100, 0),
+         `Girwa (%)` = if_else(block == 2, 100, 0),
+         `Jhadol (%)` = if_else(block == 3, 100, 0),
+         `Kherwara (%)` = if_else(block == 4, 100, 0),
+         `Kotda (%)` = if_else(block == 5, 100, 0),
+         `Female (%)` = female * 100, 
+         `Age at midline` = age_midline,
+         `Children in household` = hhsize,
+         `Any use of daycare, child (%)` = cbwaduse_23 * 100,
+         `Any use of daycare, household (%)` = mbwaduse_23 * 100,
+         `Child in school (%)` = school_1 * 100,
+         `Avg days/wk in school` = sdayswk_1,
+         `Avg hrs/day in school` = shrsday_1,
+         `Home (%)` = if_else(ctime1==1,100,0),
+         `School (%)` = if_else(ctime1 ==2,100,0),
+         `Work (%)` = if_else(ctime1 ==3,100,0),
+         `Other (%)` = if_else(ctime1 ==4,100,0),
+         `Child can read and write (%)` = readwrite_1 * 100,
+         `Too young (%)` = if_else(unenrolled_1==1,100,0),
+         `Working (%)` = if_else(unenrolled_1==2,100,0),
+         `Needed for housework (%)` = if_else(unenrolled_1==3,100,0),
+         `Caring for siblings (%)` = if_else(unenrolled_1==4,100,0),
+         `Not in school: Other (%)` = if_else(unenrolled_1==5,100,0),
+         Treatment = ifelse(treatment == 1, 'Treated', 'Control')) %>%
+  select(Treatment, `Female (%)`, `Age at midline`,
+         `Children in household`, `Any use of daycare, child (%)`,
+         `Any use of daycare, household (%)`,
+         `Child in school (%)`, `Avg days/wk in school`,
+         `Avg hrs/day in school`, `Child can read and write (%)`,
+         `Home (%)`, `Work (%)`, `School (%)`,`Other (%)`, 
+         `Too young (%)`, `Working (%)`, `Needed for housework (%)`,
+         `Caring for siblings (%)`, `Not in school: Other (%)`,
+         `Badgaon (%)`, `Girwa (%)`, `Jhadol (%)`,
+         `Kherwara (%)`, `Kotda (%)`)
+
+caption <- '\\label{tab:table1}Descriptive statistics for children aged 5 to 20 years at midline with at least 1 younger sibling, by treatment arm.'
+reference <- 'Includes children ages 5-20 at midline in households with at least one younger sibling at midline.'
+
+
+# 3
+# Create table
+
+# add empty rows for categorical variables
+# where child spends most of the day
+days <- c('Child spends most days:', ' ', ' ', ' ',
+                       ' ', ' ', ' ')
+# why the child is not in school
+school <- c('Why child is not in school:', ' ', ' ', ' ',
+                       ' ', ' ', ' ')
+
+# stratification group (block)
+block <- c('Geographic area (block):', ' ', ' ', ' ',
+                       ' ', ' ', ' ')
+
+new_rows <- data.frame(rbind(days, school, block))
+attr(new_rows, 'position') <- c(10, 15, 21)
+
+# Disable default siunitx \num{} formatting
+options(modelsummary_format_numeric_latex = "plain")
+
+tabk <- datasummary_balance(~Treatment, data = dt1,
+  caption = caption,
+  add_rows = new_rows, align = "rrrrrrr", 
+  notes = reference, output = 'latex') %>%
+  kable_styling(font_size = 9)
+
+kableExtra::save_kable(tabk, file = "output/u2s-table1.tex")
+```

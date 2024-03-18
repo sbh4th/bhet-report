@@ -19,6 +19,11 @@ bhet_master_data %>%
                conflicts = "overwrite")
 ```
 
+```{r fig}
+library(here)
+knitr::include_graphics(here("images", "coal-plot.png"))
+```
+
 Read in data
 ```{r data, include=FALSE, cache=TRUE}
 library(tidyverse)

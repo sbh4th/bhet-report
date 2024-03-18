@@ -1,0 +1,8 @@
+---
+title: "Untitled"
+format: pdf
+---
+```{r fig, out.width="100%"}
+library(here)
+knitr::include_graphics(here("images", "coal-plot.png"))
+```

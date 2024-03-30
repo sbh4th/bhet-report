@@ -362,8 +362,22 @@ To come...
 
 ::: {#refs}
 :::
+\newpage
+\appendix
+\renewcommand{\thefigure}{A\arabic{figure}}
+\renewcommand{\thetable}{A\arabic{table}}
+\setcounter{figure}{0}
+\setcounter{table}{0}
 
-# Appendices {.unnumbered}
+# Appendices {.unnumbered .appendix}
+
+```{r afig, message=FALSE, cache=TRUE, echo=FALSE, out.width = "100%"}
+#| label: tbl-atable1
+#| tbl-cap: "Trends in self-reported coal and biomass"
+knitr::include_graphics(here("images", "coal-plot.png"))
+```
+
+@tbl-atable1 shows...
 
 # About the authors {.unnumbered}
 

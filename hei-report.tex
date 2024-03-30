@@ -112,13 +112,19 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
-\usepackage{booktabs}
+\usepackage{fontspec}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{colortbl}
+\usepackage{hhline}
+\newlength\Oldarrayrulewidth
+\newlength\Oldtabcolsep
 \usepackage{longtable}
 \usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
+\usepackage{hyperref}
 \usepackage{float}
-\usepackage{colortbl}
+\usepackage{wrapfig}
+\usepackage{booktabs}
 \usepackage{pdflscape}
 \usepackage{tabu}
 \usepackage{threeparttable}
@@ -126,12 +132,6 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
-\usepackage{fontspec}
-\usepackage{multicol}
-\usepackage{hhline}
-\newlength\Oldarrayrulewidth
-\newlength\Oldtabcolsep
-\usepackage{hyperref}
 \usepackage{colortbl}
 \KOMAoption{captions}{tableheading}
 \makeatletter
@@ -193,7 +193,7 @@
 
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI)}
-\date{2024-03-07}
+\date{2024-03-30}
 
 \begin{document}
 \maketitle
@@ -956,8 +956,29 @@ To come\ldots{}
 
 \section{References}\label{references}
 
+\newpage
+\appendix
+\renewcommand{\thefigure}{A\arabic{figure}}
+\renewcommand{\thetable}{A\arabic{table}}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
 \section*{Appendices}\label{appendices}
 \addcontentsline{toc}{section}{Appendices}
+
+\begin{table}
+
+\caption{\label{tbl-atable1}Trends in self-reported coal and biomass}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/coal-plot.png}
+
+}
+
+\end{table}%
+
+Table~\ref{tbl-atable1} shows\ldots{}
 
 \section*{About the authors}\label{about-the-authors}
 \addcontentsline{toc}{section}{About the authors}
@@ -978,8 +999,8 @@ doi:\href{https://doi.org/10.1016/j.atmosenv.2009.09.031}{10.1016/j.atmosenv.200
 Callaway B. 2020.
 \href{https://doi.org/10.1007/978-3-319-57365-6_352-1}{Difference-in-{Differences}
 for {Policy Evaluation}}. In: \emph{Handbook of {Labor}, {Human
-Resources} and {Population Economics}} (K.F. Zimmermann, ed). {Springer
-International Publishing}:{Cham}. 1--61.
+Resources} and {Population Economics}} (K.F. Zimmermann, ed). Springer
+International Publishing:Cham. 1--61.
 
 \bibitem[\citeproctext]{ref-callaway2021}
 Callaway B, Sant'Anna PHC. 2021. Difference-in-{Differences} with
@@ -1023,7 +1044,7 @@ doi:\href{https://doi.org/10.1093/ije/dyu107}{10.1093/ije/dyu107}.
 
 \bibitem[\citeproctext]{ref-vanderweele2015}
 VanderWeele TJ. 2015. \emph{Explanation in causal inference: Methods for
-mediation and interaction}. {Oxford University Press}:{New York}.
+mediation and interaction}. Oxford University Press:New York.
 
 \bibitem[\citeproctext]{ref-volckens2017}
 Volckens J, Quinn C, Leith D, Mehaffy J, Henry CS, Miller-Lionberg D.
@@ -1047,8 +1068,8 @@ doi:\href{https://doi.org/10.1111/ina.12958}{10.1111/ina.12958}.
 \bibitem[\citeproctext]{ref-zigler2016}
 Zigler CM, Kim C, Choirat C, Hansen JB, Wang Y, Hund L, et al. 2016.
 \emph{Causal inference methods for estimating long-term health effects
-of air quality regulations. {Research} report 187.} {Health Effects
-Institute / Health Effects Institute}:{Boston, MA}.
+of air quality regulations. {Research} report 187.} Health Effects
+Institute / Health Effects Institute:Boston, MA.
 
 \end{CSLReferences}
 

@@ -43,6 +43,7 @@ Make a table
 #| tbl-cap: "Summary: Numeric variables"
 library(modelsummary)
 library(flextable)
+library(gt)
 dt <- d %>%
   # restrict to baseline
   filter(wave==1) %>%
@@ -70,7 +71,7 @@ dt <- d %>%
     `Body mass index (kg/m2)` = weight / (height/100)^2,
     `Temperature (°C)` = temp,
     `Personal PM~2.5~ (ug/m3)` = PM25conc_exposureugm3) %>%
-  select(et, `Age (years)`, `Female (%)`, `No education (%)`, 
+  dplyr::select(et, `Age (years)`, `Female (%)`, `No education (%)`, 
     `Primary education (%)`, `Secondary+ education (%)`, 
     `Never smoker (%)`, `Former smoker (%)`, 
     `Current smoker (%)`, `Never drinker (%)`, 
@@ -87,32 +88,32 @@ reference <- 'Includes all individuals sampled at each of 3 waves'
 # grouped categories
 nrn <- c("Demographics:", "Health measures:",
   "Environmental measures:")
-# empty data frame
+## empty data frame
 nr <- data.frame(matrix(ncol = 7, nrow = length(nrn)))
 nr$X1 <- nrn
 nr[is.na(nr)] <- " "
-
-# placement in table
+#
+## placement in table
 attr(nr, 'position') <- c(1, 7, 18)
 
 options(modelsummary_format_numeric_latex = "plain")
 
-t1 <- datasummary_balance(~et, data = dt, 
+t1 <- datasummary_balance(~et, data = dt, output = 'flextable') #, 
   # caption = caption,
-  add_rows = nr, align = "rrrrrrr",
-  notes = reference, output = 'flextable')
+  # add_rows = nr, align = "rrrrrrr") #,
+  # notes = reference)
 
-t1 <- set_header_labels(x = t1, values = c(" ", 
-  "Mean", "SD", "Mean", "SD", "Diff", "SE"))
-t1 <- add_header_row(x = t1, values = c(" ", 
-  "Treated (n=603)", "Control (n=400)", " "),
-  colwidths = c(1,2,2,2))
-t1 <- fontsize(t1, size = 9)
-t1 <- fontsize(t1, size = 9, part = "header")
-t1 <- width(t1, j=c(1,2:7), 
-  width=c(2,0.5,0.5,0.5,0.5,0.5,0.5))
-t1 <- align_text_col(t1, align = "right")
-t1 <- align_text_col(i = ~ !is.na(`Age (years)), align = "left")
+# t1 <- set_header_labels(x = t1, values = c(" ", 
+  #"Mean", "SD", "Mean", "SD", "Diff", "SE"))
+#t1 <- add_header_row(x = t1, values = c(" ", 
+#  "Treated (n=603)", "Control (n=400)", " "),
+#  colwidths = c(1,2,2,2))
+#t1 <- fontsize(t1, size = 9)
+#t1 <- fontsize(t1, size = 9, part = "header")
+#t1 <- width(t1, j=c(1,2:7), 
+#  width=c(2,0.5,0.5,0.5,0.5,0.5,0.5))
+#t1 <- align_text_col(t1, align = "right")
+## t1 <- align_text_col(i = ~ !is.na(`Age (years)), align = "left")
 t1
 ```
 See @tbl-table1 for details.

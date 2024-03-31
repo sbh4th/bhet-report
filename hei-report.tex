@@ -193,7 +193,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, frame hidden, enhanced, sharp corners, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, breakable, interior hidden, frame hidden, enhanced, boxrule=0pt, sharp corners]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -741,13 +741,17 @@ and years 3 to 4.}
 
 \end{figure}
 
+Figure~\ref{fig-flowchart} shows the participation across waves of data
+collection.
+
 \hypertarget{description-of-study-sample-table}{%
 \subsection{Description of study sample
 (Table)}\label{description-of-study-sample-table}}
 
 \hypertarget{tbl-table1}{}
 \begin{table}
-\caption{\label{tbl-table1}Summary: Numeric variables }\tabularnewline
+\caption{\label{tbl-table1}Descriptive statistics for selected demographic, health, and
+environmental measures at baseline, by treatment status }\tabularnewline
 
 \centering\centering
 \fontsize{9}{11}\selectfont
@@ -827,6 +831,31 @@ mediation}\label{aim-1-policy-impacts-and-potential-mediation}}
 \item
   Table for multiple mediation analysis for BP
 \end{itemize}
+
+\hypertarget{tbl-table_resp}{}
+\begin{table}
+\caption{\label{tbl-table_resp}Marginal effect of policy on self-reported respiratory symptoms from
+basic and adjusted DiD models }\tabularnewline
+
+\centering
+\begin{tabular}{lrrrrrr}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Basic DiD} & \multicolumn{3}{c}{Adjusted DiD} \\
+\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
+Frequency of: & Estimate & LL & UL & Estimate & LL & UL\\
+\midrule
+Any respiratory symptom & -0.07 & -0.14 & -0.01 & -0.08 & -0.15 & -0.01\\
+Coughing & -0.02 & -0.06 & 0.03 & -0.02 & -0.07 & 0.03\\
+Phlegm & -0.01 & -0.06 & 0.03 & -0.02 & -0.06 & 0.03\\
+Wheezing attacks & 0.00 & -0.04 & 0.04 & 0.00 & -0.04 & 0.04\\
+Trouble breathing & -0.05 & -0.12 & 0.02 & -0.05 & -0.12 & 0.02\\
+\addlinespace
+Chest trouble & -0.07 & -0.13 & -0.01 & -0.06 & -0.12 & -0.01\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tbl-table_resp} shows the impacts on respiratory outcomes.
 
 \hypertarget{aim-2-source-contributions}{%
 \subsection{Aim 2: Source

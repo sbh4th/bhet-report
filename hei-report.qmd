@@ -230,6 +230,7 @@ knitr::include_graphics(here("images",
   "participation-flow-chart-Mar18.png"))
 ```
 
+@fig-flowchart shows the participation across waves of data collection. 
 
 ## Description of study sample (Table)
 
@@ -300,7 +301,8 @@ options(modelsummary_format_numeric_latex = "plain")
 
 ```{r table1, cache=TRUE, message=FALSE, echo=FALSE}
 #| label: tbl-table1
-#| tbl-cap: "Summary: Numeric variables"
+#| tbl-cap: "Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status"
+
 t1 <- datasummary_balance(~et, data = dt, 
   add_rows = nr, align = "rrrrrrr",
   notes = reference)
@@ -324,6 +326,24 @@ This part of the Results section will focus on the extent of field measurements 
 - Impact of policy on PM mass (Figure, likely with panels), including personal, indoor, and outdoor.
 - Table of total effects of the policy as well as $CDE$s (Central SBP, Central DBP, FeNO, Respiratory outcomes, inflammatory markers), mediated by indoor PM and potentially temperature ($CDE$s for personal and outdoor perhaps moved to in SI)
 - Table for multiple mediation analysis for BP
+
+```{r tab_resp, echo=FALSE}
+#| label: tbl-table_resp
+#| tbl-cap: "Marginal effect of policy on self-reported respiratory symptoms from basic and adjusted DiD models"
+
+# read in table
+didt <- read_rds(here("data-clean", "resp-did.rds"))
+
+kable(didt, digits = 2, 
+  col.names = c("Frequency of:", "Estimate", 
+  "LL", "UL", "Estimate", "LL", "UL"), 
+  "latex", booktabs = T) %>%
+  kable_styling() %>%
+  add_header_above(c(" " = 1, 
+                     "Basic DiD" = 3, "Adjusted DiD" = 3))
+```
+
+@tbl-table_resp shows the impacts on respiratory outcomes. 
 
 ## Aim 2: Source contributions
 

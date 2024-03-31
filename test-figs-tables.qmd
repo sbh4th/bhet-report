@@ -118,6 +118,21 @@ t1
 ```
 See @tbl-table1 for details.
 
+Now try for the kable version:
+```{r t2, cache=TRUE, message=FALSE, echo=FALSE,}
+#| label: tbl-table2
+#| tbl-cap: "Summary: Numeric variables using kableExtra"
+t2 <- datasummary_balance(~et, data = dt, 
+  add_rows = nr, align = "rrrrrrr",
+  notes = reference, output = 'kableExtra')
+
+t2 %>%
+  kable_styling(font_size = 9) %>%
+  row_spec(c(1,7,18), bold = T)
+```
+
+Let's see if we can refer to @tbl-table2 for this version.
+
 ```{r}
 #| label: tbl-2
 #| tbl-cap: "Summary: Numeric variables"

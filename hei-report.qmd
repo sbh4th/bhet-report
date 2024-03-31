@@ -23,11 +23,15 @@ format:
 bibliography: hei-report.bib
 csl: environmental-health-perspectives.csl
 ---
-```{r setup, include=FALSE, cache=TRUE}
+```{r packages, echo=FALSE}
 library(here)
 library(osfr)
 library(tidyverse)
+library(kableExtra)
+library(modelsummary)
+```
 
+```{r master_data, include = FALSE, cache = TRUE}
 # read in master data
 bhet_master_data <- osf_retrieve_node("vxur5")
 bhet_master_data %>%
@@ -217,13 +221,20 @@ As noted above, in the staggered DiD framework that allows for heterogeneity we 
 
 # Results
 
+Study flowchart
+```{r flowchart, echo=FALSE, out.width = "100%"}
+#| label: fig-flowchart
+#| fig-cap: "Flow chart of BHET study participation at the participant, household, and village levels across study years. Participation (number of units) in each study year is shown in the white boxes. Additions (+) and losses (-) to the study sample between years are indicated by the light blue arrows. Data collection was limited to household- and village-level environmental measurements due to the COVID-19 pandemic in year 3. We visited 530 households in 41 villages before travel restrictions limited further data collection. This affects the additions and losses to the study sample reported from years 2 to 3 and years 3 to 4."
+
+knitr::include_graphics(here("images", 
+  "participation-flow-chart-Mar18.png"))
+```
+
+
 ## Description of study sample (Table)
 
 ```{r make_table1, message=FALSE, cache=TRUE, echo=FALSE}
-library(tidyverse)
-library(kableExtra)
-library(modelsummary)
-# library(flextable)
+# select variables for table
 d <- read_csv(here("data-clean", 
   "BHET_master_data_05Mar2024.csv"),
   col_select = c("hh_id", "ptc_id", "gender_health",

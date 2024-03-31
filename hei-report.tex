@@ -193,7 +193,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, breakable, frame hidden, interior hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners, enhanced]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, frame hidden, enhanced, sharp corners, breakable]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -201,6 +201,51 @@
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
+\begin{verbatim}
+here() starts at /Users/samharper/git/bhet-report
+\end{verbatim}
+
+\begin{verbatim}
+Automatically registered OSF personal access token
+\end{verbatim}
+
+\begin{verbatim}
+-- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+v dplyr     1.1.4     v readr     2.1.5
+v forcats   1.0.0     v stringr   1.5.1
+v ggplot2   3.5.0     v tibble    3.2.1
+v lubridate 1.9.3     v tidyr     1.3.1
+v purrr     1.0.2     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+
+Attaching package: 'kableExtra'
+
+
+The following object is masked from 'package:dplyr':
+
+    group_rows
+
+
+Version 2.0.0 of `modelsummary`, to be released soon, will introduce a
+  breaking change: The default table-drawing package will be `tinytable`
+  instead of `kableExtra`. All currently supported table-drawing packages
+  will continue to be supported for the foreseeable future, including
+  `kableExtra`, `gt`, `huxtable`, `flextable, and `DT`.
+  
+  You can always call the `config_modelsummary()` function to change the
+  default table-drawing package in persistent fashion. To try `tinytable`
+  now:
+  
+  config_modelsummary(factory_default = 'tinytable')
+  
+  To set the default back to `kableExtra`:
+  
+  config_modelsummary(factory_default = 'kableExtra')
+\end{verbatim}
+
 \hypertarget{abstract}{%
 \subsection*{Abstract}\label{abstract}}
 
@@ -675,6 +720,27 @@ effect (Keele et al. 2015).
 \hypertarget{results-1}{%
 \section{Results}\label{results-1}}
 
+Study flowchart
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{images/participation-flow-chart-Mar18.png}
+
+}
+
+\caption{\label{fig-flowchart}Flow chart of BHET study participation at
+the participant, household, and village levels across study years.
+Participation (number of units) in each study year is shown in the white
+boxes. Additions (+) and losses (-) to the study sample between years
+are indicated by the light blue arrows. Data collection was limited to
+household- and village-level environmental measurements due to the
+COVID-19 pandemic in year 3. We visited 530 households in 41 villages
+before travel restrictions limited further data collection. This affects
+the additions and losses to the study sample reported from years 2 to 3
+and years 3 to 4.}
+
+\end{figure}
+
 \hypertarget{description-of-study-sample-table}{%
 \subsection{Description of study sample
 (Table)}\label{description-of-study-sample-table}}
@@ -691,25 +757,25 @@ effect (Keele et al. 2015).
 \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
   & Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error\\
 \midrule
-\textbf{\cellcolor{gray!10}{Demographics:}} & \textbf{\cellcolor{gray!10}{}} & \textbf{\cellcolor{gray!10}{}} & \textbf{\cellcolor{gray!10}{}} & \textbf{\cellcolor{gray!10}{}} & \textbf{\cellcolor{gray!10}{}} & \textbf{\cellcolor{gray!10}{}}\\
+\textbf{Demographics:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
 Age (years) & 59.9 & 9.4 & 60.4 & 9.2 & 0.5 & 0.6\\
-\cellcolor{gray!10}{Female (\%)} & \cellcolor{gray!10}{59.5} & \cellcolor{gray!10}{49.1} & \cellcolor{gray!10}{59.1} & \cellcolor{gray!10}{49.2} & \cellcolor{gray!10}{-0.4} & \cellcolor{gray!10}{3.2}\\
+Female (\%) & 59.5 & 49.1 & 59.1 & 49.2 & -0.4 & 3.2\\
 No education (\%) & 11.5 & 31.9 & 12.3 & 32.9 & 0.9 & 2.1\\
-\cellcolor{gray!10}{Primary education (\%)} & \cellcolor{gray!10}{75.5} & \cellcolor{gray!10}{43.0} & \cellcolor{gray!10}{77.6} & \cellcolor{gray!10}{41.7} & \cellcolor{gray!10}{2.1} & \cellcolor{gray!10}{2.8}\\
+Primary education (\%) & 75.5 & 43.0 & 77.6 & 41.7 & 2.1 & 2.8\\
 Secondary+ education (\%) & 12.6 & 33.2 & 9.8 & 29.7 & -2.9 & 2.0\\
-\textbf{\cellcolor{gray!10}{Health measures:}} & \textbf{\cellcolor{gray!10}{}} & \textbf{\cellcolor{gray!10}{}} & \textbf{\cellcolor{gray!10}{}} & \textbf{\cellcolor{gray!10}{}} & \textbf{\cellcolor{gray!10}{}} & \textbf{\cellcolor{gray!10}{}}\\
+\textbf{Health measures:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
 Never smoker (\%) & 61.9 & 48.6 & 59.5 & 49.1 & -2.4 & 3.2\\
-\cellcolor{gray!10}{Former smoker (\%)} & \cellcolor{gray!10}{11.9} & \cellcolor{gray!10}{32.4} & \cellcolor{gray!10}{15.1} & \cellcolor{gray!10}{35.8} & \cellcolor{gray!10}{3.2} & \cellcolor{gray!10}{2.2}\\
+Former smoker (\%) & 11.9 & 32.4 & 15.1 & 35.8 & 3.2 & 2.2\\
 Current smoker (\%) & 26.2 & 44.0 & 25.4 & 43.6 & -0.8 & 2.8\\
-\cellcolor{gray!10}{Never drinker (\%)} & \cellcolor{gray!10}{55.9} & \cellcolor{gray!10}{49.7} & \cellcolor{gray!10}{52.5} & \cellcolor{gray!10}{50.0} & \cellcolor{gray!10}{-3.4} & \cellcolor{gray!10}{3.2}\\
+Never drinker (\%) & 55.9 & 49.7 & 52.5 & 50.0 & -3.4 & 3.2\\
 Occasional drinker (\%) & 26.0 & 43.9 & 25.5 & 43.6 & -0.5 & 2.8\\
-\cellcolor{gray!10}{Daily drinker (\%)} & \cellcolor{gray!10}{17.8} & \cellcolor{gray!10}{38.3} & \cellcolor{gray!10}{21.9} & \cellcolor{gray!10}{41.4} & \cellcolor{gray!10}{4.1} & \cellcolor{gray!10}{2.6}\\
+Daily drinker (\%) & 17.8 & 38.3 & 21.9 & 41.4 & 4.1 & 2.6\\
 Systolic (mmHg) & 131.4 & 16.8 & 128.7 & 14.3 & -2.7 & 1.0\\
-\cellcolor{gray!10}{Diastolic (mmHg)} & \cellcolor{gray!10}{82.7} & \cellcolor{gray!10}{11.6} & \cellcolor{gray!10}{82.1} & \cellcolor{gray!10}{11.3} & \cellcolor{gray!10}{-0.6} & \cellcolor{gray!10}{0.8}\\
+Diastolic (mmHg) & 82.7 & 11.6 & 82.1 & 11.3 & -0.6 & 0.8\\
 Waist circumference (cm) & 87.7 & 10.5 & 85.4 & 9.5 & -2.3 & 0.8\\
-\cellcolor{gray!10}{Body mass index (kg/m2)} & \cellcolor{gray!10}{26.3} & \cellcolor{gray!10}{3.7} & \cellcolor{gray!10}{25.8} & \cellcolor{gray!10}{3.6} & \cellcolor{gray!10}{-0.5} & \cellcolor{gray!10}{0.3}\\
+Body mass index (kg/m2) & 26.3 & 3.7 & 25.8 & 3.6 & -0.5 & 0.3\\
 \textbf{Environmental measures:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
-\cellcolor{gray!10}{Temperature (°C)} & \cellcolor{gray!10}{13.8} & \cellcolor{gray!10}{3.6} & \cellcolor{gray!10}{13.5} & \cellcolor{gray!10}{3.3} & \cellcolor{gray!10}{-0.3} & \cellcolor{gray!10}{0.2}\\
+Temperature (°C) & 13.8 & 3.6 & 13.5 & 3.3 & -0.3 & 0.2\\
 Personal PM2.5 (ug/m3) & 150.2 & 300.3 & 103.8 & 107.3 & -46.3 & 19.1\\
 \bottomrule
 \multicolumn{7}{l}{\rule{0pt}{1em}Includes all individuals sampled at each of 3 waves}\\

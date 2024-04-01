@@ -242,7 +242,9 @@ d <- read_csv(here("data-clean",
     "ban_status_no", "age_health", "education_health",
     "smoking", "freq_drink", "sys_brachial", 
     "dia_brachial", "waist_circ", "height",
-    "weight", "temp", "wave", "PM25conc_exposureugm3"))
+    "weight", "temp", "wave", "PM25conc_exposureugm3",
+    "freq_cough", "freq_phlegm", "freq_wheezing", 
+    "freq_breath", "freq_no_chest"))
 
 dt <- d %>%
   # restrict to baseline
@@ -269,6 +271,22 @@ dt <- d %>%
     `Diastolic (mmHg)` = dia_brachial,
     `Waist circumference (cm)` = waist_circ,
     `Body mass index (kg/m2)` = weight / (height/100)^2,
+    `Frequency of coughing (%)` = 
+      if_else(freq_cough < 3, 100, 0),
+    `Frequency of phlegm (%)` = 
+      if_else(freq_phlegm < 3, 100, 0),
+    `Frequency of wheezing (%)` = 
+      if_else(freq_wheezing < 3, 100, 0),
+    `Shortness of breath (%)` = 
+      if_else(freq_breath < 3, 100, 0),
+    `Chest trouble (%)` = 
+      if_else(freq_no_chest < 3, 100, 0),
+    `Any respiratory problem (%)` = if_else(
+      freq_cough < 3 |
+      freq_phlegm < 3 |
+      freq_wheezing < 3 |
+      freq_breath < 3 |
+      freq_no_chest < 3, 100, 0),
     `Temperature (°C)` = temp,
     `Personal PM2.5 (ug/m3)` = PM25conc_exposureugm3) %>%
   select(et, `Age (years)`, `Female (%)`, `No education (%)`, 
@@ -278,11 +296,17 @@ dt <- d %>%
     `Occasional drinker (%)`, `Daily drinker (%)`,
     `Systolic (mmHg)`, `Diastolic (mmHg)`,
     `Waist circumference (cm)`,
-    `Body mass index (kg/m2)`, `Temperature (°C)`,
+    `Body mass index (kg/m2)`, 
+    `Frequency of coughing (%)`,
+    `Frequency of wheezing (%)`,
+    `Shortness of breath (%)`,
+    `Chest trouble (%)`,
+    `Any respiratory problem (%)`,
+    `Temperature (°C)`,
     `Personal PM2.5 (ug/m3)`)
 
 # caption <- '\\label{#tbl-table1}Descriptive statistics, by treatment status'
-reference <- 'Includes all individuals sampled at each of 3 waves'
+reference <- 'Includes all individuals sampled at each of 3 waves.'
 
 # add empty rows for categorical variables
 # grouped categories
@@ -294,7 +318,7 @@ nr$X1 <- nrn
 nr[is.na(nr)] <- " "
 
 # placement in table
-attr(nr, 'position') <- c(1, 7, 18)
+attr(nr, 'position') <- c(1, 7, 23)
 
 options(modelsummary_format_numeric_latex = "plain")
 ```
@@ -309,7 +333,7 @@ t1 <- datasummary_balance(~et, data = dt,
 
 t1 %>%
   kable_styling(font_size = 9) %>%
-  row_spec(c(1,7,18), bold = T)
+  row_spec(c(1,7,23), bold = T)
 ```
 
 - Study flowchart of participants (Figure)
@@ -387,6 +411,7 @@ To come...
 
 ::: {#refs}
 :::
+
 \newpage
 \appendix
 \renewcommand{\thefigure}{A\arabic{figure}}
@@ -403,6 +428,8 @@ knitr::include_graphics(here("images", "coal-plot.png"))
 ```
 
 @tbl-atable1 shows...
+
+Compare with Figure \\ref{tbl-atable1}
 
 # About the authors {.unnumbered}
 

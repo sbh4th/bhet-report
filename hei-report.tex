@@ -117,6 +117,12 @@
 \usepackage{makecell}
 \usepackage{xcolor}
 \usepackage{colortbl}
+\makeatletter
+\renewenvironment{table}%
+  {\renewcommand\familydefault\sfdefault
+   \@float{table}}
+  {\end@float}
+\makeatother
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \makeatother
@@ -189,11 +195,11 @@
 
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI)}
-\date{2024-04-01}
+\date{2024-04-02}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, frame hidden, boxrule=0pt, enhanced, borderline west={3pt}{0pt}{shadecolor}, interior hidden, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, interior hidden, breakable, enhanced, boxrule=0pt, sharp corners, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {

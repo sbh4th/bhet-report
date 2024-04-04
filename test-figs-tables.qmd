@@ -3,6 +3,9 @@ title: "Tests"
 format: 
   pdf:
     keep-tex: true
+    include-in-header:
+      - text: |
+         \usepackage{wrapfig}
   
 ---
 
@@ -19,12 +22,16 @@ bhet_master_data %>%
                pattern = "csv") %>%
   osf_download(path = here("data-clean"),
                conflicts = "overwrite")
+
+# read in data for Aim 1
+aim_1 <- osf_retrieve_node("qsmbr")
+aim_1 %>%
+  osf_ls_files("Air pollution",
+    pattern = "DID_air_pollution.csv") %>%
+  osf_download(path = here("data-clean"),
+               conflicts = "overwrite")
 ```
 
-```{r fig}
-library(here)
-knitr::include_graphics(here("images", "coal-plot.png"))
-```
 
 Read in data
 ```{r data, include=FALSE, cache=TRUE}
@@ -40,7 +47,7 @@ d <- read_csv(here("data-clean",
 ```
 
 Make a table
-```{r table, cache=TRUE, message=FALSE, echo=FALSE, eval=TRUE}
+```{r table, cache=TRUE, message=FALSE, echo=FALSE, eval=F}
 #| label: tbl-table1
 #| tbl-cap: "Summary: Numeric variables"
 
@@ -142,7 +149,7 @@ t1 %>%
 See @tbl-table1 for details.
 
 Now try for the kable version:
-```{r t2, cache=TRUE, message=FALSE, echo=FALSE,}
+```{r t2, cache=TRUE, message=FALSE, echo=FALSE, eval=F}
 #| label: tbl-table2
 #| tbl-cap: "Summary: Numeric variables using kableExtra"
 t2 <- datasummary_balance(~et, data = dt, 
@@ -154,17 +161,55 @@ t2 %>%
   row_spec(c(1,7,18), bold = T)
 ```
 
-Let's see if we can refer to @tbl-table2 for this version.
-
 ```{r}
-#| label: tbl-2
-#| tbl-cap: "Summary: Numeric variables"
+apdid <- read_csv(here("data-clean", 
+  "DID_air_pollution.csv")) 
 
-bp <- read_xlsx(here("data-clean", 
-                     "overall_effects-table-2024Mar26.xlsx")) %>%
-  select(term)
+apdidt <- apdid %>% pivot_wider(names_from = Effect, values_from = c(Estimate, CI_low, CI_upper), names_vary = "slowest") %>% 
+  select(-Category)
 
-
+kable(apdidt, digits = 2,
+  col.names = c("Outcome", "Estimate", "LL", "UL", 
+   "Estimate", "LL", "UL"), "latex", booktabs = T,
+  linesep = "") %>%
+  kable_styling() %>%
+  add_header_above(c(" " = 1, 
+                     "DiD" = 3, "Adjusted DiD" = 3)) %>%
+  pack_rows("Personal exposure", 1, 2) %>%
+  pack_rows("Indoor PM", 3, 4) %>%
+  pack_rows("Outdoor PM", 5, 6)
 ```
 
-Now see @tbl-2.
+\newpage
+
+:::layout[[30,70]]
+
+Some text that should go beside the figure here.
+
+<div>
+
+![](images/policy-implementation-map.png)
+
+
+</div>
+
+:::
+
+```{r fig-map, echo=FALSE, out.width = "50%"}
+#| label: fig-map
+#| fig-cap: "Map of village implementation of CBHP policy"
+#knitr::include_graphics(here("images", 
+#  "policy-implementation-map.png"))
+```
+
+
+\newpage
+
+The source profiles for the four-factor solution are presented in Figure X. The first source was identified as dust by high percentages of crustal elements like wi-Ca, Si, and wi-Mg. The second source was constituted of non-sulfate sulfur as well as secondary inorganic ions (ammonium, nitrate, and sulfate). Non-sulfate sulfur is a tracer for primary coal combustion, while secondary inorganic ions indicate a secondary source. Since coal combustion is a major source of energy in our study area, it is likely that the second source is a mixture of primary and secondary emissions that originate from coal and other sulfurous fuel combustion. 
+
+\begin{wrapfigure}{R}{0.7\textwidth}
+\includegraphics[width=0.7\textwidth]{images/policy-implementation-map.png}
+\caption{Google scholar metrics}
+\end{wrapfigure}
+
+Additionally, the mean source contribution of the second source is higher in outdoor than personal exposure measurements. Secondary formation occurs outdoors in the presence of sunlight, so higher outdoor concentrations compared to personal exposure further support our naming the second source and sulfur secondary. The third source had high percentages of ws-Ca nd Al, which in our study region, has been found to be indicative of transported dust from dust storms that can occur in the spring. While our samples were collected during winter months only, it is possible that transported dust from previous years still remained. The fourth source was characterized by high percentages of tracers for both coal (OC, wi-K, chloride, Pb) and biomass combustion (EC, ws-K). Coal and biomass combustion is common in our study setting so this source is likely a mixture of the two combustion sources.

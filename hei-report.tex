@@ -199,7 +199,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, breakable, enhanced, interior hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, frame hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, enhanced, interior hidden, breakable]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -439,6 +439,16 @@ into the policy over the course of our study. We used local guides in
 each village to help determine a roster of households that were not
 vacant during the winter months, from which we randomly selected
 households to recruit for participation.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{images/policy-implementation-map.png}
+
+}
+
+\caption{\label{fig-map}Map of village implementation of CBHP policy}
+
+\end{figure}
 
 We recruited approximately 20 households in each village and randomly
 selected one eligible person from each household to participate.

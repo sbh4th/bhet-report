@@ -428,8 +428,11 @@ This part of the Results section will focus on the extent of field measurements 
 
 ## Aim 1: Policy impacts and potential mediation
 
-- Impact of policy on PM mass
+### Impact of policy on PM mass
+
 The treatment effects on 24-h and seasonal outdoor (local community-level) PM2.5 were statistically nonsignificant, including after adjusting for covariates (i.e., temperature, relative humidity, wind speed, boundary layer height, wind direction, and the mean quantity of wood burned in each village).
+
+
 
 In estimating the treatment effect on indoor and outdoor air pollution, we evaluated both 24-h mean values (specifically, the same 24-h period when personal exposure samples were collected in each village) and seasonal mean values (with ‘season’ defined from Jan. 15th to Mar. 15th) of PM2.5 data collected in each village. For estimating the treatment effect on personal exposure to PM2.5 and black carbon (BC), the results from the filter-based measurements that were collected for a 24-h period were used for analysis.
  

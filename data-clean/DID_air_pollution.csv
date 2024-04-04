@@ -1,0 +1,13 @@
+﻿Pollutant,Category,Effect,Estimate,CI_low,CI_upper
+BC,Personal,DiD,-0.447745,-1.850686,0.955196
+BC,Personal,Adjusted DiD,-0.446882,-1.809724,0.91596002
+PM2.5,Personal,DiD,2.13902,-31.3946,35.67264
+PM2.5,Personal,Adjusted DiD,6.99885,-21.282363,35.280061
+Daily,Indoor,DiD,-37.9676,-74.79326,-1.142004
+Daily,Indoor,Adjusted DiD,-31.16937,-63.982661,1.6439183
+Seasonal,Indoor,DiD,-38.966,-55.28711,-22.64486
+Seasonal,Indoor,Adjusted DiD,-37.72305,-54.00907,-21.437029
+Daily,Outdoor,DiD,-0.11,-5.86,5.64
+Daily,Outdoor,Adjusted DiD,-1.73,-9.26,5.81
+Seasonal,Outdoor,DiD,3.14,-3.1,9.38
+Seasonal,Outdoor,Adjusted DiD,0.358,-6.27,6.99

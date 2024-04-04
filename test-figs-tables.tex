@@ -132,6 +132,7 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
+\usepackage{wrapfig}
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \makeatother
@@ -207,136 +208,112 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, enhanced, interior hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners, frame hidden, boxrule=0pt]}{\end{tcolorbox}}\fi
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(here)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-here() starts at /Users/samharper/git/bhet-report
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"images"}\NormalTok{, }\StringTok{"coal{-}plot.png"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=14in,height=\textheight]{images/coal-plot.png}
-
-}
-
-\end{figure}
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, frame hidden, enhanced, breakable, borderline west={3pt}{0pt}{shadecolor}, sharp corners, interior hidden]}{\end{tcolorbox}}\fi
 
 Read in data
 
 Make a table
 
-\hypertarget{tbl-table1}{}
 \begin{table}
-\caption{\label{tbl-table1}Summary: Numeric variables }\tabularnewline
 
-\centering\centering
-\fontsize{9}{11}\selectfont
-\begin{tabular}[t]{rrrrrrr}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Never treated (N=603)} & \multicolumn{2}{c}{Ever treated (N=400)} & \multicolumn{2}{c}{ } \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
-  & Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error\\
-\midrule
-\textbf{Demographics:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
-Age (years) & 59.9 & 9.4 & 60.4 & 9.2 & 0.5 & 0.6\\
-Female (\%) & 59.5 & 49.1 & 59.1 & 49.2 & -0.4 & 3.2\\
-No education (\%) & 11.5 & 31.9 & 12.3 & 32.9 & 0.9 & 2.1\\
-Primary education (\%) & 75.5 & 43.0 & 77.6 & 41.7 & 2.1 & 2.8\\
-Secondary+ education (\%) & 12.6 & 33.2 & 9.8 & 29.7 & -2.9 & 2.0\\
-\textbf{Health measures:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
-Never smoker (\%) & 61.9 & 48.6 & 59.5 & 49.1 & -2.4 & 3.2\\
-Former smoker (\%) & 11.9 & 32.4 & 15.1 & 35.8 & 3.2 & 2.2\\
-Current smoker (\%) & 26.2 & 44.0 & 25.4 & 43.6 & -0.8 & 2.8\\
-Never drinker (\%) & 55.9 & 49.7 & 52.5 & 50.0 & -3.4 & 3.2\\
-Occasional drinker (\%) & 26.0 & 43.9 & 25.5 & 43.6 & -0.5 & 2.8\\
-Daily drinker (\%) & 17.8 & 38.3 & 21.9 & 41.4 & 4.1 & 2.6\\
-Systolic (mmHg) & 131.4 & 16.8 & 128.7 & 14.3 & -2.7 & 1.0\\
-Diastolic (mmHg) & 82.7 & 11.6 & 82.1 & 11.3 & -0.6 & 0.8\\
-Waist circumference (cm) & 87.7 & 10.5 & 85.4 & 9.5 & -2.3 & 0.8\\
-Body mass index (kg/m2) & 26.3 & 3.7 & 25.8 & 3.6 & -0.5 & 0.3\\
-Frequency of coughing (\%) & 18.7 & 39.0 & 19.7 & 39.8 & 1.0 & 2.6\\
-Frequency of wheezing (\%) & 6.2 & 24.2 & 6.6 & 24.8 & 0.3 & 1.6\\
-Shortness of breath (\%) & 29.2 & 45.5 & 34.3 & 47.5 & 5.1 & 3.0\\
-Chest trouble (\%) & 11.6 & 32.0 & 14.1 & 34.9 & 2.5 & 2.2\\
-Any respiratory problem (\%) & 50.6 & 50.0 & 54.3 & 49.9 & 3.7 & 3.2\\
-\textbf{Environmental measures:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
-Temperature (°C) & 13.8 & 3.6 & 13.5 & 3.3 & -0.3 & 0.2\\
-Personal PM2.5 (ug/m3) & 150.2 & 300.3 & 103.8 & 107.3 & -46.3 & 19.1\\
-\bottomrule
-\multicolumn{7}{l}{\rule{0pt}{1em}Includes all individuals sampled at each of 3 waves.}\\
-\end{tabular}
 \end{table}
 
-See Table~\ref{tbl-table1} for details.
+See \textbf{?@tbl-table1} for details.
 
 Now try for the kable version:
 
-\hypertarget{tbl-table2}{}
 \begin{table}
-\caption{\label{tbl-table2}Summary: Numeric variables using kableExtra }\tabularnewline
 
-\centering\centering
-\fontsize{9}{11}\selectfont
-\begin{tabular}[t]{rrrrrrr}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Never treated (N=603)} & \multicolumn{2}{c}{Ever treated (N=400)} & \multicolumn{2}{c}{ } \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
-  & Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error\\
-\midrule
-\textbf{Demographics:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
-Age (years) & 59.9 & 9.4 & 60.4 & 9.2 & 0.5 & 0.6\\
-Female (\%) & 59.5 & 49.1 & 59.1 & 49.2 & -0.4 & 3.2\\
-No education (\%) & 11.5 & 31.9 & 12.3 & 32.9 & 0.9 & 2.1\\
-Primary education (\%) & 75.5 & 43.0 & 77.6 & 41.7 & 2.1 & 2.8\\
-Secondary+ education (\%) & 12.6 & 33.2 & 9.8 & 29.7 & -2.9 & 2.0\\
-\textbf{Health measures:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
-Never smoker (\%) & 61.9 & 48.6 & 59.5 & 49.1 & -2.4 & 3.2\\
-Former smoker (\%) & 11.9 & 32.4 & 15.1 & 35.8 & 3.2 & 2.2\\
-Current smoker (\%) & 26.2 & 44.0 & 25.4 & 43.6 & -0.8 & 2.8\\
-Never drinker (\%) & 55.9 & 49.7 & 52.5 & 50.0 & -3.4 & 3.2\\
-Occasional drinker (\%) & 26.0 & 43.9 & 25.5 & 43.6 & -0.5 & 2.8\\
-Daily drinker (\%) & 17.8 & 38.3 & 21.9 & 41.4 & 4.1 & 2.6\\
-Systolic (mmHg) & 131.4 & 16.8 & 128.7 & 14.3 & -2.7 & 1.0\\
-Diastolic (mmHg) & 82.7 & 11.6 & 82.1 & 11.3 & -0.6 & 0.8\\
-Waist circumference (cm) & 87.7 & 10.5 & 85.4 & 9.5 & -2.3 & 0.8\\
-Body mass index (kg/m2) & 26.3 & 3.7 & 25.8 & 3.6 & -0.5 & 0.3\\
-\textbf{Environmental measures:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
-Temperature (°C) & 13.8 & 3.6 & 13.5 & 3.3 & -0.3 & 0.2\\
-Personal PM\textasciitilde{}2.5\textasciitilde{} (ug/m3) & 150.2 & 300.3 & 103.8 & 107.3 & -46.3 & 19.1\\
-\bottomrule
-\multicolumn{7}{l}{\rule{0pt}{1em}Includes all individuals sampled at each of 3 waves}\\
-\end{tabular}
 \end{table}
-
-Let's see if we can refer to Table~\ref{tbl-table2} for this version.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{bp }\OtherTok{\textless{}{-}} \FunctionTok{read\_xlsx}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"data{-}clean"}\NormalTok{, }
-                     \StringTok{"overall\_effects{-}table{-}2024Mar26.xlsx"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{select}\NormalTok{(term)}
+\NormalTok{apdid }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"data{-}clean"}\NormalTok{, }
+  \StringTok{"DID\_air\_pollution.csv"}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Rows: 12 Columns: 6
+-- Column specification --------------------------------------------------------
+Delimiter: ","
+chr (3): Pollutant, Category, Effect
+dbl (3): Estimate, CI_low, CI_upper
+
+i Use `spec()` to retrieve the full column specification for this data.
+i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{apdidt }\OtherTok{\textless{}{-}}\NormalTok{ apdid }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ Effect, }\AttributeTok{values\_from =} \FunctionTok{c}\NormalTok{(Estimate, CI\_low, CI\_upper), }\AttributeTok{names\_vary =} \StringTok{"slowest"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{Category)}
+
+\FunctionTok{kable}\NormalTok{(apdidt, }\AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+  \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Outcome"}\NormalTok{, }\StringTok{"Estimate"}\NormalTok{, }\StringTok{"LL"}\NormalTok{, }\StringTok{"UL"}\NormalTok{, }
+   \StringTok{"Estimate"}\NormalTok{, }\StringTok{"LL"}\NormalTok{, }\StringTok{"UL"}\NormalTok{), }\StringTok{"latex"}\NormalTok{, }\AttributeTok{booktabs =}\NormalTok{ T,}
+  \AttributeTok{linesep =} \StringTok{""}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_header\_above}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{" "} \OtherTok{=} \DecValTok{1}\NormalTok{, }
+                     \StringTok{"DiD"} \OtherTok{=} \DecValTok{3}\NormalTok{, }\StringTok{"Adjusted DiD"} \OtherTok{=} \DecValTok{3}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{table}
-
-\caption{\textbf{?(caption)}}
-
+\centering
+\begin{tabular}{lrrrrrr}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{DiD} & \multicolumn{3}{c}{Adjusted DiD} \\
+\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
+Outcome & Estimate & LL & UL & Estimate & LL & UL\\
+\midrule
+BC & -0.45 & -1.85 & 0.96 & -0.45 & -1.81 & 0.92\\
+PM2.5 & 2.14 & -31.39 & 35.67 & 7.00 & -21.28 & 35.28\\
+Daily & -37.97 & -74.79 & -1.14 & -31.17 & -63.98 & 1.64\\
+Seasonal & -38.97 & -55.29 & -22.64 & -37.72 & -54.01 & -21.44\\
+Daily & -0.11 & -5.86 & 5.64 & -1.73 & -9.26 & 5.81\\
+Seasonal & 3.14 & -3.10 & 9.38 & 0.36 & -6.27 & 6.99\\
+\bottomrule
+\end{tabular}
 \end{table}
 
-Now see \textbf{?@tbl-2}.
+\newpage
+
+Some text that should go beside the figure here.
+
+\includegraphics{images/policy-implementation-map.png}
+
+\newpage
+
+The source profiles for the four-factor solution are presented in Figure
+X. The first source was identified as dust by high percentages of
+crustal elements like wi-Ca, Si, and wi-Mg. The second source was
+constituted of non-sulfate sulfur as well as secondary inorganic ions
+(ammonium, nitrate, and sulfate). Non-sulfate sulfur is a tracer for
+primary coal combustion, while secondary inorganic ions indicate a
+secondary source. Since coal combustion is a major source of energy in
+our study area, it is likely that the second source is a mixture of
+primary and secondary emissions that originate from coal and other
+sulfurous fuel combustion.
+
+\begin{wrapfigure}{R}{0.7\textwidth}
+\includegraphics[width=0.7\textwidth]{images/policy-implementation-map.png}
+\caption{Google scholar metrics}
+\end{wrapfigure}
+
+Additionally, the mean source contribution of the second source is
+higher in outdoor than personal exposure measurements. Secondary
+formation occurs outdoors in the presence of sunlight, so higher outdoor
+concentrations compared to personal exposure further support our naming
+the second source and sulfur secondary. The third source had high
+percentages of ws-Ca nd Al, which in our study region, has been found to
+be indicative of transported dust from dust storms that can occur in the
+spring. While our samples were collected during winter months only, it
+is possible that transported dust from previous years still remained.
+The fourth source was characterized by high percentages of tracers for
+both coal (OC, wi-K, chloride, Pb) and biomass combustion (EC, ws-K).
+Coal and biomass combustion is common in our study setting so this
+source is likely a mixture of the two combustion sources.
 
 
 

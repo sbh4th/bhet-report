@@ -1,0 +1,129 @@
+,status,source,target,values
+1,Overall,0,4,13
+2,Overall,0,5,2
+3,Overall,0,6,2
+4,Overall,0,7,0
+5,Overall,1,4,5
+6,Overall,1,5,20
+7,Overall,1,6,1
+8,Overall,1,7,2
+9,Overall,2,4,41
+10,Overall,2,5,91
+11,Overall,2,6,359
+12,Overall,2,7,69
+13,Overall,3,4,17
+14,Overall,3,5,31
+15,Overall,3,6,129
+16,Overall,3,7,76
+17,Overall,4,8,35
+18,Overall,4,9,71
+19,Overall,4,10,15
+20,Overall,4,11,7
+21,Overall,5,8,36
+22,Overall,5,9,118
+23,Overall,5,10,2
+24,Overall,5,11,0
+25,Overall,6,8,85
+26,Overall,6,9,91
+27,Overall,6,10,299
+28,Overall,6,11,15
+29,Overall,7,8,24
+30,Overall,7,9,29
+31,Overall,7,10,71
+32,Overall,7,11,26
+1,Untreated,0,4,12
+2,Untreated,0,5,2
+3,Untreated,0,6,2
+4,Untreated,0,7,0
+5,Untreated,1,4,5
+6,Untreated,1,5,7
+7,Untreated,1,6,1
+8,Untreated,1,7,2
+9,Untreated,2,4,8
+10,Untreated,2,5,3
+11,Untreated,2,6,272
+12,Untreated,2,7,46
+13,Untreated,3,4,4
+14,Untreated,3,5,3
+15,Untreated,3,6,94
+16,Untreated,3,7,56
+17,Untreated,4,8,28
+18,Untreated,4,9,2
+19,Untreated,4,10,7
+20,Untreated,4,11,0
+21,Untreated,5,8,4
+22,Untreated,5,9,10
+23,Untreated,5,10,1
+24,Untreated,5,11,0
+25,Untreated,6,8,51
+26,Untreated,6,9,15
+27,Untreated,6,10,291
+28,Untreated,6,11,15
+29,Untreated,7,8,11
+30,Untreated,7,9,4
+31,Untreated,7,10,65
+32,Untreated,7,11,25
+1,Treated in S2,0,4,0
+2,Treated in S2,0,5,0
+3,Treated in S2,0,6,0
+4,Treated in S2,0,7,0
+5,Treated in S2,1,4,0
+6,Treated in S2,1,5,6
+7,Treated in S2,1,6,0
+8,Treated in S2,1,7,0
+9,Treated in S2,2,4,29
+10,Treated in S2,2,5,87
+11,Treated in S2,2,6,9
+12,Treated in S2,2,7,2
+13,Treated in S2,3,4,11
+14,Treated in S2,3,5,27
+15,Treated in S2,3,6,3
+16,Treated in S2,3,7,1
+17,Treated in S2,4,8,35
+18,Treated in S2,4,9,12
+19,Treated in S2,4,10,0
+20,Treated in S2,4,11,0
+21,Treated in S2,5,8,32
+22,Treated in S2,5,9,97
+23,Treated in S2,5,10,1
+24,Treated in S2,5,11,0
+25,Treated in S2,6,8,4
+26,Treated in S2,6,9,1
+27,Treated in S2,6,10,4
+28,Treated in S2,6,11,0
+29,Treated in S2,7,8,1
+30,Treated in S2,7,9,1
+31,Treated in S2,7,10,1
+32,Treated in S2,7,11,0
+1,Treated in S4,0,4,1
+2,Treated in S4,0,5,0
+3,Treated in S4,0,6,0
+4,Treated in S4,0,7,0
+5,Treated in S4,1,4,0
+6,Treated in S4,1,5,7
+7,Treated in S4,1,6,0
+8,Treated in S4,1,7,0
+9,Treated in S4,2,4,4
+10,Treated in S4,2,5,1
+11,Treated in S4,2,6,78
+12,Treated in S4,2,7,21
+13,Treated in S4,3,4,2
+14,Treated in S4,3,5,1
+15,Treated in S4,3,6,32
+16,Treated in S4,3,7,19
+17,Treated in S4,4,8,8
+18,Treated in S4,4,9,1
+19,Treated in S4,4,10,0
+20,Treated in S4,4,11,0
+21,Treated in S4,5,8,0
+22,Treated in S4,5,9,7
+23,Treated in S4,5,10,0
+24,Treated in S4,5,11,0
+25,Treated in S4,6,8,30
+26,Treated in S4,6,9,75
+27,Treated in S4,6,10,4
+28,Treated in S4,6,11,0
+29,Treated in S4,7,8,12
+30,Treated in S4,7,9,24
+31,Treated in S4,7,10,5
+32,Treated in S4,7,11,1

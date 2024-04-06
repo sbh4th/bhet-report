@@ -1,0 +1,73 @@
+,status,source,target,values
+1,Overall,0,3,40
+2,Overall,0,4,3
+3,Overall,0,5,2
+4,Overall,1,3,132
+5,Overall,1,4,359
+6,Overall,1,5,69
+7,Overall,2,3,48
+8,Overall,2,4,129
+9,Overall,2,5,76
+10,Overall,3,6,240
+11,Overall,3,7,9
+12,Overall,3,8,0
+13,Overall,4,6,176
+14,Overall,4,7,299
+15,Overall,4,8,15
+16,Overall,5,6,53
+17,Overall,5,7,71
+18,Overall,5,8,26
+1,Untreated,0,3,26
+2,Untreated,0,4,3
+3,Untreated,0,5,2
+4,Untreated,1,3,11
+5,Untreated,1,4,272
+6,Untreated,1,5,46
+7,Untreated,2,3,7
+8,Untreated,2,4,94
+9,Untreated,2,5,56
+10,Untreated,3,6,44
+11,Untreated,3,7,8
+12,Untreated,3,8,0
+13,Untreated,4,6,66
+14,Untreated,4,7,291
+15,Untreated,4,8,15
+16,Untreated,5,6,15
+17,Untreated,5,7,65
+18,Untreated,5,8,25
+1,Treated in S2,0,3,6
+2,Treated in S2,0,4,0
+3,Treated in S2,0,5,0
+4,Treated in S2,1,3,116
+5,Treated in S2,1,4,9
+6,Treated in S2,1,5,2
+7,Treated in S2,2,3,38
+8,Treated in S2,2,4,3
+9,Treated in S2,2,5,1
+10,Treated in S2,3,6,176
+11,Treated in S2,3,7,1
+12,Treated in S2,3,8,0
+13,Treated in S2,4,6,5
+14,Treated in S2,4,7,4
+15,Treated in S2,4,8,0
+16,Treated in S2,5,6,2
+17,Treated in S2,5,7,1
+18,Treated in S2,5,8,0
+1,Treated in S4,0,3,8
+2,Treated in S4,0,4,0
+3,Treated in S4,0,5,0
+4,Treated in S4,1,3,5
+5,Treated in S4,1,4,78
+6,Treated in S4,1,5,21
+7,Treated in S4,2,3,3
+8,Treated in S4,2,4,32
+9,Treated in S4,2,5,19
+10,Treated in S4,3,6,20
+11,Treated in S4,3,7,0
+12,Treated in S4,3,8,0
+13,Treated in S4,4,6,105
+14,Treated in S4,4,7,4
+15,Treated in S4,4,8,0
+16,Treated in S4,5,6,36
+17,Treated in S4,5,7,5
+18,Treated in S4,5,8,1

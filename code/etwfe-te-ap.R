@@ -313,5 +313,8 @@ example_attgt <- att_gt(yname = "mipm",
 summary(example_attgt)
 aggte(example_attgt, type = "group")
 
+mstest <- mstest %>% 
+modelsummary(mstest, shape = cohort_year + year ~ model, estimate = "{estimate} [{conf.low}, {conf.high}]",
+  statistic = NULL, gof_map = "nobs", notes = paste("Joint test that all ATTs are equal: ", m_ppm$ht1$p.value))
 
 

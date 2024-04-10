@@ -207,21 +207,26 @@ library(kableExtra)
 ap_table <- read_rds(here("data-clean", 
   "ap-did-table.rds")) 
 
-# respiratory results
-r_table <- read_rds(here("data-clean",
-  "resp-did.rds"))
+# temperature results
+# temp_table <- read_rds(here("data-clean",
+  # "resp-did.rds"))
+temp_table <- tibble(
+  category = "Point temp", outcome = "Mean", estimate_1 = 1.96,
+  ci_1 = "(0.96, 2.96)", estimate_2 = NA, 
+  ci_2 = " "
+)
 
 # join tables
-o_table <- bind_rows(ap_table, r_table)
+m_table <- bind_rows(ap_table, temp_table)
 
-kable(o_table,  digits = 2,
+kable(m_table,  digits = 2,
   col.names = c(" ", " ", "Estimate", "(95% CI)", 
    "Estimate", "(95% CI)"), "latex", booktabs = T,
   linesep = "", align = 'llcccc') %>%
   kable_styling(full_width = F) %>%
   collapse_rows(columns = 1:2, valign = "top") %>% 
   pack_rows("Air pollution (µg/m3)", 1, 6) %>%
-  pack_rows("Respiratory (percentage points)", 7, 12) %>%
+  pack_rows("Indoor temperature", 7, 7) %>%
   add_header_above(c(" " = 2, 
     "DiD" = 2, "Adjusted DiD*" = 2)) %>%
   footnote(symbol = "Footnote A")
@@ -264,8 +269,20 @@ feno_table <- tibble(
   ci_2 = "(-2.13, 3.13)"
 )
 
+inf_table <- tibble(
+  category = " ", 
+  outcome = c("IL6", "TNF-alpha",	"CRP",	"MDA"),
+  estimate_1 = c(6.8, 24.3, 2.7, 7.6),
+  ci_1 = c("(-12.2, 30.0)", "(-1.3, 56.4)", 
+           "(-19.8, 31.6)", "(-8.7, 26.9)"),
+  estimate_2 = c(5.9, 24.7, 3.8, 6.5),
+  ci_2 = c("(-13.8, 30.2)", "(-0.9, 54.2)", 
+           "(-19.4, 33.6)", "(-9.7, 25.5)")
+)
+
 # join tables
-op_table <- bind_rows(bp_policy_t, r_table, feno_table)
+op_table <- bind_rows(bp_policy_t, r_table, 
+ feno_table, inf_table)
 
 kable(op_table,  digits = 2,
   col.names = c(" ", " ", "Estimate", "(95% CI)", 
@@ -274,7 +291,8 @@ kable(op_table,  digits = 2,
   kable_styling(full_width = F) %>%
   collapse_rows(columns = 1:2, valign = "top") %>% 
   pack_rows("Blood pressure (mmHg)", 1, 8) %>%
-  pack_rows("Respiratory", 9, 15) %>%
+  pack_rows("Respiratory\noutcomes", 9, 15) %>%
+  pack_rows("Inflammatory\nmarkers (%)", 16, 19) %>%
   add_header_above(c(" " = 2, 
     "DiD" = 2, "Adjusted DiD*" = 2)) %>%
   footnote(general = "pp = percentage points, ppb = parts per billion",

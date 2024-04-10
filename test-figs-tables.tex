@@ -168,7 +168,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, enhanced, breakable, boxrule=0pt, sharp corners, frame hidden, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, boxrule=0pt, frame hidden, interior hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, sharp corners]}{\end{tcolorbox}}\fi
 
 Read in data
 
@@ -271,18 +271,8 @@ Another DiD table
 \multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Outdoor} & Seasonal & 3.14 & (-3.1, 9.38) & 0.36 & (-6.27, 6.99)\\
 \cmidrule{1-6}
 \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Respiratory (percentage points)}}\\
-\hspace{1em} & Any symptom & -7.38 & (-13.98, -0.77) & -7.86 & (-14.63, -1.09)\\
-\cmidrule{2-6}
-\hspace{1em} & Coughing & -1.59 & (-6.41, 3.23) & -1.98 & (-6.8, 2.84)\\
-\cmidrule{2-6}
-\hspace{1em} & Phlegm & -1.22 & (-5.58, 3.15) & -1.82 & (-6.34, 2.69)\\
-\cmidrule{2-6}
-\hspace{1em} & Wheezing attacks & -0.22 & (-3.97, 3.52) & -0.14 & (-3.85, 3.57)\\
-\cmidrule{2-6}
-\hspace{1em} & Trouble breathing & -4.98 & (-11.81, 1.84) & -4.62 & (-11.59, 2.35)\\
-\cmidrule{2-6}
-\multirow[t]{-6}{*}[5\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Self-reported (pp)} & Chest trouble & -6.63 & (-12.51, -0.76) & -6.36 & (-12.14, -0.59)\\
+\multicolumn{6}{l}{\textbf{Indoor temperature}}\\
+\hspace{1em}Point temp & Mean & 1.96 & (0.96, 2.96) & NA & \\
 \bottomrule
 \multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{*} Footnote A}\\
 \end{tabular}
@@ -317,7 +307,7 @@ See Table~\ref{tbl-table3} for more.
 \multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash BP Amplification x10} & Systolic BP & 0.20 & (-0.20, 0.50) & 0.10 & (-0.20, 0.40)\\
 \cmidrule{1-6}
 \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Respiratory}}\\
+\multicolumn{6}{l}{\textbf{\makecell[l]{Respiratory\\outcomes}}}\\
 \hspace{1em} & Any symptom & -7.38 & (-13.98, -0.77) & -7.86 & (-14.63, -1.09)\\
 \cmidrule{2-6}
 \hspace{1em} & Coughing & -1.59 & (-6.41, 3.23) & -1.98 & (-6.8, 2.84)\\
@@ -331,6 +321,16 @@ See Table~\ref{tbl-table3} for more.
 \multirow[t]{-6}{*}[5\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Self-reported (pp)} & Chest trouble & -6.63 & (-12.51, -0.76) & -6.36 & (-12.14, -0.59)\\
 \cmidrule{1-6}
 \hspace{1em}Measured & FeNO (ppb) & 0.17 & (-2.24, 2.58) & 0.55 & (-2.13, 3.13)\\
+\cmidrule{1-6}
+\addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{\makecell[l]{Inflammatory\\markers (\%)}}}\\
+\hspace{1em} & IL6 & 6.80 & (-12.2, 30.0) & 5.90 & (-13.8, 30.2)\\
+\cmidrule{2-6}
+\hspace{1em} & TNF-alpha & 24.30 & (-1.3, 56.4) & 24.70 & (-0.9, 54.2)\\
+\cmidrule{2-6}
+\hspace{1em} & CRP & 2.70 & (-19.8, 31.6) & 3.80 & (-19.4, 33.6)\\
+\cmidrule{2-6}
+\multirow[t]{-4}{*}[3\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash } & MDA & 7.60 & (-8.7, 26.9) & 6.50 & (-9.7, 25.5)\\
 \bottomrule
 \multicolumn{6}{l}{\rule{0pt}{1em}\textit{Note: } pp = percentage points, ppb = parts per billion}\\
 \multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{*} List of adjustments...}\\

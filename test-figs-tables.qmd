@@ -197,7 +197,92 @@ kable(apdidt, digits = 2,
 #  pack_rows("Outdoor PM (µg/m3)", 6, 7)
 ```
 
+Another DiD table
+```{r ap-did-table, echo=F, message=F, warning=F}
+library(tidyverse)
+library(here)
+library(kableExtra)
+
+# air pollution results
+ap_table <- read_rds(here("data-clean", 
+  "ap-did-table.rds")) 
+
+# respiratory results
+r_table <- read_rds(here("data-clean",
+  "resp-did.rds"))
+
+# join tables
+o_table <- bind_rows(ap_table, r_table)
+
+kable(o_table,  digits = 2,
+  col.names = c(" ", " ", "Estimate", "(95% CI)", 
+   "Estimate", "(95% CI)"), "latex", booktabs = T,
+  linesep = "", align = 'llcccc') %>%
+  kable_styling(full_width = F) %>%
+  collapse_rows(columns = 1:2, valign = "top") %>% 
+  pack_rows("Air pollution (µg/m3)", 1, 6) %>%
+  pack_rows("Respiratory (percentage points)", 7, 12) %>%
+  add_header_above(c(" " = 2, 
+    "DiD" = 2, "Adjusted DiD*" = 2)) %>%
+  footnote(symbol = "Footnote A")
+```
+
 See @tbl-table3 for more.
+
+```{r bp-resp-table, echo=F, message=F, warning=F}
+library(tidyverse)
+library(here)
+library(kableExtra)
+
+# bp results from Talia
+bp_policy_t <- tibble(
+  category = rep(c("Systolic BP", "Diastolic BP", 
+    "Pulse Pressure", "BP Amplification x10"), each=2),
+  outcome = c("Brachial","Central","Brachial",
+    "Central", "Brachial","Central", "Pulse pressure",
+    "Systolic BP"),
+  estimate_1 = c(-0.79, -1.04, -1.29, -1.35, 0.5,
+    0.31, 0.1, 0.2),
+  ci_1 = c("(-2.63, 1.04)", "(-2.82, 0.73)",
+    "(-2.62, 0.04)", "(-2.66, 0.04)", "(-0.71, 1.70)",
+    "(-0.85, 1.46)", "(-0.12, 1.40)", "(-0.20, 0.50)"),
+  estimate_2 = c(-1.4, -1.56, -1.60, -1.66, 0.21,
+    0.10, 0.00, 0.10),
+  ci_2 = c("(-3.31, 0.51)", "(-3.40, 0.28)",
+    "(-2.96, -0.25)", "(-2.97, -0.34)", "(-1.00, 1.41)",
+    "(-1.01, 1.20)", "(-1.20, 1.20)", "(-0.20, 0.40)")
+)
+
+# respiratory results
+r_table <- read_rds(here("data-clean",
+  "resp-did.rds"))
+
+# FeNO results
+feno_table <- tibble(
+  category = "Measured", outcome = "FeNO (ppb)", estimate_1 = 0.17,
+  ci_1 = "(-2.24, 2.58)", estimate_2 = 0.55, 
+  ci_2 = "(-2.13, 3.13)"
+)
+
+# join tables
+op_table <- bind_rows(bp_policy_t, r_table, feno_table)
+
+kable(op_table,  digits = 2,
+  col.names = c(" ", " ", "Estimate", "(95% CI)", 
+   "Estimate", "(95% CI)"), "latex", booktabs = T,
+  linesep = "", align = 'llcccc') %>%
+  kable_styling(full_width = F) %>%
+  collapse_rows(columns = 1:2, valign = "top") %>% 
+  pack_rows("Blood pressure (mmHg)", 1, 8) %>%
+  pack_rows("Respiratory", 9, 15) %>%
+  add_header_above(c(" " = 2, 
+    "DiD" = 2, "Adjusted DiD*" = 2)) %>%
+  footnote(general = "pp = percentage points, ppb = parts per billion",
+    symbol = "List of adjustments...", footnote_as_chunk = T)
+```
+
+
+```
 
 \newpage
 

@@ -200,7 +200,7 @@ of the BHET Team}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, interior hidden, breakable, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, enhanced, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, frame hidden, enhanced, borderline west={3pt}{0pt}{shadecolor}, breakable, boxrule=0pt, sharp corners]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -1384,20 +1384,36 @@ respiratory outcomes, and inflammatory markers }\tabularnewline
 \end{tabular}
 \end{table}
 
-Table~\ref{tbl-did-health} shows the impacts of the policy in basic
-ETWFE models and models further adjusted for age, sex, waist
-circumference, smoking, alcohol consumption, and use of blood pressure
-medication. Overall exposure to the CBHP policy demonstrated reductions
-in blood pressure of approximately 1.5mmHg on systolic and diastolic BP,
-but we found little evidence of a meaningful impact on pulse pressure or
-BP amplification.
+Table~\ref{tbl-did-health} shows the impacts of the policy on blood
+pressure in basic ETWFE models and models further adjusted for age, sex,
+waist circumference, smoking, alcohol consumption, and use of blood
+pressure medication. Overall exposure to the CBHP policy demonstrated
+reductions in blood pressure of approximately 1.5 mmHg systolic and
+diastolic BP, but we found little evidence of a meaningful impact on
+pulse pressure or BP amplification. The effects on brachial and central
+blood pressures were similar.
 
-Table~\ref{tbl-did-health} also shows the impacts on respiratory
-outcomes. In both basic and covariate-adjusted ETWFE models we found
-that exposure to the CBHP policy reduced self-reports of any poor
+Table~\ref{tbl-did-health} shows the impacts on self-reported chronic
+respiratory symptoms categorized as any symptoms and separately for each
+individual symptom type. In both basic and covariate-adjusted ETWFE
+models, exposure to the CBHP policy reduced self-report of any poor
 respiratory symptoms by around 7 percentage points. This was largely
 through reductions in reports of having chest trouble or difficulty
-breathing several or most days of the week.
+breathing on several or most days of the week.
+
+Table~\ref{tbl-did-health} shows the impacts of the CBHP on measured
+airway inflammation (FeNO), which was conducted in a sub-sample of 511
+participants, including 274 participants with one measurement, 142 with
+two measurements, 95 participants with 3 measurements. We did not find
+evidence that exposure to the policy affected changes in FeNO in the
+covariate-adjusted ETWFE model (0.5 ppb, 95\%CI: -2.1, 3.1) (Table X).
+There was some evidence of heterogeneity in the FeNO effects of the
+policy by treatment cohort{[}h{]} but the confidence intervals for each
+of the cohort-specific effects were large and overlapping. Our results
+did not change with sensitivity analyses that included a log-transformed
+FeNO outcome and limiting the analysis to participants with at least two
+repeated measurements and to those who participated in all three
+campaigns (SI Table X)
 
 \hypertarget{mediated-impact-on-blood-pressure}{%
 \subsection{Mediated impact on blood
@@ -1405,14 +1421,13 @@ pressure}\label{mediated-impact-on-blood-pressure}}
 
 As noted above, we aimed to assess whether any health impacts of the
 CBHP policy may work specifically through pathways involving changes in
-PM\textsubscript{2.5} and indoor temperature. Below we show in results
-from several mediation models. We evaluated potential mediation for each
+PM\textsubscript{2.5} and indoor temperature. Below we show results from
+several mediation models. We evaluated potential mediation for each
 mediator separately and in a single model accounting for multiple
 mediators, and we set the values of both mediators to the WHO mean
 annual interim PM\textsubscript{2.5} and indoor temperature guidelines.
-Given that we did not find evidence of any policy impact on BP outcomes
-other than systolic and diastolic BP, we did not undertake mediation
-analysis for other outcomes. In Table~\ref{tbl-bp-med} we show that
+For mediation analysis, we focused on BP outcomes for which we observed
+an effect of the policy. In Table~\ref{tbl-bp-med} we show that
 conditioning on indoor PM and indoor temperature largely explains the
 entire total effect of the CBHP policy on blood pressure for systolic
 BP, and roughly half of the total effect for diastolic BP.
@@ -1440,34 +1455,67 @@ Central DBP & -1.66 (-2.97, -0.34) & -1.31 (-2.81, 0.19) & -1.08 (-2.48, 0.32) &
 \subsection{Aim 2: Source
 contributions}\label{aim-2-source-contributions}}
 
-The model diagnostics for the 3 to 6-factor PMF solutions are given in
-Figure~\ref{fig-source-table}. Model fit was assessed using Q/Qexp (how
-our model fit divided by the expected fit). As the change in Q/Qexp
-decreases as more factors are added, the model may be fitting additional
-sources that do not improve the overall fit. The largest change in
-Q/Qexp was from 3 to 4 sources (6.24 to 5.37) while the changes moving
-from 4 to 5 and 5 to 6 are similar which suggests that 4 factors is
-sufficient to explain the variation in our data. We assessed the random
-error in our model by randomly sampling blocks of data, fitting new
-models with the blocks, and comparing how the source profiles compared
-to that of the original model (BS mapping). The 3 and 4 factor solutions
-had high BS mapping (all factors found in \textgreater{} 96.5\% of
-bootstrap runs). The additional sources identified in the 5 (lead) and 6
-(chloride) factor solutions have low bootstrap mapping (\textgreater{}
-72\%) which means those solutions are not as consistent as the 3 and 4
-factor solutions. The possibility that multiple, different, solutions
-could result in the same Q value was assessed using displacement. The
-displacement approach takes the original factor profiles and modifies
-the values for each species up or down to maintain a small change in Q,
-reruns the solution with the new species values, then compares the
-profiles of the new model to the original. Any swaps indicate that small
-changes in the species values could result in factor profiles that look
-different from the original solution, and that the original solution is
-unstable. None of the factors in any of the solutions discussed were
-swapped during displacement which indicates that all of the potential
-solutions are stable. Based on the Q/Qexp, BS mapping, and
-interpretability of the factors, the 4 factor solution was chosen for
-this dataset.
+We first performed descriptive analyses (range, mean, standard
+deviation, median, and interquartile range) for community-outdoor,
+indoor, and personal exposure to air pollution, by data collection
+campaign, by village, and by households within villages. We evaluated
+factors contributing to PM\textsubscript{2.5} (community-outdoor and
+personal exposure) using the U.S. EPA's source apportionment model PMF
+(positive matrix factorization) 5.0, which has been widely used for
+similar analyses in China (Gao et al.~2018; Liu et al.~2017; Tao et
+al.~2017). As an optimum PMF result depends on the appropriate number of
+input factors, sensitivity analysis using a range of factors (range of 3
+to 7 factors, based on a combination of the species that we have and our
+field-based observations and sources that have been identified
+previously in our study region) were conducted to examine the impact of
+a different number of factors on the model results. Detailed information
+on the procedures of PMF analysis can be found elsewhere (Wang et
+al.~2016; Zíková et al.~2016). Based on the scree plot from our
+principal component analysis indicated that solutions of between 3 and 5
+factors (+/- 1) would be most appropriate, further supporting our
+evaluation of 3 to 6 factor solutions from PMF. There was no indication
+(Table X) that even moving from five factors to six factors would
+improve our solution; therefore, a seven factor solution would not make
+sense to investigate further.
+
+For our analysis, we additionally applied recently developed methods
+that account for the impact of meteorological conditions in the PMF
+analysis. This new approach is referred to as dispersion-normalized (DN)
+PMF. Essentially, this approach scales \ldots{[}i{]}
+
+Source analysis for this study was conducted using data from all
+eligible outdoor PM and personal PM samples. Eligible samples were
+defined as \ldots{}
+
+The model diagnostics for the three- to six-factor PMF solutions are
+given in Figure~\ref{fig-source-table}. Model fit was assessed using
+Q/Qexp (how our model fit divided by the expected fit). As the change in
+Q/Qexp decreases as more factors are added, the model may be fitting
+additional sources that do not improve the overall fit. The largest
+change in Q/Qexp was from three to four sources (6.24 to 5.37) while the
+changes moving from four to five and five to six are similar which
+suggests that four factors is sufficient and parsimonious to explain the
+variation in our data. We assessed the random error in our model by
+randomly sampling blocks of data, fitting new models with the blocks,
+and comparing how the source profiles compared to that of the original
+model (BS mapping). The three- and four-factor solutions had high BS
+mapping (all factors found in \textgreater{} 96.5\% of bootstrap runs).
+The additional sources identified in the five-factor (lead) and
+six-factor (chloride) solutions have low bootstrap mapping
+(\textgreater{} 72\%), which means those solutions are not as consistent
+as the three- and four-factor solutions. The possibility that multiple,
+different, solutions could result in the same Q value was assessed using
+displacement. The displacement approach takes the original factor
+profiles and modifies the values for each species up or down to maintain
+a small change in Q, reruns the solution with the new species values,
+and then compares the profiles of the new model to the original. Any
+swaps indicate that small changes in the species values could result in
+factor profiles that look different from the original solution, and that
+the original solution is unstable. None of the factors in any of the
+solutions discussed were swapped during displacement, which indicates
+that all of the potential solutions are stable. Based on the Q/Qexp, BS
+mapping, and interpretability of the factors, the four-factor solution
+was selected as the most appropriate source solution for the data.
 
 \begin{figure}[H]
 
@@ -1551,6 +1599,59 @@ treatment.}
   Generally describing high take-up of the policy
 \item
   Reductions in indoor PM\textsubscript{2.5} but not personal or outdoor
+\end{itemize}
+
+(Ellison's notes / outline / incomplete discussion -- just trying to get
+some structure and key points down). Aim 2 and Aim 3 of this study
+focused on investigating the impact of a coal ban on air pollution.
+Overall, the results make sense. PM is a mixture of many sources. We
+expect that measures of air pollution that are closest to the source
+impacted by the policy -- which is stationary and in people's homes --
+might be the most likely to reveal the impact of the policy, especially
+since the activity most impacted by the policy is also a more
+stationary, sustained activity -- i.e., heating. So, it makes sense that
+the indoor PM measures show the greatest reduction once the ban was in
+place. Further, it makes sense that longer-term measures of indoor PM
+show a stronger effect of the ban. Finally, indoor BC did not show as
+strong an impact of the ban
+
+(Ellison's notes / outline / incomplete discussion -- just trying to get
+some structure and key points down). The most consistent reduction in PM
+was observed for indoor, long-duration measurements, suggesting a
+successful reduction in indoor air pollution from the coal ban. Discuss
+how PM and BC results are coherent with one another (and possibly with
+the fuel / energy use trends and results).
+
+(Ellison's notes / outline / incomplete discussion -- just trying to get
+some structure and key points down). While there was a lack of
+statistically significant reductions in personal PM and outdoor PM,
+{[}blah blah blah{]} points to some possible explanations for these
+inconclusive findings as well as some interpretations that are
+consistent with our overall finding that the CBHP policy was effective.
+Personal PM measurements might be more susceptible to short-term
+variations in activities or microenvironments. Outdoor PM might be
+influenced by regional sources beyond the immediate community where the
+ban was implemented.
+
+(Ellison's notes / outline / incomplete discussion -- just trying to get
+some structure and key points down). Source Apportionment. Discuss the
+finding of reduced mixed combustion source contribution in villages with
+more recent treatment. This finding supports the effectiveness of the
+ban in targeting a major source of indoor air pollution from coal.
+Highlight strengths of dispersion normalization. Briefly mention
+limitations of source apportionment analysis (e.g., limited ability to
+separate secondary sulfur source and mixed combustion source).
+
+(Ellison's notes / outline / incomplete discussion -- just trying to get
+some structure and key points down). Strengths and Limitations of
+Measurement Approaches. Acknowledge the use of multiple measurement
+approaches (community outdoor, indoor, personal). Explain why we used
+these approaches: i.e., to capture a comprehensive picture of air
+pollution exposure. Discuss the strengths and limitations of each
+approach (e.g., indoor vs personal exposure).
+
+\begin{itemize}
+\tightlist
 \item
   Reduction in blood pressure and self-reported respiratory symptoms
 \end{itemize}
@@ -1913,6 +2014,23 @@ Institute / Health Effects Institute:Boston, MA.
 by treatment season}
 
 \end{figure}
+
+Sensitivity analyses: {[}{[}{[}Jill to edit this table include all
+sensitivity analysis for total effects models{]}{]}{]}
+
+\begin{verbatim}
+Number of participants (observations)
+Mean change or percent change in FeNO (ppb)
+Limited to participants with two or more measurements
+142 (569)
+-0.2 [-3.0, 2.5]
+Limited to participants with three measurements
+95 (285)
+0.4 [-2.8, 3.6]
+Analysis with log-transformed outcome [ln(FeNO)]
+511 (843)
+-3.8% [-16.9, 11.4]
+\end{verbatim}
 
 \hypertarget{about-the-authors}{%
 \section*{About the authors}\label{about-the-authors}}

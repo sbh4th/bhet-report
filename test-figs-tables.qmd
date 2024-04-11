@@ -6,15 +6,28 @@ format:
     include-in-header:
       - text: |
          \usepackage{wrapfig}
+         \usepackage{colortbl}
+          \makeatletter
+          \renewenvironment{table}%
+            {\renewcommand\familydefault\sfdefault
+             \@float{table}}
+            {\end@float}
+          \makeatother
   
 ---
 
-```{r setup, include=FALSE, cache=TRUE, message=FALSE, warning=FALSE, eval=F}
+```{r setup, include=FALSE, message=FALSE, warning=FALSE, eval=T}
 library(here)
 library(osfr)
 library(tidyverse)
+library(readr)
 library(readxl)
+library(modelsummary)
+library(marginaleffects)
+library(kableExtra)
+```
 
+```{r set-data, inclulde=F, cache=T, message=F, warning=F, eval=F}
 # read in master data
 bhet_master_data <- osf_retrieve_node("vxur5")
 bhet_master_data %>%
@@ -31,7 +44,6 @@ aim_1 %>%
   osf_download(path = here("data-clean"),
                conflicts = "overwrite")
 ```
-
 
 Read in data
 ```{r data, include=FALSE, cache=TRUE}
@@ -162,7 +174,7 @@ t2 %>%
 ```
 
 
-```{r, echo=F}
+```{r, echo=F, eval=F}
 #| label: tbl-table3
 #| tbl-cap: "Summary: Numeric variables using kableExtra"
 
@@ -198,7 +210,7 @@ kable(apdidt, digits = 2,
 ```
 
 Another DiD table
-```{r ap-did-table, echo=F, message=F, warning=F}
+```{r ap-did-table, echo=F, message=F, warning=F, eval=F}
 library(tidyverse)
 library(here)
 library(kableExtra)
@@ -234,7 +246,7 @@ kable(m_table,  digits = 2,
 
 See @tbl-table3 for more.
 
-```{r bp-resp-table, echo=F, message=F, warning=F}
+```{r bp-resp-table, echo=F, message=F, warning=F, eval=F}
 library(tidyverse)
 library(here)
 library(kableExtra)
@@ -300,19 +312,58 @@ kable(op_table,  digits = 2,
 ```
 
 
+```{r tbl-pmf, echo=F, eval=F}
+library(here)
+library(tidyverse)
+library(kableExtra)
+#| label: tbl-pmf
+#| tbl-cap: "PMF error diagnostics"
+
+options(knitr.kable.NA = " ")
+t_pmf <- read_csv(here("data-clean", 
+  "pmf-error.csv"))
+
+kable(t_pmf,
+ "latex", booktabs = T,
+  linesep = "", align = 'lllll') %>%
+  kable_styling(full_width = F,
+    font_size = 9) %>%
+  column_spec(2:5, width = "10em") %>%
+  add_header_above(c(" " = 1, 
+    "Potential Factor Solution" = 4))
+```
+
+
+```{r fig-dag, engine='tikz', echo=F, out.width="60%"}
+\begin{tikzpicture}[shorten > = 1pt, line width=1pt, font=\scriptsize]
+\tikzstyle{every node} = [rectangle, fill=white, draw=none]
+\node (x) at (0,0) [align=center] {$X$};
+\node (t) at  (1.5,0) [align=center] {Policy\\($T$)};
+\node (m1) at  (3.5,1) [align=center] {PM\textsubscript{2.5}\\($M_{1}$)};
+\node (m2) at  (3.5,-1) [align=center] {Indoor\\Temp\\($M_{2}$)};
+\node (y) at  (5.5,0) [align=center] {SBP\\($Y$)};
+\node (w) at (2,-1.5) [align=center] {$W$};
+\foreach \from/\to in {x/t, t/y, t/m1, t/m2, m1/y, m2/y, w/m1, w/m2}
+  \draw [->] (\from) -- (\to);
+\draw [->] (x) to [bend left=45] (y.north);
+\draw [->] (x) to [bend left=20] (m1);
+\draw [->] (x) to [bend right=25] (m2);
+\draw [->] (w) to [bend right=45] (y);
+\end{tikzpicture}
 ```
 
 \newpage
 
-```{r fig-map, echo=FALSE, out.width = "50%"}
-#| label: fig-map1
+```{r fig-map, echo=FALSE, out.width = "70%"}
+library(here)
+#| label: fig-cbhp-map
 #| fig-cap: "Map of village implementation of CBHP policy"
 
 knitr::include_graphics(here("images", 
   "policy-implementation-map.png"))
 ```
 
-See @fig-map1.
+See @fig-cbhp-map.
 
 \newpage
 
@@ -324,3 +375,18 @@ The source profiles for the four-factor solution are presented in Figure X. The 
 \end{wrapfigure}
 
 Additionally, in Figure\ref{fig-map} for details. the mean source contribution of the second source is higher in outdoor than personal exposure measurements. Secondary formation occurs outdoors in the presence of sunlight, so higher outdoor concentrations compared to personal exposure further support our naming the second source and sulfur secondary. The third source had high percentages of ws-Ca nd Al, which in our study region, has been found to be indicative of transported dust from dust storms that can occur in the spring. While our samples were collected during winter months only, it is possible that transported dust from previous years still remained. The fourth source was characterized by high percentages of tracers for both coal (OC, wi-K, chloride, Pb) and biomass combustion (EC, ws-K). Coal and biomass combustion is common in our study setting so this source is likely a mixture of the two combustion sources.
+
+```{r atbl-het, echo=F}
+options("modelsummary_format_numeric_latex" = "plain")
+m_p <- read_rds(here("outputs", "m_ppm.rds"))
+d_personal <- read_rds(here("data-clean", "d_personal.rds"))
+
+mstest <- slopes(m_p$e1, newdata = subset(d_personal, treat==1), variables = "treat", by = c("cohort_year", "year"))
+
+mstest1 <- mstest %>% mutate(term = c("ATT(2019, 2019)", "ATT(2019, 2021)", "ATT(2020, 2021)", "ATT(2021, 2021)"))
+modelsummary(list("Adjusted ETWFE" = mstest1), 
+  shape = term ~ model, 
+  estimate = "{estimate} [{conf.low}, {conf.high}]", 
+  statistic = NULL, gof_map = "nobs", 
+  notes = paste("Joint test that all ATTs are equal: ", "F(", m_p$ht1$df1, ", ", m_p$ht1$df2, ")= " ,round(m_p$ht1$statistic, digits=3), ", p= ", round(m_p$ht1$p.value, digits=3), sep=""), output = 'latex')
+```

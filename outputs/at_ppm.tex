@@ -1,0 +1,36 @@
+\documentclass[border=1mm]{standalone}
+\usepackage{amssymb, amsmath}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{xunicode}
+\usepackage{xcolor}
+\begin{document}
+\begin{table}
+\centering
+\begin{tabular}[t]{lc}
+\toprule
+  & Adjusted ETWFE\\
+\midrule
+ATT(2019, 2019) & \num{-11.660} [\num{-42.081}, \num{18.762}]\\
+ATT(2019, 2021) & \num{-4.624} [\num{-43.042}, \num{33.794}]\\
+ATT(2020, 2021) & \num{13.573} [\num{-34.465}, \num{61.612}]\\
+ATT(2021, 2021) & \num{2.853} [\num{-16.312}, \num{22.019}]\\
+\bottomrule
+\multicolumn{2}{l}{\rule{0pt}{1em}Joint test that all ATTs are equal:  F( 3 ,  1271 )=  0.431 , p=  0.731}\\
+\end{tabular}
+\end{table}
+\end{document}

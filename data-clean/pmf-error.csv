@@ -1,0 +1,11 @@
+﻿Diagnostic,3,4,5,6
+Qexp,27936,26052,24168,22284
+Qtrue,187681,147796,123236,100316
+Qrobust,174407,139910,117082,95932.5
+Qr/Qexp,6.24,5.37,4.84,4.3
+Q/Qexp > 6,"wi-Ca, ns-S, ws-Na, ws-Ca, Al, Cl, Pb","ns-S, Na, Al, Cl, Pb, Nitrate","Nitrate, ws-Na, Al, Chloride","Nitrate, ws-Na, Al"
+DISP % dQ,<0.1%,<0.1%,<0.1%,<0.1%
+DISP swaps,0,0,0,0
+BS_mapping,Dust- 98.5%,"Transported dust- 95%, Dust- 96.5%, Sulfur secondary- 97.5%, Mixed combustion- 96.5%","Transported dust- 86%, Mixed combustion- 87%, Dust- 86%, Lead- 55%","Transported dust- 84%, Mixed combustion- 87.5%, Dust- 81.5%, Lead- 72%
+Chloride- 61.5%
+Sulfur secondary- 98.5%"

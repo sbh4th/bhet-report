@@ -152,9 +152,10 @@ estimate_etwfe <- function(
   }
   
   # Return a list containing both models
-  return(list(e1 = etwfe1, me_1 = me_etwfe1, 
+  return(list(e1 = etwfe1, me_1 = me_etwfe1,
+              meh_1 = me_het1, ht1 = me_jt1, 
               e2 = etwfe2, me_2 = me_etwfe2,
-              ht1 = me_jt1, ht2 = me_jt2))
+              meh_2 = me_het2, ht2 = me_jt2))
 }
 
 # ETWFE and adjusted ETWFE models for personal PM
@@ -313,8 +314,11 @@ example_attgt <- att_gt(yname = "mipm",
 summary(example_attgt)
 aggte(example_attgt, type = "group")
 
-mstest <- mstest %>% 
-modelsummary(mstest, shape = cohort_year + year ~ model, estimate = "{estimate} [{conf.low}, {conf.high}]",
-  statistic = NULL, gof_map = "nobs", notes = paste("Joint test that all ATTs are equal: ", m_ppm$ht1$p.value))
+mstest1 <- mstest %>% mutate(term = c("ATT(2019, 2019)", "ATT(2019, 2021)", "ATT(2020, 2021)", "ATT(2021, 2021)"))
+modelsummary(list("Adjusted ETWFE" = mstest1), 
+  shape = term ~ model, 
+  estimate = "{estimate} [{conf.low}, {conf.high}]", 
+  statistic = NULL, gof_map = "nobs", 
+  notes = paste("Joint test that all ATTs are equal: ", "F(", m_ppm$ht1$df1, ", ", m_ppm$ht1$df2, ")= " ,round(m_ppm$ht1$statistic, digits=3), ", p= ", round(m_ppm$ht1$p.value, digits=3)))
 
 

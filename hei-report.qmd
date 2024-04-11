@@ -3,7 +3,7 @@ title: "How Do Household Energy Transitions Work?"
 author: 
   - Jill Baumgartner (Co-PI)
   - Sam Harper (Co-PI)
-  - On behalf of the BHET Team
+  - On behalf of the Beijing Household Energy Transitions Team
 date: today
 #format: 
 #  html:
@@ -38,6 +38,7 @@ library(tidyverse)
 library(kableExtra)
 library(modelsummary)
 library(readxl)
+library(marginaleffects)
 ```
 
 ```{r master_data, include = FALSE, cache = TRUE, echo=FALSE}
@@ -105,7 +106,17 @@ This study used three data collection campaigns in winter 2018/19, winter 2019/2
 
 ## Location, context, and recruitment
 
-Between December 2018 and January 2019 we recruited 50 villages across 4 administrative districts (Fangshan, Huairou, Mentougou, and Miyun) in the Beijing municipality in northern China. The villages predominately used coal for heating at the time of enrollment and were eligible for - but not currently participating - in the Clean Heating Policy. Roughly half of the villages were expected to enter into the policy during our study. We used local guides in each village to help determine a roster of households that were not vacant during the winter months, from which we randomly selected households to recruit for participation. 
+Between December 2018 and January 2019 we recruited 50 villages across 4 administrative districts (Fangshan, Huairou, Mentougou, and Miyun) in the Beijing municipality in northern China. The villages predominately used coal for heating at the time of enrollment and were eligible for - but not currently participating - in the Clean Heating Policy. Roughly half of the villages were expected to enter into the policy during our study (@fig-cbhp-map). We used local guides in each village to help determine a roster of households that were not vacant during the winter months, from which we randomly selected households to recruit for participation. 
+
+
+```{r fig-map, echo=FALSE, out.width = "70%"}
+#| label: fig-cbhp-map
+#| fig-cap: "Map of village implementation of CBHP policy"
+
+knitr::include_graphics(here("images", 
+  "policy-implementation-map.png"))
+```
+
 
 We recruited approximately 20 households in each village and randomly selected one eligible person from each household to participate. Participants were eligible to participate if they were over 40 years old, lived in the study villages, were not planning to move out of the village in the next year, and were not on current immunotherapy or treatment with corticosteroids. Research staff introduced the study and its measurements to an eligible person in each household and answered any questions related to the study. All participants provided written informed consent prior to joining the study. The study protocols were approved by research ethics boards at Peking University (IRB00001052-18090) and McGill University (A08-E53-18B).
 
@@ -682,6 +693,28 @@ Sensitivity analyses: [[[Jill to edit this table include all sensitivity analysi
 	Analysis with log-transformed outcome [ln(FeNO)]
 	511 (843)
 	-3.8% [-16.9, 11.4]
+
+## Heterogeneity in treament effects
+As noted in the methods section...Table @tbl-a-het-pm shows...
+
+```{r atbl-het, echo=F}
+#| label: tbl-a-het-ppm
+#| fig-cap: "PMF error estimation diagnostics."
+
+
+options("modelsummary_format_numeric_latex" = "plain")
+m_p <- read_rds(here("outputs", "m_ppm.rds"))
+d_personal <- read_rds(here("data-clean", "d_personal.rds"))
+
+mstest <- slopes(m_p$e1, newdata = subset(d_personal, treat==1), variables = "treat", by = c("cohort_year", "year"))
+
+mstest1 <- mstest %>% mutate(term = c("ATT(2019, 2019)", "ATT(2019, 2021)", "ATT(2020, 2021)", "ATT(2021, 2021)"))
+modelsummary(list("Adjusted ETWFE" = mstest1), 
+  shape = term ~ model, 
+  estimate = "{estimate} [{conf.low}, {conf.high}]", 
+  statistic = NULL, gof_map = "nobs", 
+  notes = paste("Joint test that all ATTs are equal: ", "F(", m_p$ht1$df1, ", ", m_p$ht1$df2, ")= " ,round(m_p$ht1$statistic, digits=3), ", p= ", round(m_p$ht1$p.value, digits=3), sep=""), output = 'latex')
+```
 
 # About the authors {.unnumbered}
 

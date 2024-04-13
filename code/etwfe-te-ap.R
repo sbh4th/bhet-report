@@ -16,7 +16,7 @@ ap_data <- read_csv(here("data-clean",
     usable_indoor_filter, bc_indoor_remove,
     indoor_filter_type, indoor_filter_id, 
     house_area, pm2.5_indoor_sensor_24h,
-    pm2.5_indoor_seasonal_hs,
+    pm2.5_indoor_seasonal_hs, coal_ban_time,
     N_percent_indoor_seasonal_hs, year,
     ban_status_composite, ptc_smoking, hh_smoking, 
     outdoor_temp_24h, outdoor_dew_24h, hh_num)) %>%
@@ -75,13 +75,6 @@ d_ind_seasonal <- ap_data %>%
                       "Smoker", "Non-smoker")) %>%
   distinct(hh_id, wave, pm2.5_indoor_seasonal_hs, 
            .keep_all= TRUE)
-
-# season 3 seasonal data
-d_ind_s3 <- read_csv(here("data-clean", 
-  "indoor_pm_S3.csv")) %>%
-  select(hh_id, wave, ID_VILLAGE, 
-    pm2.5_indoor_seasonal_hs, 
-    N_percent_indoor_seasonal_hs)
 
 # basic DiD specification
 rhs_did <- c("treat:cohort_year_2019:year_2019",
@@ -391,4 +384,135 @@ kable(aph_table, digits = 2,
     round(m_ppm$ht1$statistic, digits=3), ", p= ", 
     round(m_ppm$ht1$p.value, digits=3)), 
     paste("Joint test that all ATTs are equal: ", "F(", m_pbc$ht1$df1, ", ", m_pbc$ht1$df2, ")= " ,round(m_pbc$ht1$statistic, digits=3), ", p= ", round(m_pbc$ht1$p.value, digits=3))), footnote_as_chunk = T) 
+
+
+## Impact of S3 air pollution data
+# bring in season 3 seasonal data
+d_ind_s3 <- read_csv(here("data-clean", 
+  "indoor_pm_S3.csv")) %>%
+  select(hh_id, wave, ID_VILLAGE, 
+    coal_ban_time, pm2.5_indoor_seasonal_hs, 
+    N_percent_indoor_seasonal_hs)
+
+# add to indoor seasonal
+d_is_s3_add <- d_ind_seasonal %>%
+  select(hh_id, wave, ID_VILLAGE,
+    coal_ban_time,
+    pm2.5_indoor_seasonal_hs, 
+    N_percent_indoor_seasonal_hs) %>%
+  bind_rows(d_ind_s3) %>%
+  filter(N_percent_indoor_seasonal_hs >= 0.2) %>%
+  mutate(year = if_else(wave=="S1", 2018, 
+      if_else(wave=="S2", 2019,
+      if_else(wave=="S3", 2020,
+      if_else(wave=="S4", 2021, 0)))),
+    ban_status_composite = case_when(
+      coal_ban_time == 2019 ~ 1, 
+      coal_ban_time == 2020 ~ 2, 
+      coal_ban_time == 2021 ~ 3, 
+      coal_ban_time == "Not Yet" ~ 0),
+    cohort_year = if_else(
+      ban_status_composite==1, 2019, 
+      if_else(ban_status_composite==2, 2020, 
+              if_else(ban_status_composite==3, 2021, 2022))),
+    treat = ifelse(year >= cohort_year, 1, 0),
+    cohort_year = ifelse(cohort_year == 2022,-Inf, 
+                         cohort_year)) %>%
+  # relabel last cohort year 
+  # treatment cohort dummies
+  add_dummy_variables(cohort_year, 
+    values=c(-Inf,2019,2020,2021), 
+    remove_original = F) %>%
+  # wave dummies
+  add_dummy_variables(year, 
+    values=c(2018,2019,2020,2021), 
+    remove_original = F) %>%
   
+  group_by(ID_VILLAGE) %>%
+  mutate(v_id = cur_group_id()) %>%
+  ungroup()
+
+
+# estimates including Season 3
+m_is_s3 <- fixest::feols(
+  pm2.5_indoor_seasonal_hs ~ treat:cohort_year_2020:year_2020 + 
+    treat:cohort_year_2020:year_2021 +
+    treat:cohort_year_2021:year_2021 + cohort_year_2020 + 
+    cohort_year_2021 + year_2021, 
+  cluster = ~v_id, data=subset(d_is_s3_add, 
+    cohort_year_2019!=1)
+)
+
+# overall marginal effect
+m_is_s3_me <- slopes(
+  m_is_s3,
+  newdata = subset(d_is_s3_add, 
+    cohort_year_2019!=1 & treat==1),
+  variables = "treat",
+  by = "treat"
+)
+
+# heterogeneous ATTs
+m_is_s3_meh <- slopes(
+  m_is_s3,
+  newdata = subset(d_is_s3_add, 
+    cohort_year_2019!=1 & treat==1),
+  variables = "treat",
+  by = c("cohort_year", "year")
+)
+  
+
+
+# estimates without Season 3
+m_is_nos3 <- fixest::feols(
+  pm2.5_indoor_seasonal_hs ~ treat:cohort_year_2020:year_2020 + 
+    treat:cohort_year_2020:year_2021 +
+    treat:cohort_year_2021:year_2021 + cohort_year_2020 + 
+    cohort_year_2021 + year_2021, 
+  cluster = ~v_id, data=subset(d_is_s3_add, 
+    cohort_year_2019!=1 & wave!="S3")
+)
+
+# overall marginal effect
+m_is_nos3_me <- slopes(
+  m_is_nos3,
+  newdata = subset(d_is_s3_add, 
+    cohort_year_2019!=1 & wave!="S3" & treat==1),
+  variables = "treat",
+  by = "treat"
+)
+
+# heterogeneous ATTs
+m_is_nos3_meh <- slopes(
+  m_is_nos3,
+  newdata = subset(d_is_s3_add, 
+    cohort_year_2019!=1 & treat==1),
+  variables = "treat",
+  by = c("cohort_year", "year")
+)
+
+# Put together the table
+ap_ind_s3 <- bind_rows(m_is_s3_me , m_is_s3_meh) %>% 
+  mutate(outcome = "wS3")
+
+ap_ind_nos3 <- bind_rows(m_is_nos3_me, m_is_nos3_meh) %>% 
+  mutate(outcome = "woS3")
+
+ap_is3_table <- bind_rows(ap_ind_s3, ap_ind_nos3) %>%
+  select(outcome, estimate, conf.low, conf.high, 
+         cohort_year, year) %>%
+  mutate_at(vars(c(cohort_year,year)), ~ recode(., 
+         `2019` = "2019",
+         `2020` = "2020",
+         `2021` = "2021",
+         .missing = "All")) %>%
+  relocate(outcome, cohort_year, year) %>%
+  mutate(ci = paste("(", round(conf.low, 2), ", ",
+    round(conf.high, 2), ")", sep="")) %>%
+  select(-conf.low, -conf.high) %>%
+  pivot_wider(names_from = outcome, values_from = 
+    c(estimate, ci), names_vary = "slowest")
+
+# write table to data
+write_rds(ap_is3_table, file = here("outputs", 
+  "ap-is3_table.rds"))

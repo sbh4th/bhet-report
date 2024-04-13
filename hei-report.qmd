@@ -672,7 +672,7 @@ To come...
 \setcounter{figure}{0}
 \setcounter{table}{0}
 
-# Appendices {.unnumbered .appendix}
+# Appendices {.appendix}
 
 ```{r afig, message=FALSE, cache=TRUE, echo=FALSE, out.width = "100%"}
 #| label: fig-afig-coal
@@ -694,11 +694,13 @@ Sensitivity analyses: [[[Jill to edit this table include all sensitivity analysi
 	511 (843)
 	-3.8% [-16.9, 11.4]
 
-## Heterogeneity in treament effects
-As noted in the methods section...Table @tbl-a-het-ppm shows...
+## Heterogeneity in treament effects 
+
+### Personal exposure 
+As noted in the methods section...Table @tbl-a-het-personal shows...
 
 ```{r atbl-het, echo=F}
-#| label: tbl-a-het-ppm
+#| label: tbl-a-het-personal
 #| tbl-cap: "Heterogenous treatment effects"
 
 
@@ -716,6 +718,44 @@ modelsummary(list("Adjusted ETWFE" = mstest1),
   notes = paste("Joint test that all ATTs are equal: ", "F(", m_p$ht1$df1, ", ", m_p$ht1$df2, ")= " ,round(m_p$ht1$statistic, digits=3), ", p= ", round(m_p$ht1$p.value, digits=3), sep=""), output = 'latex')
 ```
 
+### Impact of including Season 3 data 
+Table @tbl-a-ind-s3 shows differences in the ATTs for the impact of seasonal indoor PM~2.5~ when season 3 data (collected in 41 villages during COVID-19) are included versus excluded. 
+
+```{r atbl-ind-s3, echo=F}
+#| label: tbl-a-ind-s3
+#| tbl-cap: "Effects of the CBHP policy on indoor seasonal PM~2.5~ based on whether Season 3 data are included vs. excluded."
+
+a_is3_table <- read_rds(here("outputs", 
+  "ap-is3_table.rds"))
+
+kable(a_is3_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
+   "ATT", "(95\\%CI)"), "latex", booktabs = T,
+  linesep = "", align = 'cccccc') %>%
+  column_spec(1:2, width = "1.5cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  add_header_above(c(" " = 2, 
+    "With Season 3 data" = 2, 
+    "Without Season 3 data" = 2),
+    escape = FALSE) %>%
+  footnote(general="Sample sizes for..") 
+```
+
+
 # About the authors {.unnumbered}
 
 # Other publications {.unnumbered}
+
+Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G, et al. 2022a. Socioeconomic and Demographic Associations with Wintertime Air Pollution Exposures at Household, Community, and District Scales in Rural Beijing, China. Environ Sci Technol 56:8308–8318; doi:10.1021/acs.est.1c07402.
+
+Li X, Baumgartner J, Harper S, Zhang X, Sternbach T, Barrington-Leigh C, et al. 2022b. Field measurements of indoor and community air quality in rural Beijing before, during, and after the COVID-19 lockdown. Indoor Air 32:e13095; doi:10.1111/ina.13095.
+
+Sternbach TJ, Harper S, Li X, Zhang X, Carter E, Zhang Y, et al. 2022. Effects of indoor and outdoor temperatures on blood pressure and central hemodynamics in a wintertime longitudinal study of Chinese adults. J Hypertension 40:1950–1959; doi:10.1097/HJH.0000000000003198.
+
+
+
+
+
+

@@ -215,7 +215,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, enhanced, frame hidden, sharp corners, interior hidden, borderline west={3pt}{0pt}{shadecolor}, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, sharp corners, breakable, interior hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, boxrule=0pt]}{\end{tcolorbox}}\fi
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -324,16 +324,46 @@ likely a mixture of the two combustion sources.
 
 \begin{table}
 \centering
-\begin{tabular}[t]{lc}
+\begin{tabular}[t]{lcc}
 \toprule
-  & Adjusted ETWFE\\
+  & Personal: PM2.5 & Personal: BC\\
 \midrule
-ATT(2019, 2019) & -11.660 [-42.081, 18.762]\\
-ATT(2019, 2021) & -4.624 [-43.042, 33.794]\\
-ATT(2020, 2021) & 13.573 [-34.465, 61.612]\\
-ATT(2021, 2021) & 2.853 [-16.312, 22.019]\\
+\addlinespace[0.5em]
+\multicolumn{3}{l}{\textit{Average ATT}}\\
+\midrule \hspace{1em}ATT(All, All) & 1.95 [-23.34, 27.23] & -0.43 [-1.67, 0.81]\\
+\addlinespace[0.5em]
+\multicolumn{3}{l}{\textit{Cohort-Time ATTs}}\\
+\midrule \hspace{1em}ATT(2019, 2019) & -0.05 [-28.97, 28.87] & -0.69 [-1.84, 0.45]\\
+\hspace{1em}ATT(2019, 2021) & -4.31 [-41.92, 33.30] & -0.25 [-2.11, 1.62]\\
+\hspace{1em}ATT(2020, 2021) & 23.61 [-19.88, 67.11] & -0.27 [-2.04, 1.50]\\
+\hspace{1em}ATT(2021, 2021) & -19.06 [-43.19, 5.07] & -0.56 [-2.46, 1.34]\\
 \bottomrule
-\multicolumn{2}{l}{\rule{0pt}{1em}Joint test that all ATTs are equal: F(3, 1271)= 0.431, p= 0.731}\\
+\multicolumn{3}{l}{\rule{0pt}{1em}First note.}\\
+\end{tabular}
+\end{table}
+
+Another example
+
+\begin{table}
+\centering
+\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}>{\centering\arraybackslash}p{1.5cm}cccc}
+\toprule
+\multicolumn{2}{c}{ } & \multicolumn{2}{c}{PM2.5\textsuperscript{a}} & \multicolumn{2}{c}{Black carbon\textsuperscript{b}} \\
+\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
+Cohort & Time & ATT & (95\%CI) & ATT & (95\%CI)\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Average ATT}}\\
+All & All & 1.95 & (-23.34, 27.23) & -0.43 & (-1.67, 0.81)\\
+\addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Cohort-Time ATTs}}\\
+2019 & 2019 & -0.05 & (-28.97, 28.87) & -0.69 & (-1.84, 0.45)\\
+2019 & 2021 & -4.31 & (-41.92, 33.3) & -0.25 & (-2.11, 1.62)\\
+2020 & 2021 & 23.61 & (-19.88, 67.11) & -0.27 & (-2.04, 1.5)\\
+2021 & 2021 & -19.06 & (-43.19, 5.07) & -0.56 & (-2.46, 1.34)\\
+\bottomrule
+\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{a} Joint test that all ATTs are equal: F(3, 1271)= 0.431, p= 0.731}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{b} Joint test that all ATTs are equal: F(3, 1253)= 0.613, p= 0.607}\\
 \end{tabular}
 \end{table}
 

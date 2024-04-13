@@ -378,15 +378,107 @@ Additionally, in Figure\ref{fig-map} for details. the mean source contribution o
 
 ```{r atbl-het, echo=F}
 options("modelsummary_format_numeric_latex" = "plain")
-m_p <- read_rds(here("outputs", "m_ppm.rds"))
-d_personal <- read_rds(here("data-clean", "d_personal.rds"))
+models_personal <- read_rds(here("outputs", "m_ppm.rds"))
+data_personal <- read_rds(here("data-clean", "d_personal.rds"))
 
-mstest <- slopes(m_p$e1, newdata = subset(d_personal, treat==1), variables = "treat", by = c("cohort_year", "year"))
+models_bc <- read_rds(here("outputs", "m_pbc.rds"))
+data_bc <- read_rds(here("data-clean", "d_bc.rds"))
 
-mstest1 <- mstest %>% mutate(term = c("ATT(2019, 2019)", "ATT(2019, 2021)", "ATT(2020, 2021)", "ATT(2021, 2021)"))
-modelsummary(list("Adjusted ETWFE" = mstest1), 
-  shape = term ~ model, 
-  estimate = "{estimate} [{conf.low}, {conf.high}]", 
-  statistic = NULL, gof_map = "nobs", 
-  notes = paste("Joint test that all ATTs are equal: ", "F(", m_p$ht1$df1, ", ", m_p$ht1$df2, ")= " ,round(m_p$ht1$statistic, digits=3), ", p= ", round(m_p$ht1$p.value, digits=3), sep=""), output = 'latex')
+personal_all <- slopes(models_personal$e2, 
+  newdata = subset(data_personal, treat==1), 
+  variables = "treat", by = "treat")
+
+personal_all <- personal_all %>% 
+  mutate(term = "ATT(All, All)") 
+
+personal_ct <- slopes(models_personal$e2, 
+  newdata = subset(data_personal, treat==1), 
+  variables = "treat", by = c("cohort_year", "year"))
+
+personal_ct <- personal_ct %>% 
+  mutate(term = c("ATT(2019, 2019)", "ATT(2019, 2021)", 
+    "ATT(2020, 2021)", "ATT(2021, 2021)"))
+
+bc_all <- slopes(models_bc$e2, 
+  newdata = subset(data_bc, treat==1), 
+  variables = "treat", by = "treat")
+
+bc_all <- bc_all %>% 
+  mutate(term = "ATT(All, All)") 
+
+bc_ct <- slopes(models_bc$e2, 
+  newdata = subset(data_bc, treat==1), 
+  variables = "treat", by = c("cohort_year", "year"))
+
+bc_ct <- bc_ct %>% 
+  mutate(term = c("ATT(2019, 2019)", "ATT(2019, 2021)", 
+    "ATT(2020, 2021)", "ATT(2021, 2021)"))
+
+personal_panels <- list(
+  "Average ATT" = list(
+    "Personal: PM2.5" = personal_all, 
+    "Personal: BC" = bc_all),
+  "Cohort-Time ATTs" = list(
+    "Personal: PM2.5" = personal_ct, 
+    "Personal: BC" = bc_ct)
+)
+
+personal_note <- paste("Joint test that all ATTs are equal: ", 
+    "F(", models_personal$ht1$df1, ", # ", 
+    models_personal$ht1$df2, ")= " ,
+    round(models_personal$ht1$statistic, digits=3), ", p= ",
+    round(models_personal$ht1$p.value, digits=3), sep="")
+
+modelsummary(
+  personal_panels,
+  shape = "rbind",
+  gof_omit = ".*",
+  estimate = "{estimate} [{conf.low}, {conf.high}]",
+  statistic = NULL,
+  fmt = 2, output = 'latex', 
+  notes = list('First note.', 'Second note.')
+)
+
+# modelsummary(list("Adjusted ETWFE" = mstest1), 
+#   shape = term ~ model, 
+#   estimate = "{estimate} [{conf.low}, {conf.high}]", 
+#   statistic = NULL, gof_map = "nobs", 
+#   notes = paste("Joint test that all ATTs are equal: ", "F(", m_p$ht1$df1, ", # ", m_p$ht1$df2, ")= " ,round(m_p$ht1$statistic, digits=3), ", p= ", # round(m_p$ht1$p.value, digits=3), sep=""), output = 'latex')
+```
+
+Another example
+```{r, echo=F}
+
+# read in personal exposure heterogeneity table
+aph_table <- read_rds(here("outputs", 
+  "ap-het-table.rds"))
+
+models_ppm <- read_rds(here("outputs", "m_ppm.rds"))
+models_pbc <- read_rds(here("outputs", "m_pbc.rds"))
+
+models_ppm_note <- paste("Joint test that all ATTs are equal: ", 
+    "F(", models_ppm$ht1$df1, ", ", 
+    models_ppm$ht1$df2, ")= " , 
+    round(models_ppm$ht1$statistic, digits=3), ", p= ", 
+    round(models_ppm$ht1$p.value, digits=3), sep="")
+
+models_pbc_note <- paste("Joint test that all ATTs are equal: ", 
+    "F(", models_pbc$ht1$df1, ", ", 
+    models_pbc$ht1$df2, ")= " , 
+    round(models_pbc$ht1$statistic, digits=3), ", p= ", 
+    round(models_pbc$ht1$p.value, digits=3), sep="")
+
+kable(aph_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
+   "ATT", "(95\\%CI)"), "latex", booktabs = T,
+  linesep = "", align = 'cccccc') %>%
+  column_spec(1:2, width = "1.5cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  add_header_above(c(" " = 2, 
+    "PM2.5\\\\textsuperscript{a}" = 2, 
+    "Black carbon\\\\textsuperscript{b}" = 2),
+    escape = FALSE) %>%
+  footnote(alphabet=c(models_ppm_note, models_pbc_note)) 
 ```

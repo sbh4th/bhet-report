@@ -200,7 +200,7 @@ of the Beijing Household Energy Transitions Team}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, sharp corners, interior hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, frame hidden, enhanced]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, sharp corners, enhanced, frame hidden, interior hidden]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -2048,15 +2048,12 @@ Analysis with log-transformed outcome [ln(FeNO)]
 \subsection{Heterogeneity in treament
 effects}\label{heterogeneity-in-treament-effects}}
 
-As noted in the methods section\ldots Table \textbf{?@tbl-a-het-pm}
+As noted in the methods section\ldots Table Table~\ref{tbl-a-het-ppm}
 shows\ldots{}
 
+\hypertarget{tbl-a-het-ppm}{}
 \begin{table}
-
-\caption{\label{tbl-a-het-ppm}\textbf{?(caption)}}\begin{minipage}[t]{\linewidth}
-\subcaption{\label{tbl-a-het-ppm-1}}
-
-{\centering 
+\caption{\label{tbl-a-het-ppm}Heterogenous treatment effects }\tabularnewline
 
 \centering
 \begin{tabular}[t]{lc}
@@ -2070,21 +2067,6 @@ ATT(2021, 2021) & 2.853 [-16.312, 22.019]\\
 \bottomrule
 \multicolumn{2}{l}{\rule{0pt}{1em}Joint test that all ATTs are equal: F(3, 1271)= 0.431, p= 0.731}\\
 \end{tabular}
-
-}
-
-\end{minipage}%
-\newline
-\begin{minipage}[t]{\linewidth}
-
-{\centering 
-
-PMF error estimation diagnostics.
-
-}
-
-\end{minipage}%
-
 \end{table}
 
 \hypertarget{about-the-authors}{%

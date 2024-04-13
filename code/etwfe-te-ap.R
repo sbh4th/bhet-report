@@ -18,7 +18,7 @@ ap_data <- read_csv(here("data-clean",
     house_area, pm2.5_indoor_sensor_24h,
     pm2.5_indoor_seasonal_hs,
     N_percent_indoor_seasonal_hs, year,
-    ban_status_composite, ptc_smoking, 
+    ban_status_composite, ptc_smoking, hh_smoking, 
     outdoor_temp_24h, outdoor_dew_24h, hh_num)) %>%
   mutate(year = if_else(wave=="S1", 2018, 
       if_else(wave=="S2", 2019,
@@ -46,24 +46,42 @@ ap_data <- read_csv(here("data-clean",
 # data frames
 d_personal <- ap_data %>%
   filter(PM25_exp_remove == 1) %>%
+  # smoking variable for consistency across outcomes
+  mutate(smoking = ptc_smoking) %>%
   # drop households with duplicate values
   distinct(hh_id, wave, PM25conc_exposureugm3, 
            .keep_all= TRUE)
 
 d_bc <- ap_data %>%
+  # smoking variable for consistency across outcomes
+  mutate(smoking = ptc_smoking) %>%
   filter(bc_exp_remove == 1)
 
 d_ind_24h <- ap_data %>% 
   # keep usable values of indoor PM
   filter(!is.na(pm2.5_indoor_sensor_24h)) %>%
+  # recode smoking variable to reflect household status
+  mutate(smoking = if_else(hh_smoking=="Smoking", 
+                      "Smoker", "Non-smoker")) %>%
   # drop households with duplicate values
   distinct(hh_id, wave, pm2.5_indoor_sensor_24h, 
-           .keep_all= TRUE) 
+           .keep_all= TRUE)
+
 
 d_ind_seasonal <- ap_data %>% 
-  filter(N_percent_indoor_seasonal_hs >= 0.2) %>% 
+  filter(N_percent_indoor_seasonal_hs >= 0.2) %>%
+  # recode smoking variable to reflect household status
+  mutate(smoking = if_else(hh_smoking=="Smoking", 
+                      "Smoker", "Non-smoker")) %>%
   distinct(hh_id, wave, pm2.5_indoor_seasonal_hs, 
            .keep_all= TRUE)
+
+# season 3 seasonal data
+d_ind_s3 <- read_csv(here("data-clean", 
+  "indoor_pm_S3.csv")) %>%
+  select(hh_id, wave, ID_VILLAGE, 
+    pm2.5_indoor_seasonal_hs, 
+    N_percent_indoor_seasonal_hs)
 
 # basic DiD specification
 rhs_did <- c("treat:cohort_year_2019:year_2019",
@@ -74,7 +92,7 @@ rhs_did <- c("treat:cohort_year_2019:year_2019",
   "year_2021", "year_2019", "cohort_year_2019")
 
 # DiD plus covariates
-rhs_dida <- c(rhs_did, "hh_num", "ptc_smoking", 
+rhs_dida <- c(rhs_did, "hh_num", "factor(smoking)", 
   "outdoor_temp_24h", "outdoor_dew_24h")
 
 # Function to estimate ETWFE models and marginal linear regression model # effects across different outcomes
@@ -158,6 +176,8 @@ estimate_etwfe <- function(
               meh_2 = me_het2, ht2 = me_jt2))
 }
 
+
+## Estimate models for all AP outcomes
 # ETWFE and adjusted ETWFE models for personal PM
 m_ppm <- estimate_etwfe(lhs="PM25conc_exposureugm3", 
   rhs1=rhs_did, rhs2=rhs_dida, 
@@ -273,8 +293,17 @@ ap_panels <- list(
   )
   
 
+personal_panels <- list(
+  "Average ATT" = list(
+    "PM2.5" = m_ppm$me_2,
+    "Black carbon" = m_pbc$me_2),
+  "Cohort-Time ATTs" = list(
+    "PM2.5" = m_ppm$meh_2,
+    "Black carbon" = m_pbc$meh_2
+  ))
+
 modelsummary(
-  ap_panels,
+  personal_panels,
   shape = "rbind",
   gof_omit = ".*",
   estimate = "{estimate} [{conf.low}, {conf.high}]",
@@ -322,3 +351,44 @@ modelsummary(list("Adjusted ETWFE" = mstest1),
   notes = paste("Joint test that all ATTs are equal: ", "F(", m_ppm$ht1$df1, ", ", m_ppm$ht1$df2, ")= " ,round(m_ppm$ht1$statistic, digits=3), ", p= ", round(m_ppm$ht1$p.value, digits=3)))
 
 
+
+# tables of results by outcome
+ap_table_ph <- bind_rows(m_ppm$me_2, m_ppm$meh_2) %>% 
+  mutate(outcome = "PM2.5")
+
+ap_table_bch <- bind_rows(m_pbc$me_2, m_pbc$meh_2) %>% 
+  mutate(outcome = "Black carbon")
+
+aph_table <- bind_rows(ap_table_ph, ap_table_bch) %>%
+  select(outcome, estimate, conf.low, conf.high, 
+         cohort_year, year) %>%
+  mutate_at(vars(c(cohort_year,year)), ~ recode(., 
+         `2019` = "2019",
+         `2020` = "2020",
+         `2021` = "2021",
+         .missing = "All")) %>%
+  relocate(outcome, cohort_year, year) %>%
+  mutate(ci = paste("(", round(conf.low, 2), ", ",
+    round(conf.high, 2), ")", sep="")) %>%
+  select(-conf.low, -conf.high) %>%
+  pivot_wider(names_from = outcome, values_from = 
+    c(estimate, ci), names_vary = "slowest")
+
+# write table to data
+write_rds(aph_table, file = here("outputs", 
+  "ap-het-table.rds"))
+
+kable(aph_table, digits = 2,
+  col.names = c("Cohort", "Year", "ATT", "(95% CI)", 
+   "ATT", "(95% CI)"), #"latex", booktabs = T,
+  linesep = "") %>%
+  kable_styling(full_width = F) %>%
+  # collapse_rows(columns = 1:2, valign = "top") %>% 
+  add_header_above(c(" " = 2, 
+                    "PM2.5" = 2, "Black carbon" = 2)) %>%
+  footnote(symbol=c(paste("Joint test that all ATTs are equal: ", 
+    "F(", m_ppm$ht1$df1, ", ", m_ppm$ht1$df2, ")= " , 
+    round(m_ppm$ht1$statistic, digits=3), ", p= ", 
+    round(m_ppm$ht1$p.value, digits=3)), 
+    paste("Joint test that all ATTs are equal: ", "F(", m_pbc$ht1$df1, ", ", m_pbc$ht1$df2, ")= " ,round(m_pbc$ht1$statistic, digits=3), ", p= ", round(m_pbc$ht1$p.value, digits=3))), footnote_as_chunk = T) 
+  

@@ -695,11 +695,11 @@ Sensitivity analyses: [[[Jill to edit this table include all sensitivity analysi
 	-3.8% [-16.9, 11.4]
 
 ## Heterogeneity in treament effects
-As noted in the methods section...Table @tbl-a-het-pm shows...
+As noted in the methods section...Table @tbl-a-het-ppm shows...
 
 ```{r atbl-het, echo=F}
 #| label: tbl-a-het-ppm
-#| fig-cap: "PMF error estimation diagnostics."
+#| tbl-cap: "Heterogenous treatment effects"
 
 
 options("modelsummary_format_numeric_latex" = "plain")

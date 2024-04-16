@@ -447,7 +447,7 @@ modelsummary(
 ```
 
 Another example
-```{r, echo=F}
+```{r, echo=F, eval=F}
 
 # read in personal exposure heterogeneity table
 aph_table <- read_rds(here("outputs", 
@@ -513,4 +513,34 @@ ap_season %>%
     "Season 4" = 2)) %>%
   footnote(general = "Note: Est. = Estimate, CI = 95\\\\% CI",  
            general_title = "", escape = F)
+```
+
+Respiratory tables
+```{r, echo=F}
+
+# read in personal exposure heterogeneity table
+resp_any_table <- read_rds(here("outputs", 
+  "resp-het-resp.rds")) %>%
+  select(-outcome)
+
+models_resp <- read_rds(here("outputs/models", 
+  "r_het_tests.rds"))
+
+models_resp_note <- paste("\\\\small{Joint test that all ATTs are equal: ", 
+    "F(", models_resp$resp$df1, ", ", 
+    models_resp$resp$df2, ")= " , 
+    round(models_resp$resp$statistic, digits=3), ", p= ", 
+    round(models_resp$resp$p.value, digits=3),"}", sep="")
+
+kable(resp_any_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", 
+    "ATT", "(95\\%CI)"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'cccc') %>%
+  column_spec(1:2, width = "2cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  footnote(general=models_resp_note,
+    general_title = "", escape = F)
 ```

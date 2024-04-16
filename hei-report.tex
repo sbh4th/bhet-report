@@ -122,7 +122,6 @@
   {\renewcommand\familydefault\sfdefault
    \@float{table}}
   {\end@float}
-\floatsetup[table]{font=sf}
 \makeatother
 \KOMAoption{captions}{tableheading}
 \makeatletter
@@ -197,11 +196,11 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-04-15}
+\date{2024-04-16}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, enhanced, breakable, frame hidden, sharp corners]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, sharp corners, interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, boxrule=0pt]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -1481,7 +1480,7 @@ repeated measurements and to those who participated in all three
 campaigns (SI Table X)
 
 \hypertarget{mediated-impact-on-blood-pressure}{%
-\subsection{Mediated impact on blood
+\subsubsection{Mediated impact on blood
 pressure}\label{mediated-impact-on-blood-pressure}}
 
 As noted above, we aimed to assess whether any health impacts of the
@@ -2161,6 +2160,161 @@ All & All & -14.20 & (-53.94, 25.54) & -36.19 & (-60.74, -11.65)\\
 \bottomrule
 \multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{a} Joint test that all ATTs are equal: F(1, 405)= 0.064, p= 0.8}\\
 \multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{b} Joint test that all ATTs are equal: F(1, 368)= 0.756, p= 0.385}\\
+\end{tabular}
+\end{table}
+
+\hypertarget{respiratory-outcomes}{%
+\subsubsection{Respiratory outcomes}\label{respiratory-outcomes}}
+
+Appendix tables -Table~\ref{tbl-a-het-resp},
+-Table~\ref{tbl-a-het-cough}, -Table~\ref{tbl-a-het-phlegm},
+-Table~\ref{tbl-a-het-wheeze}, -Table~\ref{tbl-a-het-breath},
+-Table~\ref{tbl-a-het-nochest} below show Average Treatment Effect on
+the Treated (ATTs) by treatment cohort and time. ATTs are derived from
+estimating marginal effects from extended two-way fixed effects models
+with additional adjustment for age, sex, and smoking status.
+
+\hypertarget{tbl-a-het-resp}{}
+\begin{table}
+\caption{\label{tbl-a-het-resp}Heterogenous treatment effects for self-reported respiratory outcomes:
+Any respiratory symptom }\tabularnewline
+
+\centering
+\begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
+\toprule
+Cohort & Time & ATT & (95\%CI)\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Average ATT}}\\
+All & All & -0.08 & (-0.15, -0.01)\\
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Cohort-Time ATTs}}\\
+2019 & 2019 & -0.11 & (-0.20, -0.02)\\
+2019 & 2021 & -0.10 & (-0.21, 0.00)\\
+2020 & 2021 & 0.01 & (-0.10, 0.13)\\
+2021 & 2021 & -0.12 & (-0.22, -0.01)\\
+\bottomrule
+\multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 1.283, p= 0.278.}}\\
+\end{tabular}
+\end{table}
+
+\hypertarget{tbl-a-het-cough}{}
+\begin{table}
+\caption{\label{tbl-a-het-cough}Heterogenous treatment effects for self-reported respiratory outcomes:
+Coughing }\tabularnewline
+
+\centering
+\begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
+\toprule
+Cohort & Time & ATT & (95\%CI)\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Average ATT}}\\
+All & All & -0.02 & (-0.07, 0.03)\\
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Cohort-Time ATTs}}\\
+2019 & 2019 & -0.04 & (-0.11, 0.03)\\
+2019 & 2021 & 0.01 & (-0.07, 0.08)\\
+2020 & 2021 & -0.03 & (-0.10, 0.05)\\
+2021 & 2021 & -0.04 & (-0.09, 0.02)\\
+\bottomrule
+\multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 0.732, p= 0.533.}}\\
+\end{tabular}
+\end{table}
+
+\hypertarget{tbl-a-het-phlegm}{}
+\begin{table}
+\caption{\label{tbl-a-het-phlegm}Heterogenous treatment effects for self-reported respiratory outcomes:
+Phlegm }\tabularnewline
+
+\centering
+\begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
+\toprule
+Cohort & Time & ATT & (95\%CI)\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Average ATT}}\\
+All & All & -0.02 & (-0.06, 0.03)\\
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Cohort-Time ATTs}}\\
+2019 & 2019 & -0.06 & (-0.16, 0.03)\\
+2019 & 2021 & -0.03 & (-0.10, 0.04)\\
+2020 & 2021 & 0.04 & (-0.02, 0.09)\\
+2021 & 2021 & 0.03 & (-0.04, 0.09)\\
+\bottomrule
+\multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 1.735, p= 0.158.}}\\
+\end{tabular}
+\end{table}
+
+\hypertarget{tbl-a-het-wheeze}{}
+\begin{table}
+\caption{\label{tbl-a-het-wheeze}Heterogenous treatment effects for self-reported respiratory outcomes:
+Wheezing attacks }\tabularnewline
+
+\centering
+\begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
+\toprule
+Cohort & Time & ATT & (95\%CI)\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Average ATT}}\\
+All & All & 0.00 & (-0.04, 0.04)\\
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Cohort-Time ATTs}}\\
+2019 & 2019 & -0.02 & (-0.06, 0.01)\\
+2019 & 2021 & 0.01 & (-0.04, 0.06)\\
+2020 & 2021 & -0.03 & (-0.11, 0.05)\\
+2021 & 2021 & 0.09 & (-0.00, 0.18)\\
+\bottomrule
+\multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 2.923, p= 0.033.}}\\
+\end{tabular}
+\end{table}
+
+\hypertarget{tbl-a-het-breath}{}
+\begin{table}
+\caption{\label{tbl-a-het-breath}Heterogenous treatment effects for self-reported respiratory outcomes:
+Trouble breathing }\tabularnewline
+
+\centering
+\begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
+\toprule
+Cohort & Time & ATT & (95\%CI)\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Average ATT}}\\
+All & All & -0.05 & (-0.12, 0.02)\\
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Cohort-Time ATTs}}\\
+2019 & 2019 & -0.06 & (-0.16, 0.04)\\
+2019 & 2021 & -0.07 & (-0.16, 0.03)\\
+2020 & 2021 & 0.01 & (-0.09, 0.11)\\
+2021 & 2021 & -0.07 & (-0.20, 0.06)\\
+\bottomrule
+\multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 0.718, p= 0.541.}}\\
+\end{tabular}
+\end{table}
+
+\hypertarget{tbl-a-het-nochest}{}
+\begin{table}
+\caption{\label{tbl-a-het-nochest}Heterogenous treatment effects for self-reported respiratory outcomes:
+Chest trouble }\tabularnewline
+
+\centering
+\begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
+\toprule
+Cohort & Time & ATT & (95\%CI)\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Average ATT}}\\
+All & All & -0.06 & (-0.12, -0.01)\\
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Cohort-Time ATTs}}\\
+2019 & 2019 & -0.06 & (-0.13, 0.01)\\
+2019 & 2021 & -0.06 & (-0.15, 0.03)\\
+2020 & 2021 & -0.05 & (-0.16, 0.05)\\
+2021 & 2021 & -0.14 & (-0.22, -0.05)\\
+\bottomrule
+\multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 1.046, p= 0.371.}}\\
 \end{tabular}
 \end{table}
 

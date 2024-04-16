@@ -597,7 +597,7 @@ kable(op_table,  digits = 2,
 
 @tbl-did-health shows the impacts of the CBHP on measured airway inflammation (FeNO), which was conducted in a sub-sample of 511 participants, including 274 participants with one measurement, 142 with two measurements, 95 participants with 3 measurements. We did not find evidence that exposure to the policy affected changes in FeNO in the covariate-adjusted ETWFE model (0.5 ppb, 95%CI: -2.1, 3.1) (Table X). There was some evidence of heterogeneity in the FeNO effects of the policy by treatment cohort[h] but the confidence intervals for each of the cohort-specific effects were large and overlapping. Our results did not change with sensitivity analyses that included a log-transformed FeNO outcome and limiting the analysis to participants with at least two repeated measurements and to those who participated in all three campaigns (SI Table X)  
 
-## Mediated impact on blood pressure
+### Mediated impact on blood pressure
 
 As noted above, we aimed to assess whether any health impacts of the CBHP policy may work specifically through pathways involving changes in PM~2.5~ and indoor temperature. Below we show results from several mediation models. We evaluated potential mediation for each mediator separately and in a single model accounting for multiple mediators, and we set the values of both mediators to the WHO mean annual interim PM~2.5~ and indoor temperature guidelines. For mediation analysis, we focused on BP outcomes for which we observed an effect of the policy. In @tbl-bp-med we show that conditioning on indoor PM and indoor temperature largely explains the entire total effect of the CBHP policy on blood pressure for systolic BP, and roughly half of the total effect for diastolic BP.
 
@@ -816,6 +816,211 @@ kable(aph_table_ind, digits = 2, escape = FALSE,
     escape = FALSE) %>%
   footnote(alphabet=c(models_i24_note, models_is_note)) 
 ```
+
+### Respiratory outcomes
+
+Appendix tables -@tbl-a-het-resp, -@tbl-a-het-cough, -@tbl-a-het-phlegm, -@tbl-a-het-wheeze, -@tbl-a-het-breath, -@tbl-a-het-nochest below show Average Treatment Effect on the Treated (ATTs) by treatment cohort and time. ATTs are derived from estimating marginal effects from extended two-way fixed effects models with additional adjustment for age, sex, and smoking status. 
+
+```{r atbl-het-resp, echo=F}
+#| label: tbl-a-het-resp
+#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Any respiratory symptom"
+
+
+# read in personal exposure heterogeneity table
+resp_any_table <- read_rds(here("outputs", 
+  "resp-het-resp.rds")) %>%
+  select(-outcome)
+
+models_resp <- read_rds(here("outputs/models", 
+  "r_het_tests.rds"))
+
+models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+    "F(", models_resp$resp$df1, ", ", 
+    models_resp$resp$df2, ")= " , 
+    round(models_resp$resp$statistic, digits=3), ", p= ", 
+    round(models_resp$resp$p.value, digits=3),".}", sep="")
+
+#model_adj_note <- ""
+
+kable(resp_any_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", 
+    "ATT", "(95\\%CI)"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'cccc') %>%
+  column_spec(1:2, width = "2cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  footnote(general=models_resp_note,
+    general_title = "", escape = F)
+```
+
+
+
+```{r atbl-het-cough, echo=F}
+#| label: tbl-a-het-cough
+#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Coughing"
+
+
+# read in personal exposure heterogeneity table
+resp_cough_table <- read_rds(here("outputs", 
+  "resp-het-cough.rds")) %>%
+  select(-outcome)
+
+models_resp <- read_rds(here("outputs/models", 
+  "r_het_tests.rds"))
+
+models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+    "F(", models_resp$cough$df1, ", ", 
+    models_resp$cough$df2, ")= " , 
+    round(models_resp$cough$statistic, digits=3), ", p= ", 
+    round(models_resp$cough$p.value, digits=3),".}", sep="")
+
+kable(resp_cough_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", 
+    "ATT", "(95\\%CI)"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'cccc') %>%
+  column_spec(1:2, width = "2cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  footnote(general=models_resp_note,
+    general_title = "", escape = F)
+```
+
+
+```{r atbl-het-phlegm, echo=F}
+#| label: tbl-a-het-phlegm
+#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Phlegm"
+
+
+# read in personal exposure heterogeneity table
+resp_phlegm_table <- read_rds(here("outputs", 
+  "resp-het-phlegm.rds")) %>%
+  select(-outcome)
+
+models_resp <- read_rds(here("outputs/models", 
+  "r_het_tests.rds"))
+
+models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+    "F(", models_resp$phlegm$df1, ", ", 
+    models_resp$phlegm$df2, ")= " , 
+    round(models_resp$phlegm$statistic, digits=3), ", p= ", 
+    round(models_resp$phlegm$p.value, digits=3),".}", sep="")
+
+kable(resp_phlegm_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", 
+    "ATT", "(95\\%CI)"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'cccc') %>%
+  column_spec(1:2, width = "2cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  footnote(general=models_resp_note,
+    general_title = "", escape = F)
+```
+
+```{r atbl-het-wheeze, echo=F}
+#| label: tbl-a-het-wheeze
+#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Wheezing attacks"
+
+
+# read in personal exposure heterogeneity table
+resp_wheeze_table <- read_rds(here("outputs", 
+  "resp-het-wheeze.rds")) %>%
+  select(-outcome)
+
+models_resp <- read_rds(here("outputs/models", 
+  "r_het_tests.rds"))
+
+models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+    "F(", models_resp$wheeze$df1, ", ", 
+    models_resp$wheeze$df2, ")= " , 
+    round(models_resp$wheeze$statistic, digits=3), ", p= ", 
+    round(models_resp$wheeze$p.value, digits=3),".}", sep="")
+
+kable(resp_wheeze_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", 
+    "ATT", "(95\\%CI)"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'cccc') %>%
+  column_spec(1:2, width = "2cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  footnote(general=models_resp_note,
+    general_title = "", escape = F)
+```
+
+
+```{r atbl-het-breath, echo=F}
+#| label: tbl-a-het-breath
+#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Trouble breathing"
+
+
+# read in personal exposure heterogeneity table
+resp_breath_table <- read_rds(here("outputs", 
+  "resp-het-breath.rds")) %>%
+  select(-outcome)
+
+models_resp <- read_rds(here("outputs/models", 
+  "r_het_tests.rds"))
+
+models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+    "F(", models_resp$breath$df1, ", ", 
+    models_resp$breath$df2, ")= " , 
+    round(models_resp$breath$statistic, digits=3), ", p= ", 
+    round(models_resp$breath$p.value, digits=3),".}", sep="")
+
+kable(resp_breath_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", 
+    "ATT", "(95\\%CI)"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'cccc') %>%
+  column_spec(1:2, width = "2cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  footnote(general=models_resp_note,
+    general_title = "", escape = F)
+```
+
+
+```{r atbl-het-breath, echo=F}
+#| label: tbl-a-het-nochest
+#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Chest trouble"
+
+
+# read in personal exposure heterogeneity table
+resp_nochest_table <- read_rds(here("outputs", 
+  "resp-het-nochest.rds")) %>%
+  select(-outcome)
+
+models_resp <- read_rds(here("outputs/models", 
+  "r_het_tests.rds"))
+
+models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+    "F(", models_resp$nochest$df1, ", ", 
+    models_resp$nochest$df2, ")= " , 
+    round(models_resp$nochest$statistic, digits=3), ", p= ", 
+    round(models_resp$nochest$p.value, digits=3),".}", sep="")
+
+kable(resp_nochest_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", 
+    "ATT", "(95\\%CI)"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'cccc') %>%
+  column_spec(1:2, width = "2cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  footnote(general=models_resp_note,
+    general_title = "", escape = F)
+```
+
+
 
 ### Impact of including Season 3 data 
 Table @tbl-a-ind-s3 shows differences in the ATTs for the impact of seasonal indoor PM~2.5~ when season 3 data (collected in 41 villages during COVID-19) are included versus excluded. 

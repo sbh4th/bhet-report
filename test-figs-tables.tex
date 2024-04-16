@@ -215,7 +215,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, frame hidden, interior hidden, boxrule=0pt, sharp corners, enhanced, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, sharp corners, breakable, borderline west={3pt}{0pt}{shadecolor}, enhanced, frame hidden, boxrule=0pt]}{\end{tcolorbox}}\fi
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -344,29 +344,6 @@ likely a mixture of the two combustion sources.
 
 Another example
 
-\begin{table}
-\centering
-\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}>{\centering\arraybackslash}p{1.5cm}cccc}
-\toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{PM2.5\textsuperscript{a}} & \multicolumn{2}{c}{Black carbon\textsuperscript{b}} \\
-\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
-Cohort & Time & ATT & (95\%CI) & ATT & (95\%CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Average ATT}}\\
-All & All & 1.95 & (-23.34, 27.23) & -0.43 & (-1.67, 0.81)\\
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Cohort-Time ATTs}}\\
-2019 & 2019 & -0.05 & (-28.97, 28.87) & -0.69 & (-1.84, 0.45)\\
-2019 & 2021 & -4.31 & (-41.92, 33.3) & -0.25 & (-2.11, 1.62)\\
-2020 & 2021 & 23.61 & (-19.88, 67.11) & -0.27 & (-2.04, 1.5)\\
-2021 & 2021 & -19.06 & (-43.19, 5.07) & -0.56 & (-2.46, 1.34)\\
-\bottomrule
-\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{a} Joint test that all ATTs are equal: F(3, 1271)= 0.431, p= 0.731}\\
-\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{b} Joint test that all ATTs are equal: F(3, 1253)= 0.613, p= 0.607}\\
-\end{tabular}
-\end{table}
-
 \begin{verbatim}
 Rows: 16 Columns: 13
 -- Column specification --------------------------------------------------------
@@ -428,6 +405,28 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
 \multicolumn{12}{l}{\rule{0pt}{1em}Note: Est. = Estimate, CI = 95\% CI}\\
 \end{longtable*}
 \endgroup{}
+
+Respiratory tables
+
+\begin{table}
+\centering
+\begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
+\toprule
+Cohort & Time & ATT & (95\%CI)\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Average ATT}}\\
+All & All & -0.08 & (-0.15, -0.01)\\
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Cohort-Time ATTs}}\\
+2019 & 2019 & -0.11 & (-0.20, -0.02)\\
+2019 & 2021 & -0.10 & (-0.21, 0.00)\\
+2020 & 2021 & 0.01 & (-0.10, 0.13)\\
+2021 & 2021 & -0.12 & (-0.22, -0.01)\\
+\bottomrule
+\multicolumn{4}{l}{\rule{0pt}{1em}\small{Joint test that all ATTs are equal: F(3, 2579)= 1.283, p= 0.278}}\\
+\end{tabular}
+\end{table}
 
 
 

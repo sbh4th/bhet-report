@@ -262,19 +262,24 @@ However, when multiple groups are treated at different time periods, the most co
 
 To estimate how much of the CBHP intervention may work through different mechanisms, we used causal mediation analysis. Causal approaches to mediation attempt to discern between, and clarify the necessary assumptions for identifying, different kinds of mediated effects. Taking as an example the DAG in @fig-dag1, with $T$ as the policy, $M$ as PM~2.5~, and $Y$ as systolic blood pressure, we can define the controlled direct effect ($CDE$) as the effect of the CBHP policy on systolic blood pressure if we fix the value of PM~2.5~ to a certain reference level for the entire population. For example, we can estimate the impact of the policy on health outcomes while holding PM~2.5~ at a uniform level of average background exposure, or some other hypothetical level.
 
-```{r dag1, engine='tikz', echo=F, out.width="50%"}
+```{r dag1, engine='tikz', echo=F, out.width="60%"}
 #| label: fig-dag1
-#| fig-cap: "Example of direct and indirect effects with outcome ($Y$), treatment ($T$), and mediator ($M$)"
-\begin{tikzpicture}[shorten > = 1pt, line width=1.5pt]
+#| fig-cap: "Hypothetical Directed Acyclic Graph showing direct and indirect effects with outcome ($Y$), pre-treatment covariates ($X$), policy ($T$), multiple mediators ($M_{1},M_{2}$), as well as covariates for the mediators ($W$)."
+
+\begin{tikzpicture}[shorten > = 1pt, line width=0.5pt, font=\scriptsize]
 \tikzstyle{every node} = [rectangle, fill=white, draw=none]
-\node (t) at  (0,0) [align=center] {Policy\\($T$)};
-\node (m) at  (3,0) [align=center] {PM\textsubscript{2.5}\\($M$)};
-\node (y) at  (6,0) [align=center] {Blood\\pressure\\($Y$)};
-\node (de) at (3,1.6) [align=center, text=red!80] {\small{Direct effect}};
-\node (ie) at (3,-0.6) [align=center,text=red!80] {\small{Indirect effect}};
-\foreach \from/\to in {t/m, m/y}
+\node (x) at (0,0) [align=center] {$X$};
+\node (t) at  (1.5,0) [align=center] {Policy\\($T$)};
+\node (m1) at  (3.5,1) [align=center] {PM\textsubscript{2.5}\\($M_{1}$)};
+\node (m2) at  (3.5,-1) [align=center] {Indoor\\Temp\\($M_{2}$)};
+\node (y) at  (5.5,0) [align=center] {SBP\\($Y$)};
+\node (w) at (2,-1.5) [align=center] {$W$};
+\foreach \from/\to in {x/t, t/y, t/m1, t/m2, m1/y, m2/y, w/m1, w/m2}
   \draw [->] (\from) -- (\to);
-\draw [->] (t) to [bend left=35] (y);
+\draw [->] (x) to [bend left=45] (y.north);
+\draw [->] (x) to [bend left=20] (m1);
+\draw [->] (x) to [bend right=25] (m2);
+\draw [->] (w) to [bend right=45] (y);
 \end{tikzpicture}
 ```
 
@@ -524,7 +529,7 @@ Overall we found little evidence of an impact of the CBHP policy on 24-h and sea
 ### Impact of policy on health outcomes
 
 
-```{r fig-did-bp, echo=F, message=F, warning=F, out.width="60%"}
+```{r tbl-did-bp, echo=F, message=F, warning=F}
 #| label: tbl-did-health
 #| tbl-cap: "Overall impacts of the ‘coal-to-clean energy’ policy on blood pressure, respiratory outcomes, and inflammatory markers"
 
@@ -819,7 +824,7 @@ kable(aph_table_ind, digits = 2, escape = FALSE,
 
 ### Respiratory outcomes
 
-Appendix tables -@tbl-a-het-resp, -@tbl-a-het-cough, -@tbl-a-het-phlegm, -@tbl-a-het-wheeze, -@tbl-a-het-breath, -@tbl-a-het-nochest below show Average Treatment Effect on the Treated (ATTs) by treatment cohort and time. ATTs are derived from estimating marginal effects from extended two-way fixed effects models with additional adjustment for age, sex, and smoking status. 
+Appendix tables [-@tbl-a-het-resp], [-@tbl-a-het-cough], [-@tbl-a-het-phlegm], [-@tbl-a-het-wheeze], [-@tbl-a-het-breath], [-@tbl-a-het-nochest] below show Average Treatment Effect on the Treated (ATTs) by treatment cohort and time. ATTs are derived from estimating marginal effects from extended two-way fixed effects models with additional adjustment for age, sex, and smoking status. 
 
 ```{r atbl-het-resp, echo=F}
 #| label: tbl-a-het-resp
@@ -854,7 +859,6 @@ kable(resp_any_table, digits = 2, escape = FALSE,
   footnote(general=models_resp_note,
     general_title = "", escape = F)
 ```
-
 
 
 ```{r atbl-het-cough, echo=F}
@@ -1022,8 +1026,8 @@ kable(resp_nochest_table, digits = 2, escape = FALSE,
 
 
 
-### Impact of including Season 3 data 
-Table @tbl-a-ind-s3 shows differences in the ATTs for the impact of seasonal indoor PM~2.5~ when season 3 data (collected in 41 villages during COVID-19) are included versus excluded. 
+## Impact of including Season 3 data 
+@tbl-a-ind-s3 shows differences in the ATTs for the impact of seasonal indoor PM~2.5~ when season 3 data (collected in 41 villages during COVID-19) are included versus excluded. 
 
 ```{r atbl-ind-s3, echo=F}
 #| label: tbl-a-ind-s3

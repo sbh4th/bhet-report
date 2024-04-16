@@ -335,7 +335,7 @@ kable(t_pmf,
 
 
 ```{r fig-dag, engine='tikz', echo=F, out.width="60%"}
-\begin{tikzpicture}[shorten > = 1pt, line width=1pt, font=\scriptsize]
+\begin{tikzpicture}[shorten > = 1pt, line width=0.5pt, font=\scriptsize]
 \tikzstyle{every node} = [rectangle, fill=white, draw=none]
 \node (x) at (0,0) [align=center] {$X$};
 \node (t) at  (1.5,0) [align=center] {Policy\\($T$)};
@@ -526,7 +526,7 @@ resp_any_table <- read_rds(here("outputs",
 models_resp <- read_rds(here("outputs/models", 
   "r_het_tests.rds"))
 
-models_resp_note <- paste("\\\\small{Joint test that all ATTs are equal: ", 
+models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
     "F(", models_resp$resp$df1, ", ", 
     models_resp$resp$df2, ")= " , 
     round(models_resp$resp$statistic, digits=3), ", p= ", 

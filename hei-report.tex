@@ -200,7 +200,7 @@ of the Beijing Household Energy Transitions Team}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, sharp corners, interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, boxrule=0pt]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, frame hidden, sharp corners, breakable, borderline west={3pt}{0pt}{shadecolor}, enhanced, interior hidden]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -956,12 +956,14 @@ of average background exposure, or some other hypothetical level.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.5\textwidth,height=\textheight]{hei-report_files/figure-pdf/fig-dag1-1.pdf}
+{\centering \includegraphics[width=0.6\textwidth,height=\textheight]{hei-report_files/figure-pdf/fig-dag1-1.pdf}
 
 }
 
-\caption{\label{fig-dag1}Example of direct and indirect effects with
-outcome (\(Y\)), treatment (\(T\)), and mediator (\(M\))}
+\caption{\label{fig-dag1}Hypothetical Directed Acyclic Graph showing
+direct and indirect effects with outcome (\(Y\)), pre-treatment
+covariates (\(X\)), policy (\(T\)), multiple mediators
+(\(M_{1},M_{2}\)), as well as covariates for the mediators (\(W\)).}
 
 \end{figure}
 
@@ -2166,11 +2168,10 @@ All & All & -14.20 & (-53.94, 25.54) & -36.19 & (-60.74, -11.65)\\
 \hypertarget{respiratory-outcomes}{%
 \subsubsection{Respiratory outcomes}\label{respiratory-outcomes}}
 
-Appendix tables -Table~\ref{tbl-a-het-resp},
--Table~\ref{tbl-a-het-cough}, -Table~\ref{tbl-a-het-phlegm},
--Table~\ref{tbl-a-het-wheeze}, -Table~\ref{tbl-a-het-breath},
--Table~\ref{tbl-a-het-nochest} below show Average Treatment Effect on
-the Treated (ATTs) by treatment cohort and time. ATTs are derived from
+Appendix tables \ref{tbl-a-het-resp}, \ref{tbl-a-het-cough},
+\ref{tbl-a-het-phlegm}, \ref{tbl-a-het-wheeze}, \ref{tbl-a-het-breath},
+\ref{tbl-a-het-nochest} below show Average Treatment Effect on the
+Treated (ATTs) by treatment cohort and time. ATTs are derived from
 estimating marginal effects from extended two-way fixed effects models
 with additional adjustment for age, sex, and smoking status.
 
@@ -2319,12 +2320,12 @@ All & All & -0.06 & (-0.12, -0.01)\\
 \end{table}
 
 \hypertarget{impact-of-including-season-3-data}{%
-\subsubsection{Impact of including Season 3
+\subsection{Impact of including Season 3
 data}\label{impact-of-including-season-3-data}}
 
-Table Table~\ref{tbl-a-ind-s3} shows differences in the ATTs for the
-impact of seasonal indoor PM\textsubscript{2.5} when season 3 data
-(collected in 41 villages during COVID-19) are included versus excluded.
+Table~\ref{tbl-a-ind-s3} shows differences in the ATTs for the impact of
+seasonal indoor PM\textsubscript{2.5} when season 3 data (collected in
+41 villages during COVID-19) are included versus excluded.
 
 \hypertarget{tbl-a-ind-s3}{}
 \begin{table}

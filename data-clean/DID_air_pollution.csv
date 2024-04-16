@@ -11,3 +11,5 @@ Daily,Outdoor,DiD,-0.11,-5.86,5.64
 Daily,Outdoor,Adjusted DiD,-1.73,-9.26,5.81
 Seasonal,Outdoor,DiD,3.14,-3.1,9.38
 Seasonal,Outdoor,Adjusted DiD,0.358,-6.27,6.99
+Seasonal,Indoor,DiD with S3,-37.9219,-58.55786,-17.286
+Seasonal,Outdoor,DiD with S3,-1.73,-9.26,5.81

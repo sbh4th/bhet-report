@@ -122,6 +122,7 @@
   {\renewcommand\familydefault\sfdefault
    \@float{table}}
   {\end@float}
+\floatsetup[table]{font=sf}
 \makeatother
 \KOMAoption{captions}{tableheading}
 \makeatletter
@@ -200,7 +201,7 @@ of the Beijing Household Energy Transitions Team}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, enhanced, interior hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners, frame hidden, boxrule=0pt]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, enhanced, breakable, frame hidden, sharp corners]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -1162,7 +1163,7 @@ measurements}\label{summary-of-pm-and-bc-measurements}}
 At baseline, fine particulate matter (PM\textsubscript{2.5}) and black
 carbon (BC) concentrations were highest, on average, for personal
 exposures compared with indoor and outdoor concentrations, with indoor
-levels being higher than outdoors (Figure~\ref{fig-pm-baseline}). This
+levels being higher than outdoors (Table~\ref{tbl-pm-season}). This
 trend (personal \textgreater{} indoor \textgreater{} outdoor) was
 observed among households in treated and untreated villages. Personal,
 indoor, and outdoor geometric mean (95\% confidence interval)
@@ -1181,16 +1182,61 @@ and 50 µg/m3; IT-3: 15 and 37.5 µg/m3; and IT-4: 10 and 25 µg/m3
 indoor concentrations were between IT-3 and IT-4, indicating
 considerable opportunity for air quality improvement.
 
-\begin{figure}[H]
+\begingroup\fontsize{9}{11}\selectfont
 
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{images/fig-pm-baseline.png}
+\hypertarget{tbl-pm-season}{}
+\begin{longtable}[t]{>{\raggedright\arraybackslash}p{4em}>{\raggedright\arraybackslash}p{4em}>{\raggedright\arraybackslash}p{3em}>{\raggedright\arraybackslash}p{3em}lccccccc}
+\caption{\label{tbl-pm-season}Arithmetic and geometric means for air pollutant concentrations (μg/m3)
+by season. }\tabularnewline
 
-}
-
-\caption{\label{fig-pm-baseline}Geometric mean and 95\% Confidence
-Intervals for filter-based air pollutant concentrations at baseline.}
-
-\end{figure}
+\toprule
+\multicolumn{4}{c}{ } & \multicolumn{2}{c}{Season 1} & \multicolumn{2}{c}{Season 2} & \multicolumn{2}{c}{Season 3} & \multicolumn{2}{c}{Season 4} \\
+\cmidrule(l{3pt}r{3pt}){5-6} \cmidrule(l{3pt}r{3pt}){7-8} \cmidrule(l{3pt}r{3pt}){9-10} \cmidrule(l{3pt}r{3pt}){11-12}
+ &  &  &  & Est. & CI & Est. & CI & Est. & CI & Est. & CI\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{12}{l}{\textbf{Personal}}\\
+ &  &  & Mean & 117 & {}[105, 129] & 97 & {}[87, 107] &  &  & 84 & {}[72, 97]\\
+\cmidrule{4-12}\nopagebreak
+ &  & \multirow[t]{-2}{3em}{\raggedright\arraybackslash PM2.5} & GM & 72 & {}[65, 80] & 59 & {}[53, 65] &  &  & 47 & {}[42, 52]\\
+\cmidrule{3-12}\nopagebreak
+ &  &  & Mean & 4 & {}[3.5, 4.4] & 3.5 & {}[2.7, 4.2] &  &  & 3.7 & {}[2.9, 4.5]\\
+\cmidrule{4-12}\nopagebreak
+\multirow[t]{-4}{4em}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Filter-derived} & \multirow[t]{-4}{4em}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash 24h} & \multirow[t]{-2}{3em}{\raggedright\arraybackslash BC} & GM & 2.6 & {}[2.4, 2.8] & 1.9 & {}[1.7, 2.1] &  &  & 1.7 & {}[1.5, 1.9]\\
+\cmidrule{1-12}\pagebreak[0]
+\addlinespace[0.3em]
+\multicolumn{12}{l}{\textbf{Indoor}}\\
+ &  &  & Mean &  &  & 94 & {}[84, 104] & 84 & {}[75, 94] & 67 & {}[60, 75]\\
+\cmidrule{4-12}\nopagebreak
+\multirow[t]{-2}{4em}{\raggedright\arraybackslash Sensor-derived} & \multirow[t]{-2}{4em}{\raggedright\arraybackslash Seasonal} &  & GM &  &  & 71 & {}[65, 78] & 63 & {}[57, 70] & 47 & {}[42, 52]\\
+\cmidrule{1-2}
+\cmidrule{4-12}\nopagebreak
+ &  &  & Mean &  &  & 69 & {}[59, 79] &  &  & 59 & {}[49, 69]\\
+\cmidrule{4-12}\nopagebreak
+ &  & \multirow[t]{-4}{3em}{\raggedright\arraybackslash PM2.5} & GM &  &  & 45 & {}[39, 53] &  &  & 33 & {}[27, 40]\\
+\cmidrule{3-12}\nopagebreak
+ &  &  & Mean &  &  & 2.3 & {}[1.8, 2.8] &  &  & 2.8 & {}[2.1, 3.4]\\
+\cmidrule{4-12}\nopagebreak
+\multirow[t]{-4}{4em}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Filter-derived} & \multirow[t]{-4}{4em}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash 24h} & \multirow[t]{-2}{3em}{\raggedright\arraybackslash BC} & GM &  &  & 1.6 & {}[1.3, 2.0] &  &  & 1.6 & {}[1.3, 1.9]\\
+\cmidrule{1-12}\pagebreak[0]
+\addlinespace[0.3em]
+\multicolumn{12}{l}{\textbf{Outdoor}}\\
+ &  &  & Mean & 47 & {}[45, 48] & 55 & {}[54, 56] & 23 & {}[22, 23] & 33 & {}[32, 34]\\
+\cmidrule{4-12}\nopagebreak
+\multirow[t]{-2}{4em}{\raggedright\arraybackslash Sensor-derived} &  &  & GM & 36 & {}[35, 37] & 40 & {}[39, 41] & 33 & {}[32, 34] & 22 & {}[22, 23]\\
+\cmidrule{1-1}
+\cmidrule{4-12}\nopagebreak
+ &  &  & Mean & 38 & {}[34, 42] & 38 & {}[34, 41] &  &  & 26 & {}[24, 28]\\
+\cmidrule{4-12}\nopagebreak
+ &  & \multirow[t]{-4}{3em}{\raggedright\arraybackslash PM2.5} & GM & 33 & {}[29, 36] & 30 & {}[28, 32] &  &  & 22 & {}[21, 24]\\
+\cmidrule{3-12}\nopagebreak
+ &  &  & Mean & 1.5 & {}[1.3, 1.6] & 1.4 & {}[1.3, 1.5] &  &  & 1.2 & {}[1.1, 1.2]\\
+\cmidrule{4-12}\nopagebreak
+\multirow[t]{-4}{4em}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Filter-derived} & \multirow[t]{-6}{4em}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Seasonal} & \multirow[t]{-2}{3em}{\raggedright\arraybackslash BC} & GM & 1.3 & {}[1.1, 1.4] & 1.1 & {}[1.0, 1.2] &  &  & 1 & {}[0.9, 1.1]\\
+\bottomrule
+\multicolumn{12}{l}{\rule{0pt}{1em}Note: Est. = Estimate, CI = 95\% CI}\\
+\end{longtable}
+\endgroup{}
 
 \hypertarget{policy-uptake}{%
 \subsection{Policy uptake}\label{policy-uptake}}
@@ -1277,16 +1323,15 @@ derived from sensor measurements after being adjusted based on
 co-located gravimetric PM2.5 measurements. `Daily' indicates the mean
 PM2.5 concentrations during the 24 hours when personal exposure samples
 were collected in each village. `Seasonal' indicates the seasonal mean
-PM2.5 concentrations in each village, from Jan. 15th to Mar. 15th. `Did'
-represents the DiD analysis without any covariates, while `Adjusted DiD'
-represents DiD analysis with covariates. }\tabularnewline
+PM2.5 concentrations in each village, from Jan. 15th to Mar. 15th. }\tabularnewline
 
 \centering
+\begin{threeparttable}
 \begin{tabular}{llcccc}
 \toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{DiD} & \multicolumn{2}{c}{Adjusted DiD*} \\
+\multicolumn{2}{c}{ } & \multicolumn{2}{c}{DiD} & \multicolumn{2}{c}{Adjusted DiD\textsuperscript{a}} \\
 \cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
-  &   & Estimate & (95\% CI) & Estimate & (95\% CI)\\
+  &   & ATT & (95\% CI) & ATT & (95\% CI)\\
 \midrule
 \addlinespace[0.3em]
 \multicolumn{6}{l}{\textbf{Air pollution (µg/m3)}}\\
@@ -1294,9 +1339,9 @@ represents DiD analysis with covariates. }\tabularnewline
 \cmidrule{2-6}
 \multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Personal} & Black carbon & -0.46 & (-1.73, 0.81) & -0.43 & (-1.67, 0.81)\\
 \cmidrule{1-6}
-\hspace{1em} & Daily & -19.10 & (-60.56, 22.35) & -15.38 & (-53.54, 22.78)\\
+\hspace{1em} & Daily & -19.10 & (-60.56, 22.35) & -14.20 & (-53.94, 25.54)\\
 \cmidrule{2-6}
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Indoor} & Seasonal & -35.11 & (-59.36, -10.85) & -36.27 & (-60.26, -12.29)\\
+\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Indoor} & Seasonal & -35.11 & (-59.36, -10.85) & -36.19 & (-60.74, -11.65)\\
 \cmidrule{1-6}
 \hspace{1em} & Daily & -0.11 & (-5.86, 5.64) & -1.73 & (-9.26, 5.81)\\
 \cmidrule{2-6}
@@ -1304,10 +1349,14 @@ represents DiD analysis with covariates. }\tabularnewline
 \cmidrule{1-6}
 \addlinespace[0.3em]
 \multicolumn{6}{l}{\textbf{Indoor temperature (°C)}}\\
-\hspace{1em}Point temp & Mean & 1.96 & (0.96, 2.96) & \textbackslash{} & \\
+\hspace{1em}Point temp & Mean & 1.96 & (0.96, 2.96) &  & \\
 \bottomrule
-\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{*} Footnote A}\\
 \end{tabular}
+\begin{tablenotes}
+\item \small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.}
+\item[a] \small{ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity.}
+\end{tablenotes}
+\end{threeparttable}
 \end{table}
 
 Treatment was associated with similar reductions in both seasonal and
@@ -1341,11 +1390,12 @@ outcomes}\label{impact-of-policy-on-health-outcomes}}
 respiratory outcomes, and inflammatory markers }\tabularnewline
 
 \centering
+\begin{threeparttable}
 \begin{tabular}{llcccc}
 \toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{DiD} & \multicolumn{2}{c}{Adjusted DiD*} \\
+\multicolumn{2}{c}{ } & \multicolumn{2}{c}{DiD} & \multicolumn{2}{c}{Adjusted DiD\textsuperscript{a}} \\
 \cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
-  &   & Estimate & (95\% CI) & Estimate & (95\% CI)\\
+  &   & ATT & (95\% CI) & ATT & (95\% CI)\\
 \midrule
 \addlinespace[0.3em]
 \multicolumn{6}{l}{\textbf{Blood pressure (mmHg)}}\\
@@ -1391,9 +1441,12 @@ respiratory outcomes, and inflammatory markers }\tabularnewline
 \cmidrule{2-6}
 \multirow[t]{-4}{*}[3\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash } & MDA & 7.60 & (-8.7, 26.9) & 6.50 & (-9.7, 25.5)\\
 \bottomrule
-\multicolumn{6}{l}{\rule{0pt}{1em}\textit{Note: } pp = percentage points, ppb = parts per billion}\\
-\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{*} List of adjustments...}\\
 \end{tabular}
+\begin{tablenotes}
+\item \small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, pp = percentage points, ppb = parts per billion.}
+\item[a] \small{Blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}
+\end{tablenotes}
+\end{threeparttable}
 \end{table}
 
 Table~\ref{tbl-did-health} shows the impacts of the policy on blood
@@ -2051,23 +2104,63 @@ effects}\label{heterogeneity-in-treament-effects}}
 \subsubsection{Personal exposure}\label{personal-exposure}}
 
 As noted in the methods section\ldots Table
-Table~\ref{tbl-a-het-personal} shows\ldots{}
+Table~\ref{tbl-a-het-personal} shows limited evidence that the ATTs
+across cohorts and time demonstrate meaningful heterogeneity.
 
 \hypertarget{tbl-a-het-personal}{}
 \begin{table}
-\caption{\label{tbl-a-het-personal}Heterogenous treatment effects }\tabularnewline
+\caption{\label{tbl-a-het-personal}Heterogenous treatment effects: Personal exposures }\tabularnewline
 
 \centering
-\begin{tabular}[t]{lc}
+\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}>{\centering\arraybackslash}p{1.5cm}cccc}
 \toprule
-  & Adjusted ETWFE\\
+\multicolumn{2}{c}{ } & \multicolumn{2}{c}{PM2.5\textsuperscript{a}} & \multicolumn{2}{c}{Black carbon\textsuperscript{b}} \\
+\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
+Cohort & Time & ATT & (95\%CI) & ATT & (95\%CI)\\
 \midrule
-ATT(2019, 2019) & -11.660 [-42.081, 18.762]\\
-ATT(2019, 2021) & -4.624 [-43.042, 33.794]\\
-ATT(2020, 2021) & 13.573 [-34.465, 61.612]\\
-ATT(2021, 2021) & 2.853 [-16.312, 22.019]\\
+\addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Average ATT}}\\
+All & All & 1.95 & (-23.34, 27.23) & -0.43 & (-1.67, 0.81)\\
+\addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Cohort-Time ATTs}}\\
+2019 & 2019 & -0.05 & (-28.97, 28.87) & -0.69 & (-1.84, 0.45)\\
+2019 & 2021 & -4.31 & (-41.92, 33.3) & -0.25 & (-2.11, 1.62)\\
+2020 & 2021 & 23.61 & (-19.88, 67.11) & -0.27 & (-2.04, 1.5)\\
+2021 & 2021 & -19.06 & (-43.19, 5.07) & -0.56 & (-2.46, 1.34)\\
 \bottomrule
-\multicolumn{2}{l}{\rule{0pt}{1em}Joint test that all ATTs are equal: F(3, 1271)= 0.431, p= 0.731}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{a} Joint test that all ATTs are equal: F(3, 1271)= 0.431, p= 0.731}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{b} Joint test that all ATTs are equal: F(3, 1253)= 0.613, p= 0.607}\\
+\end{tabular}
+\end{table}
+
+\hypertarget{indoor-pm2.5-1}{%
+\subsubsection{\texorpdfstring{Indoor
+PM\textsubscript{2.5}}{Indoor PM2.5}}\label{indoor-pm2.5-1}}
+
+Table Table~\ref{tbl-a-het-indoor} shows estimates for cohort-time ATTs
+for daily and seasonal indoor PM\textsubscript{2.5}.
+
+\hypertarget{tbl-a-het-indoor}{}
+\begin{table}
+\caption{\label{tbl-a-het-indoor}Heterogenous treatment effects: Indoor }\tabularnewline
+
+\centering
+\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}>{\centering\arraybackslash}p{1.5cm}cccc}
+\toprule
+\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Daily\textsuperscript{a}} & \multicolumn{2}{c}{Seasonal\textsuperscript{b}} \\
+\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
+Cohort & Time & ATT & (95\%CI) & ATT & (95\%CI)\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Average ATT}}\\
+All & All & -14.20 & (-53.94, 25.54) & -36.19 & (-60.74, -11.65)\\
+\addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Cohort-Time ATTs}}\\
+2020 & 2021 & -4.71 & (-56.93, 47.5) & -25.44 & (-58.02, 7.13)\\
+2021 & 2021 & -37.24 & (-74.15, -0.33) & -59.23 & (-79.61, -38.85)\\
+\bottomrule
+\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{a} Joint test that all ATTs are equal: F(1, 405)= 0.064, p= 0.8}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{b} Joint test that all ATTs are equal: F(1, 368)= 0.756, p= 0.385}\\
 \end{tabular}
 \end{table}
 

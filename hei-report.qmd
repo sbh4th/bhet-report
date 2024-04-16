@@ -419,13 +419,45 @@ t1 %>%
 
 ## Summary of PM and BC measurements
 
-At baseline, fine particulate matter (PM~2.5~) and black carbon (BC) concentrations were highest, on average, for personal exposures compared with indoor and outdoor concentrations, with indoor levels being higher than outdoors (@fig-pm-baseline). This trend (personal > indoor > outdoor) was observed among households in treated and untreated villages. Personal, indoor, and outdoor geometric mean (95% confidence interval) concentrations of PM~2.5~ were 72 (65,80), 45 (39,53), and 31 (28,35), respectively, and elevated relative to health-based guidelines. The current World Health Organization (WHO) guidelines state that annual average concentrations of PM~2.5~ should not exceed 5 µg/m3, while 24-hour average exposures should not exceed 15 µg/m3 more than 3 - 4 days per year [@worldhealthorganization2021]. Interim targets have been set to support the planning of incremental milestones toward cleaner air, particularly for cities, regions, and countries with higher air pollution levels. For PM~2.5~, the four interim (IT) targets for annual and 24-h means are: IT-1: 35 and 75 µg/m3; IT-2: 25 and 50 µg/m3; IT-3: 15 and 37.5 µg/m3; and IT-4: 10 and 25 µg/m3 [@worldhealthorganization2021]. In our study, baseline air pollution exposures and indoor concentrations were between IT-3 and IT-4, indicating considerable opportunity for air quality improvement. 
+At baseline, fine particulate matter (PM~2.5~) and black carbon (BC) concentrations were highest, on average, for personal exposures compared with indoor and outdoor concentrations, with indoor levels being higher than outdoors (@tbl-pm-season). This trend (personal > indoor > outdoor) was observed among households in treated and untreated villages. Personal, indoor, and outdoor geometric mean (95% confidence interval) concentrations of PM~2.5~ were 72 (65,80), 45 (39,53), and 31 (28,35), respectively, and elevated relative to health-based guidelines. The current World Health Organization (WHO) guidelines state that annual average concentrations of PM~2.5~ should not exceed 5 µg/m3, while 24-hour average exposures should not exceed 15 µg/m3 more than 3 - 4 days per year [@worldhealthorganization2021]. Interim targets have been set to support the planning of incremental milestones toward cleaner air, particularly for cities, regions, and countries with higher air pollution levels. For PM~2.5~, the four interim (IT) targets for annual and 24-h means are: IT-1: 35 and 75 µg/m3; IT-2: 25 and 50 µg/m3; IT-3: 15 and 37.5 µg/m3; and IT-4: 10 and 25 µg/m3 [@worldhealthorganization2021]. In our study, baseline air pollution exposures and indoor concentrations were between IT-3 and IT-4, indicating considerable opportunity for air quality improvement. 
 
-```{r tbl-pm-baseline, echo=F, message=F, warning=F, out.width="80%"}
-#| label: fig-pm-baseline
-#| fig-cap: "Geometric mean and 95% Confidence Intervals for filter-based air pollutant concentrations at baseline."
-knitr::include_graphics(here("images", "fig-pm-baseline.png"))
+```{r tbl-pm-season, echo=F, message = F, warnings = F}
+#| label: tbl-pm-season
+#| tbl-cap: "Arithmetic and geometric means for air pollutant concentrations (μg/m3) by season."
+
+options(knitr.kable.NA = " ")
+ap_season <- read_csv(here("data-clean", 
+  "ap-conc-season.csv"))
+
+ap_season %>%
+  pivot_longer(
+    cols = Mean_S1:GM_S4,
+    names_to = c("avg", ".value"),
+    names_pattern = "(.*)_S(.)") %>%
+  pivot_wider(
+    names_from = metric,
+    values_from = c(`1`, `2`, `3`, `4`)
+  ) %>%
+  select(-category) %>%
+  kable(col.names =c("", "", "", "",  
+   "Est.", "CI", "Est.", "CI", "Est.", "CI", 
+   "Est.", "CI"), # "latex", booktabs = T,
+  linesep = "", align = 'lllllcccccccc') %>% 
+  kable_styling(font_size = 9) %>% 
+  column_spec(1:2, width = "4em") %>%
+  column_spec(3:4, width = "3em") %>%
+  collapse_rows(columns = 1:3, valign = "top") %>%
+  pack_rows("Personal", 1, 4, indent = F) %>%
+  pack_rows("Indoor", 5, 10, indent = F) %>%
+  pack_rows("Outdoor", 11, 16, indent = F) %>%
+  add_header_above(c(" " = 4, "Season 1" = 2,
+    "Season 2" = 2, "Season 3" = 2,
+    "Season 4" = 2)) %>%
+  footnote(general = "Note: Est. = Estimate, CI = 95\\\\% CI",  
+           general_title = "", escape = F)
+
 ```
+
 
 ## Policy uptake
 
@@ -450,11 +482,11 @@ In estimating the treatment effect on indoor and outdoor air pollution, we evalu
 
 ```{r tab-did-med, echo=F, message=F, warning=F}
 #| label: tbl-did-med
-#| tbl-cap: "Treatment effect on outdoor and indoor PM2.5, as well as personal exposure to PM2.5 and black carbon. Outdoor and indoor PM2.5 were derived from sensor measurements after being adjusted based on co-located gravimetric PM2.5 measurements. 'Daily' indicates the mean PM2.5 concentrations during the 24 hours when personal exposure samples were collected in each village. 'Seasonal' indicates the seasonal mean PM2.5 concentrations in each village, from Jan. 15th to Mar. 15th. 'Did' represents the DiD analysis without any covariates, while 'Adjusted DiD' represents DiD analysis with covariates."
+#| tbl-cap: "Treatment effect on outdoor and indoor PM2.5, as well as personal exposure to PM2.5 and black carbon. Outdoor and indoor PM2.5 were derived from sensor measurements after being adjusted based on co-located gravimetric PM2.5 measurements. 'Daily' indicates the mean PM2.5 concentrations during the 24 hours when personal exposure samples were collected in each village. 'Seasonal' indicates the seasonal mean PM2.5 concentrations in each village, from Jan. 15th to Mar. 15th."
 
 # air pollution results
-ap_table <- read_rds(here("data-clean", 
-  "ap-did-table.rds")) 
+ap_table <- read_rds(here("outputs", 
+  "ap-etwfe-table.rds")) 
 
 # temperature results
 temp_table <- tibble(
@@ -467,17 +499,22 @@ temp_table <- tibble(
 m_table <- bind_rows(ap_table, temp_table)
 
 kable(m_table,  digits = 2,
-  col.names = c(" ", " ", "Estimate", "(95% CI)", 
-   "Estimate", "(95% CI)"), "latex", booktabs = T,
+  col.names = c(" ", " ", "ATT", "(95% CI)", 
+   "ATT", "(95% CI)"), "latex", booktabs = T,
   linesep = "", align = 'llcccc') %>%
   kable_styling(full_width = F) %>%
   collapse_rows(columns = 1:2, valign = "top") %>% 
   pack_rows("Air pollution (µg/m3)", 1, 6) %>%
   pack_rows("Indoor temperature (°C)", 7, 7) %>%
-  add_header_above(c(" " = 2, 
-    "DiD" = 2, "Adjusted DiD*" = 2)) %>%
-  footnote(symbol = "Footnote A")
+  add_header_above(c(" " = 2,  
+    "DiD" = 2, "Adjusted DiD\\\\textsuperscript{a}" = 2),
+    escape = F) %>%
+  footnote(
+    general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.}",
+    alphabet = "\\\\small{ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity.}", 
+    general_title = "", threeparttable = T, escape = F)
 ```
+
 
 Treatment was associated with similar reductions in both seasonal and 24-h indoor PM~2.5~ means (@tbl-did-med). On average, treatment was associated with a decrease in 24-h indoor PM~2.5~ of -38 [-75, -1] μg/m3. After adjusting for covariates such as outdoor temperature, dewpoint, household smoking status, and the number of residents in each household, the treatment effect decreased to -31 [-64, -2] μg/m3. The treatment effect on seasonal indoor PM2.5 (-39 [-55, -23] μg/m3) remained consistent after covariate adjustment. This finding likely reflects the direct benefit of the policy in replacing coal stoves, thereby improving indoor air quality.
 
@@ -537,8 +574,8 @@ op_table <- bind_rows(bp_policy_t, r_table,
  feno_table, inf_table)
 
 kable(op_table,  digits = 2,
-  col.names = c(" ", " ", "Estimate", "(95% CI)", 
-   "Estimate", "(95% CI)"), "latex", booktabs = T,
+  col.names = c(" ", " ", "ATT", "(95% CI)", 
+   "ATT", "(95% CI)"), "latex", booktabs = T,
   linesep = "", align = 'llcccc') %>%
   kable_styling(full_width = F) %>%
   collapse_rows(columns = 1:2, valign = "top") %>% 
@@ -546,10 +583,12 @@ kable(op_table,  digits = 2,
   pack_rows("Respiratory\noutcomes", 9, 15) %>%
   pack_rows("Inflammatory\nmarkers (%)", 16, 19) %>%
   add_header_above(c(" " = 2, 
-    "DiD" = 2, "Adjusted DiD*" = 2)) %>%
-  footnote(general = "pp = percentage points, ppb = parts per billion",
-    symbol = "List of adjustments...", footnote_as_chunk = T)
-
+    "DiD" = 2, "Adjusted DiD\\\\textsuperscript{a}" = 2),
+    escape = F) %>%
+  footnote(
+    general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, pp = percentage points, ppb = parts per billion.}",
+    alphabet = "\\\\small{Blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", 
+    general_title = "", threeparttable = T, escape = F)
 ```
 
 @tbl-did-health shows the impacts of the policy on blood pressure in basic ETWFE models and models further adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Overall exposure to the CBHP policy demonstrated reductions in blood pressure of approximately 1.5 mmHg systolic and diastolic BP, but we found little evidence of a meaningful impact on pulse pressure or BP amplification. The effects on brachial and central blood pressures were similar. 
@@ -697,25 +736,85 @@ Sensitivity analyses: [[[Jill to edit this table include all sensitivity analysi
 ## Heterogeneity in treament effects 
 
 ### Personal exposure 
-As noted in the methods section...Table @tbl-a-het-personal shows...
+As noted in the methods section...Table @tbl-a-het-personal shows limited evidence that the ATTs across cohorts and time demonstrate meaningful heterogeneity.
 
 ```{r atbl-het, echo=F}
 #| label: tbl-a-het-personal
-#| tbl-cap: "Heterogenous treatment effects"
+#| tbl-cap: "Heterogenous treatment effects: Personal exposures"
 
+# read in personal exposure heterogeneity table
+aph_table <- read_rds(here("outputs", 
+  "ap-het-table.rds"))
 
-options("modelsummary_format_numeric_latex" = "plain")
-m_p <- read_rds(here("outputs", "m_ppm.rds"))
-d_personal <- read_rds(here("data-clean", "d_personal.rds"))
+models_ppm <- read_rds(here("outputs/models", "m_ppm.rds"))
+models_pbc <- read_rds(here("outputs/models", "m_pbc.rds"))
 
-mstest <- slopes(m_p$e1, newdata = subset(d_personal, treat==1), variables = "treat", by = c("cohort_year", "year"))
+models_ppm_note <- paste("Joint test that all ATTs are equal: ", 
+    "F(", models_ppm$ht1$df1, ", ", 
+    models_ppm$ht1$df2, ")= " , 
+    round(models_ppm$ht1$statistic, digits=3), ", p= ", 
+    round(models_ppm$ht1$p.value, digits=3), sep="")
 
-mstest1 <- mstest %>% mutate(term = c("ATT(2019, 2019)", "ATT(2019, 2021)", "ATT(2020, 2021)", "ATT(2021, 2021)"))
-modelsummary(list("Adjusted ETWFE" = mstest1), 
-  shape = term ~ model, 
-  estimate = "{estimate} [{conf.low}, {conf.high}]", 
-  statistic = NULL, gof_map = "nobs", 
-  notes = paste("Joint test that all ATTs are equal: ", "F(", m_p$ht1$df1, ", ", m_p$ht1$df2, ")= " ,round(m_p$ht1$statistic, digits=3), ", p= ", round(m_p$ht1$p.value, digits=3), sep=""), output = 'latex')
+models_pbc_note <- paste("Joint test that all ATTs are equal: ", 
+    "F(", models_pbc$ht1$df1, ", ", 
+    models_pbc$ht1$df2, ")= " , 
+    round(models_pbc$ht1$statistic, digits=3), ", p= ", 
+    round(models_pbc$ht1$p.value, digits=3), sep="")
+
+kable(aph_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
+   "ATT", "(95\\%CI)"), "latex", booktabs = T,
+  linesep = "", align = 'cccccc') %>%
+  column_spec(1:2, width = "1.5cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  add_header_above(c(" " = 2, 
+    "PM2.5\\\\textsuperscript{a}" = 2, 
+    "Black carbon\\\\textsuperscript{b}" = 2),
+    escape = FALSE) %>%
+  footnote(alphabet=c(models_ppm_note, models_pbc_note)) 
+```
+
+### Indoor PM~2.5~
+Table @tbl-a-het-indoor shows estimates for cohort-time ATTs for daily and seasonal indoor PM~2.5~.
+
+```{r atbl-het, echo=F}
+#| label: tbl-a-het-indoor
+#| tbl-cap: "Heterogenous treatment effects: Indoor"
+
+# read in personal exposure heterogeneity table
+aph_table_ind <- read_rds(here("outputs", 
+  "ap-het-table-indoor.rds"))
+
+models_i24 <- read_rds(here("outputs/models", "m_i24.rds"))
+models_is <- read_rds(here("outputs/models", "m_is.rds"))
+
+models_i24_note <- paste("Joint test that all ATTs are equal: ", 
+    "F(", models_i24$ht1$df1, ", ", 
+    models_i24$ht1$df2, ")= " , 
+    round(models_i24$ht1$statistic, digits=3), ", p= ", 
+    round(models_i24$ht1$p.value, digits=3), sep="")
+
+models_is_note <- paste("Joint test that all ATTs are equal: ", 
+    "F(", models_is$ht1$df1, ", ", 
+    models_is$ht1$df2, ")= " , 
+    round(models_is$ht1$statistic, digits=3), ", p= ", 
+    round(models_is$ht1$p.value, digits=3), sep="")
+
+kable(aph_table_ind, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
+   "ATT", "(95\\%CI)"), "latex", booktabs = T,
+  linesep = "", align = 'cccccc') %>%
+  column_spec(1:2, width = "1.5cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 3, indent = F) %>%
+  add_header_above(c(" " = 2, 
+    "Daily\\\\textsuperscript{a}" = 2, 
+    "Seasonal\\\\textsuperscript{b}" = 2),
+    escape = FALSE) %>%
+  footnote(alphabet=c(models_i24_note, models_is_note)) 
 ```
 
 ### Impact of including Season 3 data 

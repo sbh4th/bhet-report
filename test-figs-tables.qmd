@@ -453,8 +453,8 @@ Another example
 aph_table <- read_rds(here("outputs", 
   "ap-het-table.rds"))
 
-models_ppm <- read_rds(here("outputs", "m_ppm.rds"))
-models_pbc <- read_rds(here("outputs", "m_pbc.rds"))
+models_ppm <- read_rds(here("outputs/models", "m_ppm.rds"))
+models_pbc <- read_rds(here("outputs/models", "m_pbc.rds"))
 
 models_ppm_note <- paste("Joint test that all ATTs are equal: ", 
     "F(", models_ppm$ht1$df1, ", ", 
@@ -481,4 +481,36 @@ kable(aph_table, digits = 2, escape = FALSE,
     "Black carbon\\\\textsuperscript{b}" = 2),
     escape = FALSE) %>%
   footnote(alphabet=c(models_ppm_note, models_pbc_note)) 
+```
+
+```{r ap-season, echo=F}
+options(knitr.kable.NA = " ")
+ap_season <- read_csv(here("data-clean", 
+  "ap-conc-season.csv"))
+
+ap_season %>%
+  pivot_longer(
+    cols = Mean_S1:GM_S4,
+    names_to = c("avg", ".value"),
+    names_pattern = "(.*)_S(.)") %>%
+  pivot_wider(
+    names_from = metric,
+    values_from = c(`1`, `2`, `3`, `4`)
+  ) %>%
+  select(-category) %>%
+  kable(col.names =c("", "", "", "",  
+   "Est.", "CI", "Est.", "CI", "Est.", "CI", 
+   "Est.", "CI"), # "latex", booktabs = T,
+  linesep = "", align = 'lllllcccccccc') %>% 
+  kable_styling(font_size = 9) %>% 
+  column_spec(1:4, width = "4em") %>%
+  collapse_rows(columns = 1:3, valign = "top") %>%
+  pack_rows("Personal", 1, 4, indent = F) %>%
+  pack_rows("Indoor", 5, 10, indent = F) %>%
+  pack_rows("Outdoor", 11, 16, indent = F) %>%
+  add_header_above(c(" " = 4, "Season 1" = 2,
+    "Season 2" = 2, "Season 3" = 2,
+    "Season 4" = 2)) %>%
+  footnote(general = "Note: Est. = Estimate, CI = 95\\\\% CI",  
+           general_title = "", escape = F)
 ```

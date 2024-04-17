@@ -428,13 +428,14 @@ At baseline, fine particulate matter (PM~2.5~) and black carbon (BC) concentrati
 
 ```{r tbl-pm-season, echo=F, message = F, warnings = F}
 #| label: tbl-pm-season
-#| tbl-cap: "Arithmetic and geometric means for air pollutant concentrations (μg/m3) by season."
+#| tbl-cap: "Arithmetic and geometric means for air pollutant concentrations (micrograms per cubic meter) by season."
 
 options(knitr.kable.NA = " ")
 ap_season <- read_csv(here("data-clean", 
   "ap-conc-season.csv"))
 
 ap_season %>%
+  select(-time, -substance) %>%
   pivot_longer(
     cols = Mean_S1:GM_S4,
     names_to = c("avg", ".value"),
@@ -444,23 +445,20 @@ ap_season %>%
     values_from = c(`1`, `2`, `3`, `4`)
   ) %>%
   select(-category) %>%
-  kable(col.names =c("", "", "", "",  
+  kable(col.names =c("", "", "",  
    "Est.", "CI", "Est.", "CI", "Est.", "CI", 
-   "Est.", "CI"), # "latex", booktabs = T,
-  linesep = "", align = 'lllllcccccccc') %>% 
+   "Est.", "CI"), "latex", booktabs = T,
+  linesep = "", align = 'lllcccccccc') %>% 
   kable_styling(font_size = 9) %>% 
-  column_spec(1:2, width = "4em") %>%
-  column_spec(3:4, width = "3em") %>%
-  collapse_rows(columns = 1:3, valign = "top") %>%
+  collapse_rows(columns = 1:2, valign = "top") %>%
   pack_rows("Personal", 1, 4, indent = F) %>%
   pack_rows("Indoor", 5, 10, indent = F) %>%
   pack_rows("Outdoor", 11, 16, indent = F) %>%
-  add_header_above(c(" " = 4, "Season 1" = 2,
+  add_header_above(c(" " = 3, "Season 1" = 2,
     "Season 2" = 2, "Season 3" = 2,
     "Season 4" = 2)) %>%
-  footnote(general = "Note: Est. = Estimate, CI = 95\\\\% CI",  
+  footnote(general = "Note: Est. = Estimate, CI = 95\\\\% CI, GM = Geometric Mean",  
            general_title = "", escape = F)
-
 ```
 
 
@@ -630,16 +628,27 @@ For our analysis, we additionally applied recently developed methods that accoun
 
 Source analysis for this study was conducted using data from all eligible outdoor PM and personal PM samples. Eligible samples were defined as … 
 
-The model diagnostics for the three- to six-factor PMF solutions are given in @fig-source-table. Model fit was assessed using Q/Qexp (how our model fit divided by the expected fit). As the change in Q/Qexp decreases as more factors are added, the model may be fitting additional sources that do not improve the overall fit. The largest change in Q/Qexp was from three to four sources (6.24 to 5.37) while the changes moving from four to five and five to six are similar which suggests that four factors is sufficient and parsimonious to explain the variation in our data. We assessed the random error in our model by randomly sampling blocks of data, fitting new models with the blocks, and comparing how the source profiles compared to that of the original model (BS mapping). The three- and four-factor solutions had high BS mapping (all factors found in > 96.5% of bootstrap runs). The additional sources identified in the five-factor (lead) and six-factor (chloride) solutions have low bootstrap mapping (> 72%), which means those solutions are not as consistent as the three- and four-factor solutions. The possibility that multiple, different, solutions could result in the same Q value was assessed using displacement. The displacement approach takes the original factor profiles and modifies the values for each species up or down to maintain a small change in Q, reruns the solution with the new species values, and then compares the profiles of the new model to the original. Any swaps indicate that small changes in the species values could result in factor profiles that look different from the original solution, and that the original solution is unstable. None of the factors in any of the solutions discussed were swapped during displacement, which indicates that all of the potential solutions are stable. Based on the Q/Qexp, BS mapping, and interpretability of the factors, the four-factor solution was selected as the most appropriate source solution for the data.
+The model diagnostics for the three- to six-factor PMF solutions are given in @tbl-pmf. Model fit was assessed using Q/Qexp (how our model fit divided by the expected fit). As the change in Q/Qexp decreases as more factors are added, the model may be fitting additional sources that do not improve the overall fit. The largest change in Q/Qexp was from three to four sources (6.24 to 5.37) while the changes moving from four to five and five to six are similar which suggests that four factors is sufficient and parsimonious to explain the variation in our data. We assessed the random error in our model by randomly sampling blocks of data, fitting new models with the blocks, and comparing how the source profiles compared to that of the original model (BS mapping). The three- and four-factor solutions had high BS mapping (all factors found in > 96.5% of bootstrap runs). The additional sources identified in the five-factor (lead) and six-factor (chloride) solutions have low bootstrap mapping (> 72%), which means those solutions are not as consistent as the three- and four-factor solutions. The possibility that multiple, different, solutions could result in the same Q value was assessed using displacement. The displacement approach takes the original factor profiles and modifies the values for each species up or down to maintain a small change in Q, reruns the solution with the new species values, and then compares the profiles of the new model to the original. Any swaps indicate that small changes in the species values could result in factor profiles that look different from the original solution, and that the original solution is unstable. None of the factors in any of the solutions discussed were swapped during displacement, which indicates that all of the potential solutions are stable. Based on the Q/Qexp, BS mapping, and interpretability of the factors, the four-factor solution was selected as the most appropriate source solution for the data.
 
 
-```{r fig-source-table, echo=F, message=F, warning=F, out.width="80%"}
-#| label: fig-source-table
-#| fig-cap: "PMF error estimation diagnostics."
+```{r tbl-source-error, echo=F, message=F, warning=F}
+#| label: tbl-pmf
+#| tbl-cap: "PMF error estimation diagnostics"
 
-knitr::include_graphics(here("images", "source-table.png"))
+options(knitr.kable.NA = " ")
+t_pmf <- read_csv(here("data-clean", 
+  "pmf-error.csv"))
 
+kable(t_pmf,
+ "latex", booktabs = T,
+  linesep = "", align = 'lllll') %>%
+  kable_styling(full_width = F,
+    font_size = 9) %>%
+  column_spec(2:5, width = "10em") %>%
+  add_header_above(c(" " = 1, 
+    "Potential Factor Solution" = 4))
 ```
+
 
 The source profiles for the four-factor solution are presented in @fig-source-figure. The first source was identified as dust by high percentages of crustal elements like wi-Ca, Si, and wi-Mg. The second source was constituted of non-sulfate sulfur as well as secondary inorganic ions (ammonium, nitrate, and sulfate). Non-sulfate sulfur is a tracer for primary coal combustion, while secondary inorganic ions indicate a secondary source. Since coal combustion is a major source of energy in our study area, it is likely that the second source is a mixture of primary and secondary emissions that originate from coal and other sulfurous fuel combustion. Additionally, the mean source contribution of the second source is higher in outdoor than personal exposure measurements. Secondary formation occurs outdoors in the presence of sunlight, so higher outdoor concentrations compared to personal exposure further support our naming the second source and sulfur secondary. The third source had high percentages of ws-Ca nd Al, which in our study region, has been found to be indicative of transported dust from dust storms that can occur in the spring. While our samples were collected during winter months only, it is possible that transported dust from previous years still remained. The fourth source was characterized by high percentages of tracers for both coal (OC, wi-K, chloride, Pb) and biomass combustion (EC, ws-K). Coal and biomass combustion is common in our study setting so this source is likely a mixture of the two combustion sources.
 
@@ -820,6 +829,38 @@ kable(aph_table_ind, digits = 2, escape = FALSE,
     "Seasonal\\\\textsuperscript{b}" = 2),
     escape = FALSE) %>%
   footnote(alphabet=c(models_i24_note, models_is_note)) 
+```
+
+### Blood pressure outcomes
+
+### Mediation analyses for blood pressure
+@tbl-a-bp-med-het shows the cohort-time treatment effects for the mediation model for blood pressure.
+
+```{r atbl-bp-het-med, echo=F, message=F}
+#| label: tbl-a-bp-med-het
+#| tbl-cap: "Heterogenous treatment effects for blood pressure mediation model"
+
+bp_het_med <- read_excel(here("outputs",
+  "adjusted_CT_results_table.xlsx")) %>%
+  mutate(cohort = rep(c(2019,2019,2020,2021), 
+                      times = 4),
+         time = rep(c(2019,2021,2021,2021),
+                    times = 4)) %>%
+  select(-bp, -parameter) %>%
+  relocate(cohort, time)
+
+kable(bp_het_med, 
+      col.names = c("Cohort", "Time", "Adjusted Total Effect",
+      "Indoor PM", "Indoor Temp", "PM + Temp"),
+      'latex', booktabs = T) %>%
+  kable_styling() %>%
+  pack_rows("Brachial SBP", 1, 4) %>%
+  pack_rows("Central SBP", 5, 8) %>%
+  pack_rows("Brachial DBP", 9, 12) %>%
+  pack_rows("Central DBP", 13, 16) %>%
+  add_header_above(c(" " = 3, 
+                     "CDE Mediated By:" = 3))
+  
 ```
 
 ### Respiratory outcomes

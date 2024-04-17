@@ -244,6 +244,31 @@ kable(m_table,  digits = 2,
   footnote(symbol = "Footnote A")
 ```
 
+```{r source-did, echo=F}
+# bp results from Talia
+source_t <- tibble(
+  category = c("Outdoor", "Personal exposure"),
+  did_att = c("1.07", "-5.60"),
+  did_ci = c("(-4.90, 7.04)", "(-13.70, 2.54)"),
+  dida_att = c("1.53", "-5.39"),
+  dida_ci = c("(-4.19, 7.26)", "(-13.1, 2.35)")
+)
+
+kable(source_t,
+  col.names = c(" ", "ATT", "(95% CI)", 
+   "ATT", "(95% CI)"), "latex", booktabs = T,
+  linesep = "", align = 'lcccc') %>%
+  kable_styling(full_width = F) %>%
+  add_header_above(c(" " = 1, 
+    "DiD" = 2, "Adjusted DiD\\\\textsuperscript{a}" = 2),
+    escape = F) %>%
+  footnote(alphabet = "\\\\small{Note: Models adjusted for ???}",
+           escape = F)
+
+
+
+
+```
 See @tbl-table3 for more.
 
 ```{r bp-resp-table, echo=F, message=F, warning=F, eval=F}
@@ -312,7 +337,7 @@ kable(op_table,  digits = 2,
 ```
 
 
-```{r tbl-pmf, echo=F, eval=T}
+```{r tbl-pmf, echo=F, eval=F}
 library(here)
 library(tidyverse)
 library(kableExtra)
@@ -334,7 +359,7 @@ kable(t_pmf,
 ```
 
 
-```{r fig-dag, engine='tikz', echo=F, out.width="60%"}
+```{r fig-dag, engine='tikz', echo=F, out.width="60%", eval=F}
 \begin{tikzpicture}[shorten > = 1pt, line width=0.5pt, font=\scriptsize]
 \tikzstyle{every node} = [rectangle, fill=white, draw=none]
 \node (x) at (0,0) [align=center] {$X$};
@@ -354,7 +379,7 @@ kable(t_pmf,
 
 \newpage
 
-```{r fig-map, echo=FALSE, out.width = "70%"}
+```{r fig-map, echo=FALSE, out.width = "70%", eval=F}
 library(here)
 #| label: fig-cbhp-map
 #| fig-cap: "Map of village implementation of CBHP policy"
@@ -376,7 +401,7 @@ The source profiles for the four-factor solution are presented in Figure X. The 
 
 Additionally, in Figure\ref{fig-map} for details. the mean source contribution of the second source is higher in outdoor than personal exposure measurements. Secondary formation occurs outdoors in the presence of sunlight, so higher outdoor concentrations compared to personal exposure further support our naming the second source and sulfur secondary. The third source had high percentages of ws-Ca nd Al, which in our study region, has been found to be indicative of transported dust from dust storms that can occur in the spring. While our samples were collected during winter months only, it is possible that transported dust from previous years still remained. The fourth source was characterized by high percentages of tracers for both coal (OC, wi-K, chloride, Pb) and biomass combustion (EC, ws-K). Coal and biomass combustion is common in our study setting so this source is likely a mixture of the two combustion sources.
 
-```{r atbl-het, echo=F}
+```{r atbl-het, echo=F, eval=F}
 options("modelsummary_format_numeric_latex" = "plain")
 models_personal <- read_rds(here("outputs", "m_ppm.rds"))
 data_personal <- read_rds(here("data-clean", "d_personal.rds"))
@@ -483,7 +508,7 @@ kable(aph_table, digits = 2, escape = FALSE,
   footnote(alphabet=c(models_ppm_note, models_pbc_note)) 
 ```
 
-```{r ap-season, echo=F}
+```{r ap-season, echo=F, eval = F}
 options(knitr.kable.NA = " ")
 ap_season <- read_csv(here("data-clean", 
   "ap-conc-season.csv"))
@@ -517,7 +542,7 @@ ap_season %>%
 ```
 
 Respiratory tables
-```{r, echo=F}
+```{r, echo=F, eval = F}
 
 # read in personal exposure heterogeneity table
 resp_any_table <- read_rds(here("outputs", 
@@ -544,4 +569,38 @@ kable(resp_any_table, digits = 2, escape = FALSE,
   pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
   footnote(general=models_resp_note,
     general_title = "", escape = F)
+```
+
+
+```{r, echo=F}
+med_source <- read_csv(here("data-clean", 
+  "mixed_med_table_overall.csv")) 
+
+med_source_t <- med_source %>%
+  select(-type, -model) %>%
+  mutate(outcome = c("Central SBP", "Central SBP",  
+    "Central DBP", "Central DBP", "Central SBP",
+    "Central DBP"),
+    model = c(1,2,1,2,3,3)) %>%
+  separate_wider_delim(att, delim = "(", 
+    names = c("att", "attci"), cols_remove = TRUE) %>% 
+  mutate(attci = paste("(", attci, sep="")) %>% 
+  pivot_wider(names_from = "model", 
+    values_from = c("att", "attci"), names_vary = "slowest")
+
+kable(med_source_t,
+  col.names =c("", "ATT", "(95%CI)", "ATT", "(95%CI)",
+   "ATT", "(95%CI)"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'lcccccc') %>%
+  kable_styling(full_width = F) %>%
+  add_header_above(c(" " = 1, 
+    "DiD" = 2, 
+    "Adjusted DiD\\\\textsuperscript{a}" = 2,
+    "Adjusted CDE\\\\textsuperscript{b}" = 2),
+    escape = F) %>%
+  footnote(
+    general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, CDE = Controlled Direct Effect.}",
+    alphabet = c("\\\\small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", "\\\\small{Further adjusted for mediation by mixed combustion source (coal and biomass)}"), 
+    general_title = "", threeparttable = T, escape = F)
 ```

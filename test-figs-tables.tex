@@ -215,7 +215,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, frame hidden, breakable, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, enhanced, interior hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, sharp corners, boxrule=0pt, interior hidden, borderline west={3pt}{0pt}{shadecolor}, breakable, frame hidden]}{\end{tcolorbox}}\fi
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -259,74 +259,28 @@ Now try for the kable version:
 
 Another DiD table
 
+\begin{table}
+\centering
+\begin{tabular}{lcccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{DiD} & \multicolumn{2}{c}{Adjusted DiD\textsuperscript{a}} \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
+  & ATT & (95\% CI) & ATT & (95\% CI)\\
+\midrule
+Outdoor & 1.07 & (-4.90, 7.04) & 1.53 & (-4.19, 7.26)\\
+Personal exposure & -5.60 & (-13.70, 2.54) & -5.39 & (-13.1, 2.35)\\
+\bottomrule
+\multicolumn{5}{l}{\rule{0pt}{1em}\textsuperscript{a} \small{Note: Models adjusted for ???}}\\
+\end{tabular}
+\end{table}
+
 See \textbf{?@tbl-table3} for more.
-
-\begin{verbatim}
-Rows: 8 Columns: 5
--- Column specification --------------------------------------------------------
-Delimiter: ","
-chr (5): Diagnostic, 3, 4, 5, 6
-
-i Use `spec()` to retrieve the full column specification for this data.
-i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-\end{verbatim}
 
 \begin{table}
 
-\caption{\label{tbl-pmf}\textbf{?(caption)}}\begin{minipage}[t]{\linewidth}
-\subcaption{\label{tbl-pmf-1}}
-
-{\centering 
-
-\centering\begingroup\fontsize{9}{11}\selectfont
-
-\begin{tabular}{l>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{4}{c}{Potential Factor Solution} \\
-\cmidrule(l{3pt}r{3pt}){2-5}
-Diagnostic & 3 & 4 & 5 & 6\\
-\midrule
-Qexp & 27936 & 26052 & 24168 & 22284\\
-Qtrue & 187681 & 147796 & 123236 & 100316\\
-Qrobust & 174407 & 139910 & 117082 & 95932.5\\
-Qr/Qexp & 6.24 & 5.37 & 4.84 & 4.3\\
-Q/Qexp > 6 & wi-Ca, ns-S, ws-Na, ws-Ca, Al, Cl, Pb & ns-S, Na, Al, Cl, Pb, Nitrate & Nitrate, ws-Na, Al, Chloride & Nitrate, ws-Na, Al\\
-DISP \% dQ & <0.1\% & <0.1\% & <0.1\% & <0.1\%\\
-DISP swaps & 0 & 0 & 0 & 0\\
-BS\_mapping & Dust- 98.5\% & Transported dust- 95\%, Dust- 96.5\%, Sulfur secondary- 97.5\%, Mixed combustion- 96.5\% & Transported dust- 86\%, Mixed combustion- 87\%, Dust- 86\%, Lead- 55\% & Transported dust- 84\%, Mixed combustion- 87.5\%, Dust- 81.5\%, Lead- 72\%
-Chloride- 61.5\%
-Sulfur secondary- 98.5\%\\
-\bottomrule
-\end{tabular}
-\endgroup{}
-
-}
-
-\end{minipage}%
-
 \end{table}
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.6\textwidth,height=\textheight]{test-figs-tables_files/figure-pdf/fig-dag-1.pdf}
-
-}
-
-\caption{\label{fig-dag}\textbf{?(caption)}}
-
-\end{figure}
-
 \newpage
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\textwidth,height=\textheight]{images/policy-implementation-map.png}
-
-}
-
-\caption{\label{fig-map}\textbf{?(caption)}}
-
-\end{figure}
 
 See \textbf{?@fig-cbhp-map}.
 
@@ -363,111 +317,39 @@ source was characterized by high percentages of tracers for both coal
 biomass combustion is common in our study setting so this source is
 likely a mixture of the two combustion sources.
 
-\begin{table}
-\centering
-\begin{tabular}[t]{lcc}
-\toprule
-  & Personal: PM2.5 & Personal: BC\\
-\midrule
-\addlinespace[0.5em]
-\multicolumn{3}{l}{\textit{Average ATT}}\\
-\midrule \hspace{1em}ATT(All, All) & 1.95 [-23.34, 27.23] & -0.43 [-1.67, 0.81]\\
-\addlinespace[0.5em]
-\multicolumn{3}{l}{\textit{Cohort-Time ATTs}}\\
-\midrule \hspace{1em}ATT(2019, 2019) & -0.05 [-28.97, 28.87] & -0.69 [-1.84, 0.45]\\
-\hspace{1em}ATT(2019, 2021) & -4.31 [-41.92, 33.30] & -0.25 [-2.11, 1.62]\\
-\hspace{1em}ATT(2020, 2021) & 23.61 [-19.88, 67.11] & -0.27 [-2.04, 1.50]\\
-\hspace{1em}ATT(2021, 2021) & -19.06 [-43.19, 5.07] & -0.56 [-2.46, 1.34]\\
-\bottomrule
-\multicolumn{3}{l}{\rule{0pt}{1em}First note.}\\
-\end{tabular}
-\end{table}
-
 Another example
 
+Respiratory tables
+
 \begin{verbatim}
-Rows: 16 Columns: 14
+Rows: 6 Columns: 3
 -- Column specification --------------------------------------------------------
 Delimiter: ","
-chr (14): category, type, time, substance, measure, metric, Mean_S1, GM_S1, ...
+chr (3): type, att, model
 
 i Use `spec()` to retrieve the full column specification for this data.
 i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
 
 \begin{table}
-\centering\begingroup\fontsize{9}{11}\selectfont
-
-\begin{tabular}{lllcccccccc}
-\toprule
-\multicolumn{3}{c}{ } & \multicolumn{2}{c}{Season 1} & \multicolumn{2}{c}{Season 2} & \multicolumn{2}{c}{Season 3} & \multicolumn{2}{c}{Season 4} \\
-\cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7} \cmidrule(l{3pt}r{3pt}){8-9} \cmidrule(l{3pt}r{3pt}){10-11}
- &  &  & Est. & CI & Est. & CI & Est. & CI & Est. & CI\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{11}{l}{\textbf{Personal}}\\
- &  & Mean & 117 & {}[105, 129] & 97 & {}[87, 107] &  &  & 84 & {}[72, 97]\\
-\cmidrule{3-11}
- & \multirow[t]{-2}{*}{\raggedright\arraybackslash 24h PM2.5} & GM & 72 & {}[65, 80] & 59 & {}[53, 65] &  &  & 47 & {}[42, 52]\\
-\cmidrule{2-11}
- &  & Mean & 4 & {}[3.5, 4.4] & 3.5 & {}[2.7, 4.2] &  &  & 3.7 & {}[2.9, 4.5]\\
-\cmidrule{3-11}
-\multirow[t]{-4}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Filter-derived} & \multirow[t]{-2}{*}{\raggedright\arraybackslash 24h BC} & GM & 2.6 & {}[2.4, 2.8] & 1.9 & {}[1.7, 2.1] &  &  & 1.7 & {}[1.5, 1.9]\\
-\cmidrule{1-11}
-\addlinespace[0.3em]
-\multicolumn{11}{l}{\textbf{Indoor}}\\
- &  & Mean &  &  & 94 & {}[84, 104] & 84 & {}[75, 94] & 67 & {}[60, 75]\\
-\cmidrule{3-11}
-\multirow[t]{-2}{*}{\raggedright\arraybackslash Sensor-derived} & \multirow[t]{-2}{*}{\raggedright\arraybackslash Seasonal PM2.5} & GM &  &  & 71 & {}[65, 78] & 63 & {}[57, 70] & 47 & {}[42, 52]\\
-\cmidrule{1-11}
- &  & Mean &  &  & 69 & {}[59, 79] &  &  & 59 & {}[49, 69]\\
-\cmidrule{3-11}
- & \multirow[t]{-2}{*}{\raggedright\arraybackslash 24h PM2.5} & GM &  &  & 45 & {}[39, 53] &  &  & 33 & {}[27, 40]\\
-\cmidrule{2-11}
- &  & Mean &  &  & 2.3 & {}[1.8, 2.8] &  &  & 2.8 & {}[2.1, 3.4]\\
-\cmidrule{3-11}
-\multirow[t]{-4}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Filter-derived} & \multirow[t]{-2}{*}{\raggedright\arraybackslash 24h BC} & GM &  &  & 1.6 & {}[1.3, 2.0] &  &  & 1.6 & {}[1.3, 1.9]\\
-\cmidrule{1-11}
-\addlinespace[0.3em]
-\multicolumn{11}{l}{\textbf{Outdoor}}\\
- &  & Mean & 47 & {}[45, 48] & 55 & {}[54, 56] & 23 & {}[22, 23] & 33 & {}[32, 34]\\
-\cmidrule{3-11}
-\multirow[t]{-2}{*}{\raggedright\arraybackslash Sensor-derived} &  & GM & 36 & {}[35, 37] & 40 & {}[39, 41] & 33 & {}[32, 34] & 22 & {}[22, 23]\\
-\cmidrule{1-1}
-\cmidrule{3-11}
- &  & Mean & 38 & {}[34, 42] & 38 & {}[34, 41] &  &  & 26 & {}[24, 28]\\
-\cmidrule{3-11}
- & \multirow[t]{-4}{*}{\raggedright\arraybackslash Seasonal PM2.5} & GM & 33 & {}[29, 36] & 30 & {}[28, 32] &  &  & 22 & {}[21, 24]\\
-\cmidrule{2-11}
- &  & Mean & 1.5 & {}[1.3, 1.6] & 1.4 & {}[1.3, 1.5] &  &  & 1.2 & {}[1.1, 1.2]\\
-\cmidrule{3-11}
-\multirow[t]{-4}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Filter-derived} & \multirow[t]{-2}{*}{\raggedright\arraybackslash Seasonal BC} & GM & 1.3 & {}[1.1, 1.4] & 1.1 & {}[1.0, 1.2] &  &  & 1 & {}[0.9, 1.1]\\
-\bottomrule
-\multicolumn{11}{l}{\rule{0pt}{1em}Note: Est. = Estimate, CI = 95\% CI, GM = Geometric Mean}\\
-\end{tabular}
-\endgroup{}
-\end{table}
-
-Respiratory tables
-
-\begin{table}
 \centering
-\begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
+\begin{threeparttable}
+\begin{tabular}{lcccccc}
 \toprule
-Cohort & Time & ATT & (95\%CI)\\
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{DiD} & \multicolumn{2}{c}{Adjusted DiD\textsuperscript{a}} & \multicolumn{2}{c}{Adjusted CDE\textsuperscript{b}} \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7}
+ & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI)\\
 \midrule
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Average ATT}}\\
-All & All & -0.08 & (-0.15, -0.01)\\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Cohort-Time ATTs}}\\
-2019 & 2019 & -0.11 & (-0.20, -0.02)\\
-2019 & 2021 & -0.10 & (-0.21, 0.00)\\
-2020 & 2021 & 0.01 & (-0.10, 0.13)\\
-2021 & 2021 & -0.12 & (-0.22, -0.01)\\
+Central SBP & -0.43 & (-3.48, 2.62) & -1.61 & (-5.03, 1.82) & -1.5 & (-4.94, 1.94)\\
+Central DBP & -0.58 & (-2.59, 1.43) & -1.26 & (-3.38, 0.87) & -1.37 & (-3.69, 0.96)\\
 \bottomrule
-\multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 1.283, p= 0.278}}\\
 \end{tabular}
+\begin{tablenotes}
+\item \small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, CDE = Controlled Direct Effect.}
+\item[a] \small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}
+\item[b] \small{Further adjusted for mediation by mixed combustion source (coal and biomass)}
+\end{tablenotes}
+\end{threeparttable}
 \end{table}
 
 

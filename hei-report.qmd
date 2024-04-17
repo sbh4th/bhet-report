@@ -75,7 +75,7 @@ Replacing household coal stoves with clean heating alternatives was considered a
 
 ## Prior evidence on household energy interventions and air pollution 
 
-Household energy interventions, mostly cooking-related, that replace solid fuel stoves with cleaner-burning alternatives have been implemented and studied extensively in countries including China over the past several decades. While their introduction of more efficient residential stoves and fuels is expected to reduce air pollution emissions and subsequent exposures, there is still no consensus about their effectiveness in achieving health-relevant air pollution reductions in real-world settings [@quansah2017]. In particular, the effectiveness of large-scale household energy programs like China’s Coal Ban and Heat Pump (CBHP) subsidy have been rarely empirically investigated, especially at sub-city spatial resolution. In Ireland, county-level residential coal bans in the 1990s were associated with 40-70% decreases in black smoke concentrations in ban-affected areas [@dockery2013]. In Australia, a wood-burning stove exchange lower daily wintertime PM~10~ from 44 to 27 µg/m3 [@johnston2013], and clean energy policies in New Zealand were associated with 11-36% reductions in winter PM~10~ [@scott2011]. The few evaluations of the CBHP policy observed small decreases in outdoor PM~2.5~ (-7 to -2.4 µg/m3) in municipalities or prefectures in the policy compared with neighboring areas not affected by the policy [@niu2024; @song2023; @tan2023; @yu2021], and a recent modeling study estimated 36% lower personal exposure to PM~2.5~ based on household-reported changes in fuel use [@meng2023]. However, none of these studies included field-based measurements of air pollution or personal exposures, which are known to differ considerably from modeled estimates [@thompson2019], and few accounted for secular changes in air quality over time, limiting any conclusions about the air quality benefits of the CBHP policy.
+Household energy interventions, mostly cooking-related, that replace solid fuel stoves with cleaner-burning alternatives have been implemented and studied extensively in countries including China over the past several decades. While their introduction of more efficient residential stoves and fuels is expected to reduce air pollution emissions and subsequent exposures, there is still no consensus about their effectiveness in achieving health-relevant air pollution reductions in real-world settings [@quansah2017]. In particular, the effectiveness of large-scale household energy programs like China’s Coal Ban and Heat Pump (CBHP) subsidy have been rarely empirically investigated, especially at sub-city spatial resolution. In Ireland, county-level residential coal bans in the 1990s were associated with 40-70% decreases in black smoke concentrations in ban-affected areas [@dockery2013]. In Australia, a wood-burning stove exchange lower daily wintertime PM~10~ from 44 to 27 µg/m3 [@johnston2013], and clean energy policies in New Zealand were associated with 11-36% reductions in winter PM~10~ [@scott2011]. The few evaluations of the CBHP policy observed small decreases in outdoor PM~2.5~ (-7 to -2.4 µg/m^3^) in municipalities or prefectures in the policy compared with neighboring areas not affected by the policy [@niu2024; @song2023; @tan2023; @yu2021], and a recent modeling study estimated 36% lower personal exposure to PM~2.5~ based on household-reported changes in fuel use [@meng2023]. However, none of these studies included field-based measurements of air pollution or personal exposures, which are known to differ considerably from modeled estimates [@thompson2019], and few accounted for secular changes in air quality over time, limiting any conclusions about the air quality benefits of the CBHP policy.
 
 ## Prior evidence on clean energy interventions and cardiovascular outcomes
 
@@ -573,7 +573,7 @@ kable(m_table,  digits = 2,
 ```
 
 
-Treatment was associated with similar reductions in both seasonal and 24-h indoor PM~2.5~ means (@tbl-did-med). On average, treatment was associated with a decrease in 24-h indoor PM~2.5~ of -38 [-75, -1] μg/m3. After adjusting for covariates such as outdoor temperature, dewpoint, household smoking status, and the number of residents in each household, the treatment effect decreased to -31 [-64, -2] μg/m3. The treatment effect on seasonal indoor PM2.5 (-39 [-55, -23] μg/m3) remained consistent after covariate adjustment. This finding likely reflects the direct benefit of the policy in replacing coal stoves, thereby improving indoor air quality.
+Treatment was associated with similar reductions in both seasonal and 24-h indoor PM~2.5~ means (@tbl-did-med). On average, treatment was associated with a decrease in 24-h indoor PM~2.5~ of -38 µg/m^3^ [-75, -1] μg/m3. After adjusting for covariates such as outdoor temperature, dewpoint, household smoking status, and the number of residents in each household, the treatment effect decreased to -31 [-64, -2] μg/m3. The treatment effect on seasonal indoor PM2.5 (-39 [-55, -23] μg/m3) remained consistent after covariate adjustment. This finding likely reflects the direct benefit of the policy in replacing coal stoves, thereby improving indoor air quality.
 
 Overall we found little evidence of an impact of the CBHP policy on 24-h and seasonal outdoor (local community-level) PM~2.5~ or personal exposures to PM~2.5~ and BC. Treatment was associated with lower, but statistically imprecise, personal 24-h BC exposures. This finding would be consistent with the expectation that the policy contributed to reducing air pollutant emissions from solid fuel burning, as BC serves as a potential indicator of such combustion, particularly in our study settings.
 
@@ -684,7 +684,6 @@ The meteorological data included hourly boundary layer height, 2-m temperature, 
 
 The model diagnostics for the three- to six-factor PMF solutions are given in @tbl-pmf. Model fit was assessed using Q/Qexp (how our model fit divided by the expected fit). As the change in Q/Qexp decreases as more factors are added, the model may be fitting additional sources that do not improve the overall fit. The largest change in Q/Qexp was from three to four sources (6.24 to 5.37) while the changes moving from four to five and five to six are similar which suggests that four factors is sufficient and parsimonious to explain the variation in our data. We assessed the random error in our model by randomly sampling blocks of data, fitting new models with the blocks, and comparing how the source profiles compared to that of the original model (BS mapping). The three- and four-factor solutions had high BS mapping (all factors found in > 96.5% of bootstrap runs). The additional sources identified in the five-factor (lead) and six-factor (chloride) solutions have low bootstrap mapping (> 72%), which means those solutions are not as consistent as the three- and four-factor solutions. The possibility that multiple, different, solutions could result in the same Q value was assessed using displacement. The displacement approach takes the original factor profiles and modifies the values for each species up or down to maintain a small change in Q, reruns the solution with the new species values, and then compares the profiles of the new model to the original. Any swaps indicate that small changes in the species values could result in factor profiles that look different from the original solution, and that the original solution is unstable. None of the factors in any of the solutions discussed were swapped during displacement, which indicates that all of the potential solutions are stable. Based on the Q/Qexp, BS mapping, and interpretability of the factors, the four-factor solution was selected as the most appropriate source solution for the data.
 
-
 ```{r tbl-source-error, echo=F, message=F, warning=F}
 #| label: tbl-pmf
 #| tbl-cap: "PMF error estimation diagnostics"
@@ -703,13 +702,12 @@ kable(t_pmf,
     "Potential Factor Solution" = 4))
 ```
 
-
 The source profiles for the four-factor solution are presented in @fig-source-figure. The first source was identified as dust by high percentages of crustal elements like wi-Ca, Si, and wi-Mg. The second source consisted of non-sulfate sulfur as well as secondary inorganic ions (ammonium, nitrate, and sulfate). Non-sulfate sulfur is a tracer for primary coal combustion, while secondary inorganic ions indicate a secondary source. Since industrial coal burning is a source of power generation in our study area, it is likely that the second source is a mixture of primary and secondary emissions that originate from coal and other sulfurous fuel combustion. Additionally, the mean source contribution of the second source is higher in outdoor than personal exposure measurements. Secondary formation occurs outdoors in the presence of sunlight, so higher outdoor concentrations compared to personal exposure further support our naming the second source ‘sulfur secondary’. The third source had high percentages of ws-Ca nd Al, which in our study region, has been found to be indicative of transported dust from dust storms that can occur in the spring. While our samples were collected during winter months only, it is possible that transported dust from previous years still remained. The fourth source was characterized by high percentages of tracers for both coal (OC, wi-K, chloride, Pb) and biomass combustion (EC, ws-K). Coal and biomass combustion are anticipated sources of PM pollution in our study setting, particularly from domestic cooking and heating activities, so this source is likely a mixture of PM emitted from these two combustion sources.
 
 
 ```{r fig-source-figure, echo=F, message=F, warning=F, out.width="80%"}
 #| label: fig-source-figure
-#| fig-cap: "Source profiles for the 4-factor PMF solution to the sum of elements, ions, elemental carbon, and organic carbon for outdoor and personal PM2.5 exposure measurements. The lines separate the major contributing species to each source"
+#| fig-cap: "Source profiles for the 4-factor PMF solution to the sum of elements, ions, elemental carbon, and organic carbon for outdoor and personal PM~2.5~ exposure measurements. The lines separate the major contributing species to each source"
 
 knitr::include_graphics(here("images", "source-figure.png"))
 
@@ -720,14 +718,38 @@ We extend the source profiles across the different treatment cohorts in @fig-sou
 
 ```{r fig-source-season, echo=F, message=F, warning=F, out.width="80%"}
 #| label: fig-source-season
-#| fig-cap: "Arithmetic mean dispersion normalized source contributions found from the 4-factor PMF solution for A outdoor and B personal PM2.5 exposure samples by year the group received treatment."
+#| fig-cap: "Arithmetic mean dispersion normalized source contributions found from the 4-factor PMF solution for A outdoor and B personal PM~2.5~ exposure samples by year the group received treatment."
 
 knitr::include_graphics(here("images", "source-season.png"))
 
 ```
 
-Overall, the average treatment effect of the CBHP policy on outdoor (community-level) and personal exposure to the mixed combustion source was statistically indistinguishable from the null. Treatment was associated with lower, but statistically imprecise, personal exposures to the mixed combustion source. As with BC, this finding is consistent with the expectation that the policy contributed to reducing air pollutant emissions from solid fuel burning, as this ‘mixed combustion’ source most likely reflects solid fuel combustion, particularly in our study settings. The results were consistent in the unadjusted and adjusted models. 
+Overall, @tbl-source-did shows the average treatment effect of the CBHP policy on outdoor (community-level) and personal exposure to the mixed combustion source was statistically indistinguishable from the null. Treatment was associated with lower, but statistically imprecise, personal exposures to the mixed combustion source. As with BC, this finding is consistent with the expectation that the policy contributed to reducing air pollutant emissions from solid fuel burning, as this ‘mixed combustion’ source most likely reflects solid fuel combustion, particularly in our study settings. The results were consistent in the unadjusted and adjusted models. 
 
+```{r source-did, echo=F, message=F, warning=F}
+#| label: tbl-source-did
+#| tbl-cap: "Average treatment effect (µg/m^3^) for outdoor and personal exposure to the mixed combustion source."
+
+# DiD results for mixed combustion
+source_t <- tibble(
+  category = c("Outdoor", "Personal exposure"),
+  did_att = c("1.07", "-5.60"),
+  did_ci = c("(-4.90, 7.04)", "(-13.70, 2.54)"),
+  dida_att = c("1.53", "-5.39"),
+  dida_ci = c("(-4.19, 7.26)", "(-13.1, 2.35)")
+)
+
+kable(source_t,
+  col.names = c(" ", "ATT", "(95% CI)", 
+   "ATT", "(95% CI)"), "latex", booktabs = T,
+  linesep = "", align = 'lcccc') %>%
+  kable_styling(full_width = F) %>%
+  add_header_above(c(" " = 1, 
+    "DiD" = 2, "Adjusted DiD\\\\textsuperscript{a}" = 2),
+    escape = F) %>%
+  footnote(alphabet = "\\\\small{Note: Models adjusted for ???}",
+           escape = F)
+```
   
 Figure X. Average treatment effect for outdoor and personal exposure to the mixed combustion source.
 
@@ -743,6 +765,44 @@ Figure X. Adjusted and unadjusted treatment effect for outdoor and personal expo
 ## Aim 3
 
 - Table of mediated health effects by source contribution (coal and biomass)
+
+```{r tbl-med-source, echo=F, message=F, warning=F}
+#| label: tbl-med-source
+#| tbl-cap: "Average treatment effects and controlled direct effect (mm/Hg) of the CBHP policy on central systolic and diastolic blood pressure with mixed combustion source as the potential mediator."
+
+# read in mediation by source results
+med_source <- read_csv(here("data-clean", 
+  "mixed_med_table_overall.csv")) 
+
+med_source_t <- med_source %>%
+  select(-type, -model) %>%
+  mutate(outcome = c("Central SBP", "Central SBP",  
+    "Central DBP", "Central DBP", "Central SBP",
+    "Central DBP"),
+    model = c(1,2,1,2,3,3)) %>%
+  separate_wider_delim(att, delim = "(", 
+    names = c("att", "attci"), cols_remove = TRUE) %>% 
+  mutate(attci = paste("(", attci, sep="")) %>% 
+  pivot_wider(names_from = "model", 
+    values_from = c("att", "attci"), names_vary = "slowest")
+
+kable(med_source_t,
+  col.names =c("", "ATT", "(95%CI)", "ATT", "(95%CI)",
+   "ATT", "(95%CI)"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'lcccccc') %>%
+  kable_styling(full_width = F) %>%
+  add_header_above(c(" " = 1, 
+    "DiD" = 2, 
+    "Adjusted DiD\\\\textsuperscript{a}" = 2,
+    "Adjusted CDE\\\\textsuperscript{b}" = 2),
+    escape = F) %>%
+  footnote(
+    general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, CDE = Controlled Direct Effect, DBP = Diastolic Blood Pressure, SBP = Systolic Blood Pressure.}",
+    alphabet = c("\\\\small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", "\\\\small{Further adjusted for mediation by mixed combustion source (coal and biomass)}"), 
+    general_title = "", threeparttable = T, escape = F)
+```
+
 
 # Discussion and Conclusions
 
@@ -972,6 +1032,7 @@ kable(bp_het_med,
   
 ```
 
+
 ### Respiratory outcomes
 
 Appendix tables [-@tbl-a-het-resp], [-@tbl-a-het-cough], [-@tbl-a-het-phlegm], [-@tbl-a-het-wheeze], [-@tbl-a-het-breath], [-@tbl-a-het-nochest] below show Average Treatment Effect on the Treated (ATTs) by treatment cohort and time. ATTs are derived from estimating marginal effects from extended two-way fixed effects models with additional adjustment for age, sex, and smoking status. 
@@ -1176,6 +1237,18 @@ kable(resp_nochest_table, digits = 2, escape = FALSE,
 
 
 
+
+### Outdoor and personal mixed combustion
+
+```{r afig-mixed-ct, message=FALSE, cache=TRUE, echo=FALSE, out.width = "100%"}
+#| label: fig-afig-mixed-ct
+#| fig-cap: "Adjusted and unadjusted treatment effect for outdoor and personal exposure (µg/m^3^) to the mixed combustion source by treatment year."
+
+knitr::include_graphics(here("images", 
+  "did-mixed-ct.png"))
+```
+
+
 ## Impact of including Season 3 data 
 @tbl-a-ind-s3 shows differences in the ATTs for the impact of seasonal indoor PM~2.5~ when season 3 data (collected in 41 villages during COVID-19) are included versus excluded. 
 
@@ -1198,7 +1271,7 @@ kable(a_is3_table, digits = 2, escape = FALSE,
     "With Season 3 data" = 2, 
     "Without Season 3 data" = 2),
     escape = FALSE) %>%
-  footnote(general="Sample sizes for..") 
+  footnote(general="Sample sizes for") 
 ```
 
 

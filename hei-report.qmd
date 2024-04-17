@@ -136,6 +136,14 @@ For PM~2.5~ sensor calibration and quality control, all PM sensors were co-locat
  
 We established linear regression models between the filter-based PM~2.5~ mass concentrations (i.e., the reference concentrations) and the sensor-based PM~2.5~ concentrations averaged over the same sampling period as the filter-based samples. The slopes of the models were used as the adjustment factors for the sensor-based PM~2.5~ concentrations. Separate regression models were conducted for indoor and outdoor sensors given the sensitivity of the sensors to relative humidity, temperature, and particle sources, which may differ for indoor versus outdoor conditions.
 
+```{r fig-calibration, echo=F, message = F, out.width = "80%"}
+#| label: fig-calibration
+#| fig-cap: "Calibration of real-time sensors against a reference monitor at University of the Chinese Academy of Sciences."
+
+knitr::include_graphics(here("images",
+  "sensor-calibration.png"))
+```
+
 #### Indoor PM~2.5~
 
 In the second and fourth field seasons (i.e., Season 2 and Season 4), we randomly selected six households from the 20 recruited in each village to measure indoor concentrations of PM~2.5~. In Season 4, we aimed to monitor indoor PM~2.5~ in the same households where we measured indoor PM~2.5~ in Season 2. If a household dropped out of the project or declined indoor PM~2.5~ monitoring, we then recruited another household already enrolled in this study to measure indoor PM~2.5~. In total, indoor measurements were conducted in 300 households in both Season 2 and Season 4 (@tbl-pm-sample).
@@ -395,7 +403,7 @@ dt <- d %>%
     `Temperature (°C)`,
     `Personal PM2.5 (ug/m3)`)
 # caption <- '\\label{#tbl-table1}Descriptive statistics, by treatment status'
-reference <- 'Includes all individuals sampled at each of 3 waves.'
+reference <- ''
 # add empty rows for categorical variables
 # grouped categories
 nrn <- c("Demographics:", "Health measures:",
@@ -412,6 +420,8 @@ options(modelsummary_format_numeric_latex = "plain")
 ```{r table1, cache=TRUE, message=FALSE, echo=FALSE}
 #| label: tbl-table1
 #| tbl-cap: "Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status"
+
+
 t1 <- datasummary_balance(~et, data = dt, 
   add_rows = nr, align = "rrrrrrr",
   notes = reference)
@@ -457,8 +467,7 @@ ap_season %>%
   add_header_above(c(" " = 3, "Season 1" = 2,
     "Season 2" = 2, "Season 3" = 2,
     "Season 4" = 2)) %>%
-  footnote(general = "Note: Est. = Estimate, CI = 95\\\\% CI, GM = Geometric Mean",  
-           general_title = "", escape = F)
+  footnote(general = "Note: Est. = Estimate, CI = 95\\\\% CI, GM = Geometric Mean", general_title = "", escape = F)
 ```
 
 

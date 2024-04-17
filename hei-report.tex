@@ -200,7 +200,7 @@ of the Beijing Household Energy Transitions Team}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, borderline west={3pt}{0pt}{shadecolor}, breakable, enhanced, frame hidden, boxrule=0pt, interior hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, interior hidden, frame hidden, boxrule=0pt, sharp corners, borderline west={3pt}{0pt}{shadecolor}, breakable]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -544,6 +544,17 @@ concentrations. Separate regression models were conducted for indoor and
 outdoor sensors given the sensitivity of the sensors to relative
 humidity, temperature, and particle sources, which may differ for indoor
 versus outdoor conditions.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{images/sensor-calibration.png}
+
+}
+
+\caption{\label{fig-calibration}Calibration of real-time sensors against
+a reference monitor at University of the Chinese Academy of Sciences.}
+
+\end{figure}
 
 \hypertarget{indoor-pm2.5}{%
 \paragraph{\texorpdfstring{Indoor
@@ -1142,7 +1153,6 @@ Any respiratory problem (\%) & 50.6 & 50.0 & 54.3 & 49.9 & 3.7 & 3.2\\
 Temperature (°C) & 13.8 & 3.6 & 13.5 & 3.3 & -0.3 & 0.2\\
 Personal PM2.5 (ug/m3) & 150.2 & 300.3 & 103.8 & 107.3 & -46.3 & 19.1\\
 \bottomrule
-\multicolumn{7}{l}{\rule{0pt}{1em}Includes all individuals sampled at each of 3 waves.}\\
 \end{tabular}
 \end{table}
 

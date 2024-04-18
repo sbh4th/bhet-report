@@ -539,7 +539,7 @@ In estimating the treatment effect on indoor and outdoor air pollution, we evalu
 
 ```{r tab-did-med, echo=F, message=F, warning=F}
 #| label: tbl-did-med
-#| tbl-cap: "Treatment effect on outdoor and indoor PM2.5, as well as personal exposure to PM2.5 and black carbon. Outdoor and indoor PM2.5 were derived from sensor measurements after being adjusted based on co-located gravimetric PM2.5 measurements. 'Daily' indicates the mean PM2.5 concentrations during the 24 hours when personal exposure samples were collected in each village. 'Seasonal' indicates the seasonal mean PM2.5 concentrations in each village, from Jan. 15th to Mar. 15th."
+#| tbl-cap: "Treatment effect on outdoor and indoor PM~2.5~, as well as personal exposure to PM~2.5~ and black carbon. Outdoor and indoor PM~2.5~ were derived from sensor measurements after being adjusted based on co-located gravimetric PM~2.5~ measurements. 24h indicates the mean PM~2.5~ concentrations during the 24 hours when personal exposure samples were collected in each village. 'Seasonal' indicates the seasonal mean PM~2.5~ concentrations in each village, from Jan. 15th to Mar. 15th."
 
 # air pollution results
 ap_table <- read_rds(here("outputs", 
@@ -548,12 +548,26 @@ ap_table <- read_rds(here("outputs",
 # temperature results
 temp_table <- tibble(
   category = "Point temp", outcome = "Mean", estimate_1 = 1.96,
-  ci_1 = "(0.96, 2.96)", estimate_2 = NA, 
-  ci_2 = " "
+  ci_1 = "(0.96, 2.96)", estimate_2 = 1.96, 
+  ci_2 = "(0.96, 2.96)"
 )
 
+stemp_table <- read_xlsx(here("data-clean",
+  "overall_temp_table.xlsx")) %>%
+  rename(`estimate_1` = att,
+         `ci_1` = ci) %>%
+  mutate(category = rep("Seasonal", times = 6),
+    outcome = c("Mean (all)", "Mean (daytime)", 
+      "Mean (heating)", "Mean (daytime heating)",
+      "Min. (all)", "Min. (heating)"),
+    estimate_2 = `estimate_1`, 
+    ci_2 = `ci_1`) %>%
+  select(-model) %>%
+  relocate(category, outcome)
+
 # join tables
-m_table <- bind_rows(ap_table, temp_table)
+m_table <- bind_rows(ap_table, temp_table, 
+  stemp_table)
 
 kable(m_table,  digits = 2,
   col.names = c(" ", " ", "ATT", "(95% CI)", 
@@ -561,14 +575,15 @@ kable(m_table,  digits = 2,
   linesep = "", align = 'llcccc') %>%
   kable_styling(full_width = F) %>%
   collapse_rows(columns = 1:2, valign = "top") %>% 
-  pack_rows("Air pollution (µg/m3)", 1, 6) %>%
-  pack_rows("Indoor temperature (°C)", 7, 7) %>%
+  pack_rows("Air pollution (µg/m\\\\textsuperscript{3})", 1, 6,
+            escape = F) %>%
+  pack_rows("Indoor temperature (°C)", 7, 13) %>%
   add_header_above(c(" " = 2,  
     "DiD" = 2, "Adjusted DiD\\\\textsuperscript{a}" = 2),
     escape = F) %>%
   footnote(
     general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.}",
-    alphabet = "\\\\small{ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity.}", 
+    alphabet = "\\\\small{ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted.}", 
     general_title = "", threeparttable = T, escape = F)
 ```
 
@@ -1000,7 +1015,67 @@ kable(aph_table_ind, digits = 2, escape = FALSE,
 
 ### Indoor temperature
 
+[To come...]
+
 ### Blood pressure outcomes
+@tbl-bp-het shows ATTs by treatment cohort and time, as well as the results of joint tests of heterogeneity across ATTs.
+
+```{r atbl-bp-het, echo=F, message=F}
+#| label: tbl-bp-het
+#| tbl-cap: "Heterogenous treatment effects for blood pressure mediation model"
+
+options(knitr.kable.NA = " ")
+temp_table <- read_xlsx(here("data-clean",
+  "adjusted_CT_results_table.xlsx")) %>%
+  select(bp, parameter, `Adjusted DiD`) %>%
+  rename(attci = `Adjusted DiD`) %>%
+  mutate(cohort = rep(c(2019,2019,2020,2021),
+                      times = 4),
+         time = rep(c(2019,2021,2021,2021),
+                    times = 4)) %>%
+  separate_wider_delim(attci, delim = "(", 
+    names = c("att", "attci"), cols_remove = TRUE) %>% 
+  mutate(attci = paste("(", attci, sep="")) %>% 
+  select(bp, att, attci, cohort, time) %>%
+  relocate(bp, cohort, time)
+
+
+het_stats <- read_xlsx(here("data-clean",
+  "ct-heterogeneity-results.xlsx")) %>%
+  filter(Model == "Adjusted DiD") %>%
+  rename(bp = `BP measure`,
+         test = `Test statistic`,
+         pval = `P-value`) %>%
+  mutate(test = sprintf("%.1f", test),
+         pval = sprintf("%.3f", pval),
+         cohort = 2021,
+         time = 2021) %>%
+  select(bp, cohort, time, test, pval)
+
+bp_het_table <- temp_table %>% 
+  left_join(het_stats, join_by(bp, cohort, time)) %>%
+  select(-bp)
+  
+kable(bp_het_table,
+  col.names =c("Cohort", "Time", "ATT", "(95%CI)",
+   "F-Statistic", "p-value"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'llcccc') %>%
+  column_spec(1:2, width = "2cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Brachial SBP", 1, 4) %>%
+  pack_rows("Central SBP", 5, 8) %>%
+  pack_rows("Brachial DBP", 9, 12) %>%
+  pack_rows("Central DBP", 13, 16) %>%
+  add_header_above(c(" " = 2, 
+    "Adjusted DiD\\\\textsuperscript{a}" = 2,
+    "Heterogeneity tests\\\\textsuperscript{b}" = 2),
+    escape = F) %>%
+  footnote(
+    general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, CDE = Controlled Direct Effect.}",
+    alphabet = c("\\\\small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", "\\\\small{F-statistics and p-values for joint tests of equality across cohort and time ATTs}"), 
+    general_title = "", threeparttable = T, escape = F)
+```
 
 ### Mediation analyses for blood pressure
 @tbl-a-bp-med-het shows the cohort-time treatment effects for the mediation model for blood pressure.

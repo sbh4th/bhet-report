@@ -30,7 +30,7 @@ dfuel <- read_csv(here("data-clean",
   "Expenditure_House.csv")) %>%
   # limit to variables of interest
   dplyr::select(hh_id, wave, year, ID_VILLAGE, wave, 
-    ban_status_composite, Quantity_Briquettes, 
+    hh_num, ban_status_composite, Quantity_Briquettes, 
     Quantity_coal, Quantity_Honeycomb_coal, 
     Quantity_Wood, Quantity_Straw, Quantity_LPG) %>%
   # calculate household level total consumption
@@ -42,9 +42,9 @@ dfuel <- read_csv(here("data-clean",
   
   # variables needed for ETWFE models
     # create year and cohort_year variables
-  mutate(year = if_else(wave=="S1", 2018, 
-      if_else(wave=="S2", 2019,
-        if_else(wave=="S4", 2021, 0))),
+  mutate(year = if_else(wave==1, 2018, 
+      if_else(wave==2, 2019,
+        if_else(wave==4, 2021, 0))),
     cohort_year = if_else(
       ban_status_composite==1, 2019, 
       if_else(ban_status_composite==2, 2020, 
@@ -159,109 +159,55 @@ rhs_did <- c("treat:cohort_year_2019:year_2019",
   "year_2021", "year_2019", "cohort_year_2019")
 
 # ETWFE plus covariates
-rhs_dida <- c(rhs_did, "hh_num", "factor(smoking)", 
-  "outdoor_temp_24h", "outdoor_dew_24h")
+rhs_dida <- c(rhs_did, "hh_num")
 
 
-## 3 Estimate models for all AP outcomes ----
+## 3 Estimate models for both outcomes ----
 # personal PM
-m_ppm <- estimate_etwfe(lhs="PM25conc_exposureugm3", 
+m_coal <- estimate_etwfe(lhs="coal", 
   rhs1=rhs_did, rhs2=rhs_dida, 
-  data=d_p)
+  data=dfuel)
 
 # ETWFE and adjusted ETWFE models for black carbon
-m_pbc <- estimate_etwfe(lhs="bc_exp_conc", 
+m_biomass <- estimate_etwfe(lhs="biomass", 
   rhs1=rhs_did, rhs2=rhs_dida, 
-  data=d_bc)
+  data=dfuel)
 
-# ETWFE and adjusted ETWFE models for indoor daily
-m_i24 <- estimate_etwfe(lhs="pm2.5_indoor_sensor_24h", 
-  rhs1=rhs_did, rhs2=rhs_dida, 
-  # restrict to cohorts treated after 2019
-  # in the absence of data in season 1
-  data=subset(d_i24, cohort_year_2019!=1))
-
-# ETWFE and adjusted ETWFE models for indoor seasonal
-m_is <- estimate_etwfe(lhs="pm2.5_indoor_seasonal_hs", 
-  rhs1=rhs_did, rhs2=rhs_dida, 
-  # restrict to cohorts treated after 2019
-  # in the absence of data in season 1
-  data=subset(d_is, cohort_year_2019!=1))
 
 # write model results to output folder
-write_rds(m_ppm, file = here("outputs/models",
-  "m_ppm.rds"))
+write_rds(m_coal, file = here("outputs/models",
+  "m_coal.rds"))
 
-write_rds(m_pbc, file = here("outputs/models",
-  "m_pbc.rds"))
-
-write_rds(m_i24, file = here("outputs/models",
-  "m_i24.rds"))
-
-write_rds(m_is, file = here("outputs/models",
-  "m_is.rds"))
+write_rds(m_biomass, file = here("outputs/models",
+  "m_biomass.rds"))
 
 
-## 3 Generate table of results for all AP outcomes ----
+## 3 Generate table of results for both outcomes ----
 
 # tables of results by outcome
-ap_table_p <- bind_rows(m_ppm$me_1, m_ppm$me_2) %>% 
-  mutate(category = "Personal", outcome = "PM2.5")
+fuel_table_coal <- bind_rows(m_coal$me_1, m_coal$me_2) %>% 
+  mutate(outcome = "Coal")
 
-ap_table_bc <- bind_rows(m_pbc$me_1, m_pbc$me_2) %>% 
-  mutate(category = "Personal", 
-         outcome = "Black carbon")
-
-ap_table_i24 <- bind_rows(m_i24$me_1, m_i24$me_2) %>% 
-  mutate(category = "Indoor", 
-         outcome = "Daily")
-
-ap_table_is <- bind_rows(m_is$me_1, m_is$me_2) %>% 
-  mutate(category = "Indoor", 
-         outcome = "Seasonal")
+fuel_table_biomass <- bind_rows(m_biomass$me_1, 
+  m_biomass$me_2) %>% 
+  mutate(outcome = "Biomass")
 
 # put all subtables together
-ap_table1 <- bind_rows(ap_table_p, ap_table_bc,
-  ap_table_i24, ap_table_is) %>%
-  mutate(model = rep(c(1,2),times=4)) %>%
+fuel_table <- bind_rows(fuel_table_coal, 
+  fuel_table_biomass) %>%
+  mutate(model = rep(c(1,2),times=2)) %>%
   select(model, estimate, conf.low, 
-    conf.high, category, outcome) %>%
-  relocate(category, outcome) %>%
-  mutate(ci = paste("(", round(conf.low, 2), ", ",
-    round(conf.high, 2), ")", sep="")) %>%
+    conf.high, outcome) %>%
+  relocate(outcome) %>%
+  mutate(ci = paste("(", round(conf.low, 0), ", ",
+    round(conf.high, 0), ")", sep="")) %>%
   select(-conf.low, -conf.high) %>%
   pivot_wider(names_from = model, values_from = 
     c(estimate, ci), names_vary = "slowest")
 
-# now grab outdoor estimates
-# download from OSF
-aim_1 <- osf_retrieve_node("qsmbr")
-aim_1 %>%
-  osf_ls_files("Air pollution",
-    pattern = "DID_air_pollution.csv") %>%
-  osf_download(path = here("data-clean"),
-               conflicts = "overwrite")
-
-ap_table2 <- read_csv(here("data-clean", 
-  "DID_air_pollution.csv")) %>%
-  filter(`Category` == "Outdoor" & `Effect` !=
-           "DiD with S3") %>%
-  rename_at(c("Category", "Pollutant", "Estimate"), 
-    .funs = tolower) %>%
-  rename("outcome" = `pollutant`) %>%
-  mutate(model = rep(c(1,2), times = 2),
-    ci = paste("(", `CI_low`, ", ",
-    `CI_upper`, ")", sep="")) %>%
-  select(-Effect, -CI_low, -CI_upper) %>%
-  relocate(category, outcome) %>%
-  pivot_wider(names_from = model, values_from = 
-    c(estimate, ci), names_vary = "slowest")
-
-ap_table <- bind_rows(ap_table1, ap_table2)
-
 # write table to output folder
-write_rds(ap_table, file = here("outputs", 
-  "ap-etwfe-table.rds"))
+write_rds(fuel_table, file = here("outputs", 
+  "fuel-table.rds"))
 
 # html table for design
 # kable(ap_table, digits = 2,
@@ -278,13 +224,15 @@ write_rds(ap_table, file = here("outputs",
 ## 4 Table of heterogeneous treatment effects ----
 
 # tables of results by outcome for personal
-ap_table_ph <- bind_rows(m_ppm$me_2, m_ppm$meh_2) %>% 
-  mutate(outcome = "PM2.5")
+fuel_table_coal_h <- bind_rows(m_coal$me_2, m_coal$meh_2) %>% 
+  mutate(outcome = "Coal")
 
-ap_table_bch <- bind_rows(m_pbc$me_2, m_pbc$meh_2) %>% 
-  mutate(outcome = "Black carbon")
+fuel_table_biomass_h <- bind_rows(m_biomass$me_2, 
+                                  m_biomass$meh_2) %>% 
+  mutate(outcome = "Biomass")
 
-aph_table <- bind_rows(ap_table_ph, ap_table_bch) %>%
+fuel_table_h <- bind_rows(fuel_table_coal_h, 
+                          fuel_table_biomass_h) %>%
   select(outcome, estimate, conf.low, conf.high, 
          cohort_year, year) %>%
   mutate_at(vars(c(cohort_year,year)), ~ recode(., 
@@ -293,40 +241,15 @@ aph_table <- bind_rows(ap_table_ph, ap_table_bch) %>%
          `2021` = "2021",
          .missing = "All")) %>%
   relocate(outcome, cohort_year, year) %>%
-  mutate(ci = paste("(", round(conf.low, 2), ", ",
-    round(conf.high, 2), ")", sep="")) %>%
+  mutate(ci = paste("(", round(conf.low, 0), ", ",
+    round(conf.high, 0), ")", sep="")) %>%
   select(-conf.low, -conf.high) %>%
   pivot_wider(names_from = outcome, values_from = 
     c(estimate, ci), names_vary = "slowest")
 
 # write table to data
-write_rds(aph_table, file = here("outputs", 
-  "ap-het-table.rds"))
-
-# tables of results by outcome for indoor
-ap_table_i24h <- bind_rows(m_i24$me_2, m_i24$meh_2) %>% 
-  mutate(outcome = "Daily")
-
-ap_table_ish <- bind_rows(m_is$me_2, m_is$meh_2) %>% 
-  mutate(outcome = "Seasonal")
-
-aph_table_i <- bind_rows(ap_table_i24h, ap_table_ish) %>%
-  select(outcome, estimate, conf.low, conf.high, 
-         cohort_year, year) %>%
-  mutate_at(vars(c(cohort_year,year)), ~ recode(., 
-         `2020` = "2020",
-         `2021` = "2021",
-         .missing = "All")) %>%
-  relocate(outcome, cohort_year, year) %>%
-  mutate(ci = paste("(", round(conf.low, 2), ", ",
-    round(conf.high, 2), ")", sep="")) %>%
-  select(-conf.low, -conf.high) %>%
-  pivot_wider(names_from = outcome, values_from = 
-    c(estimate, ci), names_vary = "slowest")
-
-# write table to data
-write_rds(aph_table_i, file = here("outputs", 
-  "ap-het-table-indoor.rds"))
+write_rds(fuel_table_h, file = here("outputs", 
+  "fuel-table-het.rds"))
 
 # html table for design
 # kable(aph_table, digits = 2,
@@ -347,84 +270,3 @@ write_rds(aph_table_i, file = here("outputs",
 #           round(m_pbc$ht1$p.value, digits=3))), 
 #     footnote_as_chunk = T) 
 
-
-## 5 Impact of S3 air pollution data ----
-
-# read in indoor seasonal data plus season 3
-d_is3 <- read_rds(here("data-clean",
-  "ap-data-iseason-s3.rds"))
-
-# ETWFE model estimates including Season 3
-m_is_s3 <- fixest::feols(
-  pm2.5_indoor_seasonal_hs ~ treat:cohort_year_2020:year_2020 + 
-    treat:cohort_year_2020:year_2021 +
-    treat:cohort_year_2021:year_2021 + cohort_year_2020 + 
-    cohort_year_2021 + year_2021, 
-  cluster = ~v_id, data=subset(d_is3, 
-    cohort_year_2019!=1))
-
-# overall marginal effect
-m_is_s3_me <- slopes(
-  m_is_s3,
-  newdata = subset(d_is3, 
-    cohort_year_2019!=1 & treat==1),
-  variables = "treat", by = "treat")
-
-# heterogeneous ATTs
-m_is_s3_meh <- slopes(
-  m_is_s3,
-  newdata = subset(d_is3, 
-    cohort_year_2019!=1 & treat==1),
-  variables = "treat",
-  by = c("cohort_year", "year"))
-  
-
-# estimates without Season 3
-m_is_nos3 <- fixest::feols(
-  pm2.5_indoor_seasonal_hs ~ treat:cohort_year_2020:year_2020 + 
-    treat:cohort_year_2020:year_2021 +
-    treat:cohort_year_2021:year_2021 + cohort_year_2020 + 
-    cohort_year_2021 + year_2021, 
-  cluster = ~v_id, data=subset(d_is3, 
-    cohort_year_2019!=1 & wave!="S3"))
-
-# overall marginal effect
-m_is_nos3_me <- slopes(
-  m_is_nos3,
-  newdata = subset(d_is3, 
-    cohort_year_2019!=1 & wave!="S3" & treat==1),
-  variables = "treat", by = "treat")
-
-# heterogeneous ATTs
-m_is_nos3_meh <- slopes(
-  m_is_nos3,
-  newdata = subset(d_is3, 
-    cohort_year_2019!=1 & treat==1),
-  variables = "treat",
-  by = c("cohort_year", "year"))
-
-# Put together the table
-ap_ind_s3 <- bind_rows(m_is_s3_me , m_is_s3_meh) %>% 
-  mutate(outcome = "wS3")
-
-ap_ind_nos3 <- bind_rows(m_is_nos3_me, m_is_nos3_meh) %>% 
-  mutate(outcome = "woS3")
-
-ap_is3_table <- bind_rows(ap_ind_s3, ap_ind_nos3) %>%
-  select(outcome, estimate, conf.low, conf.high, 
-         cohort_year, year) %>%
-  mutate_at(vars(c(cohort_year,year)), ~ recode(., 
-         `2019` = "2019",
-         `2020` = "2020",
-         `2021` = "2021",
-         .missing = "All")) %>%
-  relocate(outcome, cohort_year, year) %>%
-  mutate(ci = paste("(", round(conf.low, 2), ", ",
-    round(conf.high, 2), ")", sep="")) %>%
-  select(-conf.low, -conf.high) %>%
-  pivot_wider(names_from = outcome, values_from = 
-    c(estimate, ci), names_vary = "slowest")
-
-# write table to data
-write_rds(ap_is3_table, file = here("outputs", 
-  "ap-is3_table.rds"))

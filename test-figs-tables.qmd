@@ -46,7 +46,7 @@ aim_1 %>%
 ```
 
 Read in data
-```{r data, include=FALSE, cache=TRUE}
+```{r data, include=FALSE, cache=TRUE, eval=F}
 library(tidyverse)
 library(kableExtra)
 d <- read_csv(here("data-clean", 
@@ -244,7 +244,7 @@ kable(m_table,  digits = 2,
   footnote(symbol = "Footnote A")
 ```
 
-```{r source-did, echo=F}
+```{r source-did, echo=F, eval=F}
 # bp results from Talia
 source_t <- tibble(
   category = c("Outdoor", "Personal exposure"),
@@ -379,19 +379,6 @@ kable(t_pmf,
 
 \newpage
 
-```{r fig-map, echo=FALSE, out.width = "70%", eval=F}
-library(here)
-#| label: fig-cbhp-map
-#| fig-cap: "Map of village implementation of CBHP policy"
-
-knitr::include_graphics(here("images", 
-  "policy-implementation-map.png"))
-```
-
-See @fig-cbhp-map.
-
-\newpage
-
 The source profiles for the four-factor solution are presented in Figure X. The first source was identified as dust by high percentages of crustal elements like wi-Ca, Si, and wi-Mg. The second source was constituted of non-sulfate sulfur as well as secondary inorganic ions (ammonium, nitrate, and sulfate). Non-sulfate sulfur is a tracer for primary coal combustion, while secondary inorganic ions indicate a secondary source. Since coal combustion is a major source of energy in our study area, it is likely that the second source is a mixture of primary and secondary emissions that originate from coal and other sulfurous fuel combustion. 
 
 \begin{wrapfigure}{R}{0.7\textwidth}
@@ -472,28 +459,32 @@ modelsummary(
 ```
 
 Another example
-```{r, echo=F, eval=F}
+```{r, echo=F, eval=T}
+#| label: tbl-fuel
+#| tbl-cap: "Policy impacts on self-reported fuel use (kg)"
 
-# read in personal exposure heterogeneity table
-aph_table <- read_rds(here("outputs", 
-  "ap-het-table.rds"))
+# read in fuel use table
+fuel_table <- read_rds(here("outputs", 
+  "fuel-table-het.rds"))
 
-models_ppm <- read_rds(here("outputs/models", "m_ppm.rds"))
-models_pbc <- read_rds(here("outputs/models", "m_pbc.rds"))
+models_coal <- read_rds(here("outputs/models", 
+  "m_coal.rds"))
+models_bio <- read_rds(here("outputs/models", 
+  "m_biomass.rds"))
 
-models_ppm_note <- paste("Joint test that all ATTs are equal: ", 
-    "F(", models_ppm$ht1$df1, ", ", 
-    models_ppm$ht1$df2, ")= " , 
-    round(models_ppm$ht1$statistic, digits=3), ", p= ", 
-    round(models_ppm$ht1$p.value, digits=3), sep="")
+models_coal_note <- paste("Joint test that all ATTs are equal: ", 
+    "F(", models_coal$ht1$df1, ", ", 
+    models_coal$ht1$df2, ")= " , 
+    round(models_coal$ht1$statistic, digits=3), ", p= ", 
+    round(models_coal$ht1$p.value, digits=3), sep="")
 
-models_pbc_note <- paste("Joint test that all ATTs are equal: ", 
-    "F(", models_pbc$ht1$df1, ", ", 
-    models_pbc$ht1$df2, ")= " , 
-    round(models_pbc$ht1$statistic, digits=3), ", p= ", 
-    round(models_pbc$ht1$p.value, digits=3), sep="")
+models_bio_note <- paste("Joint test that all ATTs are equal: ", 
+    "F(", models_bio$ht1$df1, ", ", 
+    models_bio$ht1$df2, ")= " , 
+    round(models_bio$ht1$statistic, digits=3), ", p= ", 
+    round(models_bio$ht1$p.value, digits=3), sep="")
 
-kable(aph_table, digits = 2, escape = FALSE,
+kable(fuel_table, digits = 0, escape = FALSE,
   col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
    "ATT", "(95\\%CI)"), "latex", booktabs = T,
   linesep = "", align = 'cccccc') %>%
@@ -502,10 +493,10 @@ kable(aph_table, digits = 2, escape = FALSE,
   pack_rows("Average ATT", 1, 2, indent = F) %>%
   pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
   add_header_above(c(" " = 2, 
-    "PM2.5\\\\textsuperscript{a}" = 2, 
-    "Black carbon\\\\textsuperscript{b}" = 2),
+    "Coal\\\\textsuperscript{a}" = 2, 
+    "Biomass\\\\textsuperscript{b}" = 2),
     escape = FALSE) %>%
-  footnote(alphabet=c(models_ppm_note, models_pbc_note)) 
+  footnote(alphabet=c(models_coal_note, models_bio_note)) 
 ```
 
 ```{r ap-season, echo=F, eval = F}
@@ -541,35 +532,7 @@ ap_season %>%
            general_title = "", escape = F)
 ```
 
-Respiratory tables
-```{r, echo=F, eval = F}
 
-# read in personal exposure heterogeneity table
-resp_any_table <- read_rds(here("outputs", 
-  "resp-het-resp.rds")) %>%
-  select(-outcome)
-
-models_resp <- read_rds(here("outputs/models", 
-  "r_het_tests.rds"))
-
-models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
-    "F(", models_resp$resp$df1, ", ", 
-    models_resp$resp$df2, ")= " , 
-    round(models_resp$resp$statistic, digits=3), ", p= ", 
-    round(models_resp$resp$p.value, digits=3),"}", sep="")
-
-kable(resp_any_table, digits = 2, escape = FALSE,
-  col.names =c("Cohort", "Time", 
-    "ATT", "(95\\%CI)"), 
-   "latex", booktabs = T,
-  linesep = "", align = 'cccc') %>%
-  column_spec(1:2, width = "2cm") %>%
-  kable_styling(full_width = F) %>%
-  pack_rows("Average ATT", 1, 2, indent = F) %>%
-  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
-  footnote(general=models_resp_note,
-    general_title = "", escape = F)
-```
 
 
 ```{r, echo=F}
@@ -604,3 +567,58 @@ kable(med_source_t,
     alphabet = c("\\\\small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", "\\\\small{Further adjusted for mediation by mixed combustion source (coal and biomass)}"), 
     general_title = "", threeparttable = T, escape = F)
 ```
+
+```{r, echo=F}
+options(knitr.kable.NA = " ")
+temp_table <- read_xlsx(here("data-clean",
+  "adjusted_CT_results_table.xlsx")) %>%
+  select(bp, parameter, `Adjusted DiD`) %>%
+  rename(attci = `Adjusted DiD`) %>%
+  mutate(cohort = rep(c(2019,2019,2020,2021),
+                      times = 4),
+         time = rep(c(2019,2021,2021,2021),
+                    times = 4)) %>%
+  separate_wider_delim(attci, delim = "(", 
+    names = c("att", "attci"), cols_remove = TRUE) %>% 
+  mutate(attci = paste("(", attci, sep="")) %>% 
+  select(bp, att, attci, cohort, time) %>%
+  relocate(bp, cohort, time)
+
+
+het_stats <- read_xlsx(here("data-clean",
+  "ct-heterogeneity-results.xlsx")) %>%
+  filter(Model == "Adjusted DiD") %>%
+  rename(bp = `BP measure`,
+         test = `Test statistic`,
+         pval = `P-value`) %>%
+  mutate(test = sprintf("%.1f", test),
+         pval = sprintf("%.3f", pval),
+         cohort = 2021,
+         time = 2021) %>%
+  select(bp, cohort, time, test, pval)
+
+bp_het_table <- temp_table %>% 
+  left_join(het_stats, join_by(bp, cohort, time)) %>%
+  select(-bp)
+  
+kable(bp_het_table,
+  col.names =c("Cohort", "Time", "ATT", "(95%CI)",
+   "F-Statistic", "p-value"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'llcccc') %>%
+  column_spec(1:2, width = "2cm") %>%
+  kable_styling(full_width = T) %>%
+  pack_rows("Brachial SBP", 1, 4) %>%
+  pack_rows("Central SBP", 5, 8) %>%
+  pack_rows("Brachial DBP", 9, 12) %>%
+  pack_rows("Central DBP", 13, 16) %>%
+  add_header_above(c(" " = 2, 
+    "Adjusted DiD\\\\textsuperscript{a}" = 2,
+    "Heterogeneity tests\\\\textsuperscript{b}" = 2),
+    escape = F) %>%
+  footnote(
+    general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, CDE = Controlled Direct Effect.}",
+    alphabet = c("\\\\small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", "\\\\small{F-statistics and p-values for tests of equality across cohort and time ATTs}"), 
+    general_title = "", threeparttable = T, escape = F)
+```
+

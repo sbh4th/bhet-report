@@ -533,9 +533,7 @@ ap_season %>%
 ```
 
 
-
-
-```{r, echo=F}
+```{r, echo=F, eval=F}
 med_source <- read_csv(here("data-clean", 
   "mixed_med_table_overall.csv")) 
 
@@ -568,7 +566,7 @@ kable(med_source_t,
     general_title = "", threeparttable = T, escape = F)
 ```
 
-```{r, echo=F}
+```{r, echo=F, eval=F}
 options(knitr.kable.NA = " ")
 temp_table <- read_xlsx(here("data-clean",
   "adjusted_CT_results_table.xlsx")) %>%
@@ -607,7 +605,7 @@ kable(bp_het_table,
    "latex", booktabs = T,
   linesep = "", align = 'llcccc') %>%
   column_spec(1:2, width = "2cm") %>%
-  kable_styling(full_width = T) %>%
+  kable_styling(full_width = F) %>%
   pack_rows("Brachial SBP", 1, 4) %>%
   pack_rows("Central SBP", 5, 8) %>%
   pack_rows("Brachial DBP", 9, 12) %>%
@@ -622,3 +620,28 @@ kable(bp_het_table,
     general_title = "", threeparttable = T, escape = F)
 ```
 
+
+```{r, echo=F}
+ctab1 <- tibble(
+  `Characteristic` = c("Female, n (%)", "Current smoker, n (%)",
+    "Any smoke exposure, n (%)", "Age in years, Mean (SD)",
+    "BMI in kg/m2, Mean (SD)", 
+    "Waist circumference in cm, Mean (SD)"),
+  `Campaign 1 (2018-19) N=1003` = c("580 (57.8)",
+    "257 (25.6)", "788 (78.6)", "60.7 (9.2)",
+    "26.1 (3.7)", "86.8 (10.2)"),
+  `Campaign 2 (2019-20) N=1110` = c("653 (58.8)", 
+    "295 (26.6)", "897 (80.8)", "61.4 (9.1)",
+    "25.7 (3.5)", "87.4 (9.4)"),
+  `Campaign 4 (2021-22) N=1028` = c("612 (59.5)",
+    "265 (25.8)", "843 (82)", "63.1 (9)", 
+    "26.1 (4)", "91.4 (10.7)")
+)
+
+kable(ctab1, "latex", booktabs = T,
+  linesep = "", align = 'lccc') %>%
+  column_spec(2:4, width = "2.5cm") %>%
+  row_spec(0, bold = T) %>%
+  kable_styling(full_width = F)
+  
+```

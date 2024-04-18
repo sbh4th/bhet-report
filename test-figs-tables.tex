@@ -215,7 +215,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, boxrule=0pt, interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, interior hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners, enhanced, boxrule=0pt, frame hidden]}{\end{tcolorbox}}\fi
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -326,78 +326,20 @@ All & All & -2361 & (-2677, -2044) & -487 & (-805, -168)\\
 \end{tabular}
 \end{table}
 
-\begin{verbatim}
-Rows: 6 Columns: 3
--- Column specification --------------------------------------------------------
-Delimiter: ","
-chr (3): type, att, model
-
-i Use `spec()` to retrieve the full column specification for this data.
-i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-\end{verbatim}
-
 \begin{table}
 \centering
-\begin{threeparttable}
-\begin{tabular}{lcccccc}
+\begin{tabular}{l>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}}
 \toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{DiD} & \multicolumn{2}{c}{Adjusted DiD\textsuperscript{a}} & \multicolumn{2}{c}{Adjusted CDE\textsuperscript{b}} \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7}
- & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI)\\
+\textbf{Characteristic} & \textbf{Campaign 1 (2018-19) N=1003} & \textbf{Campaign 2 (2019-20) N=1110} & \textbf{Campaign 4 (2021-22) N=1028}\\
 \midrule
-Central SBP & -0.43 & (-3.48, 2.62) & -1.61 & (-5.03, 1.82) & -1.5 & (-4.94, 1.94)\\
-Central DBP & -0.58 & (-2.59, 1.43) & -1.26 & (-3.38, 0.87) & -1.37 & (-3.69, 0.96)\\
+Female, n (\%) & 580 (57.8) & 653 (58.8) & 612 (59.5)\\
+Current smoker, n (\%) & 257 (25.6) & 295 (26.6) & 265 (25.8)\\
+Any smoke exposure, n (\%) & 788 (78.6) & 897 (80.8) & 843 (82)\\
+Age in years, Mean (SD) & 60.7 (9.2) & 61.4 (9.1) & 63.1 (9)\\
+BMI in kg/m2, Mean (SD) & 26.1 (3.7) & 25.7 (3.5) & 26.1 (4)\\
+Waist circumference in cm, Mean (SD) & 86.8 (10.2) & 87.4 (9.4) & 91.4 (10.7)\\
 \bottomrule
 \end{tabular}
-\begin{tablenotes}
-\item \small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, CDE = Controlled Direct Effect.}
-\item[a] \small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}
-\item[b] \small{Further adjusted for mediation by mixed combustion source (coal and biomass)}
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\begin{table}
-\centering
-\begin{threeparttable}
-\begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}cccc}
-\toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Adjusted DiD\textsuperscript{a}} & \multicolumn{2}{c}{Heterogeneity tests\textsuperscript{b}} \\
-\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
-Cohort & Time & ATT & (95\%CI) & F-Statistic & p-value\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brachial SBP}}\\
-\hspace{1em}2019 & 2019 & -2.36 & (-5.23, 0.5) &  & \\
-\hspace{1em}2019 & 2021 & -1.51 & (-4.01, 0.98) &  & \\
-\hspace{1em}2020 & 2021 & -1.26 & (-4.97, 2.45) &  & \\
-\hspace{1em}2021 & 2021 & 2.39 & (-0.49, 5.28) & 2.3 & 0.080\\
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Central SBP}}\\
-\hspace{1em}2019 & 2019 & -2.03 & (-4.69, 0.63) &  & \\
-\hspace{1em}2019 & 2021 & -1.96 & (-4.45, 0.52) &  & \\
-\hspace{1em}2020 & 2021 & -1.78 & (-5.07, 1.52) &  & \\
-\hspace{1em}2021 & 2021 & 2.11 & (-1.09, 5.31) & 1.9 & 0.140\\
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brachial DBP}}\\
-\hspace{1em}2019 & 2019 & -2.66 & (-4.67, -0.65) &  & \\
-\hspace{1em}2019 & 2021 & -2.37 & (-4.01, -0.72) &  & \\
-\hspace{1em}2020 & 2021 & 0.2 & (-1.54, 1.94) &  & \\
-\hspace{1em}2021 & 2021 & 0.78 & (-0.48, 2.05) & 6.8 & 0.000\\
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Central DBP}}\\
-\hspace{1em}2019 & 2019 & -2.67 & (-4.57, -0.78) &  & \\
-\hspace{1em}2019 & 2021 & -2.55 & (-4.15, -0.94) &  & \\
-\hspace{1em}2020 & 2021 & 0.11 & (-1.67, 1.9) &  & \\
-\hspace{1em}2021 & 2021 & 1.09 & (-0.06, 2.23) & 10.0 & 0.000\\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\item \small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, CDE = Controlled Direct Effect.}
-\item[a] \small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}
-\item[b] \small{F-statistics and p-values for tests of equality across cohort and time ATTs}
-\end{tablenotes}
-\end{threeparttable}
 \end{table}
 
 

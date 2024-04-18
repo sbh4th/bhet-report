@@ -362,7 +362,67 @@ For air pollution outcomes, we considered the following covariates: village popu
 
 # Results
 
-We retained all 50 study villages during this four-year longitudinal assessment of village treatment by the CBHP policy in Beijing, though we were only able to visit 41 villages in winter 2020-21 (S3) and also were limited to village and household-level measurements of air quality, indoor temperature, and stove use in that campaign due to to the COVID pandemic. By S2, S3, and S4 there were 10, 17, and 20 of the 50 villages treated by the policy, respectively. @fig-flowchart shows the participation of villages, households, and participants across the four waves of data collection. We conducted measurements in over 1000 participants in each of the three measurement campaigns that included individual-level measurements. In total, we enrolled 1432 participants into the study, of which 630 (43%) participated in all three campaigns, 443 (31%) participated in two campaigns and 365 (25%) participated in a single campaign. We did not observe any notable differences in demographic characteristics or health behaviors between participants who contributed to a different number of campaigns (ref table) or between participants in each of the three campaigns with individual measurements (ref table). 
+We retained all 50 study villages during this four-year longitudinal assessment of village treatment by the CBHP policy in Beijing, though we were only able to visit 41 villages in winter 2020-21 (S3) and also were limited to village and household-level measurements of air quality, indoor temperature, and stove use in that campaign due to to the COVID pandemic. By S2, S3, and S4 there were 10, 17, and 20 of the 50 villages treated by the policy, respectively. @fig-flowchart shows the participation of villages, households, and participants across the four waves of data collection. We conducted measurements in over 1000 participants in each of the three measurement campaigns that included individual-level measurements. In total, we enrolled 1432 participants into the study, of which 630 (43%) participated in all three campaigns, 443 (31%) participated in two campaigns and 365 (25%) participated in a single campaign. We did not observe any notable differences in demographic characteristics or health behaviors between participants who contributed to a different number of campaigns (@tbl-each-campaign) or between participants in each of the three campaigns with individual measurements (@tbl-diff-campaign). 
+
+```{r tbl-each-campaigns, echo=F}
+#| label: tbl-each-campaign
+#| tbl-cap: "Demographic and health characteristics of participants in each study campaign."
+
+ctab1 <- tibble(
+  `Characteristic` = c("Female, n (\\%)", 
+    "Current smoker, n (\\%)",
+    "Any smoke exposure, n (\\%)", 
+    "Age in years, Mean (SD)",
+    "BMI in kg/m\\textsuperscript{2}, Mean (SD)", 
+    "Waist circumference in cm, Mean (SD)"),
+  `Campaign 1 (2018-19) N=1003` = c("580 (57.8)",
+    "257 (25.6)", "788 (78.6)", "60.7 (9.2)",
+    "26.1 (3.7)", "86.8 (10.2)"),
+  `Campaign 2 (2019-20) N=1110` = c("653 (58.8)", 
+    "295 (26.6)", "897 (80.8)", "61.4 (9.1)",
+    "25.7 (3.5)", "87.4 (9.4)"),
+  `Campaign 4 (2021-22) N=1028` = c("612 (59.5)",
+    "265 (25.8)", "843 (82)", "63.1 (9)", 
+    "26.1 (4)", "91.4 (10.7)")
+)
+
+kable(ctab1, "latex", booktabs = T, escape = F,
+  linesep = "", align = 'lccc') %>%
+  column_spec(2:4, width = "2.5cm") %>%
+  row_spec(0, bold = T) %>%
+  kable_styling(full_width = F)
+```
+
+
+```{r tbl-diff-campaign, echo=F}
+#| label: tbl-diff-campaign
+#| tbl-cap: "Demographic and health characteristics of participants who contributed to different numbers of campaigns."
+
+ctab2 <- tibble(
+  `Characteristic` = c("Female, n (\\%)", 
+    "Current smoker, n (\\%)",
+    "Any smoke exposure, n (\\%)", 
+    "Age in years, Mean (SD)",
+    "BMI in kg/m\\textsuperscript{2}, Mean (SD)", 
+    "Waist circumference in cm, Mean (SD)"),
+  `1 Campaign N=365` = c("211 (57.8)", 
+    "110 (30.1)", "288 (78.9)", "59.9 (9.2)",
+    "26.3 (3.6)", "90.3 (9.8)"),
+  `2 Campaigns N=443` = c("253 (57.1)",
+    "117 (26.4)", "360 (81.3)", "60.5 (8.8)",
+    "25.8 (3.5)", "86.5 (10)"),
+  `3 Campaigns N=630` = c("370 (58.7)",
+    "161 (25.6)", "498 (79)", "61.3 (9.1)",
+    "26.1 (3.7)", "86.9 (10.4)")
+)
+
+kable(ctab2, "latex", booktabs = T, escape = F,
+  linesep = "", align = 'lccc') %>%
+  column_spec(2:4, width = "2.5cm") %>%
+  row_spec(0, bold = T) %>%
+  kable_styling(full_width = F)
+```
+
 
 Study flowchart
 ```{r flowchart, echo=FALSE, out.width = "80%"}
@@ -906,12 +966,53 @@ To come...
 # Appendices {.appendix}
 
 ## Policy uptake
+and @tbl-fuel-did shows results from applying our extended two-way fixed effects...
 
 ```{r afig, message=FALSE, cache=TRUE, echo=FALSE, out.width = "100%"}
 #| label: fig-afig-coal
 #| fig-cap: "Trends in self-reported coal and biomass, by treatment season"
 
 knitr::include_graphics(here("images", "coal-plot.png"))
+```
+
+```{r atbl-fuel, echo=F, eval=T}
+#| label: tbl-fuel-did
+#| tbl-cap: "Policy impacts on self-reported fuel use (kg)"
+
+# read in fuel use table
+fuel_table <- read_rds(here("outputs", 
+  "fuel-table-het.rds"))
+
+models_coal <- read_rds(here("outputs/models", 
+  "m_coal.rds"))
+models_bio <- read_rds(here("outputs/models", 
+  "m_biomass.rds"))
+
+models_coal_note <- paste("Joint test that all ATTs are equal: ", 
+    "F(", models_coal$ht1$df1, ", ", 
+    models_coal$ht1$df2, ")= " , 
+    round(models_coal$ht1$statistic, digits=3), ", p= ", 
+    round(models_coal$ht1$p.value, digits=3), sep="")
+
+models_bio_note <- paste("Joint test that all ATTs are equal: ", 
+    "F(", models_bio$ht1$df1, ", ", 
+    models_bio$ht1$df2, ")= " , 
+    round(models_bio$ht1$statistic, digits=3), ", p= ", 
+    round(models_bio$ht1$p.value, digits=3), sep="")
+
+kable(fuel_table, digits = 0, escape = FALSE,
+  col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
+   "ATT", "(95\\%CI)"), "latex", booktabs = T,
+  linesep = "", align = 'cccccc') %>%
+  column_spec(1:2, width = "1.5cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  add_header_above(c(" " = 2, 
+    "Coal\\\\textsuperscript{a}" = 2, 
+    "Biomass\\\\textsuperscript{b}" = 2),
+    escape = FALSE) %>%
+  footnote(alphabet=c(models_coal_note, models_bio_note)) 
 ```
 
 Sensitivity analyses: [[[Jill to edit this table include all sensitivity analysis for total effects models]]]

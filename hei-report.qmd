@@ -588,7 +588,8 @@ In untreated villages, an active transition from solid fuel to clean energy was 
 ```{r fig-sankey, echo=F, message=F, warning=F, out.width="100%"}
 #| label: fig-sankey
 #| fig-cap: "Transitions to different energy sources across study seasons"
-knitr::include_graphics(here("images", "sankey.png"))
+knitr::include_graphics(here("images", 
+  "Sankey diagram_2.png"))
 ```
 
 ## Aim 1: Policy impacts and potential mediation
@@ -1005,7 +1006,8 @@ kable(fuel_table, digits = 0, escape = FALSE,
    "ATT", "(95\\%CI)"), "latex", booktabs = T,
   linesep = "", align = 'cccccc') %>%
   column_spec(1:2, width = "1.5cm") %>%
-  kable_styling(full_width = F) %>%
+  kable_styling(full_width = F, 
+    latex_options = "HOLD_position") %>%
   pack_rows("Average ATT", 1, 2, indent = F) %>%
   pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
   add_header_above(c(" " = 2, 
@@ -1028,6 +1030,8 @@ Sensitivity analyses: [[[Jill to edit this table include all sensitivity analysi
 	Analysis with log-transformed outcome [ln(FeNO)]
 	511 (843)
 	-3.8% [-16.9, 11.4]
+
+\newpage
 
 ## Heterogeneity in treament effects 
 
@@ -1062,7 +1066,8 @@ kable(aph_table, digits = 2, escape = FALSE,
    "ATT", "(95\\%CI)"), "latex", booktabs = T,
   linesep = "", align = 'cccccc') %>%
   column_spec(1:2, width = "1.5cm") %>%
-  kable_styling(full_width = F) %>%
+  kable_styling(full_width = F, 
+    latex_options = "HOLD_position") %>%
   pack_rows("Average ATT", 1, 2, indent = F) %>%
   pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
   add_header_above(c(" " = 2, 
@@ -1103,7 +1108,8 @@ kable(aph_table_ind, digits = 2, escape = FALSE,
    "ATT", "(95\\%CI)"), "latex", booktabs = T,
   linesep = "", align = 'cccccc') %>%
   column_spec(1:2, width = "1.5cm") %>%
-  kable_styling(full_width = F) %>%
+  kable_styling(full_width = F,
+    latex_options = "HOLD_position") %>%
   pack_rows("Average ATT", 1, 2, indent = F) %>%
   pack_rows("Cohort-Time ATTs", 2, 3, indent = F) %>%
   add_header_above(c(" " = 2, 
@@ -1208,6 +1214,7 @@ kable(bp_het_med,
   
 ```
 
+\newpage
 
 ### Respiratory outcomes
 
@@ -1410,9 +1417,6 @@ kable(resp_nochest_table, digits = 2, escape = FALSE,
   footnote(general=models_resp_note,
     general_title = "", escape = F)
 ```
-
-
-
 
 ### Outdoor and personal mixed combustion
 

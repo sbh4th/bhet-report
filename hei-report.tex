@@ -200,7 +200,7 @@ of the Beijing Household Energy Transitions Team}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, sharp corners, breakable, interior hidden, enhanced, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, frame hidden, enhanced, sharp corners, breakable, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -1647,7 +1647,7 @@ S4.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{images/sankey.png}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{images/Sankey diagram_2.png}
 
 }
 
@@ -3114,6 +3114,9 @@ Institute / Health Effects Institute:Boston, MA.
 \hypertarget{policy-uptake-1}{%
 \subsection{Policy uptake}\label{policy-uptake-1}}
 
+and Table~\ref{tbl-fuel-did} shows results from applying our extended
+two-way fixed effects\ldots{}
+
 \begin{figure}[H]
 
 {\centering \includegraphics[width=1\textwidth,height=\textheight]{images/coal-plot.png}
@@ -3124,6 +3127,32 @@ Institute / Health Effects Institute:Boston, MA.
 by treatment season}
 
 \end{figure}
+
+\hypertarget{tbl-fuel-did}{}
+\begin{table}[H]
+\caption{\label{tbl-fuel-did}Policy impacts on self-reported fuel use (kg) }\tabularnewline
+
+\centering
+\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}>{\centering\arraybackslash}p{1.5cm}cccc}
+\toprule
+\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Coal\textsuperscript{a}} & \multicolumn{2}{c}{Biomass\textsuperscript{b}} \\
+\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
+Cohort & Time & ATT & (95\%CI) & ATT & (95\%CI)\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Average ATT}}\\
+All & All & -2361 & (-2677, -2044) & -487 & (-805, -168)\\
+\addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Cohort-Time ATTs}}\\
+2019 & 2019 & -2631 & (-2913, -2348) & -653 & (-991, -315)\\
+2019 & 2021 & -2416 & (-2847, -1984) & -633 & (-1201, -64)\\
+2020 & 2021 & -2018 & (-2474, -1562) & -350 & (-701, 0)\\
+2021 & 2021 & -1961 & (-2895, -1027) & 338 & (-30, 705)\\
+\bottomrule
+\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{a} Joint test that all ATTs are equal: F(3, 2886)= 1.856, p= 0.135}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{b} Joint test that all ATTs are equal: F(3, 2886)= 5.545, p= 0.001}\\
+\end{tabular}
+\end{table}
 
 Sensitivity analyses: {[}{[}{[}Jill to edit this table include all
 sensitivity analysis for total effects models{]}{]}{]}
@@ -3142,6 +3171,8 @@ Analysis with log-transformed outcome [ln(FeNO)]
 -3.8% [-16.9, 11.4]
 \end{verbatim}
 
+\newpage
+
 \hypertarget{heterogeneity-in-treament-effects}{%
 \subsection{Heterogeneity in treament
 effects}\label{heterogeneity-in-treament-effects}}
@@ -3154,7 +3185,7 @@ Table~\ref{tbl-a-het-personal} shows limited evidence that the ATTs
 across cohorts and time demonstrate meaningful heterogeneity.
 
 \hypertarget{tbl-a-het-personal}{}
-\begin{table}
+\begin{table}[H]
 \caption{\label{tbl-a-het-personal}Heterogenous treatment effects: Personal exposures }\tabularnewline
 
 \centering
@@ -3187,7 +3218,7 @@ Table Table~\ref{tbl-a-het-indoor} shows estimates for cohort-time ATTs
 for daily and seasonal indoor PM\textsubscript{2.5}.
 
 \hypertarget{tbl-a-het-indoor}{}
-\begin{table}
+\begin{table}[H]
 \caption{\label{tbl-a-het-indoor}Heterogenous treatment effects: Indoor }\tabularnewline
 
 \centering
@@ -3312,6 +3343,8 @@ Cohort & Time & Adjusted Total Effect & Indoor PM & Indoor Temp & PM + Temp\\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\newpage
 
 \hypertarget{respiratory-outcomes}{%
 \subsubsection{Respiratory outcomes}\label{respiratory-outcomes}}

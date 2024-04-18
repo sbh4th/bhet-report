@@ -622,46 +622,111 @@ kable(bp_het_table,
 
 
 ```{r, echo=F}
-ot <- read_xlsx(here("data-clean", 
-  "overall_total_effect_adjusted.xlsx")) %>%
+ctot <- read_xlsx(here("data-clean", 
+  "ct_total_effect_adjusted.xlsx")) %>%
   mutate(model = 1)
 
-otmp <- read_xlsx(here("data-clean", 
-  "overall_pm_mediation_adjusted.xlsx")) %>%
+ctotmp <- read_xlsx(here("data-clean", 
+  "ct_pm_mediation_adjusted.xlsx")) %>%
   mutate(model = 2)
 
-otmt <- read_xlsx(here("data-clean", 
-  "overall_temp_mediation_adjusted.xlsx")) %>%
+ctotmt <- read_xlsx(here("data-clean", 
+  "ct_temp_mediation_adjusted.xlsx")) %>%
   mutate(model = 3)
 
-otmm <- read_xlsx(here("data-clean", 
-  "overall_mult_mediation_adjusted.xlsx")) %>%
+ctotmm <- read_xlsx(here("data-clean", 
+  "ct_mult_mediation_adjusted.xlsx")) %>%
   mutate(model = 4)
 
-otm <- bind_rows(ot, otmp, otmt, otmm) %>%
+ctotm <- bind_rows(ctot, ctotmp, ctotmt, ctotmm) %>%
   rename(est = theta_bar, ll = lower_95CI,
          ul = upper_95CI) %>%
   mutate(ci = paste("(", sprintf('%.2f', ll), ", ",
-    sprintf('%.2f', ul), ")", sep="")) %>%
-  select(bp, model, est, ci) %>%
+    sprintf('%.2f', ul), ")", sep=""),
+    cohort = rep(c(2019,2019,2020,2021),
+                      times = 16),
+         time = rep(c(2019,2021,2021,2021),
+                    times = 16)) %>%
+  select(bp, cohort, time, model, est, ci) %>%
   pivot_wider(names_from = model, 
-    values_from = c(est, ci), names_vary = "slowest")
+    values_from = c(est, ci), names_vary = "slowest") %>%
+  select(-bp)
 
-kable(otm, digits = 2,
-  col.names = c("", "ATT", "(95%CI)",
+kable(ctotm, digits = 2,
+  col.names = c("Cohort", "Time", "ATT", "(95%CI)",
   "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
-  "latex", booktabs = T, align = 'lcccccc') %>%
+  "latex", booktabs = T, align = 'llcccccccc') %>%
   kable_styling(font_size = 10,
     latex_options = "HOLD_position") %>%
-  add_header_above(c(" " = 3, 
+  pack_rows("Brachial SBP", 1, 4) %>%
+  pack_rows("Central SBP", 5, 8) %>%
+  pack_rows("Brachial DBP", 9, 12) %>%
+  pack_rows("Central DBP", 13, 16) %>%
+  add_header_above(c(" " = 4, 
   "Indoor PM" = 2, "Indoor Temp" = 2, "PM + Temp" = 2)) %>%
-  add_header_above(c(" " = 1, 
+  add_header_above(c(" " = 2, 
     "Adjusted Total Effect\\\\textsuperscript{a}" = 2,
     "CDE Mediated By:\\\\textsuperscript{b}" = 6),
     escape = F) %>%
     footnote(
-    general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.}",
+    general = "\\\\small{Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.}",
     alphabet = c("\\\\small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", "\\\\small{Mediators were set to the mean value for untreated participants at baseline.}"), 
     general_title = "", threeparttable = T, escape = F)
+```
+
+```{r, echo=F, eval = F}
+#| label: tbl-bp-het
+#| tbl-cap: "Heterogenous treatment effects for the controlled direct effect of the CBHP policy on blood pressure, holding indoor PM~2.5~ and indoor temperature constant."
+
+options(knitr.kable.NA = " ")
+temp_table <- read_xlsx(here("data-clean",
+  "adjusted_CT_results_table.xlsx")) %>%
+  select(bp, parameter, `Adjusted DiD`) %>%
+  rename(attci = `Adjusted DiD`) %>%
+  mutate(cohort = rep(c(2019,2019,2020,2021),
+                      times = 4),
+         time = rep(c(2019,2021,2021,2021),
+                    times = 4)) %>%
+  separate_wider_delim(attci, delim = "(", 
+    names = c("att", "attci"), cols_remove = TRUE) %>% 
+  mutate(attci = paste("(", attci, sep="")) %>% 
+  select(bp, att, attci, cohort, time) %>%
+  relocate(bp, cohort, time)
+
+
+mhet_stats <- read_xlsx(here("data-clean",
+  "heterogeneity_test_results.xlsx")) %>%
+  filter(Model == "Adjusted DiD") %>%
+  rename(bp = `BP measure`,
+         test = `Test statistic`,
+         pval = `P-value`) %>%
+  mutate(test = sprintf("%.1f", test),
+         pval = sprintf("%.3f", pval),
+         cohort = 2021,
+         time = 2021) %>%
+  select(bp, cohort, time, test, pval)
+
+bp_het_table <- temp_table %>% 
+  left_join(het_stats, join_by(bp, cohort, time)) %>%
+  select(-bp)
   
+kable(bp_het_table,
+  col.names =c("Cohort", "Time", "ATT", "(95%CI)",
+   "F-Statistic", "p-value"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'llcccc') %>%
+  column_spec(1:2, width = "2cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Brachial SBP", 1, 4) %>%
+  pack_rows("Central SBP", 5, 8) %>%
+  pack_rows("Brachial DBP", 9, 12) %>%
+  pack_rows("Central DBP", 13, 16) %>%
+  add_header_above(c(" " = 2, 
+    "Adjusted DiD\\\\textsuperscript{a}" = 2,
+    "Heterogeneity tests\\\\textsuperscript{b}" = 2),
+    escape = F) %>%
+  footnote(
+    general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, CDE = Controlled Direct Effect.}",
+    alphabet = c("\\\\small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", "\\\\small{F-statistics and p-values for joint tests of equality across cohort and time ATTs}"), 
+    general_title = "", threeparttable = T, escape = F)
 ```

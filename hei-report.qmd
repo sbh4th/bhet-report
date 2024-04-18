@@ -739,14 +739,47 @@ As noted above, we aimed to assess whether any health impacts of the CBHP policy
 #| label: tbl-bp-med
 #| tbl-cap: "Controlled direct effects for the CBHP policy"
 
-bpm <- read_xlsx(here("data-clean", 
-                     "adjusted_overall_results_table.xlsx"))
-kable(bpm, col.names = c("Outcome", "Adjusted Total Effect", 
-  "Indoor PM", "Indoor Temp", "PM + Temp"), 
-  "latex", booktabs = T) %>%
-  kable_styling(latex_options = "HOLD_position") %>%
-  add_header_above(c(" " = 2, 
-                     "CDE Mediated By:" = 3))
+ot <- read_xlsx(here("data-clean", 
+  "overall_total_effect_adjusted.xlsx")) %>%
+  mutate(model = 1)
+
+otmp <- read_xlsx(here("data-clean", 
+  "overall_pm_mediation_adjusted.xlsx")) %>%
+  mutate(model = 2)
+
+otmt <- read_xlsx(here("data-clean", 
+  "overall_temp_mediation_adjusted.xlsx")) %>%
+  mutate(model = 3)
+
+otmm <- read_xlsx(here("data-clean", 
+  "overall_mult_mediation_adjusted.xlsx")) %>%
+  mutate(model = 4)
+
+otm <- bind_rows(ot, otmp, otmt, otmm) %>%
+  rename(est = theta_bar, ll = lower_95CI,
+         ul = upper_95CI) %>%
+  mutate(ci = paste("(", sprintf('%.2f', ll), ", ",
+    sprintf('%.2f', ul), ")", sep="")) %>%
+  select(bp, model, est, ci) %>%
+  pivot_wider(names_from = model, 
+    values_from = c(est, ci), names_vary = "slowest")
+
+kable(otm, digits = 2,
+  col.names = c("", "ATT", "(95%CI)",
+  "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
+  "latex", booktabs = T, align = 'lcccccc') %>%
+  kable_styling(font_size = 10,
+    latex_options = "HOLD_position") %>%
+  add_header_above(c(" " = 3, 
+  "Indoor PM" = 2, "Indoor Temp" = 2, "PM + Temp" = 2)) %>%
+  add_header_above(c(" " = 1, 
+    "Adjusted Total Effect\\\\textsuperscript{a}" = 2,
+    "CDE Mediated By:\\\\textsuperscript{b}" = 6),
+    escape = F) %>%
+    footnote(
+    general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.}",
+    alphabet = c("\\\\small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", "\\\\small{Mediators were set to the mean value for untreated participants at baseline.}"), 
+    general_title = "", threeparttable = T, escape = F)
 ```
 
 

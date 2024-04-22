@@ -3,7 +3,7 @@ title: "How Do Household Energy Transitions Work?"
 author: 
   - Jill Baumgartner (Co-PI)
   - Sam Harper (Co-PI)
-  - On behalf of the BHET Team
+  - On behalf of the Beijing Household Energy Transitions Team
 date: today
 #format: 
 #  html:
@@ -37,6 +37,7 @@ library(tidyverse)
 library(kableExtra)
 library(modelsummary)
 library(readxl)
+library(marginaleffects)
 ```
 
 ```{r master_data, include = FALSE, cache = TRUE, echo=FALSE}
@@ -59,29 +60,29 @@ bhet_master_data %>%
 ### Conclusions {.unnumbered .unlisted}
 
 
-# Introduction[a]
+# Introduction
 
-China is deploying an ambitious policy to transition up to 70% of households in northern China to clean space heating, including a large-scale roll out across rural and peri-urban Beijing, referred to in this document as the China’s Coal Ban and Heat Pump (CBHP) subsidy policy. To meet this target the Beijing municipal government announced a two-pronged program that designates coal-restricted areas and simultaneously offers subsidies to night-time electricity rates and for the purchase and installation of electric-powered, air-source heat pumps to replace traditional coal-heating stoves. The policy was piloted in 2015 and, starting in 2016, was rolled out on a village-by-village basis; however there is uncertainty as to when villages will receive the program. The variability in when the policy is applied to each village allows us to treat the roll-out of the program as a quasi-randomized intervention. Households may also be differentially affected by this program due to factors such as financial constraints, preferences and social capital, and there is uncertainty about whether and how this intervention may affect indoor and outdoor air pollution, as well as heating behaviors and health outcomes.
+China is deploying an ambitious policy to transition up to 70% of households in northern China to clean space heating, including a large-scale roll out across rural and peri-urban Beijing, referred to in this document as China’s Coal Ban and Heat Pump (CBHP) subsidy policy. To meet this target the Beijing municipal government announced a two-pronged program that designates coal-restricted areas and simultaneously offers subsidies to night-time electricity rates and for the purchase and installation of electric-powered, air-source heat pumps to replace traditional coal-heating stoves. The policy was piloted in 2015 and, starting in 2016, was rolled out on a village-by-village basis. The variability in when the policy is applied to each village allows us to treat the roll-out of the program as a quasi-randomized intervention. Households may also be differentially affected by this program due to factors such as financial constraints, preferences and social capital, and there is uncertainty about whether and how this intervention may affect indoor and outdoor air pollution, as well as heating behaviors and health outcomes.
 
 # Background
 
 ## Context for the policy
 
-Beijing has a temperate continental monsoon climate characterized by cold, dry winters and hot, humid summers. Access to central heating is limited to urban areas and households in most rural and peri-urban areas of Beijing historically heated their homes using mostly coal heaters and biomass-fueled *kangs* (a traditional Chinese energy technology that integrates at least four different home functions including cooking, a bed for sleeping, space heating, and home ventilation). Household coal burning was a major contributor to indoor and outdoor air pollution in northern China, especially in winter. In 2015, over 100 million rural households consumed around 200 million tons of coal to meet over 80% of northern China’s residential space heating demand [@cdcgr2023]. At that time, household coal-fuelled heaters burned approximately half of the over 400 million tons of coal used for space heating [@gbdmaps2016] and contributed to ~30% of northern China’s wintertime air pollution. In 2013, exposure to ambient fine particulate matter from coal combustion - from industry, electricity, and domestic sources -  was the largest estimated contributor to population exposure to PM~2.5~ and contributed to an estimated 366,000 premature deaths annually in China [@gbdmaps2016]. 
+Beijing has a temperate continental monsoon climate characterized by cold, dry winters and hot, humid summers. Access to central heating is limited to urban areas and households in most rural and peri-urban areas of Beijing have historically heated their homes using coal heaters and biomass-fueled *kangs* (a traditional Chinese energy technology that integrates at least four different home functions including cooking, a bed for sleeping, space heating, and home ventilation). Household coal burning was a major contributor to indoor and outdoor air pollution in northern China, especially in winter. In 2015, over 100 million rural households consumed around 200 million tons of coal to meet over 80% of northern China’s residential space heating demand [@cdcgr2023]. At that time, household coal-fuelled heaters burned approximately half of the over 400 million tons of coal used for space heating [@gbdmaps2016] and contributed to roughly 30% of northern China’s wintertime air pollution. In 2013, exposure to ambient fine particulate matter from coal combustion - from industry, electricity, and domestic sources -  was the largest estimated contributor to population exposure to PM~2.5~ and contributed to an estimated 366,000 premature deaths annually in China [@gbdmaps2016]. 
 
-Replacing household coal stoves with clean heating alternatives was considered a potentially impactful intervention to improve rural development, reduce PM~2.5~ across the region, and mitigate air pollution-related health impacts. A number of clean heating options including electric heat pumps, gas heaters, pelletized biomass stoves, and electric resistance heaters with thermal storage were widely promoted by the Chinese government [@cdcgr2023]. By 2021, over 36 million households in northern China were treated by the policy and an estimated 21 million additional households are expected to be treated by 2025. Whether this large-scale energy policy yielded air quality and health benefits remains a critical and unresolved question. 
+Banning residential coal burning and replacing household coal stoves with clean heating alternatives was considered a potentially impactful intervention to improve rural development, reduce PM~2.5~ across the region, and mitigate air pollution-related health impacts. A number of clean heating options, including electric heat pumps, gas heaters, pelletized biomass stoves, and electric resistance heaters with thermal storage, were widely promoted by the Chinese government [@cdcgr2023]. By 2021, over 36 million households in northern China were treated by the policy and an estimated 21 million additional households are expected to be treated by 2025. Whether this large-scale energy policy yielded air quality and health benefits remains a critical and unresolved question. 
 
 ## Prior evidence on household energy interventions and air pollution 
 
-Household energy interventions, mostly cooking-related, that replace solid fuel stoves with cleaner-burning alternatives have been implemented and studied extensively in countries including China over the past several decades. While their introduction of more efficient residential stoves and fuels is expected to reduce air pollution emissions and subsequent exposures, there is still no consensus about their effectiveness in achieving health-relevant air pollution reductions in real-world settings [@quansah2017]. In particular, the effectiveness of large-scale household energy programs like China’s Coal Ban and Heat Pump (CBHP) subsidy have been rarely empirically investigated, especially at sub-city spatial resolution. In Ireland, county-level residential coal bans in the 1990s were associated with 40-70% decreases in black smoke concentrations in ban-affected areas [@dockery2013]. In Australia, a wood-burning stove exchange lower daily wintertime PM~10~ from 44 to 27 µg/m3 [@johnston2013], and clean energy policies in New Zealand were associated with 11-36% reductions in winter PM~10~ [@scott2011]. The few evaluations of the CBHP policy observed small decreases in outdoor PM~2.5~ (-7 to -2.4 µg/m3) in municipalities or prefectures in the policy compared with neighboring areas not affected by the policy [@niu2024; @song2023; @tan2023; @yu2021], and a recent modeling study estimated 36% lower personal exposure to PM~2.5~ based on household-reported changes in fuel use [@meng2023]. However, none of these studies included field-based measurements of air pollution or personal exposures, which are known to differ considerably from modeled estimates [@thompson2019], and few accounted for secular changes in air quality over time, limiting any conclusions about the air quality benefits of the CBHP policy.
+Household energy interventions, mostly cooking-related, that replace solid fuel stoves with cleaner-burning alternatives have been implemented and studied extensively in countries including China over the past several decades. While their introduction of more efficient residential stoves and fuels is expected to reduce air pollution emissions and subsequent exposures, there is still no consensus about their effectiveness in achieving health-relevant air pollution reductions [@quansah2017]. In particular, the effectiveness of large-scale household energy programs like China’s Coal Ban and Heat Pump (CBHP) subsidy policy have been rarely empirically investigated, especially at sub-city spatial resolution. In Ireland, county-level residential coal bans in the 1990s were associated with 40-70% decreases in black smoke concentrations in ban-affected areas [@dockery2013]. In Australia, a wood-burning stove exchange lowered daily wintertime PM~10~ from 44 to 27 µg/m^3^ [@johnston2013], and clean energy policies in New Zealand were associated with 11-36% reductions in winter PM~10~ [@scott2011]. The few evaluations of the CBHP policy reported small decreases in outdoor PM~2.5~ (-7 to -2.4 µg/m^3^) in municipalities or prefectures in the policy compared with neighboring areas not affected by the policy [@niu2024; @song2023; @tan2023; @yu2021], and a recent modeling study estimated 36% lower personal exposure to PM~2.5~ based on household-reported changes in fuel use [@meng2023]. However, none of these studies included field-based measurements of air pollution or personal exposures, which are known to differ considerably from modeled estimates [@thompson2019], and few accounted for secular changes in air quality over time, limiting any conclusions about the causal effect of the CBHP policy on air quality.
 
 ## Prior evidence on clean energy interventions and cardiovascular outcomes
 
-Most previous health assessments of household energy interventions have focused on cookstoves instead of heating. Published results from randomized trials of less polluting cookstoves generally indicate a cardiovascular benefit. In older Guatemalan women, a chimney stove intervention lowered exposure to air pollution and reduced the occurrence of nonspecific ST-segment depression [@mccracken2011]. That same study in Guatemala and randomized trials in Nigeria and Ghana also observed reductions in blood pressure (systolic range: −3.7 to −1.3 mmHg) in women assigned to gas, ethanol, or improved combustion biomass stoves, and are supported by non-randomized, controlled (pre-post design) intervention studies in Nicaragua and Bolivia showing even larger SBP reductions (−5.9 and −5.5 mmHg, respectively) [@onakomaiya2019]. In contrast, a recent multi-country randomized trial did not observe a protective effect of gas stoves on gestational blood pressure [@ye2022] despite large reductions (~66% lower) in exposure to PM~2.5~[@johnson2022].
+Most previous health assessments of household energy interventions have focused on cookstoves instead of heating, and randomized trials of less polluting cookstoves generally indicate a cardiovascular benefit. In older Guatemalan women, a chimney stove intervention lowered exposure to air pollution and reduced the occurrence of nonspecific ST-segment depression [@mccracken2011]. Randomized trials in Guatemala, Nigeria, and Ghana also showed reductions in blood pressure (systolic range: −3.7 to −1.3 mmHg) in women assigned to gas, ethanol, or improved combustion biomass stoves. In contrast, a recent multi-country randomized trial found little evidence for a protective effect of gas stoves on gestational blood pressure [@ye2022] despite large reductions (~66% lower) in exposure to PM~2.5~[@johnson2022].
 
-The few population-based evaluations of large-scale residential energy policies also suggest a cardio-respiratory benefit of clean energy transition. Residential wood-burning bans were associated with reductions in cardiovascular hospitalizations (-7%) in California [@yap2015] and with reduced cardiovascular (-17.9%) and respiratory (−22.8%) mortality in Australia [@johnston2013], though neither study fully controlled for possible secular improvements in health. Most relevant to our study are two quasi-experimental assessments of coal replacement policies. In Ireland, reductions in respiratory not but cardiovascular mortality were observed following a coal ban [@dockery2013]. A multi-city study of Chinese adults in cities where the CBHP was piloted compared with adults in cities not in the pilot observed small decreases in chronic lung diseases (-3.0 to -1.1%) but no change in physician-diagnosed cardiovascular diseases, potentially due to the short (one-year) post-policy evaluation period or confounding by other unmeasured city-wide air quality or health-related policies [@wen2023]. 
+The few population-based evaluations of large-scale residential energy policies also suggest a cardio-respiratory benefit of clean energy transition. Residential wood-burning bans were associated with reductions in cardiovascular hospitalizations (-7%) in California [@yap2015] and with reduced cardiovascular (-17.9%) and respiratory (−22.8%) mortality in Australia [@johnston2013], though neither study fully controlled for possible secular improvements in health that were unrelated to the policy. Most relevant to our study are two quasi-experimental assessments of coal replacement policies. In Ireland, reductions in respiratory not but cardiovascular mortality were observed following a coal ban [@dockery2013]. A multi-city study of Chinese adults in cities where the CBHP policy was piloted compared with adults in cities not in the pilot observed small decreases in chronic lung diseases (-3.0 to -1.1%) but no change in physician-diagnosed cardiovascular diseases, potentially due to the short (one-year) post-policy evaluation period or confounding by other unmeasured city-wide air quality or health-related policies [@wen2023]. 
 
-Though[b] household air pollution is a well-established health risk factor, which energy interventions can reduce air pollution exposures, improve health, and are scalable and sustainable remains a critical and unanswered question. In a recent Official American Thoracic Society Statement, for example, the committee could not reach a consensus on whether previously studied household energy interventions (including gas, ethanol, solar, and improved biomass stoves) improved health outcomes that included blood pressure (with 55% saying no and 45% saying yes) [@harrison2024]. 
+Though household air pollution is a well-established health risk factor, which energy interventions can reduce air pollution exposures, improve health, and are scalable and sustainable remains a critical and unanswered question. In a recent Official American Thoracic Society Statement, for example, the committee could not reach a consensus on whether previously studied household energy interventions (including gas, ethanol, solar, and improved biomass stoves) improved health outcomes that included blood pressure (with 55% saying no and 45% saying yes) [@harrison2024]. 
 
 ## Assessing dynamic and heterogeneous treatment effects 
 
@@ -89,7 +90,7 @@ Since 2015, thousands of villages across Beijing and northern China entered the 
 
 ## Evaluating the mechanisms through which policies may affect health outcomes. 
 
-With several exceptions [@alexander2018; @gould2023; @mccracken2007; @mccracken2011], decades of household energy intervention studies showing limited or no health benefit demonstrate how intervention is not simple when studying an exposure that is as central to daily life as cooking or space heating [@ezzati2017] [@harrison2024]. Household energy intervention and policies, particularly those implemented at the household- or village-scales, can produce multiple behavioral, environmental, and health-related changes, making it important to investigate the mechanisms through which such policies exert their health impacts [@dominici2014]. The health benefits achievable with transition from traditional coal stoves to a new electric home heating system, for example, may be influenced by factors including outdoor air quality [@lai2019], the desirability and usage patterns of new and traditional stoves [@ezzati2017], indoor temperature [@lewington2012], or behaviors including physical activity [@lindemann2017]. Only recently were these mediating factors considered in health assessments of household energy interventions, and rarely in a comprehensive or formalized way [@rosenthal2018]. Understanding these mechanisms can provide valuable scientific insight into the success (or failure) of clean energy programs or policies like the CBHP policy in meeting their air quality and health goals, and may answer questions that can inform the design of more effective future energy interventions [@harrison2024]. For example, is there successful uptake of the intervention or policy? Does the policy lead to heating behavior changes that result in colder homes and thus offsets any cardiovascular-enhancing effects of improved air quality? Answers to these questions are facilitated by the analysis of mediating pathways.
+With several exceptions [@alexander2018; @gould2023; @mccracken2007; @mccracken2011], decades of household energy intervention studies showing limited or no health benefit demonstrate the complexity of evaluating interventions on exposures such as cooking or space heating that are central to daily life [@ezzati2017] [@harrison2024]. Energy interventions and policies, particularly those implemented at the household- or village-scales, can produce multiple behavioral, environmental, and health-related changes, making it important to investigate the mechanisms through which such policies exert their health impacts [@dominici2014]. The health benefits achievable with transition from traditional coal stoves to a new electric home heating system, for example, may be influenced by factors including outdoor air quality [@lai2019], the desirability and usage patterns of new and traditional stoves [@ezzati2017], indoor temperature [@lewington2012], or behaviors including physical activity [@lindemann2017]. Only recently were these mediating factors considered in health assessments of household energy interventions, and rarely in a comprehensive or formalized way [@rosenthal2018]. Understanding these mechanisms can provide valuable insights into the success (or failure) of clean energy programs or policies like the CBHP policy in meeting their air quality and health goals, and may answer questions that can inform the design of more effective future energy interventions [@harrison2024]. For example, is there successful uptake of the intervention or policy? Does the policy lead to heating behavior changes that result in colder homes and thus offsets any cardiovascular-enhancing effects of improved air quality? Answers to these questions are facilitated by the analysis of mediating pathways.
 
 # Specific Aims and Overarching Approach
 
@@ -106,17 +107,26 @@ This study used three data collection campaigns in winter 2018/19, winter 2019/2
 
 ## Study area 
 
-Beijing is the capital of China (pop. 21.9 million in 2020) and covers a large geographic area (~16,000 km2) that includes a highly developed and densely-populated urban core that is surrounded by several satellite towns and peri-urban and rural villages in the periphery. Beijing winters begin in early November and tend to be cold, dry, and windy with the lowest temperatures mostly often occurring in January (-3°C, on average), thus requiring space heating [@an2021]. Most urban areas of Beijing are connected to a central heating grid that supplies home heating from central locations, whereas rural and many peri-urban areas have historically relied on individual space heating units that, prior to 2015, were largely fueled by unprocessed raw coal [@duan2014].   
+Beijing is the capital of China (pop. 21.9 million in 2020) and covers a large geographic area (~16,000 km2) that includes a highly developed and densely-populated urban core that is surrounded by several satellite towns and peri-urban and rural villages in the periphery. Beijing winters begin in early November and tend to be cold, dry, and windy with the lowest temperatures mostly often occurring in January (-3°C, on average), thus requiring space heating [@an2021]. Most urban areas of Beijing are connected to a central heating grid that supplies home heating from central locations, whereas rural and many peri-urban areas have historically relied on individual space heating units that, prior to 2015, were largely fueled by unprocessed raw coal [@duan2014].  
 
 ## Location and participant recruitment and enrolment
 
-Between December 2018 and January 2019 we recruited 50 villages across 4 administrative districts (Fangshan, Huairou, Mentougou, and Miyun) in the Beijing municipality in northern China. The villages predominately used coal for heating at the time of enrollment and were eligible for - but not currently participating - in the CBHP Policy. Roughly half of the villages were expected to enter into the policy during our study (@fig-cbhp-map). We used local guides in each village to help determine a roster of households that were not vacant during the winter months, from which we randomly selected households to recruit for participation. 
+Between December 2018 and January 2019 we recruited 50 villages across 4 administrative districts (Fangshan, Huairou, Mentougou, and Miyun) in the Beijing municipality in northern China. The villages predominately used coal for heating at the time of enrollment and were eligible for and not currently participating in the CBHP policy. Roughly half of the villages were expected to enter into the policy during our study (@fig-cbhp-map). We used local guides in each village to help determine a roster of households that were not vacant during the winter months, from which we randomly selected households to recruit for participation. 
 
-We recruited approximately 20 households in each village and randomly selected one eligible person from each household to participate. Household members were eligible to participate if they were over 40 years old, lived in the study villages, were not planning to move out of the village in the next year, and were not on current immunotherapy or treatment with corticosteroids. Research staff introduced the study and its measurements to an eligible adult in each household and answered any questions related to the study. In follow-up visits to the study villages, staff first approached households with participants from an earlier campaign. If previous participants were not at home or refused to participate, staff first tried to randomly recruit an eligible participant from the same household. If there was not another eligible or willing participant in the household, we randomly selected and recruited a participant from a new household using the village roster. All participants provided written informed consent prior to joining the study. The study protocols were approved by research ethics boards at Peking University (IRB00001052-18090) and McGill University (A08-E53-18B).
+
+```{r fig-map, echo=FALSE, out.width = "70%"}
+#| label: fig-cbhp-map
+#| fig-cap: "Map of village implementation of CBHP policy"
+knitr::include_graphics(here("images", 
+  "policy-implementation-map.png"))
+```
+
+
+We recruited approximately 20 households in each village and randomly selected one eligible person from each household to participate. Household members were eligible to participate if they were over 40 years old, lived in the study villages, were not planning to move out of the village in the next year, and were not on current immunotherapy or treatment with corticosteroids. Research staff introduced the study and its measurements to an eligible adult in each household and answered any questions related to the study. In follow-up visits to the study villages, staff first approached households with participants from an earlier campaign. If previous participants were not at home or refused to participate, staff first tried to randomly recruit an eligible participant from the same household. If there was not another eligible or willing participant in the household, we randomly selected and recruited a participant from a new household using the village roster. All participants provided written informed consent prior to joining the study. The study protocols were approved by research ethics boards at Peking University (IRB00001052-18090), Peking Union Medical College Hospital (HS-3184) and McGill University (A08-E53-18B).
 
 ## Data Collection Overview
 
-We conducted study measurements over four consecutive winter seasons in 2018-19, 2019-20, 2020-21, and 2021-22 (referred to in this Report as S1, S2, S3 and S4, respectively). Field data collection was conducted by ~20 trained staff members who traveled to participants’ homes to conduct tablet-based household and individual questionnaires, measure participant blood pressure, and distribute temperature sensors (for measurement of indoor temperature and stove use) and air pollution monitors in all 50 study villages in S1, S2, and S4. Anthropometrics (height, weight, and waist circumference), measurement of airway inflammation, and whole blood samples were obtained no more than a month later at a village clinic in S1 and S2. In S3, which was during the height of the pandemic, we limited household measurements to indoor air quality and sensor-based measurement of indoor temperature and stove use in 41 villages, including all 17 treated villages and 24 untreated (control) villages, prior to COVID-related travel restrictions that halted field data collection. In S4, which also occurred during the COVID-19 pandemic, we returned to conducting individual-level assessments. However, unlike in S1 and S2, anthropometric measurements and airway inflammation were assessed in participant homes rather than clinics to avoid group contact and blood samples were not collected. Outdoor (community) air pollution was measured throughout the study period.
+We conducted study measurements over four consecutive winter seasons in 2018-19, 2019-20, 2020-21, and 2021-22 (referred to hereafter as Season 1 [S1], S2, S3 and S4, respectively). Field data collection was conducted by ~20 trained staff members who traveled to participants’ homes to conduct tablet-based household and individual questionnaires, measure participant blood pressure, and distribute temperature sensors (for measurement of indoor temperature and stove use) and air pollution monitors in all 50 study villages in S1, S2, and S4. Anthropometrics (height, weight, and waist circumference), measurement of airway inflammation, and whole blood samples were obtained no more than a month later at a village clinic in S1 and S2. In S3, which was during the height of the pandemic, we limited household measurements to indoor air quality and sensor-based measurement of indoor temperature and stove use in 41 villages, including all 17 treated villages and 24 untreated (control) villages, prior to COVID-related travel restrictions that halted field data collection. In S4, which also occurred during the COVID-19 pandemic, we returned to conducting individual-level assessments. However, unlike in S1 and S2, anthropometric measurements and airway inflammation were assessed in participant homes rather than clinics to avoid group contact and blood samples were not collected. Outdoor (community) air pollution was measured throughout the study period.
  
 ### Air Pollution  
 
@@ -124,14 +134,17 @@ We conducted study measurements over four consecutive winter seasons in 2018-19,
 
 In each village, two sensors for particulate matter air pollution were set up to measure outdoor (community) PM~2.5~ at different locations in each village. One sensor was placed near the center of the village, and the other was placed no less than 500m away from the centrally-located sensor. Sensors were placed at least 1.5m above the ground and not in a location within sight of a visible point source of PM~2.5~. 
 
-We collected filter-based community PM~2.5~ samples to calibrate the sensor-based PM~2.5~ measurements as well as to conduct analysis of chemical composition for source apportionment. Ultrasonic Personal Aerosol Samplers (UPAS, Access Sensor Technologies, Fort Collins, CO, USA) were used to collect filter-based PM~2.5~ samples with a flow rate of 1.0 L/min [@volckens2017]. Samplers housed 37mm PTFE filters (VWR, 2.0-μm pore size) and were equipped with a cyclone inlet with a 2.5μm cut point designed to perform under the sampling flow rate. For community measurements, a UPAS was co-located with each PM~2.5~ sensor in each village in rotation. Every week, the used filters were removed and replaced with a new filter. In total, we successfully collected 126, 371, and 289 filter-based, community outdoor PM~2.5~ samples in Seasons 1, 2, and 4, respectively. Field blank filters were collected at a rate of ~10%, subject to the same field conditions as samples. To support post-sampling determination of organic carbon (OC) and elemental carbon (EC) fractions of PM~2.5~ mass, quartz filters were co-located with a subset of Teflon filter samples collected outdoors. Filter-based PM~2.5~ samples were collected using Personal Exposure Monitors (PEMs, Apex Pro) operating  with flow rates of 1.8 L/min. PEMs housed 37 mm quartz filters (VWR, 2.0-μm pore size) and were equipped with a cyclone inlet with a 2.5 μm cut point designed to perform under the corresponding sampling flow rate. All quartz fiber filters were baked at 550 C for a minimum of 8 h to remove organic impurities prior to sample collection. PM~2.5~ samples collected on quartz filters were analyzed using established thermo-optical methods for quantifying elemental carbon (EC) and organic carbon (OC) to, then, calibrate the colorimetric analysis of EC and OC on Teflon filters. In Season 2, 23 quartz-based outdoor PM~2.5~ samples and 3 field blanks were collected. In Season 4, 11 quartz-based outdoor PM~2.5~ samples and 3 field blanks were collected. 
+We collected filter-based community PM~2.5~ samples to calibrate the sensor-based PM~2.5~ measurements as well as to conduct analysis of chemical composition for source apportionment. Ultrasonic Personal Aerosol Samplers (UPAS, Access Sensor Technologies, Fort Collins, CO, USA) were used to collect filter-based PM~2.5~ samples with a flow rate of 1.0 L/min [@volckens2017]. Samplers housed 37mm PTFE filters (VWR, 2.0-μm pore size) and were equipped with a cyclone inlet with a 2.5μm cut point designed to perform under the sampling flow rate. For community measurements, a UPAS was co-located with each PM~2.5~ sensor in each village in rotation. Every week, the used filters were removed and replaced with a new filter. In total, we successfully collected 126, 371, and 289 filter-based, community outdoor PM~2.5~ samples in Seasons 1, 2, and 4, respectively. Field blank filters were collected at a rate of ~10%, subject to the same field conditions as samples. To support post-sampling determination of organic carbon (OC) and elemental carbon (EC) fractions of PM~2.5~ mass, quartz filters were co-located with a subset of Teflon filter samples collected outdoors. Quartz filter-based PM~2.5~ samples were collected using UPAS operating with a flow rate of 1.0 L/min. UPASs housed 37 mm quartz filters (VWR, 2.0-μm pore size) and were equipped with a cyclone inlet with a 2.5 μm cut point designed to perform under the corresponding sampling flow rate. All quartz fiber filters were baked at 550 °C for a minimum of 8 h to remove organic impurities prior to sample collection. PM~2.5~ samples collected on quartz filters were analyzed using established thermo-optical methods for quantifying elemental carbon (EC) and organic carbon (OC) to, then, calibrate the colorimetric analysis of EC and OC on Teflon filters. In Season 2, 23 quartz-based outdoor PM~2.5~ samples and 3 field blanks were collected. In Season 4, 11 quartz-based outdoor PM~2.5~ samples and 3 field blanks were collected. 
 
-For PM~2.5~ sensor calibration and quality control, all PM sensors were co-located with a reference-grade PM~2.5~ instrument (Model 5030 Synchronized Hybrid Ambient Realtime Particulate (SHARP) Monitor, Thermo Fisher Scientific, United States) on the rooftop of a building at Peking University campus for 7 to 10 days before and after each field campaign. Sensor-measured PM~2.5~ concentrations were highly correlated with those measured by the SHARP (Spearman correlation coefficients (rho) of 0.95 and 0.82 in pre- and post-calibration, respectively).
+For PM~2.5~ sensor calibration and quality control, all PM sensors were co-located with a reference-grade PM~2.5~ instrument (Model 5030 Synchronized Hybrid Ambient Realtime Particulate (SHARP) Monitor, Thermo Fisher Scientific, United States) on the rooftop of a building at Peking University campus and/or the Tapered Element Oscillating Microbalance (TEOM, Thermo Scientific™ 1405 TEOM™) at the Chinese Academy of Sciences University campus for 7 to 10 days before and after each field campaign (@fig-calibration). Sensor-measured PM~2.5~ concentrations were highly correlated with those measured by the reference instruments (Spearman correlation coefficients (rho) >0.75 in each pre- and post-calibration).
 
-*Field equipment (Figure) to be added*
-DRAFT title[c][d][e][f][g][h]: Calibration of real-time sensors against a reference monitor at University of the Chinese Academy of Sciences.
-  
- 
+```{r fig-calibration, echo=F, message = F, out.width = "80%"}
+#| label: fig-calibration
+#| fig-cap: "Calibration of real-time sensors against a reference monitor at University of the Chinese Academy of Sciences."
+knitr::include_graphics(here("images",
+  "sensor-calibration.png"))
+```
+
 #### Indoor PM~2.5~
 
 In the second and fourth field seasons (i.e., S2 and S4), we randomly selected six households from the 20 recruited in each village to measure indoor concentrations of PM~2.5~. In Season 4, we aimed to monitor indoor PM~2.5~ in the same households where we measured indoor PM~2.5~ in Season 2. If a household dropped out of the project or declined indoor PM~2.5~ monitoring, we then recruited another household already enrolled in this study to measure indoor PM~2.5~. In total, indoor measurements were conducted in 300 households in both Season 2 and Season 4 (@tbl-pm-sample).
@@ -165,25 +178,25 @@ kable(tx2,
 
 Time-resolved indoor PM~2.5~ concentrations were measured using the same commercially available sensor (PMS7003 Plantower, Zefan, Inc.) as was used for outdoor sensor-based PM~2.5~ measurements and recorded PM~2.5~ concentrations every 1 min. The sensor was placed on a table in a room where participants reported spending most of their time when awake, e.g., a living room or bedroom. Indoor PM~2.5~ sensors were deployed between late November and mid January within field seasons (i.e., S2 and S4), depending on the village and household visit schedule. The measurement continued from the time of deployment until sensors were recollected from homes in late April to capture the full heating season.
 
-We randomly selected three households from the six households in which we deployed PM~2.5~ sensors to co-locate a filter-based PM~2.5~ sampler with the PM~2.5~ sensor. We collected a 24-h PM~2.5~ filter sample at the first 24-h of indoor PM~2.5~ sensor measurements. Filter-based PM~2.5~ samples were collected using Ultrasonic Personal Aerosol Samplers (UPAS, Access Sensor Technologies) or Personal Exposure Monitors (PEMs, Apex Pro) operating  with flow rates of 1.0 and 1.8 L/min, respectively. Both samplers housed 37 mm PTFE filters (VWR, 2.0-μm pore size) and were equipped with a cyclone inlet with a 2.5 μm cut point designed to perform under the corresponding sampling flow rate. After 24-h, the samplers were retrieved and loaded with new filters for measurements in other villages, once the previous sample filters were removed and stored for later analysis. In total, we successfully collected 149 and 148 indoor PM~2.5~ filter samples in S2 and S4, respectively.
+We randomly selected three households from the six in which we deployed PM~2.5~ sensors to co-locate a filter-based PM~2.5~ sampler with the PM~2.5~ sensor. We collected a 24-h PM~2.5~ filter sample at the first 24-h of indoor PM~2.5~ sensor measurements. Filter-based PM~2.5~ samples were collected using Ultrasonic Personal Aerosol Samplers (UPAS, Access Sensor Technologies) or Personal Exposure Monitors (PEMs, Apex Pro) operating  with flow rates of 1.0 and 1.8 L/min, respectively. Both samplers housed 37 mm PTFE filters (VWR, 2.0-μm pore size) and were equipped with a cyclone inlet with a 2.5 μm cut point designed to perform under the corresponding sampling flow rate. After 24-h, the samplers were retrieved and loaded with new filters for measurements in other villages, once the previous sample filters were removed and stored for later analysis. In total, we successfully collected 149 and 148 indoor PM~2.5~ filter samples in S2 and S4, respectively.
 
-As with the community outdoor air sampling, to support post-sampling determination of organic carbon (OC) and elemental carbon (EC) fractions of PM~2.5~ mass, quartz filters were co-located with a subset of Teflon filter samples collected in homes. Filter-based PM~2.5~ samples were collected using Personal Exposure Monitors (PEMs, Apex Pro) operating  with flow rates of 1.8 L/min. PEMs housed 37 mm quartz filters (VWR, 2.0-μm pore size) and were equipped with a cyclone inlet with a 2.5 μm cut point designed to perform under the corresponding sampling flow rate. All quartz fiber filters were baked at 550 C for a minimum of 8 h to remove organic impurities prior to sample collection. PM~2.5~ samples collected on quartz filters were analyzed using established thermo-optical methods for quantifying elemental carbon (EC) and organic carbon (OC) to, then, calibrate the colorimetric analysis of EC and OC on Teflon filters. In Season 2, 71 quartz-based indoor PM~2.5~ samples and 14 field blanks were successfully collected. In Season 4, indoor PM~2.5~ samples for gravimetric analysis had to be collected on two types of PTFE sample media (Zefluor and Teflo filters), due to discontinuation of manufacturing of the Zefluor filter media. To ensure that quartz filters were deployed with both types of Teflon-based filter media, 73 quartz-based indoor PM~2.5~ samples were collected concurrently with Zefluor samples, and 47 quartz indoor PM~2.5~ samples were collected alongside Teflo samples. For indoor quartz PM~2.5~ mass sampling in S4, 18 field blanks were collected. 
+As with the community outdoor air sampling, to support post-sampling determination of organic carbon (OC) and elemental carbon (EC) fractions of PM~2.5~ mass, quartz filters were co-located with a subset of Teflon filter samples collected in homes. Filter-based PM~2.5~ samples were collected using Personal Exposure Monitors (PEMs, Apex Pro) operating  with flow rates of 1.8 L/min. PEMs housed 37 mm quartz filters (VWR, 2.0-μm pore size) and were equipped with a cyclone inlet with a 2.5 μm cut point designed to perform under the corresponding sampling flow rate. All quartz fiber filters were baked at 550 °C for a minimum of 8 h to remove organic impurities prior to sample collection. PM~2.5~ samples collected on quartz filters were analyzed using established thermo-optical methods for quantifying elemental carbon (EC) and organic carbon (OC) to, then, calibrate the colorimetric analysis of EC and OC on Teflon filters. In Season 2, 71 quartz-based indoor PM~2.5~ samples and 14 field blanks were successfully collected. In Season 4, indoor PM~2.5~ samples for gravimetric analysis had to be collected on two types of PTFE sample media (Zefluor and Teflo filters), due to discontinuation of manufacturing of the Zefluor filter media. To ensure that quartz filters were deployed with both types of Teflon-based filter media, 73 quartz-based indoor PM~2.5~ samples were collected concurrently with Zefluor samples, and 47 quartz indoor PM~2.5~ samples were collected alongside Teflo samples. For indoor quartz PM~2.5~ mass sampling in S4, 18 field blanks were collected. 
 
 #### Personal exposure to PM~2.5~ and black carbon
 
 To measure personal exposure we used two types of samplers: Personal Exposure Monitors (PEMs, Apex Pro; Casella, UK) and Ultrasonic Personal Aerosol Samplers (UPAS, Access Sensor Technologies, Fort Collins, CO, USA). PEMs actively sampled air at a flow rate of 1.8 L/min, and UPAS sampled air at 1.0 L/min [@volckens2017]. Both samplers housed 37 mm PTFE filters (VWR, 2.0-μm pore size) and were equipped with a cyclone inlet with a 2.5 μm cutpoint. Sampler flow rates were calibrated the night before deployment and measured immediately after the sampling period. Only 2% of the post-sampling measurements deviated from the target flow rate by greater than +/-10%. Participants were instructed to wear a small waistpack (for the PEM and sampling pump) or an arm band or cross-body sling (for the UPAS) for 24 hours, which they could remove from their body and place within 2 meters while sleeping, sitting, or bathing. Field blanks for personal air pollution exposure measurements were collected at a rate of ~10% in each village. 
 
-### Gravimetric analyses of PTFE filter-based ~PM2.5~ samples
+### Gravimetric analyses of PTFE filter-based PM~2.5~ samples
 
-All filters were placed in individually labeled cases, sealed in plastic bags, and then transported to a field laboratory and immediately stored in a -20°C freezer. Following completion of the field sampling campaign, the samples and blanks were transported to Colorado State University, where they were stored in a -20°C freezer prior to PM~2.5~ mass measurement and chemical analysis of PM.
+All filters were placed in individually labeled cases, sealed in plastic bags, and then transported to a field laboratory and immediately stored in a -20°C freezer. Following completion of the field sampling campaign, the samples and blanks were transported to Colorado State University, where they were stored in a -20°C freezer prior to gravimetric and chemical analysis of PM~2.5~.
 
-All filters were placed in an environmentally-controlled equilibration chamber (21-22 °C, 30-34% relative humidity) for at least 24 hours before tare and gross weighing. Before each weight was taken, filters were discharged by a polonium-210 strip. Filters were weighed on a microbalance (Mettler Toledo Inc., XS3DU, USA) with 1-μg resolution in triplicate or more, until the differences among three weights were less than 3 μg. The average of three readings was used to determine filter mass, which was then blank-corrected using the median value of blank filters [3 μg for UPAS-collected filters (53% of samples); 33 μg for PEM-collected filters (47% of filter samples)], and PM2.5 concentrations were calculated by dividing the mass by the sampled air volume.
+All filters were placed in an environmentally-controlled equilibration chamber (21-22 °C, 30-34% relative humidity) for at least 24 hours before tare and gross weighing. Before each weight was taken, filters were discharged by a polonium-210 strip. Filters were weighed on a microbalance (Mettler Toledo Inc., XS3DU, USA) with 1-μg resolution in triplicate or more, until the differences among three weights were less than 3 μg. The average of three readings was used to determine filter mass, which was then blank-corrected using the median value of blank filters [3 μg for UPAS-collected filters (53% of samples); 33 μg for PEM-collected filters (47% of filter samples)], and PM~2.5~ concentrations were calculated by dividing the mass by the sampled air volume.
 
 #### Adjusting sensor-based PM~2.5~ using filter-based gravimetric measurements
 
-We established linear regression models between the filter-based PM~2.5~ mass concentrations (i.e., the ‘gold standard’ reference concentrations) and the sensor-based PM~2.5~ concentrations averaged over the same sampling period as the filter-based samples. The slopes of the models were used as the adjustment factors for the sensor-based PM~2.5~ concentrations. Separate regression models were conducted for indoor and outdoor sensors and for each season given the sensitivity of the sensors to relative humidity, temperature, and particle sources, which may differ for indoor versus outdoor conditions and across seasons. In Season 3, where only sensor-based measurements were conducted for indoor PM~2.5~ to avoid direct contact with household members during the pandemic, we applied an adjustment factor developed from a linear regression model that incorporated data from both Season 2 and Season 4. 
+We established linear regression models between the filter-based PM~2.5~ mass concentrations (i.e., the ‘gold standard’ reference concentrations) and the sensor-based PM~2.5~ concentrations averaged over the same sampling period as the filter-based samples. The slopes of the models were used as the adjustment factors for the sensor-based PM~2.5~ concentrations. Separate regression models were conducted for indoor and outdoor sensors and for each season given the sensitivity of the sensors to relative humidity, temperature, and particle sources, which may differ for indoor versus outdoor conditions and across seasons. In Season 3, where only sensor-based measurements were conducted for indoor PM~2.5~ to avoid direct contact with household members during the COVID-19 pandemic, we applied an adjustment factor developed from a linear regression model that incorporated data from both Season 2 and Season 4. 
 
-The PM sensors were also evaluated before and after each season to identify any sensors that needed further repair or replacement. The PM~2.5~ sensors underwent a calibration process that began with synchronization to real-time PM2.5 monitors at Peking University (PKU) campus. This pre- and post-season calibration included a week-long session using the Beta Attenuation Monitor (BAM) alongside daily 24-hour filter samples. During this time, approximately 240 sensors were placed on the rooftop of the College of Urban and Environmental Sciences building, each recording data every minute. A similar approach was taken at the University of Chinese Academy of Sciences (UCAS) campus, where around 400 PM sensors were installed on the rooftop of the Environmental Monitoring Site of the College of Resources and Environment, with data logging at one-minute intervals. Daily collections of 24-hour Zeflour (Teflon) and quartz filter samples accompanied the sensors’ measurements to ensure accuracy. The calibration process was repeated post-fieldwork to account for any potential shifts or discrepancies in sensor performance. This approach aimed to maintain consistent and accurate measurements from the PM sensors throughout the study.
+The PM sensors were also evaluated before and after each season to identify any sensors that needed further repair or replacement. The PM~2.5~ sensors underwent a calibration process that began with synchronization to real-time PM~2.5~ monitors at Peking University (PKU) campus. This pre- and post-season calibration included a week-long session using the Beta Attenuation Monitor (BAM) alongside daily 24-hour filter samples. During this time, approximately 240 sensors were placed on the rooftop of the College of Urban and Environmental Sciences building, each recording data every minute. A similar approach was taken at the University of Chinese Academy of Sciences (UCAS) campus, where around 400 PM sensors were installed on the rooftop of the Environmental Monitoring Site of the College of Resources and Environment, with data logging at one-minute intervals. Daily collections of 24-hour Zeflour (Teflon) and quartz filter samples accompanied the sensors’ measurements to ensure accuracy. The calibration process was repeated post-fieldwork to account for any potential shifts or discrepancies in sensor performance. This approach aimed to maintain consistent and accurate measurements from the PM sensors throughout the study.
 
 ### Chemical analysis of PM mass
 
@@ -202,7 +215,7 @@ Following gravimetric analysis, all PTFE filters were also analyzed for black ca
 
 ### Outdoor and indoor (household) air temperature 
 
-Hourly outdoor temperature and relative humidity data were obtained from the extensive network of meteorological stations in Beijing (http://beijingair.sinaapp.com). We measured indoor temperature in all participant homes prior to blood pressure measurement. In a random 75% subsample of households in each campaign, we also placed a real-time temperature sensor (iButton DS1921G-F5; Thermochron, Maxim Inc., USA) in the room where participants reported spending most of their daytime hours when indoors. Sensors were wall-mounted at a standardized height (~1.5 to 2 meters), away from major heating sources, windows, and doors, and were programmed to log a temperature reading every 125 minutes for up to 4 months to capture the full winter period and early spring weeks when heating may still intermittently occur.
+Hourly outdoor temperature and relative humidity data were obtained from the extensive network of meteorological [stations](http://beijingair.sinaapp.com) in Beijing. We measured indoor temperature in all participant homes prior to blood pressure measurement. In a random 75% subsample of households in each campaign, we also placed a real-time temperature sensor (iButton DS1921G-F5; Thermochron, Maxim Inc., USA) in the room where participants reported spending most of their daytime hours when indoors. Sensors were wall-mounted at a standardized height (~1.5 to 2 meters), away from major heating sources, windows, and doors, and were programmed to log a temperature reading every 125 minutes for up to 4 months to capture the full winter period and early spring weeks when heating may still intermittently occur.
 Prior to the start of each campaign, we co-located all of the sensors and measured temperature over two days and compared the readings. Sensors recording values >1C from the group median value were excluded from data collection. 
 
 ### Objective measurement of household stove use using sensors 
@@ -217,7 +230,7 @@ Field staff administered household and individual-level questionnaires to assess
 
 Prior to the start of data collection, all questions were translated from English into Chinese and then back-translated to English for quality assurance. Many questions were adapted from previous field studies of household energy and blood pressure conducted in rural Beijing or other rural sites in China  [@baumgartner2018; @yan2020], and all questions were iteratively tested with staff and adapted prior to implementation. Prior to each campaign in this study, the questionnaire and other study measurements were tested in 12 households located in a Beijing village that was eligible for our study but was instead selected for testing. We used the test village to assess whether the questions were understandable and interpreted as intended and to identify any problems with the study measurements or their implementation. Study protocols were subsequently adapted prior to the start of data collection.
 
-In addition to household and individual participant questionnaires, we also conducted village surveys with one representative from each village committee to inquire about any other policies or programs being implemented in the village (e.g., biomass burning bans) and to understand how the policy was implemented in that village. Committee members answered questions about assignment versus application to the policy, any renovations required by the upper-level government, level of subsidies provided for heating stoves and electricity, and technical and logistic guidance to villagers.
+In addition to household and individual participant questionnaires, we also conducted village surveys with one representative from each village committee to understand how the policy was implemented in that village and to inquire about any other rural development or health programs being implemented in the village. Committee members answered questions about committee and villager interest in the policy and, for in treated villages, assignment versus application to the policy, any home or village renovations required by the upper-level government prior to heat pump installation, decision-making for the type and brand of heating technology, level of subsidies provided for heaters and electricity, and technical and logistic guidance to villagers.
 
 ### Blood pressure 
 
@@ -235,7 +248,7 @@ In a ~25% random subsample of participants, we also measured fractional exhaled 
 
 ### Blood inflammatory and oxidative stress markers  
 
-Trained nurses collected 4 ml of whole blood in a labeled vacutainer via venipuncture using standard techniques (Tuck 2009). Details are descriptive in the SOP: https://osf.io/zwpfg. Briefly, fasting blood samples were collected by experienced phlebotomists (nurses) in the morning and stored at 4-10°C prior to centrifugation. Two serum aliquots from each participant were then placed in a -30°C freezer for temporary storage. Collection-to-storage time was <4 hrs for all samples in both campaigns where blood samples were collected. Within 3-5 days of collection, the samples were transported in styrofoam containers with dry ice to a -80°C freezer with a backup generator and alarm system at Peking University. 
+Trained nurses collected 20 ml of whole blood in a labeled vacutainer via venipuncture using standard techniques [@tuck2009]. Details are described in our published [SOP](https://osf.io/zwpfg). Briefly, fasting blood samples were collected by experienced phlebotomists (nurses) in the morning and stored at 4-10°C prior to centrifugation. Two serum aliquots from each participant were then placed in a -30°C freezer for temporary storage. Collection-to-storage time was <4 hrs for all samples in both campaigns where blood samples were collected. Within 3-5 days of collection, the samples were transported in styrofoam containers with dry ice to a -80°C freezer with a backup generator and alarm system at Peking University. 
 
 The first aliquot was analyzed for glucose and a complete lipid profile within two months of collection, and results were communicated to participants. The second aliquot was stored in the -80°C freezer for analysis of biomarkers of systemic inflammation [C-reactive protein (CRP), interleukin-6 (IL-6), tumour necrosis factor alpha (TNF-ɑ] and oxidative stress [8-hydroxy-2’-deoxyguanosine (8-OHdG) and malondialdehyde (MDA)] at the University of the Chinese Academy of Sciences between July and September of 2023. These biomarkers were selected because they are associated with the development of cardiovascular disease and events (e.g., Danesh 2008; Pearson 2003; Ridker 2000; 2001; ERF 2012), and both acute and longer-term exposures to air pollution have been associated with changes in inflammatory and oxidative stress markers (e.g., Pope 2004; Rückerl 2007; Rich 2012; Kipen 2010; Huang 2012).
 
@@ -243,11 +256,11 @@ We followed standard methods for analysis (FDA Guidance, 2018). For inflammatory
 
 ### Anthropometric measurements. 
 
-Body weight, height, and waist circumference were measured at the clinic visit in the first two campaigns and in participant homes in the last campaign. Weight was measured in light indoor clothing without shoes in kilograms to one decimal place, using standing scales supported on a steady surface. The scales were calibrated prior to the start of each campaign, and the same staff member stepped on the scale each morning to ensure that it was functioning properly. Height was measured without shoes in centimeters to one decimal place with a stadiometer. Waist circumference was measured without clothing obstruction at 1 cm above the participant’s navel at minimal respiration in centimeters to one decimal place. The measuring tape was replaced at the start of each campaign to avoid stretching. 
+Body weight, height, and waist circumference were measured at the clinic visit in the first two campaigns and in participant homes in the last campaign. Weight was measured in light indoor clothing without shoes in kilograms to one decimal place, using standing scales supported on a steady surface. The scales were calibrated prior to the start of each campaign, and the same staff member stepped on the scale each morning to ensure that it was functioning properly. Height was measured without shoes in centimeters to one decimal place with a stadiometer. Waist circumference was measured without clothing obstruction at one centimeter above the participant’s navel at minimal respiration in centimeters to one decimal place. The measuring tape was replaced at the start of each campaign to avoid stretching. 
 
 ## Measuring policy impacts
 
-To understand how Beijing’s policy works we used a difference-in-differences (DiD) design [@callaway2020], leveraging the staggered rollout of the policy across multiple villages to estimate its impact on health outcomes and understand the mechanisms through which it works. Simple comparisons of treated and untreated (i.e., control) villages after the CBHP policy has been implemented are likely to be biased by unmeasured village-level characteristics (e.g., migration, average winter temperature) that are associated with health outcomes. Similarly, comparisons of only treated villages before and after exposure to the program are susceptible to bias by other factors associated with changes in outcomes over time (i.e., secular trends, impacts of the COVID-19 pandemic). By comparing *changes* in outcomes among treated villages to *changes* in outcomes among untreated villages, we can control for any unmeasured time-invariant characteristics of villages as well as any general secular trends affecting all villages that are unrelated to the policy.
+To understand how Beijing’s policy works we used a difference-in-differences (DiD) design [@callaway2020], leveraging the staggered rollout of the policy across multiple villages to estimate its impact on health outcomes and understand the mechanisms through which it works. Simple comparisons of treated and untreated (i.e., control) villages after the CBHP policy has been implemented are likely to be biased by unmeasured village-level characteristics (e.g., migration, average winter temperature) that are associated with health outcomes. Similarly, comparisons of only treated villages before and after exposure to the program are susceptible to bias by other factors associated with changes in outcomes over time (i.e., secular trends, impacts of the COVID-19 pandemic). By comparing the *changes* in outcomes among treated villages to the *changes* in outcomes among untreated villages, we can control for any unmeasured time-invariant characteristics of villages as well as any general secular trends affecting all villages that are unrelated to the policy.
 
 ```{r didfig, engine='tikz', echo=F, out.width="50%"}
 #| label: fig-didfig
@@ -280,26 +293,36 @@ The DiD design compares outcomes before and after an intervention in a treated g
 
 The canonical DiD design [@card1994] compares two groups (treated and control) at two different time periods (pre- and post-intervention, @fig-didfig). In the first time period both groups are untreated, and in the second time period one group is exposed to the intervention. If we assume that the differences between the groups would have remained constant in the absence of the intervention (parallel trends assumption), then an unbiased estimate of the impact of the intervention in the post period can be calculated by subtracting the pre-post difference in the untreated group from the pre-post difference in the treated group. 
 
-However, when multiple groups are treated at different time periods, the most common approach has been to use a two-way fixed effects model to estimate the impact of the intervention which controls for secular trends and differences between districts. However, recent evidence suggests that the traditional two-way fixed effects estimation of the treatment effect may be biased in the context of heterogeneous treatment effects [@callaway2021;@goodman-bacon2021]
+However, when multiple groups are treated at different time periods, the most common approach has been to use a two-way fixed effects model to estimate the impact of the intervention which controls for secular trends and differences between districts. However, recent evidence suggests that the traditional two-way fixed effects estimation of the treatment effect may be biased in the context of heterogeneous treatment effects [@callaway2021;@goodman-bacon2021].
 
 ## Measuring pathways and mechanisms
 
 To estimate how much of the CBHP intervention may work through different mechanisms, we used causal mediation analysis. Causal approaches to mediation attempt to discern between, and clarify the necessary assumptions for identifying, different kinds of mediated effects. Taking as an example the DAG in @fig-dag1, with $T$ as the policy, $M$ as PM~2.5~, and $Y$ as systolic blood pressure, we can define the controlled direct effect ($CDE$) as the effect of the CBHP policy on systolic blood pressure if we fix the value of PM~2.5~ to a certain reference level for the entire population. For example, we can estimate the impact of the policy on health outcomes while holding PM~2.5~ at a uniform level of average background exposure, or some other hypothetical level.
 
-```{r dag1, engine='tikz', echo=F, out.width="50%"}
+```{r dag1, engine='tikz', echo=F, out.width="60%"}
 #| label: fig-dag1
-#| fig-cap: "Example of direct and indirect effects with outcome ($Y$), treatment ($T$), and mediator ($M$)"
-\begin{tikzpicture}[shorten > = 1pt, line width=1.5pt]
+#| fig-cap: "Hypothetical Directed Acyclic Graph showing direct and indirect effects with outcome ($Y$), pre-treatment covariates ($X$), policy ($T$), multiple mediators ($M_{1},M_{2}$), as well as covariates for the mediators ($W$)."
+\begin{tikzpicture}[shorten > = 1pt, line width=0.5pt, font=\scriptsize]
 \tikzstyle{every node} = [rectangle, fill=white, draw=none]
-\node (t) at  (0,0) [align=center] {Policy\\($T$)};
-\node (m) at  (3,0) [align=center] {PM\textsubscript{2.5}\\($M$)};
-\node (y) at  (6,0) [align=center] {Blood\\pressure\\($Y$)};
-\node (de) at (3,1.6) [align=center, text=red!80] {\small{Direct effect}};
-\node (ie) at (3,-0.6) [align=center,text=red!80] {\small{Indirect effect}};
-\foreach \from/\to in {t/m, m/y}
+\node (x) at (0,0) [align=center] {$X$};
+\node (t) at  (1.5,0) [align=center] {Policy\\($T$)};
+\node (m1) at  (3.5,1) [align=center] {PM\textsubscript{2.5}\\($M_{1}$)};
+\node (m2) at  (3.5,-1) [align=center] {Indoor\\Temp\\($M_{2}$)};
+\node (y) at  (5.5,0) [align=center] {SBP\\($Y$)};
+\node (w) at (2,-1.5) [align=center] {$W$};
+\foreach \from/\to in {x/t, t/y, t/m1, t/m2, m1/y, m2/y, w/m1, w/m2}
   \draw [->] (\from) -- (\to);
-\draw [->] (t) to [bend left=35] (y);
+\draw [->] (x) to [bend left=45] (y.north);
+\draw [->] (x) to [bend left=20] (m1);
+\draw [->] (x) to [bend right=25] (m2);
+\draw [->] (w) to [bend right=45] (y);
 \end{tikzpicture}
+```
+```{r flowchart, echo=FALSE, out.width = "80%"}
+#| label: fig-flowchart
+#| fig-cap: "Flow chart of BHET study participation at the participant, household, and village levels across study years. Participation (number of units) in each study year is shown in the white boxes. Additions (+) and losses (-) to the study sample between years are indicated by the light blue arrows. Data collection was limited to household- and village-level environmental measurements due to the COVID-19 pandemic in year 3. We visited 530 households in 41 villages before travel restrictions limited further data collection. This affects the additions and losses to the study sample reported from years 2 to 3 and years 3 to 4."
+knitr::include_graphics(here("images", 
+  "participation-flow-chart-Mar18.png"))
 ```
 
 Although other mediated effects such as “natural” direct and indirect effects are theoretically estimable [@vanderweele2015], they involve challenging "cross-world" assumptions that are difficult to anchor in policy [@naimi2014]. Other approaches to mechanisms have focused on principal stratification [e.g., @zigler2016], although conceptual difficulties with identifying the (unverifiable) principal strata make it challenging for questions of mediation. Because controlled direct effects are considered more directly policy relevant for public health, we focus on estimating these mediated quantities.
@@ -326,9 +349,7 @@ $$ {#eq-etwfem}
 
 where now $\delta$ is the conditional effect of the mediator $M$ at the reference level of the treatment (again, represented via the series of group-time interaction terms), and the collection of $\eta$ terms are coefficients for the product terms allowing for mediator-treatment interaction. Finally, $\zeta$ is a vector of coefficients for the set of confounders contained within $\mathbf{W}$. 
 
-As noted above, in the staggered DiD framework that allows for heterogeneity, we do not have a single treatment effect but a collection of group-time treatment effects that may be averaged in different ways. This extends to the estimation of the $CDE$, in which case we will also have several $CDE$s that can be averaged to make inferences about the extent to which the policy's impact is mediated by *PM~2.5~*. Based on the setup in @eq-etwfem the $CDE$ is estimated as: $\delta + \eta_{rt}MT$. In the absence of interaction between the exposure and the mediator (i.e., $\eta_{rt}=0$) the $CDE$ will simply be the estimated treatment effects $\sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt}$, i.e., the effect of the policy holding $M$ constant. For a valid estimate of the $CDE$ we must account for confounding of the mediator-outcome effect, represented by $W$ in the equation above. Baseline measures of both the outcome and the proposed mediators inherent in our DiD strategy will help to reduce the potential for unmeasured confounding of the mediator-outcome effect [@keele2015]. 
-
-We limited the mediation analysis to health outcomes for which we observed a total effect of the CBHP policy.. 
+As noted above, in the staggered DiD framework that allows for heterogeneity, we do not have a single treatment effect but a collection of group-time treatment effects that may be averaged in different ways. This extends to the estimation of the $CDE$, in which case we will also have several $CDE$s that can be averaged to make inferences about the extent to which the policy's impact is mediated by *PM~2.5~*. Based on the setup in @eq-etwfem the $CDE$ is estimated as: $\delta + \eta_{rt}MT$. In the absence of interaction between the exposure and the mediator (i.e., $\eta_{rt}=0$) the $CDE$ will simply be the estimated treatment effects $\sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt}$, i.e., the effect of the policy holding $M$ constant. For a valid estimate of the $CDE$ we must account for confounding of the mediator-outcome effect, represented by $W$ in the equation above. The inclusion of baseline measures of both the outcome and the proposed mediators inherent in our DiD strategy help to reduce the potential for unmeasured confounding of the mediator-outcome effect [@keele2015]. Given the large number of outcomes of interest in this study, as well as the potential for heterogeneous treatment effects, we limited the mediation analysis to health outcomes for which we observed a total effect of the CBHP policy. 
 
 ## Identification of potential confounders and model covariates 
 
@@ -336,20 +357,90 @@ DiD is a strong analytical approach that already minimizes the risk of confoundi
 
 For models estimating the effect of the policy on health outcomes, we used directed acyclic graphs (DAGs) to identify potential time-varying causes of both treatment by the policy and our study outcome(s) that could differ between treatment groups, and adjusted for those potential confounders in the regression models. For the mediation analysis, we identified potential mediator-outcome confounders using the same approach. These variables were identified from the relevant peer-reviewed literature and our team’s substantive knowledge about the CBHP policy. In the multivariable models, we also adjusted for strong predictors of the outcome that were not affected by treatment, and thus not confounders, to improve model precision. The covariates included in each of the models for cardiovascular and respiratory health outcomes are provided in the tables. 
 
-For air pollution outcomes, we considered the following covariates: village population and total number of households in the village; temperature, relative humidity, wind direction, wind speed, boundary layer height; home area and home area heated; home insulation; smoking status of participant and whether or not they lived with a smoker; whether or not the household reported using wood (i.e., biomass) for household energy activities, and if so, self-reported quantity of wood. Potential non-linearity between continuous covariates and our study outcomes were evaluated using cubic splines. Ultimately, the following covariates were included in the final DiD models for outdoor, indoor, and personal exposures to air pollution, based on whether measurable changes in the covariate over time were observed. For the final adjusted DiD model for personal exposure ‘mixed combustion’ source contributions, the following covariates were included: temperature (represented by a spline with 2 degrees of freedom); participant smoking status; and whether or not the household reported using biomass fuel. For the final adjusted DiD model for outdoor (community) ‘mixed combustion’ source contributions, the following covariates were included: total number of households in the village; village population; and ambient relative humidity (represented by a spline with 2 degrees of freedom).
+For air pollution outcomes, we considered the following covariates: village population and total number of households in the village; temperature, relative humidity, wind direction, wind speed, boundary layer height; home area and home area heated; home insulation; smoking status of participant and whether or not they lived with a smoker; whether or not the household reported using wood (i.e., biomass) for household energy activities, and if so, self-reported quantity of wood. Potential non-linearity between continuous covariates and our study outcomes were evaluated using cubic splines. Ultimately, the following covariates were included in the final DiD models for outdoor, indoor, and personal exposures to air pollution, based on whether measurable changes in the covariate over time were observed. For the final adjusted DiD model for personal exposure ‘mixed combustion’ source contributions, the following covariates were included: temperature (represented by a spline with 2 degrees of freedom); participant smoking status; and whether or not the household reported using biomass fuel. For the final adjusted DiD model for outdoor (community) ‘mixed combustion’ source contributions, the following covariates were included: total number of households in the village; village population; and ambient relative humidity (represented by a spline with 2 degrees of freedom). 
 
 # Results
 
-We retained all 50 study villages during this four-year longitudinal assessment of village treatment by the CBHP policy in Beijing, though we were only able to visit 41 villages in winter 2020-21 (S3) and also were limited to village and household-level measurements of air quality, indoor temperature, and stove use in that campaign due to to the COVID pandemic. By S2, S3, and S4 there were 10, 17, and 20 of the 50 villages treated by the policy, respectively. @fig-flowchart shows the participation of villages, households, and participants across the four waves of data collection. We conducted measurements in over 1000 participants in each of the three measurement campaigns that included individual-level measurements. In total, we enrolled 1432 participants into the study, of which 630 (43%) participated in all three campaigns, 443 (31%) participated in two campaigns and 365 (25%) participated in a single campaign. We did not observe any notable differences in demographic characteristics or health behaviors between participants who contributed to a different number of campaigns (ref table) or between participants in each of the three campaigns with individual measurements (ref table). 
+We retained all 50 study villages during this four-year longitudinal assessment of village treatment by the CBHP policy, though we were only able to visit 41 villages in winter 2020-21 (S3) and were limited to village and household-level measurements of air quality, indoor temperature, and stove use in that campaign due to travel restrictions during the COVID pandemic. 
+
+By S2, S3, and S4 there were a cumulative total of 10, 17, and 20 (out of 50 total) study villages treated by the CBHP policy, respectively. All of the treated villages in our study selected to install electric-powered air-source heat pumps with 200 RMB per meter square (up to 24,000 RMB) in subsidies and were also provided with 80% night-time electricity subsidies up to 10,000kWh per heating season. To limit coal use, villages enrolled in the policy were no longer allowed to place orders for subsidized coal with the district-level governments that manage the procurement and distribution of coal for residential heating in Beijing. In addition, village committee leaders in treated villages reported feeling accountable to the Environmental Protection Department for limited coal-related air pollution, and were motivated to encourage residents to not burn coal. Some villages were equipped with government air pollution monitors and the Environmental Protection Department conducted village inspections and issued warnings about coal burning. Households burning coal in treated villages were at risk of losing their electricity subsidy. 
+
+@fig-flowchart shows the participation of villages, households, and participants across the four waves of data collection. We conducted measurements in over 1000 participants in each of the three measurement campaigns that included individual-level measurements. In total, we enrolled 1432 participants into the study, of which 630 (43%) participated in all three campaigns, 443 (31%) participated in two campaigns and 365 (25%) participated in a single campaign. We did not observe any notable differences in demographic characteristics or health behaviors between participants who contributed to a different number of campaigns (@tbl-each-campaign) or between participants in each of the three campaigns with individual measurements (@tbl-diff-campaign). 
+
+ Title: Demographic and health characteristics of participants in each study campaign
+ 
+Characteristic
+ 
+	Campaign 1 (2018-19)
+N=1003
+	Campaign 2 (2019-20)
+N=1110
+	Campaign 4 (2021-22)
+N=1028
+	Female, n (%)
+	580 (57.8)
+	653 (58.8)
+	612 (59.5)
+	Current smoker, n (%)
+	257 (25.6)
+	295 (26.6)
+	265 (25.8)
+	Any smoke exposure, n (%)
+	788 (78.6)
+	897 (80.8)
+	843 (82)
+	Age in years, mean (stdev)
+	60.7 (9.2)
+	61.4 (9.1)
+	63.1 (9)
+	BMI in kg/m2, mean (stdev)
+	26.1 (3.7)
+	25.7 (3.5)
+	26.1 (4)
+	Waist circumf in cm, mean (stdev)
+	86.8 (10.2)
+	87.4 (9.4)
+	91.4 (10.7)
+	 
+  Title: Demographic and health characteristics of participants who contributed to different numbers of campaigns. 
+Characteristic
+ 
+	1 Campaign
+N=365
+	2 Campaigns
+N=443
+	3 Campaigns
+N=630
+	Female, n (%)
+	211 (57.8)
+	253 (57.1)
+	370 (58.7)
+	Current smoker, n (%)
+	110 (30.1)
+	117 (26.4)
+	161 (25.6)
+	Any smoke exposure, n (%)
+	288 (78.9)
+	360 (81.3)
+	498 (79)
+	Age in years, mean (stdev)
+	59.9 (9.2)
+	60.5 (8.8)
+	61.3 (9.1)
+	BMI in kg/m2, mean (stdev)
+	26.3 (3.6)
+	25.8 (3.5)
+	26.1 (3.7)
+	Waist circumf in cm, mean (stdev)
+	90.3 (9.8)
+	86.5 (10)
+	86.9 (10.4)
+	 
 
 Study flowchart
-```{r flowchart, echo=FALSE, out.width = "80%"}
-#| label: fig-flowchart
-#| fig-cap: "Flow chart of BHET study participation at the participant, household, and village levels across study years. Participation (number of units) in each study year is shown in the white boxes. Additions (+) and losses (-) to the study sample between years are indicated by the light blue arrows. Data collection was limited to household- and village-level environmental measurements due to the COVID-19 pandemic in year 3. We visited 530 households in 41 villages before travel restrictions limited further data collection. This affects the additions and losses to the study sample reported from years 2 to 3 and years 3 to 4."
-knitr::include_graphics(here("images", 
-  "participation-flow-chart-Mar18.png"))
-```
 
+Link to new flowchart is: https://osf.io/vtpxf 
+  
 ## Description of study sample
 
 ```{r make_table1, message=FALSE, cache=TRUE, echo=FALSE}
@@ -422,7 +513,7 @@ dt <- d %>%
     `Temperature (°C)`,
     `Personal PM2.5 (ug/m3)`)
 # caption <- '\\label{#tbl-table1}Descriptive statistics, by treatment status'
-reference <- 'Includes all individuals sampled at each of 3 waves.'
+reference <- ''
 # add empty rows for categorical variables
 # grouped categories
 nrn <- c("Demographics:", "Health measures:",
@@ -439,6 +530,7 @@ options(modelsummary_format_numeric_latex = "plain")
 ```{r table1, cache=TRUE, message=FALSE, echo=FALSE}
 #| label: tbl-table1
 #| tbl-cap: "Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status"
+
 t1 <- datasummary_balance(~et, data = dt, 
   add_rows = nr, align = "rrrrrrr",
   notes = reference)
@@ -447,186 +539,62 @@ t1 %>%
   row_spec(c(1,7,23), bold = T)
 ```
 
-@tbl-table1 shows the distribution of selected demographic, health, and environmental characteristics from the baseline survey, prior to any villages being enrolled in the CBHP policy. We provide means and standard deviations separately for villages that eventually enter into the ban with those that never do so. As noted above, although our DiD identification strategy allows for fixed differences between treated and untreated villages, overall the differences at baseline are generally small and the groups seem well balanced on most measures, with the exception of personal PM~2.5~ exposure, which was lower in villages that were eventually treated.
+@tbl-table1 shows the distribution of selected demographic, health, and environmental characteristics from the baseline survey, prior to any villages being enrolled in the CBHP policy. We provide means and standard deviations separately for villages that eventually enter into the policy with those that never do so. As noted above, although our DiD identification strategy allows for fixed differences between treated and untreated villages, overall the differences at baseline are generally small and the groups seem well balanced on most measures, with the exception of personal exposure to PM~2.5~, which was lower in villages that were eventually treated.
 
 ## Summary of PM and BC measurements
 
-At baseline, fine particulate matter (PM~2.5~) and black carbon (BC) concentrations were highest, on average, for personal exposures compared with indoor and outdoor concentrations. From Season 2 onward, with the inclusion of indoor air pollution measurements, personal exposure air pollution concentrations were still higher than indoor or outdoor concentrations, with indoor levels being higher than outdoors (@fig-pm-baseline). This trend (personal > indoor > outdoor) was observed among households in treated and untreated villages. Personal, indoor, and outdoor geometric mean (95% confidence interval) concentrations of PM~2.5~ were 72 (65,80), 45 (39,53), and 31 (28,35), respectively, and elevated relative to health-based guidelines. The current World Health Organization (WHO) guidelines state that annual average concentrations of PM~2.5~ should not exceed 5 µg/m3, while 24-hour average exposures should not exceed 15 µg/m3 for more than 3 to 4 days per year [@worldhealthorganization2021]. Interim targets were set to support the planning of incremental milestones toward cleaner air, particularly for cities, regions, and countries with higher air pollution levels. For PM~2.5~, the four interim (IT) targets for annual and 24-h means are: IT-1: 35 and 75 µg/m3; IT-2: 25 and 50 µg/m3; IT-3: 15 and 37.5 µg/m3; and IT-4: 10 and 25 µg/m3 [@worldhealthorganization2021]. In our study, baseline personal exposures to PM~2.5~ fell between IT-1 and IT-2, indicating considerable opportunity for air quality improvement from intervention. 
+At baseline, fine particulate matter (PM~2.5~) and black carbon (BC) concentrations were higher, on average, for personal exposures compared with outdoor concentrations. From Season 2 onward, with the inclusion of indoor air pollution measurements, personal exposure air pollution concentrations were still higher than indoor or outdoor concentrations, with indoor levels being higher than outdoors (@tbl-pm-season). This trend (personal > indoor > outdoor) was observed among households in treated and untreated villages. Personal, indoor, and outdoor geometric mean (95% confidence interval) concentrations of PM~2.5~ were 72 (65, 80), 45 (39, 53), and 31 (28, 35)[a], respectively, and elevated relative to health-based guidelines. The current World Health Organization (WHO) guidelines state that annual average concentrations of PM~2.5~ should not exceed 5 µg/m^3^, while 24-hour average exposures should not exceed 15 µg/m^3^ for more than 3 to 4 days per year [@worldhealthorganization2021]. Interim targets have been set to support the planning of incremental milestones toward cleaner air, particularly for cities, regions, and countries with higher air pollution levels. For PM~2.5~, the four interim (IT) targets for annual and 24-h means are: IT-1: 35 and 75 µg/m^3^; IT-2: 25 and 50 µg/m^3^; IT-3: 15 and 37.5 µg/m^3^; and IT-4: 10 and 25 µg/m^3^ [@worldhealthorganization2021]. In our study, baseline personal exposures to PM~2.5~ fell between IT-1 and IT-2, indicating considerable opportunity for air quality improvement from intervention. 
 
-```{r tbl-pm-baseline, echo=F, message=F, warning=F, out.width="80%"}
-#| label: fig-pm-baseline
-#| fig-cap: "Geometric mean and 95% Confidence Intervals for filter-based air pollutant concentrations at baseline."
-knitr::include_graphics(here("images", "fig-pm-baseline.png"))
+```{r tbl-pm-season, echo=F, message = F, warnings = F}
+#| label: tbl-pm-season
+#| tbl-cap: "Arithmetic and geometric means for air pollutant concentrations (micrograms per cubic meter) by season."
+options(knitr.kable.NA = " ")
+ap_season <- read_csv(here("data-clean", 
+  "ap-conc-season.csv"))
+ap_season %>%
+  select(-time, -substance) %>%
+  pivot_longer(
+    cols = Mean_S1:GM_S4,
+    names_to = c("avg", ".value"),
+    names_pattern = "(.*)_S(.)") %>%
+  pivot_wider(
+    names_from = metric,
+    values_from = c(`1`, `2`, `3`, `4`)
+  ) %>%
+  select(-category) %>%
+  kable(col.names =c("", "", "",  
+   "Est.", "CI", "Est.", "CI", "Est.", "CI", 
+   "Est.", "CI"), "latex", booktabs = T,
+  linesep = "", align = 'lllcccccccc') %>% 
+  kable_styling(font_size = 9) %>% 
+  collapse_rows(columns = 1:2, valign = "top") %>%
+  pack_rows("Personal", 1, 4, indent = F) %>%
+  pack_rows("Indoor", 5, 10, indent = F) %>%
+  pack_rows("Outdoor", 11, 16, indent = F) %>%
+  add_header_above(c(" " = 3, "Season 1" = 2,
+    "Season 2" = 2, "Season 3" = 2,
+    "Season 4" = 2)) %>%
+  footnote(general = "Note: Est. = Estimate, CI = 95\\\\% CI, GM = Geometric Mean", general_title = "", escape = F)
 ```
 
-We also present the geometric and arithmetic means (and 95% confidence intervals) for PM~2.5~ and BC in each seasonal measurement campaign. Season 3 (2020/2021) was a partial campaign that took place over a time period impacted by the COVID-19 pandemic and did not involve filter-based air pollution sample collection.
-
-Table 2. Geometric mean [95% confidence intervals, GM [95% CI]] and arithmetic mean [95% confidence intervals, mean [95% CI]] of air pollutant concentrations (μg/m3) by season.
- 
- 
-	 
-	 
-	S1
-	 
-	S2
-	 
-	S3
-	 
-	S4
-	 
-	 
-	Mean
-[95% CI]
-	GM
-[95%CI]
-	Mean
-[95% CI]
-	GM
-[95%CI]
-	Mean
-[95% CI]
-	GM
-[95%CI]
-	Mean
-[95% CI]
-	GM
-[95%CI]
-	Personal
-	Filter-derived PM2.5
-	117
-[105, 129]
-	72
-[65, 80]
-	97
-[87, 107]
-	59
-[53, 65]
-	/
-	/
-	84
-[72, 97]
-	47
-[42, 52]
-	Filter-derived BC
-	4.0
-[3.5, 4.4]
-	2.6
-[2.4, 2.8]
-	3.5
-[2.7, 4.2]
-	1.9
-[1.7, 2.1]
-	/
-	/
-	3.7
-[2.9, 4.5]
-	1.7
-[1.5, 1.9]
-	Indoor
-	Sensor-derived seasonal PM2.5
-	/
-	/
-	94
-[84, 104]
-	71
-[65, 78]
-	84
-[75, 94]
-	63
-[57, 70]
-	67
-[60, 75]
-	47
-[42, 52]
-	Filter-derived 24h PM2.5
-	/
-	/
-	69
-[59, 79]
-	45
-[39, 53]
-	/
-	/
-	59
-[49, 69]
-	33
-[27, 40]
-	Filter-derived 24h BC
-	/
-	/
-	2.3
-[1.8, 2.8]
-	1.6
-[1.3, 2.0]
-	/
-	/
-	2.8
-[2.1, 3.4]
-	1.6
-[1.3, 1.9]
-	Outdoor
-	Sensor-derived seasonal PM2.5
-	47
-[45, 48]
-	36
-[35, 37]
-	55
-[54, 56]
-	40
-[39, 41]
-	23
-[22, 23]
-	33
-[32, 34]
-	33
-[32, 34]
-	22
-[22, 23]
-	Filter-derived seasonal PM2.5
-	38
-[34, 42]
-	33
-[29, 36]
-	38
-[34, 41]
-	30
-[28, 32]
-	/
-	/
-	26
-[24, 28]
-	22
-[21, 24]
-	Filter-derived seasonal BC
-	1.5
-[1.3, 1.6]
-	1.3
-[1.1, 1.4]
-	1.4
-[1.3, 1.5]
-	1.1
-[1.0, 1.2]
-	/
-	/
-	1.2
-[1.1, 1.2]
-	1.0
-[0.9, 1.1]
-	 
+We also present the geometric and arithmetic means (and 95% confidence intervals) for PM~2.5~ and BC in each seasonal measurement campaign (@tbl-pm-season). Season 3 (2020/2021) was a partial campaign that took place over a time period impacted by the COVID-19 pandemic and did not involve filter-based air pollution sample collection.
 
 ## Policy uptake
 
-Each year of the study, participants reported the types of fuels and stoves and the amount of fuel used for space heating in winter. Based on these data, heating energy types were classified into four categories: exclusive use of a heat pump (‘heat pump exclusively’), use of a heat pump and a biomass-fueled kang (‘heat pump with kang’), use of solid fuel heater with an electric heating devices other than heat pumps (‘solid fuel with electricity (not heat pump)’), and exclusive use of solid fuel. In villages treated by the policy, @fig-sankey shows meaningful transitions from solid fuel to electric-powered heat pumps for all treatment cohorts. For example, the proportion of households in the group treated in S2 using heat pumps increased from 3% in S1 to 93% in S2 and 96% in S4. Conversely, use of coal stoves decreased from 97% in S1 to 8% in S2 and 3% in S4. We observed similar stove use transitions for households in villages treated in S3 and S4. 
-
-We also observed a substantial decline in the amount of self-reported coal use when villages entered into the CBHP policy (Appendix @fig-afig-coal). Reductions in coal use were consistent across coal types, including both honeycomb briquettes (reported by number of briquettes) and traditional coal (reported by the ton). At the same time, participant-reported wintertime expenditures (reported in Chinese Yuan) on electricity in each year of the study increased once villages entered the CBHP policy. Biomass (i.e., wood logs/twigs or charcoal) represents another source of heating fuel not expressly targeted by the CBHP policy. In villages treated in S2 and S3, the use of wood declined once villages entered the policy, but not to the same degree as coal use declined. In villages treated in S4 – albeit a small number (n=3 villages) – the use of wood showed a small increase after treatment.  
-
-In untreated villages, an active transition from solid fuel to clean energy was also observed during our four year study period. The proportion of households using heat pumps increased gradually from 5% in S1 to 10% in S2 and 25% in S4. Commensurately, the reported expenditures on electricity increased gradually over time in the untreated villages (Appendix @fig-afig-coal). The percentage of untreated households using solid fuel with electric devices remained relatively stable, ranging from 64% to 70%. The use of wood fuel remained stable, as well, at approximately one ton of fuel per winter. However, exclusive use of solid fuel decreased from 30% in S1 to 7% in S4.  
+Each year of the study, participants reported the types of fuels and stoves and the amount of fuel used for space heating in winter. Based on these data, heating energy types were classified into four categories: exclusive use of a heat pump (‘Heat pump exclusively’), use of a heat pump and a biomass-fueled kang (‘Heat pump with kang’), use of solid fuel heater with an electric heating devices other than heat pumps (‘Solid fuel with electric heating appliances’), and exclusive use of solid fuel (‘Solid fuel stove exclusively’). In villages treated by the policy, @fig-sankey shows meaningful transitions from solid fuel to electric-powered heat pumps for all treatment cohorts. For example, the proportion of households in the group treated in 2019 (S2) using heat pumps increased from 3% in S1 to 93% in S2 and 96% in S4. Conversely, use of coal stoves decreased from 97% in S1 to 8% in S2 and 3% in S4. We observed similar stove use transitions for households in villages treated in 2020 (S3). In the three villages treated in 2021, we observed overall less exclusive use of the heat pump and a slightly larger proportion of households continuing to use coal. 
 
 ```{r fig-sankey, echo=F, message=F, warning=F, out.width="100%"}
 #| label: fig-sankey
 #| fig-cap: "Transitions to different energy sources across study seasons"
 knitr::include_graphics(here("images", "sankey.png"))
 ```
+  
+
+We also observed a substantial decline in the amount of self-reported coal used in villages treated by CBHP policy (Appendix @fig-afig-coal), though the reduction in coal use was smaller with each subsequent treatment cohort (Appendix @tbl-fuel-did). Biomass (i.e., wood logs/twigs or charcoal), usually burned in kangs for both cooking and space heating, was not expressly targeted by the CBHP policy. We observed declines in self-reported biomass use in villages treated in 2019 and 2020 but there was a small increase in biomass consumption in the cohort treated last (2021).  
+
+  
+
+In never treated villages, we also observed a transition from solid fuel to clean energy over the four year study but it was much slower than in treated villages. The proportion of households that reported using electric heat pumps increased from 5% in S1 to 10% in S2 and 25% in S4, and those who adopted heat pumps tended to use them exclusively. Commensurately, the reported expenditures on electricity increased gradually over time in the untreated villages (Appendix @fig-afig-coal). The percentage of untreated households using solid fuel with other types of electric devices remained relatively stable, ranging from 64% to 70% across campaigns. Self-reported use of biomass also remained stable, at approximately one ton of fuel each winter, whereas exclusive use of solid fuel decreased from 30% in S1 to 7% in S4.  
 
 ## Aim 1: Policy impacts and potential mediation
 
@@ -636,10 +604,10 @@ In estimating the treatment effect on indoor and outdoor air pollution, we evalu
 
 ```{r tab-did-med, echo=F, message=F, warning=F}
 #| label: tbl-did-med
-#| tbl-cap: "Treatment effect on outdoor and indoor PM2.5, as well as personal exposure to PM2.5 and black carbon. Outdoor and indoor PM2.5 were derived from sensor measurements after being adjusted based on co-located gravimetric PM2.5 measurements. 'Daily' indicates the mean PM2.5 concentrations during the 24 hours when personal exposure samples were collected in each village. 'Seasonal' indicates the seasonal mean PM2.5 concentrations in each village, from Jan. 15th to Mar. 15th. 'Did' represents the DiD analysis without any covariates, while 'Adjusted DiD' represents DiD analysis with covariates."
+#| tbl-cap: "Treatment effect on outdoor and indoor PM2.5, as well as personal exposure to PM2.5 and black carbon. Outdoor and indoor PM2.5 were derived from sensor measurements after being adjusted based on co-located gravimetric PM2.5 measurements. 'Daily' indicates the mean PM2.5 concentrations during the 24 hours when personal exposure samples were collected in each village. 'Seasonal' indicates the seasonal mean PM2.5 concentrations in each village, from Jan. 15th to Mar. 15th."
 # air pollution results
-ap_table <- read_rds(here("data-clean", 
-  "ap-did-table.rds")) 
+ap_table <- read_rds(here("outputs", 
+  "ap-etwfe-table.rds")) 
 # temperature results
 temp_table <- tibble(
   category = "Point temp", outcome = "Mean", estimate_1 = 1.96,
@@ -649,26 +617,32 @@ temp_table <- tibble(
 # join tables
 m_table <- bind_rows(ap_table, temp_table)
 kable(m_table,  digits = 2,
-  col.names = c(" ", " ", "Estimate", "(95% CI)", 
-   "Estimate", "(95% CI)"), "latex", booktabs = T,
+  col.names = c(" ", " ", "ATT", "(95% CI)", 
+   "ATT", "(95% CI)"), "latex", booktabs = T,
   linesep = "", align = 'llcccc') %>%
   kable_styling(full_width = F) %>%
   collapse_rows(columns = 1:2, valign = "top") %>% 
   pack_rows("Air pollution (µg/m3)", 1, 6) %>%
   pack_rows("Indoor temperature (°C)", 7, 7) %>%
-  add_header_above(c(" " = 2, 
-    "DiD" = 2, "Adjusted DiD*" = 2)) %>%
-  footnote(symbol = "Footnote A")
+  add_header_above(c(" " = 2,  
+    "DiD" = 2, "Adjusted DiD\\\\textsuperscript{a}" = 2),
+    escape = F) %>%
+  footnote(
+    general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.}",
+    alphabet = "\\\\small{ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity.}", 
+    general_title = "", threeparttable = T, escape = F)
 ```
 
-Treatment was associated with similar reductions in both seasonal and 24-h indoor PM~2.5~ means (@tbl-did-med). On average, treatment was associated with a decrease in 24-h indoor PM~2.5~ of -38 [-75, -1] μg/m3. After adjusting for covariates, the treatment effect decreased to -31 [-64, -2] μg/m3. The treatment effect on seasonal indoor PM~2.5~ (-39 [-55, -23] μg/m3) remained consistent after covariate adjustment and inclusion of data collected in Season 3 (-38 [-59, -17] μg/m3) (See Appendix). This finding likely reflects the direct benefit of the policy in replacing coal stoves, thereby improving indoor air quality.
 
-Overall we found little evidence of an impact of the CBHP policy on 24-h and seasonal outdoor (community-level) PM~2.5~ or personal exposures to PM~2.5~ and BC. Treatment was associated with lower, but statistically imprecise, personal 24-h BC exposures. This finding would be consistent with the expectation that the policy contributed to reducing air pollutant emissions from solid fuel burning, as BC serves as a potential indicator of such combustion, particularly in our study settings.
+Treatment was associated with similar reductions in both seasonal and 24-h indoor PM~2.5~ means (@tbl-did-med). The average marginal effect (ATT) from the basic ETWFE model shows that exposure to the CBHP policy reduced 24h indoor PM~2.5~ by -19 µg/m^3^ (95%CI: -23, 61). After adjusting outdoor temperature, dewpoint, household smoking status, and the number of residents in each household, the ATT decreased to -14 µg/m^3^ (95%CI: -54, 26). The impact was stronger on seasonal indoor PM~2.5~, with an average ATT of -36 µg/m^3^ (95%CI: -61, -12) that was robust to covariate adjustment. This finding likely reflects the direct benefit of the policy in replacing coal stoves and air quality improvement.
+
+Overall we found little evidence of an impact of the CBHP policy on 24-h and seasonal outdoor (local community-level) PM~2.5~ or personal exposures to PM~2.5~ and BC. Treatment was associated with lower, but statistically imprecise, personal 24-h BC exposures. This finding would be consistent with the expectation that the policy contributed to reducing air pollutant emissions from solid fuel burning, as BC serves as a potential indicator of such combustion, particularly in our rural and peri-urban study villages.
+
 
 ### Impact of policy on health outcomes
 
 
-```{r fig-did-bp, echo=F, message=F, warning=F, out.width="60%"}
+```{r tbl-did-bp, echo=F, message=F, warning=F}
 #| label: tbl-did-health
 #| tbl-cap: "Overall impacts of the ‘coal-to-clean energy’ policy on blood pressure, respiratory outcomes, and inflammatory markers"
 # bp results from Talia
@@ -712,8 +686,8 @@ inf_table <- tibble(
 op_table <- bind_rows(bp_policy_t, r_table, 
  feno_table, inf_table)
 kable(op_table,  digits = 2,
-  col.names = c(" ", " ", "Estimate", "(95% CI)", 
-   "Estimate", "(95% CI)"), "latex", booktabs = T,
+  col.names = c(" ", " ", "ATT", "(95% CI)", 
+   "ATT", "(95% CI)"), "latex", booktabs = T,
   linesep = "", align = 'llcccc') %>%
   kable_styling(full_width = F) %>%
   collapse_rows(columns = 1:2, valign = "top") %>% 
@@ -721,20 +695,23 @@ kable(op_table,  digits = 2,
   pack_rows("Respiratory\noutcomes", 9, 15) %>%
   pack_rows("Inflammatory\nmarkers (%)", 16, 19) %>%
   add_header_above(c(" " = 2, 
-    "DiD" = 2, "Adjusted DiD*" = 2)) %>%
-  footnote(general = "pp = percentage points, ppb = parts per billion",
-    symbol = "List of adjustments...", footnote_as_chunk = T)
+    "DiD" = 2, "Adjusted DiD\\\\textsuperscript{a}" = 2),
+    escape = F) %>%
+  footnote(
+    general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, pp = percentage points, ppb = parts per billion.}",
+    alphabet = "\\\\small{Blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", 
+    general_title = "", threeparttable = T, escape = F)
 ```
 
 @tbl-did-health shows the impacts of the policy on blood pressure in basic ETWFE models and models further adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Overall exposure to the CBHP policy demonstrated reductions in blood pressure of approximately 1.5 mmHg for both systolic and diastolic BP, but we found little evidence of a meaningful impact on pulse pressure or BP amplification. The effects on brachial and central blood pressures were similar. 
 
 @tbl-did-health shows the impacts on self-reported chronic respiratory symptoms categorized as any symptoms and separately for each individual symptom type. In both basic and covariate-adjusted ETWFE models, exposure to the CBHP policy reduced self-report of any poor respiratory symptoms by around 7 percentage points. This was largely through reductions in reports of having chest trouble or difficulty breathing on several or most days of the week.   
 
-@tbl-did-health shows the impacts of the CBHP on measured airway inflammation (FeNO), which was conducted in a sub-sample of 511 participants, including 274 participants with one measurement, 142 with two measurements, 95 participants with 3 measurements. We did not find evidence that exposure to the policy affected changes in FeNO in the covariate-adjusted ETWFE model (0.5 ppb, 95%CI: -2.1, 3.1). There was some evidence of heterogeneity in the FeNO effects of the policy by treatment cohort, though the confidence intervals for each of the cohort-specific effects were large and overlapping. Our results did not change with sensitivity analyses that included a log-transformed FeNO outcome and limiting the analysis to participants with at least two repeated measurements and to those who participated in all three campaigns (SI Table X)  
+@tbl-did-health also shows the impacts of the CBHP on measured airway inflammation (FeNO), which was conducted in a sub-sample of 511 participants, including 274 participants with one measurement, 142 with two measurements, 95 participants with 3 measurements. We did not find evidence that exposure to the policy affected changes in FeNO in the covariate-adjusted ETWFE model (0.5 ppb, 95%CI: -2.1, 3.1). There was some evidence of heterogeneity in the FeNO effects of the policy by treatment cohort, though the confidence intervals for each of the cohort-specific effects were large and overlapping. Our results did not change with sensitivity analyses that included a log-transformed FeNO outcome and limiting the analysis to participants with at least two repeated measurements and to those who participated in all three campaigns (SI Table X) 
 
 ### Mediated impact on blood pressure
 
-As noted above, we aimed to assess whether any health impacts of the CBHP policy may work specifically through pathways involving changes in PM~2.5~ and indoor temperature. Below we show results from several mediation models. We evaluated potential mediation for each mediator separately and in a single model accounting for multiple mediators, and we set the values of both mediators to the WHO mean annual interim PM~2.5~ and indoor temperature guidelines. For mediation analysis, we focused on BP outcomes for which we observed an effect of the policy. In @tbl-bp-med we show that conditioning on indoor PM and indoor temperature largely explains the entire total effect of the CBHP policy on blood pressure for systolic BP, and roughly half of the total effect for diastolic BP.
+As noted above, we aimed to assess whether any health impacts of the CBHP policy may work specifically through pathways involving changes in PM~2.5~ and indoor temperature. Below we show results from several mediation models. We evaluated potential mediation for each mediator (indoor temperature and personal exposure to PM~2.5~) separately and in a single model accounting for multiple mediators, and we set the values of both mediators to the WHO mean annual interim PM~2.5~ and indoor temperature guidelines. For mediation analysis, we focused on BP outcomes for which we observed an effect of the policy. In @tbl-bp-med we show that conditioning on indoor PM and indoor temperature largely explains the entire total effect of the CBHP policy on blood pressure for systolic BP, and roughly half of the total effect for diastolic BP.
 
 
 ```{r tbl-bp-med, echo=F, message=F, warning=F}
@@ -753,22 +730,33 @@ kable(bpm, col.names = c("Outcome", "Adjusted Total Effect",
 
 ## Aim 2: Source contributions
 
-Source analysis for this study was conducted using data from all eligible outdoor PM and personal PM samples. Eligible samples were those for which PM~2.5~ mass and chemical components were quantified. We evaluated factors contributing to community-outdoor and personal exposure PM~2.5~ using the U.S. EPA’s source apportionment model PMF (positive matrix factorization) 5.0, which has been widely used for similar analyses in China (Gao et al. 2018; Liu et al. 2017; Tao et al. 2017). As an optimum PMF result depends on the appropriate number of input factors, sensitivity analysis using a range of factors (range of 3 to 7 factors, based on a combination of the species that we have and our field-based observations and sources that have been identified previously in our study region) were conducted to examine the impact of a different number of factors on the model results. Detailed information on the procedures of PMF analysis can be found elsewhere (Wang et al. 2016; Zíková et al. 2016). Briefly, the scree plot from our principal component analysis indicated that solutions of between 3 and 5 factors (+/- 1) would be most appropriate, further supporting our evaluation of 3 to 6 factor solutions from PMF. There was no indication that even moving from five factors to six factors would improve our solution; therefore, a seven factor solution would not make sense to investigate further (@fig-source-figure). 
+Source analysis for this study was conducted using data from all eligible outdoor PM and personal PM samples. Eligible samples were those for which PM~2.5~ mass and chemical components were quantified. We evaluated factors contributing to community-outdoor and personal exposure PM~2.5~ using the U.S. EPA’s source apportionment model PMF (positive matrix factorization) 5.0, which has been widely used for similar analyses in China (Gao et al. 2018; Liu et al. 2017; Tao et al. 2017). As an optimum PMF result depends on the appropriate number of input factors, sensitivity analysis using a range of factors (e.g., range of 3 to 7 factors, based on a combination of the species that we have and our field-based observations and sources that have been identified previously in our study region) were conducted to examine the impact of a different number of factors on the model results. Detailed information on the procedures of PMF analysis can be found elsewhere (Wang et al. 2016; Zíková et al. 2016). Briefly, the scree plot from our principal component analysis indicated that solutions of between 3 and 5 factors (+/- 1) would be most appropriate, further supporting our evaluation of 3 to 6 factor solutions from PMF. As there was no indication that even moving from five factors to six factors would improve our solution; therefore, a seven factor solution would not make sense to investigate further (@fig-source-figure). 
 
-The chemical analysis data used as the input for the PMF model were dispersion normalized prior to inclusion in the model. PMF works by using covariance of compositional variables to separate sources of ambient PM. However, atmospheric dilution also induces covariance. Dilution can be quantified in terms of a ventilation coefficient (VC) and used to normalize the input chemical concentrations and uncertainties in the original data matrix on a sample by sample basis. The dispersion normalized concentrations and uncertainties are used as the input to PMF analysis. Dispersion normalization as conducted in this study is a relatively new application of this conceptual framework [@dai2020], developed to adjust for wind speed (dispersion in the x-y plane) and boundary layer height (dispersion in the z-axis). This process involves first calculating the sample specific ventilation coefficient by multiplying the average wind speed by the average boundary layer height over the sampling duration. The average ventilation coefficient is also calculated for the village by averaging all the ventilation coefficients. The dispersion normalized concentration for any species in any sample is equal to the species concentration in that sample multiplied by the ventilation coefficient for that sample and divided by the average ventilation coefficient for that village. Dividing by the average ventilation coefficient for that village helps curtail any extreme concentrations driven by an outlier in the sample ventilation coefficient.
+The chemical analysis data used as the input for the PMF model were dispersion normalized prior to inclusion in the model. PMF works by using covariance of compositional variables to separate sources of ambient PM. However, atmospheric dilution also induces covariance. Dilution can be quantified in terms of a ventilation coefficient (VC) and used to normalize the input chemical concentrations and uncertainties in the original data matrix on a sample by sample basis. The dispersion normalized concentrations and uncertainties are used as the input to PMF analysis. Dispersion normalization, as conducted in this study, is a relatively new application of this conceptual framework [@dai2020], developed to adjust for wind speed (dispersion in the x-y plane) and boundary layer height (dispersion in the z-axis). This process involves first calculating the sample specific ventilation coefficient by multiplying the average wind speed by the average boundary layer height over the sampling duration. The average ventilation coefficient is also calculated for the village by averaging all the ventilation coefficients. The dispersion normalized concentration for any species in any sample is equal to the species concentration in that sample multiplied by the ventilation coefficient for that sample and divided by the average ventilation coefficient for that village. Dividing by the average ventilation coefficient for that village helps curtail any extreme concentrations driven by an outlier in the sample ventilation coefficient.
 
 The meteorological data included hourly boundary layer height, 2-m temperature, 2-m dew point temperature, and 2-m horizontal wind speed components (u, v), which were obtained from the European Center for Midrange Weather Forecasting ERA5 reanalysis dataset (0.25 x 0.25 resolution). Values of these meteorological variables were determined at the village-level by identifying the four surrounding grid points with values available from the ERA5 reanalysis, and then applying inverse distance weighted interpolation from those four grid points to the village. Percent relative humidity was calculated from the 2-m dew point temperature using the “weathermetrics” package (version 1.2.2) in R. Total hourly wind speed and wind direction were calculated from the horizontal wind speed components.
 
-The model diagnostics for the three- to six-factor PMF solutions are given in @tbl-pmf. Model fit was assessed using Q/Qexp (how our model fit divided by the expected fit). As the change in Q/Qexp decreases as more factors are added, the model may be fitting additional sources that do not improve the overall fit. The largest change in Q/Qexp was from three to four sources (6.24 to 5.37) while the changes moving from four to five and five to six are similar which suggests that four factors is sufficient and parsimonious to explain the variation in our data. We assessed the random error in our model by randomly sampling blocks of data, fitting new models with the blocks, and comparing how the source profiles compared to that of the original model (BS mapping). The three- and four-factor solutions had high BS mapping (all factors found in > 96.5% of bootstrap runs). The additional sources identified in the five-factor (lead) and six-factor (chloride) solutions have low bootstrap mapping (> 72%), which means those solutions are not as consistent as the three- and four-factor solutions. The possibility that multiple, different, solutions could result in the same Q value was assessed using displacement. The displacement approach takes the original factor profiles and modifies the values for each species up or down to maintain a small change in Q, reruns the solution with the new species values, and then compares the profiles of the new model to the original. Any swaps indicate that small changes in the species values could result in factor profiles that look different from the original solution, and that the original solution is unstable. None of the factors in any of the solutions discussed were swapped during displacement, which indicates that all of the potential solutions are stable. Based on the Q/Qexp, BS mapping, and interpretability of the factors, the four-factor solution was selected as the most appropriate source solution for the data.
+The model diagnostics for the three- to six-factor PMF solutions are given in @tbl-pmf. Model fit was assessed using Q/Qexp (how our model fit divided by the expected fit). As the change in Q/Qexp decreases as more factors are added, the model may be fitting additional sources that do not improve the overall fit. The largest change in Q/Qexp was from three to four sources (6.24 to 5.37) while the changes moving from four to five and five to six were similar, which suggests that four factors is sufficient and parsimonious to explain the variation in our data. We assessed the random error in our model by randomly sampling blocks of data, fitting new models with the blocks, and comparing how the source profiles compared to that of the original model (bootstrap (BS) mapping). The three- and four-factor solutions had high BS mapping (all factors found in > 96.5% of bootstrap runs). The additional sources identified in the five-factor (lead) and six-factor (chloride) solutions have low BS mapping (> 72%), which means those solutions are not as consistent as the three- and four-factor solutions. The possibility that multiple, different, solutions could result in the same Q value was assessed using displacement. The displacement approach takes the original factor profiles and modifies the values for each species up or down to maintain a small change in Q, reruns the solution with the new species values, and then compares the profiles of the new model to the original. Any swaps indicate that small changes in the species values could result in factor profiles that look different from the original solution, and that the original solution is unstable. None of the factors in any of the solutions discussed were swapped during displacement, which indicates that all of the potential solutions are stable. Based on the Q/Qexp, BS mapping, and interpretability of the factors, the four-factor solution was selected as the most appropriate source solution for the data.
 
 
-```{r fig-source-table, echo=F, message=F, warning=F, out.width="80%"}
-#| label: fig-source-table
-#| fig-cap: "PMF error estimation diagnostics."
-knitr::include_graphics(here("images", "source-table.png"))
+```{r tbl-source-error, echo=F, message=F, warning=F}
+#| label: tbl-pmf
+#| tbl-cap: "PMF error estimation diagnostics"
+options(knitr.kable.NA = " ")
+t_pmf <- read_csv(here("data-clean", 
+  "pmf-error.csv"))
+kable(t_pmf,
+ "latex", booktabs = T,
+  linesep = "", align = 'lllll') %>%
+  kable_styling(full_width = F,
+    font_size = 9) %>%
+  column_spec(2:5, width = "10em") %>%
+  add_header_above(c(" " = 1, 
+    "Potential Factor Solution" = 4))
 ```
 
-The source profiles for the four-factor solution are presented in @fig-source-figure. The first source was identified as dust by high percentages of crustal elements like wi-Ca, Si, and wi-Mg. The second source consisted of non-sulfate sulfur as well as secondary inorganic ions (ammonium, nitrate, and sulfate). Non-sulfate sulfur is a tracer for primary coal combustion, while secondary inorganic ions indicate a secondary source. Since industrial coal burning is a source of power generation in our study area, it is likely that the second source is a mixture of primary and secondary emissions that originate from coal and other sulfurous fuel combustion. Additionally, the mean source contribution of the second source is higher in outdoor than personal exposure measurements. Secondary formation occurs outdoors in the presence of sunlight, so higher outdoor concentrations compared to personal exposure further support our naming the second source ‘sulfur secondary’. The third source had high percentages of ws-Ca nd Al, which in our study region, has been found to be indicative of transported dust from dust storms that can occur in the spring. While our samples were collected during winter months only, it is possible that transported dust from previous years still remained. The fourth source was characterized by high percentages of tracers for both coal (OC, wi-K, chloride, Pb) and biomass combustion (EC, ws-K). Coal and biomass combustion are anticipated sources of PM pollution in our study setting, particularly from domestic cooking and heating activities, so this source is likely a mixture of PM emitted from these two combustion sources.
+
+The source profiles for the four-factor solution are presented in @fig-source-figure. The first source was identified as dust based on high percentages of crustal elements like wi-Ca, Si, and wi-Mg. The second source consisted of non-sulfate sulfur as well as secondary inorganic ions (ammonium, nitrate, and sulfate). Non-sulfate sulfur is a tracer for primary coal combustion, while secondary inorganic ions indicate a secondary source. Since industrial coal burning is a source of power generation in our study area, it is likely that the second source is a mixture of primary and secondary emissions that originate from coal and other sulfurous fuel combustion. Additionally, the mean source contribution of the second source is higher in outdoor than personal exposure measurements. Secondary formation occurs outdoors in the presence of sunlight, so higher outdoor concentrations compared to personal exposure further support our naming the second source ‘sulfur secondary’. The third source had high percentages of ws-Ca nd Al, which in our study region, has been found to be indicative of transported dust from dust storms that can occur in the spring. While our samples were collected during winter months only, it is possible that transported dust from previous years still remained. The fourth source was characterized by high percentages of tracers for both coal (OC, wi-K, chloride, Pb) and biomass combustion (EC, ws-K). Coal and biomass combustion are anticipated sources of PM pollution in our study setting, particularly from domestic cooking and heating activities, so this source is likely a mixture of PM emitted from these two household combustion sources.
 
 
 ```{r fig-source-figure, echo=F, message=F, warning=F, out.width="80%"}
@@ -779,107 +767,89 @@ knitr::include_graphics(here("images", "source-figure.png"))
 
 We extend the source profiles across the different treatment cohorts in @fig-source-season.
 
+
 ```{r fig-source-season, echo=F, message=F, warning=F, out.width="80%"}
 #| label: fig-source-season
 #| fig-cap: "Arithmetic mean dispersion normalized source contributions found from the 4-factor PMF solution for A outdoor and B personal PM2.5 exposure samples by year the group received treatment."
 knitr::include_graphics(here("images", "source-season.png"))
 ```
 
-Overall, the average treatment effect of the CBHP policy on outdoor (community-level) and personal exposure to the mixed combustion source was statistically indistinguishable from the null. Treatment was associated with lower, but statistically imprecise, personal exposures to the mixed combustion source. As with BC, this finding is consistent with the expectation that the policy contributed to reducing air pollutant emissions from solid fuel burning, as this ‘mixed combustion’ source most likely reflects solid fuel combustion, particularly in our study settings. The results were consistent in the unadjusted and adjusted models. 
+Overall, @tbl-source-did shows the average treatment effect of the CBHP policy on outdoor (community-level) and personal exposure to the mixed combustion source was statistically indistinguishable from the null. Treatment was associated with lower, but statistically imprecise, personal exposures to the mixed combustion source. As with BC, this finding is consistent with the expectation that the policy contributed to reducing air pollutant emissions from solid fuel burning, as this ‘mixed combustion’ source most likely reflects solid fuel combustion, particularly in our study settings. The results were consistent in the unadjusted and adjusted models. 
 
+[[chunk-source-did]]
   
-Figure X. Average treatment effect for outdoor and personal exposure to the mixed combustion source.
 
-Table X. Average treatment effect for outdoor and personal exposure to the mixed combustion source.
-	Location
-	Model
-	ATT (95% CI)
-	Outdoor
-	DiD
-	1.07 (-4.90, 7.04)
-	Outdoor
-	Adjusted DiD
-	1.53 (-4.19, 7.26)
-	Personal Exposure
-	DiD
-	-5.60 (-13.7, 2.54)
-	Personal Exposure
-	Adjusted DiD
-	-5.39 (-13.1, 2.35)
-	
+When the average treatment effect of the CBHP policy on outdoor (community-level) and personal exposure to the mixed combustion source was were allowed to vary by treatment year and time, the treatment effect for households most recently treated (i.e., treated in the final season, Season 4) was associated with lower personal exposures to the mixed combustion source (Appendix @fig-afig-mixed-ct). In each season, treatment by the CBHP policy was associated with a reduction in the source contribution to personal PM~2.5~ mass from the mixed combustion source; however, for villages treated in Seasons 2 and 3, the effect was statistically imprecise. Treatment was not associated with a reduction or an increase in the source contribution to community outdoor PM~2.5~ mass from the mixed combustion source. That personal exposure measures of this specific air pollution source were more indicative of treatment effect than community outdoor measures of the same air pollution source is consistent with the expectation that this source, which we determined to be indicative of a mixture of coal and biomass combustion, is most characteristic of household use of solid fuels, including coal and biomass, which would produce emissions that are likely to be nearer to the people using those fuels than near to the centrally located community outdoor air samplers.  
 
-When the average treatment effect of the CBHP policy on outdoor (community-level) and personal exposure to the mixed combustion source was subset by treatment year (i.e., the DiD and adjusted DiD models were evaluated separately for households treated in either Season 2, Season 3, or Season 4), the treatment effect for households most recently treated (i.e., treated in the final season, Season 4) was associated with lower personal exposures to the mixed combustion source. In each season, treatment by the CBHP policy was associated with a reduction in the source contribution to personal PM~2.5~ mass from the mixed combustion source; however, for villages treated in Seasons 2 and 3, the effect was statistically imprecise. Treatment was not associated with a reduction or an increase in the source contribution to community outdoor PM~2.5~ mass from the mixed combustion source. That personal exposure measures of this specific air pollution source were more indicative of treatment effect than community outdoor measures of the same air pollution source is consistent with the expectation that this source is most characteristic of household use of solid fuels, including coal and biomass, which would produce emissions that are likely to be nearer to the people using those fuels than near to the centrally located community outdoor air samplers.  
+## Aim 3: Mediation by source contribution
 
-  
-Figure X. Adjusted and unadjusted treatment effect for outdoor and personal exposure to the mixed combustion source by treatment year.
+@tbl-med-source shows results from the mediation analysis by personal exposure to the mixed combustion source (coal and biomass), estimated for the subset of participants with personal exposure measurements. The CDE in this model estimates the impact of exposure to the CBHP policy on central and systolic blood pressure while holding constant values of mixed combustion source at the mean baseline values for untreated population. The marginal policy effects (ATTs) from the adjusted ETWFE models for this subset of participants were largely similar to those from the full sample for central SBP (around a 1.6 mm/Hg decrease), but slightly smaller for central DBP (-1.7 mm/Hg in the full sample vs. -1.3 in the subset with personal exposure measurements) and were estimated with greater imprecision. We found little evidence that these treatment effects were meaningfully mediated by exposure to the mixed combustion source, as the controlled direct effects were generally of similar magnitude as the adjusted total effects.  
 
-## Aim 3
-
-- Table of mediated health effects by source contribution (coal and biomass)
+[[chunk-tbl-med-source]]
 
 # Discussion and Conclusions
- 
-Air pollution emitted from residential space heating with coal has historically been a major contributor to cardio-respiratory disease burden in northern China [@archer-nicholls2016; @yun2020]. Since the introduction of its 13th 5-Year-Plan (2016-2020), China has successfully implemented numerous large-scale measures to improve air quality including programs that incentivize rural household transition from solid fuels to clean energy sources [@young2015]. The CBHP policy is among the largest and most ambitious household energy policies implemented anywhere in the world in recent decades, and its staggered roll-out provided us with a unique opportunity to prospectively evaluate its effects on air pollution levels and sources, indoor temperature, and both cardiovascular and respiratory outcomes to understand how this village-level energy intervention impacts health. 
+
+Air pollution emitted from residential space heating with coal has historically been a major contributor to cardio-respiratory disease burden in northern China [@archer-nicholls2016; @yun2020]. Since the introduction of its 13th 5-Year-Plan (2016-2020), China has successfully implemented numerous large-scale measures to improve air quality including programs that incentivize rural household transition from solid fuels to clean energy sources [@young2015]. The CBHP policy is among the largest and most ambitious household energy policies implemented anywhere in the world in recent decades, and its staggered roll-out provided us with a unique opportunity to prospectively evaluate this real-world experiment and its effects on air quality and health.
 
 ## Adoption of the heat pump technology and adherence to the policy
 
-We observed high uptake and consistent use of the new heat pump technology and large reductions in coal use in villages exposed to the CBHP policy starting in the first year post-treatment and continuing into the third year for villages treated in 2019 in our study.  We enrolled rural and peri-urban villages across a wide geographic area and socioeconomic spectrum in Beijing and observed near universal adoption of the heat pump technologies (93-96% of households) and near universal suspension of coal stove use in treated villages across the different post-treatment campaigns. This contrasts with many previous household energy intervention studies, including several randomized trials, where low fidelity and compliance with the intervention limited its air quality or health benefits [@ezzati2017; @harrison2024; @rosenthal2018]. 
+The CBHP policy was successful in driving a rapid household heating energy transition from coal to electric heating in our treated villages. There was high uptake and consistent use of the new heat pump technology and large reductions in coal use in treated villages starting in the first year post-treatment and continuing into the third year for villages treated in 2019. We enrolled rural and peri-urban villages across a wide geographic area and socioeconomic spectrum in Beijing and observed near universal adoption of the heat pump technologies and suspension of coal stove use across the different treatment groups and campaigns. This contrasts with many previous household energy intervention studies, including several randomized trials, where low fidelity and compliance with the intervention were considered a major limitation to achieving their intended air quality or health benefits [@ezzati2017; @harrison2024; @rosenthal2018]. 
 
-There are a number of possible reasons why uptake of the new technology and adherence to the policy was so successful. The initial uptake of the heat pump was likely influenced by broad support and perceived benefits of the technology and participation in the policy. At baseline assessment, 49 of 50 village committee interviewees indicated a desire to participate in policy by the committee members and their constituents, for reasons including convenience (i.e., no need to add briquettes to the stove during night), clean environment, and no risk of carbon monoxide poisoning. In addition, several other factors also contribute to the high compliance rate in the treated villages. First, households in the treated village do not have access to briquettes. Currently, the procurement and distribution of briquettes for winter home heating in rural areas of Beijing is centralized by district governments. Prior to each heating season, village committees that have not yet implemented the “coal to electricity” program collect orders from households for briquettes and submit them to the district government. The district government selects suppliers for centralized procurement and distribution through a bidding process. Therefore, once a village joins the “coal to electricity” program, the village committee will no longer be able to order briquettes.
-
-Secondly, strict environmental inspections and enforcement measures play a crucial role. Most villages in Beijing are equipped with air pollution detection equipment. When the Environmental Protection Department identifies serious air pollution within a village, it holds the village committee leaders accountable. Consequently, the leaders of the treated villages are incentivized to prevent residents from burning coal. Additionally, the Environmental Protection Department conducts inspections and issues warnings regarding coal re-burning. If a household in a treated village is found engaging in coal re-burning, they face the risk of losing the clean heating subsidy. 
-
-Availability and cost of clean fuel and the upfront and repair costs of new cookstoves have also been barriers to the continued use of new cookstoves over time [@rehfuess2014]. In our study, both the upfront costs of the heat pump and electricity were highly subsidized by the government, which limited the financial burden of transition for households. Most previous studies evaluated cookstove interventions which often required behavioral change in preparing fuel or cooking food, whereas use of the heat pumps required relatively minimal behavioral change since the technology is easy to operate.
+A number of factors contribute to the successful uptake of the new technology and adherence to the policy. The initial uptake of the heat pump was influenced by broad support and perceived benefits of village and household participation in the policy. At baseline assessment, 49 of 50 village committee interviewees indicated a desire to participate in the policy by the committee members and their constituents, for reasons including ease of use of the heat pump and the convenience of no longer having to add coal throughout the day and night, the desire for a cleaner local environment, and perceived lower risk of carbon monoxide poisoning compared with coal stoves. While the availability and cost of clean fuels were barriers to clean fuel adoption in previous studies [@rehfuess2014], in our study, both the upfront costs of the heat pump and electricity were heavily subsidized, which limited the financial burden of transition for households. Post-policy implementation, treated villages no longer had access to government-subsidized coal, and coal burning was further discouraged with possible punitive measures (e.g., potential loss of electricity subsidies). 
 
 ## Impacts of the policy on health
 
-One of the key findings from our comprehensive evaluation of the CBHP policy was that exposure to the policy reduced systolic and diastolic blood pressure by ~1.5 mmHg, and that most of the observed BP benefits were mediated by improvement in the indoor environment, specifically reductions in indoor PM~2.5~ and increases in indoor temperature. The findings are supported by a small number of randomized and non-randomized intervention studies (with pre-post measured and control groups) of gas or more efficient biomass cookstoves showing similar or larger reductions in blood pressure (SBP range: XXX mmHg; DBP range: ### mmHg) [@kumar2021]. In contrast, a previous energy program assessment in southern China observed small increases in BP (~1.3 mmHg) among women who received a semi-gasifier cookstove and pelletized biomass fuel. In that study, exposure to air pollution and BP decreased in both intervention and control households but the reductions were larger controls (PM~2.5~: 48−70% lower; SBP: -4.1 mmHg) than the intervention group (PM~2.5~: 24−67% lower; SBP: -2.7 mmHg), a result likely driven by an unexpected shift to gas stoves in control households [@clark2019]. Similarly, a recent multi-country randomized trial observed a small increase in gestational blood pressure in pregnant women who received gas stoves [@ye2022] despite decreases in exposure to PM~2.5~ larger than those observed in our study, though the gas stoves can still emit health-damaging air pollutants like benzine and volatile organic compounds [@kashtan2023], especially in contrast to the zero-emission electric heaters introduced in our study villages through the CBHP policy. 
- 
-Our findings of temperature- and air quality-mediated impacts of the policy on BP are supported by observational studies conducted by us and others showing that increased exposures to household air pollution [@baumgartner2018; @baumgartner2011; @dong2013; @kanagasabai2022] and to colder indoor temperatures [@lv2022; @sternbach2022] are associated with higher blood pressure in rural and peri-urban areas of China, with exposure-response estimates that align with our mediator estimates. For example, [[[give some examples here to contextualize and compare]]]
+One of the key findings from our comprehensive evaluation of the CBHP policy was that exposure to the policy reduced systolic and diastolic blood pressure by ~1.5 mmHg, and that most of the observed BP effects were mediated by improvements in the indoor environment, specifically reductions in indoor PM~2.5~ and increases in indoor temperature. The total effects of the policy are supported by a small number of randomized trials of cooking gas or more efficient biomass cookstoves showing similar or larger reductions in blood pressure (SBP: -2.1 to -1.3 mmHg; DBP: -0.1 to -3.0 mmHg) [@kumar2021]. In contrast, a recent multi-country randomized trial of an LPG stove observed a small (~0.6 mmHg) increase in gestational blood pressure  [@ye2022] despite decreases in exposure to PM~2.5~ that were much larger than in our study. Though, the study participants were much younger than our study (mean age of 25 versus 61y) and gas stoves can still emit health-damaging air pollutants like benzine and volatile organic compounds [@kashtan2023], especially in contrast with the zero-emission electric heaters introduced in our study villages. Further, our findings of temperature- and air quality-mediated impacts of the policy on BP are supported by observational studies conducted by us and others showing that increased exposure to household air pollution [@baumgartner2018; @baumgartner2011; @dong2013; @kanagasabai2022] and to colder indoor temperatures [@lv2022; @sternbach2022] are associated with higher blood pressure in rural and peri-urban areas of China, with exposure-response estimates that align with our mediator estimates. 
 
-We did not observe effects of the policy on blood pressure measures of central or brachial PP or cPP/SBP amplification. Pulse pressure is measured as the difference between SBP and DBP, and represents the pulsatile component of blood flow [@dart2001]. Thus, increases in pulse pressure can result from increases in SBP, decreases in DBP, or both. The lack of effect on PP in our study is likely attributed to the near identical reductions in SBP and DBP in those treated by the policy. Similarly, PP/SBP amplification is measured as a ratio of peripheral to central pressures, and the decreases in central and brachial pressures with the policy were nearly identical in our study. Although our four-year study is over twice as long as most previous intervention studies on this topic, it is possible that longer-term reductions in BP are required to observe any structural changes in the caliber or elasticity of arterial walls that would be reflected in differences in PP or PP amplification [@dart2001]. 
+We did not observe effects of the policy on blood pressure measures of PP or cPP/SBP amplification. Pulse pressure is measured as the difference between SBP and DBP, and represents the pulsatile component of blood flow [@dart2001]. Thus, increases in PP can result from increases in SBP, decreases in DBP, or both. The lack of effect on PP in our study is likely attributed to the near identical reductions in SBP and DBP from the policy. Similarly, PP/SBP amplification is measured as a ratio of peripheral to central pressures, and the decreases in central and brachial pressures with the policy were also nearly identical in our study. Although the duration of our study was nearly twice as long as most previous household stove intervention studies, it is still possible that longer-term reductions in BP are required to observe any structural changes in the caliber or elasticity of arterial walls that would be reflected in differences in measures PP or SBP/PP amplification [@dart2001]. 
 
-Exposure to the CBHP policy also reduced self-report of any poor respiratory symptoms (~7 percentage points) with most of these effects driven by reductions in self-reported chest trouble or difficulty breathing on several or most days of the week. In Guatemala, exposure to carbon monoxide (used as a surrogate for exposure to PM~2.5~) and prevalence of chronic respiratory symptoms, especially wheeze, was reduced among women who received a biomass chimney stove (i.e., plancha) [@smith-sivertsen2009]. [[[Note to Jill: still need to review and discuss results from trials with respiratory symptoms: Fandino-Del-Rio et al., 2022, Romieu et al., 2009; Schilmann et al., 2015, Add in null findings from Burwen et al., 2012, Beltramo et al.,2013 ]]]
+Exposure to the CBHP policy also reduced self-report of any poor respiratory symptoms (~7 percentage points) with most of these effects driven by reductions in self-reported chest trouble or difficulty breathing on several or most days of the week. In Guatemala exposure to carbon monoxide (used as a surrogate for exposure to PM~2.5~) and prevalence of chronic respiratory symptoms, especially wheeze, was reduced among women who received a biomass chimney stove (i.e., plancha) [@smith-sivertsen2009]. [[[Note to Jill: still need to review and discuss results from trials with respiratory symptoms: Fandino-Del-Rio et al., 2022, Romieu et al., 2009; Schilmann et al., 2015, Add in null findings from Burwen et al., 2012, Beltramo et al.,2013 ]]]
 
-We found some evidence of heterogeneity in the health benefits of the policy, specifically a small increase in BP (###) and [[[anything different for respiratory?]]] after exposure to the policy in the three villages treated last (2021). It is unlikely that these differences are attributed to differential use of the heat pumps or coal stoves given that we observed similar patterns of use after treatment across the three groups, and increases in seasonal indoor temperature were also consistent. We did observe a small increase in biomass stove use in this group[[Sam to check], though their overall reductions in exposure to PM~2.5~ and exposure to mixed solid fuel were also largest in this group. It is possible that the composition of PM was different in this group, with a greater contribution of biomass smoke, however we are unable to differentiate between biomass and coal in our ‘mixed solid fuel’ category. This group was also treated during the pandemic, which could have impacted how the policy was introduced or resulted in changes to BP risks that we did not evaluate in our study, e.g., changes in diet or level of social capital.   
+We found some evidence of heterogeneity in the health benefits of the policy by treatment cohort, specifically a small increase in BP (2.4 mmHg; 95%CI: -0.5, 5.3) and self-reported wheeze events (+9 percentage points; 95%CI: 0, 18) in the three villages treated in 2021. Notably this is also the treatment cohort with the smallest decline in point temperature at the time of BP measurement and both an increase in self-reported biomass use and several households that continued using coal. Rather paradoxically, we observed a larger decrease in PM~2.5~ and mixed solid fuel use in this group. It is possible that the composition of PM and mixed solid fuel was different in this cohort, with a greater contribution of biomass smoke, however we are unable to differentiate between biomass and coal in our ‘mixed solid fuel’ category. This group was also treated during the pandemic, which could have impacted how the policy was introduced or resulted in changes to other BP risk factors that we did not evaluate in our study, e.g., changes in diet or level of social capital.  
  
-We also did not observe impacts of the policy on blood biomarkers of inflammation and oxidative stress in the sub-sample of participants with blood collection in S1 and S2. Possible reasons: I have no idea - bad luck? most of the effect is through temp and temp-inflammation links are less well-established . Our results contrast with [[[Beijing Olympics study … ]]]
+We also did not observe impacts of the policy on blood biomarkers of inflammation and oxidative stress in the sub-sample of participants with blood collection in S1 and S2. Our results contrast with a natural experiment in urban Beijing that showed large regional and local air quality reductions during the 2008 Beijing Olympics and also observed benefits to airway inflammation [@huang2012] and blood markers of inflammation and oxidative stress in healthy urban Beijing residents during the Olympics compared with before and after [@rich2012]. Our mediation analysis indicated that the blood pressure effects of the policy were mediated more through indoor temperature than air pollution. Although observational studies from rural northern China do show impacts of exposure to temperature on inflammation and oxidative stress [@wang2020; @xu2019], it’s possible that the relatively small increases in mean indoor temperature in treated households were not sufficiently large to capture measurable changes in these biomarkers.
  
-## Impacts of the policy on air pollution and is sources[i][j][k]
+## Impacts of the policy on air pollution and is sources
 
 China has a long history of launching ambitious, large-scale policies and programs to promote clean household energy transition and support rural energy infrastructure development [@zhang2007]. The country was a relatively early initiator of rural electrification projects in the 1950s and achieved complete (100%) electrification of households by 2016 [@yangk2021], which undoubtedly facilitated the policy choice to replace coal stoves with electric-powered heat pump heaters. Several decades earlier, China achieved what is likely the largest improvement in energy efficiency in history in terms of the population affected by just one program. The National Improved Stove Program (NISP) and its provincial counterparts were initiated in the early 1980s and are credited with introducing nearly 200 million improved cooking and heating stoves by the late 1990s. The NISP implemented mostly chimney stoves with the primary goal of increased fuel efficiency to reduce pressure on local forests and a secondary goal of reducing indoor pollution. NISP biomass stoves showed some success in reducing indoor PM, though levels were still much higher than health-motivated guidelines, however the program’s so called ‘improved’ coal stoves provided no measurable air quality benefit [@sinton2004]. 
 
-In contrast, our evaluation of the CBHP policy revealed a quantifiable improvement in indoor air quality, evidenced by a reduction of 38 µg/m³ in seasonal measures of indoor PM~2.5~. [[[how does this compare to other interventions? HAPIN?]]] [l]Particulate matter (PM) is a complex mixture derived from many sources, and measures of air pollution that are closest to a policy-impacted source may have the greatest likelihood to reveal the impact of that given policy on its target source. This is particularly relevant in this study given that the primary activity affected by the CBHP policy—home space heating—is a stationary and sustained activity. Consistently, our findings showed that indoor PM measurements, particularly longer-duration measures, displayed the greatest reductions following the policy implementation. Despite the significant improvements in indoor air quality, the intervention's effects on reducing personal exposure to PM~2.5~, black carbon (BC), and source contributions from the ‘mixed combustion’ source identified through our study’s source apportionment, as well as ambient outdoor levels of the same air pollution measures, were more limited. The persistent levels of personal and outdoor PM~2.5~ and BC suggest the influence of pollution sources that are likely external to the home environment (e.g., vehicular emissions, industrial activities, power generation). The source analysis and apportionment identified a source of mixed combustion as a significant contributor to PM~2.5~, implying that, in addition to space heating solid fuel combustion, non-heating related combustion activities may have also persisted in their contribution to personal exposure and outdoor pollution .
+In contrast, our evaluation of the CBHP policy revealed a quantifiable improvement in indoor air quality, evidenced by a reduction of 36 µg/m^3^ in seasonal measures of indoor PM~2.5~. Compared to the current World Health Organization (WHO) guidelines, which state that annual (and 24-h) average concentrations of PM~2.5~ should not exceed 5 (and 15) µg/m^3^ [@worldhealthorganization2021], homes at baseline in this study had indoor PM~2.5~ in the range of interim targets (ITs) 1 and 2. Interim targets have been set by WHO to support the planning of incremental milestones toward cleaner air, particularly for cities, regions, and countries with higher air pollution levels. For PM~2.5~, the four interim (IT) targets for annual and 24-h means are: IT-1: 35 and 75 µg/m^3^; IT-2: 25 and 50 µg/m^3^; IT-3: 15 and 37.5 µg/m^3^; and IT-4: 10 and 25 µg/m^3^ [@worldhealthorganization2021]. Indoor PM~2.5~ concentrations were reduced in treated homes, bringing these homes into the range of IT-4[b] and realizing some of the considerable potential for air quality improvement from the intervention. 
 
-[[[Ellison - I moved this down from the adherence to policy section b/c biomass wasn’t part of the policy - feel free to integrate into the air pollution section if helpful or delete]]] We observed a large decrease in indoor PM~2.5~ in treated villages (36 ug/m3), though average levels of pollution in treated households remained X-X times higher than the WHO guidelines (add #s). The high levels of indoor and personal exposures in treated homes, despite high compliance with the policy, is most likely attributable to two main factors: the high levels of ambient air pollution in our study setting (range: XX-XX ug/m3 in treated villages) and the continued use of inefficient and highly-polluting biomass-burning kangs. Kangs are a relatively simple and culturally entrenched space heating technique that has been used for over two thousand years in China [@zhuang2009]. Kangs are usually fuelled by wood or other biomass that is freely and readily available in our rural and peri-urban study villages. The CBHP policy did not ban biomass burning, and we did indeed observe persistent kangs based on both household surveys and the PM~2.5~ source analysis and apportionment results. The continued use of solid fuel stoves (i.e., stove stacking) alongside cleaner stoves and fuels has long been a barrier to achieving the intended air quality benefits of household energy interventions [@shankar2020]. A notable exception is a recently completed multi-country randomized trial of LPG cookstoves which attained near exclusive use of LPG stoves and dramatic reductions in personal exposures to PM~2.5~ (lowered by 66% compared with controls) [@johnson2022], but rather unexpectedly did not observe any health benefits across a range of neonatal, child, and maternal outcomes [@harrison2024].
+The still elevated levels of indoor and personal exposures in treated homes, despite high compliance with the policy, is most likely attributable to two main factors: the elevated levels of ambient air pollution in our study setting (range: 26-38 μg/m^3^ in treated villages) and the continued use of inefficient and highly-polluting biomass-burning kangs. Kangs are a relatively simple and culturally entrenched space heating technique that has been used for over two thousand years in China [@zhuang2009]. Kangs are usually fuelled by wood or other biomass that is freely and readily available in our rural and peri-urban study villages. The CBHP policy did not ban biomass burning, and we did observe persistent use of kangs based on both household surveys and the PM~2.5~ source analysis and apportionment results. The continued use of solid fuel stoves (i.e., stove stacking) alongside cleaner stoves and fuels has long been a barrier to achieving the intended air quality benefits of household energy interventions [@shankar2020]. A notable exception is a recently completed multi-country randomized trial of LPG cookstoves which attained near exclusive use of LPG stoves and dramatic reductions in personal exposures to PM~2.5~ (lowered by 66% compared with controls) [@johnson2022], but rather unexpectedly did not observe health benefits across a range of neonatal, child, and maternal outcomes [@harrison2024].
 
-In[m][n] this study we were best able to quantify air pollution impacts from the CBHP policy using long-term measurements at locations nearest to indoor stoves, which required hundreds of air monitors and thousands of hours of measurements. The scale and duration of air pollution measurement achieved in this study would not have been possible without low-cost air pollution sensors that have proliferated in the past decade. [[[Ellison to add one or two relevant references from China-based sensor studies, and maybe one or two reviews of the low-cost sensor transformation of air pollution measurement]]]. Evaluation methods for future intervention studies might also include longitudinal measures of air pollution that track changes over longer periods to capture delayed effects. An examination of how we evaluate the effectiveness of interventions like the CBHP policy raises fundamental questions about the adequacy of our current approaches. Traditional air pollution metrics may not fully capture the broader, systemic changes that such policies aim to achieve. 
+In addition to the Household Air Pollution Intervention Network (HAPIN) trial mentioned above, several other recent trials [@alexander2017; @checkley2021; @chillrud2021; @katz2020] of interventions have evaluated the impacts of replacing solid fuels for cooking with cleaner fuels such as liquefied petroleum gas (LPG) or ethanol. These trials have reported reductions in in-home measures of air pollutants indicative of combustion (i.e., PM, carbon monoxide). Yet, baseline pollutant concentrations tended to be higher than what we observed in our study, in some cases exceeding several hundreds of micrograms of PM~2.5~ per cubic meter of air [@rosa2014]. Thus, even higher percentage reductions in air pollution levels than what we observed still left WHO interim target levels out of reach. It may also be worth noting that differences in summary metrics makes comparisons between our study and others challenging; compared to other household air pollution intervention studies, our study yielded a larger sample size of longer-duration, repeated measures of indoor air pollution [@thomas2015].
 
-Moreover, understanding whether an intervention 'works' hinges not only on whether it achieves its targeted outcomes but also on whether these outcomes are the most relevant indicators of success. For example, while indoor air quality improvements are significant, if the ultimate goal is to reduce overall health burdens from air pollution, then personal exposure and ambient air quality measures become equally important[o][p]. This mismatch between targeted outcomes and broader health goals suggests a need to revisit how we define and measure 'effectiveness'.
 
-Evaluating the effectiveness of interventions also involves considering whether shortcomings are due to inherent flaws in the intervention itself or limitations in our measurement approaches. For instance, if the intervention successfully reduces emissions from targeted sources but overall exposure levels remain unchanged due to unaddressed external sources, this doesn't necessarily indicate a failure of the intervention but rather a limitation in the scope of the policy or in the metrics (and their time-frames) used to assess its impact.
+Despite the significant improvements in indoor air quality, the intervention's effects on reducing personal exposure to PM~2.5~, BC, and source contributions from the ‘mixed combustion’ source identified through our study’s source apportionment, as well as ambient outdoor levels of the same air pollution measures, were more limited. The limited effect of the intervention on personal and outdoor PM~2.5~ and BC levels suggests the persistent influence of pollution sources that are likely external to the home environment (e.g., vehicular emissions, industrial activities, power generation). The source analysis and apportionment identified a source of mixed combustion as a significant contributor to PM~2.5~, implying that, in addition to space heating solid fuel combustion, non-heating related combustion activities may have also persisted in their contribution to personal exposure and outdoor pollution.
+
+It may be valuable to compare our results to several recent studies that were not focused on household air pollution interventions, but still measured indoor, personal, and / or outdoor air pollution in settings that might be influenced by similar sources to ours…
+
+In this study we were best able to quantify air pollution impacts from the CBHP policy using long-term measurements at locations nearest to indoor stoves, which required hundreds of air monitors and thousands of hours of measurements. The scale and duration of air pollution measurement achieved in this study would not have been possible without low-cost air pollution sensors that have proliferated in the past decade. [[[Ellison to add one or two relevant references from China-based sensor studies, and maybe one or two reviews of the low-cost sensor transformation of air pollution measurement]]]. Evaluation methods for future intervention studies might also include longitudinal measures of air pollution that track changes over longer periods to capture delayed effects. An examination of how we evaluate the effectiveness of interventions like the CBHP policy raises fundamental questions about the adequacy of our current approaches. Traditional air pollution metrics may not fully capture the broader, systemic changes that such policies aim to achieve. 
 
 Determining whether the CBHP policy worked required a multifaceted approach to evaluation that went beyond measures of air quality alone. By incorporating a broader array of metrics and considering the systemic nature of air pollution and its health impacts, through this study, we sought to provide a more nuanced understanding of an intervention's effectiveness and the ways in which it may need to be augmented or restructured to achieve desired health outcomes.
 
 ## Assumptions, strengths and limitations
 
-The validity of our DiD approach is subject to several key assumptions. First, we assume that anticipation of the CBHP policy did not differ between treated and untreated villages. We selected villages that were eligible for the policy and thus anticipated treatment at some point in time, but were uncertain about when they would be treated. It was generally understood that the policy would first be implemented in areas with updated electric grids near the urban core and then gradually expand into more remote areas of Beijing, though most of our study villages were far from Beijing's urban core. In addition to these geographical parameters, some of our study villages were assigned to the policy whereas others applied to the local government, and villages were generally unaware if or when they would be treated. Second, our analysis assumes that, in the absence of the policy, the trends in air quality and health in treated and untreated villages would have remained the same over time. While we cannot fully verify this assumption, we observed similar trends in health outcomes between S1 and S2 in untreated villages and villages that were treated later in S3 or S4 (ref SI figures that Talia created a while back for BP and resp outcomes) and we adjusted for relevant time-varying confounders, all of which improve the credibility of this assumption. Finally, we cannot entirely rule out the possibility that other programs or policies differentially affected air quality or health in treated and untreated villages, which could lead to over- or under-estimation of its effects. Though, we surveyed village leaders about other rural development or health policies and programs in their villages throughout the four-year study period and did not identify any that would differentially impact our treatment groups.  
+The validity of our DiD approach is subject to several key assumptions. First, we assume that anticipation of the CBHP policy did not differ between treated and untreated villages. We selected villages that were eligible for the policy but not currently treated. It was generally understood that the policy would first be implemented in the plains areas with more updated electric grids and then gradually expand into more remote and mountainous areas of Beijing, though most of our study villages were far from Beijing's urban core. In addition to these geographical parameters, some of our study villages were assigned to the policy whereas others applied to the local government, but they were generally unaware if or when they would be treated at the time of enrollment. Second, our analysis assumes that, in the absence of the policy, the trends in air quality and health in treated and untreated villages would have remained the same over time. While we cannot fully verify this assumption, we observed similar trends in health outcomes between S1 and S2 in never treated villages and those treated later in S3 or S4 (ref[c] SI figures that Talia created a while back for BP and resp outcomes) and we adjusted for relevant time-varying confounders, all of which improve the credibility of this assumption. Fourth, we cannot entirely rule out the possibility that other programs or policies differentially affected air quality or health in treated and untreated villages, which could lead to over- or under-estimation of its effects. Though, we surveyed village leaders about other rural development or health policies and programs in their villages throughout our four-year study period and did not identify any co-implemented programs that would differentially impact treatment groups. Finally, our mediation analysis assumes no residual confounding between our mediators (air pollution and temperature) and our health outcomes. [[[need to add text]]]
  
-Strengths of our study include the comprehensive, field-based, four-year assessment of a large-scale household energy policy in a large number of villages across Beijing using a quasi-experimental design that controlled for secular changes in health and important time-varying covariates. Most previous household energy intervention studies were less than two-years in duration (ref), and our four-year study enabled assessment of the longer-term impacts of the policy on air pollution and health. We retained all 50 villages in this assessment of a village-level intervention, and were able to successfully recruit over 1000 participants into each campaign including during the pandemic. Our numerous sensitivity analyses showed the robustness of our findings to various analytic decisions. 
+Strengths[d] of this comprehensive, field-based assessment of the CBHP policy include our quasi-experimental design to evaluate a real-world clean energy intervention that would be near impossible to experimentally manipulate at the scale of our study. Our study design controlled for secular changes in health and we additionally collected data on and adjusted for important time-varying covariates. Our numerous sensitivity analyses showed the robustness of our findings to various analytic decisions. Most previous field-based household energy intervention studies were less than two-years in duration [@harrison2024; @quansah2017], and our four-year study enabled longer-term evaluation of compliance with the coal ban and heat pump adoption/use and their impacts on air pollution and health. We retained all 50 villages in this assessment of a village-level intervention, and were able to successfully obtain measurements from over 1000 participants into each campaign with individual measurements despite half of our study occurring during the covid-19 pandemic. By comparison, previous field-based assessments of household energy interventions (trials and pre-post designs with controls) and blood pressure ranged in size from 44 to 324 participants [@harrison2024; @kumar2021; @onakomaiya2019], with exception of the recent multi-country trial that enrolled ~3000 pregnant women [@ye2022].  
 
 This study also has several limitations to consider when interpreting our results.
 
-1)    The COVID-19 pandemic affected our study measurements (blood pressure) and may have impacted household energy use or energy-related behaviors in unpredictable ways. 
-2)    The policy roll-out began in 2015 but we did not begin enrolling villages into our study until 2018. Thus, our study villages are farther from the urban core and of lower SES than villages treated in the first three years of the policy. Previous studies of the CBHP policy suggest treated villages of all SES levels benefited from less-polluted and warmer indoor environments, but that the benefits were smaller in lower SES villages compared with higher SES villages [@barrington-leigh2019; @meng2023]. Thus our results may not be generalizable to the higher SES villages that were among the first treated in between 2015 and 2018, and potentially underestimate the impacts of the policy on mediators like indoor temperature and air quality that were shown to be important cardio-respiratory health mediators in this study.
-3)    Were unable to measure indoor air quality or stove use in S1 due to logistical and budget constraints.  
-4) Our study logistics required visiting all 50 villages over a period of just several months. Thus, we were unable to return to villages if an enrolled participant was not at home at the time that our staff visited their village. In such instances, we either randomly selected either another eligible participant in the same home or we randomly selected another household with eligible participants from the village roster. Though the study participants differed slightly across each campaign, the composition of the population was consistent with no notable differences in demographic characteristics or health behaviors between participants who contributed to a different number of campaigns (ref table) or between participants in each of the three campaigns (ref table), which is appropriate for this village-level analysis of the policy. 
-5) Caution in interpretation of self-reported outcomes of respiratory symptoms when participants are not blinded to the intervention [@peel2015]
+First, the covid pandemic started in the middle of our study and roughly half of our treated villages went into the policy during the pandemic, which likely had some influence on the roll-out of the policy in those villages. We observed the largest benefits in BP and several respiratory outcomes in villages treated before the pandemic. However, we cannot differentiate between treatment cohort effects attributable the covid pandemic versus other factors that different between treatment cohorts (i.e., geographic location, access to biomass, fuel prices, etc)
+
+Second, the policy roll-out began in 2016 though we did not begin enrolling villages into our study until 2018. Thus, our study villages are farther from the urban core and generally of lower SES than many villages treated in the first three years of the policy. Previous studies of the CBHP policy suggest that treated villages of all SES levels benefited from less-polluted and warmer indoor environments, but that the benefits were smaller in lower SES villages compared with higher SES villages [@barrington-leigh2019; @meng2023]. Further, our more remote and rural study villages also have easier access to biomass fuel. Thus our results may not be generalizable to all of Beijing, especially the more urbanized, higher SES villages treated between 2016 and 2018, and may underestimate the impacts of the policy on indoor environmental factors that were important cardio-respiratory health mediators in our study.
+
+Third, like any field-based study, we had a number of constraints with data collection. We were unable to measure indoor air quality or stove use in S1 due to logistical and budget constraints, and thus cannot directly estimate the effects of the policy on indoor PM2.5 for the 10 villages treated in 2019. Similarly, we were unable to take blood in the last campaign because measurements were in homes rather than clinics to avoid group contact during the pandemic. In addition, our study logistics required visiting 50 villages over a period of just several months. Thus, we were unable to return to villages if a previously enrolled participant was not at home at the time that staff visited the village. In such instances, we either randomly selected either another eligible participant in the same home or we randomly selected another household with eligible participants from the village roster and our study participants different slightly across campaigns. Our village-level study and analysis is robust to participation of a random sample of participants in each campaign, and we also found no notable differences in key demographic characteristics or health behaviors between participants who contributed to a different number of campaigns or between participants across each of the three campaigns. 
+
+Fourth, our respiratory symptoms are self reported and thus our estimated effects of the policy must be interpreted with caution given that participants are not blinded to the household energy intervention. In previous studies of household water filters, for example,   [@peel2015]
 
 
 # Implications of Findings
 
-Our results are timely, as they are synchronous with ongoing and planned clean energy policies in China and other countries in a global effort to “ensure access to affordable, reliable, sustainable, and modern energy for all” (Sustainable Development Goal-7) and also directly respond to a recent call-to-action from global cardiovascular societies that emphasized the urgent need for interventional studies that inform targeted pollution-reducing strategies to reduce cardiovascular disease [@brauer2021].
+In this comprehensive field-based assessment of the CBHP policy in Beijing, we observed high fidelity and compliance with the policy in our study villages and households where nearly all households in treated villages stopped using coal and shifted to electric-powered heaters. Exposure to the policy reduced blood pressure and self-reported chronic respiratory symptoms, and the effects were mediated by reductions in indoor PM~2.5~ and improvements in home temperature. We did not observe the same benefits of the policy on outdoor air quality or personal exposures, likely because the relatively high contribution of other regional and local air pollution sources to outdoor and personal exposures may have masked the benefits from a single source reduction. We also did not observe benefits of the policy on different measures of inflammation and oxidative stress in the sub-sample of participants with biomarker assessment, even though we observed respiratory symptoms and BP benefits of the policy in a sensitivity analysis limited to the same participants. [e]
 
+Our results showing a home environment and health benefit of a large-scale and successfully implemented clean energy policy are timely, as they are synchronous with ongoing and planned clean energy policies in China and other countries in a global effort to “ensure access to affordable, reliable, sustainable, and modern energy for all” (Sustainable Development Goal-7) and also directly respond to a recent call-to-action from global cardiovascular societies that emphasized the urgent need for interventional studies that inform targeted pollution-reducing strategies to reduce cardiovascular disease [@brauer2021].
 
 # Data Availability Statement
 
@@ -902,7 +872,9 @@ To come...
 \setcounter{figure}{0}
 \setcounter{table}{0}
 
-# Appendices {.unnumbered .appendix}
+# Appendices {.appendix}
+
+## Policy uptake
 
 ```{r afig, message=FALSE, cache=TRUE, echo=FALSE, out.width = "100%"}
 #| label: fig-afig-coal
@@ -910,403 +882,350 @@ To come...
 knitr::include_graphics(here("images", "coal-plot.png"))
 ```
 
-Effect of the CBHP on air pollution by treatment group: results from staggered difference in differences analyses.
+Sensitivity analyses: [[[Jill to edit this table include all sensitivity analysis for total effects models]]]
  
+        Number of participants (observations)
+        Mean change or percent change in FeNO (ppb)
+        Limited to participants with two or more measurements
+        142 (569)
+        -0.2 [-3.0, 2.5]
+        Limited to participants with three measurements
+        95 (285)
+        0.4 [-2.8, 3.6]
+        Analysis with log-transformed outcome [ln(FeNO)]
+        511 (843)
+        -3.8% [-16.9, 11.4]
 
-	Treated in 2019 (S2)
-	Treated in 2020 (S3)
-	Treated in 2021 (S4)
-	
-	Effect in S2
-	Effect in S3
-	Effect in S4
-	Effect in S3
-	Effect in S4
-	Effect in S4
-	Personal exposure to PM~2.5~
-	
-	–
-	
-	–
-	
-	
-	Personal exposure to BC
-	
-	–
-	
-	–
-	
-	
-	Indoor PM~2.5~*
-	–
-	–
-	–
-	
-	
-	
-	Indoor PM~2.5~**
-	 –
-	–
-	 –
-	–
-	 
-	 
-	Outdoor PM~2.5~*
-	
-	
-	
-	
-	
-	
-	Outdoor PM~2.5~**
-	 
-	–
-	 
-	–
-	 
-	 
-	Outdoor BC*
-	
-	
-	
-	
-	
-	
-	Outdoor BC**
-	 
-	–
-	 
-	–
-	 
-	 
-	*Analysis limited to 41 study villages, including all villages exposed to the policy, with measurements in all four seasons
-*Analysis including all 50 study villages with measurements in all 4 seasons
- 
+## Heterogeneity in treatment effects 
 
- 
-Effect of the CBHP on temperature by treatment group: results from staggered difference in differences analyses.
- 
+### Personal exposure 
+As noted in the methods section...Table @tbl-a-het-personal shows limited evidence that the ATTs across cohorts and time demonstrate meaningful heterogeneity.
 
-	Treated in S2, effect in S2
-	Treated in S2, effect in S3
-	Treated in S2, effect in S4
-	Treated in S3, effect in S3
-	Treated in S3, effect in S4
-	Treated in S4, effect in S4
-	Mean*[q]
-	 1.8
-(0.7, 2.9)
-	–
-	 2.3
-(0.5, 4.1)
-	–
-	 2.4
-(0.5, 4.2)
-	 0.6
-(-1.1, 2.4)
-	Mean** 
-	1.1 
-(-0.1, 2.2)
-	1.2 
-(-0.1, 2.6)
-	2.1 
-(0.9, 3.3)
-	2.7 
-(2.0, 3.4)
-	2.5 
-(1.3, 3.6)
-	2.0 
-(0.5, 3.4)
-	Daytime mean (6am to 10pm)*
-	 
-	–
-	 
-	–
-	 
-	 
-	Daytime mean (6am to 10pm)**
-	0.8 
-(-0.5, 2.1)
-	1.4 
-(0.0, 2.8)
-	2.3 
-(1.0, 3.6) 
-	2.6 
-(1.9, 3.4)
-	2.5 
-(1.5, 3.5)
-	2.1 
-(0.7, 3.6)
-	*Analysis including all 50 study villages with measurements in all 4 seasons
-*Analysis limited to 41 study villages, including all villages exposed to the policy, with measurements in all four seasons
- 
- 
-Effect of the CBHP on health outcomes by treatment group: results from staggered difference in differences analyses.
- 
- 
- 
- 
- 
- 
-Sensitivity analyses of total effects of the policy on health outcomes
- 
+```{r atbl-het, echo=F}
+#| label: tbl-a-het-personal
+#| tbl-cap: "Heterogenous treatment effects: Personal exposures"
+# read in personal exposure heterogeneity table
+aph_table <- read_rds(here("outputs", 
+  "ap-het-table.rds"))
+models_ppm <- read_rds(here("outputs/models", "m_ppm.rds"))
+models_pbc <- read_rds(here("outputs/models", "m_pbc.rds"))
+models_ppm_note <- paste("Joint test that all ATTs are equal: ", 
+    "F(", models_ppm$ht1$df1, ", ", 
+    models_ppm$ht1$df2, ")= " , 
+    round(models_ppm$ht1$statistic, digits=3), ", p= ", 
+    round(models_ppm$ht1$p.value, digits=3), sep="")
+models_pbc_note <- paste("Joint test that all ATTs are equal: ", 
+    "F(", models_pbc$ht1$df1, ", ", 
+    models_pbc$ht1$df2, ")= " , 
+    round(models_pbc$ht1$statistic, digits=3), ", p= ", 
+    round(models_pbc$ht1$p.value, digits=3), sep="")
+kable(aph_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
+   "ATT", "(95\\%CI)"), "latex", booktabs = T,
+  linesep = "", align = 'cccccc') %>%
+  column_spec(1:2, width = "1.5cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  add_header_above(c(" " = 2, 
+    "PM2.5\\\\textsuperscript{a}" = 2, 
+    "Black carbon\\\\textsuperscript{b}" = 2),
+    escape = FALSE) %>%
+  footnote(alphabet=c(models_ppm_note, models_pbc_note)) 
+```
 
-	
-	Results
-  from the main (adjusted) analysis   
-	Limited
-  to participants with 2+ measurements
-	Limited
-  to participants with 3+ measurements
-	Analysis
-  with log-transformed outcome
-	Please add columns for additional sensitivity analyses
-  that you did. 
-	Blood
-  pressure
-	
-	
-	
-	
-	
-	
-	
-	Brachial
-  SBP
-	-1.40 
-(-3.31,
-  0.51)
-	
-	
-	
-	
-	
-	Central
-  SBP
-	-1.56
-(-3.40, 0.28)
-	
-	
-	
-	
-	
-	Brachial
-  DBP
-	-1.60 
-(-2.96,
-  -0.25)
-	
-	
-	
-	
-	
-	Central
-  DBP
-	-1.66 
-(-2.97,
-  -0.34)
-	
-	
-	
-	
-	
-	Brachial
-  PP
-	0.21
-(-1.00, 1.41)
-	
-	
-	
-	
-	
-	Central PP
-	0.10
-(-1.01, 1.20)
-	
-	
-	
-	
-	
-	PP
-  amplification
-	0.00
-(-1.20, 1.20)
-	
-	
-	
-	
-	
-	Systolic
-  BP amplification
-	0.10
-(-0.20, 0.40)
-	
-	
-	
-	
-	Respiratory
-  outcomes
-	
-	
-	
-	
-	
-	
-	
-	Any
-  symptom
-	-7.9 
-(-14.6,
-  -1.1)
-	
-	
-	
-	
-	
-	Coughing
-	-2.0 
-(-6.8,
-  2.8)
-	
-	
-	
-	
-	
-	Phlegm
-	-1.8 
-(-6.3, 2.7)
-	
-	
-	
-	
-	
-	Wheezing
-  attacks
-	-0.1
-(-3.9, 3.6)
-	
-	
-	
-	
-	
-	Trouble
-  breathing
-	-4.6 
-(-11.6,
-  2.4)
-	
-	
-	
-	
-	
-	Chest
-  trouble
-	-6.4 
-(-12.1,
-  -0.6)
-	
-	
-	
-	
-	
-	FeNO (ppb)
-	0.6 
-(-2.13,
-  3.13)
-	-0.2 
-(-3.0,
-  2.5)
-	0.4 
-(-2.8,
-  3.6)
-	-3.8% 
-(-16.9,
-  11.4)
-	
-	Inflammatory
-  markers (%)
-	
-	
-	
-	
-	
-	
-	
-	IL-6
-	5.9 
-(-13.8,
-  30.2)
-	
-	
-	
-	
-	
-	TNF-alpha
-	24.7 
-(-0.9,
-  54.2)
-	
-	
-	
-	
-	
-	CRP
-	3.8 
-(-19.4,
-  33.6)
-	
-	
-	
-	
-	
-	MDA
-	6.5 
-(-9.7,
-  25.5)
-	
-	
-	
-	
-	 
+### Indoor PM~2.5~
+Table @tbl-a-het-indoor shows estimates for cohort-time ATTs for daily and seasonal indoor PM~2.5~.
+
+```{r atbl-het, echo=F}
+#| label: tbl-a-het-personal
+#| tbl-cap: "Heterogenous treatment effects: Personal exposures"
+# read in personal exposure heterogeneity table
+aph_table <- read_rds(here("outputs", 
+  "ap-het-table.rds"))
+models_ppm <- read_rds(here("outputs/models", "m_ppm.rds"))
+models_pbc <- read_rds(here("outputs/models", "m_pbc.rds"))
+models_ppm_note <- paste("Joint test that all ATTs are equal: ", 
+    "F(", models_ppm$ht1$df1, ", ", 
+    models_ppm$ht1$df2, ")= " , 
+    round(models_ppm$ht1$statistic, digits=3), ", p= ", 
+    round(models_ppm$ht1$p.value, digits=3), sep="")
+models_pbc_note <- paste("Joint test that all ATTs are equal: ", 
+    "F(", models_pbc$ht1$df1, ", ", 
+    models_pbc$ht1$df2, ")= " , 
+    round(models_pbc$ht1$statistic, digits=3), ", p= ", 
+    round(models_pbc$ht1$p.value, digits=3), sep="")
+kable(aph_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
+   "ATT", "(95\\%CI)"), "latex", booktabs = T,
+  linesep = "", align = 'cccccc') %>%
+  column_spec(1:2, width = "1.5cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  add_header_above(c(" " = 2, 
+    "PM2.5\\\\textsuperscript{a}" = 2, 
+    "Black carbon\\\\textsuperscript{b}" = 2),
+    escape = FALSE) %>%
+  footnote(alphabet=c(models_ppm_note, models_pbc_note)) 
+```
 
 
+### Indoor temperature
+
+### Blood pressure outcomes
+
+### Mediation analyses for blood pressure
+@tbl-a-bp-med-het shows the cohort-time treatment effects for the mediation model for blood pressure.
+
+```{r atbl-bp-het-med, echo=F, message=F}
+#| label: tbl-a-bp-med-het
+#| tbl-cap: "Heterogenous treatment effects for blood pressure mediation model"
+bp_het_med <- read_excel(here("outputs",
+  "adjusted_CT_results_table.xlsx")) %>%
+  mutate(cohort = rep(c(2019,2019,2020,2021), 
+                      times = 4),
+         time = rep(c(2019,2021,2021,2021),
+                    times = 4)) %>%
+  select(-bp, -parameter) %>%
+  relocate(cohort, time)
+kable(bp_het_med, 
+      col.names = c("Cohort", "Time", "Adjusted Total Effect",
+      "Indoor PM", "Indoor Temp", "PM + Temp"),
+      'latex', booktabs = T) %>%
+  kable_styling() %>%
+  pack_rows("Brachial SBP", 1, 4) %>%
+  pack_rows("Central SBP", 5, 8) %>%
+  pack_rows("Brachial DBP", 9, 12) %>%
+  pack_rows("Central DBP", 13, 16) %>%
+  add_header_above(c(" " = 3, 
+                     "CDE Mediated By:" = 3))
+  
+```
+
+### Respiratory outcomes
+
+Appendix tables [-@tbl-a-het-resp], [-@tbl-a-het-cough], [-@tbl-a-het-phlegm], [-@tbl-a-het-wheeze], [-@tbl-a-het-breath], [-@tbl-a-het-nochest] below show Average Treatment Effect on the Treated (ATTs) by treatment cohort and time. ATTs are derived from estimating marginal effects from extended two-way fixed effects models with additional adjustment for age, sex, and smoking status. 
+
+```{r atbl-het-resp, echo=F}
+#| label: tbl-a-het-resp
+#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Any respiratory symptom"
+
+# read in personal exposure heterogeneity table
+resp_any_table <- read_rds(here("outputs", 
+  "resp-het-resp.rds")) %>%
+  select(-outcome)
+models_resp <- read_rds(here("outputs/models", 
+  "r_het_tests.rds"))
+models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+    "F(", models_resp$resp$df1, ", ", 
+    models_resp$resp$df2, ")= " , 
+    round(models_resp$resp$statistic, digits=3), ", p= ", 
+    round(models_resp$resp$p.value, digits=3),".}", sep="")
+#model_adj_note <- ""
+kable(resp_any_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", 
+    "ATT", "(95\\%CI)"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'cccc') %>%
+  column_spec(1:2, width = "2cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  footnote(general=models_resp_note,
+    general_title = "", escape = F)
+```
+
+
+```{r atbl-het-cough, echo=F}
+#| label: tbl-a-het-cough
+#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Coughing"
+
+# read in personal exposure heterogeneity table
+resp_cough_table <- read_rds(here("outputs", 
+  "resp-het-cough.rds")) %>%
+  select(-outcome)
+models_resp <- read_rds(here("outputs/models", 
+  "r_het_tests.rds"))
+models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+    "F(", models_resp$cough$df1, ", ", 
+    models_resp$cough$df2, ")= " , 
+    round(models_resp$cough$statistic, digits=3), ", p= ", 
+    round(models_resp$cough$p.value, digits=3),".}", sep="")
+kable(resp_cough_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", 
+    "ATT", "(95\\%CI)"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'cccc') %>%
+  column_spec(1:2, width = "2cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  footnote(general=models_resp_note,
+    general_title = "", escape = F)
+```
+
+
+```{r atbl-het-phlegm, echo=F}
+#| label: tbl-a-het-phlegm
+#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Phlegm"
+
+# read in personal exposure heterogeneity table
+resp_phlegm_table <- read_rds(here("outputs", 
+  "resp-het-phlegm.rds")) %>%
+  select(-outcome)
+models_resp <- read_rds(here("outputs/models", 
+  "r_het_tests.rds"))
+models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+    "F(", models_resp$phlegm$df1, ", ", 
+    models_resp$phlegm$df2, ")= " , 
+    round(models_resp$phlegm$statistic, digits=3), ", p= ", 
+    round(models_resp$phlegm$p.value, digits=3),".}", sep="")
+kable(resp_phlegm_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", 
+    "ATT", "(95\\%CI)"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'cccc') %>%
+  column_spec(1:2, width = "2cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  footnote(general=models_resp_note,
+    general_title = "", escape = F)
+```
+
+```{r atbl-het-wheeze, echo=F}
+#| label: tbl-a-het-wheeze
+#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Wheezing attacks"
+
+# read in personal exposure heterogeneity table
+resp_wheeze_table <- read_rds(here("outputs", 
+  "resp-het-wheeze.rds")) %>%
+  select(-outcome)
+models_resp <- read_rds(here("outputs/models", 
+  "r_het_tests.rds"))
+models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+    "F(", models_resp$wheeze$df1, ", ", 
+    models_resp$wheeze$df2, ")= " , 
+    round(models_resp$wheeze$statistic, digits=3), ", p= ", 
+    round(models_resp$wheeze$p.value, digits=3),".}", sep="")
+kable(resp_wheeze_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", 
+    "ATT", "(95\\%CI)"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'cccc') %>%
+  column_spec(1:2, width = "2cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  footnote(general=models_resp_note,
+    general_title = "", escape = F)
+```
+
+
+```{r atbl-het-breath, echo=F}
+#| label: tbl-a-het-breath
+#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Trouble breathing"
+
+# read in personal exposure heterogeneity table
+resp_breath_table <- read_rds(here("outputs", 
+  "resp-het-breath.rds")) %>%
+  select(-outcome)
+models_resp <- read_rds(here("outputs/models", 
+  "r_het_tests.rds"))
+models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+    "F(", models_resp$breath$df1, ", ", 
+    models_resp$breath$df2, ")= " , 
+    round(models_resp$breath$statistic, digits=3), ", p= ", 
+    round(models_resp$breath$p.value, digits=3),".}", sep="")
+kable(resp_breath_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", 
+    "ATT", "(95\\%CI)"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'cccc') %>%
+  column_spec(1:2, width = "2cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  footnote(general=models_resp_note,
+    general_title = "", escape = F)
+```
+
+
+```{r atbl-het-breath, echo=F}
+#| label: tbl-a-het-breath
+#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Trouble breathing"
+
+# read in personal exposure heterogeneity table
+resp_breath_table <- read_rds(here("outputs", 
+  "resp-het-breath.rds")) %>%
+  select(-outcome)
+models_resp <- read_rds(here("outputs/models", 
+  "r_het_tests.rds"))
+models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+    "F(", models_resp$breath$df1, ", ", 
+    models_resp$breath$df2, ")= " , 
+    round(models_resp$breath$statistic, digits=3), ", p= ", 
+    round(models_resp$breath$p.value, digits=3),".}", sep="")
+kable(resp_breath_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", 
+    "ATT", "(95\\%CI)"), 
+   "latex", booktabs = T,
+  linesep = "", align = 'cccc') %>%
+  column_spec(1:2, width = "2cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  footnote(general=models_resp_note,
+    general_title = "", escape = F)
+```
+
+
+
+## Impact of including Season 3 data 
+@tbl-a-ind-s3 shows differences in the ATTs for the impact of seasonal indoor PM~2.5~ when season 3 data (collected in 41 villages during COVID-19) are included versus excluded. 
+
+```{r atbl-ind-s3, echo=F}
+#| label: tbl-a-ind-s3
+#| tbl-cap: "Effects of the CBHP policy on indoor seasonal PM~2.5~ based on whether Season 3 data are included vs. excluded."
+a_is3_table <- read_rds(here("outputs", 
+  "ap-is3_table.rds"))
+kable(a_is3_table, digits = 2, escape = FALSE,
+  col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
+   "ATT", "(95\\%CI)"), "latex", booktabs = T,
+  linesep = "", align = 'cccccc') %>%
+  column_spec(1:2, width = "1.5cm") %>%
+  kable_styling(full_width = F) %>%
+  pack_rows("Average ATT", 1, 2, indent = F) %>%
+  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+  add_header_above(c(" " = 2, 
+    "With Season 3 data" = 2, 
+    "Without Season 3 data" = 2),
+    escape = FALSE) %>%
+  footnote(general="Sample sizes for..") 
+```
 
 
 # About the authors {.unnumbered}
 
 # Other publications {.unnumbered}
 
-[a]Updated PDF here: https://github.com/sbh4th/bhet-report/blob/main/hei-report.pdf
-[b]could potentially move elsewhere.
-[c]@talia.sternbach@gmail.com 
-@xiaoyingcsu@gmail.com
-@ellison.carter@gmail.com
+Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G, et al. 2022a. Socioeconomic and Demographic Associations with Wintertime Air Pollution Exposures at Household, Community, and District Scales in Rural Beijing, China. Environ Sci Technol 56:8308–8318; doi:10.1021/acs.est.1c07402.
 
-When I look at this picture, all I think about is transporting all of those sensors and cords across the rooftop and down multiple flights of stairs --- only to be met with a locked door separating us from the driver ... and the student with the key was nowhere to be found.
-[d]#thelivedexperiencereport
-[e]haha! Or when we sorted through supplies in the 110 degree heat and in that gross/dirty/polluted attic at Tsinghua?
-[f]Oh goodness. That is an old memory. Probably my most elevated acute VOC exposure to date. Thankfully, neither of us fell down the stairs. Still, I think, on some days, I'd trade slogging through administrative obstacle courses for slogging through attics with the best fieldwork teammates ever.
-[g]hahaha... and sled-pushing all the boxes down the hallway looking for an open door
-[h]Yes!!! I forgot about that. The poor driver was so patient about the key problem and kept trying to make friendly conversation ... and we were all just totally exhausted and hungry.
-[i]@jill.baumgartner@gmail.com 
-@jill.baumgartner@mcgill.ca 
-@sam.harper@mcgill.ca 
+Li X, Baumgartner J, Harper S, Zhang X, Sternbach T, Barrington-Leigh C, et al. 2022b. Field measurements of indoor and community air quality in rural Beijing before, during, and after the COVID-19 lockdown. Indoor Air 32:e13095; doi:10.1111/ina.13095.
 
-Is the plan to keep this as a separate section or should I be looking through the discussion for places to put some of these ideas?
-[j]For now the plan is to keep separate sub-headings.
-[k]Ok, thanks. Then, I'll keep working in this section to improve the organization, points made, citations / refs, and clarity of argument.
-[l]I can address by Wednesday.
-[m]@ellison.carter@gmail.com. maybe this is a good place to bring low-cost sensors into the conversation? Our study would not have been feasible without these.
-[n]Good idea. I'll come back to this on Wednesday.
-[o]@ellison.carter@gmail.com. Is it a measurement problem (too short duration for a highly variable exposure) or did it not reduce exposure? The group-time models indicate a consistent 10 ug/m3 reduction in PM2.5 but they are imprecise (except for the last cohort).
-[p]I might have to come back to this. I can't yet think of an immediate way to fix the discussion to address this issue. 
+Sternbach TJ, Harper S, Li X, Zhang X, Carter E, Zhang Y, et al. 2022. Effects of indoor and outdoor temperatures on blood pressure and central hemodynamics in a wintertime longitudinal study of Chinese adults. J Hypertension 40:1950–1959; doi:10.1097/HJH.0000000000003198.
 
-Two of the three group-time estimates show a statistically imprecise 10 ug/m3 reduction in personal PM, but one group-time estimate doesn't. Maybe that's enough to say it looks like the intervention worked? 
 
-But then, the interpretation becomes one about the statistical imprecision of the measurement.
-In past work, by us and others, the sample sizes have been smaller, so it has seemed more reasonable to say something about how observing statistical imprecision points to a need for more, better, longer measurements. But, I'm reluctant to draw that conclusion here. I honestly don't think a wise outcome of this study is to say we need more, larger studies measuring air pollution to evaluate intervention effectiveness. The potential benefits of striving for more statistically precise estimates of intervention effectiveness don't seem to outweigh the costs.
 
-In the end, I think there's SUPER modest evidence that the intervention worked (and a strong rationale that it should have lowered personal exposure -- coal use effectively ceased). That we didn't observe a a stronger, more statistically precise measure of treatment effect is too bad, but I really don't want to interpret this to mean others should do more measurements for longer in a larger number of people. That's a bias I am having a tough time overcoming. I'll try to work on this section more -- if you intend to keep it in the discussion -- and try to write something.
-[q]These results = impact of the policy on "point" temperature, measured during HH visits in the 5-min before BP. This is the temperature mediator in the mediation analysis. Shows different cohort-time effects for cohort 4-year 4 compared with long-term temperature cohort-time effects. The 95% CI for the point-temp does include the long-term mean indoor temp, though. @jillbaumgartner@gmail.com
 
-xlsx for these results are here: https://osf.io/7wvra
+
+
+[a]@ellison.carter@gmail.com Do these numbers show air pollution levels in S2? While, these numbers do not match with S2 in Table 5.
+_Assigned to ellison.carter@gmail.com_
+[b]@xiaoyingcsu@gmail.com 
+Can you help me verify that this is true? Based on the reductions observed, I think indoor PM2.5 mass concentrations in treated homes should have reached IT-4, but I'm not sure.
+_Assigned to xiaoyingcsu@gmail.com_
+[c]@talia.sternbach@gmail.com. DO NOT READ THIS UNTIL AFTER THE WEEKEND!! But if you can drop in the figures you created awhile back, that would be great.
+[d]This needs organization and punchier writing but I'm losing steam.
+[e]@talia.sternbach@gmail.com. To discuss in the meeting on Monday.

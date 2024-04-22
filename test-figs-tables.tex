@@ -215,7 +215,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, frame hidden, breakable, boxrule=0pt, sharp corners]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, breakable, enhanced, boxrule=0pt, interior hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners]}{\end{tcolorbox}}\fi
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -375,6 +375,21 @@ Cohort & Time & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI
 
 \begin{table}
 
+\end{table}
+
+\begin{table}
+\centering
+\begin{tabular}{lcccccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{All participants} & \multicolumn{2}{c}{Participants with >1 measure} & \multicolumn{2}{c}{Participants with 3 measures} \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7}
+ & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI)\\
+\midrule
+DiD & 0.17 & (-2.24, 2.58) & 0.13 & (-3.09, 3.35) & -0.57 & (-3.08, 1.94)\\
+Adjusted DiD & 0.55 & (-2.03, 3.13) & 0.24 & (-3.19, 3.67) & 0.27 & (-2.39, 2.92)\\
+Observations & 794 &  & 526 &  & 252 & \\
+\bottomrule
+\end{tabular}
 \end{table}
 
 

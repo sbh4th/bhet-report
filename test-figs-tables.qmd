@@ -730,3 +730,26 @@ kable(bp_het_table,
     alphabet = c("\\\\small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", "\\\\small{F-statistics and p-values for joint tests of equality across cohort and time ATTs}"), 
     general_title = "", threeparttable = T, escape = F)
 ```
+
+```{r, echo=F}
+options(knitr.kable.NA = "\\")
+
+tx <- tibble(
+  p = c("DiD", "Adjusted DiD", "Observations"),
+  est1 =c("0.17", "0.55", "794"), 
+  ci1 = c("(-2.24, 2.58)", "(-2.03, 3.13)", ""),
+  est2 = c("0.13", "0.24", "526"),
+  ci2 = c("(-3.09, 3.35)", "(-3.19, 3.67)", ""),
+  est3 = c("-0.57", "0.27", "252"),
+  ci3 = c("(-3.08, 1.94)", "(-2.39, 2.92)", "")
+)
+
+kable(tx, digits = 2, 
+  col.names = c("", "ATT", "(95%CI)", 
+    "ATT", "(95%CI)", "ATT", "(95%CI)"),
+  "latex", booktabs = T, align = 'lcccccc') %>%
+  kable_styling() %>%
+  add_header_above(c(" " = 1, 
+    "All participants" = 2, "Participants with >1 measure" = 2,
+    "Participants with 3 measures" = 2))
+```

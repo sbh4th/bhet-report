@@ -169,8 +169,9 @@ tx <- tibble(
   s4 = c(68, 780, 162, 1010, 52, 0, 248, 300)
 )
 tx2 <- tx %>% pivot_wider(names_from = g,
-  values_from = c(s1, s2, s4)) %>%
-  arrange(p,s1_1,s2_1,s4_1,s1_2,s2_2,s4_2)
+  values_from = c(s1, s2, s4), 
+  names_vary = "slowest")
+  # arrange(p,s1_1,s2_1,s4_1,s1_2,s2_2,s4_2)
 kable(tx2, 
   col.names = c("Sample", "Season 1", "Season 2", "Season 4", 
     "Season 1", "Season 2", "Season 4"),

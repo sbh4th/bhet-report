@@ -318,12 +318,6 @@ To estimate how much of the CBHP intervention may work through different mechani
 \draw [->] (w) to [bend right=45] (y);
 \end{tikzpicture}
 ```
-```{r flowchart, echo=FALSE, out.width = "80%"}
-#| label: fig-flowchart
-#| fig-cap: "Flow chart of BHET study participation at the participant, household, and village levels across study years. Participation (number of units) in each study year is shown in the white boxes. Additions (+) and losses (-) to the study sample between years are indicated by the light blue arrows. Data collection was limited to household- and village-level environmental measurements due to the COVID-19 pandemic in year 3. We visited 530 households in 41 villages before travel restrictions limited further data collection. This affects the additions and losses to the study sample reported from years 2 to 3 and years 3 to 4."
-knitr::include_graphics(here("images", 
-  "participation-flow-chart-Mar18.png"))
-```
 
 Although other mediated effects such as “natural” direct and indirect effects are theoretically estimable [@vanderweele2015], they involve challenging "cross-world" assumptions that are difficult to anchor in policy [@naimi2014]. Other approaches to mechanisms have focused on principal stratification [e.g., @zigler2016], although conceptual difficulties with identifying the (unverifiable) principal strata make it challenging for questions of mediation. Because controlled direct effects are considered more directly policy relevant for public health, we focus on estimating these mediated quantities.
 

@@ -981,6 +981,39 @@ To come...
 
 # Appendices {.appendix}
 
+## Imputation results
+The figures below show density plots for the values of body mass index, waist circumference, and indoor PM~2.5~ from the multiple imputation models. The red lines show the values for each of the 30 imputed datasets, and the black line shows the value for the observed data. 
+
+```{r mi-plots, echo=FALSE, out.width = "50%"}
+#| fig-cap-location: top
+#| label: fig-afig-mi
+#| fig-cap: "Kernal density plots showing distribution of multiply-imputed values for body mass index (kg/m^2^), waist circumference (cm), and indoor PM~2.5~ (µg/m^3^) (red lines) and observed values (heavy black line)"
+#| fig-subcap: 
+#|   - ""
+#|   - ""
+#|   - ""
+#| layout-nrow: 2
+
+knitr::include_graphics(here("images", 
+  "MI_BMI_density.png"))
+
+knitr::include_graphics(here("images", 
+ "MI_waist_circ_density.png"))
+
+knitr::include_graphics(here("images", 
+ "MI_indoorPM_density.png"))
+
+```
+
+
+```{r mi-plots, echo=FALSE, out.width = "80%"}
+#| label: fig-flowchart
+#| fig-cap: "Kernal density plots showing distribution of multiply-imputed values for BMI, Waist circumference, and indoor PM~2.5~ (red lines) and observed values (heavy black line)"
+```
+![BMI]("images/MI_BMI_density.png")
+
+
+
 ## Participant flow diagram
 
 ```{r flowchart, echo=FALSE, out.width = "80%"}

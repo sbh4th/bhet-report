@@ -761,7 +761,7 @@ kable(ctt_table, digits = 2,
   pack_rows("Minimum indoor temperature (°C)", 25, 36)
 ```
 
-```{r, echo = F}
+```{r, echo = F, eval=F}
 ctt <- read_xlsx(here("data-clean", 
   "ct_temp_table.xlsx"))
 
@@ -839,4 +839,25 @@ kable(ctt_temp_het_table, digits = 2,
   collapse_rows(columns = 1, valign = "top") %>%
   add_header_above(c(" " = 2, "Point temp (°C)" = 3,
     "Mean temp (°C)" = 3, "Min temp (°C)" = 3))
+```
+
+```{r mi-plots, echo=FALSE, out.width = "50%"}
+#| fig-cap-location: top
+#| label: fig-mi
+#| fig-cap: "Kernal density plots showing distribution of multiply-imputed values for BMI, waist circumference (cm), and indoor PM~2.5~ (µg/m^3^) (red lines) and observed values (heavy black line)"
+#| fig-subcap: 
+#|   - ""
+#|   - ""
+#|   - ""
+#| layout-nrow: 2
+
+knitr::include_graphics(here("images", 
+  "MI_BMI_density.png"))
+
+knitr::include_graphics(here("images", 
+ "MI_waist_circ_density.png"))
+
+knitr::include_graphics(here("images", 
+ "MI_indoorPM_density.png"))
+
 ```

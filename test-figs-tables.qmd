@@ -732,24 +732,111 @@ kable(bp_het_table,
 ```
 
 ```{r, echo=F}
-options(knitr.kable.NA = "\\")
+ctt <- read_xlsx(here("data-clean", 
+  "ct_temp_table.xlsx"))
 
-tx <- tibble(
-  p = c("DiD", "Adjusted DiD", "Observations"),
-  est1 =c("0.17", "0.55", "794"), 
-  ci1 = c("(-2.24, 2.58)", "(-2.03, 3.13)", ""),
-  est2 = c("0.13", "0.24", "526"),
-  ci2 = c("(-3.09, 3.35)", "(-3.19, 3.67)", ""),
-  est3 = c("-0.57", "0.27", "252"),
-  ci3 = c("(-3.08, 1.94)", "(-2.39, 2.92)", "")
-)
+ctt_table <- ctt %>% 
+  pivot_longer(!ct_labels, names_to = "outcome", 
+    values_to = "est_ci", cols_vary = "slowest") %>%
+  separate_wider_delim(est_ci, delim = "(", 
+    names = c("att", "attci"), cols_remove = TRUE) %>% 
+  mutate(attci = paste("(", attci, sep=""),
+    measure = rep(c("All", "Daytime", "Heating season",
+      "Daytime heating season", "All", "Heating season"),
+      each = 6),
+    cohort = rep(c(2019,2019,2019,2020,2020,2021), 
+                 times = 6),
+    time = rep(c(2019,2020,2021,2020,2021,2021), 
+               times = 6)) %>%
+  select(cohort, time, measure, att, attci) %>%
+  relocate(measure, cohort, time)
+    
+kable(ctt_table, digits = 2, 
+      col.names = c("", "Cohort", "Time", "ATT", "(95%CI)"),
+  linesep = "", "latex", booktabs = T, align = 'lllcc') %>%
+  kable_styling(font_size = 9, 
+                latex_options = "HOLD_position") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  pack_rows("Mean indoor temperature (°C)", 1, 24) %>%
+  pack_rows("Minimum indoor temperature (°C)", 25, 36)
+```
 
-kable(tx, digits = 2, 
-  col.names = c("", "ATT", "(95%CI)", 
-    "ATT", "(95%CI)", "ATT", "(95%CI)"),
-  "latex", booktabs = T, align = 'lcccccc') %>%
-  kable_styling() %>%
-  add_header_above(c(" " = 1, 
-    "All participants" = 2, "Participants with >1 measure" = 2,
-    "Participants with 3 measures" = 2))
+```{r, echo = F}
+ctt <- read_xlsx(here("data-clean", 
+  "ct_temp_table.xlsx"))
+
+options(knitr.kable.NA = " ")
+ctt_table <- ctt %>% 
+  pivot_longer(!ct_labels, names_to = "outcome", 
+    values_to = "est_ci", cols_vary = "slowest") %>%
+  separate_wider_delim(est_ci, delim = "(", 
+    names = c("att", "attci"), cols_remove = TRUE) %>% 
+  mutate(attci = paste("(", attci, sep=""),
+    measure = rep(c("All", "Daytime", "Heating season",
+      "Daytime heating season", "All", "Heating season"),
+      each = 6),
+    stat = c(rep(2, times = 24), rep(3, times = 12)),
+    cohort = rep(c(2019,2019,2019,2020,2020,2021), 
+                 times = 6),
+    time = rep(c(2019,2020,2021,2020,2021,2021), 
+               times = 6),
+    att = as.numeric(att)) %>%
+  select(cohort, stat, time, measure, att, attci) %>%
+  relocate(measure, stat, cohort, time)
+
+ctt_point_temp <- read_xlsx(here("data-clean",
+  "unadjusted_pointtemp_results_apr3.xlsx")) %>%
+  filter(type != "Overall ATT") %>%
+  separate_wider_delim(att, delim = "(", 
+    names = c("att", "attci"), cols_remove = TRUE) %>%
+  mutate(att = as.numeric(att),
+         measure = "All",
+         cohort = c(2019, 2019, 2020, 2021),
+         time = c(2019, 2021, 2021, 2021),
+         stat = 1,
+         attci = paste("(", attci, sep="")) %>%
+  select(stat, measure, cohort, time, att, attci) %>%
+  relocate(measure, stat, cohort, time)
+
+ctt_temp_atts <- bind_rows(ctt_point_temp, ctt_table)
+
+ctt_het_stats <- read_xlsx(here("data-clean",
+  "gt_temp_heterogeneity.xlsx"))  %>%
+  rename(measure = temp_metric,
+         test = f_stat,
+         pval = p_value) %>%
+  mutate(measure = c("All", "Daytime", "Heating season",
+      "Daytime heating season", "All", "Heating season",
+      "All"),
+    stat = c(2,2,2,2,3,3,1),
+    test = sprintf("%.1f", test),
+    pval = sprintf("%.3f", pval),
+    cohort = 2021,
+    time = 2021) %>%
+  select(measure, stat, cohort, time, test, pval)
+
+
+ctt_temp_het_table <- ctt_temp_atts %>% 
+  left_join(ctt_het_stats, 
+    join_by(measure, stat, cohort, time)) %>%
+  pivot_wider(names_from = stat, 
+    values_from = c(att,attci,test,pval), 
+    names_vary = "slowest") %>%
+  arrange(measure, cohort, time) %>%
+  select(-measure, -test_1, -test_2, -test_3)
+    
+kable(ctt_temp_het_table, digits = 2, 
+  col.names = c("Cohort", "Time", "ATT", "(95%CI)",
+    "p-value", "ATT", "(95%CI)", "p-value",
+    "ATT", "(95%CI)", "p-value"), 
+  "latex", booktabs = T) %>%
+  kable_styling(latex_options = "HOLD_position",
+    font_size = 9) %>%
+  pack_rows("All times", 1, 6) %>%
+  pack_rows("Daytime", 7, 12) %>%
+  pack_rows("Daytime heating", 13, 18) %>%
+  pack_rows("Heating season", 19, 24) %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  add_header_above(c(" " = 2, "Point temp (°C)" = 3,
+    "Mean temp (°C)" = 3, "Min temp (°C)" = 3))
 ```

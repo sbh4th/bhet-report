@@ -215,7 +215,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, breakable, enhanced, boxrule=0pt, interior hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, enhanced, interior hidden, borderline west={3pt}{0pt}{shadecolor}, frame hidden, sharp corners, breakable]}{\end{tcolorbox}}\fi
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -377,19 +377,160 @@ Cohort & Time & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI
 
 \end{table}
 
-\begin{table}
-\centering
-\begin{tabular}{lcccccc}
+\begin{table}[H]
+\centering\begingroup\fontsize{9}{11}\selectfont
+
+\begin{tabular}{lllcc}
 \toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{All participants} & \multicolumn{2}{c}{Participants with >1 measure} & \multicolumn{2}{c}{Participants with 3 measures} \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7}
- & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI)\\
+ & Cohort & Time & ATT & (95\%CI)\\
 \midrule
-DiD & 0.17 & (-2.24, 2.58) & 0.13 & (-3.09, 3.35) & -0.57 & (-3.08, 1.94)\\
-Adjusted DiD & 0.55 & (-2.03, 3.13) & 0.24 & (-3.19, 3.67) & 0.27 & (-2.39, 2.92)\\
-Observations & 794 &  & 526 &  & 252 & \\
+\addlinespace[0.3em]
+\multicolumn{5}{l}{\textbf{Mean indoor temperature (°C)}}\\
+\hspace{1em} & 2019 & 2019 & 0.43 & (-0.71, 1.57)\\
+\cmidrule{2-5}
+\hspace{1em} & 2019 & 2020 & 0.52 & (-0.22, 1.26)\\
+\cmidrule{2-5}
+\hspace{1em} & 2019 & 2021 & 0.79 & (0, 1.57)\\
+\cmidrule{2-5}
+\hspace{1em} & 2020 & 2020 & 0.87 & (-0.2, 1.93)\\
+\cmidrule{2-5}
+\hspace{1em} & 2020 & 2021 & 0.58 & (-0.66, 1.82)\\
+\cmidrule{2-5}
+\hspace{1em}\multirow[t]{-6}{*}{\raggedright\arraybackslash All} & 2021 & 2021 & 1.06 & (0.32, 1.79)\\
+\cmidrule{1-5}
+\hspace{1em} & 2019 & 2019 & 0.44 & (-0.96, 1.83)\\
+\cmidrule{2-5}
+\hspace{1em} & 2019 & 2020 & 1.26 & (0.36, 2.17)\\
+\cmidrule{2-5}
+\hspace{1em} & 2019 & 2021 & 1.5 & (0.55, 2.46)\\
+\cmidrule{2-5}
+\hspace{1em} & 2020 & 2020 & 0.28 & (-1.45, 2.02)\\
+\cmidrule{2-5}
+\hspace{1em} & 2020 & 2021 & 0.13 & (-1.7, 1.97)\\
+\cmidrule{2-5}
+\hspace{1em}\multirow[t]{-6}{*}{\raggedright\arraybackslash Daytime} & 2021 & 2021 & 1.44 & (0.64, 2.25)\\
+\cmidrule{1-5}
+\hspace{1em} & 2019 & 2019 & 1.05 & (-0.1, 2.2)\\
+\cmidrule{2-5}
+\hspace{1em} & 2019 & 2020 & 1.23 & (-0.11, 2.58)\\
+\cmidrule{2-5}
+\hspace{1em} & 2019 & 2021 & 2.07 & (0.88, 3.27)\\
+\cmidrule{2-5}
+\hspace{1em} & 2020 & 2020 & 2.71 & (2.04, 3.37)\\
+\cmidrule{2-5}
+\hspace{1em} & 2020 & 2021 & 2.48 & (1.33, 3.62)\\
+\cmidrule{2-5}
+\hspace{1em}\multirow[t]{-6}{*}{\raggedright\arraybackslash Heating season} & 2021 & 2021 & 1.97 & (0.53, 3.41)\\
+\cmidrule{1-5}
+\hspace{1em} & 2019 & 2019 & 0.8 & (-0.48, 2.09)\\
+\cmidrule{2-5}
+\hspace{1em} & 2019 & 2020 & 1.43 & (0.04, 2.83)\\
+\cmidrule{2-5}
+\hspace{1em} & 2019 & 2021 & 2.33 & (1.03, 3.62)\\
+\cmidrule{2-5}
+\hspace{1em} & 2020 & 2020 & 2.63 & (1.87, 3.39)\\
+\cmidrule{2-5}
+\hspace{1em} & 2020 & 2021 & 2.46 & (1.46, 3.46)\\
+\cmidrule{2-5}
+\hspace{1em}\multirow[t]{-6}{*}{\raggedright\arraybackslash Daytime heating season} & 2021 & 2021 & 2.13 & (0.67, 3.59)\\
+\cmidrule{1-5}
+\addlinespace[0.3em]
+\multicolumn{5}{l}{\textbf{Minimum indoor temperature (°C)}}\\
+\hspace{1em} & 2019 & 2019 & 1.96 & (0.43, 3.48)\\
+\cmidrule{2-5}
+\hspace{1em} & 2019 & 2020 & 2.42 & (0.54, 4.3)\\
+\cmidrule{2-5}
+\hspace{1em} & 2019 & 2021 & 4.93 & (2.28, 7.58)\\
+\cmidrule{2-5}
+\hspace{1em} & 2020 & 2020 & 5 & (3.22, 6.79)\\
+\cmidrule{2-5}
+\hspace{1em} & 2020 & 2021 & 6.87 & (4.35, 9.39)\\
+\cmidrule{2-5}
+\hspace{1em}\multirow[t]{-6}{*}{\raggedright\arraybackslash All} & 2021 & 2021 & 2.04 & (0.08, 4)\\
+\cmidrule{1-5}
+\hspace{1em} & 2019 & 2019 & 1.94 & (0.42, 3.47)\\
+\cmidrule{2-5}
+\hspace{1em} & 2019 & 2020 & 2.41 & (0.53, 4.3)\\
+\cmidrule{2-5}
+\hspace{1em} & 2019 & 2021 & 5.34 & (2.66, 8.02)\\
+\cmidrule{2-5}
+\hspace{1em} & 2020 & 2020 & 4.35 & (3.17, 5.53)\\
+\cmidrule{2-5}
+\hspace{1em} & 2020 & 2021 & 6.27 & (3.73, 8.81)\\
+\cmidrule{2-5}
+\hspace{1em}\multirow[t]{-6}{*}{\raggedright\arraybackslash Heating season} & 2021 & 2021 & 2.23 & (0.26, 4.21)\\
 \bottomrule
 \end{tabular}
+\endgroup{}
+\end{table}
+
+\begin{table}[H]
+\centering\begingroup\fontsize{9}{11}\selectfont
+
+\begin{tabular}{rrrllrllrll}
+\toprule
+\multicolumn{2}{c}{ } & \multicolumn{3}{c}{Point temp (°C)} & \multicolumn{3}{c}{Mean temp (°C)} & \multicolumn{3}{c}{Min temp (°C)} \\
+\cmidrule(l{3pt}r{3pt}){3-5} \cmidrule(l{3pt}r{3pt}){6-8} \cmidrule(l{3pt}r{3pt}){9-11}
+Cohort & Time & ATT & (95\%CI) & p-value & ATT & (95\%CI) & p-value & ATT & (95\%CI) & p-value\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{11}{l}{\textbf{All times}}\\
+ & 2019 & 1.77 & (0.66, 2.88) &  & 0.43 & (-0.71, 1.57) &  & 1.96 & (0.43, 3.48) & \\
+\cmidrule{2-11}
+ & 2020 &  &  &  & 0.52 & (-0.22, 1.26) &  & 2.42 & (0.54, 4.3) & \\
+\cmidrule{2-11}
+\multirow[t]{-3}{*}{\raggedleft\arraybackslash \hspace{1em}2019} & 2021 & 2.29 & (0.51, 4.07) &  & 0.79 & (0, 1.57) &  & 4.93 & (2.28, 7.58) & \\
+\cmidrule{1-11}
+ & 2020 &  &  &  & 0.87 & (-0.2, 1.93) &  & 5.00 & (3.22, 6.79) & \\
+\cmidrule{2-11}
+\multirow[t]{-2}{*}{\raggedleft\arraybackslash \hspace{1em}2020} & 2021 & 2.36 & (0.54, 4.17) &  & 0.58 & (-0.66, 1.82) &  & 6.87 & (4.35, 9.39) & \\
+\cmidrule{1-11}
+\hspace{1em}2021 & 2021 & 0.64 & (-1.08, 2.35) & 0.440 & 1.06 & (0.32, 1.79) & 0.320 & 2.04 & (0.08, 4) & 0.000\\
+\cmidrule{1-11}
+\addlinespace[0.3em]
+\multicolumn{11}{l}{\textbf{Daytime}}\\
+ & 2019 &  &  &  & 0.44 & (-0.96, 1.83) &  &  &  & \\
+\cmidrule{2-11}
+ & 2020 &  &  &  & 1.26 & (0.36, 2.17) &  &  &  & \\
+\cmidrule{2-11}
+\multirow[t]{-3}{*}{\raggedleft\arraybackslash \hspace{1em}2019} & 2021 &  &  &  & 1.50 & (0.55, 2.46) &  &  &  & \\
+\cmidrule{1-11}
+ & 2020 &  &  &  & 0.28 & (-1.45, 2.02) &  &  &  & \\
+\cmidrule{2-11}
+\multirow[t]{-2}{*}{\raggedleft\arraybackslash \hspace{1em}2020} & 2021 &  &  &  & 0.13 & (-1.7, 1.97) &  &  &  & \\
+\cmidrule{1-11}
+\hspace{1em}2021 & 2021 &  &  &  & 1.44 & (0.64, 2.25) & 0.260 &  &  & \\
+\cmidrule{1-11}
+\addlinespace[0.3em]
+\multicolumn{11}{l}{\textbf{Daytime heating}}\\
+ & 2019 &  &  &  & 0.80 & (-0.48, 2.09) &  &  &  & \\
+\cmidrule{2-11}
+ & 2020 &  &  &  & 1.43 & (0.04, 2.83) &  &  &  & \\
+\cmidrule{2-11}
+\multirow[t]{-3}{*}{\raggedleft\arraybackslash \hspace{1em}2019} & 2021 &  &  &  & 2.33 & (1.03, 3.62) &  &  &  & \\
+\cmidrule{1-11}
+ & 2020 &  &  &  & 2.63 & (1.87, 3.39) &  &  &  & \\
+\cmidrule{2-11}
+\multirow[t]{-2}{*}{\raggedleft\arraybackslash \hspace{1em}2020} & 2021 &  &  &  & 2.46 & (1.46, 3.46) &  &  &  & \\
+\cmidrule{1-11}
+\hspace{1em}2021 & 2021 &  &  &  & 2.13 & (0.67, 3.59) & 0.000 &  &  & \\
+\cmidrule{1-11}
+\addlinespace[0.3em]
+\multicolumn{11}{l}{\textbf{Heating season}}\\
+ & 2019 &  &  &  & 1.05 & (-0.1, 2.2) &  & 1.94 & (0.42, 3.47) & \\
+\cmidrule{2-11}
+ & 2020 &  &  &  & 1.23 & (-0.11, 2.58) &  & 2.41 & (0.53, 4.3) & \\
+\cmidrule{2-11}
+\multirow[t]{-3}{*}{\raggedleft\arraybackslash \hspace{1em}2019} & 2021 &  &  &  & 2.07 & (0.88, 3.27) &  & 5.34 & (2.66, 8.02) & \\
+\cmidrule{1-11}
+ & 2020 &  &  &  & 2.71 & (2.04, 3.37) &  & 4.35 & (3.17, 5.53) & \\
+\cmidrule{2-11}
+\multirow[t]{-2}{*}{\raggedleft\arraybackslash \hspace{1em}2020} & 2021 &  &  &  & 2.48 & (1.33, 3.62) &  & 6.27 & (3.73, 8.81) & \\
+\cmidrule{1-11}
+\hspace{1em}2021 & 2021 &  &  &  & 1.97 & (0.53, 3.41) & 0.000 & 2.23 & (0.26, 4.21) & 0.000\\
+\bottomrule
+\end{tabular}
+\endgroup{}
 \end{table}
 
 

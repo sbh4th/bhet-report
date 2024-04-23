@@ -42,7 +42,7 @@
 \usepackage{xcolor}
 \usepackage[right=1in,left=1in]{geometry}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
-\setcounter{secnumdepth}{5}
+\setcounter{secnumdepth}{3}
 % Make \paragraph and \subparagraph free-standing
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
@@ -196,11 +196,11 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-04-22}
+\date{2024-04-23}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, frame hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners, enhanced, interior hidden, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, interior hidden, breakable, enhanced, frame hidden]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -711,7 +711,7 @@ bathing. Field blanks for personal air pollution exposure measurements
 were collected at a rate of \textasciitilde10\% in each village.
 
 \hypertarget{gravimetric-analyses-of-ptfe-filter-based-pm2.5-samples}{%
-\subsubsection{\texorpdfstring{Gravimetric analyses of PTFE filter-based
+\paragraph{\texorpdfstring{Gravimetric analyses of PTFE filter-based
 PM\textsubscript{2.5}
 samples}{Gravimetric analyses of PTFE filter-based PM2.5 samples}}\label{gravimetric-analyses-of-ptfe-filter-based-pm2.5-samples}}
 
@@ -777,7 +777,7 @@ aimed to maintain consistent and accurate measurements from the PM
 sensors throughout the study.
 
 \hypertarget{chemical-analysis-of-pm-mass}{%
-\subsubsection{Chemical analysis of PM
+\paragraph{Chemical analysis of PM
 mass}\label{chemical-analysis-of-pm-mass}}
 
 We analyzed the chemical composition of community outdoor and personal
@@ -1075,11 +1075,11 @@ The first aliquot was analyzed for glucose and a complete lipid profile
 within two months of collection, and results were communicated to
 participants. The second aliquot was stored in the -80°C freezer for
 analysis of biomarkers of systemic inflammation {[}C-reactive protein
-(CRP), interleukin-6 (IL-6), tumour necrosis factor alpha (TNF-ɑ{]} and
-oxidative stress {[}8-hydroxy-2'-deoxyguanosine (8-OHdG) and
-malondialdehyde (MDA){]} at the University of the Chinese Academy of
-Sciences between July and September of 2023. These biomarkers were
-selected because they are associated with the development of
+(CRP), interleukin-6 (IL-6), tumour necrosis factor alpha
+(TNF-\(\alpha\)) and oxidative stress {[}8-hydroxy-2'-deoxyguanosine
+(8-OHdG) and malondialdehyde (MDA){]} at the University of the Chinese
+Academy of Sciences between July and September of 2023. These biomarkers
+were selected because they are associated with the development of
 cardiovascular disease and events (e.g., Danesh 2008; Pearson 2003;
 Ridker 2000; 2001; ERF 2012), and both acute and longer-term exposures
 to air pollution have been associated with changes in inflammatory and
@@ -1087,7 +1087,7 @@ oxidative stress markers (e.g., Pope 2004; Rückerl 2007; Rich 2012;
 Kipen 2010; Huang 2012).
 
 We followed standard methods for analysis (FDA Guidance, 2018). For
-inflammatory markers (IL-6, TNF-α, CRP), the optic densities (OD) of all
+inflammatory markers (IL-6, TNF-𝛼, CRP), the optic densities (OD) of all
 samples were measured using an automated ELISA reader. Every plate had 8
 standard samples used to generate a standard curve that related OD and
 standard inflammatory marker concentration. A standard curve for each
@@ -1674,15 +1674,15 @@ household (for personal measures of air pollution).
 
 \hypertarget{tbl-did-med}{}
 \begin{table}
-\caption{\label{tbl-did-med}Treatment effect on outdoor and indoor PM\textsubscript{2.5}, as well as
-personal exposure to PM\textsubscript{2.5} and black carbon. Outdoor and
-indoor PM\textsubscript{2.5} were derived from sensor measurements after
-being adjusted based on co-located gravimetric PM\textsubscript{2.5}
-measurements. 24h indicates the mean PM\textsubscript{2.5}
-concentrations during the 24 hours when personal exposure samples were
-collected in each village. `Seasonal' indicates the seasonal mean
-PM\textsubscript{2.5} concentrations in each village, from Jan. 15th to
-Mar. 15th. }\tabularnewline
+\caption{\label{tbl-did-med}Treatment effect on outdoor and indoor PM\textsubscript{2.5}, personal
+exposure to PM\textsubscript{2.5} and black carbon, and measures of
+indoor temperature. Outdoor and indoor PM\textsubscript{2.5} were
+derived from sensor measurements after being adjusted based on
+co-located gravimetric PM\textsubscript{2.5} measurements. 24h indicates
+the mean PM\textsubscript{2.5} concentrations during the 24 hours when
+personal exposure samples were collected in each village. `Seasonal'
+indicates the seasonal mean PM\textsubscript{2.5} concentrations in each
+village, from Jan. 15th to Mar. 15th. }\tabularnewline
 
 \centering
 \begin{threeparttable}
@@ -1708,19 +1708,19 @@ Mar. 15th. }\tabularnewline
 \cmidrule{1-6}
 \addlinespace[0.3em]
 \multicolumn{6}{l}{\textbf{Indoor temperature (°C)}}\\
-\hspace{1em}Point temp & Mean & 1.96 & (0.96, 2.96) & 1.96 & (0.96, 2.96)\\
+\hspace{1em}Point & Mean & 1.96 & (0.96, 2.96) & 1.96 & (0.96, 2.96)\\
 \cmidrule{1-6}
 \hspace{1em} & Mean (all) & 0.64 & (0, 1.29) & 0.64 & (0, 1.29)\\
 \cmidrule{2-6}
 \hspace{1em} & Mean (daytime) & 0.82 & (-0.08, 1.72) & 0.82 & (-0.08, 1.72)\\
 \cmidrule{2-6}
-\hspace{1em} & Mean (heating) & 1.80 & (0.96, 2.64) & 1.80 & (0.96, 2.64)\\
+\hspace{1em} & Mean (heating season) & 1.80 & (0.96, 2.64) & 1.80 & (0.96, 2.64)\\
 \cmidrule{2-6}
-\hspace{1em} & Mean (daytime heating) & 1.85 & (0.97, 2.73) & 1.85 & (0.97, 2.73)\\
+\hspace{1em} & Mean (daytime heating season) & 1.85 & (0.97, 2.73) & 1.85 & (0.97, 2.73)\\
 \cmidrule{2-6}
 \hspace{1em} & Min. (all) & 3.83 & (2.26, 5.39) & 3.83 & (2.26, 5.39)\\
 \cmidrule{2-6}
-\multirow[t]{-6}{*}[5\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Seasonal} & Min. (heating) & 3.72 & (2.19, 5.25) & 3.72 & (2.19, 5.25)\\
+\multirow[t]{-6}{*}[5\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Seasonal} & Min. (heating season) & 3.72 & (2.19, 5.25) & 3.72 & (2.19, 5.25)\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
@@ -3262,23 +3262,6 @@ All & All & -2361 & (-2677, -2044) & -487 & (-805, -168)\\
 \end{tabular}
 \end{table}
 
-Sensitivity analyses: {[}{[}{[}Jill to edit this table include all
-sensitivity analysis for total effects models{]}{]}{]}
-
-\begin{verbatim}
-Number of participants (observations)
-Mean change or percent change in FeNO (ppb)
-Limited to participants with two or more measurements
-142 (569)
--0.2 [-3.0, 2.5]
-Limited to participants with three measurements
-95 (285)
-0.4 [-2.8, 3.6]
-Analysis with log-transformed outcome [ln(FeNO)]
-511 (843)
--3.8% [-16.9, 11.4]
-\end{verbatim}
-
 \newpage
 
 \hypertarget{heterogeneity-in-treament-effects}{%
@@ -3352,7 +3335,79 @@ All & All & -14.20 & (-53.94, 25.54) & -36.19 & (-60.74, -11.65)\\
 \hypertarget{indoor-temperature}{%
 \subsubsection{Indoor temperature}\label{indoor-temperature}}
 
-{[}To come\ldots{]}
+\hypertarget{tbl-a-het-temp}{}
+\begin{table}[H]
+\caption{\label{tbl-a-het-temp}Heterogenous treatment effects: Indoor temperature }\tabularnewline
+
+\centering\begingroup\fontsize{9}{11}\selectfont
+
+\begin{tabular}{rrrllrllrll}
+\toprule
+\multicolumn{2}{c}{ } & \multicolumn{3}{c}{Point temp (°C)} & \multicolumn{3}{c}{Mean temp (°C)} & \multicolumn{3}{c}{Min temp (°C)} \\
+\cmidrule(l{3pt}r{3pt}){3-5} \cmidrule(l{3pt}r{3pt}){6-8} \cmidrule(l{3pt}r{3pt}){9-11}
+Cohort & Time & ATT & (95\%CI) & p-value & ATT & (95\%CI) & p-value & ATT & (95\%CI) & p-value\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{11}{l}{\textbf{All times}}\\
+ & 2019 & 1.77 & (0.66, 2.88) &  & 0.43 & (-0.71, 1.57) &  & 1.96 & (0.43, 3.48) & \\
+\cmidrule{2-11}
+ & 2020 &  &  &  & 0.52 & (-0.22, 1.26) &  & 2.42 & (0.54, 4.3) & \\
+\cmidrule{2-11}
+\multirow[t]{-3}{*}{\raggedleft\arraybackslash \hspace{1em}2019} & 2021 & 2.29 & (0.51, 4.07) &  & 0.79 & (0, 1.57) &  & 4.93 & (2.28, 7.58) & \\
+\cmidrule{1-11}
+ & 2020 &  &  &  & 0.87 & (-0.2, 1.93) &  & 5.00 & (3.22, 6.79) & \\
+\cmidrule{2-11}
+\multirow[t]{-2}{*}{\raggedleft\arraybackslash \hspace{1em}2020} & 2021 & 2.36 & (0.54, 4.17) &  & 0.58 & (-0.66, 1.82) &  & 6.87 & (4.35, 9.39) & \\
+\cmidrule{1-11}
+\hspace{1em}2021 & 2021 & 0.64 & (-1.08, 2.35) & 0.440 & 1.06 & (0.32, 1.79) & 0.320 & 2.04 & (0.08, 4) & 0.000\\
+\cmidrule{1-11}
+\addlinespace[0.3em]
+\multicolumn{11}{l}{\textbf{Daytime}}\\
+ & 2019 &  &  &  & 0.44 & (-0.96, 1.83) &  &  &  & \\
+\cmidrule{2-11}
+ & 2020 &  &  &  & 1.26 & (0.36, 2.17) &  &  &  & \\
+\cmidrule{2-11}
+\multirow[t]{-3}{*}{\raggedleft\arraybackslash \hspace{1em}2019} & 2021 &  &  &  & 1.50 & (0.55, 2.46) &  &  &  & \\
+\cmidrule{1-11}
+ & 2020 &  &  &  & 0.28 & (-1.45, 2.02) &  &  &  & \\
+\cmidrule{2-11}
+\multirow[t]{-2}{*}{\raggedleft\arraybackslash \hspace{1em}2020} & 2021 &  &  &  & 0.13 & (-1.7, 1.97) &  &  &  & \\
+\cmidrule{1-11}
+\hspace{1em}2021 & 2021 &  &  &  & 1.44 & (0.64, 2.25) & 0.260 &  &  & \\
+\cmidrule{1-11}
+\addlinespace[0.3em]
+\multicolumn{11}{l}{\textbf{Daytime heating}}\\
+ & 2019 &  &  &  & 0.80 & (-0.48, 2.09) &  &  &  & \\
+\cmidrule{2-11}
+ & 2020 &  &  &  & 1.43 & (0.04, 2.83) &  &  &  & \\
+\cmidrule{2-11}
+\multirow[t]{-3}{*}{\raggedleft\arraybackslash \hspace{1em}2019} & 2021 &  &  &  & 2.33 & (1.03, 3.62) &  &  &  & \\
+\cmidrule{1-11}
+ & 2020 &  &  &  & 2.63 & (1.87, 3.39) &  &  &  & \\
+\cmidrule{2-11}
+\multirow[t]{-2}{*}{\raggedleft\arraybackslash \hspace{1em}2020} & 2021 &  &  &  & 2.46 & (1.46, 3.46) &  &  &  & \\
+\cmidrule{1-11}
+\hspace{1em}2021 & 2021 &  &  &  & 2.13 & (0.67, 3.59) & 0.000 &  &  & \\
+\cmidrule{1-11}
+\addlinespace[0.3em]
+\multicolumn{11}{l}{\textbf{Heating season}}\\
+ & 2019 &  &  &  & 1.05 & (-0.1, 2.2) &  & 1.94 & (0.42, 3.47) & \\
+\cmidrule{2-11}
+ & 2020 &  &  &  & 1.23 & (-0.11, 2.58) &  & 2.41 & (0.53, 4.3) & \\
+\cmidrule{2-11}
+\multirow[t]{-3}{*}{\raggedleft\arraybackslash \hspace{1em}2019} & 2021 &  &  &  & 2.07 & (0.88, 3.27) &  & 5.34 & (2.66, 8.02) & \\
+\cmidrule{1-11}
+ & 2020 &  &  &  & 2.71 & (2.04, 3.37) &  & 4.35 & (3.17, 5.53) & \\
+\cmidrule{2-11}
+\multirow[t]{-2}{*}{\raggedleft\arraybackslash \hspace{1em}2020} & 2021 &  &  &  & 2.48 & (1.33, 3.62) &  & 6.27 & (3.73, 8.81) & \\
+\cmidrule{1-11}
+\hspace{1em}2021 & 2021 &  &  &  & 1.97 & (0.53, 3.41) & 0.000 & 2.23 & (0.26, 4.21) & 0.000\\
+\bottomrule
+\end{tabular}
+\endgroup{}
+\end{table}
+
+\newpage
 
 \hypertarget{blood-pressure-outcomes}{%
 \subsubsection{Blood pressure outcomes}\label{blood-pressure-outcomes}}
@@ -3361,7 +3416,7 @@ Table~\ref{tbl-bp-het} shows ATTs by treatment cohort and time, as well
 as the results of joint tests of heterogeneity across ATTs.
 
 \hypertarget{tbl-bp-het}{}
-\begin{table}
+\begin{table}[H]
 \caption{\label{tbl-bp-het}Heterogenous treatment effects for the total effect of the CBHP policy
 on blood pressure. }\tabularnewline
 
@@ -3406,6 +3461,8 @@ Cohort & Time & ATT & (95\%CI) & F-Statistic & p-value\\
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
+
+\newpage
 
 \hypertarget{mediation-analyses-for-blood-pressure}{%
 \subsubsection{Mediation analyses for blood

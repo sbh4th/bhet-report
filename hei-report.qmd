@@ -15,6 +15,7 @@ format:
    toc: true
    keep-tex: true
    number-sections: true
+   number-depth: 3
    include-in-header:
       - text: |
           \usepackage{colortbl}
@@ -191,7 +192,7 @@ As with the community outdoor air sampling, to support post-sampling determinati
 
 To measure personal exposure we used two types of samplers: Personal Exposure Monitors (PEMs, Apex Pro; Casella, UK) and Ultrasonic Personal Aerosol Samplers (UPAS, Access Sensor Technologies, Fort Collins, CO, USA). PEMs actively sampled air at a flow rate of 1.8 L/min, and UPAS sampled air at 1.0 L/min [@volckens2017]. Both samplers housed 37 mm PTFE filters (VWR, 2.0-μm pore size) and were equipped with a cyclone inlet with a 2.5 μm cutpoint. Sampler flow rates were calibrated the night before deployment and measured immediately after the sampling period. Only 2% of the post-sampling measurements deviated from the target flow rate by greater than +/-10%. Participants were instructed to wear a small waistpack (for the PEM and sampling pump) or an arm band or cross-body sling (for the UPAS) for 24 hours, which they could remove from their body and place within 2 meters while sleeping, sitting, or bathing. Field blanks for personal air pollution exposure measurements were collected at a rate of ~10% in each village. 
 
-### Gravimetric analyses of PTFE filter-based PM~2.5~ samples
+#### Gravimetric analyses of PTFE filter-based PM~2.5~ samples
 
 All filters were placed in individually labeled cases, sealed in plastic bags, and then transported to a field laboratory and immediately stored in a -20°C freezer. Following completion of the field sampling campaign, the samples and blanks were transported to Colorado State University, where they were stored in a -20°C freezer prior to gravimetric and chemical analysis of PM~2.5~.
 
@@ -203,7 +204,7 @@ We established linear regression models between the filter-based PM~2.5~ mass co
 
 The PM sensors were also evaluated before and after each season to identify any sensors that needed further repair or replacement. The PM~2.5~ sensors underwent a calibration process that began with synchronization to real-time PM~2.5~ monitors at Peking University (PKU) campus. This pre- and post-season calibration included a week-long session using the Beta Attenuation Monitor (BAM) alongside daily 24-hour filter samples. During this time, approximately 240 sensors were placed on the rooftop of the College of Urban and Environmental Sciences building, each recording data every minute. A similar approach was taken at the University of Chinese Academy of Sciences (UCAS) campus, where around 400 PM sensors were installed on the rooftop of the Environmental Monitoring Site of the College of Resources and Environment, with data logging at one-minute intervals. Daily collections of 24-hour Zeflour (Teflon) and quartz filter samples accompanied the sensors’ measurements to ensure accuracy. The calibration process was repeated post-fieldwork to account for any potential shifts or discrepancies in sensor performance. This approach aimed to maintain consistent and accurate measurements from the PM sensors throughout the study.
 
-### Chemical analysis of PM mass
+#### Chemical analysis of PM mass
 
 We analyzed the chemical composition of community outdoor and personal exposure PM~2.5~ samples from each season to quantify the individual components and species. PM~2.5~ component concentrations were determined within each community by dividing the quantified component mass by the sampled air volume, after correcting for field blanks collected in the corresponding season.
 
@@ -255,9 +256,9 @@ In a ~25% random subsample of participants, we also measured fractional exhaled 
 
 Trained nurses collected 20 ml of whole blood in a labeled vacutainer via venipuncture using standard techniques [@tuck2009]. Details are described in our published [SOP](https://osf.io/zwpfg). Briefly, fasting blood samples were collected by experienced phlebotomists (nurses) in the morning and stored at 4-10°C prior to centrifugation. Two serum aliquots from each participant were then placed in a -30°C freezer for temporary storage. Collection-to-storage time was <4 hrs for all samples in both campaigns where blood samples were collected. Within 3-5 days of collection, the samples were transported in styrofoam containers with dry ice to a -80°C freezer with a backup generator and alarm system at Peking University. 
 
-The first aliquot was analyzed for glucose and a complete lipid profile within two months of collection, and results were communicated to participants. The second aliquot was stored in the -80°C freezer for analysis of biomarkers of systemic inflammation [C-reactive protein (CRP), interleukin-6 (IL-6), tumour necrosis factor alpha (TNF-ɑ] and oxidative stress [8-hydroxy-2’-deoxyguanosine (8-OHdG) and malondialdehyde (MDA)] at the University of the Chinese Academy of Sciences between July and September of 2023. These biomarkers were selected because they are associated with the development of cardiovascular disease and events (e.g., Danesh 2008; Pearson 2003; Ridker 2000; 2001; ERF 2012), and both acute and longer-term exposures to air pollution have been associated with changes in inflammatory and oxidative stress markers (e.g., Pope 2004; Rückerl 2007; Rich 2012; Kipen 2010; Huang 2012).
+The first aliquot was analyzed for glucose and a complete lipid profile within two months of collection, and results were communicated to participants. The second aliquot was stored in the -80°C freezer for analysis of biomarkers of systemic inflammation [C-reactive protein (CRP), interleukin-6 (IL-6), tumour necrosis factor alpha (TNF-$\alpha$) and oxidative stress [8-hydroxy-2’-deoxyguanosine (8-OHdG) and malondialdehyde (MDA)] at the University of the Chinese Academy of Sciences between July and September of 2023. These biomarkers were selected because they are associated with the development of cardiovascular disease and events (e.g., Danesh 2008; Pearson 2003; Ridker 2000; 2001; ERF 2012), and both acute and longer-term exposures to air pollution have been associated with changes in inflammatory and oxidative stress markers (e.g., Pope 2004; Rückerl 2007; Rich 2012; Kipen 2010; Huang 2012).
 
-We followed standard methods for analysis (FDA Guidance, 2018). For inflammatory markers (IL-6, TNF-α, CRP), the optic densities (OD) of all samples were measured using an automated ELISA reader. Every plate had 8 standard samples used to generate a standard curve that related OD and standard inflammatory marker concentration. A standard curve for each microplate was generated by a computer software program based on a 4-parameter method. Each plate included at least 3 control samples to ensure the stability of standard curves. All samples, standards, and controls were measured in duplicate, and the average was used for statistical analysis. For oxidative stress biomarkers (MDA and 8-OHdG), the chromatographic peak areas of all samples were measured using HPLC with UV detector and HPLC-MS/MS. Every plate had 7 standard samples used to generate a standard curve that related peak area and concentration of each standard oxidative stress marker. A standard curve for each plate was generated using a computer software program based on a linear method. Each plate included at least 3 control samples to ensure the stability of standard curves. Standards and controls were measured in duplicate and samples were measured once due to high precision in a pilot study [@fda2018].
+We followed standard methods for analysis (FDA Guidance, 2018). For inflammatory markers (IL-6, TNF-𝛼, CRP), the optic densities (OD) of all samples were measured using an automated ELISA reader. Every plate had 8 standard samples used to generate a standard curve that related OD and standard inflammatory marker concentration. A standard curve for each microplate was generated by a computer software program based on a 4-parameter method. Each plate included at least 3 control samples to ensure the stability of standard curves. All samples, standards, and controls were measured in duplicate, and the average was used for statistical analysis. For oxidative stress biomarkers (MDA and 8-OHdG), the chromatographic peak areas of all samples were measured using HPLC with UV detector and HPLC-MS/MS. Every plate had 7 standard samples used to generate a standard curve that related peak area and concentration of each standard oxidative stress marker. A standard curve for each plate was generated using a computer software program based on a linear method. Each plate included at least 3 control samples to ensure the stability of standard curves. Standards and controls were measured in duplicate and samples were measured once due to high precision in a pilot study [@fda2018].
 
 ### Anthropometric measurements. 
 
@@ -591,7 +592,7 @@ In estimating the treatment effect on indoor and outdoor air pollution, we evalu
 
 ```{r tab-did-med, echo=F, message=F, warning=F}
 #| label: tbl-did-med
-#| tbl-cap: "Treatment effect on outdoor and indoor PM~2.5~, as well as personal exposure to PM~2.5~ and black carbon. Outdoor and indoor PM~2.5~ were derived from sensor measurements after being adjusted based on co-located gravimetric PM~2.5~ measurements. 24h indicates the mean PM~2.5~ concentrations during the 24 hours when personal exposure samples were collected in each village. 'Seasonal' indicates the seasonal mean PM~2.5~ concentrations in each village, from Jan. 15th to Mar. 15th."
+#| tbl-cap: "Treatment effect on outdoor and indoor PM~2.5~, personal exposure to PM~2.5~ and black carbon, and measures of indoor temperature. Outdoor and indoor PM~2.5~ were derived from sensor measurements after being adjusted based on co-located gravimetric PM~2.5~ measurements. 24h indicates the mean PM~2.5~ concentrations during the 24 hours when personal exposure samples were collected in each village. 'Seasonal' indicates the seasonal mean PM~2.5~ concentrations in each village, from Jan. 15th to Mar. 15th."
 
 # air pollution results
 ap_table <- read_rds(here("outputs", 
@@ -599,7 +600,7 @@ ap_table <- read_rds(here("outputs",
 
 # temperature results
 temp_table <- tibble(
-  category = "Point temp", outcome = "Mean", estimate_1 = 1.96,
+  category = "Point", outcome = "Mean", estimate_1 = 1.96,
   ci_1 = "(0.96, 2.96)", estimate_2 = 1.96, 
   ci_2 = "(0.96, 2.96)"
 )
@@ -610,8 +611,8 @@ stemp_table <- read_xlsx(here("data-clean",
          `ci_1` = ci) %>%
   mutate(category = rep("Seasonal", times = 6),
     outcome = c("Mean (all)", "Mean (daytime)", 
-      "Mean (heating)", "Mean (daytime heating)",
-      "Min. (all)", "Min. (heating)"),
+      "Mean (heating season)", "Mean (daytime heating season)",
+      "Min. (all)", "Min. (heating season)"),
     estimate_2 = `estimate_1`, 
     ci_2 = `ci_1`) %>%
   select(-model) %>%
@@ -1040,20 +1041,6 @@ kable(fuel_table, digits = 0, escape = FALSE,
   footnote(alphabet=c(models_coal_note, models_bio_note)) 
 ```
 
-Sensitivity analyses: [[[Jill to edit this table include all sensitivity analysis for total effects models]]]
- 
-	Number of participants (observations)
-	Mean change or percent change in FeNO (ppb)
-	Limited to participants with two or more measurements
-	142 (569)
-	-0.2 [-3.0, 2.5]
-	Limited to participants with three measurements
-	95 (285)
-	0.4 [-2.8, 3.6]
-	Analysis with log-transformed outcome [ln(FeNO)]
-	511 (843)
-	-3.8% [-16.9, 11.4]
-
 \newpage
 
 ## Heterogeneity in treament effects 
@@ -1061,7 +1048,7 @@ Sensitivity analyses: [[[Jill to edit this table include all sensitivity analysi
 ### Personal exposure 
 As noted in the methods section...Table @tbl-a-het-personal shows limited evidence that the ATTs across cohorts and time demonstrate meaningful heterogeneity.
 
-```{r atbl-het, echo=F}
+```{r atbl-het-pe, echo=F}
 #| label: tbl-a-het-personal
 #| tbl-cap: "Heterogenous treatment effects: Personal exposures"
 
@@ -1103,7 +1090,7 @@ kable(aph_table, digits = 2, escape = FALSE,
 ### Indoor PM~2.5~
 Table @tbl-a-het-indoor shows estimates for cohort-time ATTs for daily and seasonal indoor PM~2.5~.
 
-```{r atbl-het, echo=F}
+```{r atbl-het-ipm, echo=F}
 #| label: tbl-a-het-indoor
 #| tbl-cap: "Heterogenous treatment effects: Indoor"
 
@@ -1145,7 +1132,90 @@ kable(aph_table_ind, digits = 2, escape = FALSE,
 
 ### Indoor temperature
 
-[To come...]
+```{r atbl-het-temp, echo = F, message = F}
+#| label: tbl-a-het-temp
+#| tbl-cap: "Heterogenous treatment effects: Indoor temperature"
+
+ctt <- read_xlsx(here("data-clean", 
+  "ct_temp_table.xlsx"))
+
+options(knitr.kable.NA = " ")
+ctt_table <- ctt %>% 
+  pivot_longer(!ct_labels, names_to = "outcome", 
+    values_to = "est_ci", cols_vary = "slowest") %>%
+  separate_wider_delim(est_ci, delim = "(", 
+    names = c("att", "attci"), cols_remove = TRUE) %>% 
+  mutate(attci = paste("(", attci, sep=""),
+    measure = rep(c("All", "Daytime", "Heating season",
+      "Daytime heating season", "All", "Heating season"),
+      each = 6),
+    stat = c(rep(2, times = 24), rep(3, times = 12)),
+    cohort = rep(c(2019,2019,2019,2020,2020,2021), 
+                 times = 6),
+    time = rep(c(2019,2020,2021,2020,2021,2021), 
+               times = 6),
+    att = as.numeric(att)) %>%
+  select(cohort, stat, time, measure, att, attci) %>%
+  relocate(measure, stat, cohort, time)
+
+ctt_point_temp <- read_xlsx(here("data-clean",
+  "unadjusted_pointtemp_results_apr3.xlsx")) %>%
+  filter(type != "Overall ATT") %>%
+  separate_wider_delim(att, delim = "(", 
+    names = c("att", "attci"), cols_remove = TRUE) %>%
+  mutate(att = as.numeric(att),
+         measure = "All",
+         cohort = c(2019, 2019, 2020, 2021),
+         time = c(2019, 2021, 2021, 2021),
+         stat = 1,
+         attci = paste("(", attci, sep="")) %>%
+  select(stat, measure, cohort, time, att, attci) %>%
+  relocate(measure, stat, cohort, time)
+
+ctt_temp_atts <- bind_rows(ctt_point_temp, ctt_table)
+
+ctt_het_stats <- read_xlsx(here("data-clean",
+  "gt_temp_heterogeneity.xlsx"))  %>%
+  rename(measure = temp_metric,
+         test = f_stat,
+         pval = p_value) %>%
+  mutate(measure = c("All", "Daytime", "Heating season",
+      "Daytime heating season", "All", "Heating season",
+      "All"),
+    stat = c(2,2,2,2,3,3,1),
+    test = sprintf("%.1f", test),
+    pval = sprintf("%.3f", pval),
+    cohort = 2021,
+    time = 2021) %>%
+  select(measure, stat, cohort, time, test, pval)
+
+
+ctt_temp_het_table <- ctt_temp_atts %>% 
+  left_join(ctt_het_stats, 
+    join_by(measure, stat, cohort, time)) %>%
+  pivot_wider(names_from = stat, 
+    values_from = c(att,attci,test,pval), 
+    names_vary = "slowest") %>%
+  arrange(measure, cohort, time) %>%
+  select(-measure, -test_1, -test_2, -test_3)
+    
+kable(ctt_temp_het_table, digits = 2, 
+  col.names = c("Cohort", "Time", "ATT", "(95%CI)",
+    "p-value", "ATT", "(95%CI)", "p-value",
+    "ATT", "(95%CI)", "p-value"), 
+  "latex", booktabs = T) %>%
+  kable_styling(latex_options = "HOLD_position",
+    font_size = 9) %>%
+  pack_rows("All times", 1, 6) %>%
+  pack_rows("Daytime", 7, 12) %>%
+  pack_rows("Daytime heating", 13, 18) %>%
+  pack_rows("Heating season", 19, 24) %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  add_header_above(c(" " = 2, "Point temp (°C)" = 3,
+    "Mean temp (°C)" = 3, "Min temp (°C)" = 3))
+```
+
+\newpage
 
 ### Blood pressure outcomes
 @tbl-bp-het shows ATTs by treatment cohort and time, as well as the results of joint tests of heterogeneity across ATTs.
@@ -1192,7 +1262,8 @@ kable(bp_het_table,
    "latex", booktabs = T,
   linesep = "", align = 'llcccc') %>%
   column_spec(1:2, width = "2cm") %>%
-  kable_styling(full_width = F) %>%
+  kable_styling(full_width = F,
+    latex_options = "HOLD_position") %>%
   pack_rows("Brachial SBP", 1, 4) %>%
   pack_rows("Central SBP", 5, 8) %>%
   pack_rows("Brachial DBP", 9, 12) %>%
@@ -1206,6 +1277,8 @@ kable(bp_het_table,
     alphabet = c("\\\\small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", "\\\\small{F-statistics and p-values for joint tests of equality across cohort and time ATTs}"), 
     general_title = "", threeparttable = T, escape = F)
 ```
+
+\newpage
 
 ### Mediation analyses for blood pressure
 @tbl-a-bp-med-het shows the cohort-time treatment effects for the mediation model for blood pressure.
@@ -1549,7 +1622,7 @@ knitr::include_graphics(here("images",
 ## Impact of sample composition on FeNO results
 @tbl-a-feno shows differences in the ATTs for the impact of the CBHP policy on FeNO depending on whether the estimation sample includes all individuals or is limited to those with repeated measures across campaigns.
 
-```{r, echo=F}
+```{r atbl-feno, echo=F, message = FALSE}
 #| label: tbl-a-feno
 #| tbl-cap: "Effects of the CBHP policy on FeNO (ppb) based on the number of individuals with repeated measurements."
 

@@ -200,7 +200,7 @@ of the Beijing Household Energy Transitions Team}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, boxrule=0pt, sharp corners, breakable, borderline west={3pt}{0pt}{shadecolor}, enhanced, interior hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, boxrule=0pt, enhanced, frame hidden, sharp corners, interior hidden, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -3269,28 +3269,7 @@ line)}
 
 \end{figure}
 
-\begin{figure}[H]
-
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{images/Participation-flowchart-Apr12.png}
-
-}
-
-\caption{\label{fig-flowchart}Kernal density plots showing distribution
-of multiply-imputed values for BMI, Waist circumference, and indoor
-PM\textsubscript{2.5} (red lines) and observed values (heavy black
-line)}
-
-\end{figure}
-
-\begin{figure}[H]
-
-{\centering \includegraphics{"images/MI_BMI_density.png"}
-
-}
-
-\caption{BMI}
-
-\end{figure}
+\newpage
 
 \hypertarget{participant-flow-diagram}{%
 \subsection{Participant flow diagram}\label{participant-flow-diagram}}
@@ -3306,11 +3285,15 @@ the participant, household, and village levels across study years.}
 
 \end{figure}
 
+\newpage
+
 \hypertarget{policy-uptake-1}{%
 \subsection{Policy uptake}\label{policy-uptake-1}}
 
-and Table~\ref{tbl-fuel-did} shows results from applying our extended
-two-way fixed effects\ldots{}
+Figure~\ref{fig-afig-coal} shows trends over time in self-reported coal
+and biomass consumption over each season. Table~\ref{tbl-fuel-did} shows
+results from applying our extended two-way fixed effects models (in
+separate analyses) to coal and biomass consumption.
 
 \begin{figure}[H]
 
@@ -3418,6 +3401,8 @@ All & All & -14.20 & (-53.94, 25.54) & -36.19 & (-60.74, -11.65)\\
 \multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{b} Joint test that all ATTs are equal: F(1, 368)= 0.756, p= 0.385}\\
 \end{tabular}
 \end{table}
+
+\newpage
 
 \hypertarget{indoor-temperature}{%
 \subsubsection{Indoor temperature}\label{indoor-temperature}}
@@ -3657,8 +3642,6 @@ Cohort & Time & ATT & (95\%CI) & F-Statistic & p-value\\
 
 \newpage
 
-\newpage
-
 \hypertarget{respiratory-outcomes}{%
 \subsubsection{Respiratory outcomes}\label{respiratory-outcomes}}
 
@@ -3812,6 +3795,8 @@ All & All & -0.06 & (-0.12, -0.01)\\
 \multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 1.046, p= 0.371.}}\\
 \end{tabular}
 \end{table}
+
+\newpage
 
 \hypertarget{outdoor-and-personal-mixed-combustion}{%
 \subsubsection{Outdoor and personal mixed

@@ -1005,14 +1005,7 @@ knitr::include_graphics(here("images",
 
 ```
 
-
-```{r mi-plots, echo=FALSE, out.width = "80%"}
-#| label: fig-flowchart
-#| fig-cap: "Kernal density plots showing distribution of multiply-imputed values for BMI, Waist circumference, and indoor PM~2.5~ (red lines) and observed values (heavy black line)"
-```
-![BMI]("images/MI_BMI_density.png")
-
-
+\newpage
 
 ## Participant flow diagram
 
@@ -1023,8 +1016,10 @@ knitr::include_graphics(here("images",
   "Participation-flowchart-Apr12.png"))
 ```
 
+\newpage
+
 ## Policy uptake
-and @tbl-fuel-did shows results from applying our extended two-way fixed effects...
+@fig-afig-coal shows trends over time in self-reported coal and biomass consumption over each season. @tbl-fuel-did shows results from applying our extended two-way fixed effects models (in separate analyses) to coal and biomass consumption.
 
 ```{r afig, message=FALSE, cache=TRUE, echo=FALSE, out.width = "100%"}
 #| label: fig-afig-coal
@@ -1162,6 +1157,7 @@ kable(aph_table_ind, digits = 2, escape = FALSE,
   footnote(alphabet=c(models_i24_note, models_is_note)) 
 ```
 
+\newpage
 
 ### Indoor temperature
 
@@ -1429,9 +1425,6 @@ bp_mmed_het_table <- mhet_model %>%
 
 \newpage
 
-
-\newpage
-
 ### Respiratory outcomes
 
 Appendix tables [-@tbl-a-het-resp], [-@tbl-a-het-cough], [-@tbl-a-het-phlegm], [-@tbl-a-het-wheeze], [-@tbl-a-het-breath], [-@tbl-a-het-nochest] below show Average Treatment Effect on the Treated (ATTs) by treatment cohort and time. ATTs are derived from estimating marginal effects from extended two-way fixed effects models with additional adjustment for age, sex, and smoking status. 
@@ -1471,7 +1464,6 @@ kable(resp_any_table, digits = 2, escape = FALSE,
     general_title = "", escape = F)
 ```
 
-
 ```{r atbl-het-cough, echo=F}
 #| label: tbl-a-het-cough
 #| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Coughing"
@@ -1504,7 +1496,6 @@ kable(resp_cough_table, digits = 2, escape = FALSE,
   footnote(general=models_resp_note,
     general_title = "", escape = F)
 ```
-
 
 ```{r atbl-het-phlegm, echo=F}
 #| label: tbl-a-het-phlegm
@@ -1572,7 +1563,6 @@ kable(resp_wheeze_table, digits = 2, escape = FALSE,
     general_title = "", escape = F)
 ```
 
-
 ```{r atbl-het-breath, echo=F}
 #| label: tbl-a-het-breath
 #| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Trouble breathing"
@@ -1606,7 +1596,6 @@ kable(resp_breath_table, digits = 2, escape = FALSE,
     general_title = "", escape = F)
 ```
 
-
 ```{r atbl-het-breath, echo=F}
 #| label: tbl-a-het-nochest
 #| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Chest trouble"
@@ -1639,6 +1628,8 @@ kable(resp_nochest_table, digits = 2, escape = FALSE,
   footnote(general=models_resp_note,
     general_title = "", escape = F)
 ```
+
+\newpage
 
 ### Outdoor and personal mixed combustion
 
@@ -1710,6 +1701,7 @@ kable(a_is3_table, digits = 2, escape = FALSE,
   footnote(general="Sample sizes for") 
 ```
 
+\newpage
 
 # About the authors {.unnumbered}
 

@@ -370,7 +370,7 @@ Appendix @fig-flowchart shows the participation of villages, households, and par
 
 ```{r tbl-each-campaigns, echo=F}
 #| label: tbl-each-campaign
-#| tbl-cap: "Demographic and health characteristics of participants in each study campaign."
+#| tbl-cap: "Demographic and health characteristics of participants in each study wave"
 
 ctab1 <- tibble(
   `Characteristic` = c("Female, n (\\%)", 
@@ -400,7 +400,7 @@ kable(ctab1, "latex", booktabs = T, escape = F,
 
 ```{r tbl-diff-campaign, echo=F}
 #| label: tbl-diff-campaign
-#| tbl-cap: "Demographic and health characteristics of participants who contributed to different numbers of campaigns."
+#| tbl-cap: "Demographic and health characteristics of participants who contributed to different numbers of study waves."
 
 ctab2 <- tibble(
   `Characteristic` = c("Female, n (\\%)", 

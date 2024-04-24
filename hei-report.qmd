@@ -984,7 +984,7 @@ To come...
 ## Biomarker descriptives
 Below we show boxplots for the logged values of the blood inflammatory and oxidative stress markers. 
 
-```{r mi-plots, echo=FALSE, out.width = "70%"}
+```{r mi-plots, echo=FALSE, out.width = "90%"}
 #| fig-cap-location: top
 #| label: fig-afig-biomarkers
 #| fig-cap: "Boxplots for markers of systemic inflammation including C-reactive protein (CRP), interleukin-6 (IL-6), tumour necrosis factor alpha (TNF-$\\alpha$) and markers of oxidative stress including 8-hydroxy-2'-deoxyguanosine (8-OHdG) and malondialdehyde (MDA)"

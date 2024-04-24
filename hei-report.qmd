@@ -981,6 +981,20 @@ To come...
 
 # Appendices {.appendix}
 
+## Biomarker descriptives
+Below we show boxplots for the logged values of the blood inflammatory and oxidative stress markers. 
+
+```{r mi-plots, echo=FALSE, out.width = "70%"}
+#| fig-cap-location: top
+#| label: fig-afig-biomarkers
+#| fig-cap: "Boxplots for markers of systemic inflammation including C-reactive protein (CRP), interleukin-6 (IL-6), tumour necrosis factor alpha (TNF-$\\alpha$) and markers of oxidative stress including 8-hydroxy-2'-deoxyguanosine (8-OHdG) and malondialdehyde (MDA)"
+
+knitr::include_graphics(here("images", 
+  "biomarker-boxplot-log.jpg"))
+```
+
+\newpage 
+
 ## Imputation results
 The figures below show density plots for the values of body mass index, waist circumference, and indoor PM~2.5~ from the multiple imputation models. The red lines show the values for each of the 30 imputed datasets, and the black line shows the value for the observed data. 
 

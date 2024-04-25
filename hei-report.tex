@@ -211,11 +211,11 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-04-24}
+\date{2024-04-25}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, breakable, enhanced, interior hidden, frame hidden, sharp corners]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, boxrule=0pt, breakable, sharp corners, frame hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -1867,9 +1867,9 @@ FeNO outcome and limiting the analysis to participants with at least two
 repeated measurements and to those who participated in all three
 campaigns (SI Table X)
 
-\hypertarget{mediated-impact-on-blood-pressure}{%
-\subsubsection{Mediated impact on blood
-pressure}\label{mediated-impact-on-blood-pressure}}
+\hypertarget{mediated-impact-on-health-outcomes}{%
+\subsubsection{Mediated impact on health
+outcomes}\label{mediated-impact-on-health-outcomes}}
 
 As noted above, we aimed to assess whether any health impacts of the
 CBHP policy may work specifically through pathways involving changes in
@@ -1887,7 +1887,7 @@ systolic BP, and roughly half of the total effect for diastolic BP.
 
 \hypertarget{tbl-bp-med}{}
 \begin{table}[H]
-\caption{\label{tbl-bp-med}Controlled direct effects for the CBHP policy }\tabularnewline
+\caption{\label{tbl-bp-med}Controlled direct effects for the CBHP policy on blood pressure }\tabularnewline
 
 \centering\begingroup\fontsize{10}{12}\selectfont
 
@@ -1909,6 +1909,39 @@ Central DBP & -1.66 & (-2.97, -0.34) & -1.40 & (-2.96, 0.16) & -1.32 & (-2.50, -
 \begin{tablenotes}
 \item \small{Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.}
 \item[a] \small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}
+\item[b] \small{Mediators were set to the mean value for untreated participants at baseline.}
+\end{tablenotes}
+\end{threeparttable}
+\endgroup{}
+\end{table}
+
+\hypertarget{tbl-resp-med}{}
+\begin{table}[H]
+\caption{\label{tbl-resp-med}Controlled direct effects for the CBHP policy on self-reported
+respiratory outcomes }\tabularnewline
+
+\centering\begingroup\fontsize{9}{11}\selectfont
+
+\begin{threeparttable}
+\begin{tabular}{lcccccclc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Adjusted Total Effect\textsuperscript{a}} & \multicolumn{6}{c}{CDE Mediated By:\textsuperscript{b}} \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-9}
+\multicolumn{3}{c}{ } & \multicolumn{2}{c}{Indoor PM} & \multicolumn{2}{c}{Indoor Temp} & \multicolumn{2}{c}{PM + Temp} \\
+\cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7} \cmidrule(l{3pt}r{3pt}){8-9}
+ & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI)\\
+\midrule
+Any symptom & -12.23 & (-19.46, -5.00) & -12.25 & (-19.46, -5.04) & -15.13 & (-23.57, -6.69) & -14.86 & (-23.45, -6.26)\\
+Coughing & -11.70 & (-19.49, -3.91) & -11.60 & (-19.28, -3.93) & -14.89 & (-22.85, -6.93) & -15.93 & (-23.78, -8.09)\\
+Phlegm & -9.80 & (-16.34, -3.26) & -9.86 & (-16.39, -3.33) & -14.01 & (-21.32, -6.69) & -13.63 & (-20.94, -6.32)\\
+Wheezing attacks & -4.72 & (-12.56, 3.12) & -4.71 & (-12.61, 3.19) & -6.39 & (-14.44, 1.66) & -4.42 & (-11.38, 2.53)\\
+Trouble breathing & -8.57 & (-18.56, 1.43) & -8.57 & (-18.49, 1.36) & -12.79 & (-24.81, -0.77) & -12.34 & (-24.45, -0.23)\\
+Chest trouble & -5.98 & (-13.36, 1.39) & -5.82 & (-12.87, 1.24) & -3.44 & (-10.45, 3.58) & -3.57 & (-9.65, 2.51)\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item \small{Note: ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect.}
+\item[a] \small{Adjusted for age, sex, and smoking.}
 \item[b] \small{Mediators were set to the mean value for untreated participants at baseline.}
 \end{tablenotes}
 \end{threeparttable}

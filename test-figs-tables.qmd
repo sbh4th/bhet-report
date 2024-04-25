@@ -17,6 +17,9 @@ format:
              \@float{figure}}
             {\end@float}
           \makeatother
+         \usepackage[rm]{roboto}
+         \usepackage[T1]{fontenc}
+          
   
 ---
 
@@ -61,6 +64,29 @@ d <- read_csv(here("data-clean",
     "dia_brachial", "waist_circ", "height",
     "weight", "temp", "wave", "PM25conc_exposureugm3"))
 ```
+
+```{r dag1, engine='tikz', echo=F, out.width="60%"}
+#| label: fig-dag1
+#| fig-cap: "Hypothetical Directed Acyclic Graph showing direct and indirect effects with outcome ($Y$), pre-treatment covariates ($X$), policy ($T$), multiple mediators ($M_{1},M_{2}$), as well as covariates for the mediators ($W$)."
+
+\begin{tikzpicture}[shorten > = 1pt, line width=0.5pt, font=\scriptsize]
+\fontfamily(roboto)
+\tikzstyle{every node} = [rectangle, fill=white, draw=none]
+\node (x) at (0,0) [align=center] {$X$};
+\node (t) at  (1.5,0) [align=center] {Policy\\($T$)};
+\node (m1) at  (3.5,1) [align=center] {PM\textsubscript{2.5}\\($M_{1}$)};
+\node (m2) at  (3.5,-1) [align=center] {Indoor\\Temp\\($M_{2}$)};
+\node (y) at  (5.5,0) [align=center] {SBP\\($Y$)};
+\node (w) at (2,-1.5) [align=center] {$W$};
+\foreach \from/\to in {x/t, t/y, t/m1, t/m2, m1/y, m2/y, w/m1, w/m2}
+  \draw [->] (\from) -- (\to);
+\draw [->] (x) to [bend left=45] (y.north);
+\draw [->] (x) to [bend left=20] (m1);
+\draw [->] (x) to [bend right=25] (m2);
+\draw [->] (w) to [bend right=45] (y);
+\end{tikzpicture}
+```
+
 
 Make a table
 ```{r table, cache=TRUE, message=FALSE, echo=FALSE, eval=F}

@@ -726,14 +726,14 @@ kable(op_table,  digits = 2,
 
 @tbl-did-health also shows the impacts of the CBHP on measured airway inflammation (FeNO), which was conducted in a sub-sample of 511 participants, including 274 participants with one measurement, 142 with two measurements, 95 participants with 3 measurements. We did not find evidence that exposure to the policy affected changes in FeNO in the covariate-adjusted ETWFE model (0.5 ppb, 95%CI: -2.1, 3.1). There was some evidence of heterogeneity in the FeNO effects of the policy by treatment cohort, though the confidence intervals for each of the cohort-specific effects were large and overlapping. Our results did not change with sensitivity analyses that included a log-transformed FeNO outcome and limiting the analysis to participants with at least two repeated measurements and to those who participated in all three campaigns (SI Table X) 
 
-### Mediated impact on blood pressure
+### Mediated impact on health outcomes
 
 As noted above, we aimed to assess whether any health impacts of the CBHP policy may work specifically through pathways involving changes in PM~2.5~ and indoor temperature. Below we show results from several mediation models. We evaluated potential mediation for each mediator (indoor temperature and personal exposure to PM~2.5~) separately and in a single model accounting for multiple mediators, and we set the values of both mediators to the WHO mean annual interim PM~2.5~ and indoor temperature guidelines. For mediation analysis, we focused on BP outcomes for which we observed an effect of the policy. In @tbl-bp-med we show that conditioning on indoor PM and indoor temperature largely explains the entire total effect of the CBHP policy on blood pressure for systolic BP, and roughly half of the total effect for diastolic BP.
 
 
 ```{r tbl-bp-med, echo=F, message=F, warning=F}
 #| label: tbl-bp-med
-#| tbl-cap: "Controlled direct effects for the CBHP policy"
+#| tbl-cap: "Controlled direct effects for the CBHP policy on blood pressure"
 
 ot <- read_xlsx(here("data-clean", 
   "overall_total_effect_adjusted.xlsx")) %>%
@@ -778,6 +778,32 @@ kable(otm, digits = 2,
     general_title = "", threeparttable = T, escape = F)
 ```
 
+
+```{r tbl-resp-med, echo=F, message=F, warning=F}
+#| label: tbl-resp-med
+#| tbl-cap: "Controlled direct effects for the CBHP policy on self-reported respiratory outcomes"
+
+cde_resp <- read_rds(here("outputs",
+  "resp-cdes.rds"))
+
+kable(cde_resp, digits = 2,
+  col.names = c("", "ATT", "(95%CI)",
+  "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
+  "latex", booktabs = T, align = 'lcccccc',
+  linesep = "") %>%
+  kable_styling(font_size = 9,
+    latex_options = "HOLD_position") %>%
+  add_header_above(c(" " = 3, 
+  "Indoor PM" = 2, "Indoor Temp" = 2, "PM + Temp" = 2)) %>%
+  add_header_above(c(" " = 1, 
+    "Adjusted Total Effect\\\\textsuperscript{a}" = 2,
+    "CDE Mediated By:\\\\textsuperscript{b}" = 6),
+    escape = F) %>%
+    footnote(
+    general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect.}",
+    alphabet = c("\\\\small{Adjusted for age, sex, and smoking.}", "\\\\small{Mediators were set to the mean value for untreated participants at baseline.}"), 
+    general_title = "", threeparttable = T, escape = F)
+```
 
 ## Aim 2: Source contributions
 

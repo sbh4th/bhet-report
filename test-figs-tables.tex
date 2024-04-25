@@ -139,6 +139,10 @@
    {\renewcommand\familydefault\sfdefault
     \@float{table}}
    {\end@float}
+ \renewenvironment{figure}%
+   {\renewcommand\familydefault\sfdefault
+    \@float{figure}}
+   {\end@float}
  \makeatother
 \KOMAoption{captions}{tableheading}
 \makeatletter
@@ -215,7 +219,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, sharp corners, enhanced, frame hidden, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, interior hidden, enhanced, borderline west={3pt}{0pt}{shadecolor}, breakable, boxrule=0pt, sharp corners]}{\end{tcolorbox}}\fi
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -466,55 +470,69 @@ Cohort & Time & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI
 
 \begin{figure}
 
-\begin{minipage}[t]{0.50\linewidth}
+\begin{minipage}[t]{\linewidth}
 
 {\centering 
 
 \raisebox{-\height}{
 
-\includegraphics{images/MI_BMI_density.png}
+\includegraphics{images/never_Y3_SBP.png}
 
 }
 
 }
 
-\subcaption{\label{fig-mi-1}}
-\end{minipage}%
-%
-\begin{minipage}[t]{0.50\linewidth}
-
-{\centering 
-
-\raisebox{-\height}{
-
-\includegraphics{images/MI_waist_circ_density.png}
-
-}
-
-}
-
-\subcaption{\label{fig-mi-2}}
+\subcaption{\label{fig-afig-pt-1}Treated in W3: Systolic}
 \end{minipage}%
 \newline
-\begin{minipage}[t]{0.50\linewidth}
+\begin{minipage}[t]{\linewidth}
 
 {\centering 
 
 \raisebox{-\height}{
 
-\includegraphics{images/MI_indoorPM_density.png}
+\includegraphics{images/never_Y3_DBP.png}
 
 }
 
 }
 
-\subcaption{\label{fig-mi-3}}
+\subcaption{\label{fig-afig-pt-2}Treated in W3: Diastolic}
+\end{minipage}%
+\newline
+\begin{minipage}[t]{\linewidth}
+
+{\centering 
+
+\raisebox{-\height}{
+
+\includegraphics{images/never_Y4_SBP.png}
+
+}
+
+}
+
+\subcaption{\label{fig-afig-pt-3}Treated in W4: Systolic}
+\end{minipage}%
+\newline
+\begin{minipage}[t]{\linewidth}
+
+{\centering 
+
+\raisebox{-\height}{
+
+\includegraphics{images/never_Y4_DBP.png}
+
+}
+
+}
+
+\subcaption{\label{fig-afig-pt-4}Treated in W4: Diastolic}
 \end{minipage}%
 
-\caption{\label{fig-mi}Kernal density plots showing distribution of
-multiply-imputed values for BMI, waist circumference (cm), and indoor
-PM\textsubscript{2.5} (µg/m\textsuperscript{3}) (red lines) and observed
-values (heavy black line)}
+\caption{\label{fig-afig-pt}Comparison of pre-interventions trends in
+blood pressure between waves 1 and 2 for never treated and villages
+treated in waves 3 and 4.}
 
 \end{figure}
 

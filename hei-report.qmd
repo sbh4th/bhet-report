@@ -18,11 +18,16 @@ format:
    number-depth: 3
    include-in-header:
       - text: |
-          \usepackage{colortbl}
+         \usepackage{wrapfig}
+         \usepackage{colortbl}
           \makeatletter
           \renewenvironment{table}%
             {\renewcommand\familydefault\sfdefault
              \@float{table}}
+            {\end@float}
+          \renewenvironment{figure}%
+            {\renewcommand\familydefault\sfdefault
+             \@float{figure}}
             {\end@float}
           \makeatother
    geometry: 
@@ -560,9 +565,9 @@ ap_season %>%
   pack_rows("Personal", 1, 4, indent = F) %>%
   pack_rows("Indoor", 5, 10, indent = F) %>%
   pack_rows("Outdoor", 11, 16, indent = F) %>%
-  add_header_above(c(" " = 3, "Season 1" = 2,
-    "Season 2" = 2, "Season 3" = 2,
-    "Season 4" = 2)) %>%
+  add_header_above(c(" " = 3, "Wave 1" = 2,
+    "Wave 2" = 2, "Wave 3" = 2,
+    "Wave 4" = 2)) %>%
   footnote(general = "Note: Est. = Estimate, CI = 95\\\\% CI, GM = Geometric Mean", general_title = "", escape = F)
 ```
 
@@ -574,9 +579,9 @@ Each year of the study, participants reported the types of fuels and stoves and 
 
 ```{r fig-sankey, echo=F, message=F, warning=F, out.width="100%"}
 #| label: fig-sankey
-#| fig-cap: "Transitions to different energy sources across study seasons"
+#| fig-cap: "Transitions to different energy sources across study waves"
 knitr::include_graphics(here("images", 
-  "Sankey diagram_2.png"))
+  "sanky.jpg"))
 ```
 
 We also observed a substantial decline in the amount of self-reported coal used in villages treated by CBHP policy (Appendix @fig-afig-coal), though the reduction in coal use was smaller with each subsequent treatment cohort (Appendix @tbl-fuel-did). Biomass (i.e., wood logs/twigs or charcoal), usually burned in kangs for both cooking and space heating, was not expressly targeted by the CBHP policy. We observed declines in self-reported biomass use in villages treated in 2019 and 2020 but there was a small increase in biomass consumption in the cohort treated last (2021).  
@@ -817,9 +822,9 @@ We extend the source profiles across the different treatment cohorts in @fig-sou
 
 ```{r fig-source-season, echo=F, message=F, warning=F, out.width="80%"}
 #| label: fig-source-season
-#| fig-cap: "Arithmetic mean dispersion normalized source contributions found from the 4-factor PMF solution for A outdoor and B personal PM~2.5~ exposure samples by year the group received treatment."
+#| fig-cap: "Arithmetic mean dispersion normalized source contributions found from the 4-factor PMF solution for **A** outdoor and **B** personal PM~2.5~ exposure samples by year the group received treatment."
 
-knitr::include_graphics(here("images", "source-season.png"))
+knitr::include_graphics(here("images", "source-season2.png"))
 
 ```
 
@@ -846,8 +851,8 @@ kable(source_t,
   add_header_above(c(" " = 1, 
     "DiD" = 2, "Adjusted DiD\\\\textsuperscript{a}" = 2),
     escape = F) %>%
-  footnote(alphabet = "\\\\small{Note: Models adjusted for ???}",
-           escape = F)
+  footnote(alphabet = "\\\\small{Note: Models adjusted for temperature; participant smoking status; and whether or not the household reported using biomass fuel.}",
+  escape = F, threeparttable = T)
 ```
   
 When the average treatment effect of the CBHP policy on outdoor (community-level) and personal exposure to the mixed combustion source was were allowed to vary by treatment year and time, the treatment effect for households most recently treated (i.e., treated in the final season, Season 4) was associated with lower personal exposures to the mixed combustion source (Appendix @fig-afig-mixed-ct). In each season, treatment by the CBHP policy was associated with a reduction in the source contribution to personal PM~2.5~ mass from the mixed combustion source; however, for villages treated in Seasons 2 and 3, the effect was statistically imprecise. Treatment was not associated with a reduction or an increase in the source contribution to community outdoor PM~2.5~ mass from the mixed combustion source. That personal exposure measures of this specific air pollution source were more indicative of treatment effect than community outdoor measures of the same air pollution source is consistent with the expectation that this source, which we determined to be indicative of a mixture of coal and biomass combustion, is most characteristic of household use of solid fuels, including coal and biomass, which would produce emissions that are likely to be nearer to the people using those fuels than near to the centrally located community outdoor air samplers. 
@@ -1652,7 +1657,7 @@ kable(resp_nochest_table, digits = 2, escape = FALSE,
 #| fig-cap: "Adjusted and unadjusted treatment effect for outdoor and personal exposure (µg/m^3^) to the mixed combustion source by treatment year."
 
 knitr::include_graphics(here("images", 
-  "did-mixed-ct.png"))
+  "did-mixed-ct-wave.png"))
 ```
 
 \newpage
@@ -1712,7 +1717,76 @@ kable(a_is3_table, digits = 2, escape = FALSE,
     "With Season 3 data" = 2, 
     "Without Season 3 data" = 2),
     escape = FALSE) %>%
-  footnote(general="Sample sizes for") 
+  footnote(general="") 
+```
+
+\newpage
+
+## Pre-trends for blood pressure
+
+```{r pretw3-plots, echo=FALSE, out.width="50%"}
+#| fig-cap-location: top
+#| label: fig-afig-pt3
+#| fig-cap: "Comparison of pre-interventions trends in blood pressure between waves 1 and 2 for never treated and villages later treated in wave 3"
+#| fig-subcap: 
+#|   - "Treated in W3: Systolic"
+#|   - "Treated in W3: Diastolic"
+#| layout-nrow: 2
+
+knitr::include_graphics(here("images", 
+  "never_Y3_SBP.png"))
+
+knitr::include_graphics(here("images", 
+ "never_Y3_DBP.png"))
+
+```
+
+
+```{r pretw4-plots, echo=FALSE, out.width = "40%"}
+#| fig-cap-location: top
+#| label: fig-afig-pt4
+#| fig-cap: "Comparison of pre-interventions trends in blood pressure between waves 1 and 2 for never treated and villages later treated in wave 4"
+#| fig-subcap: 
+#|   - "Treated in W4: Systolic"
+#|   - "Treated in W4: Diastolic"
+#| layout-nrow: 2
+
+knitr::include_graphics(here("images", 
+  "never_Y4_SBP.png"))
+
+knitr::include_graphics(here("images", 
+ "never_Y4_DBP.png"))
+
+```
+
+\newpage
+
+## Impact of group and time fixed effects
+
+```{r, echo=FALSE, message = FALSE}
+#| label: tbl-a-fe
+#| tbl-cap: "Effects of the CBHP policy on personal exposure ($\\mu g / m^{3}$) with variations in fixed effects for treatment group and time."
+
+
+pe_etwfe_me <- read_rds(here("outputs/models", 
+  "pe_etwfe_me.rds"))
+pe_etwfe_ny_me <- read_rds(here("outputs/models", 
+  "pe_etwfe_ny_me.rds"))
+pe_etwfe_ng_me <- read_rds(here("outputs/models", 
+  "pe_etwfe_ng_me.rds"))
+pe_etwfe_nfe_me <- read_rds(here("outputs/models", 
+  "pe_etwfe_nfe_me.rds"))
+
+modelsummary(list("Adjusted DiD" = pe_etwfe_me, 
+  "No time FE" = pe_etwfe_ny_me, 
+  "No group FE" = pe_etwfe_ng_me, 
+  "No FE" = pe_etwfe_nfe_me), 
+  coef_rename = c("treat" = "ATT"), 
+  statistic = "conf.int", fmt = 2, 
+  gof_omit = 'DF|Deviance|R2|AIC|BIC|RMSE', 
+  notes = c("Note: All models adjusted for household size, smoking, outdoor temperature, and outdoor humidity.", 
+            "Standard errors clustered by village.")) %>%
+  kable_styling(latex_options = "HOLD")
 ```
 
 \newpage

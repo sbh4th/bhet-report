@@ -12,6 +12,10 @@ format:
             {\renewcommand\familydefault\sfdefault
              \@float{table}}
             {\end@float}
+          \renewenvironment{figure}%
+            {\renewcommand\familydefault\sfdefault
+             \@float{figure}}
+            {\end@float}
           \makeatother
   
 ---
@@ -841,23 +845,27 @@ kable(ctt_temp_het_table, digits = 2,
     "Mean temp (°C)" = 3, "Min temp (°C)" = 3))
 ```
 
-```{r mi-plots, echo=FALSE, out.width = "50%"}
+```{r pret-plots, echo=FALSE, out.width = "20%"}
 #| fig-cap-location: top
-#| label: fig-mi
-#| fig-cap: "Kernal density plots showing distribution of multiply-imputed values for BMI, waist circumference (cm), and indoor PM~2.5~ (µg/m^3^) (red lines) and observed values (heavy black line)"
+#| label: fig-afig-pt
+#| fig-cap: "Comparison of pre-interventions trends in blood pressure between waves 1 and 2 for never treated and villages treated in waves 3 and 4."
 #| fig-subcap: 
-#|   - ""
-#|   - ""
-#|   - ""
-#| layout-nrow: 2
+#|   - "Treated in W3: Systolic"
+#|   - "Treated in W3: Diastolic"
+#|   - "Treated in W4: Systolic"
+#|   - "Treated in W4: Diastolic"
+#| layout-nrow: 4
 
 knitr::include_graphics(here("images", 
-  "MI_BMI_density.png"))
+  "never_Y3_SBP.png"))
 
 knitr::include_graphics(here("images", 
- "MI_waist_circ_density.png"))
+ "never_Y3_DBP.png"))
 
 knitr::include_graphics(here("images", 
- "MI_indoorPM_density.png"))
+  "never_Y4_SBP.png"))
+
+knitr::include_graphics(here("images", 
+ "never_Y4_DBP.png"))
 
 ```

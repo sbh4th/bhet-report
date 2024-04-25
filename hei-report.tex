@@ -116,13 +116,28 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
+\usepackage{siunitx}
+
+  \newcolumntype{d}{S[
+    input-open-uncertainty=,
+    input-close-uncertainty=,
+    parse-numbers = false,
+    table-align-text-pre=false,
+    table-align-text-post=false
+  ]}
+  
+\usepackage{wrapfig}
 \usepackage{colortbl}
-\makeatletter
-\renewenvironment{table}%
-  {\renewcommand\familydefault\sfdefault
-   \@float{table}}
-  {\end@float}
-\makeatother
+ \makeatletter
+ \renewenvironment{table}%
+   {\renewcommand\familydefault\sfdefault
+    \@float{table}}
+   {\end@float}
+ \renewenvironment{figure}%
+   {\renewcommand\familydefault\sfdefault
+    \@float{figure}}
+   {\end@float}
+ \makeatother
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \makeatother
@@ -200,7 +215,7 @@ of the Beijing Household Energy Transitions Team}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, sharp corners, boxrule=0pt, breakable, enhanced, borderline west={3pt}{0pt}{shadecolor}, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, breakable, enhanced, interior hidden, frame hidden, sharp corners]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -1534,7 +1549,7 @@ improvement from intervention.
 
 \begin{tabular}{lllcccccccc}
 \toprule
-\multicolumn{3}{c}{ } & \multicolumn{2}{c}{Season 1} & \multicolumn{2}{c}{Season 2} & \multicolumn{2}{c}{Season 3} & \multicolumn{2}{c}{Season 4} \\
+\multicolumn{3}{c}{ } & \multicolumn{2}{c}{Wave 1} & \multicolumn{2}{c}{Wave 2} & \multicolumn{2}{c}{Wave 3} & \multicolumn{2}{c}{Wave 4} \\
 \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7} \cmidrule(l{3pt}r{3pt}){8-9} \cmidrule(l{3pt}r{3pt}){10-11}
  &  &  & Est. & CI & Est. & CI & Est. & CI & Est. & CI\\
 \midrule
@@ -1612,12 +1627,12 @@ larger proportion of households continuing to use coal.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{images/Sankey diagram_2.png}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{images/sanky.jpg}
 
 }
 
 \caption{\label{fig-sankey}Transitions to different energy sources
-across study seasons}
+across study waves}
 
 \end{figure}
 
@@ -2066,14 +2081,14 @@ Figure~\ref{fig-source-season}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{images/source-season.png}
+{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{images/source-season2.png}
 
 }
 
 \caption{\label{fig-source-season}Arithmetic mean dispersion normalized
-source contributions found from the 4-factor PMF solution for A outdoor
-and B personal PM\textsubscript{2.5} exposure samples by year the group
-received treatment.}
+source contributions found from the 4-factor PMF solution for \textbf{A}
+outdoor and \textbf{B} personal PM\textsubscript{2.5} exposure samples
+by year the group received treatment.}
 
 \end{figure}
 
@@ -2094,6 +2109,7 @@ unadjusted and adjusted models.
 personal exposure to the mixed combustion source. }\tabularnewline
 
 \centering
+\begin{threeparttable}
 \begin{tabular}{lcccc}
 \toprule
 \multicolumn{1}{c}{ } & \multicolumn{2}{c}{DiD} & \multicolumn{2}{c}{Adjusted DiD\textsuperscript{a}} \\
@@ -2103,8 +2119,11 @@ personal exposure to the mixed combustion source. }\tabularnewline
 Outdoor & 1.07 & (-4.90, 7.04) & 1.53 & (-4.19, 7.26)\\
 Personal exposure & -5.60 & (-13.70, 2.54) & -5.39 & (-13.1, 2.35)\\
 \bottomrule
-\multicolumn{5}{l}{\rule{0pt}{1em}\textsuperscript{a} \small{Note: Models adjusted for ???}}\\
 \end{tabular}
+\begin{tablenotes}
+\item[a] \small{Note: Models adjusted for temperature; participant smoking status; and whether or not the household reported using biomass fuel.}
+\end{tablenotes}
+\end{threeparttable}
 \end{table}
 
 When the average treatment effect of the CBHP policy on outdoor
@@ -3826,7 +3845,7 @@ combustion}\label{outdoor-and-personal-mixed-combustion}}
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{images/did-mixed-ct.png}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{images/did-mixed-ct-wave.png}
 
 }
 
@@ -3898,7 +3917,117 @@ All & All & -37.49 & (-60.11, -14.88) & -35.11 & (-59.36, -10.85)\\
 2021 & 2021 & -46.82 & (-58.57, -35.07) & -44.88 & (-60.41, -29.34)\\
 \bottomrule
 \multicolumn{6}{l}{\rule{0pt}{1em}\textit{Note: }}\\
-\multicolumn{6}{l}{\rule{0pt}{1em}Sample sizes for}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}}\\
+\end{tabular}
+\end{table}
+
+\newpage
+
+\hypertarget{pre-trends-for-blood-pressure}{%
+\subsection{Pre-trends for blood
+pressure}\label{pre-trends-for-blood-pressure}}
+
+\begin{figure}
+
+\begin{minipage}[t]{\linewidth}
+
+{\centering 
+
+\raisebox{-\height}{
+
+\includegraphics{images/never_Y3_SBP.png}
+
+}
+
+}
+
+\subcaption{\label{fig-afig-pt3-1}Treated in W3: Systolic}
+\end{minipage}%
+\newline
+\begin{minipage}[t]{\linewidth}
+
+{\centering 
+
+\raisebox{-\height}{
+
+\includegraphics{images/never_Y3_DBP.png}
+
+}
+
+}
+
+\subcaption{\label{fig-afig-pt3-2}Treated in W3: Diastolic}
+\end{minipage}%
+
+\caption{\label{fig-afig-pt3}Comparison of pre-interventions trends in
+blood pressure between waves 1 and 2 for never treated and villages
+later treated in wave 3}
+
+\end{figure}
+
+\begin{figure}
+
+\begin{minipage}[t]{\linewidth}
+
+{\centering 
+
+\raisebox{-\height}{
+
+\includegraphics{images/never_Y4_SBP.png}
+
+}
+
+}
+
+\subcaption{\label{fig-afig-pt4-1}Treated in W4: Systolic}
+\end{minipage}%
+\newline
+\begin{minipage}[t]{\linewidth}
+
+{\centering 
+
+\raisebox{-\height}{
+
+\includegraphics{images/never_Y4_DBP.png}
+
+}
+
+}
+
+\subcaption{\label{fig-afig-pt4-2}Treated in W4: Diastolic}
+\end{minipage}%
+
+\caption{\label{fig-afig-pt4}Comparison of pre-interventions trends in
+blood pressure between waves 1 and 2 for never treated and villages
+later treated in wave 4}
+
+\end{figure}
+
+\newpage
+
+\hypertarget{impact-of-group-and-time-fixed-effects}{%
+\subsection{Impact of group and time fixed
+effects}\label{impact-of-group-and-time-fixed-effects}}
+
+\hypertarget{tbl-a-fe}{}
+\begin{table}[H]
+\caption{\label{tbl-a-fe}Effects of the CBHP policy on personal exposure (\(\mu g / m^{3}\)) with
+variations in fixed effects for treatment group and time. }\tabularnewline
+
+\centering\centering
+\begin{tabular}[t]{lcccc}
+\toprule
+  & Adjusted DiD & No time FE & No group FE & No FE\\
+\midrule
+ATT & \num{1.95} & \num{-31.43} & \num{-5.91} & \num{-24.13}\\
+ & {}[\num{-23.34}, \num{27.23}] & {}[\num{-49.42}, \num{-13.44}] & {}[\num{-24.36}, \num{12.54}] & {}[\num{-41.42}, \num{-6.83}]\\
+\midrule
+Num.Obs. & \num{1281} & \num{1281} & \num{1281} & \num{1281}\\
+FE..year & X &  & X & \\
+FE..cohort\_year & X & X &  & \\
+\bottomrule
+\multicolumn{5}{l}{\rule{0pt}{1em}Note: All models adjusted for household size, smoking, outdoor temperature, and outdoor humidity.}\\
+\multicolumn{5}{l}{\rule{0pt}{1em}Standard errors clustered by village.}\\
 \end{tabular}
 \end{table}
 

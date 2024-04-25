@@ -397,3 +397,83 @@ ap_is3_table <- bind_rows(ap_ind_s3, ap_ind_nos3) %>%
 # write table to data
 write_rds(ap_is3_table, file = here("outputs", 
   "ap-is3_table.rds"))
+
+
+## 6 Impact of removing fixed effects ----
+
+# basic ETWFE model
+
+pe_etwfe <- fixest::feols(
+  PM25conc_exposureugm3 ~ 
+    treat:cohort_year_2019:year_2019 + 
+    treat:cohort_year_2019:year_2021 + 
+    treat:cohort_year_2020:year_2021 + 
+    treat:cohort_year_2021:year_2021 +
+    hh_num + factor(smoking) + outdoor_temp_24h + 
+    outdoor_dew_24h | cohort_year + year, 
+  data = d_p, cluster = ~v_id)
+
+pe_etwfe_me <- slopes(pe_etwfe, 
+  newdata = subset(d_p, treat==1), 
+  variables = "treat", by = "treat")
+
+write_rds(pe_etwfe_me, file = here("outputs/models", 
+  "pe_etwfe_me.rds"))
+
+# no year FE
+pe_etwfe_ny <- fixest::feols(
+  PM25conc_exposureugm3 ~ 
+    treat:cohort_year_2019:year_2019 + 
+    treat:cohort_year_2019:year_2021 + 
+    treat:cohort_year_2020:year_2021 + 
+    treat:cohort_year_2021:year_2021 +
+    hh_num + factor(smoking) + outdoor_temp_24h + 
+    outdoor_dew_24h | cohort_year, 
+  data = d_p, cluster = ~v_id)
+
+pe_etwfe_ny_me <- slopes(pe_etwfe_ny, 
+  newdata = subset(d_p, treat==1), 
+  variables = "treat", by = "treat")
+
+write_rds(pe_etwfe_ny_me, file = here("outputs/models", 
+  "pe_etwfe_ny_me.rds"))
+
+# no group FE
+pe_etwfe_ng <- fixest::feols(
+  PM25conc_exposureugm3 ~ 
+    treat:cohort_year_2019:year_2019 + 
+    treat:cohort_year_2019:year_2021 + 
+    treat:cohort_year_2020:year_2021 + 
+    treat:cohort_year_2021:year_2021 +
+    hh_num + factor(smoking) + outdoor_temp_24h + 
+    outdoor_dew_24h | year, 
+  data = d_p, cluster = ~v_id)
+
+pe_etwfe_ng_me <- slopes(pe_etwfe_ng, 
+  newdata = subset(d_p, treat==1), 
+  variables = "treat", by = "treat")
+
+write_rds(pe_etwfe_ng_me, file = here("outputs/models", 
+  "pe_etwfe_ng_me.rds"))
+
+# no group or year FE
+pe_etwfe_nfe <- fixest::feols(
+  PM25conc_exposureugm3 ~ 
+    treat:cohort_year_2019:year_2019 + 
+    treat:cohort_year_2019:year_2021 + 
+    treat:cohort_year_2020:year_2021 + 
+    treat:cohort_year_2021:year_2021 +
+    hh_num + factor(smoking) + outdoor_temp_24h + 
+    outdoor_dew_24h, 
+  data = d_p, cluster = ~v_id)
+
+pe_etwfe_nfe_me <- slopes(pe_etwfe_nfe, 
+  newdata = subset(d_p, treat==1), 
+  variables = "treat", by = "treat")
+
+# put the results together in a table
+write_rds(pe_etwfe_nfe_me, file = here("outputs/models", 
+  "pe_etwfe_nfe_me.rds"))
+
+
+

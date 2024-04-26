@@ -1124,7 +1124,7 @@ kable(fuel_table, digits = 0, escape = FALSE,
 ## Heterogeneity in treament effects 
 
 ### Personal exposure 
-As noted in the methods section...Table @tbl-a-het-personal shows limited evidence that the ATTs across cohorts and time demonstrate meaningful heterogeneity.
+Table @tbl-a-het-personal shows limited evidence that the $ATT$s across cohorts and time demonstrate meaningful heterogeneity.
 
 ```{r atbl-het-pe, echo=F}
 #| label: tbl-a-het-personal
@@ -1166,7 +1166,7 @@ kable(aph_table, digits = 2, escape = FALSE,
 ```
 
 ### Indoor PM~2.5~
-Table @tbl-a-het-indoor shows estimates for cohort-time ATTs for daily and seasonal indoor PM~2.5~.
+Table @tbl-a-het-indoor shows estimates for cohort-time $ATT$s for daily and seasonal indoor PM~2.5~.
 
 ```{r atbl-het-ipm, echo=F}
 #| label: tbl-a-het-indoor
@@ -1297,7 +1297,7 @@ kable(ctt_temp_het_table, digits = 2,
 \newpage
 
 ### Blood pressure outcomes
-@tbl-bp-het shows ATTs by treatment cohort and time, as well as the results of joint tests of heterogeneity across ATTs.
+@tbl-bp-het shows $ATT$s by treatment cohort and time, as well as the results of joint tests of heterogeneity across $ATT$s.
 
 ```{r atbl-bp-het, echo=F, message=F}
 #| label: tbl-bp-het
@@ -1477,7 +1477,7 @@ bp_mmed_het_table <- mhet_model %>%
 
 ### Respiratory outcomes
 
-Appendix tables [-@tbl-a-het-resp], [-@tbl-a-het-cough], [-@tbl-a-het-phlegm], [-@tbl-a-het-wheeze], [-@tbl-a-het-breath], [-@tbl-a-het-nochest] below show Average Treatment Effect on the Treated (ATTs) by treatment cohort and time. ATTs are derived from estimating marginal effects from extended two-way fixed effects models with additional adjustment for age, sex, and smoking status. 
+Appendix tables [-@tbl-a-het-resp], [-@tbl-a-het-cough], [-@tbl-a-het-phlegm], [-@tbl-a-het-wheeze], [-@tbl-a-het-breath], [-@tbl-a-het-nochest] below show Average Treatment Effect on the Treated ($ATT$s) by treatment cohort and time. ATTs are derived from estimating marginal effects from extended two-way fixed effects models with additional adjustment for age, sex, and smoking status. 
 
 ```{r atbl-het-resp, echo=F}
 #| label: tbl-a-het-resp
@@ -1694,7 +1694,7 @@ knitr::include_graphics(here("images",
 \newpage
 
 ## Impact of sample composition on FeNO results
-@tbl-a-feno shows differences in the ATTs for the impact of the CBHP policy on FeNO depending on whether the estimation sample includes all individuals or is limited to those with repeated measures across campaigns.
+@tbl-a-feno shows differences in the $ATT$s for the impact of the CBHP policy on FeNO depending on whether the estimation sample includes all individuals or is limited to those with repeated measures across campaigns.
 
 ```{r atbl-feno, echo=F, message = FALSE}
 #| label: tbl-a-feno

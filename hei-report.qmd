@@ -161,7 +161,7 @@ knitr::include_graphics(here("images",
 
 #### Indoor PM~2.5~
 
-In the second and fourth data collection waves (i.e., w2 and w4), we randomly selected six households from the 20 recruited in each village to measure indoor concentrations of PM~2.5~. In w4, we aimed to monitor indoor PM~2.5~ in the same households where we measured indoor PM~2.5~ in w2. If a household dropped out of the project or declined indoor PM~2.5~ monitoring, we then recruited another household already enrolled in this study to measure indoor PM~2.5~. In total, indoor measurements were conducted in 300 households in both w2 and w4 (@tbl-pm-sample).
+In the second, third, and fourth data collection waves we randomly selected six households from the 20 recruited in each village to measure indoor concentrations of PM~2.5~. In w4, we aimed to monitor indoor PM~2.5~ in the same households where we measured indoor PM~2.5~ in w2. If a household dropped out of the project or declined indoor PM~2.5~ monitoring, we then recruited another household already enrolled in this study to measure indoor PM~2.5~. In total, indoor measurements were conducted in 300 households in both w2 and w4 and 246 households in w3 (@tbl-pm-sample).
 
 ```{r tab-pm-sample, echo=F, message=F, warning=F}
 #| label: tbl-pm-sample

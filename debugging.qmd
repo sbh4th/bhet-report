@@ -1,0 +1,167 @@
+---
+title: "How Do Household Energy Transitions Work?"
+author: 
+  - Jill Baumgartner (Co-PI)
+  - Sam Harper (Co-PI)
+  - On behalf of the Beijing Household Energy Transitions Team
+date: today
+
+format: 
+#  docx: 
+#    toc: true
+#    number-sections: true
+#    number-depth: 3
+
+ pdf:
+   toc: true
+   keep-tex: true
+   number-sections: true
+   number-depth: 3
+   include-in-header:
+      - text: |
+         \usepackage{wrapfig}
+         \usepackage{colortbl}
+          \makeatletter
+          \renewenvironment{table}%
+            {\renewcommand\familydefault\sfdefault
+             \@float{table}}
+            {\end@float}
+          \renewenvironment{figure}%
+            {\renewcommand\familydefault\sfdefault
+             \@float{figure}}
+            {\end@float}
+          \makeatother
+   geometry: 
+      - right=1in
+      - left=1in
+   fig-pos: H
+bibliography: hei-report.bib
+csl: environmental-health-perspectives.csl
+---
+```{r packages, echo=FALSE, message = FALSE, warning = FALSE}
+library(here)
+library(osfr)
+library(tidyverse)
+library(kableExtra)
+library(modelsummary)
+library(readxl)
+library(marginaleffects)
+library(tinytable)
+```
+
+```{r master_data, include = FALSE, cache = TRUE, echo=FALSE}
+# read in master data
+bhet_master_data <- osf_retrieve_node("vxur5")
+bhet_master_data %>%
+  osf_ls_files("Master Dataset (Seasons 1-4)",
+               pattern = "csv") %>%
+  osf_download(path = here("data-clean"),
+               conflicts = "overwrite")
+```
+
+Problem table:
+
+```{r make_table1, message=FALSE, cache=TRUE, echo=FALSE}
+# select variables for table
+d <- read_csv(here("data-clean", 
+  "BHET_master_data_05Mar2024.csv"),
+  col_select = c("hh_id", "ptc_id", "gender_health",
+    "ban_status_no", "age_health", "education_health",
+    "smoking", "freq_drink", "sys_brachial", 
+    "dia_brachial", "waist_circ", "height",
+    "weight", "temp", "wave", "PM25conc_exposureugm3",
+    "freq_cough", "freq_phlegm", "freq_wheezing", 
+    "freq_breath", "freq_no_chest"))
+dt <- d %>%
+  # restrict to baseline
+  filter(wave==1) %>%
+  # select variables for inclusion
+  # select(ban_status_no, age_health, )
+  mutate(ever_trt = ifelse(ban_status_no==0, 1 ,0),
+    et = recode_factor(ever_trt, `0` = "Never treated", 
+      `1` = "Ever treated"),
+    `Age (years)` = age_health,
+    `Female ()` = ifelse(gender_health==2, 100, 0),
+    `No education ()` = ifelse(education_health==4, 100, 0),
+    `Primary education ()` = ifelse(education_health==1, 100, 0),
+    `Secondary+ education ()` = ifelse(
+      education_health %in% c(2,3), 100, 0),
+    `Never smoker ()` = ifelse(smoking==3, 100, 0),
+    `Former smoker ()` = ifelse(smoking==2, 100, 0),
+    `Current smoker ()` = ifelse(smoking==1, 100, 0),
+    `Never drinker ()` = ifelse(freq_drink==1, 100, 0),
+    `Occasional drinker ()` = ifelse(freq_drink %in% 
+      c(2:8), 100, 0),
+    `Daily drinker ()` = ifelse(freq_drink==9, 100, 0),
+    `Systolic (mmHg)` = sys_brachial,
+    `Diastolic (mmHg)` = dia_brachial,
+    `Waist circumference (cm)` = waist_circ,
+    `Body mass index (kg/m2)` = weight / (height/100)^2,
+    `Frequency of coughing ()` = 
+      if_else(freq_cough < 3, 100, 0),
+    `Frequency of phlegm ()` = 
+      if_else(freq_phlegm < 3, 100, 0),
+    `Frequency of wheezing ()` = 
+      if_else(freq_wheezing < 3, 100, 0),
+    `Shortness of breath ()` = 
+      if_else(freq_breath < 3, 100, 0),
+    `Chest trouble ()` = 
+      if_else(freq_no_chest < 3, 100, 0),
+    `Any respiratory problem ()` = if_else(
+      freq_cough < 3 |
+      freq_phlegm < 3 |
+      freq_wheezing < 3 |
+      freq_breath < 3 |
+      freq_no_chest < 3, 100, 0),
+    `Temperature (°C)` = temp,
+    `Personal PM2.5 (ug/m3)` = PM25conc_exposureugm3) %>%
+  select(et, `Age (years)`, `Female ()`, `No education ()`, 
+    `Primary education ()`, `Secondary+ education ()`, 
+    `Never smoker ()`, `Former smoker ()`, 
+    `Current smoker ()`, `Never drinker ()`, 
+    `Occasional drinker ()`, `Daily drinker ()`,
+    `Systolic (mmHg)`, `Diastolic (mmHg)`,
+    `Waist circumference (cm)`,
+    `Body mass index (kg/m2)`, 
+    `Frequency of coughing ()`,
+    `Frequency of wheezing ()`,
+    `Shortness of breath ()`,
+    `Chest trouble ()`,
+    `Any respiratory problem ()`,
+    `Temperature (°C)`,
+    `Personal PM2.5 (ug/m3)`)
+# caption <- '\\label{#tbl-table1}Descriptive statistics, by treatment status'
+reference <- ''
+# add empty rows for categorical variables
+# grouped categories
+nrn <- c("Demographics:", "Health measures:",
+  "Environmental measures:")
+# empty data frame
+nr <- data.frame(matrix(ncol = 7, nrow = length(nrn)))
+nr$X1 <- nrn
+nr[is.na(nr)] <- " "
+# placement in table
+attr(nr, 'position') <- c(1, 7, 23)
+options(modelsummary_format_numeric_latex = "plain")
+```
+
+```{r table1, cache=TRUE, message=FALSE, echo=FALSE, eval=T}
+##| label: tbl-table1
+#| tbl-cap: "Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status"
+
+
+
+datasummary_balance(~et, data = dt, 
+  add_rows = nr, align = "rrrrrrr",
+  notes = reference, output = 'tinytable')
+
+#t1
+
+#tinytable::tt(t1) |>
+ # format_tt(escape = TRUE)
+#%>%
+ # kable_styling(font_size = 9) %>%
+  #row_spec(c(1,7,23), bold = T)
+```
+
+

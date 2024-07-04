@@ -187,8 +187,8 @@ tx2 <- tx %>% pivot_wider(names_from = g,
 
 kable(tx2, 
   col.names = c("Sample", "Wave 1", "Wave 2", "Wave 4", 
-    "Wave 1", "Wave 2", "Wave 3", "Wave 4"),
-  "latex", booktabs = T) %>%
+    "Wave 1", "Wave 2", "Wave 3", "Wave 4")) %>%
+  # "latex", booktabs = T) %>%
   kable_styling() %>%
   add_header_above(c(" " = 1, 
                      "Overall" = 3, "Indoor" = 4))
@@ -279,7 +279,8 @@ To understand how Beijing’s policy works we used a difference-in-differences (
 
 ```{r didfig, engine='tikz', echo=F, out.width="50%"}
 #| label: fig-didfig
-#| fig-cap: "Stylized example of difference-in-differences"
+#| fig-cap: 'Stylized example of difference-in-differences'
+
 \begin{tikzpicture}
     \draw[very thin,color=gray] (0,0) (6.9,4.9);
     \draw[->] (0,0) -- (6.2,0) node[right] {};
@@ -316,7 +317,8 @@ To estimate how much of the CBHP intervention may work through different mechani
 
 ```{r dag1, engine='tikz', echo=F, out.width="60%"}
 #| label: fig-dag1
-#| fig-cap: "Hypothetical Directed Acyclic Graph showing direct and indirect effects with outcome ($Y$), pre-treatment covariates ($X$), policy ($T$), multiple mediators ($M_{1},M_{2}$), as well as covariates for the mediators ($W$)."
+#| fig-cap: 'Hypothetical Directed Acyclic Graph showing direct and indirect effects with outcome ($Y$), pre-treatment covariates ($X$), policy ($T$), multiple mediators ($M_{1},M_{2}$), as well as covariates for the mediators ($W$).'
+
 \begin{tikzpicture}[shorten > = 1pt, line width=0.5pt, font=\scriptsize]
 \tikzstyle{every node} = [rectangle, fill=white, draw=none]
 \node (x) at (0,0) [align=center] {$X$};
@@ -381,7 +383,7 @@ By w2, w3, and w4 there were a cumulative total of 10, 17, and 20 (out of 50 tot
 
 Appendix @fig-flowchart shows the participation of villages, households, and participants across the four waves of data collection. We conducted measurements in over 1000 participants in each of the three measurement waves that included individual-level measurements. In total, we enrolled 1432 participants into the study, of which 630 (43%) participated in all three waves, 443 (31%) participated in two waves and 365 (25%) participated in a single wave. We did not observe any notable differences in demographic characteristics or health behaviors between participants who contributed to a different number of waves (@tbl-each-campaign) or between participants in each of the three waves with individual measurements (@tbl-diff-campaign). 
 
-```{r tbl-each-campaigns, echo=F}
+```{r tbl-each-campaigns, echo=F, eval=F}
 #| label: tbl-each-campaign
 #| tbl-cap: "Demographic and health characteristics of participants in each study wave"
 
@@ -403,7 +405,7 @@ ctab1 <- tibble(
     "26.1 (4)", "91.4 (10.7)")
 )
 
-kable(ctab1, "latex", booktabs = T, escape = F,
+kable(ctab1, # "latex", booktabs = T, escape = F,
   linesep = "", align = 'lccc') %>%
   column_spec(2:4, width = "2.5cm") %>%
   row_spec(0, bold = T) %>%
@@ -411,7 +413,7 @@ kable(ctab1, "latex", booktabs = T, escape = F,
 ```
 
 
-```{r tbl-diff-campaign, echo=F}
+```{r tbl-diff-campaign, echo=F, eval=F}
 #| label: tbl-diff-campaign
 #| tbl-cap: "Demographic and health characteristics of participants who contributed to different numbers of study waves."
 
@@ -433,7 +435,7 @@ ctab2 <- tibble(
     "26.1 (3.7)", "86.9 (10.4)")
 )
 
-kable(ctab2, "latex", booktabs = T, escape = F,
+kable(ctab2, # "latex", booktabs = T, escape = F,
   linesep = "", align = 'lccc') %>%
   column_spec(2:4, width = "2.5cm") %>%
   row_spec(0, bold = T) %>%
@@ -442,7 +444,7 @@ kable(ctab2, "latex", booktabs = T, escape = F,
 
 ## Description of study sample
 
-```{r make_table1, message=FALSE, cache=TRUE, echo=FALSE}
+```{r make_table1, message=FALSE, cache=TRUE, echo=FALSE, eval=F}
 # select variables for table
 d <- read_csv(here("data-clean", 
   "BHET_master_data_05Mar2024.csv"),
@@ -526,14 +528,14 @@ attr(nr, 'position') <- c(1, 7, 23)
 options(modelsummary_format_numeric_latex = "plain")
 ```
 
-```{r table1, cache=TRUE, message=FALSE, echo=FALSE}
+```{r table1, cache=TRUE, message=FALSE, echo=FALSE, eval=F}
 #| label: tbl-table1
 #| tbl-cap: "Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status"
 
 
 t1 <- datasummary_balance(~et, data = dt, 
   add_rows = nr, align = "rrrrrrr",
-  notes = reference)
+  notes = reference, output = 'kableExtra')
 t1 %>%
   kable_styling(font_size = 9) %>%
   row_spec(c(1,7,23), bold = T)
@@ -545,7 +547,7 @@ t1 %>%
 
 At baseline, PM~2.5~ and BC concentrations were higher, on average, for personal exposures compared with outdoor concentrations. From w2 onward, with the inclusion of indoor air pollution measurements, personal exposure air pollution concentrations were still higher than indoor or outdoor concentrations, with indoor levels being higher than outdoors (@tbl-pm-season). This trend (personal > indoor > outdoor) was observed among households in treated and untreated villages. Personal, indoor, and outdoor geometric mean (95% confidence interval) concentrations of PM~2.5~ were 72 (65, 80), 45 (39, 53), and 31 (28, 35), respectively, and elevated relative to health-based guidelines. The current World Health Organization (WHO) guidelines state that annual average concentrations of PM~2.5~ should not exceed 5 µg/m^3^, while 24-hour average exposures should not exceed 15 µg/m^3^ for more than 3 to 4 days per year [@who2021]. Interim targets have been set to support the planning of incremental milestones toward cleaner air, particularly for cities, regions, and countries with higher air pollution levels. For PM~2.5~, the four interim (IT) targets for annual and 24-h means are: IT-1: 35 and 75 µg/m^3^; IT-2: 25 and 50 µg/m^3^; IT-3: 15 and 37.5 µg/m^3^; and IT-4: 10 and 25 µg/m^3^ [@who2021]. In our study, baseline personal exposures to PM~2.5~ did not even meet IT-1, indicating considerable opportunity for air quality exposure reduction with intervention. 
 
-```{r tbl-pm-season, echo=F, message = F, warnings = F}
+```{r tbl-pm-season, echo=F, message = F, warnings = F, eval=F}
 #| label: tbl-pm-season
 #| tbl-cap: "Arithmetic and geometric means for air pollutant concentrations (micrograms per cubic meter) by wave"
 
@@ -566,7 +568,7 @@ ap_season %>%
   select(-category) %>%
   kable(col.names =c("", "", "",  
    "Est.", "CI", "Est.", "CI", "Est.", "CI", 
-   "Est.", "CI"), "latex", booktabs = T,
+   "Est.", "CI"), # "latex", booktabs = T,
   linesep = "", align = 'lllcccccccc') %>% 
   kable_styling(font_size = 9) %>% 
   collapse_rows(columns = 1:2, valign = "top") %>%
@@ -603,7 +605,7 @@ In never treated villages, we also observed a transition to clean energy over th
 
 The average marginal effect ($ATT$) from the basic ETWFE model (@tbl-did-med) shows that exposure to the CBHP policy reduced 24h indoor PM~2.5~ by -19 µg/m^3^ (95%CI: -61, 22). After adjusting outdoor temperature, dewpoint, household smoking status, and the number of residents in each household, the $ATT$ decreased to -14 µg/m^3^ (95%CI: -54, 26). The impact was stronger on seasonal indoor PM~2.5~, with an average $ATT$ of -36 µg/m^3^ (95%CI: -61, -12) that was robust to covariate adjustment. This finding likely reflects the direct benefit of the policy in replacing coal stoves and air quality improvement. We found little evidence of heterogeneity in $ATT$s across cohort and time (all p-values > 0.385 for tests of heterogeneity, see Appendix @tbl-a-het-indoor).
 
-```{r tab-did-med, echo=F, message=F, warning=F}
+```{r tab-did-med, echo=F, message=F, warning=F, eval=F}
 #| label: tbl-did-med
 #| tbl-cap: "Treatment effect on outdoor and indoor PM~2.5~, personal exposure to PM~2.5~ and black carbon, and measures of indoor temperature. Outdoor and indoor PM~2.5~ were derived from sensor measurements after being adjusted based on co-located gravimetric PM~2.5~ measurements. 24h indicates the mean PM~2.5~ concentrations during the 24 hours when personal exposure samples were collected in each village. 'Seasonal' indicates the seasonal mean PM~2.5~ concentrations in each village, from Jan. 15th to Mar. 15th."
 
@@ -637,7 +639,7 @@ m_table <- bind_rows(ap_table, temp_table,
 
 kable(m_table,  digits = 2,
   col.names = c(" ", " ", "ATT", "(95% CI)", 
-   "ATT", "(95% CI)"), "latex", booktabs = T,
+   "ATT", "(95% CI)"), # "latex", booktabs = T,
   linesep = "", align = 'llcccc') %>%
   kable_styling(full_width = F) %>%
   collapse_rows(columns = 1:2, valign = "top") %>% 
@@ -659,7 +661,7 @@ With respect to the other potential mediator of temperature, @tbl-did-med shows 
 
 ### Impact of the CBHP policy on health outcomes
 
-```{r tbl-did-bp, echo=F, message=F, warning=F}
+```{r tbl-did-bp, echo=F, message=F, warning=F, eval=F}
 #| label: tbl-did-health
 #| tbl-cap: "Overall impacts of the ‘coal-to-clean energy’ policy on blood pressure, respiratory outcomes, and inflammatory markers"
 
@@ -710,7 +712,7 @@ op_table <- bind_rows(bp_policy_t, r_table,
 
 kable(op_table,  digits = 2,
   col.names = c(" ", " ", "ATT", "(95% CI)", 
-   "ATT", "(95% CI)"), "latex", booktabs = T,
+   "ATT", "(95% CI)"), # "latex", booktabs = T,
   linesep = "", align = 'llcccc') %>%
   kable_styling(full_width = F) %>%
   collapse_rows(columns = 1:2, valign = "top") %>% 
@@ -736,7 +738,7 @@ kable(op_table,  digits = 2,
 
 As noted above, we aimed to assess whether any health impacts of the CBHP policy may work specifically through pathways involving changes in PM~2.5~ and indoor temperature. Below we show results from several mediation models. We evaluated potential mediation for each mediator (indoor temperature and exposure to indoor PM~2.5~) separately and in a single model accounting for multiple mediators, and we set the values of both mediators to the  mean value for untreated participants at baseline (wave 1). For mediation analysis, we focused on BP outcomes for which we observed an effect of the policy. In @tbl-bp-med we show that conditioning on indoor PM~2.5~ and indoor temperature largely explains the entire total effect of the CBHP policy on blood pressure for systolic BP, as the CDE conditional on both mediators was reduced to 0.03 (95%CI: -2.0, 2.0) for brachial SBP. The CDE for diastolic BP was roughly half the value of the total effect. 
 
-```{r tbl-bp-med, echo=F, message=F, warning=F}
+```{r tbl-bp-med, echo=F, message=F, warning=F, eval=F}
 #| label: tbl-bp-med
 #| tbl-cap: "Controlled direct effects for the CBHP policy on blood pressure"
 
@@ -768,7 +770,7 @@ otm <- bind_rows(ot, otmp, otmt, otmm) %>%
 kable(otm, digits = 2,
   col.names = c("", "ATT", "(95%CI)",
   "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
-  "latex", booktabs = T, align = 'lcccccc') %>%
+  align = 'lcccccc') %>%
   kable_styling(font_size = 10,
     latex_options = "HOLD_position") %>%
   add_header_above(c(" " = 3, 
@@ -785,7 +787,7 @@ kable(otm, digits = 2,
 
 @tbl-resp-med shows estimates from similar analyses for the CDE of the policy on respiratory outcomes. For respiratory outcomes we focus on mediation by personal exposure to PM~2.5~ and point temperature and therefore these estimates are derived for the subset of individuals with measures of personal exposure. Thus the total adjusted $ATT$s in @tbl-resp-med are not directly comparable with those in @tbl-did-health. We estimate the CDEs holding the values of both mediators to the average levels for never treated households at baseline. Overall we find no evidence that any of the total effects we observed for self-reported respiratory outcomes in @tbl-did-health were mediated by personal exposure to PM~2.5~ or indoor temperature. Generally the CDEs for all of the outcomes are statistically indistinguishable from the total effects estimated without controlling for mediators. 
 
-```{r tbl-resp-med, echo=F, message=F, warning=F}
+```{r tbl-resp-med, echo=F, message=F, warning=F, eval=F}
 #| label: tbl-resp-med
 #| tbl-cap: "Controlled direct effects for the CBHP policy on self-reported respiratory outcomes"
 
@@ -795,7 +797,7 @@ cde_resp <- read_rds(here("outputs",
 kable(cde_resp, digits = 2,
   col.names = c("", "ATT", "(95%CI)",
   "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
-  "latex", booktabs = T, align = 'lcccccc',
+  align = 'lcccccc',
   linesep = "") %>%
   kable_styling(font_size = 9,
     latex_options = "HOLD_position") %>%
@@ -821,7 +823,7 @@ The meteorological data included hourly boundary layer height, 2-m temperature, 
 
 The model diagnostics for the three- to six-factor PMF solutions are given in @tbl-pmf. Model fit was assessed using Q/Qexp (how our model fit divided by the expected fit). As the change in Q/Qexp decreases as more factors are added, the model may be fitting additional sources that do not improve the overall fit. The largest change in Q/Qexp was from three to four sources (6.24 to 5.37) while the changes moving from four to five and five to six were similar, which suggests that the four factors solution is sufficient to explain the variation in our data. We assessed the random error in our model by randomly sampling blocks of data, fitting new models with the blocks, and comparing how the source profiles compared to the original model (bootstrap (BS) mapping). The three- and four-factor solutions had high BS mapping (all factors found in > 96.5% of bootstrap runs). The additional sources identified in the five-factor (lead) and six-factor (chloride) solutions had low BS mapping (> 72%), which means those solutions are not as consistent as the three- and four-factor solutions. The possibility that multiple, different, solutions could result in the same Q value was assessed using displacement. The displacement approach takes the original factor profiles and modifies the values for each species up or down to maintain a small change in Q, reruns the solution with the new species values, and then compares the profiles of the new model to the original. Any swaps indicate that small changes in the species values could result in factor profiles that look different from the original solution, and that the original solution is unstable. None of the factors were swapped during displacement, which indicates that all of the potential solutions are stable. Based on the Q/Qexp, BS mapping, and interpretability of the factors, the four-factor solution was selected as the most appropriate source solution for the data.
 
-```{r tbl-source-error, echo=F, message=F, warning=F}
+```{r tbl-source-error, echo=F, message=F, warning=F, eval=F}
 #| label: tbl-pmf
 #| tbl-cap: "PMF error estimation diagnostics"
 
@@ -830,7 +832,7 @@ t_pmf <- read_csv(here("data-clean",
   "pmf-error.csv"))
 
 kable(t_pmf,
- "latex", booktabs = T,
+ # "latex", booktabs = T,
   linesep = "", align = 'lllll') %>%
   kable_styling(full_width = F,
     font_size = 9) %>%
@@ -860,7 +862,7 @@ knitr::include_graphics(here("images", "source-season2.png"))
 
 @tbl-source-did shows the average treatment effect of the CBHP policy on community outdoor levels and personal exposure levels of the mixed combustion source was statistically indistinguishable from the null. Treatment was associated with lower, but statistically imprecise, personal exposures to the mixed combustion source. As with BC, this finding is consistent with the expectation that the policy contributed to reducing air pollutant emissions from solid fuel burning, as this ‘mixed combustion’ source most likely reflects solid fuel combustion, particularly in our study settings. The results were consistent across both the unadjusted and adjusted models. 
 
-```{r source-did, echo=F, message=F, warning=F}
+```{r source-did, echo=F, message=F, warning=F, eval=F}
 #| label: tbl-source-did
 #| tbl-cap: "Average treatment effect (µg/m^3^) for outdoor and personal exposure to the mixed combustion source."
 
@@ -875,7 +877,7 @@ source_t <- tibble(
 
 kable(source_t,
   col.names = c(" ", "ATT", "(95% CI)", 
-   "ATT", "(95% CI)"), "latex", booktabs = T,
+   "ATT", "(95% CI)"), # "latex", booktabs = T,
   linesep = "", align = 'lcccc') %>%
   kable_styling(full_width = F,
     latex_options = "HOLD_position") %>%
@@ -892,7 +894,7 @@ When the average treatment effects of the CBHP policy on community outdoor level
 
 @tbl-med-source shows results from the mediation analysis by personal exposure to the mixed combustion source (coal and biomass), estimated for the subset of participants with personal exposure measurements. The CDE in this model estimates the impact of exposure to the CBHP policy on central and systolic blood pressure while holding constant values of mixed combustion source at the mean baseline values for untreated population. The marginal policy effects (ATTs) from the adjusted ETWFE models for this subset of participants were largely similar to those from the full sample for central SBP (around a 1.6 mmHg decrease), but slightly smaller for central DBP (-1.7 mmHg in the full sample vs. -1.3 mmHg in the subset with personal exposure measurements) and were estimated with greater imprecision. We found little evidence that these treatment effects were meaningfully mediated by exposure to the mixed combustion source, as the controlled direct effects were generally of similar magnitude as the adjusted total effects.  
 
-```{r tbl-med-source, echo=F, message=F, warning=F}
+```{r tbl-med-source, echo=F, message=F, warning=F, eval=F}
 #| label: tbl-med-source
 #| tbl-cap: "Average treatment effects and controlled direct effect (mm/Hg) of the CBHP policy on central systolic and diastolic blood pressure with mixed combustion source as the potential mediator."
 
@@ -915,7 +917,7 @@ med_source_t <- med_source %>%
 kable(med_source_t,
   col.names =c("", "ATT", "(95%CI)", "ATT", "(95%CI)",
    "ATT", "(95%CI)"), 
-   "latex", booktabs = T,
+   # "latex", booktabs = T,
   linesep = "", align = 'lcccccc') %>%
   kable_styling(full_width = F,
     latex_options = "HOLD_position") %>%
@@ -1080,7 +1082,7 @@ knitr::include_graphics(here("images",
 knitr::include_graphics(here("images", "coal-plot.png"))
 ```
 
-```{r atbl-fuel, echo=F, eval=T}
+```{r atbl-fuel, echo=F, eval=T, eval=F}
 #| label: tbl-fuel-did
 #| tbl-cap: "Policy impacts on self-reported fuel use (kg)"
 
@@ -1107,7 +1109,7 @@ models_bio_note <- paste("Joint test that all ATTs are equal: ",
 
 kable(fuel_table, digits = 0, escape = FALSE,
   col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
-   "ATT", "(95\\%CI)"), "latex", booktabs = T,
+   "ATT", "(95\\%CI)"), # "latex", booktabs = T,
   linesep = "", align = 'cccccc') %>%
   column_spec(1:2, width = "1.5cm") %>%
   kable_styling(full_width = F, 
@@ -1128,7 +1130,7 @@ kable(fuel_table, digits = 0, escape = FALSE,
 ### Personal exposure 
 Table @tbl-a-het-personal shows limited evidence that the $ATT$s across cohorts and time demonstrate meaningful heterogeneity.
 
-```{r atbl-het-pe, echo=F}
+```{r atbl-het-pe, echo=F, eval=F}
 #| label: tbl-a-het-personal
 #| tbl-cap: "Heterogenous treatment effects: Personal exposures"
 
@@ -1153,7 +1155,7 @@ models_pbc_note <- paste("Joint test that all ATTs are equal: ",
 
 kable(aph_table, digits = 2, escape = FALSE,
   col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
-   "ATT", "(95\\%CI)"), "latex", booktabs = T,
+   "ATT", "(95\\%CI)"), # "latex", booktabs = T,
   linesep = "", align = 'cccccc') %>%
   column_spec(1:2, width = "1.5cm") %>%
   kable_styling(full_width = F, 
@@ -1170,7 +1172,7 @@ kable(aph_table, digits = 2, escape = FALSE,
 ### Indoor PM~2.5~
 Table @tbl-a-het-indoor shows estimates for cohort-time $ATT$s for daily and seasonal indoor PM~2.5~.
 
-```{r atbl-het-ipm, echo=F}
+```{r atbl-het-ipm, echo=F, eval=F}
 #| label: tbl-a-het-indoor
 #| tbl-cap: "Heterogenous treatment effects: Indoor"
 
@@ -1195,7 +1197,7 @@ models_is_note <- paste("Joint test that all ATTs are equal: ",
 
 kable(aph_table_ind, digits = 2, escape = FALSE,
   col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
-   "ATT", "(95\\%CI)"), "latex", booktabs = T,
+   "ATT", "(95\\%CI)"), # "latex", booktabs = T,
   linesep = "", align = 'cccccc') %>%
   column_spec(1:2, width = "1.5cm") %>%
   kable_styling(full_width = F,
@@ -1213,7 +1215,7 @@ kable(aph_table_ind, digits = 2, escape = FALSE,
 
 ### Indoor temperature
 
-```{r atbl-het-temp, echo = F, message = F}
+```{r atbl-het-temp, echo = F, message = F, eval=F}
 #| label: tbl-a-het-temp
 #| tbl-cap: "Heterogenous treatment effects: Indoor temperature"
 
@@ -1283,8 +1285,7 @@ ctt_temp_het_table <- ctt_temp_atts %>%
 kable(ctt_temp_het_table, digits = 2, 
   col.names = c("Cohort", "Time", "ATT", "(95%CI)",
     "p-value", "ATT", "(95%CI)", "p-value",
-    "ATT", "(95%CI)", "p-value"), 
-  "latex", booktabs = T) %>%
+    "ATT", "(95%CI)", "p-value")) %>%
   kable_styling(latex_options = "HOLD_position",
     font_size = 9) %>%
   pack_rows("All times", 1, 6) %>%
@@ -1301,7 +1302,7 @@ kable(ctt_temp_het_table, digits = 2,
 ### Blood pressure outcomes
 @tbl-bp-het shows $ATT$s by treatment cohort and time, as well as the results of joint tests of heterogeneity across $ATT$s.
 
-```{r atbl-bp-het, echo=F, message=F}
+```{r atbl-bp-het, echo=F, message=F, eval=F}
 #| label: tbl-bp-het
 #| tbl-cap: "Heterogenous treatment effects for the total effect of the CBHP policy on blood pressure."
 
@@ -1340,7 +1341,7 @@ bp_het_table <- temp_table %>%
 kable(bp_het_table,
   col.names =c("Cohort", "Time", "ATT", "(95%CI)",
    "F-Statistic", "p-value"), 
-   "latex", booktabs = T,
+   # "latex", booktabs = T,
   linesep = "", align = 'llcccc') %>%
   column_spec(1:2, width = "2cm") %>%
   kable_styling(full_width = F,
@@ -1364,7 +1365,7 @@ kable(bp_het_table,
 ### Mediation analyses for blood pressure
 @tbl-a-bp-med-het shows the cohort-time treatment effects for the mediation model for blood pressure.
 
-```{r atbl-bp-het-med, echo=F, message=F}
+```{r atbl-bp-het-med, echo=F, message=F, eval=F}
 #| label: tbl-a-bp-med-het
 #| tbl-cap: "Heterogenous treatment effects for blood pressure mediation model"
 
@@ -1401,7 +1402,7 @@ ctotm <- bind_rows(ctot, ctotmp, ctotmt, ctotmm) %>%
 kable(ctotm, digits = 2,
   col.names = c("Cohort", "Time", "ATT", "(95%CI)",
   "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
-  "latex", booktabs = T, align = 'llcccccccc') %>%
+  align = 'llcccccccc') %>%
   kable_styling(font_size = 10,
     latex_options = "HOLD_position") %>%
   pack_rows("Brachial SBP", 1, 4) %>%
@@ -1421,7 +1422,7 @@ kable(ctotm, digits = 2,
   
 ```
 
-```{r atbl-bp-het-med-tests, echo=F, message=F}
+```{r atbl-bp-het-med-tests, echo=F, message=F, eval=F}
 #| label: tbl-a-bp-med-het-tests
 #| tbl-cap: "Heterogenous treatment effects and tests for cohort-time heterogeneity across CDEs for multiple mediation blood pressure mediation model."
 
@@ -1457,7 +1458,7 @@ bp_mmed_het_table <- mhet_model %>%
   kable(bp_mmed_het_table, digits = 2,
   col.names =c("Cohort", "Time", "ATT", "(95%CI)",
    "F-Statistic", "p-value"), 
-   "latex", booktabs = T,
+   # "latex", booktabs = T,
   linesep = "", align = 'llcccc') %>%
   column_spec(1:2, width = "2cm") %>%
   kable_styling(full_width = F) %>%
@@ -1481,7 +1482,7 @@ bp_mmed_het_table <- mhet_model %>%
 
 Appendix tables [-@tbl-a-het-resp], [-@tbl-a-het-cough], [-@tbl-a-het-phlegm], [-@tbl-a-het-wheeze], [-@tbl-a-het-breath], [-@tbl-a-het-nochest] below show Average Treatment Effect on the Treated ($ATT$s) by treatment cohort and time. ATTs are derived from estimating marginal effects from extended two-way fixed effects models with additional adjustment for age, sex, and smoking status. 
 
-```{r atbl-het-resp, echo=F}
+```{r atbl-het-resp, echo=F, eval=F}
 #| label: tbl-a-het-resp
 #| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Any respiratory symptom"
 
@@ -1505,7 +1506,7 @@ models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: "
 kable(resp_any_table, digits = 2, escape = FALSE,
   col.names =c("Cohort", "Time", 
     "ATT", "(95\\%CI)"), 
-   "latex", booktabs = T,
+   # "latex", booktabs = T,
   linesep = "", align = 'cccc') %>%
   column_spec(1:2, width = "2cm") %>%
   kable_styling(full_width = F,
@@ -1516,7 +1517,7 @@ kable(resp_any_table, digits = 2, escape = FALSE,
     general_title = "", escape = F)
 ```
 
-```{r atbl-het-cough, echo=F}
+```{r atbl-het-cough, echo=F, eval=F}
 #| label: tbl-a-het-cough
 #| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Coughing"
 
@@ -1538,7 +1539,7 @@ models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: "
 kable(resp_cough_table, digits = 2, escape = FALSE,
   col.names =c("Cohort", "Time", 
     "ATT", "(95\\%CI)"), 
-   "latex", booktabs = T,
+   # "latex", booktabs = T,
   linesep = "", align = 'cccc') %>%
   column_spec(1:2, width = "2cm") %>%
   kable_styling(full_width = F,
@@ -1549,7 +1550,7 @@ kable(resp_cough_table, digits = 2, escape = FALSE,
     general_title = "", escape = F)
 ```
 
-```{r atbl-het-phlegm, echo=F}
+```{r atbl-het-phlegm, echo=F, eval=F}
 #| label: tbl-a-het-phlegm
 #| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Phlegm"
 
@@ -1571,7 +1572,7 @@ models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: "
 kable(resp_phlegm_table, digits = 2, escape = FALSE,
   col.names =c("Cohort", "Time", 
     "ATT", "(95\\%CI)"), 
-   "latex", booktabs = T,
+   # "latex", booktabs = T,
   linesep = "", align = 'cccc') %>%
   column_spec(1:2, width = "2cm") %>%
   kable_styling(full_width = F,
@@ -1582,7 +1583,7 @@ kable(resp_phlegm_table, digits = 2, escape = FALSE,
     general_title = "", escape = F)
 ```
 
-```{r atbl-het-wheeze, echo=F}
+```{r atbl-het-wheeze, echo=F, eval=F}
 #| label: tbl-a-het-wheeze
 #| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Wheezing attacks"
 
@@ -1604,7 +1605,7 @@ models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: "
 kable(resp_wheeze_table, digits = 2, escape = FALSE,
   col.names =c("Cohort", "Time", 
     "ATT", "(95\\%CI)"), 
-   "latex", booktabs = T,
+   # "latex", booktabs = T,
   linesep = "", align = 'cccc') %>%
   column_spec(1:2, width = "2cm") %>%
   kable_styling(full_width = F,
@@ -1615,7 +1616,7 @@ kable(resp_wheeze_table, digits = 2, escape = FALSE,
     general_title = "", escape = F)
 ```
 
-```{r atbl-het-breath, echo=F}
+```{r atbl-het-breath, echo=F, eval=F}
 #| label: tbl-a-het-breath
 #| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Trouble breathing"
 
@@ -1637,7 +1638,7 @@ models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: "
 kable(resp_breath_table, digits = 2, escape = FALSE,
   col.names =c("Cohort", "Time", 
     "ATT", "(95\\%CI)"), 
-   "latex", booktabs = T,
+   # "latex", booktabs = T,
   linesep = "", align = 'cccc') %>%
   column_spec(1:2, width = "2cm") %>%
   kable_styling(full_width = F,
@@ -1648,7 +1649,7 @@ kable(resp_breath_table, digits = 2, escape = FALSE,
     general_title = "", escape = F)
 ```
 
-```{r atbl-het-breath, echo=F}
+```{r atbl-het-breath, echo=F, eval=F}
 #| label: tbl-a-het-nochest
 #| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Chest trouble"
 
@@ -1670,7 +1671,7 @@ models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: "
 kable(resp_nochest_table, digits = 2, escape = FALSE,
   col.names =c("Cohort", "Time", 
     "ATT", "(95\\%CI)"), 
-   "latex", booktabs = T,
+   # "latex", booktabs = T,
   linesep = "", align = 'cccc') %>%
   column_spec(1:2, width = "2cm") %>%
   kable_styling(full_width = F,
@@ -1698,7 +1699,7 @@ knitr::include_graphics(here("images",
 ## Impact of sample composition on FeNO results
 @tbl-a-feno shows differences in the $ATT$s for the impact of the CBHP policy on FeNO depending on whether the estimation sample includes all individuals or is limited to those with repeated measures across campaigns.
 
-```{r atbl-feno, echo=F, message = FALSE}
+```{r atbl-feno, echo=F, message = FALSE, eval=F}
 #| label: tbl-a-feno
 #| tbl-cap: "Effects of the CBHP policy on FeNO (ppb) based on the number of individuals with repeated measurements."
 
@@ -1717,7 +1718,7 @@ tx <- tibble(
 kable(tx, digits = 2, 
   col.names = c("", "ATT", "(95%CI)", 
     "ATT", "(95%CI)", "ATT", "(95%CI)"),
-  "latex", booktabs = T, align = 'lcccccc') %>%
+  align = 'lcccccc') %>%
   kable_styling(full_width = F,
     latex_options = "HOLD_position") %>%
   add_header_above(c(" " = 1, 
@@ -1730,7 +1731,7 @@ kable(tx, digits = 2,
 ## Impact of including Season 3 data 
 @tbl-a-ind-s3 shows differences in the $ATT$s for the impact of seasonal indoor PM~2.5~ when season 3 data (collected in 41 villages during COVID-19) are included versus excluded. 
 
-```{r atbl-ind-s3, echo=F}
+```{r atbl-ind-s3, echo=F, eval=F}
 #| label: tbl-a-ind-s3
 #| tbl-cap: "Effects of the CBHP policy on indoor seasonal PM~2.5~ based on whether Season 3 data are included vs. excluded."
 
@@ -1739,7 +1740,7 @@ a_is3_table <- read_rds(here("outputs",
 
 kable(a_is3_table, digits = 2, escape = FALSE,
   col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
-   "ATT", "(95\\%CI)"), "latex", booktabs = T,
+   "ATT", "(95\\%CI)"), # "latex", booktabs = T,
   linesep = "", align = 'cccccc') %>%
   column_spec(1:2, width = "1.5cm") %>%
   kable_styling(full_width = F,
@@ -1796,7 +1797,7 @@ knitr::include_graphics(here("images",
 
 ## Impact of group and time fixed effects
 
-```{r, echo=FALSE, message = FALSE}
+```{r, echo=FALSE, message = FALSE, eval=F}
 #| label: tbl-a-fe
 #| tbl-cap: "Effects of the CBHP policy on personal exposure ($\\mu g / m^{3}$) with variations in fixed effects for treatment group and time."
 
@@ -1816,7 +1817,8 @@ modelsummary(list("Adjusted DiD" = pe_etwfe_me,
   "No FE" = pe_etwfe_nfe_me), 
   coef_rename = c("treat" = "ATT"), 
   statistic = "conf.int", fmt = 2, 
-  gof_omit = 'DF|Deviance|R2|AIC|BIC|RMSE', 
+  gof_omit = 'DF|Deviance|R2|AIC|BIC|RMSE',
+  output = 'kableExtra',
   notes = c("Note: All models adjusted for household size, smoking, outdoor temperature, and outdoor humidity.", 
             "Standard errors clustered by village.")) %>%
   kable_styling(latex_options = "HOLD")

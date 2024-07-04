@@ -78,28 +78,38 @@
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
-\newlength{\cslentryspacingunit} % times entry-spacing
-\setlength{\cslentryspacingunit}{\parskip}
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
   % turn on hanging indent if param 1 is 1
   \ifodd #1
-  \let\oldpar\par
-  \def\par{\hangindent=\cslhangindent\oldpar}
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
   \fi
   % set entry spacing
-  \setlength{\parskip}{#2\cslentryspacingunit}
- }%
- {}
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
 \usepackage{calc}
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLBlock}[1]{\hfill\break#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \usepackage{booktabs}
@@ -116,16 +126,6 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
-\usepackage{siunitx}
-
-  \newcolumntype{d}{S[
-    input-open-uncertainty=,
-    input-close-uncertainty=,
-    parse-numbers = false,
-    table-align-text-pre=false,
-    table-align-text-post=false
-  ]}
-  
 \usepackage{wrapfig}
 \usepackage{colortbl}
  \makeatletter
@@ -139,10 +139,6 @@
    {\end@float}
  \makeatother
 \KOMAoption{captions}{tableheading}
-\makeatletter
-\makeatother
-\makeatletter
-\makeatother
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -179,18 +175,10 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \makeatother
 \makeatletter
+\makeatother
+\makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
-\makeatother
-\makeatletter
-\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
-\makeatother
-\makeatletter
-\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
-\makeatother
-\makeatletter
-\makeatother
-\makeatletter
 \makeatother
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
@@ -211,23 +199,19 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-04-27}
+\date{2024-07-04}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, borderline west={3pt}{0pt}{shadecolor}, sharp corners, interior hidden, boxrule=0pt, frame hidden, enhanced]}{\end{tcolorbox}}\fi
-
 \renewcommand*\contentsname{Table of contents}
 {
 \hypersetup{linkcolor=}
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
-\hypertarget{abstract}{%
-\subsection*{Abstract}\label{abstract}}
+\subsection*{Abstract}\label{abstract}
 
-\hypertarget{introduction}{%
-\subsubsection*{Introduction}\label{introduction}}
+\subsubsection*{Introduction}\label{introduction}
 
 Since 2015, thousands of villages across Beijing and northern China have
 been treated by a Coal Ban and Heat Pump (CBHP) subsidy policy that
@@ -239,8 +223,7 @@ air quality and cardiopulmonary health in Beijing villages, and
 quantified how much of the policy's effects on health were mediated by
 changes in air pollution and indoor temperature.
 
-\hypertarget{methods}{%
-\subsubsection*{Methods}\label{methods}}
+\subsubsection*{Methods}\label{methods}
 
 In winter 2018-19 we enrolled 1003 participants in 50 Beijing villages
 that were eligible for, but not currently treated by, the CBHP policy
@@ -264,8 +247,7 @@ respond differently to the policy, and if any of the observed health
 impacts of the policy were mediated through changes in air pollution or
 home (indoor) temperature.
 
-\hypertarget{results}{%
-\subsubsection*{Results}\label{results}}
+\subsubsection*{Results}\label{results}
 
 At baseline (wave 1), mean participant age was 60 y (SD=9.2), 60\% were
 female, and most (63\%) worked in agriculture. Geometric mean personal
@@ -298,8 +280,7 @@ respiratory symptoms. The policy did not show evidence of meaningful
 effects on outdoor or personal exposure to PM\textsubscript{2.5}, or on
 biomarkers of inflammation and oxidative stress.
 
-\hypertarget{conclusions}{%
-\subsubsection*{Conclusions}\label{conclusions}}
+\subsubsection*{Conclusions}\label{conclusions}
 
 In this comprehensive field-based assessment of a real-world household
 energy policy in Beijing, we observed high fidelity and compliance with
@@ -311,8 +292,7 @@ clean energy policies can provide population health benefits.
 
 \newpage
 
-\hypertarget{introduction-1}{%
-\section{Introduction}\label{introduction-1}}
+\section{Introduction}\label{introduction-1}
 
 China is deploying an ambitious policy to transition up to 70\% of
 households in northern China from residential coal heating to electric
@@ -336,11 +316,9 @@ such as financial constraints and user preferences, and there is
 uncertainty about whether and how the policy may affect indoor and
 outdoor air pollution, as well as heating behaviors and health outcomes.
 
-\hypertarget{background}{%
-\section{Background}\label{background}}
+\section{Background}\label{background}
 
-\hypertarget{context-for-the-policy}{%
-\subsection{Context for the policy}\label{context-for-the-policy}}
+\subsection{Context for the policy}\label{context-for-the-policy}
 
 Beijing has a temperate continental monsoon climate that is
 characterized by cold, dry winters and hot, humid summers. Access to
@@ -374,9 +352,8 @@ million additional households are expected to be treated by 2025.
 Whether this large-scale energy policy yielded air quality and health
 benefits remains a critical and unresolved question.
 
-\hypertarget{prior-evidence-on-household-energy-interventions-and-air-pollution}{%
 \subsection{Prior evidence on household energy interventions and air
-pollution}\label{prior-evidence-on-household-energy-interventions-and-air-pollution}}
+pollution}\label{prior-evidence-on-household-energy-interventions-and-air-pollution}
 
 Household energy interventions, mostly cooking-related, that replace
 traditional solid fuel stoves with more efficient and less-polluting
@@ -408,10 +385,9 @@ emissions reductions (Thompson et al. 2019), and few accounted for
 secular changes in air quality over time, limiting any conclusions about
 the causal effect of the policy on air quality.
 
-\hypertarget{prior-evidence-on-clean-energy-interventions-and-cardiovascular-outcomes}{%
 \subsection{Prior evidence on clean energy interventions and
 cardiovascular
-outcomes}\label{prior-evidence-on-clean-energy-interventions-and-cardiovascular-outcomes}}
+outcomes}\label{prior-evidence-on-clean-energy-interventions-and-cardiovascular-outcomes}
 
 Most previous health assessments of household energy interventions have
 focused on cookstoves rather than heating technologies, though in many
@@ -458,10 +434,9 @@ improved biomass cookstoves) improved health outcomes (including
 respiratory symptoms and blood pressure), with 55\% saying no and 45\%
 saying yes (Lai et al. 2024).
 
-\hypertarget{evaluating-the-mechanisms-through-which-policies-may-affect-health-outcomes.}{%
 \subsection{Evaluating the mechanisms through which policies may affect
 health
-outcomes.}\label{evaluating-the-mechanisms-through-which-policies-may-affect-health-outcomes.}}
+outcomes.}\label{evaluating-the-mechanisms-through-which-policies-may-affect-health-outcomes.}
 
 With several exceptions (Alexander et al. 2018; Gould et al. 2023;
 McCracken et al. 2007; McCracken et al. 2011), decades of household
@@ -493,9 +468,8 @@ offset any cardiovascular-enhancing effects of improved air quality?
 Answers to these questions are facilitated by the analysis of mediating
 pathways, a key aim of this study.
 
-\hypertarget{specific-aims-and-overarching-approach}{%
 \section{Specific Aims and Overarching
-Approach}\label{specific-aims-and-overarching-approach}}
+Approach}\label{specific-aims-and-overarching-approach}
 
 We used three data collection waves in winter 2018/19, winter 2019/20,
 and winter 2021/22, as well as a partial wave in winter 2020/21 to
@@ -518,11 +492,9 @@ advance the following aims:
   health outcomes.
 \end{enumerate}
 
-\hypertarget{study-design-and-methods}{%
-\section{Study Design and Methods}\label{study-design-and-methods}}
+\section{Study Design and Methods}\label{study-design-and-methods}
 
-\hypertarget{study-area}{%
-\subsection{Study area}\label{study-area}}
+\subsection{Study area}\label{study-area}
 
 Beijing is the capital of China (pop. 21.9 million in 2020) and covers a
 large geographic area (\textasciitilde16,000 km\textsuperscript{2}) that
@@ -537,9 +509,8 @@ whereas rural and many peri-urban areas have historically relied on
 individual space heating units that, prior to 2015, were largely fueled
 by unprocessed coal (Duan et al. 2014).
 
-\hypertarget{location-and-participant-recruitment-and-enrolment}{%
 \subsection{Location and participant recruitment and
-enrolment}\label{location-and-participant-recruitment-and-enrolment}}
+enrolment}\label{location-and-participant-recruitment-and-enrolment}
 
 Between December 2018 and January 2019 we recruited 50 villages across 4
 administrative districts (Fangshan, Huairou, Mentougou, and Miyun) in
@@ -554,14 +525,16 @@ participation.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.7\textwidth,height=\textheight]{images/policy-implementation-map.png}
+\centering{
+
+\includegraphics[width=0.7\textwidth,height=\textheight]{images/policy-implementation-map.png}
 
 }
 
 \caption{\label{fig-cbhp-map}Map of village implementation of CBHP
 policy}
 
-\end{figure}
+\end{figure}%
 
 We recruited approximately 20 households in each village and randomly
 selected one eligible person from each household to participate.
@@ -582,8 +555,7 @@ study. The study protocols were approved by research ethics boards at
 Peking University (IRB00001052-18090), Peking Union Medical College
 Hospital (HS-3184) and McGill University (A08-E53-18B).
 
-\hypertarget{data-collection-overview}{%
-\subsection{Data Collection Overview}\label{data-collection-overview}}
+\subsection{Data Collection Overview}\label{data-collection-overview}
 
 We conducted study measurements over four consecutive waves of data
 collection in winter 2018-19, 2019-20, 2020-21, and 2021-22 (referred to
@@ -608,11 +580,9 @@ participant homes rather than clinics to avoid group contact, and blood
 samples were not collected. Outdoor (community) air pollution was
 measured throughout the study period.
 
-\hypertarget{air-pollution}{%
-\subsubsection{Air Pollution}\label{air-pollution}}
+\subsubsection{Air Pollution}\label{air-pollution}
 
-\hypertarget{outdoor-air-pollution}{%
-\paragraph{Outdoor air pollution}\label{outdoor-air-pollution}}
+\paragraph{Outdoor air pollution}\label{outdoor-air-pollution}
 
 In each village, two sensors for particulate matter air pollution were
 set up to measure outdoor (community) PM\textsubscript{2.5} at different
@@ -669,18 +639,19 @@ post-calibration).
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{images/sensor-calibration.png}
+\centering{
+
+\includegraphics[width=0.8\textwidth,height=\textheight]{images/sensor-calibration.png}
 
 }
 
 \caption{\label{fig-calibration}Calibration of real-time sensors against
 a reference monitor at University of the Chinese Academy of Sciences.}
 
-\end{figure}
+\end{figure}%
 
-\hypertarget{indoor-pm2.5}{%
 \paragraph{\texorpdfstring{Indoor
-PM\textsubscript{2.5}}{Indoor PM2.5}}\label{indoor-pm2.5}}
+PM\textsubscript{2.5}}{Indoor PM2.5}}\label{indoor-pm2.5}
 
 In the second, third, and fourth data collection waves we randomly
 selected six households from the 20 recruited in each village to measure
@@ -693,12 +664,14 @@ measure indoor PM\textsubscript{2.5}. In total, indoor measurements were
 conducted in 300 households in both w2 and w4 and 246 households in w3
 (Table~\ref{tbl-pm-sample}).
 
-\hypertarget{tbl-pm-sample}{}
 \begin{table}
-\caption{\label{tbl-pm-sample}Household recruitment for overall and indoor air quality measurements. }\tabularnewline
 
-\centering
-\begin{tabular}{lrrrrrrr}
+\caption{\label{tbl-pm-sample}Household recruitment for overall and
+indoor air quality measurements.}
+
+\centering{
+
+\begin{longtable*}[t]{lrrrrrrr}
 \toprule
 \multicolumn{1}{c}{ } & \multicolumn{3}{c}{Overall} & \multicolumn{4}{c}{Indoor} \\
 \cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-8}
@@ -709,8 +682,11 @@ Wave 1 households & \textbackslash{} & 866 & 780 & \textbackslash{} & 0 & 0 & 0\
 Wave 2 households & \textbackslash{} & \textbackslash{} & 162 & \textbackslash{} & \textbackslash{} & 246 & 248\\
 Total recruitment & 977 & 1062 & 1010 & 0 & 300 & 246 & 300\\
 \bottomrule
-\end{tabular}
-\end{table}
+\end{longtable*}
+
+}
+
+\end{table}%
 
 Time-resolved indoor PM\textsubscript{2.5} was measured using the same
 commercially available sensor (PMS7003 Plantower, Zefan, Inc.) used for
@@ -761,10 +737,9 @@ PM\textsubscript{2.5} samples were collected alongside Teflo samples.
 For indoor quartz PM\textsubscript{2.5} mass sampling in w4, 18 field
 blanks were collected.
 
-\hypertarget{personal-exposure-to-pm2.5-and-black-carbon}{%
 \paragraph{\texorpdfstring{Personal exposure to PM\textsubscript{2.5}
 and black
-carbon}{Personal exposure to PM2.5 and black carbon}}\label{personal-exposure-to-pm2.5-and-black-carbon}}
+carbon}{Personal exposure to PM2.5 and black carbon}}\label{personal-exposure-to-pm2.5-and-black-carbon}
 
 To measure personal exposure we used two types of samplers: Personal
 Exposure Monitors (PEMs, Apex Pro; Casella, UK) and Ultrasonic Personal
@@ -782,10 +757,9 @@ from their body and place within 2 meters while sleeping, sitting, or
 bathing. Field blanks for personal air pollution exposure measurements
 were collected at a rate of \textasciitilde10\% in each village.
 
-\hypertarget{gravimetric-analyses-of-ptfe-filter-based-pm2.5-samples}{%
 \paragraph{\texorpdfstring{Gravimetric analyses of PTFE filter-based
 PM\textsubscript{2.5}
-samples}{Gravimetric analyses of PTFE filter-based PM2.5 samples}}\label{gravimetric-analyses-of-ptfe-filter-based-pm2.5-samples}}
+samples}{Gravimetric analyses of PTFE filter-based PM2.5 samples}}\label{gravimetric-analyses-of-ptfe-filter-based-pm2.5-samples}
 
 All filters were placed in individually labeled cases, sealed in plastic
 bags, and then transported to a field laboratory and immediately stored
@@ -808,10 +782,9 @@ filters {[}47\% of filter samples{]}), and PM\textsubscript{2.5}
 concentrations were calculated by dividing the mass by the sampled air
 volume.
 
-\hypertarget{adjusting-sensor-based-pm2.5-using-filter-based-gravimetric-measurements}{%
 \paragraph{\texorpdfstring{Adjusting sensor-based PM\textsubscript{2.5}
 using filter-based gravimetric
-measurements}{Adjusting sensor-based PM2.5 using filter-based gravimetric measurements}}\label{adjusting-sensor-based-pm2.5-using-filter-based-gravimetric-measurements}}
+measurements}{Adjusting sensor-based PM2.5 using filter-based gravimetric measurements}}\label{adjusting-sensor-based-pm2.5-using-filter-based-gravimetric-measurements}
 
 We established linear regression models between the filter-based
 PM\textsubscript{2.5} mass concentrations (i.e., the `gold standard'
@@ -847,9 +820,8 @@ discrepancies in sensor performance. This approach aimed to maintain
 consistent and accurate measurements from the PM sensors throughout the
 study.
 
-\hypertarget{chemical-analysis-of-pm-mass}{%
 \paragraph{Chemical analysis of PM
-mass}\label{chemical-analysis-of-pm-mass}}
+mass}\label{chemical-analysis-of-pm-mass}
 
 We analyzed the chemical composition of community and personal exposure
 PM\textsubscript{2.5} samples to quantify the individual components and
@@ -956,9 +928,8 @@ coincide with the same 24-h period that personal exposure samples were
 collected) and the wintertime seasonal mean values (with winter `season'
 defined as January 15 to March 15) of PM\textsubscript{2.5}.
 
-\hypertarget{outdoor-and-indoor-household-air-temperature}{%
 \subsubsection{Outdoor and indoor (household) air
-temperature}\label{outdoor-and-indoor-household-air-temperature}}
+temperature}\label{outdoor-and-indoor-household-air-temperature}
 
 Hourly outdoor temperature and relative humidity data were obtained from
 the extensive network of meteorological
@@ -982,9 +953,8 @@ measured temperature over two days and compared the readings. Sensors
 recording values \textgreater1°C from the group median value were
 excluded from data collection.
 
-\hypertarget{objective-measurement-of-household-stove-use-using-sensors}{%
 \subsubsection{Objective measurement of household stove use using
-sensors}\label{objective-measurement-of-household-stove-use-using-sensors}}
+sensors}\label{objective-measurement-of-household-stove-use-using-sensors}
 
 Following methods used in a previous intervention evaluation study in
 rural China (Clark et al. 2017), we objectively measured household
@@ -1024,8 +994,7 @@ compared heating periods identified manually with those identified by
 the algorithm to check for systematic differences and possible
 overfitting.
 
-\hypertarget{questionnaires}{%
-\subsubsection{Questionnaires}\label{questionnaires}}
+\subsubsection{Questionnaires}\label{questionnaires}
 
 Field staff administered household and individual-level questionnaires
 to assess household demographic information and educational attainment,
@@ -1066,8 +1035,7 @@ pump installation, decision-making for the type and brand of heating
 technology, level of subsidies provided for heaters and electricity, and
 technical and logistic guidance to villagers.
 
-\hypertarget{blood-pressure}{%
-\subsubsection{Blood pressure}\label{blood-pressure}}
+\subsubsection{Blood pressure}\label{blood-pressure}
 
 Following 5 min of quiet rest, at least three brachial and central
 systolic (bSBP/cSBP) and diastolic (bDBP/cDBP) blood pressures (BPs)
@@ -1091,9 +1059,8 @@ measurement was obtained (n = 13 observations), in which case a single
 measurement was used. The time of day, day of the week, and indoor
 temperature prior to BP measurement were also recorded.
 
-\hypertarget{self-reported-respiratory-symptoms-and-airway-inflammation}{%
 \subsubsection{Self-reported respiratory symptoms and airway
-inflammation}\label{self-reported-respiratory-symptoms-and-airway-inflammation}}
+inflammation}\label{self-reported-respiratory-symptoms-and-airway-inflammation}
 
 During questionnaire assessment, participants were asked about chronic
 airway symptoms including cough, phlegm, wheeze, and tightness in the
@@ -1118,9 +1085,8 @@ auditory cues generated by the device. Detailed methods are provided in
 our previous study of air pollution and FeNO in Beijing adults (Shang et
 al. 2020). At least two measurements were obtained for each participant.
 
-\hypertarget{blood-inflammatory-and-oxidative-stress-markers}{%
 \subsubsection{Blood inflammatory and oxidative stress
-markers}\label{blood-inflammatory-and-oxidative-stress-markers}}
+markers}\label{blood-inflammatory-and-oxidative-stress-markers}
 
 Trained nurses collected 20 ml of whole blood in a labeled vacutainer
 via venipuncture using standard techniques (Tuck et al. 2009). Details
@@ -1170,9 +1136,8 @@ stability of standard curves. Standards and controls were measured in
 duplicate and samples were measured once due to high precision in a
 pilot study (Food and Drug Administration 2018).
 
-\hypertarget{anthropometric-measurements.}{%
 \subsubsection{Anthropometric
-measurements.}\label{anthropometric-measurements.}}
+measurements.}\label{anthropometric-measurements.}
 
 Body weight, height, and waist circumference were measured at the clinic
 visit in the first two waves and in participant homes in the last wave.
@@ -1187,8 +1152,7 @@ participant's navel at minimal respiration in centimeters to one decimal
 place. The measuring tape was replaced at the start of each wave to
 avoid stretching.
 
-\hypertarget{measuring-policy-impacts}{%
-\subsection{Measuring policy impacts}\label{measuring-policy-impacts}}
+\subsection{Measuring policy impacts}\label{measuring-policy-impacts}
 
 To understand how Beijing's policy works we used a
 difference-in-differences (DiD) design (Callaway 2020), leveraging the
@@ -1210,14 +1174,16 @@ the policy.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.5\textwidth,height=\textheight]{hei-report_files/figure-pdf/fig-didfig-1.pdf}
+\centering{
+
+\includegraphics[width=0.5\textwidth,height=\textheight]{hei-report_files/figure-pdf/fig-didfig-1.pdf}
 
 }
 
 \caption{\label{fig-didfig}Stylized example of
 difference-in-differences}
 
-\end{figure}
+\end{figure}%
 
 The DiD design compares outcomes before and after an intervention in a
 treated group relative to the same outcomes measured in a control group.
@@ -1272,9 +1238,8 @@ preferences) over time in our study, and thus the possibility that the
 effect of the policy on air pollution and health may be dynamic over
 time and/or heterogeneous across treatment cohorts.
 
-\hypertarget{measuring-pathways-and-mechanisms}{%
 \subsection{Measuring pathways and
-mechanisms}\label{measuring-pathways-and-mechanisms}}
+mechanisms}\label{measuring-pathways-and-mechanisms}
 
 To estimate how much of the CBHP intervention may work through different
 mechanisms, we used causal mediation analysis. Causal approaches to
@@ -1293,7 +1258,9 @@ levels of average background exposure, or some other hypothetical level.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.6\textwidth,height=\textheight]{hei-report_files/figure-pdf/fig-dag1-1.pdf}
+\centering{
+
+\includegraphics[width=0.6\textwidth,height=\textheight]{hei-report_files/figure-pdf/fig-dag1-1.pdf}
 
 }
 
@@ -1302,7 +1269,7 @@ direct and indirect effects with outcome (\(Y\)), pre-treatment
 covariates (\(X\)), policy (\(T\)), multiple mediators
 (\(M_{1},M_{2}\)), as well as covariates for the mediators (\(W\)).}
 
-\end{figure}
+\end{figure}%
 
 Although other mediated effects such as ``natural'' direct and indirect
 effects are theoretically estimable (VanderWeele 2015), they involve
@@ -1314,8 +1281,7 @@ strata make it challenging for questions of mediation. Because
 controlled direct effects are considered more directly policy relevant
 for public health, we focused on estimating these mediated quantities.
 
-\hypertarget{data-analysis}{%
-\section{Data Analysis}\label{data-analysis}}
+\section{Data Analysis}\label{data-analysis}
 
 To understand how the policy's impact on health may be mediated by
 different potential mediators, we need to first estimate the total
@@ -1325,8 +1291,7 @@ confounding. As discussed above, in order for the mediators to `explain'
 the total effects of the policy on health, the policy should affect the
 mediators, and the mediators should also affect the outcomes.
 
-\hypertarget{total-effect}{%
-\subsection{Total Effect}\label{total-effect}}
+\subsection{Total Effect}\label{total-effect}
 
 To estimate the total effect of the policy we used a DiD analysis that
 accommodates staggered treatment rollout. To allow for heterogeneity in
@@ -1336,7 +1301,7 @@ the CBHP policy. The mean outcome (replaced by a suitable link function
 \(g(\cdot)\) for binary or count outcomes) was defined using a set of
 linear predictors:
 
-\begin{equation}\protect\hypertarget{eq-etwfe}{}{Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) + \varepsilon_{ijt}}\label{eq-etwfe}\end{equation}
+\begin{equation}\phantomsection\label{eq-etwfe}{Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) + \varepsilon_{ijt}}\end{equation}
 
 where \(Y_{ijt}\) is the outcome for individual \(i\) in village \(j\)
 at time \(t\), \(d_{r}\) represent treatment cohort dummies, i.e., fixed
@@ -1361,8 +1326,7 @@ outcomes, we also used omnibus joint \emph{F}-tests to assess whether
 there was sufficient evidence to reject the assumption of homogeneity
 across the \(ATT\)s.
 
-\hypertarget{mediation-analysis}{%
-\subsection{Mediation Analysis}\label{mediation-analysis}}
+\subsection{Mediation Analysis}\label{mediation-analysis}
 
 As noted above, with respect to the mediation analysis we are chiefly
 interested in the \(CDE\), which can be derived by adding relevant
@@ -1371,11 +1335,11 @@ exposure-mediator interaction and potentially allow for adjustment for
 confounders \(W\) of the mediator-outcome effect, we can extend equation
 Equation~\ref{eq-etwfe} as follows:
 
-\begin{equation}\protect\hypertarget{eq-etwfem}{}{
+\begin{equation}\phantomsection\label{eq-etwfem}{
 \begin{aligned}
 Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) \\ + \delta M_{it} + \sum_{r=q}^{T} \sum_{s=r}^{T} \eta_{rt} (d_{r} \times fs_{t} \times M_{it}) + \zeta \mathbf{W} + \varepsilon_{ijt}
 \end{aligned}
-}\label{eq-etwfem}\end{equation}
+}\end{equation}
 
 where now \(\delta\) is the conditional effect of the mediator \(M\) at
 the reference level of the treatment (again, represented via the series
@@ -1405,9 +1369,8 @@ of outcomes of interest in this study, as well as the potential for
 heterogeneous treatment effects, we limited the mediation analysis to
 health outcomes for which we observed a total effect of the CBHP policy.
 
-\hypertarget{identification-of-potential-confounders-and-model-covariates}{%
 \subsection{Identification of potential confounders and model
-covariates}\label{identification-of-potential-confounders-and-model-covariates}}
+covariates}\label{identification-of-potential-confounders-and-model-covariates}
 
 In contrast to typical analytic approaches such as regression adjustment
 or propensity scores that solely focus on measured covariates, our DiD
@@ -1459,10 +1422,9 @@ included: total number of households in the village; village population;
 and ambient relative humidity (represented by a spline with 2 degrees of
 freedom).
 
-\hypertarget{multiple-imputation-for-covariates-and-indoor-pm2.5-in-analyses-with-bp-outcomes}{%
 \subsection{\texorpdfstring{Multiple imputation for covariates and
 indoor PM\textsubscript{2.5} in analyses with BP
-outcomes}{Multiple imputation for covariates and indoor PM2.5 in analyses with BP outcomes}}\label{multiple-imputation-for-covariates-and-indoor-pm2.5-in-analyses-with-bp-outcomes}}
+outcomes}{Multiple imputation for covariates and indoor PM2.5 in analyses with BP outcomes}}\label{multiple-imputation-for-covariates-and-indoor-pm2.5-in-analyses-with-bp-outcomes}
 
 Blood pressure was measured at household visits but several key
 covariates like waist circumference, height, and weight were measured at
@@ -1490,8 +1452,7 @@ distribution of imputed values for BMI, waist circumference, and indoor
 PM\textsubscript{2.5}, all of which closely approximated the observed
 values.
 
-\hypertarget{results-1}{%
-\section{Results}\label{results-1}}
+\section{Results}\label{results-1}
 
 We retained all 50 study villages during this four-year longitudinal
 assessment of village treatment by the CBHP policy, though we were only
@@ -1531,91 +1492,42 @@ between participants who contributed to a different number of waves
 three waves with individual measurements
 (Table~\ref{tbl-diff-campaign}).
 
-\hypertarget{tbl-each-campaign}{}
 \begin{table}
-\caption{\label{tbl-each-campaign}Demographic and health characteristics of participants in each study
-wave }\tabularnewline
 
-\centering
-\begin{tabular}{l>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}}
-\toprule
-\textbf{Characteristic} & \textbf{Wave 1 (2018-19) N=1003} & \textbf{Wave 2 (2019-20) N=1110} & \textbf{Wave 4 (2021-22) N=1028}\\
-\midrule
-Female, n (\%) & 580 (57.8) & 653 (58.8) & 612 (59.5)\\
-Current smoker, n (\%) & 257 (25.6) & 295 (26.6) & 265 (25.8)\\
-Any smoke exposure, n (\%) & 788 (78.6) & 897 (80.8) & 843 (82)\\
-Age in years, Mean (SD) & 60.7 (9.2) & 61.4 (9.1) & 63.1 (9)\\
-BMI in kg/m\textsuperscript{2}, Mean (SD) & 26.1 (3.7) & 25.7 (3.5) & 26.1 (4)\\
-Waist circumference in cm, Mean (SD) & 86.8 (10.2) & 87.4 (9.4) & 91.4 (10.7)\\
-\bottomrule
-\end{tabular}
-\end{table}
+\caption{\label{tbl-each-campaign}Demographic and health characteristics
+of participants in each study wave}
 
-\hypertarget{tbl-diff-campaign}{}
+\centering{
+
+}
+
+\end{table}%
+
 \begin{table}
-\caption{\label{tbl-diff-campaign}Demographic and health characteristics of participants who contributed
-to different numbers of study waves. }\tabularnewline
 
-\centering
-\begin{tabular}{l>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}}
-\toprule
-\textbf{Characteristic} & \textbf{1 Wave N=365} & \textbf{2 Waves N=443} & \textbf{3 Waves N=630}\\
-\midrule
-Female, n (\%) & 211 (57.8) & 253 (57.1) & 370 (58.7)\\
-Current smoker, n (\%) & 110 (30.1) & 117 (26.4) & 161 (25.6)\\
-Any smoke exposure, n (\%) & 288 (78.9) & 360 (81.3) & 498 (79)\\
-Age in years, Mean (SD) & 59.9 (9.2) & 60.5 (8.8) & 61.3 (9.1)\\
-BMI in kg/m\textsuperscript{2}, Mean (SD) & 26.3 (3.6) & 25.8 (3.5) & 26.1 (3.7)\\
-Waist circumference in cm, Mean (SD) & 90.3 (9.8) & 86.5 (10) & 86.9 (10.4)\\
-\bottomrule
-\end{tabular}
-\end{table}
+\caption{\label{tbl-diff-campaign}Demographic and health characteristics
+of participants who contributed to different numbers of study waves.}
 
-\hypertarget{description-of-study-sample}{%
+\centering{
+
+}
+
+\end{table}%
+
 \subsection{Description of study
-sample}\label{description-of-study-sample}}
+sample}\label{description-of-study-sample}
 
-\hypertarget{tbl-table1}{}
 \begin{table}
-\caption{\label{tbl-table1}Descriptive statistics for selected demographic, health, and
-environmental measures at baseline, by treatment status }\tabularnewline
 
-\centering\centering
-\fontsize{9}{11}\selectfont
-\begin{tabular}[t]{rrrrrrr}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Never treated (N=603)} & \multicolumn{2}{c}{Ever treated (N=400)} & \multicolumn{2}{c}{ } \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
-  & Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error\\
-\midrule
-\textbf{Demographics:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
-Age (years) & 59.9 & 9.4 & 60.4 & 9.2 & 0.5 & 0.6\\
-Female (\%) & 59.5 & 49.1 & 59.1 & 49.2 & -0.4 & 3.2\\
-No education (\%) & 11.5 & 31.9 & 12.3 & 32.9 & 0.9 & 2.1\\
-Primary education (\%) & 75.5 & 43.0 & 77.6 & 41.7 & 2.1 & 2.8\\
-Secondary+ education (\%) & 12.6 & 33.2 & 9.8 & 29.7 & -2.9 & 2.0\\
-\textbf{Health measures:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
-Never smoker (\%) & 61.9 & 48.6 & 59.5 & 49.1 & -2.4 & 3.2\\
-Former smoker (\%) & 11.9 & 32.4 & 15.1 & 35.8 & 3.2 & 2.2\\
-Current smoker (\%) & 26.2 & 44.0 & 25.4 & 43.6 & -0.8 & 2.8\\
-Never drinker (\%) & 55.9 & 49.7 & 52.5 & 50.0 & -3.4 & 3.2\\
-Occasional drinker (\%) & 26.0 & 43.9 & 25.5 & 43.6 & -0.5 & 2.8\\
-Daily drinker (\%) & 17.8 & 38.3 & 21.9 & 41.4 & 4.1 & 2.6\\
-Systolic (mmHg) & 131.4 & 16.8 & 128.7 & 14.3 & -2.7 & 1.0\\
-Diastolic (mmHg) & 82.7 & 11.6 & 82.1 & 11.3 & -0.6 & 0.8\\
-Waist circumference (cm) & 87.7 & 10.5 & 85.4 & 9.5 & -2.3 & 0.8\\
-Body mass index (kg/m2) & 26.3 & 3.7 & 25.8 & 3.6 & -0.5 & 0.3\\
-Frequency of coughing (\%) & 18.7 & 39.0 & 19.7 & 39.8 & 1.0 & 2.6\\
-Frequency of wheezing (\%) & 6.2 & 24.2 & 6.6 & 24.8 & 0.3 & 1.6\\
-Shortness of breath (\%) & 29.2 & 45.5 & 34.3 & 47.5 & 5.1 & 3.0\\
-Chest trouble (\%) & 11.6 & 32.0 & 14.1 & 34.9 & 2.5 & 2.2\\
-Any respiratory problem (\%) & 50.6 & 50.0 & 54.3 & 49.9 & 3.7 & 3.2\\
-\textbf{Environmental measures:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
-Temperature (°C) & 13.8 & 3.6 & 13.5 & 3.3 & -0.3 & 0.2\\
-Personal PM2.5 (ug/m3) & 150.2 & 300.3 & 103.8 & 107.3 & -46.3 & 19.1\\
-\bottomrule
-\end{tabular}
-\end{table}
+\caption{\label{tbl-table1}Descriptive statistics for selected
+demographic, health, and environmental measures at baseline, by
+treatment status}
+
+\centering{
+
+}
+
+\end{table}%
 
 Table~\ref{tbl-table1} shows the distribution of selected demographic,
 health, and environmental characteristics from the baseline survey,
@@ -1629,9 +1541,8 @@ measures, with the exception of personal exposure to
 PM\textsubscript{2.5}, which was lower in villages that were eventually
 treated.
 
-\hypertarget{summary-of-pm-and-bc-measurements}{%
 \subsection{Summary of PM and BC
-measurements}\label{summary-of-pm-and-bc-measurements}}
+measurements}\label{summary-of-pm-and-bc-measurements}
 
 At baseline, PM\textsubscript{2.5} and BC concentrations were higher, on
 average, for personal exposures compared with outdoor concentrations.
@@ -1660,62 +1571,16 @@ baseline personal exposures to PM\textsubscript{2.5} did not even meet
 IT-1, indicating considerable opportunity for air quality exposure
 reduction with intervention.
 
-\hypertarget{tbl-pm-season}{}
 \begin{table}
-\caption{\label{tbl-pm-season}Arithmetic and geometric means for air pollutant concentrations
-(micrograms per cubic meter) by wave }\tabularnewline
 
-\centering\begingroup\fontsize{9}{11}\selectfont
+\caption{\label{tbl-pm-season}Arithmetic and geometric means for air
+pollutant concentrations (micrograms per cubic meter) by wave}
 
-\begin{tabular}{lllcccccccc}
-\toprule
-\multicolumn{3}{c}{ } & \multicolumn{2}{c}{Wave 1} & \multicolumn{2}{c}{Wave 2} & \multicolumn{2}{c}{Wave 3} & \multicolumn{2}{c}{Wave 4} \\
-\cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7} \cmidrule(l{3pt}r{3pt}){8-9} \cmidrule(l{3pt}r{3pt}){10-11}
- &  &  & Est. & CI & Est. & CI & Est. & CI & Est. & CI\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{11}{l}{\textbf{Personal}}\\
- &  & Mean & 117 & {}[105, 129] & 97 & {}[87, 107] &  &  & 84 & {}[72, 97]\\
-\cmidrule{3-11}
- & \multirow[t]{-2}{*}{\raggedright\arraybackslash 24h PM2.5} & GM & 72 & {}[65, 80] & 59 & {}[53, 65] &  &  & 47 & {}[42, 52]\\
-\cmidrule{2-11}
- &  & Mean & 4 & {}[3.5, 4.4] & 3.5 & {}[2.7, 4.2] &  &  & 3.7 & {}[2.9, 4.5]\\
-\cmidrule{3-11}
-\multirow[t]{-4}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Filter-derived} & \multirow[t]{-2}{*}{\raggedright\arraybackslash 24h BC} & GM & 2.6 & {}[2.4, 2.8] & 1.9 & {}[1.7, 2.1] &  &  & 1.7 & {}[1.5, 1.9]\\
-\cmidrule{1-11}
-\addlinespace[0.3em]
-\multicolumn{11}{l}{\textbf{Indoor}}\\
- &  & Mean &  &  & 94 & {}[84, 104] & 84 & {}[75, 94] & 67 & {}[60, 75]\\
-\cmidrule{3-11}
-\multirow[t]{-2}{*}{\raggedright\arraybackslash Sensor-derived} & \multirow[t]{-2}{*}{\raggedright\arraybackslash Seasonal PM2.5} & GM &  &  & 71 & {}[65, 78] & 63 & {}[57, 70] & 47 & {}[42, 52]\\
-\cmidrule{1-11}
- &  & Mean &  &  & 69 & {}[59, 79] &  &  & 59 & {}[49, 69]\\
-\cmidrule{3-11}
- & \multirow[t]{-2}{*}{\raggedright\arraybackslash 24h PM2.5} & GM &  &  & 45 & {}[39, 53] &  &  & 33 & {}[27, 40]\\
-\cmidrule{2-11}
- &  & Mean &  &  & 2.3 & {}[1.8, 2.8] &  &  & 2.8 & {}[2.1, 3.4]\\
-\cmidrule{3-11}
-\multirow[t]{-4}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Filter-derived} & \multirow[t]{-2}{*}{\raggedright\arraybackslash 24h BC} & GM &  &  & 1.6 & {}[1.3, 2.0] &  &  & 1.6 & {}[1.3, 1.9]\\
-\cmidrule{1-11}
-\addlinespace[0.3em]
-\multicolumn{11}{l}{\textbf{Outdoor}}\\
- &  & Mean & 47 & {}[45, 48] & 55 & {}[54, 56] & 33 & {}[32, 34] & 33 & {}[32, 34]\\
-\cmidrule{3-11}
-\multirow[t]{-2}{*}{\raggedright\arraybackslash Sensor-derived} &  & GM & 36 & {}[35, 37] & 40 & {}[39, 41] & 23 & {}[22, 23] & 22 & {}[22, 23]\\
-\cmidrule{1-1}
-\cmidrule{3-11}
- &  & Mean & 38 & {}[34, 42] & 38 & {}[34, 41] & 25 & {}[23, 28] & 26 & {}[24, 28]\\
-\cmidrule{3-11}
- & \multirow[t]{-4}{*}{\raggedright\arraybackslash Seasonal PM2.5} & GM & 33 & {}[29, 36] & 30 & {}[28, 32] & 21 & {}[19, 23] & 22 & {}[21, 24]\\
-\cmidrule{2-11}
- &  & Mean & 1.5 & {}[1.3, 1.6] & 1.4 & {}[1.3, 1.5] &  &  & 1.2 & {}[1.1, 1.2]\\
-\cmidrule{3-11}
-\multirow[t]{-4}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Filter-derived} & \multirow[t]{-2}{*}{\raggedright\arraybackslash Seasonal BC} & GM & 1.3 & {}[1.1, 1.4] & 1.1 & {}[1.0, 1.2] &  &  & 1 & {}[0.9, 1.1]\\
-\bottomrule
-\multicolumn{11}{l}{\rule{0pt}{1em}Note: Est. = Estimate, CI = 95\% CI, GM = Geometric Mean}\\
-\end{tabular}
-\endgroup{}
-\end{table}
+\centering{
+
+}
+
+\end{table}%
 
 We also present the geometric and arithmetic means (and 95\% confidence
 intervals) for PM\textsubscript{2.5} and BC in each measurement wave
@@ -1723,8 +1588,7 @@ intervals) for PM\textsubscript{2.5} and BC in each measurement wave
 took place over a time period impacted by the COVID-19 pandemic and did
 not involve filter-based air pollution sample collection.
 
-\hypertarget{policy-uptake}{%
-\subsection{Policy uptake}\label{policy-uptake}}
+\subsection{Policy uptake}\label{policy-uptake}
 
 Each year of the study, participants reported the types of fuels and
 stoves and the amount of fuel used for space heating in winter. Based on
@@ -1747,14 +1611,16 @@ continuing to use coal.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{images/sanky.jpg}
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/sanky.jpg}
 
 }
 
 \caption{\label{fig-sankey}Transitions to different energy sources
 across study waves}
 
-\end{figure}
+\end{figure}%
 
 We also observed a substantial decline in the amount of self-reported
 coal used in villages treated by CBHP policy (Appendix
@@ -1780,13 +1646,11 @@ Self-reported use of biomass also remained stable, at approximately one
 ton of fuel each winter, whereas exclusive use of solid fuel decreased
 from 30\% in w1 to 7\% in w4.
 
-\hypertarget{aim-1-policy-impacts-and-potential-mediation}{%
 \subsection{Aim 1: Policy impacts and potential
-mediation}\label{aim-1-policy-impacts-and-potential-mediation}}
+mediation}\label{aim-1-policy-impacts-and-potential-mediation}
 
-\hypertarget{impact-of-the-cbhp-policy-on-potential-mediators}{%
 \subsubsection{Impact of the CBHP policy on potential
-mediators}\label{impact-of-the-cbhp-policy-on-potential-mediators}}
+mediators}\label{impact-of-the-cbhp-policy-on-potential-mediators}
 
 The average marginal effect (\(ATT\)) from the basic ETWFE model
 (Table~\ref{tbl-did-med}) shows that exposure to the CBHP policy reduced
@@ -1802,63 +1666,24 @@ improvement. We found little evidence of heterogeneity in \(ATT\)s
 across cohort and time (all p-values \textgreater{} 0.385 for tests of
 heterogeneity, see Appendix Table~\ref{tbl-a-het-indoor}).
 
-\hypertarget{tbl-did-med}{}
 \begin{table}
-\caption{\label{tbl-did-med}Treatment effect on outdoor and indoor PM\textsubscript{2.5}, personal
-exposure to PM\textsubscript{2.5} and black carbon, and measures of
-indoor temperature. Outdoor and indoor PM\textsubscript{2.5} were
-derived from sensor measurements after being adjusted based on
-co-located gravimetric PM\textsubscript{2.5} measurements. 24h indicates
-the mean PM\textsubscript{2.5} concentrations during the 24 hours when
-personal exposure samples were collected in each village. `Seasonal'
-indicates the seasonal mean PM\textsubscript{2.5} concentrations in each
-village, from Jan. 15th to Mar. 15th. }\tabularnewline
 
-\centering
-\begin{threeparttable}
-\begin{tabular}{llcccc}
-\toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{DiD} & \multicolumn{2}{c}{Adjusted DiD\textsuperscript{a}} \\
-\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
-  &   & ATT & (95\% CI) & ATT & (95\% CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Air pollution (µg/m\textsuperscript{3})}}\\
-\hspace{1em} & PM2.5 & -2.09 & (-29.38, 25.2) & 1.95 & (-23.34, 27.23)\\
-\cmidrule{2-6}
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Personal} & Black carbon & -0.46 & (-1.73, 0.81) & -0.43 & (-1.67, 0.81)\\
-\cmidrule{1-6}
-\hspace{1em} & Daily & -19.10 & (-60.56, 22.35) & -14.20 & (-53.94, 25.54)\\
-\cmidrule{2-6}
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Indoor} & Seasonal & -35.11 & (-59.36, -10.85) & -36.19 & (-60.74, -11.65)\\
-\cmidrule{1-6}
-\hspace{1em} & Daily & -0.11 & (-5.86, 5.64) & -1.73 & (-9.26, 5.81)\\
-\cmidrule{2-6}
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Outdoor} & Seasonal & 3.14 & (-3.1, 9.38) & 0.36 & (-6.27, 6.99)\\
-\cmidrule{1-6}
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Indoor temperature (°C)}}\\
-\hspace{1em}Point & Mean & 1.96 & (0.96, 2.96) & 1.96 & (0.96, 2.96)\\
-\cmidrule{1-6}
-\hspace{1em} & Mean (all) & 0.64 & (0, 1.29) & 0.64 & (0, 1.29)\\
-\cmidrule{2-6}
-\hspace{1em} & Mean (daytime) & 0.82 & (-0.08, 1.72) & 0.82 & (-0.08, 1.72)\\
-\cmidrule{2-6}
-\hspace{1em} & Mean (heating season) & 1.80 & (0.96, 2.64) & 1.80 & (0.96, 2.64)\\
-\cmidrule{2-6}
-\hspace{1em} & Mean (daytime heating season) & 1.85 & (0.97, 2.73) & 1.85 & (0.97, 2.73)\\
-\cmidrule{2-6}
-\hspace{1em} & Min. (all) & 3.83 & (2.26, 5.39) & 3.83 & (2.26, 5.39)\\
-\cmidrule{2-6}
-\multirow[t]{-6}{*}[5\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Seasonal} & Min. (heating season) & 3.72 & (2.19, 5.25) & 3.72 & (2.19, 5.25)\\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\item \small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.}
-\item[a] \small{ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted.}
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
+\caption{\label{tbl-did-med}Treatment effect on outdoor and indoor
+PM\textsubscript{2.5}, personal exposure to PM\textsubscript{2.5} and
+black carbon, and measures of indoor temperature. Outdoor and indoor
+PM\textsubscript{2.5} were derived from sensor measurements after being
+adjusted based on co-located gravimetric PM\textsubscript{2.5}
+measurements. 24h indicates the mean PM\textsubscript{2.5}
+concentrations during the 24 hours when personal exposure samples were
+collected in each village. `Seasonal' indicates the seasonal mean
+PM\textsubscript{2.5} concentrations in each village, from Jan.~15th to
+Mar.~15th.}
+
+\centering{
+
+}
+
+\end{table}%
 
 Overall we found little evidence of an impact of the CBHP policy on 24-h
 and seasonal outdoor (community) PM\textsubscript{2.5} or personal
@@ -1875,74 +1700,20 @@ similar impacts on mean seasonal temperatures during the heating season.
 The CBHP policy had considerably stronger impacts on average seasonal
 minimum temperatures, which increased by 3.8°C (95\%CI: 2.3, 5.4).
 
-\hypertarget{impact-of-the-cbhp-policy-on-health-outcomes}{%
 \subsubsection{Impact of the CBHP policy on health
-outcomes}\label{impact-of-the-cbhp-policy-on-health-outcomes}}
+outcomes}\label{impact-of-the-cbhp-policy-on-health-outcomes}
 
-\hypertarget{tbl-did-health}{}
 \begin{table}
-\caption{\label{tbl-did-health}Overall impacts of the `coal-to-clean energy' policy on blood pressure,
-respiratory outcomes, and inflammatory markers }\tabularnewline
 
-\centering
-\begin{threeparttable}
-\begin{tabular}{llcccc}
-\toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{DiD} & \multicolumn{2}{c}{Adjusted DiD\textsuperscript{a}} \\
-\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
-  &   & ATT & (95\% CI) & ATT & (95\% CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Blood pressure (mmHg)}}\\
-\hspace{1em} & Brachial & -0.79 & (-2.63, 1.04) & -1.40 & (-3.31, 0.51)\\
-\cmidrule{2-6}
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Systolic BP} & Central & -1.04 & (-2.82, 0.73) & -1.56 & (-3.40, 0.28)\\
-\cmidrule{1-6}
-\hspace{1em} & Brachial & -1.29 & (-2.62, 0.04) & -1.60 & (-2.96, -0.25)\\
-\cmidrule{2-6}
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Diastolic BP} & Central & -1.35 & (-2.66, 0.04) & -1.66 & (-2.97, -0.34)\\
-\cmidrule{1-6}
-\hspace{1em} & Brachial & 0.50 & (-0.71, 1.70) & 0.21 & (-1.00, 1.41)\\
-\cmidrule{2-6}
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Pulse Pressure} & Central & 0.31 & (-0.85, 1.46) & 0.10 & (-1.01, 1.20)\\
-\cmidrule{1-6}
-\hspace{1em} & Pulse pressure & 0.10 & (-0.12, 1.40) & 0.00 & (-1.20, 1.20)\\
-\cmidrule{2-6}
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash BP Amplification x10} & Systolic BP & 0.20 & (-0.20, 0.50) & 0.10 & (-0.20, 0.40)\\
-\cmidrule{1-6}
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{\makecell[l]{Respiratory\\outcomes}}}\\
-\hspace{1em} & Any symptom & -7.38 & (-13.98, -0.77) & -7.86 & (-14.63, -1.09)\\
-\cmidrule{2-6}
-\hspace{1em} & Coughing & -1.59 & (-6.41, 3.23) & -1.98 & (-6.8, 2.84)\\
-\cmidrule{2-6}
-\hspace{1em} & Phlegm & -1.22 & (-5.58, 3.15) & -1.82 & (-6.34, 2.69)\\
-\cmidrule{2-6}
-\hspace{1em} & Wheezing attacks & -0.22 & (-3.97, 3.52) & -0.14 & (-3.85, 3.57)\\
-\cmidrule{2-6}
-\hspace{1em} & Trouble breathing & -4.98 & (-11.81, 1.84) & -4.62 & (-11.59, 2.35)\\
-\cmidrule{2-6}
-\multirow[t]{-6}{*}[5\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Self-reported (pp)} & Chest trouble & -6.63 & (-12.51, -0.76) & -6.36 & (-12.14, -0.59)\\
-\cmidrule{1-6}
-\hspace{1em}Measured & FeNO (ppb) & 0.17 & (-2.24, 2.58) & 0.55 & (-2.13, 3.13)\\
-\cmidrule{1-6}
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{\makecell[l]{Inflammatory\\markers (\%)}}}\\
-\hspace{1em} & IL6 & 6.80 & (-12.2, 30.0) & 5.90 & (-13.8, 30.2)\\
-\cmidrule{2-6}
-\hspace{1em} & TNF-alpha & 24.30 & (-1.3, 56.4) & 24.70 & (-0.9, 54.2)\\
-\cmidrule{2-6}
-\hspace{1em} & CRP & 2.70 & (-19.8, 31.6) & 3.80 & (-19.4, 33.6)\\
-\cmidrule{2-6}
-\multirow[t]{-4}{*}[3\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash } & MDA & 7.60 & (-8.7, 26.9) & 6.50 & (-9.7, 25.5)\\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\item \small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, pp = percentage points, ppb = parts per billion.}
-\item[a] \small{Blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
+\caption{\label{tbl-did-health}Overall impacts of the `coal-to-clean
+energy' policy on blood pressure, respiratory outcomes, and inflammatory
+markers}
+
+\centering{
+
+}
+
+\end{table}%
 
 Table~\ref{tbl-did-health} shows the impacts of the policy on blood
 pressure in basic ETWFE models and models further adjusted for age, sex,
@@ -1988,9 +1759,8 @@ analyses that limited the analysis to participants with at least two
 repeated measurements and to those who participated in all three waves
 (Appendix Table~\ref{tbl-a-feno})
 
-\hypertarget{mediated-impact-on-health-outcomes}{%
 \subsubsection{Mediated impact on health
-outcomes}\label{mediated-impact-on-health-outcomes}}
+outcomes}\label{mediated-impact-on-health-outcomes}
 
 As noted above, we aimed to assess whether any health impacts of the
 CBHP policy may work specifically through pathways involving changes in
@@ -2008,35 +1778,16 @@ BP, as the CDE conditional on both mediators was reduced to 0.03
 (95\%CI: -2.0, 2.0) for brachial SBP. The CDE for diastolic BP was
 roughly half the value of the total effect.
 
-\hypertarget{tbl-bp-med}{}
-\begin{table}[H]
-\caption{\label{tbl-bp-med}Controlled direct effects for the CBHP policy on blood pressure }\tabularnewline
+\begin{table}
 
-\centering\begingroup\fontsize{10}{12}\selectfont
+\caption{\label{tbl-bp-med}Controlled direct effects for the CBHP policy
+on blood pressure}
 
-\begin{threeparttable}
-\begin{tabular}{lcccccclc}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Adjusted Total Effect\textsuperscript{a}} & \multicolumn{6}{c}{CDE Mediated By:\textsuperscript{b}} \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-9}
-\multicolumn{3}{c}{ } & \multicolumn{2}{c}{Indoor PM} & \multicolumn{2}{c}{Indoor Temp} & \multicolumn{2}{c}{PM + Temp} \\
-\cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7} \cmidrule(l{3pt}r{3pt}){8-9}
- & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI)\\
-\midrule
-Brachial SBP & -1.40 & (-3.31, 0.51) & -1.05 & (-3.12, 1.02) & -0.46 & (-2.29, 1.36) & -0.03 & (-2.04, 1.97)\\
-Central SBP & -1.56 & (-3.40, 0.28) & -1.15 & (-3.20, 0.89) & -0.68 & (-2.36, 1.00) & -0.20 & (-2.11, 1.70)\\
-Brachial DBP & -1.60 & (-2.96, -0.25) & -1.40 & (-2.97, 0.16) & -1.14 & (-2.33, 0.06) & -0.88 & (-2.30, 0.54)\\
-Central DBP & -1.66 & (-2.97, -0.34) & -1.40 & (-2.96, 0.16) & -1.32 & (-2.50, -0.14) & -1.02 & (-2.45, 0.41)\\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\item \small{Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.}
-\item[a] \small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}
-\item[b] \small{Mediators were set to the mean value for untreated participants at baseline.}
-\end{tablenotes}
-\end{threeparttable}
-\endgroup{}
-\end{table}
+\centering{
+
+}
+
+\end{table}%
 
 Table~\ref{tbl-resp-med} shows estimates from similar analyses for the
 CDE of the policy on respiratory outcomes. For respiratory outcomes we
@@ -2053,42 +1804,19 @@ exposure to PM\textsubscript{2.5} or indoor temperature. Generally the
 CDEs for all of the outcomes are statistically indistinguishable from
 the total effects estimated without controlling for mediators.
 
-\hypertarget{tbl-resp-med}{}
-\begin{table}[H]
-\caption{\label{tbl-resp-med}Controlled direct effects for the CBHP policy on self-reported
-respiratory outcomes }\tabularnewline
+\begin{table}
 
-\centering\begingroup\fontsize{9}{11}\selectfont
+\caption{\label{tbl-resp-med}Controlled direct effects for the CBHP
+policy on self-reported respiratory outcomes}
 
-\begin{threeparttable}
-\begin{tabular}{lcccccclc}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Adjusted Total Effect\textsuperscript{a}} & \multicolumn{6}{c}{CDE Mediated By:\textsuperscript{b}} \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-9}
-\multicolumn{3}{c}{ } & \multicolumn{2}{c}{Indoor PM} & \multicolumn{2}{c}{Indoor Temp} & \multicolumn{2}{c}{PM + Temp} \\
-\cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7} \cmidrule(l{3pt}r{3pt}){8-9}
- & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI)\\
-\midrule
-Any symptom & -12.23 & (-19.46, -5.00) & -12.25 & (-19.46, -5.04) & -15.13 & (-23.57, -6.69) & -14.86 & (-23.45, -6.26)\\
-Coughing & -11.70 & (-19.49, -3.91) & -11.60 & (-19.28, -3.93) & -14.89 & (-22.85, -6.93) & -15.93 & (-23.78, -8.09)\\
-Phlegm & -9.80 & (-16.34, -3.26) & -9.86 & (-16.39, -3.33) & -14.01 & (-21.32, -6.69) & -13.63 & (-20.94, -6.32)\\
-Wheezing attacks & -4.72 & (-12.56, 3.12) & -4.71 & (-12.61, 3.19) & -6.39 & (-14.44, 1.66) & -4.42 & (-11.38, 2.53)\\
-Trouble breathing & -8.57 & (-18.56, 1.43) & -8.57 & (-18.49, 1.36) & -12.79 & (-24.81, -0.77) & -12.34 & (-24.45, -0.23)\\
-Chest trouble & -5.98 & (-13.36, 1.39) & -5.82 & (-12.87, 1.24) & -3.44 & (-10.45, 3.58) & -3.57 & (-9.65, 2.51)\\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\item \small{Note: Estimated for the subset of individuals with measured personal exposure (n=1274). ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect.}
-\item[a] \small{Adjusted for age, sex, and smoking.}
-\item[b] \small{Mediators were set to the mean value for untreated participants at baseline.}
-\end{tablenotes}
-\end{threeparttable}
-\endgroup{}
-\end{table}
+\centering{
 
-\hypertarget{aim-2-source-contributions}{%
+}
+
+\end{table}%
+
 \subsection{Aim 2: Source
-contributions}\label{aim-2-source-contributions}}
+contributions}\label{aim-2-source-contributions}
 
 Source analysis for this study was conducted using data from all
 eligible outdoor PM and personal PM samples. Eligible samples were those
@@ -2179,32 +1907,15 @@ are stable. Based on the Q/Qexp, BS mapping, and interpretability of the
 factors, the four-factor solution was selected as the most appropriate
 source solution for the data.
 
-\hypertarget{tbl-pmf}{}
 \begin{table}
-\caption{\label{tbl-pmf}PMF error estimation diagnostics }\tabularnewline
 
-\centering\begingroup\fontsize{9}{11}\selectfont
+\caption{\label{tbl-pmf}PMF error estimation diagnostics}
 
-\begin{tabular}{l>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{4}{c}{Potential Factor Solution} \\
-\cmidrule(l{3pt}r{3pt}){2-5}
-Diagnostic & 3 & 4 & 5 & 6\\
-\midrule
-Qexp & 27936 & 26052 & 24168 & 22284\\
-Qtrue & 187681 & 147796 & 123236 & 100316\\
-Qrobust & 174407 & 139910 & 117082 & 95932.5\\
-Qr/Qexp & 6.24 & 5.37 & 4.84 & 4.3\\
-Q/Qexp > 6 & wi-Ca, ns-S, ws-Na, ws-Ca, Al, Cl, Pb & ns-S, Na, Al, Cl, Pb, Nitrate & Nitrate, ws-Na, Al, Chloride & Nitrate, ws-Na, Al\\
-DISP \% dQ & <0.1\% & <0.1\% & <0.1\% & <0.1\%\\
-DISP swaps & 0 & 0 & 0 & 0\\
-BS\_mapping & Dust- 98.5\% & Transported dust- 95\%, Dust- 96.5\%, Sulfur secondary- 97.5\%, Mixed combustion- 96.5\% & Transported dust- 86\%, Mixed combustion- 87\%, Dust- 86\%, Lead- 55\% & Transported dust- 84\%, Mixed combustion- 87.5\%, Dust- 81.5\%, Lead- 72\%
-Chloride- 61.5\%
-Sulfur secondary- 98.5\%\\
-\bottomrule
-\end{tabular}
-\endgroup{}
-\end{table}
+\centering{
+
+}
+
+\end{table}%
 
 The source profiles for the four-factor solution are presented in
 Figure~\ref{fig-source-figure}. The first source was identified as dust
@@ -2235,7 +1946,9 @@ treatment cohorts in Figure~\ref{fig-source-season}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.9\textwidth,height=\textheight]{images/source-figure.png}
+\centering{
+
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/source-figure.png}
 
 }
 
@@ -2245,11 +1958,13 @@ carbon for outdoor and personal PM\textsubscript{2.5} exposure
 measurements. The lines separate the major contributing species to each
 source}
 
-\end{figure}
+\end{figure}%
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{images/source-season2.png}
+\centering{
+
+\includegraphics[width=0.8\textwidth,height=\textheight]{images/source-season2.png}
 
 }
 
@@ -2258,7 +1973,7 @@ source contributions found from the 4-factor PMF solution for \textbf{A}
 outdoor and \textbf{B} personal PM\textsubscript{2.5} exposure samples
 by year the group received treatment.}
 
-\end{figure}
+\end{figure}%
 
 Table~\ref{tbl-source-did} shows the average treatment effect of the
 CBHP policy on community outdoor levels and personal exposure levels of
@@ -2271,28 +1986,17 @@ to reducing air pollutant emissions from solid fuel burning, as this
 particularly in our study settings. The results were consistent across
 both the unadjusted and adjusted models.
 
-\hypertarget{tbl-source-did}{}
-\begin{table}[H]
-\caption{\label{tbl-source-did}Average treatment effect (µg/m\textsuperscript{3}) for outdoor and
-personal exposure to the mixed combustion source. }\tabularnewline
+\begin{table}
 
-\centering
-\begin{threeparttable}
-\begin{tabular}{lcccc}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{DiD} & \multicolumn{2}{c}{Adjusted DiD\textsuperscript{a}} \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
-  & ATT & (95\% CI) & ATT & (95\% CI)\\
-\midrule
-Outdoor & 1.07 & (-4.90, 7.04) & 1.53 & (-4.19, 7.26)\\
-Personal exposure & -5.60 & (-13.70, 2.54) & -5.39 & (-13.1, 2.35)\\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\item[a] \small{Note: Models adjusted for temperature; participant smoking status; and whether or not the household reported using biomass fuel.}
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
+\caption{\label{tbl-source-did}Average treatment effect
+(µg/m\textsuperscript{3}) for outdoor and personal exposure to the mixed
+combustion source.}
+
+\centering{
+
+}
+
+\end{table}%
 
 When the average treatment effects of the CBHP policy on community
 outdoor levels and personal exposure levels of the mixed combustion
@@ -2315,9 +2019,8 @@ fuels, including coal and biomass, produce emissions that are likely to
 be closer to the people using them rather than near the centrally
 located community outdoor air samplers.
 
-\hypertarget{aim-3-mediation-by-source-contribution}{%
 \subsection{Aim 3: Mediation by source
-contribution}\label{aim-3-mediation-by-source-contribution}}
+contribution}\label{aim-3-mediation-by-source-contribution}
 
 Table~\ref{tbl-med-source} shows results from the mediation analysis by
 personal exposure to the mixed combustion source (coal and biomass),
@@ -2335,34 +2038,20 @@ that these treatment effects were meaningfully mediated by exposure to
 the mixed combustion source, as the controlled direct effects were
 generally of similar magnitude as the adjusted total effects.
 
-\hypertarget{tbl-med-source}{}
-\begin{table}[H]
-\caption{\label{tbl-med-source}Average treatment effects and controlled direct effect (mm/Hg) of the
-CBHP policy on central systolic and diastolic blood pressure with mixed
-combustion source as the potential mediator. }\tabularnewline
+\begin{table}
 
-\centering
-\begin{threeparttable}
-\begin{tabular}{lcccccc}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{DiD} & \multicolumn{2}{c}{Adjusted DiD\textsuperscript{a}} & \multicolumn{2}{c}{Adjusted CDE\textsuperscript{b}} \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7}
- & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI)\\
-\midrule
-Central SBP & -0.43 & (-3.48, 2.62) & -1.61 & (-5.03, 1.82) & -1.5 & (-4.94, 1.94)\\
-Central DBP & -0.58 & (-2.59, 1.43) & -1.26 & (-3.38, 0.87) & -1.37 & (-3.69, 0.96)\\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\item \small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, CDE = Controlled Direct Effect, DBP = Diastolic Blood Pressure, SBP = Systolic Blood Pressure.}
-\item[a] \small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}
-\item[b] \small{Further adjusted for mediation by mixed combustion source (coal and biomass)}
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
+\caption{\label{tbl-med-source}Average treatment effects and controlled
+direct effect (mm/Hg) of the CBHP policy on central systolic and
+diastolic blood pressure with mixed combustion source as the potential
+mediator.}
 
-\hypertarget{discussion-and-conclusions}{%
-\section{Discussion and Conclusions}\label{discussion-and-conclusions}}
+\centering{
+
+}
+
+\end{table}%
+
+\section{Discussion and Conclusions}\label{discussion-and-conclusions}
 
 Air pollution emitted from residential space heating with coal has
 historically been a major contributor to cardio-respiratory disease
@@ -2377,9 +2066,8 @@ recent decades, and its staggered roll-out provided a unique opportunity
 to prospectively evaluate this real-world experiment and its effects on
 air quality and health.
 
-\hypertarget{adoption-of-the-heat-pump-technology-and-adherence-to-the-policy}{%
 \subsection{Adoption of the heat pump technology and adherence to the
-policy}\label{adoption-of-the-heat-pump-technology-and-adherence-to-the-policy}}
+policy}\label{adoption-of-the-heat-pump-technology-and-adherence-to-the-policy}
 
 The CBHP policy was successful in driving a rapid household heating
 energy transition from coal stoves to electric heat pumps in the treated
@@ -2419,9 +2107,8 @@ villages no longer had access to government-subsidized coal, and
 household coal burning was further discouraged with possible punitive
 measures (e.g., potential loss of electricity subsidies).
 
-\hypertarget{impacts-of-the-policy-on-health}{%
 \subsection{Impacts of the policy on
-health}\label{impacts-of-the-policy-on-health}}
+health}\label{impacts-of-the-policy-on-health}
 
 One of the key findings from our comprehensive evaluation of the CBHP
 policy was that exposure to the policy reduced systolic and diastolic
@@ -2537,9 +2224,8 @@ increases in mean indoor temperature in treated households we observed
 were not sufficiently large to capture measurable changes in these
 biomarkers.
 
-\hypertarget{impacts-of-the-policy-on-air-pollution-and-its-sources}{%
 \subsection{Impacts of the policy on air pollution and its
-sources}\label{impacts-of-the-policy-on-air-pollution-and-its-sources}}
+sources}\label{impacts-of-the-policy-on-air-pollution-and-its-sources}
 
 China has a long history of launching ambitious, large-scale policies
 and programs to promote clean household energy transition and support
@@ -2681,9 +2367,8 @@ through this study, we sought to provide a more nuanced understanding of
 an intervention's effectiveness and the ways in which it may need to be
 augmented or restructured to achieve desired health outcomes.
 
-\hypertarget{assumptions-strengths-and-limitations}{%
 \subsection{Assumptions, strengths, and
-limitations}\label{assumptions-strengths-and-limitations}}
+limitations}\label{assumptions-strengths-and-limitations}
 
 The validity of our DiD approach is subject to two key assumptions
 (Callaway and Sant'Anna 2021; Wooldridge 2021). First, no anticipation:
@@ -2829,8 +2514,7 @@ treatment status because our staff consistently followed strict quality
 control guidelines for measurement across all study villages and homes,
 regardless of treatment status.
 
-\hypertarget{implications-of-findings}{%
-\section{Implications of Findings}\label{implications-of-findings}}
+\section{Implications of Findings}\label{implications-of-findings}
 
 In this comprehensive field-based assessment of a real-world CBHP policy
 in Beijing, we observed high fidelity and compliance with the policy in
@@ -2860,17 +2544,14 @@ urgent need for interventional studies that inform targeted
 pollution-reducing strategies to reduce cardiovascular disease (Brauer
 et al. 2021).
 
-\hypertarget{data-availability-statement}{%
-\section{Data Availability
-Statement}\label{data-availability-statement}}
+\section{Data Availability Statement}\label{data-availability-statement}
 
 The de-identified data, code, documentation, and study resources
 including the standard operating procedures for all study measurements
 are openly available on the Open Science Foundation (OSF)
 \href{https://osf.io/8twds/?view_only=c41dd3d6228240d6aad92f81371c5339}{platform}.
 
-\hypertarget{acknowledgements}{%
-\section{Acknowledgements}\label{acknowledgements}}
+\section{Acknowledgements}\label{acknowledgements}
 
 In addition to the HEI funding that supported this work, we also
 acknowledge support from the Canadian Institutes for Health Research
@@ -2892,751 +2573,7 @@ Kaibing Xue, Siobhan Carroll, and Martha Lee. We also acknowledge the
 efforts of project coordinators in Canada and China: Leona Siaw, Neha
 Ahmed, and Laojie Li.
 
-\hypertarget{references}{%
-\section{References}\label{references}}
-
-\hypertarget{refs}{}
-\begin{CSLReferences}{1}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-ahmed2009}{}}%
-Ahmed T, Dutkiewicz VA, Shareef A, Tuncel G, Tuncel S, Husain L. 2009.
-Measurement of black carbon ({BC}) by an optical method and a
-thermal-optical method: {Intercomparison} for four sites. Atmospheric
-Environment 43:6305--6311;
-doi:\href{https://doi.org/10.1016/j.atmosenv.2009.09.031}{10.1016/j.atmosenv.2009.09.031}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-alexander2018}{}}%
-Alexander DA, Northcross A, Karrison T, Morhasson-Bello O, Wilson N,
-Atalabi OM, et al. 2018. Pregnancy outcomes and ethanol cook stove
-intervention: {A} randomized-controlled trial in {Ibadan}, {Nigeria}.
-Environment International 111:152--163;
-doi:\href{https://doi.org/10.1016/j.envint.2017.11.021}{10.1016/j.envint.2017.11.021}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-alexander2017}{}}%
-Alexander D, Northcross A, Wilson N, Dutta A, Pandya R, Ibigbami T, et
-al. 2017. Randomized {Controlled Ethanol Cookstove Intervention} and
-{Blood Pressure} in {Pregnant Nigerian Women}. American Journal of
-Respiratory and Critical Care Medicine 195:1629--1639;
-doi:\href{https://doi.org/10.1164/rccm.201606-1177OC}{10.1164/rccm.201606-1177OC}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-an2021}{}}%
-An L, Hong B, Cui X, Geng Y, Ma X. 2021. Outdoor thermal comfort during
-winter in {China}'s cold regions: {A} comparative study. Science of The
-Total Environment 768:144464;
-doi:\href{https://doi.org/10.1016/j.scitotenv.2020.144464}{10.1016/j.scitotenv.2020.144464}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-anderson2016}{}}%
-Anderson GB, Peng RD, Ferreri JM. 2016. Weathermetrics: {Functions} to
-{Convert Between Weather Metrics}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-archer-nicholls2016}{}}%
-Archer-Nicholls S, Carter E, Kumar R, Xiao Q, Liu Y, Frostad J, et al.
-2016. The {Regional Impacts} of {Cooking} and {Heating Emissions} on
-{Ambient Air Quality} and {Disease Burden} in {China}. Environmental
-Science \& Technology 50:9416--9423;
-doi:\href{https://doi.org/10.1021/acs.est.6b02533}{10.1021/acs.est.6b02533}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-arel-bundock2024}{}}%
-Arel-Bundock V. 2024. Marginaleffects: {Predictions}, {Comparisons},
-{Slopes}, {Marginal Means}, and {Hypothesis Tests}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-baker2022}{}}%
-Baker AC, Larcker DF, Wang CCY. 2022. How much should we trust staggered
-difference-in-differences estimates? Journal of Financial Economics
-144:370--395;
-doi:\href{https://doi.org/10.1016/j.jfineco.2022.01.004}{10.1016/j.jfineco.2022.01.004}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-barrington-leigh2019}{}}%
-Barrington-Leigh C, Baumgartner J, Carter E, Robinson BE, Tao S, Zhang
-Y. 2019. An evaluation of air quality, home heating and well-being under
-{Beijing}'s programme to eliminate household coal use. Nature Energy
-4:416--423;
-doi:\href{https://doi.org/10.1038/s41560-019-0386-2}{10.1038/s41560-019-0386-2}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-baumgartner2018}{}}%
-Baumgartner J, Carter E, Schauer JJ, Ezzati M, Daskalopoulou SS, Valois
-M-F, et al. 2018. Household air pollution and measures of blood
-pressure, arterial stiffness and central haemodynamics. Heart
-104:1515--1521;
-doi:\href{https://doi.org/10.1136/heartjnl-2017-312595}{10.1136/heartjnl-2017-312595}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-baumgartner2019}{}}%
-Baumgartner J, Clark S, Carter E, Lai A, Zhang Y, Shan M, et al. 2019.
-Effectiveness of a {Household Energy Package} in {Improving Indoor Air
-Quality} and {Reducing Personal Exposures} in {Rural China}.
-Environmental Science \& Technology 53:9306--9316;
-doi:\href{https://doi.org/10.1021/acs.est.9b02061}{10.1021/acs.est.9b02061}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-baumgartner2011}{}}%
-Baumgartner J, Schauer JJ, Ezzati M, Lu L, Cheng C, Patz JA, et al.
-2011. Indoor {Air Pollution} and {Blood Pressure} in {Adult Women
-Living} in {Rural China}. Environmental Health Perspectives
-119:1390--1395;
-doi:\href{https://doi.org/10.1289/ehp.1003371}{10.1289/ehp.1003371}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-beltramo2013}{}}%
-Beltramo T, Levine DI. 2013. The effect of solar ovens on fuel use,
-emissions and health: Results from a randomised controlled trial.
-Journal of Development Effectiveness 5:178--207;
-doi:\href{https://doi.org/10.1080/19439342.2013.775177}{10.1080/19439342.2013.775177}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-brauer2021}{}}%
-Brauer M, Casadei B, Harrington RA, Kovacs R, Sliwa K, the WHF Air
-Pollution Expert Group. 2021. Taking a {Stand Against Air
-Pollution}---{The Impact} on {Cardiovascular Disease}: {A Joint Opinion
-From} the {World Heart Federation}, {American College} of {Cardiology},
-{American Heart Association}, and the {European Society} of
-{Cardiology}. Circulation 143;
-doi:\href{https://doi.org/10.1161/CIRCULATIONAHA.120.052666}{10.1161/CIRCULATIONAHA.120.052666}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-burwen2012}{}}%
-Burwen J, Levine DI. 2012. A rapid assessment randomized-controlled
-trial of improved cookstoves in rural {Ghana}. Energy for Sustainable
-Development 16:328--338;
-doi:\href{https://doi.org/10.1016/j.esd.2012.04.001}{10.1016/j.esd.2012.04.001}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-callaway2020}{}}%
-Callaway B. 2020.
-\href{https://doi.org/10.1007/978-3-319-57365-6_352-1}{Difference-in-{Differences}
-for {Policy Evaluation}}. In: \emph{Handbook of {Labor}, {Human
-Resources} and {Population Economics}} (K.F. Zimmermann, ed). Springer
-International Publishing:Cham. 1--61.
-
-\leavevmode\vadjust pre{\hypertarget{ref-callaway2021}{}}%
-Callaway B, Sant'Anna PHC. 2021. Difference-in-{Differences} with
-multiple time periods. Journal of Econometrics 225:200--230;
-doi:\href{https://doi.org/10.1016/j.jeconom.2020.12.001}{10.1016/j.jeconom.2020.12.001}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-cameron2015}{}}%
-Cameron AC, Miller DL. 2015. A practitioner's guide to cluster-robust
-inference. Journal of Human Resources 50: 317--372.
-
-\leavevmode\vadjust pre{\hypertarget{ref-card1994}{}}%
-Card D, Krueger AB. 1994. Minimum {Wages} and {Employment}: {A Case
-Study} of the {Fast-Food Industry} in {New Jersey} and {Pennsylvania}.
-American Economic Review 84: 772--93.
-
-\leavevmode\vadjust pre{\hypertarget{ref-chao2021}{}}%
-Chao C-Y, Zhang H, Hammer M, Zhan Y, Kenney D, Martin RV, et al. 2021.
-Integrating {Fixed Monitoring Systems} with {Low-Cost Sensors} to
-{Create High-Resolution Air Quality Maps} for the {Northern China Plain
-Region}. ACS Earth and Space Chemistry 5:3022--3035;
-doi:\href{https://doi.org/10.1021/acsearthspacechem.1c00174}{10.1021/acsearthspacechem.1c00174}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-checkley2021}{}}%
-Checkley W, Williams KN, Kephart JL, Fandiño-Del-Rio M, Steenland NK,
-Gonzales GF, et al. 2021. Effects of a {Household Air Pollution
-Intervention} with {Liquefied Petroleum Gas} on {Cardiopulmonary
-Outcomes} in {Peru}. {A Randomized Controlled Trial}. American Journal
-of Respiratory and Critical Care Medicine 203:1386--1397;
-doi:\href{https://doi.org/10.1164/rccm.202006-2319OC}{10.1164/rccm.202006-2319OC}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-chillrud2021}{}}%
-Chillrud SN, Ae-Ngibise KA, Gould CF, Owusu-Agyei S, Mujtaba M, Manu G,
-et al. 2021. The effect of clean cooking interventions on mother and
-child personal exposure to air pollution: Results from the {Ghana
-Randomized Air Pollution} and {Health Study} ({GRAPHS}). Journal of
-Exposure Science \& Environmental Epidemiology 31:683--698;
-doi:\href{https://doi.org/10.1038/s41370-021-00309-5}{10.1038/s41370-021-00309-5}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-clark2017}{}}%
-Clark S, Carter E, Shan M, Ni K, Niu H, Tseng JTW, et al. 2017. Adoption
-and use of a semi-gasifier cooking and water heating stove and fuel
-intervention in the {Tibetan Plateau}, {China}. Environmental Research
-Letters 12:075004;
-doi:\href{https://doi.org/10.1088/1748-9326/aa751e}{10.1088/1748-9326/aa751e}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-costello2015}{}}%
-Costello BT, Schultz MG, Black JA, Sharman JE. 2015. Evaluation of a
-{Brachial Cuff} and {Suprasystolic Waveform Algorithm Method} to
-{Noninvasively Derive Central Blood Pressure}. American Journal of
-Hypertension 28:480--486;
-doi:\href{https://doi.org/10.1093/ajh/hpu163}{10.1093/ajh/hpu163}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-damato2018}{}}%
-D'Amato M, Molino A, Calabrese G, Cecchi L, Annesi-Maesano I, D'Amato G.
-2018. The impact of cold on the respiratory tract and its consequences
-to respiratory health. Clinical and Translational Allergy 8:20;
-doi:\href{https://doi.org/10.1186/s13601-018-0208-9}{10.1186/s13601-018-0208-9}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-dai2020}{}}%
-Dai Q, Liu B, Bi X, Wu J, Liang D, Zhang Y, et al. 2020. Dispersion
-{Normalized PMF Provides Insights} into the {Significant Changes} in
-{Source Contributions} to {PM} {\textsubscript{2.5}} after the {COVID-19
-Outbreak}. Environmental Science \& Technology 54:9917--9927;
-doi:\href{https://doi.org/10.1021/acs.est.0c02776}{10.1021/acs.est.0c02776}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-danesh2008}{}}%
-Danesh J, Kaptoge S, Mann AG, Sarwar N, Wood A, Angleman SB, et al.
-2008. Long-term interleukin-6 levels and subsequent risk of coronary
-heart disease: Two new prospective studies and a systematic review. PLoS
-medicine 5:e78;
-doi:\href{https://doi.org/10.1371/journal.pmed.0050078}{10.1371/journal.pmed.0050078}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-dart2001}{}}%
-Dart AM, Kingwell BA. 2001. Pulse pressure---a review of mechanisms and
-clinical relevance. Journal of the American College of Cardiology
-37:975--984;
-doi:\href{https://doi.org/10.1016/S0735-1097(01)01108-1}{10.1016/S0735-1097(01)01108-1}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-cdcgr2023}{}}%
-Dispersed Coal Management Research Group
-北京大学能源研究院气候变化与能源转型项目. 2023. 中国散煤综合治理研究报告
-{China Dispersed Coal Governance Report}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-dockery2013}{}}%
-Dockery DW, Rich DQ, Goodman PG, Clancy L, Ohman-Strickland P, George P,
-et al. 2013. \href{https://www.ncbi.nlm.nih.gov/pubmed/24024358}{Effect
-of air pollution control on mortality and hospital admissions in
-{Ireland}}. Research Report (Health Effects Institute) 3--109.
-
-\leavevmode\vadjust pre{\hypertarget{ref-dominici2014}{}}%
-Dominici F, Greenstone M, Sunstein CR. 2014. Science and regulation.
-{Particulate} matter matters. Science (New York, NY) 344:257--9;
-doi:\href{https://doi.org/10.1126/science.1247348}{10.1126/science.1247348}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-dong2013}{}}%
-Dong G-H, Qian Z(Min), Xaverius PK, Trevathan E, Maalouf S, Parker J, et
-al. 2013. Association {Between Long-Term Air Pollution} and {Increased
-Blood Pressure} and {Hypertension} in {China}. Hypertension 61:578--584;
-doi:\href{https://doi.org/10.1161/HYPERTENSIONAHA.111.00003}{10.1161/HYPERTENSIONAHA.111.00003}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-duan2014}{}}%
-Duan X, Jiang Y, Wang B, Zhao X, Shen G, Cao S, et al. 2014. Household
-fuel use for cooking and heating in {China}: {Results} from the first
-{Chinese Environmental Exposure-Related Human Activity Patterns Survey}
-({CEERHAPS}). Applied Energy 136:692--703;
-doi:\href{https://doi.org/10.1016/j.apenergy.2014.09.066}{10.1016/j.apenergy.2014.09.066}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-edwards2004}{}}%
-Edwards RD, Smith KR, Zhang J, Ma Y. 2004. Implications of changes in
-household stoves and fuel use in {China}. Energy Policy 32:395--411;
-doi:\href{https://doi.org/10.1016/S0301-4215(02)00309-9}{10.1016/S0301-4215(02)00309-9}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-ERF2012}{}}%
-Emerging Risk Factors Collaboration. 2012. C-reactive protein,
-fibrinogen, and cardiovascular disease prediction. New England Journal
-of Medicine 367: 1310--1320.
-
-\leavevmode\vadjust pre{\hypertarget{ref-ezzati2017}{}}%
-Ezzati M, Baumgartner JC. 2017. Household energy and health: Where next
-for research and practice? Lancet (London, England) 389:130--132;
-doi:\href{https://doi.org/10.1016/S0140-6736(16)32506-5}{10.1016/S0140-6736(16)32506-5}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-fda2018}{}}%
-Food and Drug Administration. 2018. Bioanalytical {Method Validation
-Guidance} for {Industry}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-gbdmaps2016}{}}%
-GBD MAPS Working Group. 2016. Burden of disease attributable to
-coal-burning and other air pollution sources in {China}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-goin2023}{}}%
-Goin DE, Riddell CA. 2023. Comparing {Two-way Fixed Effects} and {New
-Estimators} for {Difference-in-Differences}: {A Simulation Study} and
-{Empirical Example}. Epidemiology 34:535;
-doi:\href{https://doi.org/10.1097/EDE.0000000000001611}{10.1097/EDE.0000000000001611}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-goodman-bacon2021}{}}%
-Goodman-Bacon A. 2021. Difference-in-differences with variation in
-treatment timing. Journal of Econometrics 225:254--277;
-doi:\href{https://doi.org/10.1016/j.jeconom.2021.03.014}{10.1016/j.jeconom.2021.03.014}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-gould2023}{}}%
-Gould CF, Bejarano ML, Kioumourtzoglou M-A, Lee AG, Pillarisetti A,
-Schlesinger SB, et al. 2023. Widespread {Clean Cooking Fuel Scale-Up}
-and under-5 {Lower Respiratory Infection Mortality}: {An Ecological
-Analysis} in {Ecuador}, 1990--2019. Environmental Health Perspectives
-131:037017;
-doi:\href{https://doi.org/10.1289/EHP11016}{10.1289/EHP11016}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-huang2012}{}}%
-Huang W, Wang G, Lu S-E, Kipen H, Wang Y, Hu M, et al. 2012.
-Inflammatory and {Oxidative Stress Responses} of {Healthy Young Adults}
-to {Changes} in {Air Quality} during the {Beijing Olympics}. American
-Journal of Respiratory and Critical Care Medicine 186:1150--1159;
-doi:\href{https://doi.org/10.1164/rccm.201205-0850OC}{10.1164/rccm.201205-0850OC}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-johnson2022}{}}%
-Johnson M, Pillarisetti A, Piedrahita R, Balakrishnan K, Peel JL,
-Steenland K, et al. 2022. Exposure {Contrasts} of {Pregnant Women}
-during the {Household Air Pollution Intervention Network Randomized
-Controlled Trial}. Environmental Health Perspectives 130:097005;
-doi:\href{https://doi.org/10.1289/EHP10295}{10.1289/EHP10295}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-johnston2013}{}}%
-Johnston FH, Hanigan IC, Henderson SB, Morgan GG. 2013. Evaluation of
-interventions to reduce air pollution from biomass smoke on mortality in
-{Launceston}, {Australia}: Retrospective analysis of daily mortality,
-1994-2007. BMJ 346:e8446--e8446;
-doi:\href{https://doi.org/10.1136/bmj.e8446}{10.1136/bmj.e8446}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-kanagasabai2022}{}}%
-Kanagasabai T, Xie W, Yan L, Zhao L, Carter E, Guo D, et al. 2022.
-Household {Air Pollution} and {Blood Pressure}, {Vascular Damage}, and
-{Subclinical Indicators} of {Cardiovascular Disease} in {Older Chinese
-Adults}. American Journal of Hypertension 35:121--131;
-doi:\href{https://doi.org/10.1093/ajh/hpab141}{10.1093/ajh/hpab141}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-kashtan2023}{}}%
-Kashtan YS, Nicholson M, Finnegan C, Ouyang Z, Lebel ED, Michanowicz DR,
-et al. 2023. Gas and {Propane Combustion} from {Stoves Emits Benzene}
-and {Increases Indoor Air Pollution}. Environmental Science \&
-Technology 57:9653--9663;
-doi:\href{https://doi.org/10.1021/acs.est.2c09289}{10.1021/acs.est.2c09289}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-katz2020}{}}%
-Katz J, Tielsch JM, Khatry SK, Shrestha L, Breysse P, Zeger SL, et al.
-2020. Impact of {Improved Biomass} and {Liquid Petroleum Gas Stoves} on
-{Birth Outcomes} in {Rural Nepal}: {Results} of 2 {Randomized Trials}.
-Global Health: Science and Practice 8:372--382;
-doi:\href{https://doi.org/10.9745/GHSP-D-20-00011}{10.9745/GHSP-D-20-00011}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-keele2015}{}}%
-Keele L, Tingley D, Yamamoto T. 2015. Identifying mechanisms behind
-policy interventions via causal mediation analysis. Journal of Policy
-Analysis and Management 34: 937--963.
-
-\leavevmode\vadjust pre{\hypertarget{ref-khuzestani2017}{}}%
-Khuzestani RB, Schauer JJ, Wei Y, Zhang Y, Zhang Y. 2017. A
-non-destructive optical color space sensing system to quantify elemental
-and organic carbon in atmospheric particulate matter on {Teflon} and
-quartz filters. Atmospheric Environment 149:84--94;
-doi:\href{https://doi.org/10.1016/j.atmosenv.2016.11.002}{10.1016/j.atmosenv.2016.11.002}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-kipen2010}{}}%
-Kipen H, Rich D, Huang W, Zhu T, Wang G, Hu M, et al. 2010. Measurement
-of inflammation and oxidative stress following drastic changes in air
-pollution during the {Beijing Olympics}: A panel study approach. Annals
-of the New York Academy of Sciences 1203:160--167;
-doi:\href{https://doi.org/10.1111/j.1749-6632.2010.05638.x}{10.1111/j.1749-6632.2010.05638.x}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-kumar2021}{}}%
-Kumar N, Phillip E, Cooper H, Davis M, Langevin J, Clifford M, et al.
-2021. Do improved biomass cookstove interventions improve indoor air
-quality and blood pressure? {A} systematic review and meta-analysis.
-Environmental Pollution 290:117997;
-doi:\href{https://doi.org/10.1016/j.envpol.2021.117997}{10.1016/j.envpol.2021.117997}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-lorange2021}{}}%
-L'Orange C, Neymark G, Carter E, Volckens J. 2021. A {High-throughput},
-{Robotic System} for {Analysis} of {Aerosol Sampling Filters}. Aerosol
-and Air Quality Research 21:210037;
-doi:\href{https://doi.org/10.4209/aaqr.210037}{10.4209/aaqr.210037}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-lai2019}{}}%
-Lai. 2019. Relative contributions of household solid fuel use and
-outdoor air pollution to chemical components of personal {PM2}.5
-exposures. Indoor Air-international Journal of Indoor Air Quality and
-Climate.
-
-\leavevmode\vadjust pre{\hypertarget{ref-lai2024}{}}%
-Lai PS, Lam NL, Gallery B, Lee AG, Adair-Rohani H, Alexander D, et al.
-2024. Household {Air Pollution Interventions} to {Improve Health} in
-{Low-} and {Middle-Income Countries}: {An Official American Thoracic
-Society Research Statement}. American Journal of Respiratory and
-Critical Care Medicine 209:909--927;
-doi:\href{https://doi.org/10.1164/rccm.202402-0398ST}{10.1164/rccm.202402-0398ST}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-lewington2012}{}}%
-Lewington S, LiMing L, Sherliker P, Yu G, Millwood I, Zheng B, et al.
-2012. Seasonal variation in blood pressure and its relationship with
-outdoor temperature in 10 diverse regions of {China}: The {China
-Kadoorie Biobank}. Journal of hypertension 30: 1383.
-
-\leavevmode\vadjust pre{\hypertarget{ref-li2022a}{}}%
-Li X, Baumgartner J, Harper S, Zhang X, Sternbach T, Barrington-Leigh C,
-et al. 2022. Field measurements of indoor and community air quality in
-rural {Beijing} before, during, and after the {COVID-19} lockdown.
-Indoor Air 32:e13095;
-doi:\href{https://doi.org/10.1111/ina.13095}{10.1111/ina.13095}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-lindemann2017}{}}%
-Lindemann U, Stotz A, Beyer N, Oksa J, Skelton DA, Becker C, et al.
-2017. Effect of indoor temperature on physical performance in older
-adults during days with normal temperature and heat waves. International
-journal of environmental research and public health 14;
-doi:\href{https://doi.org/10.3390/ijerph14020186}{10.3390/ijerph14020186}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-lowe2009}{}}%
-Lowe A, Harrison W, El-Aklouk E, Ruygrok P, Al-Jumaily AM. 2009.
-Non-invasive model-based estimation of aortic pulse pressure using
-suprasystolic brachial pressure waveforms. Journal of Biomechanics
-42:2111--2115;
-doi:\href{https://doi.org/10.1016/j.jbiomech.2009.05.029}{10.1016/j.jbiomech.2009.05.029}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-lv2022}{}}%
-Lv Y, Zhu R, Xie J, Yoshino H. 2022. Indoor environment and the blood
-pressure of elderly in the cold region of {China}. Indoor and Built
-Environment 31:2482--2498;
-doi:\href{https://doi.org/10.1177/1420326X221109510}{10.1177/1420326X221109510}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-mccracken2007}{}}%
-McCracken JP, Smith KR, Díaz A, Mittleman MA, Schwartz J. 2007. Chimney
-{Stove Intervention} to {Reduce Long-term Wood Smoke Exposure Lowers
-Blood Pressure} among {Guatemalan Women}. Environmental Health
-Perspectives 115:996--1001;
-doi:\href{https://doi.org/10.1289/ehp.9888}{10.1289/ehp.9888}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-mccracken2011}{}}%
-McCracken J, Smith KR, Stone P, Díaz A, Arana B, Schwartz J. 2011.
-Intervention to {Lower Household Wood Smoke Exposure} in {Guatemala
-Reduces ST-Segment Depression} on {Electrocardiograms}. Environmental
-Health Perspectives 119:1562--1568;
-doi:\href{https://doi.org/10.1289/ehp.1002834}{10.1289/ehp.1002834}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-mei2020}{}}%
-Mei H, Han P, Wang Y, Zeng N, Liu D, Cai Q, et al. 2020. Field
-{Evaluation} of {Low-Cost Particulate Matter Sensors} in {Beijing}.
-Sensors 20:4381;
-doi:\href{https://doi.org/10.3390/s20164381}{10.3390/s20164381}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-meng2023}{}}%
-Meng W, Zhu L, Liang Z, Xu H, Zhang W, Li J, et al. 2023. Significant
-but {Inequitable Cost-Effective Benefits} of a {Clean Heating Campaign}
-in {Northern China}. Environmental Science \& Technology 57:8467--8475;
-doi:\href{https://doi.org/10.1021/acs.est.2c07492}{10.1021/acs.est.2c07492}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-naimi2014}{}}%
-Naimi AI, Kaufman JS, MacLehose RF. 2014. Mediation misgivings:
-Ambiguous clinical and public health interpretations of natural direct
-and indirect effects. International journal of epidemiology 43:1656--61;
-doi:\href{https://doi.org/10.1093/ije/dyu107}{10.1093/ije/dyu107}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-niu2024}{}}%
-Niu J, Chen X, Sun S. 2024. China's {Coal Ban} policy: {Clearing} skies,
-challenging growth. Journal of Environmental Management 349:119420;
-doi:\href{https://doi.org/10.1016/j.jenvman.2023.119420}{10.1016/j.jenvman.2023.119420}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-olson2016}{}}%
-Olson MR, Graham E, Hamad S, Uchupalanun P, Ramanathan N, Schauer JJ.
-2016. Quantification of elemental and organic carbon in atmospheric
-particulate matter using color space sensing---hue, saturation, and
-value ({HSV}) coordinates. Science of The Total Environment
-548--549:252--259;
-doi:\href{https://doi.org/10.1016/j.scitotenv.2016.01.032}{10.1016/j.scitotenv.2016.01.032}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-onakomaiya2019}{}}%
-Onakomaiya D, Gyamfi J, Iwelunmor J, Opeyemi J, Oluwasanmi M,
-Obiezu-Umeh C, et al. 2019. Implementation of clean cookstove
-interventions and its effects on blood pressure in low-income and
-middle-income countries: Systematic review. BMJ Open 9:e026517;
-doi:\href{https://doi.org/10.1136/bmjopen-2018-026517}{10.1136/bmjopen-2018-026517}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-pearl2000}{}}%
-Pearl J. 2000. \emph{Causality: Models, reasoning, and inference}.
-Cambridge University Press:Cambridge, U.K. ; New York.
-
-\leavevmode\vadjust pre{\hypertarget{ref-pearson2003}{}}%
-Pearson TA, Mensah GA, Alexander RW, Anderson JL, Cannon RO 3rd, Criqui
-M, et al. 2003.
-\href{https://www.ncbi.nlm.nih.gov/pubmed/12551878}{Markers of
-inflammation and cardiovascular disease: Application to clinical and
-public health practice: {A} statement for healthcare professionals from
-the {Centers} for {Disease Control} and {Prevention} and the {American
-Heart Association}}. Circulation 107: 499--511.
-
-\leavevmode\vadjust pre{\hypertarget{ref-peel2015}{}}%
-Peel JL, Baumgartner J, Wellenius GA, Clark ML, Smith KR. 2015. Are
-{Randomized Trials Necessary} to {Advance Epidemiologic Research} on
-{Household Air Pollution}? Current Epidemiology Reports 2:263--270;
-doi:\href{https://doi.org/10.1007/s40471-015-0054-4}{10.1007/s40471-015-0054-4}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-pope2004}{}}%
-Pope III CA, Hansen ML, Long RW, Nielsen KR, Eatough NL, Wilson WE, et
-al. 2004. Ambient particulate air pollution, heart rate variability, and
-blood markers of inflammation in a panel of elderly subjects.
-Environmental health perspectives 112:339--45;
-doi:\href{https://doi.org/10.1289/ehp.6588}{10.1289/ehp.6588}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-quansah2017}{}}%
-Quansah R, Semple S, Ochieng CA, Juvekar S, Armah FA, Luginaah I, et al.
-2017. Effectiveness of interventions to reduce household air pollution
-and/or improve health in homes using solid fuel in low-and-middle income
-countries: {A} systematic review and meta-analysis. Environment
-International 103:73--90;
-doi:\href{https://doi.org/10.1016/j.envint.2017.03.010}{10.1016/j.envint.2017.03.010}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-rehfuess2014}{}}%
-Rehfuess EA, Puzzolo E, Stanistreet D, Pope D, Bruce NG. 2014. Enablers
-and {Barriers} to {Large-Scale Uptake} of {Improved Solid Fuel Stoves}:
-{A Systematic Review}. Environmental Health Perspectives 122:120--130;
-doi:\href{https://doi.org/10.1289/ehp.1306639}{10.1289/ehp.1306639}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-rich2012}{}}%
-Rich DQ, Kipen HM, Huang W, Wang G, Wang Y, Zhu P, et al. 2012.
-Association {Between Changes} in {Air Pollution Levels During} the
-{Beijing Olympics} and {Biomarkers} of {Inflammation} and {Thrombosis}
-in {Healthy Young Adults}. JAMA 307;
-doi:\href{https://doi.org/10.1001/jama.2012.3488}{10.1001/jama.2012.3488}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-ridker2001}{}}%
-Ridker PM. 2001.
-\href{https://www.ncbi.nlm.nih.gov/pubmed/11282915}{High-sensitivity
-{C-reactive} protein: Potential adjunct for global risk assessment in
-the primary prevention of cardiovascular disease}. Circulation 103:
-1813--8.
-
-\leavevmode\vadjust pre{\hypertarget{ref-ridker2000}{}}%
-Ridker PM, Hennekens CH, Buring JE, Rifai N. 2000. C-reactive protein
-and other markers of inflammation in the prediction of cardiovascular
-disease in women. The New England journal of medicine 342:836--43;
-doi:\href{https://doi.org/10.1056/NEJM200003233421202}{10.1056/NEJM200003233421202}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-romieu2009}{}}%
-Romieu I, Riojas-Rodríguez H, Marrón-Mares AT, Schilmann A,
-Perez-Padilla R, Masera O. 2009. Improved {Biomass Stove Intervention}
-in {Rural Mexico}: {Impact} on the {Respiratory Health} of {Women}.
-American Journal of Respiratory and Critical Care Medicine 180:649--656;
-doi:\href{https://doi.org/10.1164/rccm.200810-1556OC}{10.1164/rccm.200810-1556OC}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-rosenthal2018}{}}%
-Rosenthal J, Quinn A, Grieshop AP, Pillarisetti A, Glass RI. 2018. Clean
-cooking and the {SDGs}: {Integrated} analytical approaches to guide
-energy interventions for health and environment goals. Energy for
-sustainable development : the journal of the International Energy
-Initiative 42:152--159;
-doi:\href{https://doi.org/10.1016/j.esd.2017.11.003}{10.1016/j.esd.2017.11.003}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-rtiinternational2009}{}}%
-RTI International. 2009. Standard {Operating Procedure} for the {X-Ray
-Fluorescence Analysis} of {Particulate Matter Deposits} on {Teflon
-Filters}: {PM Xrf Analysis}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-rubin1987}{}}%
-Rubin DB. 1987.
-\emph{\href{https://doi.org/10.1002/9780470316696}{Multiple {Imputation}
-for {Nonresponse} in {Surveys}}}. 1st ed. Wiley.
-
-\leavevmode\vadjust pre{\hypertarget{ref-ruckerl2007}{}}%
-Rückerl R, Greven S, Ljungman P, Aalto P, Antoniades C, Bellander T, et
-al. 2007. Air pollution and inflammation (interleukin-6, {C-reactive}
-protein, fibrinogen) in myocardial infarction survivors. Environmental
-health perspectives 115:1072--80;
-doi:\href{https://doi.org/10.1289/ehp.10021}{10.1289/ehp.10021}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-ruiz-mercado2013}{}}%
-Ruiz-Mercado I, Canuz E, Walker JL, Smith KR. 2013. Quantitative metrics
-of stove adoption using {Stove Use Monitors} ({SUMs}). Biomass and
-Bioenergy 57:136--148;
-doi:\href{https://doi.org/10.1016/j.biombioe.2013.07.002}{10.1016/j.biombioe.2013.07.002}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-scott2011}{}}%
-Scott AJ, Scarrott C. 2011. Impacts of residential heating intervention
-measures on air quality and progress towards targets in {Christchurch}
-and {Timaru}, {New Zealand}. Atmospheric Environment 45:2972--2980;
-doi:\href{https://doi.org/10.1016/j.atmosenv.2010.09.008}{10.1016/j.atmosenv.2010.09.008}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-shang2020}{}}%
-Shang J, Zhang Y, Schauer JJ, Tian J, Hua J, Han T, et al. 2020.
-Associations between source-resolved {PM2}.5 and airway inflammation at
-urban and rural locations in {Beijing}. Environment International
-139:105635;
-doi:\href{https://doi.org/10.1016/j.envint.2020.105635}{10.1016/j.envint.2020.105635}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-shankar2020}{}}%
-Shankar AV, Quinn AK, Dickinson KL, Williams KN, Masera O, Charron D, et
-al. 2020. Everybody stacks: {Lessons} from household energy case studies
-to inform design principles for clean energy transitions. Energy Policy
-141:111468;
-doi:\href{https://doi.org/10.1016/j.enpol.2020.111468}{10.1016/j.enpol.2020.111468}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-shen2017}{}}%
-Shen H, Tao S, Chen Y, Ciais P, Güneralp B, Ru M, et al. 2017.
-Urbanization-induced population migration has reduced ambient {PM}
-{\textsubscript{2.5}} concentrations in {China}. Science Advances
-3:e1700300;
-doi:\href{https://doi.org/10.1126/sciadv.1700300}{10.1126/sciadv.1700300}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-sinton2004}{}}%
-Sinton JE, Smith KR, Peabody JW, Yaping L, Xiliang Z, Edwards R, et al.
-2004. An assessment of programs to promote improved household stoves in
-{China}. Energy for Sustainable Development 8:33--52;
-doi:\href{https://doi.org/10.1016/S0973-0826(08)60465-2}{10.1016/S0973-0826(08)60465-2}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-smith-sivertsen2009}{}}%
-Smith-Sivertsen T, Díaz E, Pope D, Lie RT, Díaz A, McCracken J, et al.
-2009. Effect of {Reducing Indoor Air Pollution} on {Women}'s
-{Respiratory Symptoms} and {Lung Function}: {The RESPIRE Randomized
-Trial}, {Guatemala}. American Journal of Epidemiology 170:211--220;
-doi:\href{https://doi.org/10.1093/aje/kwp100}{10.1093/aje/kwp100}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-snider2018}{}}%
-Snider G, Carter E, Clark S, Tseng J(TzuW, Yang X, Ezzati M, et al.
-2018. Impacts of stove use patterns and outdoor air quality on household
-air pollution and cardiovascular mortality in southwestern {China}.
-Environment International 117:116--124;
-doi:\href{https://doi.org/10.1016/j.envint.2018.04.048}{10.1016/j.envint.2018.04.048}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-song2023}{}}%
-Song C, Liu B, Cheng K, Cole MA, Dai Q, Elliott RJR, et al. 2023.
-Attribution of {Air Quality Benefits} to {Clean Winter Heating Policies}
-in {China}: {Combining Machine Learning} with {Causal Inference}.
-Environmental Science \& Technology 57:17707--17717;
-doi:\href{https://doi.org/10.1021/acs.est.2c06800}{10.1021/acs.est.2c06800}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-sternbach2022}{}}%
-Sternbach TJ, Harper S, Li X, Zhang X, Carter E, Zhang Y, et al. 2022.
-Effects of indoor and outdoor temperatures on blood pressure and central
-hemodynamics in a wintertime longitudinal study of {Chinese} adults.
-Journal of Hypertension 40:1950--1959;
-doi:\href{https://doi.org/10.1097/HJH.0000000000003198}{10.1097/HJH.0000000000003198}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-sun2021}{}}%
-Sun L, Abraham S. 2021. Estimating dynamic treatment effects in event
-studies with heterogeneous treatment effects. Journal of Econometrics
-225:175--199;
-doi:\href{https://doi.org/10.1016/j.jeconom.2020.09.006}{10.1016/j.jeconom.2020.09.006}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-tan2023}{}}%
-Tan X, Chen G, Chen K. 2023. Clean heating and air pollution: {Evidence}
-from {Northern China}. Energy Reports 9:303--313;
-doi:\href{https://doi.org/10.1016/j.egyr.2022.11.166}{10.1016/j.egyr.2022.11.166}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-thompson2019}{}}%
-Thompson RJ, Li J, Weyant CL, Edwards R, Lan Q, Rothman N, et al. 2019.
-Field {Emission Measurements} of {Solid Fuel Stoves} in {Yunnan}, {China
-Demonstrate Dominant Causes} of {Uncertainty} in {Household Emission
-Inventories}. Environmental Science \& Technology 53:3323--3330;
-doi:\href{https://doi.org/10.1021/acs.est.8b07040}{10.1021/acs.est.8b07040}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-tuck2009}{}}%
-Tuck MK, Chan DW, Chia D, Godwin AK, Grizzle WE, Krueger KE, et al.
-2009. Standard {Operating Procedures} for {Serum} and {Plasma
-Collection}: {Early Detection Research Network Consensus Statement}
-{\emph{Standard Operating Procedure Integration Working Group}}. Journal
-of Proteome Research 8:113--117;
-doi:\href{https://doi.org/10.1021/pr800545q}{10.1021/pr800545q}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-vanbuuren2011}{}}%
-van Buuren S, Groothuis-Oudshoorn K. 2011. {\textbf{Mice}} :
-{Multivariate Imputation} by {Chained Equations} in {\emph{R}}. Journal
-of Statistical Software 45;
-doi:\href{https://doi.org/10.18637/jss.v045.i03}{10.18637/jss.v045.i03}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-vandonkelaar2021}{}}%
-Van Donkelaar A, Hammer MS, Bindle L, Brauer M, Brook JR, Garay MJ, et
-al. 2021. Monthly {Global Estimates} of {Fine Particulate Matter} and
-{Their Uncertainty}. Environmental Science \& Technology
-55:15287--15300;
-doi:\href{https://doi.org/10.1021/acs.est.1c05309}{10.1021/acs.est.1c05309}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-vanderweele2015}{}}%
-VanderWeele TJ. 2015. \emph{Explanation in causal inference: Methods for
-mediation and interaction}. Oxford University Press:New York.
-
-\leavevmode\vadjust pre{\hypertarget{ref-volckens2017}{}}%
-Volckens J, Quinn C, Leith D, Mehaffy J, Henry CS, Miller-Lionberg D.
-2017. Development and evaluation of an ultrasonic personal aerosol
-sampler. Indoor air 27:409--416;
-doi:\href{https://doi.org/10.1111/ina.12318}{10.1111/ina.12318}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-wang2020}{}}%
-Wang Q, Zhao Q, Wang G, Wang B, Zhang Y, Zhang J, et al. 2020. The
-association between ambient temperature and clinical visits for
-inflammation-related diseases in rural areas in {China}. Environmental
-Pollution 261:114128;
-doi:\href{https://doi.org/10.1016/j.envpol.2020.114128}{10.1016/j.envpol.2020.114128}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-wen2023}{}}%
-Wen H, Nie P, Liu M, Peng R, Guo T, Wang C, et al. 2023. Multi-health
-effects of clean residential heating: {Evidences} from rural {China}'s
-coal-to-gas/electricity project. Energy for Sustainable Development
-73:66--75;
-doi:\href{https://doi.org/10.1016/j.esd.2023.01.013}{10.1016/j.esd.2023.01.013}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-wooldridge2021}{}}%
-Wooldridge JM. 2021. Two-{Way Fixed Effects}, the {Two-Way Mundlak
-Regression}, and {Difference-in-Differences Estimators}.;
-doi:\href{https://doi.org/10.2139/ssrn.3906345}{10.2139/ssrn.3906345}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-who2021}{}}%
-World Health Organization. 2021. {WHO Global Air Quality Guidelines}:
-{Particulate Matter PM2}.5 and {PM10}), {Ozone}, {Nitrogen Dioxide},
-{Sulfur Dioxide} and {Carbon Monoxide}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-xu2019}{}}%
-Xu H, Brook RD, Wang T, Song X, Feng B, Yi T, et al. 2019. Short-term
-effects of ambient air pollution and outdoor temperature on biomarkers
-of myocardial damage, inflammation and oxidative stress in healthy
-adults. Environmental Epidemiology 3:e078;
-doi:\href{https://doi.org/10.1097/EE9.0000000000000078}{10.1097/EE9.0000000000000078}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-yan2020}{}}%
-Yan L, Carter E, Fu Y, Guo D, Huang P, Xie G, et al. 2020. Study
-protocol: {The INTERMAP China Prospective} ({ICP}) study. Wellcome Open
-Research 4:154;
-doi:\href{https://doi.org/10.12688/wellcomeopenres.15470.2}{10.12688/wellcomeopenres.15470.2}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-yangk2021}{}}%
-Yang K. 2021. Power industry provides inexhaustible power for national
-rejuvenation; 杨昆：电力工业为民族复兴提供不竭动力.
-
-\leavevmode\vadjust pre{\hypertarget{ref-yap2015}{}}%
-Yap P-S, Garcia C. 2015. Effectiveness of {Residential Wood-Burning
-Regulation} on {Decreasing Particulate Matter Levels} and
-{Hospitalizations} in the {San Joaquin Valley Air Basin}. American
-Journal of Public Health 105:772--778;
-doi:\href{https://doi.org/10.2105/AJPH.2014.302360}{10.2105/AJPH.2014.302360}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-ye2022}{}}%
-Ye W, Steenland K, Quinn A, Liao J, Balakrishnan K, Rosa G, et al. 2022.
-Effects of a {Liquefied Petroleum Gas Stove Intervention} on
-{Gestational Blood Pressure}: {Intention-to-Treat} and
-{Exposure-Response Findings From} the {HAPIN Trial}. Hypertension
-79:1887--1898;
-doi:\href{https://doi.org/10.1161/HYPERTENSIONAHA.122.19362}{10.1161/HYPERTENSIONAHA.122.19362}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-young2015}{}}%
-Young OR, Guttman D, Qi Y, Bachus K, Belis D, Cheng H, et al. 2015.
-Institutionalized governance processes: {Comparing} environmental
-problem solving in {China} and the {United States}. Global Environmental
-Change 31:163--173;
-doi:\href{https://doi.org/10.1016/j.gloenvcha.2015.01.010}{10.1016/j.gloenvcha.2015.01.010}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-yu2021}{}}%
-Yu C, Kang J, Teng J, Long H, Fu Y. 2021. Does coal-to-gas policy reduce
-air pollution? {Evidence} from a quasi-natural experiment in {China}.
-Science of The Total Environment 773:144645;
-doi:\href{https://doi.org/10.1016/j.scitotenv.2020.144645}{10.1016/j.scitotenv.2020.144645}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-yun2020}{}}%
-Yun X, Shen G, Shen H, Meng W, Chen Y, Xu H, et al. 2020. Residential
-solid fuel emissions contribute significantly to air pollution and
-associated health impacts in {China}. Science Advances 6:eaba7621;
-doi:\href{https://doi.org/10.1126/sciadv.aba7621}{10.1126/sciadv.aba7621}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-zhang2007}{}}%
-Zhang J(Jim), Smith KR. 2007. Household {Air Pollution} from {Coal} and
-{Biomass Fuels} in {China}: {Measurements}, {Health Impacts}, and
-{Interventions}. Environmental Health Perspectives 115:848--855;
-doi:\href{https://doi.org/10.1289/ehp.9479}{10.1289/ehp.9479}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-zhang2019}{}}%
-Zhang Q, Zheng Y, Tong D, Shao M, Wang S, Zhang Y, et al. 2019. Drivers
-of improved {PM} {\textsubscript{2.5}} air quality in {China} from 2013
-to 2017. Proceedings of the National Academy of Sciences
-116:24463--24469;
-doi:\href{https://doi.org/10.1073/pnas.1907956116}{10.1073/pnas.1907956116}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-zhang2023}{}}%
-Zhang W, Xu H, Yu X, Li J, Zhang Y, Dai R, et al. 2023. Rigorous
-{Regional Air Quality Standards} for {Substantial Health Benefits}.
-Earth's Future 11:e2023EF003860;
-doi:\href{https://doi.org/10.1029/2023EF003860}{10.1029/2023EF003860}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-zhuang2009}{}}%
-Zhuang Z, Li Y, Chen B, Guo J. 2009. Chinese kang as a domestic heating
-system in rural northern {China}---{A} review. Energy and Buildings
-41:111--119;
-doi:\href{https://doi.org/10.1016/j.enbuild.2008.07.013}{10.1016/j.enbuild.2008.07.013}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-zigler2016}{}}%
-Zigler CM, Kim C, Choirat C, Hansen JB, Wang Y, Hund L, et al. 2016.
-\emph{Causal inference methods for estimating long-term health effects
-of air quality regulations. {Research} report 187.} Health Effects
-Institute / Health Effects Institute:Boston, MA.
-
-\end{CSLReferences}
+\section{References}\label{references}
 
 \newpage
 \appendix
@@ -3645,18 +2582,18 @@ Institute / Health Effects Institute:Boston, MA.
 \setcounter{figure}{0}
 \setcounter{table}{0}
 
-\hypertarget{appendices}{%
-\section{Appendices}\label{appendices}}
+\section{Appendices}\label{appendices}
 
-\hypertarget{biomarker-descriptives}{%
-\subsection{Biomarker descriptives}\label{biomarker-descriptives}}
+\subsection{Biomarker descriptives}\label{biomarker-descriptives}
 
 Below we show boxplots for the logged values of the blood inflammatory
 and oxidative stress markers.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.9\textwidth,height=\textheight]{images/biomarker-boxplot-log.jpg}
+\centering{
+
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/biomarker-boxplot-log.jpg}
 
 }
 
@@ -3666,12 +2603,11 @@ tumour necrosis factor alpha (TNF-\(\alpha\)) and markers of oxidative
 stress including 8-hydroxy-2'-deoxyguanosine (8-OHdG) and
 malondialdehyde (MDA)}
 
-\end{figure}
+\end{figure}%
 
 \newpage
 
-\hypertarget{imputation-results}{%
-\subsection{Imputation results}\label{imputation-results}}
+\subsection{Imputation results}\label{imputation-results}
 
 The figures below show density plots for the values of body mass index,
 waist circumference, and indoor PM\textsubscript{2.5} from the multiple
@@ -3679,51 +2615,42 @@ imputation models. The red lines show the values for each of the 30
 imputed datasets, and the black line shows the value for the observed
 data.
 
-\begin{figure}
+\begin{figure}[H]
 
 \begin{minipage}[t]{0.50\linewidth}
 
-{\centering 
+\centering{
 
-\raisebox{-\height}{
-
-\includegraphics{images/MI_BMI_density.png}
-
-}
+\captionsetup{labelsep=none}\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_BMI_density.png}
 
 }
 
 \subcaption{\label{fig-afig-mi-1}}
+
 \end{minipage}%
 %
 \begin{minipage}[t]{0.50\linewidth}
 
-{\centering 
+\centering{
 
-\raisebox{-\height}{
-
-\includegraphics{images/MI_waist_circ_density.png}
-
-}
+\captionsetup{labelsep=none}\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_waist_circ_density.png}
 
 }
 
 \subcaption{\label{fig-afig-mi-2}}
+
 \end{minipage}%
 \newline
 \begin{minipage}[t]{0.50\linewidth}
 
-{\centering 
+\centering{
 
-\raisebox{-\height}{
-
-\includegraphics{images/MI_indoorPM_density.png}
-
-}
+\captionsetup{labelsep=none}\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_indoorPM_density.png}
 
 }
 
 \subcaption{\label{fig-afig-mi-3}}
+
 \end{minipage}%
 
 \caption{\label{fig-afig-mi}Kernal density plots showing distribution of
@@ -3732,30 +2659,30 @@ waist circumference (cm), and indoor PM\textsubscript{2.5}
 (µg/m\textsuperscript{3}) (red lines) and observed values (heavy black
 line)}
 
-\end{figure}
+\end{figure}%
 
 \newpage
 
-\hypertarget{participant-flow-diagram}{%
-\subsection{Participant flow diagram}\label{participant-flow-diagram}}
+\subsection{Participant flow diagram}\label{participant-flow-diagram}
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{images/Participation-flowchart-Apr12.png}
+\centering{
+
+\includegraphics[width=0.8\textwidth,height=\textheight]{images/Participation-flowchart-Apr12.png}
 
 }
 
 \caption{\label{fig-flowchart}Flow chart of BHET study participation at
 the participant, household, and village levels across study years.}
 
-\end{figure}
+\end{figure}%
 
 \newpage
 
 \newpage
 
-\hypertarget{policy-uptake-1}{%
-\subsection{Policy uptake}\label{policy-uptake-1}}
+\subsection{Policy uptake}\label{policy-uptake-1}
 
 Figure~\ref{fig-afig-coal} shows trends over time in self-reported coal
 and biomass consumption over each season. Table~\ref{tbl-fuel-did} shows
@@ -3764,352 +2691,132 @@ separate analyses) to coal and biomass consumption.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{images/coal-plot.png}
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/coal-plot.png}
 
 }
 
 \caption{\label{fig-afig-coal}Trends in self-reported coal and biomass,
 by treatment season}
 
-\end{figure}
+\end{figure}%
 
-\hypertarget{tbl-fuel-did}{}
-\begin{table}[H]
-\caption{\label{tbl-fuel-did}Policy impacts on self-reported fuel use (kg) }\tabularnewline
+\begin{table}
 
-\centering
-\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}>{\centering\arraybackslash}p{1.5cm}cccc}
-\toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Coal\textsuperscript{a}} & \multicolumn{2}{c}{Biomass\textsuperscript{b}} \\
-\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
-Cohort & Time & ATT & (95\%CI) & ATT & (95\%CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Average ATT}}\\
-All & All & -2361 & (-2677, -2044) & -487 & (-805, -168)\\
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Cohort-Time ATTs}}\\
-2019 & 2019 & -2631 & (-2913, -2348) & -653 & (-991, -315)\\
-2019 & 2021 & -2416 & (-2847, -1984) & -633 & (-1201, -64)\\
-2020 & 2021 & -2018 & (-2474, -1562) & -350 & (-701, 0)\\
-2021 & 2021 & -1961 & (-2895, -1027) & 338 & (-30, 705)\\
-\bottomrule
-\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{a} Joint test that all ATTs are equal: F(3, 2886)= 1.856, p= 0.135}\\
-\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{b} Joint test that all ATTs are equal: F(3, 2886)= 5.545, p= 0.001}\\
-\end{tabular}
-\end{table}
+\caption{\label{tbl-fuel-did}Policy impacts on self-reported fuel use
+(kg)}
+
+\centering{
+
+}
+
+\end{table}%
 
 \newpage
 
-\hypertarget{heterogeneity-in-treament-effects}{%
 \subsection{Heterogeneity in treament
-effects}\label{heterogeneity-in-treament-effects}}
+effects}\label{heterogeneity-in-treament-effects}
 
-\hypertarget{personal-exposure}{%
-\subsubsection{Personal exposure}\label{personal-exposure}}
+\subsubsection{Personal exposure}\label{personal-exposure}
 
 Table Table~\ref{tbl-a-het-personal} shows limited evidence that the
 \(ATT\)s across cohorts and time demonstrate meaningful heterogeneity.
 
-\hypertarget{tbl-a-het-personal}{}
-\begin{table}[H]
-\caption{\label{tbl-a-het-personal}Heterogenous treatment effects: Personal exposures }\tabularnewline
+\begin{table}
 
-\centering
-\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}>{\centering\arraybackslash}p{1.5cm}cccc}
-\toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{PM2.5\textsuperscript{a}} & \multicolumn{2}{c}{Black carbon\textsuperscript{b}} \\
-\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
-Cohort & Time & ATT & (95\%CI) & ATT & (95\%CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Average ATT}}\\
-All & All & 1.95 & (-23.34, 27.23) & -0.43 & (-1.67, 0.81)\\
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Cohort-Time ATTs}}\\
-2019 & 2019 & -0.05 & (-28.97, 28.87) & -0.69 & (-1.84, 0.45)\\
-2019 & 2021 & -4.31 & (-41.92, 33.3) & -0.25 & (-2.11, 1.62)\\
-2020 & 2021 & 23.61 & (-19.88, 67.11) & -0.27 & (-2.04, 1.5)\\
-2021 & 2021 & -19.06 & (-43.19, 5.07) & -0.56 & (-2.46, 1.34)\\
-\bottomrule
-\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{a} Joint test that all ATTs are equal: F(3, 1271)= 0.431, p= 0.731}\\
-\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{b} Joint test that all ATTs are equal: F(3, 1253)= 0.613, p= 0.607}\\
-\end{tabular}
-\end{table}
+\caption{\label{tbl-a-het-personal}Heterogenous treatment effects:
+Personal exposures}
 
-\hypertarget{indoor-pm2.5-1}{%
+\centering{
+
+}
+
+\end{table}%
+
 \subsubsection{\texorpdfstring{Indoor
-PM\textsubscript{2.5}}{Indoor PM2.5}}\label{indoor-pm2.5-1}}
+PM\textsubscript{2.5}}{Indoor PM2.5}}\label{indoor-pm2.5-1}
 
 Table Table~\ref{tbl-a-het-indoor} shows estimates for cohort-time
 \(ATT\)s for daily and seasonal indoor PM\textsubscript{2.5}.
 
-\hypertarget{tbl-a-het-indoor}{}
-\begin{table}[H]
-\caption{\label{tbl-a-het-indoor}Heterogenous treatment effects: Indoor }\tabularnewline
+\begin{table}
 
-\centering
-\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}>{\centering\arraybackslash}p{1.5cm}cccc}
-\toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Daily\textsuperscript{a}} & \multicolumn{2}{c}{Seasonal\textsuperscript{b}} \\
-\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
-Cohort & Time & ATT & (95\%CI) & ATT & (95\%CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Average ATT}}\\
-All & All & -14.20 & (-53.94, 25.54) & -36.19 & (-60.74, -11.65)\\
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Cohort-Time ATTs}}\\
-2020 & 2021 & -4.71 & (-56.93, 47.5) & -25.44 & (-58.02, 7.13)\\
-2021 & 2021 & -37.24 & (-74.15, -0.33) & -59.23 & (-79.61, -38.85)\\
-\bottomrule
-\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{a} Joint test that all ATTs are equal: F(1, 405)= 0.064, p= 0.8}\\
-\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{b} Joint test that all ATTs are equal: F(1, 368)= 0.756, p= 0.385}\\
-\end{tabular}
-\end{table}
+\caption{\label{tbl-a-het-indoor}Heterogenous treatment effects: Indoor}
+
+\centering{
+
+}
+
+\end{table}%
 
 \newpage
 
-\hypertarget{indoor-temperature}{%
-\subsubsection{Indoor temperature}\label{indoor-temperature}}
+\subsubsection{Indoor temperature}\label{indoor-temperature}
 
-\hypertarget{tbl-a-het-temp}{}
-\begin{table}[H]
-\caption{\label{tbl-a-het-temp}Heterogenous treatment effects: Indoor temperature }\tabularnewline
+\begin{table}
 
-\centering\begingroup\fontsize{9}{11}\selectfont
+\caption{\label{tbl-a-het-temp}Heterogenous treatment effects: Indoor
+temperature}
 
-\begin{tabular}{rrrllrllrll}
-\toprule
-\multicolumn{2}{c}{ } & \multicolumn{3}{c}{Point temp (°C)} & \multicolumn{3}{c}{Mean temp (°C)} & \multicolumn{3}{c}{Min temp (°C)} \\
-\cmidrule(l{3pt}r{3pt}){3-5} \cmidrule(l{3pt}r{3pt}){6-8} \cmidrule(l{3pt}r{3pt}){9-11}
-Cohort & Time & ATT & (95\%CI) & p-value & ATT & (95\%CI) & p-value & ATT & (95\%CI) & p-value\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{11}{l}{\textbf{All times}}\\
- & 2019 & 1.77 & (0.66, 2.88) &  & 0.43 & (-0.71, 1.57) &  & 1.96 & (0.43, 3.48) & \\
-\cmidrule{2-11}
- & 2020 &  &  &  & 0.52 & (-0.22, 1.26) &  & 2.42 & (0.54, 4.3) & \\
-\cmidrule{2-11}
-\multirow[t]{-3}{*}{\raggedleft\arraybackslash \hspace{1em}2019} & 2021 & 2.29 & (0.51, 4.07) &  & 0.79 & (0, 1.57) &  & 4.93 & (2.28, 7.58) & \\
-\cmidrule{1-11}
- & 2020 &  &  &  & 0.87 & (-0.2, 1.93) &  & 5.00 & (3.22, 6.79) & \\
-\cmidrule{2-11}
-\multirow[t]{-2}{*}{\raggedleft\arraybackslash \hspace{1em}2020} & 2021 & 2.36 & (0.54, 4.17) &  & 0.58 & (-0.66, 1.82) &  & 6.87 & (4.35, 9.39) & \\
-\cmidrule{1-11}
-\hspace{1em}2021 & 2021 & 0.64 & (-1.08, 2.35) & 0.440 & 1.06 & (0.32, 1.79) & 0.320 & 2.04 & (0.08, 4) & 0.000\\
-\cmidrule{1-11}
-\addlinespace[0.3em]
-\multicolumn{11}{l}{\textbf{Daytime}}\\
- & 2019 &  &  &  & 0.44 & (-0.96, 1.83) &  &  &  & \\
-\cmidrule{2-11}
- & 2020 &  &  &  & 1.26 & (0.36, 2.17) &  &  &  & \\
-\cmidrule{2-11}
-\multirow[t]{-3}{*}{\raggedleft\arraybackslash \hspace{1em}2019} & 2021 &  &  &  & 1.50 & (0.55, 2.46) &  &  &  & \\
-\cmidrule{1-11}
- & 2020 &  &  &  & 0.28 & (-1.45, 2.02) &  &  &  & \\
-\cmidrule{2-11}
-\multirow[t]{-2}{*}{\raggedleft\arraybackslash \hspace{1em}2020} & 2021 &  &  &  & 0.13 & (-1.7, 1.97) &  &  &  & \\
-\cmidrule{1-11}
-\hspace{1em}2021 & 2021 &  &  &  & 1.44 & (0.64, 2.25) & 0.260 &  &  & \\
-\cmidrule{1-11}
-\addlinespace[0.3em]
-\multicolumn{11}{l}{\textbf{Daytime heating}}\\
- & 2019 &  &  &  & 0.80 & (-0.48, 2.09) &  &  &  & \\
-\cmidrule{2-11}
- & 2020 &  &  &  & 1.43 & (0.04, 2.83) &  &  &  & \\
-\cmidrule{2-11}
-\multirow[t]{-3}{*}{\raggedleft\arraybackslash \hspace{1em}2019} & 2021 &  &  &  & 2.33 & (1.03, 3.62) &  &  &  & \\
-\cmidrule{1-11}
- & 2020 &  &  &  & 2.63 & (1.87, 3.39) &  &  &  & \\
-\cmidrule{2-11}
-\multirow[t]{-2}{*}{\raggedleft\arraybackslash \hspace{1em}2020} & 2021 &  &  &  & 2.46 & (1.46, 3.46) &  &  &  & \\
-\cmidrule{1-11}
-\hspace{1em}2021 & 2021 &  &  &  & 2.13 & (0.67, 3.59) & 0.000 &  &  & \\
-\cmidrule{1-11}
-\addlinespace[0.3em]
-\multicolumn{11}{l}{\textbf{Heating season}}\\
- & 2019 &  &  &  & 1.05 & (-0.1, 2.2) &  & 1.94 & (0.42, 3.47) & \\
-\cmidrule{2-11}
- & 2020 &  &  &  & 1.23 & (-0.11, 2.58) &  & 2.41 & (0.53, 4.3) & \\
-\cmidrule{2-11}
-\multirow[t]{-3}{*}{\raggedleft\arraybackslash \hspace{1em}2019} & 2021 &  &  &  & 2.07 & (0.88, 3.27) &  & 5.34 & (2.66, 8.02) & \\
-\cmidrule{1-11}
- & 2020 &  &  &  & 2.71 & (2.04, 3.37) &  & 4.35 & (3.17, 5.53) & \\
-\cmidrule{2-11}
-\multirow[t]{-2}{*}{\raggedleft\arraybackslash \hspace{1em}2020} & 2021 &  &  &  & 2.48 & (1.33, 3.62) &  & 6.27 & (3.73, 8.81) & \\
-\cmidrule{1-11}
-\hspace{1em}2021 & 2021 &  &  &  & 1.97 & (0.53, 3.41) & 0.000 & 2.23 & (0.26, 4.21) & 0.000\\
-\bottomrule
-\end{tabular}
-\endgroup{}
-\end{table}
+\centering{
+
+}
+
+\end{table}%
 
 \newpage
 
-\hypertarget{blood-pressure-outcomes}{%
-\subsubsection{Blood pressure outcomes}\label{blood-pressure-outcomes}}
+\subsubsection{Blood pressure outcomes}\label{blood-pressure-outcomes}
 
 Table~\ref{tbl-bp-het} shows \(ATT\)s by treatment cohort and time, as
 well as the results of joint tests of heterogeneity across \(ATT\)s.
 
-\hypertarget{tbl-bp-het}{}
-\begin{table}[H]
-\caption{\label{tbl-bp-het}Heterogenous treatment effects for the total effect of the CBHP policy
-on blood pressure. }\tabularnewline
+\begin{table}
 
-\centering
-\begin{threeparttable}
-\begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}cccc}
-\toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Adjusted DiD\textsuperscript{a}} & \multicolumn{2}{c}{Heterogeneity tests\textsuperscript{b}} \\
-\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
-Cohort & Time & ATT & (95\%CI) & F-Statistic & p-value\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brachial SBP}}\\
-\hspace{1em}2019 & 2019 & -2.36 & (-5.23, 0.5) &  & \\
-\hspace{1em}2019 & 2021 & -1.51 & (-4.01, 0.98) &  & \\
-\hspace{1em}2020 & 2021 & -1.26 & (-4.97, 2.45) &  & \\
-\hspace{1em}2021 & 2021 & 2.39 & (-0.49, 5.28) & 2.3 & 0.080\\
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Central SBP}}\\
-\hspace{1em}2019 & 2019 & -2.03 & (-4.69, 0.63) &  & \\
-\hspace{1em}2019 & 2021 & -1.96 & (-4.45, 0.52) &  & \\
-\hspace{1em}2020 & 2021 & -1.78 & (-5.07, 1.52) &  & \\
-\hspace{1em}2021 & 2021 & 2.11 & (-1.09, 5.31) & 1.9 & 0.140\\
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brachial DBP}}\\
-\hspace{1em}2019 & 2019 & -2.66 & (-4.67, -0.65) &  & \\
-\hspace{1em}2019 & 2021 & -2.37 & (-4.01, -0.72) &  & \\
-\hspace{1em}2020 & 2021 & 0.2 & (-1.54, 1.94) &  & \\
-\hspace{1em}2021 & 2021 & 0.78 & (-0.48, 2.05) & 6.8 & 0.000\\
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Central DBP}}\\
-\hspace{1em}2019 & 2019 & -2.67 & (-4.57, -0.78) &  & \\
-\hspace{1em}2019 & 2021 & -2.55 & (-4.15, -0.94) &  & \\
-\hspace{1em}2020 & 2021 & 0.11 & (-1.67, 1.9) &  & \\
-\hspace{1em}2021 & 2021 & 1.09 & (-0.06, 2.23) & 10.0 & 0.000\\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\item \small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, CDE = Controlled Direct Effect.}
-\item[a] \small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}
-\item[b] \small{F-statistics and p-values for joint tests of equality across cohort and time ATTs}
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
+\caption{\label{tbl-bp-het}Heterogenous treatment effects for the total
+effect of the CBHP policy on blood pressure.}
+
+\centering{
+
+}
+
+\end{table}%
 
 \newpage
 
-\hypertarget{mediation-analyses-for-blood-pressure}{%
 \subsubsection{Mediation analyses for blood
-pressure}\label{mediation-analyses-for-blood-pressure}}
+pressure}\label{mediation-analyses-for-blood-pressure}
 
 Table~\ref{tbl-a-bp-med-het} shows the cohort-time treatment effects for
 the mediation model for blood pressure.
 
-\hypertarget{tbl-a-bp-med-het}{}
-\begin{table}[H]
-\caption{\label{tbl-a-bp-med-het}Heterogenous treatment effects for blood pressure mediation model }\tabularnewline
-
-\centering\begingroup\fontsize{10}{12}\selectfont
-
-\begin{threeparttable}
-\begin{tabular}{llcccccccc}
-\toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Adjusted Total Effect\textsuperscript{a}} & \multicolumn{6}{c}{CDE Mediated By:\textsuperscript{b}} \\
-\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-10}
-\multicolumn{4}{c}{ } & \multicolumn{2}{c}{Indoor PM} & \multicolumn{2}{c}{Indoor Temp} & \multicolumn{2}{c}{PM + Temp} \\
-\cmidrule(l{3pt}r{3pt}){5-6} \cmidrule(l{3pt}r{3pt}){7-8} \cmidrule(l{3pt}r{3pt}){9-10}
-Cohort & Time & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{10}{l}{\textbf{Brachial SBP}}\\
-\hspace{1em}2019 & 2019 & -2.36 & (-5.23, 0.50) & -2.15 & (-5.14, 0.84) & -1.69 & (-4.54, 1.15) & -1.24 & (-4.20, 1.72)\\
-\hspace{1em}2019 & 2021 & -1.51 & (-4.01, 0.98) & -1.27 & (-4.01, 1.47) & -0.41 & (-2.92, 2.10) & 0.01 & (-2.71, 2.74)\\
-\hspace{1em}2020 & 2021 & -1.26 & (-4.97, 2.45) & -0.54 & (-4.25, 3.17) & 0.43 & (-2.86, 3.73) & 1.04 & (-2.59, 4.67)\\
-\hspace{1em}2021 & 2021 & 2.39 & (-0.49, 5.28) & 2.68 & (-0.42, 5.79) & 1.95 & (-1.74, 5.64) & 1.88 & (-1.92, 5.67)\\
-\addlinespace[0.3em]
-\multicolumn{10}{l}{\textbf{Central SBP}}\\
-\hspace{1em}2019 & 2019 & -2.03 & (-4.69, 0.63) & -1.75 & (-4.61, 1.11) & -1.40 & (-4.06, 1.27) & -0.89 & (-3.73, 1.95)\\
-\hspace{1em}2019 & 2021 & -1.96 & (-4.45, 0.52) & -1.65 & (-4.40, 1.11) & -0.93 & (-3.18, 1.32) & -0.44 & (-2.95, 2.07)\\
-\hspace{1em}2020 & 2021 & -1.78 & (-5.07, 1.52) & -1.00 & (-4.36, 2.36) & -0.15 & (-3.18, 2.88) & 0.47 & (-2.95, 3.89)\\
-\hspace{1em}2021 & 2021 & 2.11 & (-1.09, 5.31) & 2.45 & (-0.83, 5.73) & 1.66 & (-1.73, 5.05) & 1.63 & (-1.82, 5.08)\\
-\addlinespace[0.3em]
-\multicolumn{10}{l}{\textbf{Brachial DBP}}\\
-\hspace{1em}2019 & 2019 & -2.66 & (-4.67, -0.65) & -2.47 & (-4.70, -0.25) & -2.29 & (-4.18, -0.40) & -1.94 & (-4.03, 0.14)\\
-\hspace{1em}2019 & 2021 & -2.37 & (-4.01, -0.72) & -2.10 & (-4.09, -0.11) & -1.81 & (-3.21, -0.41) & -1.50 & (-3.28, 0.27)\\
-\hspace{1em}2020 & 2021 & 0.20 & (-1.54, 1.94) & 0.31 & (-1.43, 2.04) & 1.14 & (-0.65, 2.94) & 1.23 & (-0.70, 3.15)\\
-\hspace{1em}2021 & 2021 & 0.78 & (-0.48, 2.05) & 1.05 & (-0.59, 2.69) & 0.20 & (-1.21, 1.62) & 0.36 & (-1.34, 2.06)\\
-\addlinespace[0.3em]
-\multicolumn{10}{l}{\textbf{Central DBP}}\\
-\hspace{1em}2019 & 2019 & -2.67 & (-4.57, -0.78) & -2.43 & (-4.58, -0.28) & -2.52 & (-4.34, -0.70) & -2.13 & (-4.18, -0.08)\\
-\hspace{1em}2019 & 2021 & -2.55 & (-4.15, -0.94) & -2.20 & (-4.18, -0.22) & -2.18 & (-3.60, -0.76) & -1.80 & (-3.58, -0.03)\\
-\hspace{1em}2020 & 2021 & 0.11 & (-1.67, 1.90) & 0.22 & (-1.58, 2.01) & 1.07 & (-0.74, 2.87) & 1.16 & (-0.80, 3.13)\\
-\hspace{1em}2021 & 2021 & 1.09 & (-0.06, 2.23) & 1.39 & (-0.16, 2.94) & 0.51 & (-0.80, 1.82) & 0.70 & (-0.94, 2.34)\\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\item \small{Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.}
-\item[a] \small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}
-\item[b] \small{Mediators were set to the mean value for untreated participants at baseline.}
-\end{tablenotes}
-\end{threeparttable}
-\endgroup{}
-\end{table}
-
-\hypertarget{tbl-a-bp-med-het-tests}{}
 \begin{table}
-\caption{\label{tbl-a-bp-med-het-tests}Heterogenous treatment effects and tests for cohort-time heterogeneity
-across CDEs for multiple mediation blood pressure mediation model. }\tabularnewline
 
-\centering
-\begin{threeparttable}
-\begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}cccc}
-\toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Adjusted CDE\textsuperscript{a}} & \multicolumn{2}{c}{Heterogeneity tests\textsuperscript{b}} \\
-\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
-Cohort & Time & ATT & (95\%CI) & F-Statistic & p-value\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brachial SBP}}\\
-\hspace{1em}2019 & 2019 & -1.24 & (-4.20, 1.72) &  & \\
-\hspace{1em}2019 & 2021 & 0.01 & (-2.71, 2.74) &  & \\
-\hspace{1em}2020 & 2021 & 1.04 & (-2.59, 4.67) &  & \\
-\hspace{1em}2021 & 2021 & 1.88 & (-1.92, 5.67) & 0.8 & 0.513\\
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Central SBP}}\\
-\hspace{1em}2019 & 2019 & -0.89 & (-3.73, 1.95) &  & \\
-\hspace{1em}2019 & 2021 & -0.44 & (-2.95, 2.07) &  & \\
-\hspace{1em}2020 & 2021 & 0.47 & (-2.95, 3.89) &  & \\
-\hspace{1em}2021 & 2021 & 1.63 & (-1.82, 5.08) & 0.6 & 0.608\\
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brachial DBP}}\\
-\hspace{1em}2019 & 2019 & -1.94 & (-4.03, 0.14) &  & \\
-\hspace{1em}2019 & 2021 & -1.50 & (-3.28, 0.27) &  & \\
-\hspace{1em}2020 & 2021 & 1.23 & (-0.70, 3.15) &  & \\
-\hspace{1em}2021 & 2021 & 0.36 & (-1.34, 2.06) & 3.9 & 0.008\\
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Central DBP}}\\
-\hspace{1em}2019 & 2019 & -2.13 & (-4.18, -0.08) &  & \\
-\hspace{1em}2019 & 2021 & -1.80 & (-3.58, -0.03) &  & \\
-\hspace{1em}2020 & 2021 & 1.16 & (-0.80, 3.13) &  & \\
-\hspace{1em}2021 & 2021 & 0.70 & (-0.94, 2.34) & 4.8 & 0.003\\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}
-\item \small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, CDE = Controlled Direct Effect.}
-\item[a] \small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}
-\item[b] \small{F-statistics and p-values for joint tests of equality across cohort and time ATTs}
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
+\caption{\label{tbl-a-bp-med-het}Heterogenous treatment effects for
+blood pressure mediation model}
+
+\centering{
+
+}
+
+\end{table}%
+
+\begin{table}
+
+\caption{\label{tbl-a-bp-med-het-tests}Heterogenous treatment effects
+and tests for cohort-time heterogeneity across CDEs for multiple
+mediation blood pressure mediation model.}
+
+\centering{
+
+}
+
+\end{table}%
 
 \newpage
 
-\hypertarget{respiratory-outcomes}{%
-\subsubsection{Respiratory outcomes}\label{respiratory-outcomes}}
+\subsubsection{Respiratory outcomes}\label{respiratory-outcomes}
 
 Appendix tables \ref{tbl-a-het-resp}, \ref{tbl-a-het-cough},
 \ref{tbl-a-het-phlegm}, \ref{tbl-a-het-wheeze}, \ref{tbl-a-het-breath},
@@ -4118,159 +2825,82 @@ Treated (\(ATT\)s) by treatment cohort and time. ATTs are derived from
 estimating marginal effects from extended two-way fixed effects models
 with additional adjustment for age, sex, and smoking status.
 
-\hypertarget{tbl-a-het-resp}{}
-\begin{table}[H]
-\caption{\label{tbl-a-het-resp}Heterogenous treatment effects for self-reported respiratory outcomes:
-Any respiratory symptom }\tabularnewline
+\begin{table}
 
-\centering
-\begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
-\toprule
-Cohort & Time & ATT & (95\%CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Average ATT}}\\
-All & All & -0.08 & (-0.15, -0.01)\\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Cohort-Time ATTs}}\\
-2019 & 2019 & -0.11 & (-0.20, -0.02)\\
-2019 & 2021 & -0.10 & (-0.21, 0.00)\\
-2020 & 2021 & 0.01 & (-0.10, 0.13)\\
-2021 & 2021 & -0.12 & (-0.22, -0.01)\\
-\bottomrule
-\multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 1.283, p= 0.278.}}\\
-\end{tabular}
-\end{table}
+\caption{\label{tbl-a-het-resp}Heterogenous treatment effects for
+self-reported respiratory outcomes: Any respiratory symptom}
 
-\hypertarget{tbl-a-het-cough}{}
-\begin{table}[H]
-\caption{\label{tbl-a-het-cough}Heterogenous treatment effects for self-reported respiratory outcomes:
-Coughing }\tabularnewline
+\centering{
 
-\centering
-\begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
-\toprule
-Cohort & Time & ATT & (95\%CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Average ATT}}\\
-All & All & -0.02 & (-0.07, 0.03)\\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Cohort-Time ATTs}}\\
-2019 & 2019 & -0.04 & (-0.11, 0.03)\\
-2019 & 2021 & 0.01 & (-0.07, 0.08)\\
-2020 & 2021 & -0.03 & (-0.10, 0.05)\\
-2021 & 2021 & -0.04 & (-0.09, 0.02)\\
-\bottomrule
-\multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 0.732, p= 0.533.}}\\
-\end{tabular}
-\end{table}
+}
 
-\hypertarget{tbl-a-het-phlegm}{}
-\begin{table}[H]
-\caption{\label{tbl-a-het-phlegm}Heterogenous treatment effects for self-reported respiratory outcomes:
-Phlegm }\tabularnewline
+\end{table}%
 
-\centering
-\begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
-\toprule
-Cohort & Time & ATT & (95\%CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Average ATT}}\\
-All & All & -0.02 & (-0.06, 0.03)\\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Cohort-Time ATTs}}\\
-2019 & 2019 & -0.06 & (-0.16, 0.03)\\
-2019 & 2021 & -0.03 & (-0.10, 0.04)\\
-2020 & 2021 & 0.04 & (-0.02, 0.09)\\
-2021 & 2021 & 0.03 & (-0.04, 0.09)\\
-\bottomrule
-\multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 1.735, p= 0.158.}}\\
-\end{tabular}
-\end{table}
+\begin{table}
 
-\hypertarget{tbl-a-het-wheeze}{}
-\begin{table}[H]
-\caption{\label{tbl-a-het-wheeze}Heterogenous treatment effects for self-reported respiratory outcomes:
-Wheezing attacks }\tabularnewline
+\caption{\label{tbl-a-het-cough}Heterogenous treatment effects for
+self-reported respiratory outcomes: Coughing}
 
-\centering
-\begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
-\toprule
-Cohort & Time & ATT & (95\%CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Average ATT}}\\
-All & All & 0.00 & (-0.04, 0.04)\\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Cohort-Time ATTs}}\\
-2019 & 2019 & -0.02 & (-0.06, 0.01)\\
-2019 & 2021 & 0.01 & (-0.04, 0.06)\\
-2020 & 2021 & -0.03 & (-0.11, 0.05)\\
-2021 & 2021 & 0.09 & (-0.00, 0.18)\\
-\bottomrule
-\multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 2.923, p= 0.033.}}\\
-\end{tabular}
-\end{table}
+\centering{
 
-\hypertarget{tbl-a-het-breath}{}
-\begin{table}[H]
-\caption{\label{tbl-a-het-breath}Heterogenous treatment effects for self-reported respiratory outcomes:
-Trouble breathing }\tabularnewline
+}
 
-\centering
-\begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
-\toprule
-Cohort & Time & ATT & (95\%CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Average ATT}}\\
-All & All & -0.05 & (-0.12, 0.02)\\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Cohort-Time ATTs}}\\
-2019 & 2019 & -0.06 & (-0.16, 0.04)\\
-2019 & 2021 & -0.07 & (-0.16, 0.03)\\
-2020 & 2021 & 0.01 & (-0.09, 0.11)\\
-2021 & 2021 & -0.07 & (-0.20, 0.06)\\
-\bottomrule
-\multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 0.718, p= 0.541.}}\\
-\end{tabular}
-\end{table}
+\end{table}%
 
-\hypertarget{tbl-a-het-nochest}{}
-\begin{table}[H]
-\caption{\label{tbl-a-het-nochest}Heterogenous treatment effects for self-reported respiratory outcomes:
-Chest trouble }\tabularnewline
+\begin{table}
 
-\centering
-\begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
-\toprule
-Cohort & Time & ATT & (95\%CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Average ATT}}\\
-All & All & -0.06 & (-0.12, -0.01)\\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Cohort-Time ATTs}}\\
-2019 & 2019 & -0.06 & (-0.13, 0.01)\\
-2019 & 2021 & -0.06 & (-0.15, 0.03)\\
-2020 & 2021 & -0.05 & (-0.16, 0.05)\\
-2021 & 2021 & -0.14 & (-0.22, -0.05)\\
-\bottomrule
-\multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 1.046, p= 0.371.}}\\
-\end{tabular}
-\end{table}
+\caption{\label{tbl-a-het-phlegm}Heterogenous treatment effects for
+self-reported respiratory outcomes: Phlegm}
+
+\centering{
+
+}
+
+\end{table}%
+
+\begin{table}
+
+\caption{\label{tbl-a-het-wheeze}Heterogenous treatment effects for
+self-reported respiratory outcomes: Wheezing attacks}
+
+\centering{
+
+}
+
+\end{table}%
+
+\begin{table}
+
+\caption{\label{tbl-a-het-breath}Heterogenous treatment effects for
+self-reported respiratory outcomes: Trouble breathing}
+
+\centering{
+
+}
+
+\end{table}%
+
+\begin{table}
+
+\caption{\label{tbl-a-het-nochest}Heterogenous treatment effects for
+self-reported respiratory outcomes: Chest trouble}
+
+\centering{
+
+}
+
+\end{table}%
 
 \newpage
 
-\hypertarget{outdoor-and-personal-mixed-combustion}{%
 \subsubsection{Outdoor and personal mixed
-combustion}\label{outdoor-and-personal-mixed-combustion}}
+combustion}\label{outdoor-and-personal-mixed-combustion}
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{images/did-mixed-ct-wave.png}
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/did-mixed-ct-wave.png}
 
 }
 
@@ -4278,73 +2908,49 @@ combustion}\label{outdoor-and-personal-mixed-combustion}}
 effect for outdoor and personal exposure (µg/m\textsuperscript{3}) to
 the mixed combustion source by treatment year.}
 
-\end{figure}
+\end{figure}%
 
 \newpage
 
-\hypertarget{impact-of-sample-composition-on-feno-results}{%
 \subsection{Impact of sample composition on FeNO
-results}\label{impact-of-sample-composition-on-feno-results}}
+results}\label{impact-of-sample-composition-on-feno-results}
 
 Table~\ref{tbl-a-feno} shows differences in the \(ATT\)s for the impact
 of the CBHP policy on FeNO depending on whether the estimation sample
 includes all individuals or is limited to those with repeated measures
 across campaigns.
 
-\hypertarget{tbl-a-feno}{}
-\begin{table}[H]
-\caption{\label{tbl-a-feno}Effects of the CBHP policy on FeNO (ppb) based on the number of
-individuals with repeated measurements. }\tabularnewline
+\begin{table}
 
-\centering
-\begin{tabular}{lcccccc}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{All participants} & \multicolumn{2}{c}{Participants with >1 measure} & \multicolumn{2}{c}{Participants with 3 measures} \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7}
- & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI)\\
-\midrule
-DiD & 0.17 & (-2.24, 2.58) & 0.13 & (-3.09, 3.35) & -0.57 & (-3.08, 1.94)\\
-Adjusted DiD & 0.55 & (-2.03, 3.13) & 0.24 & (-3.19, 3.67) & 0.27 & (-2.39, 2.92)\\
-Observations & 794 &  & 526 &  & 252 & \\
-\bottomrule
-\end{tabular}
-\end{table}
+\caption{\label{tbl-a-feno}Effects of the CBHP policy on FeNO (ppb)
+based on the number of individuals with repeated measurements.}
+
+\centering{
+
+}
+
+\end{table}%
 
 \newpage
 
-\hypertarget{impact-of-including-season-3-data}{%
 \subsection{Impact of including Season 3
-data}\label{impact-of-including-season-3-data}}
+data}\label{impact-of-including-season-3-data}
 
 Table~\ref{tbl-a-ind-s3} shows differences in the \(ATT\)s for the
 impact of seasonal indoor PM\textsubscript{2.5} when season 3 data
 (collected in 41 villages during COVID-19) are included versus excluded.
 
-\hypertarget{tbl-a-ind-s3}{}
-\begin{table}[H]
-\caption{\label{tbl-a-ind-s3}Effects of the CBHP policy on indoor seasonal PM\textsubscript{2.5}
-based on whether Season 3 data are included vs.~excluded. }\tabularnewline
+\begin{table}
 
-\centering
-\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}>{\centering\arraybackslash}p{1.5cm}cccc}
-\toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{With Season 3 data} & \multicolumn{2}{c}{Without Season 3 data} \\
-\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
-Cohort & Time & ATT & (95\%CI) & ATT & (95\%CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Average ATT}}\\
-All & All & -37.49 & (-60.11, -14.88) & -35.11 & (-59.36, -10.85)\\
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Cohort-Time ATTs}}\\
-2020 & 2020 & -36.94 & (-61.39, -12.49) & 0.00 & (NA, NA)\\
-2020 & 2021 & -33.51 & (-66.84, -0.18) & -30.22 & (-63.77, 3.32)\\
-2021 & 2021 & -46.82 & (-58.57, -35.07) & -44.88 & (-60.41, -29.34)\\
-\bottomrule
-\multicolumn{6}{l}{\rule{0pt}{1em}\textit{Note: }}\\
-\multicolumn{6}{l}{\rule{0pt}{1em}}\\
-\end{tabular}
-\end{table}
+\caption{\label{tbl-a-ind-s3}Effects of the CBHP policy on indoor
+seasonal PM\textsubscript{2.5} based on whether Season 3 data are
+included vs.~excluded.}
+
+\centering{
+
+}
+
+\end{table}%
 
 Figure~\ref{fig-afig-did-opm-w3} shows the impact of including Wave 3
 data on the estimates of the impact of the policy on seasonal outdoor
@@ -4352,7 +2958,9 @@ PM\textsubscript{2.5}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.6\textwidth,height=\textheight]{images/did-outdoor-w3.png}
+\centering{
+
+\includegraphics[width=0.6\textwidth,height=\textheight]{images/did-outdoor-w3.png}
 
 }
 
@@ -4360,17 +2968,18 @@ PM\textsubscript{2.5}.
 outdoor seasonal PM\textsubscript{2.5} based on whether Season 3 data
 are included vs.~excluded.}
 
-\end{figure}
+\end{figure}%
 
 \newpage
 
-\hypertarget{pre-trends-for-blood-pressure}{%
 \subsection{Pre-trends for blood
-pressure}\label{pre-trends-for-blood-pressure}}
+pressure}\label{pre-trends-for-blood-pressure}
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{images/never_Y3.png}
+\centering{
+
+\includegraphics[width=0.8\textwidth,height=\textheight]{images/never_Y3.png}
 
 }
 
@@ -4378,11 +2987,13 @@ pressure}\label{pre-trends-for-blood-pressure}}
 blood pressure between waves 1 and 2 for never treated and villages
 later treated in wave 3}
 
-\end{figure}
+\end{figure}%
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.7\textwidth,height=\textheight]{images/never_Y4.png}
+\centering{
+
+\includegraphics[width=0.7\textwidth,height=\textheight]{images/never_Y4.png}
 
 }
 
@@ -4390,46 +3001,33 @@ later treated in wave 3}
 blood pressure between waves 1 and 2 for never treated and villages
 later treated in wave 4}
 
-\end{figure}
+\end{figure}%
 
 \newpage
 
 \newpage
 
-\hypertarget{impact-of-group-and-time-fixed-effects}{%
 \subsection{Impact of group and time fixed
-effects}\label{impact-of-group-and-time-fixed-effects}}
+effects}\label{impact-of-group-and-time-fixed-effects}
 
-\hypertarget{tbl-a-fe}{}
-\begin{table}[H]
-\caption{\label{tbl-a-fe}Effects of the CBHP policy on personal exposure (\(\mu g / m^{3}\)) with
-variations in fixed effects for treatment group and time. }\tabularnewline
+\begin{table}
 
-\centering\centering
-\begin{tabular}[t]{lcccc}
-\toprule
-  & Adjusted DiD & No time FE & No group FE & No FE\\
-\midrule
-ATT & \num{1.95} & \num{-31.43} & \num{-5.91} & \num{-24.13}\\
- & {}[\num{-23.34}, \num{27.23}] & {}[\num{-49.42}, \num{-13.44}] & {}[\num{-24.36}, \num{12.54}] & {}[\num{-41.42}, \num{-6.83}]\\
-\midrule
-Num.Obs. & \num{1281} & \num{1281} & \num{1281} & \num{1281}\\
-FE..year & X &  & X & \\
-FE..cohort\_year & X & X &  & \\
-\bottomrule
-\multicolumn{5}{l}{\rule{0pt}{1em}Note: All models adjusted for household size, smoking, outdoor temperature, and outdoor humidity.}\\
-\multicolumn{5}{l}{\rule{0pt}{1em}Standard errors clustered by village.}\\
-\end{tabular}
-\end{table}
+\caption{\label{tbl-a-fe}Effects of the CBHP policy on personal exposure
+(\(\mu g / m^{3}\)) with variations in fixed effects for treatment group
+and time.}
+
+\centering{
+
+}
+
+\end{table}%
 
 \newpage
 
-\hypertarget{about-the-authors}{%
-\section*{About the authors}\label{about-the-authors}}
+\section*{About the authors}\label{about-the-authors}
 \addcontentsline{toc}{section}{About the authors}
 
-\hypertarget{other-publications}{%
-\section*{Other publications}\label{other-publications}}
+\section*{Other publications}\label{other-publications}
 \addcontentsline{toc}{section}{Other publications}
 
 Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G,
@@ -4447,6 +3045,749 @@ Sternbach TJ, Harper S, Li X, Zhang X, Carter E, Zhang Y, et al.~2022.
 Effects of indoor and outdoor temperatures on blood pressure and central
 hemodynamics in a wintertime longitudinal study of Chinese adults. J
 Hypertension 40:1950--1959; doi:10.1097/HJH.0000000000003198.
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{1}
+\bibitem[\citeproctext]{ref-ahmed2009}
+Ahmed T, Dutkiewicz VA, Shareef A, Tuncel G, Tuncel S, Husain L. 2009.
+Measurement of black carbon ({BC}) by an optical method and a
+thermal-optical method: {Intercomparison} for four sites. Atmospheric
+Environment 43:6305--6311;
+doi:\href{https://doi.org/10.1016/j.atmosenv.2009.09.031}{10.1016/j.atmosenv.2009.09.031}.
+
+\bibitem[\citeproctext]{ref-alexander2018}
+Alexander DA, Northcross A, Karrison T, Morhasson-Bello O, Wilson N,
+Atalabi OM, et al. 2018. Pregnancy outcomes and ethanol cook stove
+intervention: {A} randomized-controlled trial in {Ibadan}, {Nigeria}.
+Environment International 111:152--163;
+doi:\href{https://doi.org/10.1016/j.envint.2017.11.021}{10.1016/j.envint.2017.11.021}.
+
+\bibitem[\citeproctext]{ref-alexander2017}
+Alexander D, Northcross A, Wilson N, Dutta A, Pandya R, Ibigbami T, et
+al. 2017. Randomized {Controlled Ethanol Cookstove Intervention} and
+{Blood Pressure} in {Pregnant Nigerian Women}. American Journal of
+Respiratory and Critical Care Medicine 195:1629--1639;
+doi:\href{https://doi.org/10.1164/rccm.201606-1177OC}{10.1164/rccm.201606-1177OC}.
+
+\bibitem[\citeproctext]{ref-an2021}
+An L, Hong B, Cui X, Geng Y, Ma X. 2021. Outdoor thermal comfort during
+winter in {China}'s cold regions: {A} comparative study. Science of The
+Total Environment 768:144464;
+doi:\href{https://doi.org/10.1016/j.scitotenv.2020.144464}{10.1016/j.scitotenv.2020.144464}.
+
+\bibitem[\citeproctext]{ref-anderson2016}
+Anderson GB, Peng RD, Ferreri JM. 2016. Weathermetrics: {Functions} to
+{Convert Between Weather Metrics}.
+
+\bibitem[\citeproctext]{ref-archer-nicholls2016}
+Archer-Nicholls S, Carter E, Kumar R, Xiao Q, Liu Y, Frostad J, et al.
+2016. The {Regional Impacts} of {Cooking} and {Heating Emissions} on
+{Ambient Air Quality} and {Disease Burden} in {China}. Environmental
+Science \& Technology 50:9416--9423;
+doi:\href{https://doi.org/10.1021/acs.est.6b02533}{10.1021/acs.est.6b02533}.
+
+\bibitem[\citeproctext]{ref-arel-bundock2024}
+Arel-Bundock V. 2024. Marginaleffects: {Predictions}, {Comparisons},
+{Slopes}, {Marginal Means}, and {Hypothesis Tests}.
+
+\bibitem[\citeproctext]{ref-baker2022}
+Baker AC, Larcker DF, Wang CCY. 2022. How much should we trust staggered
+difference-in-differences estimates? Journal of Financial Economics
+144:370--395;
+doi:\href{https://doi.org/10.1016/j.jfineco.2022.01.004}{10.1016/j.jfineco.2022.01.004}.
+
+\bibitem[\citeproctext]{ref-barrington-leigh2019}
+Barrington-Leigh C, Baumgartner J, Carter E, Robinson BE, Tao S, Zhang
+Y. 2019. An evaluation of air quality, home heating and well-being under
+{Beijing}'s programme to eliminate household coal use. Nature Energy
+4:416--423;
+doi:\href{https://doi.org/10.1038/s41560-019-0386-2}{10.1038/s41560-019-0386-2}.
+
+\bibitem[\citeproctext]{ref-baumgartner2018}
+Baumgartner J, Carter E, Schauer JJ, Ezzati M, Daskalopoulou SS, Valois
+M-F, et al. 2018. Household air pollution and measures of blood
+pressure, arterial stiffness and central haemodynamics. Heart
+104:1515--1521;
+doi:\href{https://doi.org/10.1136/heartjnl-2017-312595}{10.1136/heartjnl-2017-312595}.
+
+\bibitem[\citeproctext]{ref-baumgartner2019}
+Baumgartner J, Clark S, Carter E, Lai A, Zhang Y, Shan M, et al. 2019.
+Effectiveness of a {Household Energy Package} in {Improving Indoor Air
+Quality} and {Reducing Personal Exposures} in {Rural China}.
+Environmental Science \& Technology 53:9306--9316;
+doi:\href{https://doi.org/10.1021/acs.est.9b02061}{10.1021/acs.est.9b02061}.
+
+\bibitem[\citeproctext]{ref-baumgartner2011}
+Baumgartner J, Schauer JJ, Ezzati M, Lu L, Cheng C, Patz JA, et al.
+2011. Indoor {Air Pollution} and {Blood Pressure} in {Adult Women
+Living} in {Rural China}. Environmental Health Perspectives
+119:1390--1395;
+doi:\href{https://doi.org/10.1289/ehp.1003371}{10.1289/ehp.1003371}.
+
+\bibitem[\citeproctext]{ref-beltramo2013}
+Beltramo T, Levine DI. 2013. The effect of solar ovens on fuel use,
+emissions and health: Results from a randomised controlled trial.
+Journal of Development Effectiveness 5:178--207;
+doi:\href{https://doi.org/10.1080/19439342.2013.775177}{10.1080/19439342.2013.775177}.
+
+\bibitem[\citeproctext]{ref-brauer2021}
+Brauer M, Casadei B, Harrington RA, Kovacs R, Sliwa K, the WHF Air
+Pollution Expert Group. 2021. Taking a {Stand Against Air
+Pollution}---{The Impact} on {Cardiovascular Disease}: {A Joint Opinion
+From} the {World Heart Federation}, {American College} of {Cardiology},
+{American Heart Association}, and the {European Society} of
+{Cardiology}. Circulation 143;
+doi:\href{https://doi.org/10.1161/CIRCULATIONAHA.120.052666}{10.1161/CIRCULATIONAHA.120.052666}.
+
+\bibitem[\citeproctext]{ref-burwen2012}
+Burwen J, Levine DI. 2012. A rapid assessment randomized-controlled
+trial of improved cookstoves in rural {Ghana}. Energy for Sustainable
+Development 16:328--338;
+doi:\href{https://doi.org/10.1016/j.esd.2012.04.001}{10.1016/j.esd.2012.04.001}.
+
+\bibitem[\citeproctext]{ref-callaway2020}
+Callaway B. 2020.
+\href{https://doi.org/10.1007/978-3-319-57365-6_352-1}{Difference-in-{Differences}
+for {Policy Evaluation}}. In: \emph{Handbook of {Labor}, {Human
+Resources} and {Population Economics}} (K.F. Zimmermann, ed). Springer
+International Publishing:Cham. 1--61.
+
+\bibitem[\citeproctext]{ref-callaway2021}
+Callaway B, Sant'Anna PHC. 2021. Difference-in-{Differences} with
+multiple time periods. Journal of Econometrics 225:200--230;
+doi:\href{https://doi.org/10.1016/j.jeconom.2020.12.001}{10.1016/j.jeconom.2020.12.001}.
+
+\bibitem[\citeproctext]{ref-cameron2015}
+Cameron AC, Miller DL. 2015. A practitioner's guide to cluster-robust
+inference. Journal of Human Resources 50: 317--372.
+
+\bibitem[\citeproctext]{ref-card1994}
+Card D, Krueger AB. 1994. Minimum {Wages} and {Employment}: {A Case
+Study} of the {Fast-Food Industry} in {New Jersey} and {Pennsylvania}.
+American Economic Review 84: 772--93.
+
+\bibitem[\citeproctext]{ref-chao2021}
+Chao C-Y, Zhang H, Hammer M, Zhan Y, Kenney D, Martin RV, et al. 2021.
+Integrating {Fixed Monitoring Systems} with {Low-Cost Sensors} to
+{Create High-Resolution Air Quality Maps} for the {Northern China Plain
+Region}. ACS Earth and Space Chemistry 5:3022--3035;
+doi:\href{https://doi.org/10.1021/acsearthspacechem.1c00174}{10.1021/acsearthspacechem.1c00174}.
+
+\bibitem[\citeproctext]{ref-checkley2021}
+Checkley W, Williams KN, Kephart JL, Fandiño-Del-Rio M, Steenland NK,
+Gonzales GF, et al. 2021. Effects of a {Household Air Pollution
+Intervention} with {Liquefied Petroleum Gas} on {Cardiopulmonary
+Outcomes} in {Peru}. {A Randomized Controlled Trial}. American Journal
+of Respiratory and Critical Care Medicine 203:1386--1397;
+doi:\href{https://doi.org/10.1164/rccm.202006-2319OC}{10.1164/rccm.202006-2319OC}.
+
+\bibitem[\citeproctext]{ref-chillrud2021}
+Chillrud SN, Ae-Ngibise KA, Gould CF, Owusu-Agyei S, Mujtaba M, Manu G,
+et al. 2021. The effect of clean cooking interventions on mother and
+child personal exposure to air pollution: Results from the {Ghana
+Randomized Air Pollution} and {Health Study} ({GRAPHS}). Journal of
+Exposure Science \& Environmental Epidemiology 31:683--698;
+doi:\href{https://doi.org/10.1038/s41370-021-00309-5}{10.1038/s41370-021-00309-5}.
+
+\bibitem[\citeproctext]{ref-clark2017}
+Clark S, Carter E, Shan M, Ni K, Niu H, Tseng JTW, et al. 2017. Adoption
+and use of a semi-gasifier cooking and water heating stove and fuel
+intervention in the {Tibetan Plateau}, {China}. Environmental Research
+Letters 12:075004;
+doi:\href{https://doi.org/10.1088/1748-9326/aa751e}{10.1088/1748-9326/aa751e}.
+
+\bibitem[\citeproctext]{ref-costello2015}
+Costello BT, Schultz MG, Black JA, Sharman JE. 2015. Evaluation of a
+{Brachial Cuff} and {Suprasystolic Waveform Algorithm Method} to
+{Noninvasively Derive Central Blood Pressure}. American Journal of
+Hypertension 28:480--486;
+doi:\href{https://doi.org/10.1093/ajh/hpu163}{10.1093/ajh/hpu163}.
+
+\bibitem[\citeproctext]{ref-damato2018}
+D'Amato M, Molino A, Calabrese G, Cecchi L, Annesi-Maesano I, D'Amato G.
+2018. The impact of cold on the respiratory tract and its consequences
+to respiratory health. Clinical and Translational Allergy 8:20;
+doi:\href{https://doi.org/10.1186/s13601-018-0208-9}{10.1186/s13601-018-0208-9}.
+
+\bibitem[\citeproctext]{ref-dai2020}
+Dai Q, Liu B, Bi X, Wu J, Liang D, Zhang Y, et al. 2020. Dispersion
+{Normalized PMF Provides Insights} into the {Significant Changes} in
+{Source Contributions} to {PM} {\textsubscript{2.5}} after the {COVID-19
+Outbreak}. Environmental Science \& Technology 54:9917--9927;
+doi:\href{https://doi.org/10.1021/acs.est.0c02776}{10.1021/acs.est.0c02776}.
+
+\bibitem[\citeproctext]{ref-danesh2008}
+Danesh J, Kaptoge S, Mann AG, Sarwar N, Wood A, Angleman SB, et al.
+2008. Long-term interleukin-6 levels and subsequent risk of coronary
+heart disease: Two new prospective studies and a systematic review. PLoS
+medicine 5:e78;
+doi:\href{https://doi.org/10.1371/journal.pmed.0050078}{10.1371/journal.pmed.0050078}.
+
+\bibitem[\citeproctext]{ref-dart2001}
+Dart AM, Kingwell BA. 2001. Pulse pressure---a review of mechanisms and
+clinical relevance. Journal of the American College of Cardiology
+37:975--984;
+doi:\href{https://doi.org/10.1016/S0735-1097(01)01108-1}{10.1016/S0735-1097(01)01108-1}.
+
+\bibitem[\citeproctext]{ref-cdcgr2023}
+Dispersed Coal Management Research Group
+北京大学能源研究院气候变化与能源转型项目. 2023. 中国散煤综合治理研究报告
+{China Dispersed Coal Governance Report}.
+
+\bibitem[\citeproctext]{ref-dockery2013}
+Dockery DW, Rich DQ, Goodman PG, Clancy L, Ohman-Strickland P, George P,
+et al. 2013. \href{https://www.ncbi.nlm.nih.gov/pubmed/24024358}{Effect
+of air pollution control on mortality and hospital admissions in
+{Ireland}}. Research Report (Health Effects Institute) 3--109.
+
+\bibitem[\citeproctext]{ref-dominici2014}
+Dominici F, Greenstone M, Sunstein CR. 2014. Science and regulation.
+{Particulate} matter matters. Science (New York, NY) 344:257--9;
+doi:\href{https://doi.org/10.1126/science.1247348}{10.1126/science.1247348}.
+
+\bibitem[\citeproctext]{ref-dong2013}
+Dong G-H, Qian Z(Min), Xaverius PK, Trevathan E, Maalouf S, Parker J, et
+al. 2013. Association {Between Long-Term Air Pollution} and {Increased
+Blood Pressure} and {Hypertension} in {China}. Hypertension 61:578--584;
+doi:\href{https://doi.org/10.1161/HYPERTENSIONAHA.111.00003}{10.1161/HYPERTENSIONAHA.111.00003}.
+
+\bibitem[\citeproctext]{ref-duan2014}
+Duan X, Jiang Y, Wang B, Zhao X, Shen G, Cao S, et al. 2014. Household
+fuel use for cooking and heating in {China}: {Results} from the first
+{Chinese Environmental Exposure-Related Human Activity Patterns Survey}
+({CEERHAPS}). Applied Energy 136:692--703;
+doi:\href{https://doi.org/10.1016/j.apenergy.2014.09.066}{10.1016/j.apenergy.2014.09.066}.
+
+\bibitem[\citeproctext]{ref-edwards2004}
+Edwards RD, Smith KR, Zhang J, Ma Y. 2004. Implications of changes in
+household stoves and fuel use in {China}. Energy Policy 32:395--411;
+doi:\href{https://doi.org/10.1016/S0301-4215(02)00309-9}{10.1016/S0301-4215(02)00309-9}.
+
+\bibitem[\citeproctext]{ref-ERF2012}
+Emerging Risk Factors Collaboration. 2012. C-reactive protein,
+fibrinogen, and cardiovascular disease prediction. New England Journal
+of Medicine 367: 1310--1320.
+
+\bibitem[\citeproctext]{ref-ezzati2017}
+Ezzati M, Baumgartner JC. 2017. Household energy and health: Where next
+for research and practice? Lancet (London, England) 389:130--132;
+doi:\href{https://doi.org/10.1016/S0140-6736(16)32506-5}{10.1016/S0140-6736(16)32506-5}.
+
+\bibitem[\citeproctext]{ref-fda2018}
+Food and Drug Administration. 2018. Bioanalytical {Method Validation
+Guidance} for {Industry}.
+
+\bibitem[\citeproctext]{ref-gbdmaps2016}
+GBD MAPS Working Group. 2016. Burden of disease attributable to
+coal-burning and other air pollution sources in {China}.
+
+\bibitem[\citeproctext]{ref-goin2023}
+Goin DE, Riddell CA. 2023. Comparing {Two-way Fixed Effects} and {New
+Estimators} for {Difference-in-Differences}: {A Simulation Study} and
+{Empirical Example}. Epidemiology 34:535;
+doi:\href{https://doi.org/10.1097/EDE.0000000000001611}{10.1097/EDE.0000000000001611}.
+
+\bibitem[\citeproctext]{ref-goodman-bacon2021}
+Goodman-Bacon A. 2021. Difference-in-differences with variation in
+treatment timing. Journal of Econometrics 225:254--277;
+doi:\href{https://doi.org/10.1016/j.jeconom.2021.03.014}{10.1016/j.jeconom.2021.03.014}.
+
+\bibitem[\citeproctext]{ref-gould2023}
+Gould CF, Bejarano ML, Kioumourtzoglou M-A, Lee AG, Pillarisetti A,
+Schlesinger SB, et al. 2023. Widespread {Clean Cooking Fuel Scale-Up}
+and under-5 {Lower Respiratory Infection Mortality}: {An Ecological
+Analysis} in {Ecuador}, 1990--2019. Environmental Health Perspectives
+131:037017;
+doi:\href{https://doi.org/10.1289/EHP11016}{10.1289/EHP11016}.
+
+\bibitem[\citeproctext]{ref-huang2012}
+Huang W, Wang G, Lu S-E, Kipen H, Wang Y, Hu M, et al. 2012.
+Inflammatory and {Oxidative Stress Responses} of {Healthy Young Adults}
+to {Changes} in {Air Quality} during the {Beijing Olympics}. American
+Journal of Respiratory and Critical Care Medicine 186:1150--1159;
+doi:\href{https://doi.org/10.1164/rccm.201205-0850OC}{10.1164/rccm.201205-0850OC}.
+
+\bibitem[\citeproctext]{ref-johnson2022}
+Johnson M, Pillarisetti A, Piedrahita R, Balakrishnan K, Peel JL,
+Steenland K, et al. 2022. Exposure {Contrasts} of {Pregnant Women}
+during the {Household Air Pollution Intervention Network Randomized
+Controlled Trial}. Environmental Health Perspectives 130:097005;
+doi:\href{https://doi.org/10.1289/EHP10295}{10.1289/EHP10295}.
+
+\bibitem[\citeproctext]{ref-johnston2013}
+Johnston FH, Hanigan IC, Henderson SB, Morgan GG. 2013. Evaluation of
+interventions to reduce air pollution from biomass smoke on mortality in
+{Launceston}, {Australia}: Retrospective analysis of daily mortality,
+1994-2007. BMJ 346:e8446--e8446;
+doi:\href{https://doi.org/10.1136/bmj.e8446}{10.1136/bmj.e8446}.
+
+\bibitem[\citeproctext]{ref-kanagasabai2022}
+Kanagasabai T, Xie W, Yan L, Zhao L, Carter E, Guo D, et al. 2022.
+Household {Air Pollution} and {Blood Pressure}, {Vascular Damage}, and
+{Subclinical Indicators} of {Cardiovascular Disease} in {Older Chinese
+Adults}. American Journal of Hypertension 35:121--131;
+doi:\href{https://doi.org/10.1093/ajh/hpab141}{10.1093/ajh/hpab141}.
+
+\bibitem[\citeproctext]{ref-kashtan2023}
+Kashtan YS, Nicholson M, Finnegan C, Ouyang Z, Lebel ED, Michanowicz DR,
+et al. 2023. Gas and {Propane Combustion} from {Stoves Emits Benzene}
+and {Increases Indoor Air Pollution}. Environmental Science \&
+Technology 57:9653--9663;
+doi:\href{https://doi.org/10.1021/acs.est.2c09289}{10.1021/acs.est.2c09289}.
+
+\bibitem[\citeproctext]{ref-katz2020}
+Katz J, Tielsch JM, Khatry SK, Shrestha L, Breysse P, Zeger SL, et al.
+2020. Impact of {Improved Biomass} and {Liquid Petroleum Gas Stoves} on
+{Birth Outcomes} in {Rural Nepal}: {Results} of 2 {Randomized Trials}.
+Global Health: Science and Practice 8:372--382;
+doi:\href{https://doi.org/10.9745/GHSP-D-20-00011}{10.9745/GHSP-D-20-00011}.
+
+\bibitem[\citeproctext]{ref-keele2015}
+Keele L, Tingley D, Yamamoto T. 2015. Identifying mechanisms behind
+policy interventions via causal mediation analysis. Journal of Policy
+Analysis and Management 34: 937--963.
+
+\bibitem[\citeproctext]{ref-khuzestani2017}
+Khuzestani RB, Schauer JJ, Wei Y, Zhang Y, Zhang Y. 2017. A
+non-destructive optical color space sensing system to quantify elemental
+and organic carbon in atmospheric particulate matter on {Teflon} and
+quartz filters. Atmospheric Environment 149:84--94;
+doi:\href{https://doi.org/10.1016/j.atmosenv.2016.11.002}{10.1016/j.atmosenv.2016.11.002}.
+
+\bibitem[\citeproctext]{ref-kipen2010}
+Kipen H, Rich D, Huang W, Zhu T, Wang G, Hu M, et al. 2010. Measurement
+of inflammation and oxidative stress following drastic changes in air
+pollution during the {Beijing Olympics}: A panel study approach. Annals
+of the New York Academy of Sciences 1203:160--167;
+doi:\href{https://doi.org/10.1111/j.1749-6632.2010.05638.x}{10.1111/j.1749-6632.2010.05638.x}.
+
+\bibitem[\citeproctext]{ref-kumar2021}
+Kumar N, Phillip E, Cooper H, Davis M, Langevin J, Clifford M, et al.
+2021. Do improved biomass cookstove interventions improve indoor air
+quality and blood pressure? {A} systematic review and meta-analysis.
+Environmental Pollution 290:117997;
+doi:\href{https://doi.org/10.1016/j.envpol.2021.117997}{10.1016/j.envpol.2021.117997}.
+
+\bibitem[\citeproctext]{ref-lorange2021}
+L'Orange C, Neymark G, Carter E, Volckens J. 2021. A {High-throughput},
+{Robotic System} for {Analysis} of {Aerosol Sampling Filters}. Aerosol
+and Air Quality Research 21:210037;
+doi:\href{https://doi.org/10.4209/aaqr.210037}{10.4209/aaqr.210037}.
+
+\bibitem[\citeproctext]{ref-lai2019}
+Lai. 2019. Relative contributions of household solid fuel use and
+outdoor air pollution to chemical components of personal {PM2}.5
+exposures. Indoor Air-international Journal of Indoor Air Quality and
+Climate.
+
+\bibitem[\citeproctext]{ref-lai2024}
+Lai PS, Lam NL, Gallery B, Lee AG, Adair-Rohani H, Alexander D, et al.
+2024. Household {Air Pollution Interventions} to {Improve Health} in
+{Low-} and {Middle-Income Countries}: {An Official American Thoracic
+Society Research Statement}. American Journal of Respiratory and
+Critical Care Medicine 209:909--927;
+doi:\href{https://doi.org/10.1164/rccm.202402-0398ST}{10.1164/rccm.202402-0398ST}.
+
+\bibitem[\citeproctext]{ref-lewington2012}
+Lewington S, LiMing L, Sherliker P, Yu G, Millwood I, Zheng B, et al.
+2012. Seasonal variation in blood pressure and its relationship with
+outdoor temperature in 10 diverse regions of {China}: The {China
+Kadoorie Biobank}. Journal of hypertension 30: 1383.
+
+\bibitem[\citeproctext]{ref-li2022a}
+Li X, Baumgartner J, Harper S, Zhang X, Sternbach T, Barrington-Leigh C,
+et al. 2022. Field measurements of indoor and community air quality in
+rural {Beijing} before, during, and after the {COVID-19} lockdown.
+Indoor Air 32:e13095;
+doi:\href{https://doi.org/10.1111/ina.13095}{10.1111/ina.13095}.
+
+\bibitem[\citeproctext]{ref-lindemann2017}
+Lindemann U, Stotz A, Beyer N, Oksa J, Skelton DA, Becker C, et al.
+2017. Effect of indoor temperature on physical performance in older
+adults during days with normal temperature and heat waves. International
+journal of environmental research and public health 14;
+doi:\href{https://doi.org/10.3390/ijerph14020186}{10.3390/ijerph14020186}.
+
+\bibitem[\citeproctext]{ref-lowe2009}
+Lowe A, Harrison W, El-Aklouk E, Ruygrok P, Al-Jumaily AM. 2009.
+Non-invasive model-based estimation of aortic pulse pressure using
+suprasystolic brachial pressure waveforms. Journal of Biomechanics
+42:2111--2115;
+doi:\href{https://doi.org/10.1016/j.jbiomech.2009.05.029}{10.1016/j.jbiomech.2009.05.029}.
+
+\bibitem[\citeproctext]{ref-lv2022}
+Lv Y, Zhu R, Xie J, Yoshino H. 2022. Indoor environment and the blood
+pressure of elderly in the cold region of {China}. Indoor and Built
+Environment 31:2482--2498;
+doi:\href{https://doi.org/10.1177/1420326X221109510}{10.1177/1420326X221109510}.
+
+\bibitem[\citeproctext]{ref-mccracken2007}
+McCracken JP, Smith KR, Díaz A, Mittleman MA, Schwartz J. 2007. Chimney
+{Stove Intervention} to {Reduce Long-term Wood Smoke Exposure Lowers
+Blood Pressure} among {Guatemalan Women}. Environmental Health
+Perspectives 115:996--1001;
+doi:\href{https://doi.org/10.1289/ehp.9888}{10.1289/ehp.9888}.
+
+\bibitem[\citeproctext]{ref-mccracken2011}
+McCracken J, Smith KR, Stone P, Díaz A, Arana B, Schwartz J. 2011.
+Intervention to {Lower Household Wood Smoke Exposure} in {Guatemala
+Reduces ST-Segment Depression} on {Electrocardiograms}. Environmental
+Health Perspectives 119:1562--1568;
+doi:\href{https://doi.org/10.1289/ehp.1002834}{10.1289/ehp.1002834}.
+
+\bibitem[\citeproctext]{ref-mei2020}
+Mei H, Han P, Wang Y, Zeng N, Liu D, Cai Q, et al. 2020. Field
+{Evaluation} of {Low-Cost Particulate Matter Sensors} in {Beijing}.
+Sensors 20:4381;
+doi:\href{https://doi.org/10.3390/s20164381}{10.3390/s20164381}.
+
+\bibitem[\citeproctext]{ref-meng2023}
+Meng W, Zhu L, Liang Z, Xu H, Zhang W, Li J, et al. 2023. Significant
+but {Inequitable Cost-Effective Benefits} of a {Clean Heating Campaign}
+in {Northern China}. Environmental Science \& Technology 57:8467--8475;
+doi:\href{https://doi.org/10.1021/acs.est.2c07492}{10.1021/acs.est.2c07492}.
+
+\bibitem[\citeproctext]{ref-naimi2014}
+Naimi AI, Kaufman JS, MacLehose RF. 2014. Mediation misgivings:
+Ambiguous clinical and public health interpretations of natural direct
+and indirect effects. International journal of epidemiology 43:1656--61;
+doi:\href{https://doi.org/10.1093/ije/dyu107}{10.1093/ije/dyu107}.
+
+\bibitem[\citeproctext]{ref-niu2024}
+Niu J, Chen X, Sun S. 2024. China's {Coal Ban} policy: {Clearing} skies,
+challenging growth. Journal of Environmental Management 349:119420;
+doi:\href{https://doi.org/10.1016/j.jenvman.2023.119420}{10.1016/j.jenvman.2023.119420}.
+
+\bibitem[\citeproctext]{ref-olson2016}
+Olson MR, Graham E, Hamad S, Uchupalanun P, Ramanathan N, Schauer JJ.
+2016. Quantification of elemental and organic carbon in atmospheric
+particulate matter using color space sensing---hue, saturation, and
+value ({HSV}) coordinates. Science of The Total Environment
+548--549:252--259;
+doi:\href{https://doi.org/10.1016/j.scitotenv.2016.01.032}{10.1016/j.scitotenv.2016.01.032}.
+
+\bibitem[\citeproctext]{ref-onakomaiya2019}
+Onakomaiya D, Gyamfi J, Iwelunmor J, Opeyemi J, Oluwasanmi M,
+Obiezu-Umeh C, et al. 2019. Implementation of clean cookstove
+interventions and its effects on blood pressure in low-income and
+middle-income countries: Systematic review. BMJ Open 9:e026517;
+doi:\href{https://doi.org/10.1136/bmjopen-2018-026517}{10.1136/bmjopen-2018-026517}.
+
+\bibitem[\citeproctext]{ref-pearl2000}
+Pearl J. 2000. \emph{Causality: Models, reasoning, and inference}.
+Cambridge University Press:Cambridge, U.K. ; New York.
+
+\bibitem[\citeproctext]{ref-pearson2003}
+Pearson TA, Mensah GA, Alexander RW, Anderson JL, Cannon RO 3rd, Criqui
+M, et al. 2003.
+\href{https://www.ncbi.nlm.nih.gov/pubmed/12551878}{Markers of
+inflammation and cardiovascular disease: Application to clinical and
+public health practice: {A} statement for healthcare professionals from
+the {Centers} for {Disease Control} and {Prevention} and the {American
+Heart Association}}. Circulation 107: 499--511.
+
+\bibitem[\citeproctext]{ref-peel2015}
+Peel JL, Baumgartner J, Wellenius GA, Clark ML, Smith KR. 2015. Are
+{Randomized Trials Necessary} to {Advance Epidemiologic Research} on
+{Household Air Pollution}? Current Epidemiology Reports 2:263--270;
+doi:\href{https://doi.org/10.1007/s40471-015-0054-4}{10.1007/s40471-015-0054-4}.
+
+\bibitem[\citeproctext]{ref-pope2004}
+Pope III CA, Hansen ML, Long RW, Nielsen KR, Eatough NL, Wilson WE, et
+al. 2004. Ambient particulate air pollution, heart rate variability, and
+blood markers of inflammation in a panel of elderly subjects.
+Environmental health perspectives 112:339--45;
+doi:\href{https://doi.org/10.1289/ehp.6588}{10.1289/ehp.6588}.
+
+\bibitem[\citeproctext]{ref-quansah2017}
+Quansah R, Semple S, Ochieng CA, Juvekar S, Armah FA, Luginaah I, et al.
+2017. Effectiveness of interventions to reduce household air pollution
+and/or improve health in homes using solid fuel in low-and-middle income
+countries: {A} systematic review and meta-analysis. Environment
+International 103:73--90;
+doi:\href{https://doi.org/10.1016/j.envint.2017.03.010}{10.1016/j.envint.2017.03.010}.
+
+\bibitem[\citeproctext]{ref-rehfuess2014}
+Rehfuess EA, Puzzolo E, Stanistreet D, Pope D, Bruce NG. 2014. Enablers
+and {Barriers} to {Large-Scale Uptake} of {Improved Solid Fuel Stoves}:
+{A Systematic Review}. Environmental Health Perspectives 122:120--130;
+doi:\href{https://doi.org/10.1289/ehp.1306639}{10.1289/ehp.1306639}.
+
+\bibitem[\citeproctext]{ref-rich2012}
+Rich DQ, Kipen HM, Huang W, Wang G, Wang Y, Zhu P, et al. 2012.
+Association {Between Changes} in {Air Pollution Levels During} the
+{Beijing Olympics} and {Biomarkers} of {Inflammation} and {Thrombosis}
+in {Healthy Young Adults}. JAMA 307;
+doi:\href{https://doi.org/10.1001/jama.2012.3488}{10.1001/jama.2012.3488}.
+
+\bibitem[\citeproctext]{ref-ridker2001}
+Ridker PM. 2001.
+\href{https://www.ncbi.nlm.nih.gov/pubmed/11282915}{High-sensitivity
+{C-reactive} protein: Potential adjunct for global risk assessment in
+the primary prevention of cardiovascular disease}. Circulation 103:
+1813--8.
+
+\bibitem[\citeproctext]{ref-ridker2000}
+Ridker PM, Hennekens CH, Buring JE, Rifai N. 2000. C-reactive protein
+and other markers of inflammation in the prediction of cardiovascular
+disease in women. The New England journal of medicine 342:836--43;
+doi:\href{https://doi.org/10.1056/NEJM200003233421202}{10.1056/NEJM200003233421202}.
+
+\bibitem[\citeproctext]{ref-romieu2009}
+Romieu I, Riojas-Rodríguez H, Marrón-Mares AT, Schilmann A,
+Perez-Padilla R, Masera O. 2009. Improved {Biomass Stove Intervention}
+in {Rural Mexico}: {Impact} on the {Respiratory Health} of {Women}.
+American Journal of Respiratory and Critical Care Medicine 180:649--656;
+doi:\href{https://doi.org/10.1164/rccm.200810-1556OC}{10.1164/rccm.200810-1556OC}.
+
+\bibitem[\citeproctext]{ref-rosenthal2018}
+Rosenthal J, Quinn A, Grieshop AP, Pillarisetti A, Glass RI. 2018. Clean
+cooking and the {SDGs}: {Integrated} analytical approaches to guide
+energy interventions for health and environment goals. Energy for
+sustainable development : the journal of the International Energy
+Initiative 42:152--159;
+doi:\href{https://doi.org/10.1016/j.esd.2017.11.003}{10.1016/j.esd.2017.11.003}.
+
+\bibitem[\citeproctext]{ref-rtiinternational2009}
+RTI International. 2009. Standard {Operating Procedure} for the {X-Ray
+Fluorescence Analysis} of {Particulate Matter Deposits} on {Teflon
+Filters}: {PM Xrf Analysis}.
+
+\bibitem[\citeproctext]{ref-rubin1987}
+Rubin DB. 1987.
+\emph{\href{https://doi.org/10.1002/9780470316696}{Multiple {Imputation}
+for {Nonresponse} in {Surveys}}}. 1st ed. Wiley.
+
+\bibitem[\citeproctext]{ref-ruckerl2007}
+Rückerl R, Greven S, Ljungman P, Aalto P, Antoniades C, Bellander T, et
+al. 2007. Air pollution and inflammation (interleukin-6, {C-reactive}
+protein, fibrinogen) in myocardial infarction survivors. Environmental
+health perspectives 115:1072--80;
+doi:\href{https://doi.org/10.1289/ehp.10021}{10.1289/ehp.10021}.
+
+\bibitem[\citeproctext]{ref-ruiz-mercado2013}
+Ruiz-Mercado I, Canuz E, Walker JL, Smith KR. 2013. Quantitative metrics
+of stove adoption using {Stove Use Monitors} ({SUMs}). Biomass and
+Bioenergy 57:136--148;
+doi:\href{https://doi.org/10.1016/j.biombioe.2013.07.002}{10.1016/j.biombioe.2013.07.002}.
+
+\bibitem[\citeproctext]{ref-scott2011}
+Scott AJ, Scarrott C. 2011. Impacts of residential heating intervention
+measures on air quality and progress towards targets in {Christchurch}
+and {Timaru}, {New Zealand}. Atmospheric Environment 45:2972--2980;
+doi:\href{https://doi.org/10.1016/j.atmosenv.2010.09.008}{10.1016/j.atmosenv.2010.09.008}.
+
+\bibitem[\citeproctext]{ref-shang2020}
+Shang J, Zhang Y, Schauer JJ, Tian J, Hua J, Han T, et al. 2020.
+Associations between source-resolved {PM2}.5 and airway inflammation at
+urban and rural locations in {Beijing}. Environment International
+139:105635;
+doi:\href{https://doi.org/10.1016/j.envint.2020.105635}{10.1016/j.envint.2020.105635}.
+
+\bibitem[\citeproctext]{ref-shankar2020}
+Shankar AV, Quinn AK, Dickinson KL, Williams KN, Masera O, Charron D, et
+al. 2020. Everybody stacks: {Lessons} from household energy case studies
+to inform design principles for clean energy transitions. Energy Policy
+141:111468;
+doi:\href{https://doi.org/10.1016/j.enpol.2020.111468}{10.1016/j.enpol.2020.111468}.
+
+\bibitem[\citeproctext]{ref-shen2017}
+Shen H, Tao S, Chen Y, Ciais P, Güneralp B, Ru M, et al. 2017.
+Urbanization-induced population migration has reduced ambient {PM}
+{\textsubscript{2.5}} concentrations in {China}. Science Advances
+3:e1700300;
+doi:\href{https://doi.org/10.1126/sciadv.1700300}{10.1126/sciadv.1700300}.
+
+\bibitem[\citeproctext]{ref-sinton2004}
+Sinton JE, Smith KR, Peabody JW, Yaping L, Xiliang Z, Edwards R, et al.
+2004. An assessment of programs to promote improved household stoves in
+{China}. Energy for Sustainable Development 8:33--52;
+doi:\href{https://doi.org/10.1016/S0973-0826(08)60465-2}{10.1016/S0973-0826(08)60465-2}.
+
+\bibitem[\citeproctext]{ref-smith-sivertsen2009}
+Smith-Sivertsen T, Díaz E, Pope D, Lie RT, Díaz A, McCracken J, et al.
+2009. Effect of {Reducing Indoor Air Pollution} on {Women}'s
+{Respiratory Symptoms} and {Lung Function}: {The RESPIRE Randomized
+Trial}, {Guatemala}. American Journal of Epidemiology 170:211--220;
+doi:\href{https://doi.org/10.1093/aje/kwp100}{10.1093/aje/kwp100}.
+
+\bibitem[\citeproctext]{ref-snider2018}
+Snider G, Carter E, Clark S, Tseng J(TzuW, Yang X, Ezzati M, et al.
+2018. Impacts of stove use patterns and outdoor air quality on household
+air pollution and cardiovascular mortality in southwestern {China}.
+Environment International 117:116--124;
+doi:\href{https://doi.org/10.1016/j.envint.2018.04.048}{10.1016/j.envint.2018.04.048}.
+
+\bibitem[\citeproctext]{ref-song2023}
+Song C, Liu B, Cheng K, Cole MA, Dai Q, Elliott RJR, et al. 2023.
+Attribution of {Air Quality Benefits} to {Clean Winter Heating Policies}
+in {China}: {Combining Machine Learning} with {Causal Inference}.
+Environmental Science \& Technology 57:17707--17717;
+doi:\href{https://doi.org/10.1021/acs.est.2c06800}{10.1021/acs.est.2c06800}.
+
+\bibitem[\citeproctext]{ref-sternbach2022}
+Sternbach TJ, Harper S, Li X, Zhang X, Carter E, Zhang Y, et al. 2022.
+Effects of indoor and outdoor temperatures on blood pressure and central
+hemodynamics in a wintertime longitudinal study of {Chinese} adults.
+Journal of Hypertension 40:1950--1959;
+doi:\href{https://doi.org/10.1097/HJH.0000000000003198}{10.1097/HJH.0000000000003198}.
+
+\bibitem[\citeproctext]{ref-sun2021}
+Sun L, Abraham S. 2021. Estimating dynamic treatment effects in event
+studies with heterogeneous treatment effects. Journal of Econometrics
+225:175--199;
+doi:\href{https://doi.org/10.1016/j.jeconom.2020.09.006}{10.1016/j.jeconom.2020.09.006}.
+
+\bibitem[\citeproctext]{ref-tan2023}
+Tan X, Chen G, Chen K. 2023. Clean heating and air pollution: {Evidence}
+from {Northern China}. Energy Reports 9:303--313;
+doi:\href{https://doi.org/10.1016/j.egyr.2022.11.166}{10.1016/j.egyr.2022.11.166}.
+
+\bibitem[\citeproctext]{ref-thompson2019}
+Thompson RJ, Li J, Weyant CL, Edwards R, Lan Q, Rothman N, et al. 2019.
+Field {Emission Measurements} of {Solid Fuel Stoves} in {Yunnan}, {China
+Demonstrate Dominant Causes} of {Uncertainty} in {Household Emission
+Inventories}. Environmental Science \& Technology 53:3323--3330;
+doi:\href{https://doi.org/10.1021/acs.est.8b07040}{10.1021/acs.est.8b07040}.
+
+\bibitem[\citeproctext]{ref-tuck2009}
+Tuck MK, Chan DW, Chia D, Godwin AK, Grizzle WE, Krueger KE, et al.
+2009. Standard {Operating Procedures} for {Serum} and {Plasma
+Collection}: {Early Detection Research Network Consensus Statement}
+{\emph{Standard Operating Procedure Integration Working Group}}. Journal
+of Proteome Research 8:113--117;
+doi:\href{https://doi.org/10.1021/pr800545q}{10.1021/pr800545q}.
+
+\bibitem[\citeproctext]{ref-vanbuuren2011}
+van Buuren S, Groothuis-Oudshoorn K. 2011. {\textbf{Mice}} :
+{Multivariate Imputation} by {Chained Equations} in {\emph{R}}. Journal
+of Statistical Software 45;
+doi:\href{https://doi.org/10.18637/jss.v045.i03}{10.18637/jss.v045.i03}.
+
+\bibitem[\citeproctext]{ref-vandonkelaar2021}
+Van Donkelaar A, Hammer MS, Bindle L, Brauer M, Brook JR, Garay MJ, et
+al. 2021. Monthly {Global Estimates} of {Fine Particulate Matter} and
+{Their Uncertainty}. Environmental Science \& Technology
+55:15287--15300;
+doi:\href{https://doi.org/10.1021/acs.est.1c05309}{10.1021/acs.est.1c05309}.
+
+\bibitem[\citeproctext]{ref-vanderweele2015}
+VanderWeele TJ. 2015. \emph{Explanation in causal inference: Methods for
+mediation and interaction}. Oxford University Press:New York.
+
+\bibitem[\citeproctext]{ref-volckens2017}
+Volckens J, Quinn C, Leith D, Mehaffy J, Henry CS, Miller-Lionberg D.
+2017. Development and evaluation of an ultrasonic personal aerosol
+sampler. Indoor air 27:409--416;
+doi:\href{https://doi.org/10.1111/ina.12318}{10.1111/ina.12318}.
+
+\bibitem[\citeproctext]{ref-wang2020}
+Wang Q, Zhao Q, Wang G, Wang B, Zhang Y, Zhang J, et al. 2020. The
+association between ambient temperature and clinical visits for
+inflammation-related diseases in rural areas in {China}. Environmental
+Pollution 261:114128;
+doi:\href{https://doi.org/10.1016/j.envpol.2020.114128}{10.1016/j.envpol.2020.114128}.
+
+\bibitem[\citeproctext]{ref-wen2023}
+Wen H, Nie P, Liu M, Peng R, Guo T, Wang C, et al. 2023. Multi-health
+effects of clean residential heating: {Evidences} from rural {China}'s
+coal-to-gas/electricity project. Energy for Sustainable Development
+73:66--75;
+doi:\href{https://doi.org/10.1016/j.esd.2023.01.013}{10.1016/j.esd.2023.01.013}.
+
+\bibitem[\citeproctext]{ref-wooldridge2021}
+Wooldridge JM. 2021. Two-{Way Fixed Effects}, the {Two-Way Mundlak
+Regression}, and {Difference-in-Differences Estimators}.;
+doi:\href{https://doi.org/10.2139/ssrn.3906345}{10.2139/ssrn.3906345}.
+
+\bibitem[\citeproctext]{ref-who2021}
+World Health Organization. 2021. {WHO Global Air Quality Guidelines}:
+{Particulate Matter PM2}.5 and {PM10}), {Ozone}, {Nitrogen Dioxide},
+{Sulfur Dioxide} and {Carbon Monoxide}.
+
+\bibitem[\citeproctext]{ref-xu2019}
+Xu H, Brook RD, Wang T, Song X, Feng B, Yi T, et al. 2019. Short-term
+effects of ambient air pollution and outdoor temperature on biomarkers
+of myocardial damage, inflammation and oxidative stress in healthy
+adults. Environmental Epidemiology 3:e078;
+doi:\href{https://doi.org/10.1097/EE9.0000000000000078}{10.1097/EE9.0000000000000078}.
+
+\bibitem[\citeproctext]{ref-yan2020}
+Yan L, Carter E, Fu Y, Guo D, Huang P, Xie G, et al. 2020. Study
+protocol: {The INTERMAP China Prospective} ({ICP}) study. Wellcome Open
+Research 4:154;
+doi:\href{https://doi.org/10.12688/wellcomeopenres.15470.2}{10.12688/wellcomeopenres.15470.2}.
+
+\bibitem[\citeproctext]{ref-yangk2021}
+Yang K. 2021. Power industry provides inexhaustible power for national
+rejuvenation; 杨昆：电力工业为民族复兴提供不竭动力.
+
+\bibitem[\citeproctext]{ref-yap2015}
+Yap P-S, Garcia C. 2015. Effectiveness of {Residential Wood-Burning
+Regulation} on {Decreasing Particulate Matter Levels} and
+{Hospitalizations} in the {San Joaquin Valley Air Basin}. American
+Journal of Public Health 105:772--778;
+doi:\href{https://doi.org/10.2105/AJPH.2014.302360}{10.2105/AJPH.2014.302360}.
+
+\bibitem[\citeproctext]{ref-ye2022}
+Ye W, Steenland K, Quinn A, Liao J, Balakrishnan K, Rosa G, et al. 2022.
+Effects of a {Liquefied Petroleum Gas Stove Intervention} on
+{Gestational Blood Pressure}: {Intention-to-Treat} and
+{Exposure-Response Findings From} the {HAPIN Trial}. Hypertension
+79:1887--1898;
+doi:\href{https://doi.org/10.1161/HYPERTENSIONAHA.122.19362}{10.1161/HYPERTENSIONAHA.122.19362}.
+
+\bibitem[\citeproctext]{ref-young2015}
+Young OR, Guttman D, Qi Y, Bachus K, Belis D, Cheng H, et al. 2015.
+Institutionalized governance processes: {Comparing} environmental
+problem solving in {China} and the {United States}. Global Environmental
+Change 31:163--173;
+doi:\href{https://doi.org/10.1016/j.gloenvcha.2015.01.010}{10.1016/j.gloenvcha.2015.01.010}.
+
+\bibitem[\citeproctext]{ref-yu2021}
+Yu C, Kang J, Teng J, Long H, Fu Y. 2021. Does coal-to-gas policy reduce
+air pollution? {Evidence} from a quasi-natural experiment in {China}.
+Science of The Total Environment 773:144645;
+doi:\href{https://doi.org/10.1016/j.scitotenv.2020.144645}{10.1016/j.scitotenv.2020.144645}.
+
+\bibitem[\citeproctext]{ref-yun2020}
+Yun X, Shen G, Shen H, Meng W, Chen Y, Xu H, et al. 2020. Residential
+solid fuel emissions contribute significantly to air pollution and
+associated health impacts in {China}. Science Advances 6:eaba7621;
+doi:\href{https://doi.org/10.1126/sciadv.aba7621}{10.1126/sciadv.aba7621}.
+
+\bibitem[\citeproctext]{ref-zhang2007}
+Zhang J(Jim), Smith KR. 2007. Household {Air Pollution} from {Coal} and
+{Biomass Fuels} in {China}: {Measurements}, {Health Impacts}, and
+{Interventions}. Environmental Health Perspectives 115:848--855;
+doi:\href{https://doi.org/10.1289/ehp.9479}{10.1289/ehp.9479}.
+
+\bibitem[\citeproctext]{ref-zhang2019}
+Zhang Q, Zheng Y, Tong D, Shao M, Wang S, Zhang Y, et al. 2019. Drivers
+of improved {PM} {\textsubscript{2.5}} air quality in {China} from 2013
+to 2017. Proceedings of the National Academy of Sciences
+116:24463--24469;
+doi:\href{https://doi.org/10.1073/pnas.1907956116}{10.1073/pnas.1907956116}.
+
+\bibitem[\citeproctext]{ref-zhang2023}
+Zhang W, Xu H, Yu X, Li J, Zhang Y, Dai R, et al. 2023. Rigorous
+{Regional Air Quality Standards} for {Substantial Health Benefits}.
+Earth's Future 11:e2023EF003860;
+doi:\href{https://doi.org/10.1029/2023EF003860}{10.1029/2023EF003860}.
+
+\bibitem[\citeproctext]{ref-zhuang2009}
+Zhuang Z, Li Y, Chen B, Guo J. 2009. Chinese kang as a domestic heating
+system in rural northern {China}---{A} review. Energy and Buildings
+41:111--119;
+doi:\href{https://doi.org/10.1016/j.enbuild.2008.07.013}{10.1016/j.enbuild.2008.07.013}.
+
+\bibitem[\citeproctext]{ref-zigler2016}
+Zigler CM, Kim C, Choirat C, Hansen JB, Wang Y, Hund L, et al. 2016.
+\emph{Causal inference methods for estimating long-term health effects
+of air quality regulations. {Research} report 187.} Health Effects
+Institute / Health Effects Institute:Boston, MA.
+
+\end{CSLReferences}
 
 
 

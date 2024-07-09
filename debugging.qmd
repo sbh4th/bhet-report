@@ -164,4 +164,4 @@ datasummary_balance(~et, data = dt,
   #row_spec(c(1,7,23), bold = T)
 ```
 
-
+d %>% filter(wave != 3 & !is.na(gender_health)) %>% mutate(`Female` = if_else(gender_health==2, 100, 0)) %>% group_by(wave) %>% summarize(n = n(), prop = mean(`Female`), np = round(n * prop/100, 0)) %>% select(-n) %>% pivot_wider(names_from = wave, values_from = c(np, prop), names_vary = "slowest")

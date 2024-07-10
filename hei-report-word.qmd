@@ -23,7 +23,7 @@ library(modelsummary)
 library(readxl)
 library(marginaleffects)
 library(tinytable)
-library(gt)
+library(tidymodels)
 ```
 
 ```{r master_data, include = FALSE, cache = TRUE, echo=FALSE}

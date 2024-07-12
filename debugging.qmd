@@ -7,6 +7,9 @@ author:
 date: today
 
 format: 
+#  html:
+#    keep-md: true
+#    
 #  docx: 
 #    toc: true
 #    number-sections: true
@@ -31,6 +34,7 @@ format:
              \@float{figure}}
             {\end@float}
           \makeatother
+         \usepackage{changes}
    geometry: 
       - right=1in
       - left=1in
@@ -47,6 +51,7 @@ library(modelsummary)
 library(readxl)
 library(marginaleffects)
 library(tinytable)
+library(tidymodels)
 ```
 
 ```{r master_data, include = FALSE, cache = TRUE, echo=FALSE}
@@ -61,7 +66,7 @@ bhet_master_data %>%
 
 Problem table:
 
-```{r make_table1, message=FALSE, cache=TRUE, echo=FALSE}
+```{r make_table1, message=FALSE, cache=TRUE, echo=FALSE, eval=F}
 # select variables for table
 d <- read_csv(here("data-clean", 
   "BHET_master_data_05Mar2024.csv"),
@@ -145,7 +150,7 @@ attr(nr, 'position') <- c(1, 7, 23)
 options(modelsummary_format_numeric_latex = "plain")
 ```
 
-```{r table1, cache=TRUE, message=FALSE, echo=FALSE, eval=T}
+```{r table1, cache=TRUE, message=FALSE, echo=FALSE, eval=F}
 ##| label: tbl-table1
 #| tbl-cap: "Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status"
 
@@ -164,4 +169,153 @@ datasummary_balance(~et, data = dt,
   #row_spec(c(1,7,23), bold = T)
 ```
 
-d %>% filter(wave != 3 & !is.na(gender_health)) %>% mutate(`Female` = if_else(gender_health==2, 100, 0)) %>% group_by(wave) %>% summarize(n = n(), prop = mean(`Female`), np = round(n * prop/100, 0)) %>% select(-n) %>% pivot_wider(names_from = wave, values_from = c(np, prop), names_vary = "slowest")
+Read in the data for Table 2:
+```{r data-t2, echo=F, message=F, warning=FALSE}
+ds <- read_csv(here("data-clean", 
+  "BHET_master_data_05Mar2024.csv"),
+  col_select = c("wave", "gender_health", "age_health",
+      "smoking", "waist_circ", "height", 
+      "weight", "lived_with_smoker", "ID_VILLAGE")) %>%
+  filter(wave != 3) %>%
+  mutate(wave = as.factor(wave),
+         bmi = (weight / (height/100)^2),
+    female = if_else(gender_health == 2 & !is.na(gender_health),
+                     1, 0),
+    csmoke = if_else(smoking==1 & !is.na(smoking), 1, 0),
+    asmoke = if_else(smoking < 3, 1, 
+      if_else(smoking==3 & lived_with_smoker %in% 
+      c(2,3), 1, 0))) %>%
+  mutate(across(c(female, csmoke, asmoke), as.integer))
+```
+
+Now insert the function:
+```{r tab2-function, echo=F, results=F, eval=F}
+# Combined function to process columns
+process_column <- function(ds, column_name) {
+  column_type <- typeof(ds[[column_name]])
+  
+  if (column_type == "integer") {
+    cprops <- ds %>% filter(wave != 3) %>%
+      group_by(wave) %>%
+      summarize(
+        n = n(), 
+        prop = mean(.data[[column_name]], na.rm=TRUE),
+        np = round(n * prop, 0),
+        pr = sprintf('%.1f', prop * 100)) %>% 
+      select(wave, np, pr) %>% 
+      pivot_wider(names_from = wave, 
+                  values_from = c(np, pr), 
+                  names_vary = "slowest") %>%
+      mutate(char = column_name,
+             w1 = paste0(np_1, " (", pr_1, ")"),
+             w2 = paste0(np_2, " (", pr_2, ")"),
+             w4 = paste0(np_4, " (", pr_4, ")")) %>%
+      select(char, w1, w2, w4)
+    
+    cprop_stats <- ds %>%
+      mutate(!!sym(column_name) := as.factor(.data[[column_name]])) %>%
+      infer::chisq_test(as.formula(paste("wave ~", column_name))) %>%
+      select(-chisq_df) %>%
+      mutate(across(c('statistic', 'p_value'), 
+                    ~ sprintf('%.3f', .x)))
+    
+    ctable <- cprops %>% bind_cols(cprop_stats)
+    
+  } else if (column_type == "double") {
+    cmeans <- ds %>% filter(wave != 3) %>%
+      group_by(wave) %>%
+      summarize(
+        vmean = sprintf('%.1f', mean(.data[[column_name]], 
+          na.rm=TRUE)),
+        vsd = sprintf('%.1f', sd(.data[[column_name]], 
+          na.rm=TRUE))) %>%
+      pivot_wider(names_from = wave, 
+                  values_from = c(vmean, vsd), 
+                  names_vary = "slowest") %>%
+      mutate(char = column_name,
+             w1 = paste0(vmean_1, " (", vsd_1, ")"),
+             w2 = paste0(vmean_2, " (", vsd_2, ")"),
+             w4 = paste0(vmean_4, " (", vsd_4, ")")) %>%
+      select(char, w1, w2, w4)
+    
+    formula <- as.formula(paste(column_name, "~ wave"))
+    
+    F_hat <- ds %>% 
+      infer::observe(formula, stat = "F")
+    
+    null_dist_theory <- ds %>%
+      infer::specify(formula) %>%
+      hypothesize(null = "independence") %>%
+      assume(distribution = "F") %>%
+      get_p_value(obs_stat = F_hat, direction = "two-sided")
+    
+    cmeans_stats <- F_hat %>% 
+      bind_cols(null_dist_theory) %>%
+      rename("statistic" = stat) %>%
+      mutate(across(c('statistic', 'p_value'), 
+                    ~ sprintf('%.3f', .x)))
+    
+    ctable <- cmeans %>% bind_cols(cmeans_stats)
+  }
+  
+  return(ctable)
+}
+
+# Combine results for all columns
+process_columns <- function(ds, columns) {
+  result <- bind_rows(lapply(columns, function(col) 
+    process_column(ds, col)))
+  return(result)
+}
+```
+
+```{r tab2-f2, echo=F, results = F}
+source(here("code/functions", "process-columns.R"))
+```
+And then make the table:
+```{r table2, echo=F, warning=F, message=F}
+
+# Columns of interest
+columns_of_interest <- c("female", "csmoke", "asmoke", 
+  "bmi", "age_health", "waist_circ")
+
+# Apply the function to the dataset
+result <- process_columns(ds, columns_of_interest)
+
+t2 <- result %>%
+  mutate(char = c(
+    "Female, n (%)", 
+    "Current smoker, n (%)",
+    "Any smoke exposure, n (%)", 
+    "Age in years, Mean (SD)",
+    "BMI (kg/m2), Mean (SD)", 
+    "Waist circumference (cm), Mean (SD)")) %>%
+  rename("Characteristic" = char)
+
+colnames(t2) <- c("Characteristic", 
+  "Wave 1\n(2018-19)\nN=1003", "Wave 2 (2019-20) N=1110",
+  "Wave 4 (2021-22) N=1028", "Statistic", "p-value")
+
+tt(t2,
+   caption = "Example table",
+   width = c(.4, .15, .15, .15, .1, .1),
+   notes = list(a = list(i=0, j=5,
+     text = "Blah."))) |>
+  group_tt(
+    j = list(
+      " " = 1,
+      "Estimates" = 2:4,
+      "Test for Equality" = 5:6)) |>
+  format_tt(escape = TRUE) |>
+  style_tt(j = 1:4, align = "llll")
+```
+
+Now what about this idea of a margin note?
+
+::: column-margin
+We know from *the first fundamental theorem of calculus* that blah blah blah.
+:::
+
+How does that differ from more generic comment using the `changes` package? Let's see 
+\comment{Maybe I shouldn't have written this?}
+How does that work?

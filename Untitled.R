@@ -5,6 +5,8 @@ library(kableExtra)
 library(modelsummary)
 library(readxl)
 library(marginaleffects)
+library(tinytable)
+library(tidymodels)
 
 options(knitr.kable.NA = "\\")
 tx <- tibble(
@@ -33,16 +35,17 @@ kable(tx2,
   add_header_above(c(" " = 1, 
                      "Overall" = 3, "Indoor" = 4))
 
-ds <- read_csv(here("data-clean", 
+dst <- read_csv(here("data-clean", 
   "BHET_master_data_05Mar2024.csv"),
   col_select = c("wave", "gender_health", "age_health",
-      "smoking", "waist_circ", "height", 
+      "smoking", "waist_circ", "height", "ptc_id",
       "weight", "lived_with_smoker", "ID_VILLAGE")) %>%
   filter(wave != 3) %>%
-  mutate(wave = as.factor(wave),
-         bmi = (weight / (height/100)^2),
+  add_count(ptc_id) %>%
+  mutate(wave = as.factor(n),
+    bmi = (weight / (height/100)^2),
     female = if_else(gender_health == 2 & !is.na(gender_health),
-                     1, 0),
+      1, 0),
     csmoke = if_else(smoking==1 & !is.na(smoking), 1, 0),
     asmoke = if_else(smoking < 3, 1, 
       if_else(smoking==3 & lived_with_smoker %in% 
@@ -50,7 +53,7 @@ ds <- read_csv(here("data-clean",
   mutate(across(c(female, csmoke, asmoke), as.integer))
 
 
-infer::chisq_test(ds, wave ~ female)
+infer::chisq_test(dst, nwaves ~ female)
 
 ds %>%
   infer::specify(bmi ~ wave) %>%
@@ -148,54 +151,169 @@ cmeanss <- F_hat %>%
 cmeanst <- cmeans %>% bind_cols(cmeanss)
 
 
+ds <- read_csv(here("data-clean", 
+                    "BHET_master_data_05Mar2024.csv"),
+  col_select = c("wave", "gender_health", "age_health",
+    "smoking", "waist_circ", "height", "ptc_id", 
+    "weight", "lived_with_smoker", "ID_VILLAGE")) %>%
+  filter(wave != 3) %>%
+  mutate(catvar = recode_factor(wave, 
+    `1` = "1", `2` = "2", `4` = "3"),
+    bmi = (weight / (height/100)^2),
+    female = if_else(gender_health == 2 & !is.na(gender_health),
+      1, 0),
+    csmoke = if_else(smoking==1 & !is.na(smoking), 1, 0),
+    asmoke = if_else(smoking < 3, 1, 
+      if_else(smoking==3 & lived_with_smoker %in% 
+                                    c(2,3), 1, 0))) %>%
+  mutate(across(c(female, csmoke, asmoke), as.integer))
 
 
 
+# Combined function to process columns
+process_column <- function(ds, column_name) {
+  column_type <- typeof(ds[[column_name]])
+  
+  if (column_type == "integer") {
+    cprops <- ds %>% filter(wave != 3) %>%
+      group_by(catvar) %>%
+      summarize(
+        n = n(), 
+        prop = mean(.data[[column_name]], na.rm=TRUE),
+        np = round(n * prop, 0),
+        pr = sprintf('%.1f', prop * 100)) %>% 
+      select(catvar, np, pr) %>% 
+      pivot_wider(names_from = catvar, 
+                  values_from = c(np, pr), 
+                  names_vary = "slowest") %>%
+      mutate(char = column_name,
+             w1 = paste0(np_1, " (", pr_1, ")"),
+             w2 = paste0(np_2, " (", pr_2, ")"),
+             w3 = paste0(np_3, " (", pr_3, ")")) %>%
+      select(char, w1, w2, w3)
+    
+    cprop_stats <- ds %>%
+      mutate(!!sym(column_name) := as.factor(.data[[column_name]])) %>%
+      infer::chisq_test(as.formula(paste("catvar ~", column_name))) %>%
+      select(-chisq_df) %>%
+      mutate(across(c('statistic', 'p_value'), 
+                    ~ sprintf('%.3f', .x)))
+    
+    ctable <- cprops %>% bind_cols(cprop_stats)
+    
+  } else if (column_type == "double") {
+    cmeans <- ds %>% filter(wave != 3) %>%
+      group_by(catvar) %>%
+      summarize(
+        vmean = sprintf('%.1f', mean(.data[[column_name]], 
+                                     na.rm=TRUE)),
+        vsd = sprintf('%.1f', sd(.data[[column_name]], 
+                                 na.rm=TRUE))) %>%
+      pivot_wider(names_from = catvar, 
+                  values_from = c(vmean, vsd), 
+                  names_vary = "slowest") %>%
+      mutate(char = column_name,
+             w1 = paste0(vmean_1, " (", vsd_1, ")"),
+             w2 = paste0(vmean_2, " (", vsd_2, ")"),
+             w3 = paste0(vmean_3, " (", vsd_3, ")")) %>%
+      select(char, w1, w2, w3)
+    
+    formula <- as.formula(paste(column_name, "~ catvar"))
+    
+    F_hat <- ds %>% 
+      infer::observe(formula, stat = "F")
+    
+    null_dist_theory <- ds %>%
+      infer::specify(formula) %>%
+      hypothesize(null = "independence") %>%
+      assume(distribution = "F") %>%
+      get_p_value(obs_stat = F_hat, direction = "two-sided")
+    
+    cmeans_stats <- F_hat %>% 
+      bind_cols(null_dist_theory) %>%
+      rename("statistic" = stat) %>%
+      mutate(across(c('statistic', 'p_value'), 
+                    ~ sprintf('%.3f', .x)))
+    
+    ctable <- cmeans %>% bind_cols(cmeans_stats)
+  }
+  
+  return(ctable)
+}
 
-
-
-
-
-
-
-
+# Combine results for all columns
+process_columns <- function(ds, columns) {
+  result <- bind_rows(lapply(columns, function(col) 
+    process_column(ds, col)))
+  return(result)
+}
 
 # Columns of interest
 columns_of_interest <- c("female", "csmoke", "asmoke", 
-  "bmi", "age_health", "waist_circ")
+                         "bmi", "age_health", "waist_circ")
 
-# Apply the function to the dataset
+# Apply the function to the data set
 result <- process_columns(ds, columns_of_interest)
 
-print(result)
 
-t2 <- result %>%
+
+ds <- ds %>%
+  select(-catvar) %>%
+  filter(wave != 3) %>%
+  add_count(ptc_id) %>%
+  mutate(catvar = recode_factor(n, 
+    `1` = "1", `2` = "2", `3` = "3")) %>%
+  group_by(catvar) %>% tally()
+
+t3 <- result %>%
   mutate(char = c(
     "Female, n (%)", 
     "Current smoker, n (%)",
     "Any smoke exposure, n (%)", 
     "Age in years, Mean (SD)",
-    "BMI in kg/m^2, Mean (SD)", 
-    "Waist circumference in cm, Mean (SD)")) %>%
+    "BMI (kg/m2), Mean (SD)", 
+    "Waist circumference (cm), Mean (SD)")) %>%
   rename("Characteristic" = char)
 
-colnames(t2) <- c("Characteristic", 
-                       "Wave 1 (2018-19) N=1003", "Wave 2 (2019-20) N=1110",
-                       "Wave 4 (2021-22) N=1028", "Statistic", "p-value")
+colnames(t3) <- c("Characteristic", 
+                  "1 Wave N=365", "2 Waves N=886",
+                  "3 Waves N=1890", "Statistic", "p-value")
 
-tt(t2, 
+tt(t3,
+   caption = "Demographic and health characteristics of participants who contributed to different numbers of study waves.",
+   width = c(.4, .15, .15, .15, .1, .1),
    notes = list(a = list(i=0, j=5,
-     text = "Blah."))) |>
+                         text = "Chi-square test for categorical and F-test for continuous characteristics."))) |>
+  # theme_tt("multipage") |>
   group_tt(
     j = list(
       " " = 1,
       "Estimates" = 2:4,
-      "Test for Equality" = 5:6))
-  
+      "Test for Equality" = 5:6)) |>
+  format_tt(escape = TRUE) |>
+  style_tt(j = 1:4, align = "llll")
 
-tt(x, notes = list(
-  a = list(i = 0:1, j = 1, text = "Blah."),
-  b = "Blah blah."
-)
-)
 
+
+
+
+
+
+d <- read_csv(here("data-clean", 
+  "BHET_master_data_05Mar2024.csv"),
+  col_select = c("wave", "gender_health", "age_health",
+    "smoking", "waist_circ", "height", "ptc_id", 
+    "weight", "lived_with_smoker", "ID_VILLAGE")) %>%
+filter(wave != 3) %>%                                                         # no participant-level data in year 3
+  mutate(ETS = ifelse(smoking == 1, 1, NA),                                     # generate smoking variable
+         ETS = ifelse(smoking == 2, 2, ETS),
+         ETS = ifelse(lived_with_smoker %in% c(2,3) & is.na(ETS), 3, ETS),
+         ETS = ifelse(lived_with_smoker == 1 & is.na(ETS), 4, ETS),
+         ETS = factor(ETS)) %>%
+  # dichotomize into smoke vs. no smoke exposure (1=smoke/0=no smoke)
+  mutate(ETS_binary = ifelse(ETS %in% c(1,2,3), 1, 0)) %>%
+  mutate(BMI = weight/(height/100)^2) %>%
+  group_by(ptc_id) %>%
+  mutate(n_obs = n(),
+         count = 1:n()) %>%
+  ungroup() %>%

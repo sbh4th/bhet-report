@@ -52,6 +52,7 @@ library(readxl)
 library(marginaleffects)
 library(tinytable)
 library(tidymodels)
+library(huxtable)
 ```
 
 ```{r master_data, include = FALSE, cache = TRUE, echo=FALSE}
@@ -63,6 +64,12 @@ bhet_master_data %>%
   osf_download(path = here("data-clean"),
                conflicts = "overwrite")
 ```
+
+\newpage
+
+# Introduction
+
+China is deploying an ambitious policy to transition up to 70% of households in northern China from residential coal heating to electric or gas “clean” space heating, including a large-scale roll out across rural and peri-urban Beijing, referred to in this document as China’s Coal Ban and Heat Pump (CBHP) subsidy policy. To meet this target the Beijing municipal government announced a two-pronged program that designates coal-restricted areas and simultaneously offers subsidies to night-time electricity rates and for the purchase and installation of electric-powered heat pumps to replace traditional coal-heating stoves. The policy was piloted in 2015 and, starting in 2016, was rolled out on a village-by-village basis. The variability in when the policy was applied to each village allowed us to treat the roll-out of the program as a quasi-randomized intervention and evaluate its impacts on air quality and health. Household air pollution is a well-established risk factor for adverse health outcomes over the entire lifecourse, yet there is no consensus that clean energy interventions can improve these health outcomes based on evidence from randomized trials [@lai2024]. Households may be differentially affected by the CBHP due to factors such as financial constraints and user preferences, and there is uncertainty about whether and how the policy may affect indoor and outdoor air pollution, as well as heating behaviors and health outcomes.
 
 Problem table:
 
@@ -272,14 +279,15 @@ process_columns <- function(ds, columns) {
 ```{r tab2-f2, echo=F, results = F}
 source(here("code/functions", "process-columns.R"))
 ```
-And then make the table:
-```{r table2, echo=F, warning=F, message=F}
+
+And then make the table (see @tbl-table2):
+```{r table2, warning=F, message=F}
 
 # Columns of interest
 columns_of_interest <- c("female", "csmoke", "asmoke", 
   "bmi", "age_health", "waist_circ")
 
-# Apply the function to the dataset
+# Apply the function to the data set
 result <- process_columns(ds, columns_of_interest)
 
 t2 <- result %>%
@@ -293,14 +301,14 @@ t2 <- result %>%
   rename("Characteristic" = char)
 
 colnames(t2) <- c("Characteristic", 
-  "Wave 1\n(2018-19)\nN=1003", "Wave 2 (2019-20) N=1110",
+  "Wave 1 (2018-19) N=1003", "Wave 2 (2019-20) N=1110",
   "Wave 4 (2021-22) N=1028", "Statistic", "p-value")
 
-tt(t2,
-   caption = "Example table",
+tt(t2, caption = "Example table.\\label{tbl-table2}",
    width = c(.4, .15, .15, .15, .1, .1),
    notes = list(a = list(i=0, j=5,
      text = "Blah."))) |>
+  theme_tt("multipage") |>
   group_tt(
     j = list(
       " " = 1,
@@ -310,12 +318,4 @@ tt(t2,
   style_tt(j = 1:4, align = "llll")
 ```
 
-Now what about this idea of a margin note?
 
-::: column-margin
-We know from *the first fundamental theorem of calculus* that blah blah blah.
-:::
-
-How does that differ from more generic comment using the `changes` package? Let's see 
-\comment{Maybe I shouldn't have written this?}
-How does that work?

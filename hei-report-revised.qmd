@@ -30,6 +30,7 @@ format:
              \@float{figure}}
             {\end@float}
           \makeatother
+         \usepackage{changes}
    geometry: 
       - right=1in
       - left=1in
@@ -354,35 +355,37 @@ By w2, w3, and w4 there were a cumulative total of 10, 17, and 20 (out of 50 tot
 
 Appendix @fig-flowchart shows the participation of villages, households, and participants across the four waves of data collection. We conducted measurements in over 1000 participants in each of the three measurement waves that included individual-level measurements. In total, we enrolled 1432 participants into the study, of which 630 (43%) participated in all three waves, 443 (31%) participated in two waves and 365 (25%) participated in a single wave. We did not observe any notable differences in demographic characteristics or health behaviors between participants who contributed to a different number of waves (@tbl-each-campaign) or between participants in each of the three waves with individual measurements (@tbl-diff-campaign). 
 
-```{r tbl-23-data, echo=F, message=F, warning=F}
+```{r, echo=F, message=F, warning=F}
 # read in the data
 ds <- read_csv(here("data-clean", 
   "BHET_master_data_05Mar2024.csv"),
   col_select = c("wave", "gender_health", "age_health",
-      "smoking", "waist_circ", "height", 
-      "weight", "lived_with_smoker", "ID_VILLAGE")) %>%
+    "smoking", "waist_circ", "height", "ptc_id", 
+    "weight", "lived_with_smoker", "ID_VILLAGE")) %>%
   filter(wave != 3) %>%
-  mutate(wave = as.factor(wave),
-         bmi = (weight / (height/100)^2),
+  mutate(catvar = recode_factor(wave, 
+    `1` = "1", `2` = "2", `4` = "3"),
+    bmi = (weight / (height/100)^2),
     female = if_else(gender_health == 2 & !is.na(gender_health),
-                     1, 0),
+      1, 0),
     csmoke = if_else(smoking==1 & !is.na(smoking), 1, 0),
     asmoke = if_else(smoking < 3, 1, 
       if_else(smoking==3 & lived_with_smoker %in% 
-      c(2,3), 1, 0))) %>%
+                                    c(2,3), 1, 0))) %>%
   mutate(across(c(female, csmoke, asmoke), as.integer))
 ```
 
-
-```{r tbl-each-campaigns, echo=F, eval=T, message=F, warning=F}
-#| # label: tbl-each-campaign
-#| # tbl-cap: "Demographic and health characteristics of participants in each study wave"
-
+```{r, warning=F, message=F}
+#| echo: FALSE
+#| # tbl-cap: Example table.
+#| # label: tbl-table2
+#| eval: TRUE
+  
 # Columns of interest
 columns_of_interest <- c("female", "csmoke", "asmoke", 
   "bmi", "age_health", "waist_circ")
 
-# Apply the function to the dataset
+# Apply the function to the data set
 result <- process_columns(ds, columns_of_interest)
 
 t2 <- result %>%
@@ -400,10 +403,11 @@ colnames(t2) <- c("Characteristic",
   "Wave 4 (2021-22) N=1028", "Statistic", "p-value")
 
 tt(t2,
-   caption = "Demographic and health characteristics of participants in each study wave",
+   caption = "Demographic and health characteristics of participants in each study wave.",
    width = c(.4, .15, .15, .15, .1, .1),
    notes = list(a = list(i=0, j=5,
-     text = "Blah."))) |>
+     text = "Chi-square test for categorical and F-test for continuous characteristics."))) |>
+  # theme_tt("multipage") |>
   group_tt(
     j = list(
       " " = 1,
@@ -414,39 +418,61 @@ tt(t2,
 ```
 
 
-```{r tbl-diff-campaign, echo=F, eval=T}
+```{r, warning=F, message=F}
+#| echo: FALSE
 #| # label: tbl-diff-campaign
 #| # tbl-cap: "Demographic and health characteristics of participants who contributed to different numbers of study waves."
+#| eval: TRUE
 
-ctab2 <- tibble(
-  `Characteristic` = c("Female, n (\\%)", 
-    "Current smoker, n (\\%)",
-    "Any smoke exposure, n (\\%)", 
+# revise data set to identify participants 
+# by number of waves contributed
+ds <- ds %>%
+  select(-catvar) %>%
+  filter(wave != 3) %>%
+  add_count(ptc_id) %>%
+  mutate(catvar = recode_factor(n, 
+    `1` = "1", `2` = "2", `3` = "3")) 
+
+# apply function across selected columns
+# Columns of interest
+columns_of_interest <- c("female", "csmoke", "asmoke", 
+  "bmi", "age_health", "waist_circ")
+
+# Apply the function to the data set
+result <- process_columns(ds, columns_of_interest)
+
+t3 <- result %>%
+  mutate(char = c(
+    "Female, n (%)", 
+    "Current smoker, n (%)",
+    "Any smoke exposure, n (%)", 
     "Age in years, Mean (SD)",
-    "BMI in kg/m\\textsuperscript{2}, Mean (SD)", 
-    "Waist circumference in cm, Mean (SD)"),
-  `1 Wave N=365` = c("211 (57.8)", 
-    "110 (30.1)", "288 (78.9)", "59.9 (9.2)",
-    "26.3 (3.6)", "90.3 (9.8)"),
-  `2 Waves N=443` = c("253 (57.1)",
-    "117 (26.4)", "360 (81.3)", "60.5 (8.8)",
-    "25.8 (3.5)", "86.5 (10)"),
-  `3 Waves N=630` = c("370 (58.7)",
-    "161 (25.6)", "498 (79)", "61.3 (9.1)",
-    "26.1 (3.7)", "86.9 (10.4)")
-)
+    "BMI (kg/m2), Mean (SD)", 
+    "Waist circumference (cm), Mean (SD)")) %>%
+  rename("Characteristic" = char)
 
-kable(ctab2, "latex", booktabs = T, escape = F,
-  label = "tbl-diff-campaign",
-  linesep = "", align = 'lccc') %>%
-  column_spec(2:4, width = "2.5cm") %>%
-  row_spec(0, bold = T) %>%
-  kable_styling(full_width = F)
+colnames(t3) <- c("Characteristic", 
+  "1 Wave N=365", "2 Waves N=886",
+  "3 Waves N=1890", "Statistic", "p-value")
+
+tt(t3,
+   caption = "Demographic and health characteristics of participants who contributed to different numbers of study waves.",
+   width = c(.4, .15, .15, .15, .1, .1),
+   notes = list(a = list(i=0, j=5,
+     text = "Chi-square test for categorical and F-test for continuous characteristics."))) |>
+  # theme_tt("multipage") |>
+  group_tt(
+    j = list(
+      " " = 1,
+      "Estimates" = 2:4,
+      "Test for Equality" = 5:6)) |>
+  format_tt(escape = TRUE) |>
+  style_tt(j = 1:4, align = "llll")
 ```
 
 ## Description of study sample
 
-```{r make_table1, message=FALSE, cache=TRUE, echo=FALSE, eval=T}
+```{r make_table1, message=FALSE, cache=TRUE, echo=FALSE, eval=F}
 # select variables for table
 d <- read_csv(here("data-clean", 
   "BHET_master_data_05Mar2024.csv"),
@@ -530,8 +556,8 @@ attr(nr, 'position') <- c(1, 7, 23)
 options(modelsummary_format_numeric_latex = "plain")
 ```
 
-```{r table1, cache=TRUE, message=FALSE, echo=FALSE, eval=T}
-#| label: tbl-table1
+```{r table1, cache=TRUE, message=FALSE, echo=FALSE, eval=F}
+#| # label: tbl-table1
 #| tbl-cap: "Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status"
 
 
@@ -549,7 +575,7 @@ t1 %>%
 
 At baseline, PM~2.5~ and BC concentrations were higher, on average, for personal exposures compared with outdoor concentrations. From w2 onward, with the inclusion of indoor air pollution measurements, personal exposure air pollution concentrations were still higher than indoor or outdoor concentrations, with indoor levels being higher than outdoors (@tbl-pm-season). This trend (personal > indoor > outdoor) was observed among households in treated and untreated villages. Personal, indoor, and outdoor geometric mean (95% confidence interval) concentrations of PM~2.5~ were 72 (65, 80), 45 (39, 53), and 31 (28, 35), respectively, and elevated relative to health-based guidelines. The current World Health Organization (WHO) guidelines state that annual average concentrations of PM~2.5~ should not exceed 5 µg/m^3^, while 24-hour average exposures should not exceed 15 µg/m^3^ for more than 3 to 4 days per year [@who2021]. Interim targets have been set to support the planning of incremental milestones toward cleaner air, particularly for cities, regions, and countries with higher air pollution levels. For PM~2.5~, the four interim (IT) targets for annual and 24-h means are: IT-1: 35 and 75 µg/m^3^; IT-2: 25 and 50 µg/m^3^; IT-3: 15 and 37.5 µg/m^3^; and IT-4: 10 and 25 µg/m^3^ [@who2021]. In our study, baseline personal exposures to PM~2.5~ did not even meet IT-1, indicating considerable opportunity for air quality exposure reduction with intervention. 
 
-```{r tbl-pm-season, echo=F, message = F, warnings = F, eval=F}
+```{r tbl-pm-season, echo=F, message = F, warnings = F}
 #| label: tbl-pm-season
 #| tbl-cap: "Arithmetic and geometric means for air pollutant concentrations (micrograms per cubic meter) by wave"
 
@@ -570,7 +596,8 @@ ap_season %>%
   select(-category) %>%
   kable(col.names =c("", "", "",  
    "Est.", "CI", "Est.", "CI", "Est.", "CI", 
-   "Est.", "CI"), # "latex", booktabs = T,
+   "Est.", "CI"), "latex", booktabs = T,
+   longtable = T,
   linesep = "", align = 'lllcccccccc') %>% 
   kable_styling(font_size = 9) %>% 
   collapse_rows(columns = 1:2, valign = "top") %>%
@@ -607,7 +634,7 @@ In never treated villages, we also observed a transition to clean energy over th
 
 The average marginal effect ($ATT$) from the basic ETWFE model (@tbl-did-med) shows that exposure to the CBHP policy reduced 24h indoor PM~2.5~ by -19 µg/m^3^ (95%CI: -61, 22). After adjusting outdoor temperature, dewpoint, household smoking status, and the number of residents in each household, the $ATT$ decreased to -14 µg/m^3^ (95%CI: -54, 26). The impact was stronger on seasonal indoor PM~2.5~, with an average $ATT$ of -36 µg/m^3^ (95%CI: -61, -12) that was robust to covariate adjustment. This finding likely reflects the direct benefit of the policy in replacing coal stoves and air quality improvement. We found little evidence of heterogeneity in $ATT$s across cohort and time (all p-values > 0.385 for tests of heterogeneity, see Appendix @tbl-a-het-indoor).
 
-```{r tab-did-med, echo=F, message=F, warning=F, eval=F}
+```{r tab-did-med, echo=F, message=F, warning=F}
 #| label: tbl-did-med
 #| tbl-cap: "Treatment effect on outdoor and indoor PM~2.5~, personal exposure to PM~2.5~ and black carbon, and measures of indoor temperature. Outdoor and indoor PM~2.5~ were derived from sensor measurements after being adjusted based on co-located gravimetric PM~2.5~ measurements. 24h indicates the mean PM~2.5~ concentrations during the 24 hours when personal exposure samples were collected in each village. 'Seasonal' indicates the seasonal mean PM~2.5~ concentrations in each village, from Jan. 15th to Mar. 15th."
 
@@ -641,7 +668,8 @@ m_table <- bind_rows(ap_table, temp_table,
 
 kable(m_table,  digits = 2,
   col.names = c(" ", " ", "ATT", "(95% CI)", 
-   "ATT", "(95% CI)"), # "latex", booktabs = T,
+   "ATT", "(95% CI)"), "latex", booktabs = T,
+  longtable = T,
   linesep = "", align = 'llcccc') %>%
   kable_styling(full_width = F) %>%
   collapse_rows(columns = 1:2, valign = "top") %>% 
@@ -663,7 +691,7 @@ With respect to the other potential mediator of temperature, @tbl-did-med shows 
 
 ### Impact of the CBHP policy on health outcomes
 
-```{r tbl-did-bp, echo=F, message=F, warning=F, eval=F}
+```{r tbl-did-bp, echo=F, message=F, warning=F}
 #| label: tbl-did-health
 #| tbl-cap: "Overall impacts of the ‘coal-to-clean energy’ policy on blood pressure, respiratory outcomes, and inflammatory markers"
 
@@ -714,7 +742,8 @@ op_table <- bind_rows(bp_policy_t, r_table,
 
 kable(op_table,  digits = 2,
   col.names = c(" ", " ", "ATT", "(95% CI)", 
-   "ATT", "(95% CI)"), # "latex", booktabs = T,
+   "ATT", "(95% CI)"), "latex", booktabs = T,
+  longtable = T,
   linesep = "", align = 'llcccc') %>%
   kable_styling(full_width = F) %>%
   collapse_rows(columns = 1:2, valign = "top") %>% 
@@ -740,7 +769,7 @@ kable(op_table,  digits = 2,
 
 As noted above, we aimed to assess whether any health impacts of the CBHP policy may work specifically through pathways involving changes in PM~2.5~ and indoor temperature. Below we show results from several mediation models. We evaluated potential mediation for each mediator (indoor temperature and exposure to indoor PM~2.5~) separately and in a single model accounting for multiple mediators, and we set the values of both mediators to the  mean value for untreated participants at baseline (wave 1). For mediation analysis, we focused on BP outcomes for which we observed an effect of the policy. In @tbl-bp-med we show that conditioning on indoor PM~2.5~ and indoor temperature largely explains the entire total effect of the CBHP policy on blood pressure for systolic BP, as the CDE conditional on both mediators was reduced to 0.03 (95%CI: -2.0, 2.0) for brachial SBP. The CDE for diastolic BP was roughly half the value of the total effect. 
 
-```{r tbl-bp-med, echo=F, message=F, warning=F, eval=F}
+```{r tbl-bp-med, echo=F, message=F, warning=F}
 #| label: tbl-bp-med
 #| tbl-cap: "Controlled direct effects for the CBHP policy on blood pressure"
 
@@ -769,7 +798,7 @@ otm <- bind_rows(ot, otmp, otmt, otmm) %>%
   pivot_wider(names_from = model, 
     values_from = c(est, ci), names_vary = "slowest")
 
-kable(otm, digits = 2,
+kable(otm, digits = 2, longtable = T,
   col.names = c("", "ATT", "(95%CI)",
   "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
   align = 'lcccccc') %>%
@@ -789,7 +818,7 @@ kable(otm, digits = 2,
 
 @tbl-resp-med shows estimates from similar analyses for the CDE of the policy on respiratory outcomes. For respiratory outcomes we focus on mediation by personal exposure to PM~2.5~ and point temperature and therefore these estimates are derived for the subset of individuals with measures of personal exposure. Thus the total adjusted $ATT$s in @tbl-resp-med are not directly comparable with those in @tbl-did-health. We estimate the CDEs holding the values of both mediators to the average levels for never treated households at baseline. Overall we find no evidence that any of the total effects we observed for self-reported respiratory outcomes in @tbl-did-health were mediated by personal exposure to PM~2.5~ or indoor temperature. Generally the CDEs for all of the outcomes are statistically indistinguishable from the total effects estimated without controlling for mediators. 
 
-```{r tbl-resp-med, echo=F, message=F, warning=F, eval=F}
+```{r tbl-resp-med, echo=F, message=F, warning=F}
 #| label: tbl-resp-med
 #| tbl-cap: "Controlled direct effects for the CBHP policy on self-reported respiratory outcomes"
 
@@ -799,7 +828,7 @@ cde_resp <- read_rds(here("outputs",
 kable(cde_resp, digits = 2,
   col.names = c("", "ATT", "(95%CI)",
   "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
-  align = 'lcccccc',
+  align = 'lcccccc', longtable=T,
   linesep = "") %>%
   kable_styling(font_size = 9,
     latex_options = "HOLD_position") %>%

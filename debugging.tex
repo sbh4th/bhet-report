@@ -248,7 +248,7 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-07-15}
+\date{2024-07-17}
 
 \begin{document}
 \maketitle
@@ -283,6 +283,40 @@ Households may be differentially affected by the CBHP due to factors
 such as financial constraints and user preferences, and there is
 uncertainty about whether and how the policy may affect indoor and
 outdoor air pollution, as well as heating behaviors and health outcomes.
+
+First table:
+
+\begin{table}
+
+\caption{\label{tbl-pm-sample}Household recruitment for overall and
+indoor air quality measurements.}
+
+\centering{
+
+\begin{table}
+\centering
+\begin{tblr}[         %% tabularray outer open
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{1}={c=1,}{halign=c,},
+cell{1}{2}={c=3,}{halign=c,},
+cell{1}{5}={c=4,}{halign=c,},
+}                     %% tabularray inner close
+\toprule
+& Overall &  &  & Indoor &  &  &  \\ \cmidrule[lr]{1-1}\cmidrule[lr]{2-4}\cmidrule[lr]{5-8}
+Sample & Wave 1 & Wave 2 & Wave 4 & Wave 1 & Wave 2 & Wave 3 & Wave 4 \\ \midrule %% TinyTableHeader
+New recruitment & 977 &  196 &   68 &  0 & 300 &   0 &  52 \\
+Wave 1 households & - &  866 &  780 & - &   0 &   0 &   0 \\
+Wave 2 households & - & - &  162 & - & - & 246 & 248 \\
+Total recruitment & 977 & 1062 & 1010 &  0 & 300 & 246 & 300 \\
+\bottomrule
+\end{tblr}
+\end{table}
+
+}
+
+\end{table}%
 
 Problem table:
 
@@ -329,34 +363,6 @@ And then make the table (see \textbf{?@tbl-table2}):
   \FunctionTok{style\_tt}\NormalTok{(}\AttributeTok{j =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, }\AttributeTok{align =} \StringTok{"llll"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{longtblr}[         %% tabularray outer open
-caption={},
-note{a}={Blah.},
-caption={Example table.\label{tbl-table2}},
-]                     %% tabularray outer close
-{                     %% tabularray inner open
-width={1\linewidth},
-colspec={X[0.380952380952381]X[0.142857142857143]X[0.142857142857143]X[0.142857142857143]X[0.0952380952380952]X[0.0952380952380952]},
-cell{1}{1}={c=1,}{halign=c,},
-cell{1}{2}={c=3,}{halign=c,},
-cell{1}{5}={c=2,}{halign=c,},
-column{1}={halign=l,},
-column{2}={halign=l,},
-column{3}={halign=l,},
-column{4}={halign=l,},
-}                     %% tabularray inner close
-\toprule
-& Estimates &  &  & Test for Equality &  \\ \cmidrule[lr]{1-1}\cmidrule[lr]{2-4}\cmidrule[lr]{5-6}
-Characteristic & Wave 1 (2018-19) N=1003 & Wave 2 (2019-20) N=1110 & Wave 4 (2021-22) N=1028 & Statistic\textsuperscript{a} & p-value \\ \midrule %% TinyTableHeader
-Female, n (\%) & 580 (57.8) & 653 (58.8) & 612 (59.5) & 0.616 & 0.735 \\
-Current smoker, n (\%) & 257 (25.6) & 295 (26.6) & 265 (25.8) & 0.292 & 0.864 \\
-Any smoke exposure, n (\%) & 795 (79.3) & 898 (80.9) & 857 (83.4) & 5.616 & 0.060 \\
-Age in years, Mean (SD) & 26.1 (3.7) & 25.7 (3.5) & 26.1 (4.0) & 3.273 & 0.076 \\
-BMI (kg/m2), Mean (SD) & 60.1 (9.3) & 61.1 (9.1) & 63.3 (9.0) & 31.980 & 0.000 \\
-Waist circumference (cm), Mean (SD) & 86.8 (10.2) & 87.4 (9.4) & 91.4 (10.7) & 54.035 & 0.000 \\
-\bottomrule
-\end{longtblr}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{1}

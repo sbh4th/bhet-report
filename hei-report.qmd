@@ -149,7 +149,7 @@ In each village, two sensors for particulate matter air pollution were set up to
 
 We collected filter-based community PM~2.5~ samples to calibrate the sensor-based PM~2.5~ measurements as well as to conduct analysis of chemical composition for source apportionment. Ultrasonic Personal Aerosol Samplers (UPAS, Access Sensor Technologies, Fort Collins, CO, USA) were used to collect filter-based PM~2.5~ samples with a flow rate of 1.0 L/min [@volckens2017]. Samplers housed 37mm PTFE filters (VWR, 2.0µm pore size) and were equipped with a cyclone inlet with a 2.5µm cut point designed to perform under the sampling flow rate. For community measurements, a UPAS was co-located with each PM~2.5~ sensor in each village in rotation. Every week, the used filters were removed and replaced with a new filter. In total, we successfully collected 126, 371, and 289 filter-based, community outdoor PM~2.5~ samples in w1, w2, and w4, respectively. Field blank filters were collected at a rate of ~10%, subject to the same field conditions as samples. To support post-sampling determination of organic carbon (OC) and elemental carbon (EC) fractions of PM~2.5~ mass, quartz filters were co-located with a subset of Teflon filter samples collected outdoors. Quartz filter-based PM~2.5~ samples were collected using UPAS operating with a flow rate of 1.0 L/min. UPASs housed 37 mm quartz filters (VWR, 2.0-µm pore size) and were equipped with a cyclone inlet with a 2.5µm cut point designed to perform under the corresponding sampling flow rate. All quartz fiber filters were baked at 550 °C for a minimum of 8 h to remove organic impurities prior to sample collection. PM~2.5~ samples collected on quartz filters were analyzed using established thermo-optical methods for quantifying elemental carbon (EC) and organic carbon (OC) to, then, calibrate the colorimetric analysis of EC and OC on Teflon filters. In w2, 23 quartz-based outdoor PM~2.5~ samples and 3 field blanks were collected. In w4, 11 quartz-based outdoor PM~2.5~ samples and 3 field blanks were collected. 
 
-For PM~2.5~ sensor calibration and quality control, all PM sensors were co-located with a reference-grade PM~2.5~ instrument (Model 5030 Synchronized Hybrid Ambient Realtime Particulate (SHARP) Monitor, Thermo Fisher Scientific, United States) on the rooftop of a building at Peking University campus and/or the Tapered Element Oscillating Microbalance (TEOM, Thermo Scientific™ 1405 TEOM™) at the Chinese Academy of Sciences University campus for 7 to 10 days before and after each field wave (@fig-calibration). Sensor-measured PM~2.5~ concentrations were highly correlated with those measured by the reference instruments (Spearman correlation coefficients (rho) >0.75 in each pre- and post-calibration).
+For PM~2.5~ sensor calibration and quality control, all PM sensors were co-located with a reference-grade PM~2.5~ instrument (Model 5030 Synchronized Hybrid Ambient Realtime Particulate (SHARP) Monitor, Thermo Fisher Scientific, United States) on the rooftop of a building at Peking University campus and/or the Tapered Element Oscillating Microbalance (TEOM, Thermo Scientific™ 1405 TEOM™) at the Chinese Academy of Sciences University campus for 7 to 10 days before and after each field wave (Figure 2). Sensor-measured PM~2.5~ concentrations were highly correlated with those measured by the reference instruments (Spearman correlation coefficients (rho) >0.75 in each pre- and post-calibration).
 
 ```{r fig-calibration, echo=F, message = F, out.width = "80%"}
 #| label: fig-calibration
@@ -161,11 +161,9 @@ knitr::include_graphics(here("images",
 
 #### Indoor PM~2.5~
 
-In the second, third, and fourth data collection waves we randomly selected six households from the 20 recruited in each village to measure indoor concentrations of PM~2.5~. In w4, we aimed to monitor indoor PM~2.5~ in the same households where we measured indoor PM~2.5~ in w2. If a household dropped out of the project or declined indoor PM~2.5~ monitoring, we then recruited another household already enrolled in this study to measure indoor PM~2.5~. In total, indoor measurements were conducted in 300 households in both w2 and w4 and 246 households in w3 (@tbl-pm-sample).
+In the second, third, and fourth data collection waves we randomly selected six households from the 20 recruited in each village to measure indoor concentrations of PM~2.5~. In w4, we aimed to monitor indoor PM~2.5~ in the same households where we measured indoor PM~2.5~ in w2. If a household dropped out of the project or declined indoor PM~2.5~ monitoring, we then recruited another household already enrolled in this study to measure indoor PM~2.5~. In total, indoor measurements were conducted in 300 households in both w2 and w4 and 246 households in w3 (Table 1).
 
-```{r tab-pm-sample, echo=F, message=F, warning=F}
-#| label: tbl-pm-sample
-#| tbl-cap: "Household recruitment for overall and indoor air quality measurements."
+```{r tab-pm-sample, echo=F, message=F, warning=F, tab.cap="Household recruitment for overall and indoor air quality measurements."}
 
 options(knitr.kable.NA = "\\")
 tx <- tibble(
@@ -381,11 +379,9 @@ We retained all 50 study villages during this four-year longitudinal assessment 
 
 By w2, w3, and w4 there were a cumulative total of 10, 17, and 20 (out of 50 total) study villages treated by the CBHP policy, respectively. All of the treated villages selected to install electric-powered air-source heat pumps with 200 RMB per meter square (up to 24,000 RMB) in subsidies and were also provided with 80% night-time electricity subsidies up to 10,000kWh per heating season. To limit coal use, villages enrolled in the policy were no longer allowed to place orders for subsidized coal with the district-level governments that manage the procurement and distribution of coal for residential heating in Beijing. In addition, village committee leaders in treated villages reported feeling accountable to the Environmental Protection Department for limited coal-related air pollution, and were motivated to encourage residents to not burn coal. Some villages were equipped with government air pollution monitors and the Environmental Protection Department conducted village inspections and issued warnings about coal burning. Households burning coal in treated villages were at risk of losing their electricity subsidy. 
 
-Appendix @fig-flowchart shows the participation of villages, households, and participants across the four waves of data collection. We conducted measurements in over 1000 participants in each of the three measurement waves that included individual-level measurements. In total, we enrolled 1432 participants into the study, of which 630 (43%) participated in all three waves, 443 (31%) participated in two waves and 365 (25%) participated in a single wave. We did not observe any notable differences in demographic characteristics or health behaviors between participants who contributed to a different number of waves (@tbl-each-campaign) or between participants in each of the three waves with individual measurements (@tbl-diff-campaign). 
+Appendix @fig-flowchart shows the participation of villages, households, and participants across the four waves of data collection. We conducted measurements in over 1000 participants in each of the three measurement waves that included individual-level measurements. In total, we enrolled 1432 participants into the study, of which 630 (43%) participated in all three waves, 443 (31%) participated in two waves and 365 (25%) participated in a single wave. We did not observe any notable differences in demographic characteristics or health behaviors between participants who contributed to a different number of waves (Table 2) or between participants in each of the three waves with individual measurements (Table 3). 
 
-```{r tbl-each-campaigns, echo=F, eval=F}
-#| label: tbl-each-campaign
-#| tbl-cap: "Demographic and health characteristics of participants in each study wave"
+```{r tab-each-campaigns, echo=F, eval=T, tab.cap="Demographic and health characteristics of participants in each study wave."}
 
 ctab1 <- tibble(
   `Characteristic` = c("Female, n (\\%)", 
@@ -413,9 +409,7 @@ kable(ctab1, # "latex", booktabs = T, escape = F,
 ```
 
 
-```{r tbl-diff-campaign, echo=F, eval=F}
-#| label: tbl-diff-campaign
-#| tbl-cap: "Demographic and health characteristics of participants who contributed to different numbers of study waves."
+```{r tab-diff-campaign, echo=F, eval=T, tab.cap="Demographic and health characteristics of participants in each study wave."}
 
 ctab2 <- tibble(
   `Characteristic` = c("Female, n (\\%)", 
@@ -444,7 +438,7 @@ kable(ctab2, # "latex", booktabs = T, escape = F,
 
 ## Description of study sample
 
-```{r make_table1, message=FALSE, cache=TRUE, echo=FALSE, eval=F}
+```{r make_table1, message=FALSE, cache=TRUE, echo=FALSE, eval=T}
 # select variables for table
 d <- read_csv(here("data-clean", 
   "BHET_master_data_05Mar2024.csv"),
@@ -528,20 +522,18 @@ attr(nr, 'position') <- c(1, 7, 23)
 options(modelsummary_format_numeric_latex = "plain")
 ```
 
-```{r table1, cache=TRUE, message=FALSE, echo=FALSE, eval=F}
-#| label: tbl-table1
-#| tbl-cap: "Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status"
-
+```{r table1, cache=TRUE, message=FALSE, echo=FALSE, eval=T}
 
 t1 <- datasummary_balance(~et, data = dt, 
   add_rows = nr, align = "rrrrrrr",
-  notes = reference, output = 'kableExtra')
+  notes = reference, output = 'kableExtra',
+  title = "Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status.")
 t1 %>%
   kable_styling(font_size = 9) %>%
   row_spec(c(1,7,23), bold = T)
 ```
 
-@tbl-table1 shows the distribution of selected demographic, health, and environmental characteristics from the baseline survey, prior to any villages being enrolled in the CBHP policy. We provide means and standard deviations separately for villages that eventually enter into the policy with those that never do so. As noted above, although our DiD identification strategy allows for fixed differences between treated and untreated villages, overall the differences at baseline are generally small and the groups seem well balanced on most measures, with the exception of personal exposure to PM~2.5~, which was lower in villages that were eventually treated.
+Table 4 shows the distribution of selected demographic, health, and environmental characteristics from the baseline survey, prior to any villages being enrolled in the CBHP policy. We provide means and standard deviations separately for villages that eventually enter into the policy with those that never do so. As noted above, although our DiD identification strategy allows for fixed differences between treated and untreated villages, overall the differences at baseline are generally small and the groups seem well balanced on most measures, with the exception of personal exposure to PM~2.5~, which was lower in villages that were eventually treated.
 
 ## Summary of PM and BC measurements
 

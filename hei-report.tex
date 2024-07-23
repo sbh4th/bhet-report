@@ -126,6 +126,16 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
+\usepackage{siunitx}
+
+  \newcolumntype{d}{S[
+    input-open-uncertainty=,
+    input-close-uncertainty=,
+    parse-numbers = false,
+    table-align-text-pre=false,
+    table-align-text-post=false
+  ]}
+  
 \usepackage{wrapfig}
 \usepackage{colortbl}
  \makeatletter
@@ -199,7 +209,7 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-07-12}
+\date{2024-07-23}
 
 \begin{document}
 \maketitle
@@ -631,11 +641,10 @@ instrument (Model 5030 Synchronized Hybrid Ambient Realtime Particulate
 of a building at Peking University campus and/or the Tapered Element
 Oscillating Microbalance (TEOM, Thermo Scientific™ 1405 TEOM™) at the
 Chinese Academy of Sciences University campus for 7 to 10 days before
-and after each field wave (Figure~\ref{fig-calibration}).
-Sensor-measured PM\textsubscript{2.5} concentrations were highly
-correlated with those measured by the reference instruments (Spearman
-correlation coefficients (rho) \textgreater0.75 in each pre- and
-post-calibration).
+and after each field wave (Figure 2). Sensor-measured
+PM\textsubscript{2.5} concentrations were highly correlated with those
+measured by the reference instruments (Spearman correlation coefficients
+(rho) \textgreater0.75 in each pre- and post-calibration).
 
 \begin{figure}[H]
 
@@ -662,16 +671,10 @@ of the project or declined indoor PM\textsubscript{2.5} monitoring, we
 then recruited another household already enrolled in this study to
 measure indoor PM\textsubscript{2.5}. In total, indoor measurements were
 conducted in 300 households in both w2 and w4 and 246 households in w3
-(Table~\ref{tbl-pm-sample}).
+(Table 1).
 
-\begin{table}
-
-\caption{\label{tbl-pm-sample}Household recruitment for overall and
-indoor air quality measurements.}
-
-\centering{
-
-\begin{longtable*}[t]{lrrrrrrr}
+\begin{longtable}[t]{lrrrrrrr}
+\caption{\label{tab:tab-pm-sample}Household recruitment for overall and indoor air quality measurements.}\\
 \toprule
 \multicolumn{1}{c}{ } & \multicolumn{3}{c}{Overall} & \multicolumn{4}{c}{Indoor} \\
 \cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-8}
@@ -682,11 +685,7 @@ Wave 1 households & \textbackslash{} & 866 & 780 & \textbackslash{} & 0 & 0 & 0\
 Wave 2 households & \textbackslash{} & \textbackslash{} & 162 & \textbackslash{} & \textbackslash{} & 246 & 248\\
 Total recruitment & 977 & 1062 & 1010 & 0 & 300 & 246 & 300\\
 \bottomrule
-\end{longtable*}
-
-}
-
-\end{table}%
+\end{longtable}
 
 Time-resolved indoor PM\textsubscript{2.5} was measured using the same
 commercially available sensor (PMS7003 Plantower, Zefan, Inc.) used for
@@ -1488,58 +1487,92 @@ participated in all three waves, 443 (31\%) participated in two waves
 and 365 (25\%) participated in a single wave. We did not observe any
 notable differences in demographic characteristics or health behaviors
 between participants who contributed to a different number of waves
-(Table~\ref{tbl-each-campaign}) or between participants in each of the
-three waves with individual measurements
-(Table~\ref{tbl-diff-campaign}).
+(Table 2) or between participants in each of the three waves with
+individual measurements (Table 3).
 
-\begin{table}
+\begin{longtable}[t]{l>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}}
+\caption{\label{tab:tab-each-campaigns}Demographic and health characteristics of participants in each study wave.}\\
+\toprule
+\textbf{Characteristic} & \textbf{Wave 1 (2018-19) N=1003} & \textbf{Wave 2 (2019-20) N=1110} & \textbf{Wave 4 (2021-22) N=1028}\\
+\midrule
+Female, n (\textbackslash{}\%) & 580 (57.8) & 653 (58.8) & 612 (59.5)\\
+Current smoker, n (\textbackslash{}\%) & 257 (25.6) & 295 (26.6) & 265 (25.8)\\
+Any smoke exposure, n (\textbackslash{}\%) & 788 (78.6) & 897 (80.8) & 843 (82)\\
+Age in years, Mean (SD) & 60.7 (9.2) & 61.4 (9.1) & 63.1 (9)\\
+BMI in kg/m\textbackslash{}textsuperscript\{2\}, Mean (SD) & 26.1 (3.7) & 25.7 (3.5) & 26.1 (4)\\
+\addlinespace
+Waist circumference in cm, Mean (SD) & 86.8 (10.2) & 87.4 (9.4) & 91.4 (10.7)\\
+\bottomrule
+\end{longtable}
 
-\caption{\label{tbl-each-campaign}Demographic and health characteristics
-of participants in each study wave}
-
-\centering{
-
-}
-
-\end{table}%
-
-\begin{table}
-
-\caption{\label{tbl-diff-campaign}Demographic and health characteristics
-of participants who contributed to different numbers of study waves.}
-
-\centering{
-
-}
-
-\end{table}%
+\begin{longtable}[t]{l>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}}
+\caption{\label{tab:tab-diff-campaign}Demographic and health characteristics of participants in each study wave.}\\
+\toprule
+\textbf{Characteristic} & \textbf{1 Wave N=365} & \textbf{2 Waves N=443} & \textbf{3 Waves N=630}\\
+\midrule
+Female, n (\textbackslash{}\%) & 211 (57.8) & 253 (57.1) & 370 (58.7)\\
+Current smoker, n (\textbackslash{}\%) & 110 (30.1) & 117 (26.4) & 161 (25.6)\\
+Any smoke exposure, n (\textbackslash{}\%) & 288 (78.9) & 360 (81.3) & 498 (79)\\
+Age in years, Mean (SD) & 59.9 (9.2) & 60.5 (8.8) & 61.3 (9.1)\\
+BMI in kg/m\textbackslash{}textsuperscript\{2\}, Mean (SD) & 26.3 (3.6) & 25.8 (3.5) & 26.1 (3.7)\\
+\addlinespace
+Waist circumference in cm, Mean (SD) & 90.3 (9.8) & 86.5 (10) & 86.9 (10.4)\\
+\bottomrule
+\end{longtable}
 
 \subsection{Description of study
 sample}\label{description-of-study-sample}
 
 \begin{table}
+\centering\centering
+\caption{\label{tab:table1}Title}
+\centering
+\fontsize{9}{11}\selectfont
+\begin{tabular}[t]{rrrrrrr}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Never treated (N=603)} & \multicolumn{2}{c}{Ever treated (N=400)} & \multicolumn{2}{c}{ } \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
+  & Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error\\
+\midrule
+\textbf{Demographics:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
+Age (years) & \num{59.9} & \num{9.4} & \num{60.4} & \num{9.2} & \num{0.5} & \num{0.6}\\
+Female (\%) & \num{59.5} & \num{49.1} & \num{59.1} & \num{49.2} & \num{-0.4} & \num{3.2}\\
+No education (\%) & \num{11.5} & \num{31.9} & \num{12.3} & \num{32.9} & \num{0.9} & \num{2.1}\\
+Primary education (\%) & \num{75.5} & \num{43.0} & \num{77.6} & \num{41.7} & \num{2.1} & \num{2.8}\\
+Secondary+ education (\%) & \num{12.6} & \num{33.2} & \num{9.8} & \num{29.7} & \num{-2.9} & \num{2.0}\\
+\textbf{Health measures:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
+Never smoker (\%) & \num{61.9} & \num{48.6} & \num{59.5} & \num{49.1} & \num{-2.4} & \num{3.2}\\
+Former smoker (\%) & \num{11.9} & \num{32.4} & \num{15.1} & \num{35.8} & \num{3.2} & \num{2.2}\\
+Current smoker (\%) & \num{26.2} & \num{44.0} & \num{25.4} & \num{43.6} & \num{-0.8} & \num{2.8}\\
+Never drinker (\%) & \num{55.9} & \num{49.7} & \num{52.5} & \num{50.0} & \num{-3.4} & \num{3.2}\\
+Occasional drinker (\%) & \num{26.0} & \num{43.9} & \num{25.5} & \num{43.6} & \num{-0.5} & \num{2.8}\\
+Daily drinker (\%) & \num{17.8} & \num{38.3} & \num{21.9} & \num{41.4} & \num{4.1} & \num{2.6}\\
+Systolic (mmHg) & \num{131.4} & \num{16.8} & \num{128.7} & \num{14.3} & \num{-2.7} & \num{1.0}\\
+Diastolic (mmHg) & \num{82.7} & \num{11.6} & \num{82.1} & \num{11.3} & \num{-0.6} & \num{0.8}\\
+Waist circumference (cm) & \num{87.7} & \num{10.5} & \num{85.4} & \num{9.5} & \num{-2.3} & \num{0.8}\\
+Body mass index (kg/m2) & \num{26.3} & \num{3.7} & \num{25.8} & \num{3.6} & \num{-0.5} & \num{0.3}\\
+Frequency of coughing (\%) & \num{18.7} & \num{39.0} & \num{19.7} & \num{39.8} & \num{1.0} & \num{2.6}\\
+Frequency of wheezing (\%) & \num{6.2} & \num{24.2} & \num{6.6} & \num{24.8} & \num{0.3} & \num{1.6}\\
+Shortness of breath (\%) & \num{29.2} & \num{45.5} & \num{34.3} & \num{47.5} & \num{5.1} & \num{3.0}\\
+Chest trouble (\%) & \num{11.6} & \num{32.0} & \num{14.1} & \num{34.9} & \num{2.5} & \num{2.2}\\
+Any respiratory problem (\%) & \num{50.6} & \num{50.0} & \num{54.3} & \num{49.9} & \num{3.7} & \num{3.2}\\
+\textbf{Environmental measures:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
+Temperature (°C) & \num{13.8} & \num{3.6} & \num{13.5} & \num{3.3} & \num{-0.3} & \num{0.2}\\
+Personal PM2.5 (ug/m3) & \num{150.2} & \num{300.3} & \num{103.8} & \num{107.3} & \num{-46.3} & \num{19.1}\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\caption{\label{tbl-table1}Descriptive statistics for selected
-demographic, health, and environmental measures at baseline, by
-treatment status}
-
-\centering{
-
-}
-
-\end{table}%
-
-Table~\ref{tbl-table1} shows the distribution of selected demographic,
-health, and environmental characteristics from the baseline survey,
-prior to any villages being enrolled in the CBHP policy. We provide
-means and standard deviations separately for villages that eventually
-enter into the policy with those that never do so. As noted above,
-although our DiD identification strategy allows for fixed differences
-between treated and untreated villages, overall the differences at
-baseline are generally small and the groups seem well balanced on most
-measures, with the exception of personal exposure to
-PM\textsubscript{2.5}, which was lower in villages that were eventually
-treated.
+Table 4 shows the distribution of selected demographic, health, and
+environmental characteristics from the baseline survey, prior to any
+villages being enrolled in the CBHP policy. We provide means and
+standard deviations separately for villages that eventually enter into
+the policy with those that never do so. As noted above, although our DiD
+identification strategy allows for fixed differences between treated and
+untreated villages, overall the differences at baseline are generally
+small and the groups seem well balanced on most measures, with the
+exception of personal exposure to PM\textsubscript{2.5}, which was lower
+in villages that were eventually treated.
 
 \subsection{Summary of PM and BC
 measurements}\label{summary-of-pm-and-bc-measurements}

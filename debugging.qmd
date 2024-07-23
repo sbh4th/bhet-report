@@ -10,35 +10,35 @@ format:
 #  html:
 #    keep-md: true
 #    
-  docx: 
-    toc: true
-    number-sections: true
-    number-depth: 3
+#  docx: 
+#    toc: true
+#    number-sections: true
+#    number-depth: 3
 
-# pdf:
-#   toc: true
-#   keep-tex: true
-#   number-sections: true
-#   number-depth: 3
-#   include-in-header:
-#      - text: |
-#         \usepackage{wrapfig}
-#         \usepackage{colortbl}
-#          \makeatletter
-#          \renewenvironment{table}%
-#            {\renewcommand\familydefault\sfdefault
-#             \@float{table}}
-#            {\end@float}
-#          \renewenvironment{figure}%
-#            {\renewcommand\familydefault\sfdefault
-#             \@float{figure}}
-#            {\end@float}
-#          \makeatother
-#         \usepackage{changes}
-#   geometry: 
-#      - right=1in
-#      - left=1in
-#   fig-pos: H
+ pdf:
+   toc: true
+   keep-tex: true
+   number-sections: true
+   number-depth: 3
+   include-in-header:
+      - text: |
+         \usepackage{wrapfig}
+         \usepackage{colortbl}
+          \makeatletter
+          \renewenvironment{table}%
+            {\renewcommand\familydefault\sfdefault
+             \@float{table}}
+            {\end@float}
+          \renewenvironment{figure}%
+            {\renewcommand\familydefault\sfdefault
+             \@float{figure}}
+            {\end@float}
+          \makeatother
+         \usepackage{changes}
+   geometry: 
+      - right=1in
+      - left=1in
+   fig-pos: H
 bibliography: hei-report.bib
 csl: environmental-health-perspectives.csl
 ---
@@ -72,9 +72,7 @@ China is deploying an ambitious policy to transition up to 70% of households in 
 
 First table:
 
-```{r tab-pm-sample, echo=F, message=F, warning=F, eval=T}
-#| label: tbl-pm-sample
-#| tbl-cap: "Household recruitment for overall and indoor air quality measurements."
+```{r, echo=F, message=F, warning=F, eval=T}
 
 # options(knitr.kable.NA = "\\")
 tx <- tibble(
@@ -101,7 +99,8 @@ tx2 <- tx %>% pivot_wider(names_from = g,
 colnames(tx2) <- c("Sample", "Wave 1", "Wave 2", "Wave 4", 
     "Wave 1", "Wave 2", "Wave 3", "Wave 4")
 
-tt(tx2) |>
+tt(tx2,
+   caption = "Test caption") |>
   format_tt(replace = "-") |>
   group_tt(
    j = list(

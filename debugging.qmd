@@ -52,6 +52,7 @@ library(readxl)
 library(marginaleffects)
 library(tinytable)
 library(tidymodels)
+library(flextable)
 ```
 
 ```{r master_data, include = FALSE, cache = TRUE, echo=FALSE}
@@ -69,6 +70,8 @@ bhet_master_data %>%
 # Introduction
 
 China is deploying an ambitious policy to transition up to 70% of households in northern China from residential coal heating to electric or gas “clean” space heating, including a large-scale roll out across rural and peri-urban Beijing, referred to in this document as China’s Coal Ban and Heat Pump (CBHP) subsidy policy. To meet this target the Beijing municipal government announced a two-pronged program that designates coal-restricted areas and simultaneously offers subsidies to night-time electricity rates and for the purchase and installation of electric-powered heat pumps to replace traditional coal-heating stoves. The policy was piloted in 2015 and, starting in 2016, was rolled out on a village-by-village basis. The variability in when the policy was applied to each village allowed us to treat the roll-out of the program as a quasi-randomized intervention and evaluate its impacts on air quality and health. Household air pollution is a well-established risk factor for adverse health outcomes over the entire lifecourse, yet there is no consensus that clean energy interventions can improve these health outcomes based on evidence from randomized trials [@lai2024]. Households may be differentially affected by the CBHP due to factors such as financial constraints and user preferences, and there is uncertainty about whether and how the policy may affect indoor and outdoor air pollution, as well as heating behaviors and health outcomes.
+
+## Subheading
 
 First table:
 
@@ -99,14 +102,14 @@ tx2 <- tx %>% pivot_wider(names_from = g,
 colnames(tx2) <- c("Sample", "Wave 1", "Wave 2", "Wave 4", 
     "Wave 1", "Wave 2", "Wave 3", "Wave 4")
 
-tt(tx2,
-   caption = "Test caption") |>
-  format_tt(replace = "-") |>
-  group_tt(
-   j = list(
-      " " = 1,
-      "Overall" = 2:4,
-      "Indoor" = 5:8))
+# tt(tx2,
+#    caption = "Test caption") |>
+#   format_tt(replace = "-") |>
+#   group_tt(
+#    j = list(
+#       " " = 1,
+#       "Overall" = 2:4,
+#       "Indoor" = 5:8))
 
 
 
@@ -116,112 +119,28 @@ tt(tx2,
 #  kable_styling() %>%
 #  add_header_above(c(" " = 1, 
 #    "Overall" = 3, "Indoor" = 4))
+
+tx3 <- tx %>% pivot_wider(names_from = g,
+  values_from = c(s1, s2, s4), 
+  names_vary = "slowest") %>%
+  mutate(s3_2 = c(0,0,246,246)) %>%
+  relocate(p,s1_1,s2_1,s4_1,s1_2,s2_2,s3_2,s4_2) %>%
+  flextable()
+
+tx3 <- add_header(tx3, p = "", s1_1 = "Wave 1",
+    s2_1 = "Wave 2", s4_1 = "Wave 4",
+    s1_2= "Wave 1", s2_2 = "Wave 2", 
+    s3_2 = "Wave 3", s4_2 = "Wave 4", 
+    top = FALSE ) 
+
+tx3 <- tx3 %>% delete_rows(i=1,part="header")
+
+tx4 <- add_header_row(t)
+
+tx3
 ```
 
 Problem table:
-
-```{r make_table1, message=FALSE, cache=TRUE, echo=FALSE, eval=F}
-# select variables for table
-d <- read_csv(here("data-clean", 
-  "BHET_master_data_05Mar2024.csv"),
-  col_select = c("hh_id", "ptc_id", "gender_health",
-    "ban_status_no", "age_health", "education_health",
-    "smoking", "freq_drink", "sys_brachial", 
-    "dia_brachial", "waist_circ", "height",
-    "weight", "temp", "wave", "PM25conc_exposureugm3",
-    "freq_cough", "freq_phlegm", "freq_wheezing", 
-    "freq_breath", "freq_no_chest"))
-dt <- d %>%
-  # restrict to baseline
-  filter(wave==1) %>%
-  # select variables for inclusion
-  # select(ban_status_no, age_health, )
-  mutate(ever_trt = ifelse(ban_status_no==0, 1 ,0),
-    et = recode_factor(ever_trt, `0` = "Never treated", 
-      `1` = "Ever treated"),
-    `Age (years)` = age_health,
-    `Female ()` = ifelse(gender_health==2, 100, 0),
-    `No education ()` = ifelse(education_health==4, 100, 0),
-    `Primary education ()` = ifelse(education_health==1, 100, 0),
-    `Secondary+ education ()` = ifelse(
-      education_health %in% c(2,3), 100, 0),
-    `Never smoker ()` = ifelse(smoking==3, 100, 0),
-    `Former smoker ()` = ifelse(smoking==2, 100, 0),
-    `Current smoker ()` = ifelse(smoking==1, 100, 0),
-    `Never drinker ()` = ifelse(freq_drink==1, 100, 0),
-    `Occasional drinker ()` = ifelse(freq_drink %in% 
-      c(2:8), 100, 0),
-    `Daily drinker ()` = ifelse(freq_drink==9, 100, 0),
-    `Systolic (mmHg)` = sys_brachial,
-    `Diastolic (mmHg)` = dia_brachial,
-    `Waist circumference (cm)` = waist_circ,
-    `Body mass index (kg/m2)` = weight / (height/100)^2,
-    `Frequency of coughing ()` = 
-      if_else(freq_cough < 3, 100, 0),
-    `Frequency of phlegm ()` = 
-      if_else(freq_phlegm < 3, 100, 0),
-    `Frequency of wheezing ()` = 
-      if_else(freq_wheezing < 3, 100, 0),
-    `Shortness of breath ()` = 
-      if_else(freq_breath < 3, 100, 0),
-    `Chest trouble ()` = 
-      if_else(freq_no_chest < 3, 100, 0),
-    `Any respiratory problem ()` = if_else(
-      freq_cough < 3 |
-      freq_phlegm < 3 |
-      freq_wheezing < 3 |
-      freq_breath < 3 |
-      freq_no_chest < 3, 100, 0),
-    `Temperature (°C)` = temp,
-    `Personal PM2.5 (ug/m3)` = PM25conc_exposureugm3) %>%
-  select(et, `Age (years)`, `Female ()`, `No education ()`, 
-    `Primary education ()`, `Secondary+ education ()`, 
-    `Never smoker ()`, `Former smoker ()`, 
-    `Current smoker ()`, `Never drinker ()`, 
-    `Occasional drinker ()`, `Daily drinker ()`,
-    `Systolic (mmHg)`, `Diastolic (mmHg)`,
-    `Waist circumference (cm)`,
-    `Body mass index (kg/m2)`, 
-    `Frequency of coughing ()`,
-    `Frequency of wheezing ()`,
-    `Shortness of breath ()`,
-    `Chest trouble ()`,
-    `Any respiratory problem ()`,
-    `Temperature (°C)`,
-    `Personal PM2.5 (ug/m3)`)
-# caption <- '\\label{#tbl-table1}Descriptive statistics, by treatment status'
-reference <- ''
-# add empty rows for categorical variables
-# grouped categories
-nrn <- c("Demographics:", "Health measures:",
-  "Environmental measures:")
-# empty data frame
-nr <- data.frame(matrix(ncol = 7, nrow = length(nrn)))
-nr$X1 <- nrn
-nr[is.na(nr)] <- " "
-# placement in table
-attr(nr, 'position') <- c(1, 7, 23)
-options(modelsummary_format_numeric_latex = "plain")
-```
-
-```{r table1, cache=TRUE, message=FALSE, echo=FALSE, eval=F}
-##| label: tbl-table1
-#| tbl-cap: "Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status"
-
-
-
-datasummary_balance(~et, data = dt, 
-  add_rows = nr, align = "rrrrrrr",
-  notes = reference, output = 'tinytable')
-
-#t1
-
-#tinytable::tt(t1) |>
- # format_tt(escape = TRUE)
-#%>%
- # kable_styling(font_size = 9) %>%
-  #row_spec(c(1,7,23), bold = T)
-```
 
 Read in the data for Table 2:
 ```{r data-t2, echo=F, message=F, warning=FALSE, eval=F}
@@ -327,8 +246,8 @@ process_columns <- function(ds, columns) {
 source(here("code/functions", "process-columns.R"))
 ```
 
-And then make the table (see @tbl-table2):
-```{r table2, warning=F, message=F, eval=F}
+And then make the table:
+```{r table2, echo=F, warning=F, message=F, eval=F}
 
 # Columns of interest
 columns_of_interest <- c("female", "csmoke", "asmoke", 

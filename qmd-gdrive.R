@@ -24,6 +24,7 @@ trackdown::update_file(
   file = "hei-report.qmd", 
   gpath="HEI-Final-Report", 
   gfile = "hei-report",
+  path_output = 
   hide_code = TRUE)
 
 

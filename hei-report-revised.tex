@@ -126,14 +126,6 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
-\usepackage{tabularray}
-\usepackage[normalem]{ulem}
-\usepackage{graphicx}
-\UseTblrLibrary{booktabs}
-\UseTblrLibrary{siunitx}
-\NewTableCommand{\tinytableDefineColor}[3]{\definecolor{#1}{#2}{#3}}
-\newcommand{\tinytableTabularrayUnderline}[1]{\underline{#1}}
-\newcommand{\tinytableTabularrayStrikeout}[1]{\sout{#1}}
 \usepackage{wrapfig}
 \usepackage{colortbl}
  \makeatletter
@@ -208,7 +200,7 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-07-17}
+\date{2024-07-24}
 
 \begin{document}
 \maketitle
@@ -1493,87 +1485,69 @@ households, and participants across the four waves of data collection.
 We conducted measurements in over 1000 participants in each of the three
 measurement waves that included individual-level measurements. In total,
 we enrolled 1432 participants into the study, of which 630 (43\%)
-participated in all three waves, 443 (31\%) participated in two waves
-and 365 (25\%) participated in a single wave. We did not observe any
-notable differences in demographic characteristics or health behaviors
-between participants who contributed to a different number of waves
-(\textbf{?@tbl-each-campaign}) or between participants in each of the
-three waves with individual measurements (\textbf{?@tbl-diff-campaign}).
-
-\begin{table}
-\centering
-\begin{talltblr}[         %% tabularray outer open
-caption={Demographic and health characteristics of participants in each study wave.},
-note{a}={Chi-square test for categorical and F-test for continuous characteristics.},
-]                     %% tabularray outer close
-{                     %% tabularray inner open
-width={1\linewidth},
-colspec={X[0.380952380952381]X[0.142857142857143]X[0.142857142857143]X[0.142857142857143]X[0.0952380952380952]X[0.0952380952380952]},
-cell{1}{1}={c=1,}{halign=c,},
-cell{1}{2}={c=3,}{halign=c,},
-cell{1}{5}={c=2,}{halign=c,},
-column{1}={halign=l,},
-column{2}={halign=l,},
-column{3}={halign=l,},
-column{4}={halign=l,},
-}                     %% tabularray inner close
-\toprule
-& Estimates &  &  & Test for Equality &  \\ \cmidrule[lr]{1-1}\cmidrule[lr]{2-4}\cmidrule[lr]{5-6}
-Characteristic & Wave 1 (2018-19) N=1003 & Wave 2 (2019-20) N=1110 & Wave 4 (2021-22) N=1028 & Statistic\textsuperscript{a} & p-value \\ \midrule %% TinyTableHeader
-Female, n (\%) & 580 (57.8) & 653 (58.8) & 612 (59.5) & 0.616 & 0.735 \\
-Current smoker, n (\%) & 257 (25.6) & 295 (26.6) & 265 (25.8) & 0.292 & 0.864 \\
-Any smoke exposure, n (\%) & 795 (79.3) & 898 (80.9) & 857 (83.4) & 5.616 & 0.060 \\
-Age in years, Mean (SD) & 26.1 (3.7) & 25.7 (3.5) & 26.1 (4.0) & 3.273 & 0.076 \\
-BMI (kg/m2), Mean (SD) & 60.1 (9.3) & 61.1 (9.1) & 63.3 (9.0) & 31.980 & 0.000 \\
-Waist circumference (cm), Mean (SD) & 86.8 (10.2) & 87.4 (9.4) & 91.4 (10.7) & 54.035 & 0.000 \\
-\bottomrule
-\end{talltblr}
-\end{table}
-
-\begin{table}
-\centering
-\begin{talltblr}[         %% tabularray outer open
-caption={Demographic and health characteristics of participants who contributed to different numbers of study waves.},
-note{a}={Chi-square test for categorical and F-test for continuous characteristics.},
-]                     %% tabularray outer close
-{                     %% tabularray inner open
-width={1\linewidth},
-colspec={X[0.380952380952381]X[0.142857142857143]X[0.142857142857143]X[0.142857142857143]X[0.0952380952380952]X[0.0952380952380952]},
-cell{1}{1}={c=1,}{halign=c,},
-cell{1}{2}={c=3,}{halign=c,},
-cell{1}{5}={c=2,}{halign=c,},
-column{1}={halign=l,},
-column{2}={halign=l,},
-column{3}={halign=l,},
-column{4}={halign=l,},
-}                     %% tabularray inner close
-\toprule
-& Estimates &  &  & Test for Equality &  \\ \cmidrule[lr]{1-1}\cmidrule[lr]{2-4}\cmidrule[lr]{5-6}
-Characteristic & 1 Wave N=365 & 2 Waves N=886 & 3 Waves N=1890 & Statistic\textsuperscript{a} & p-value \\ \midrule %% TinyTableHeader
-Female, n (\%) & 211 (57.8) & 519 (58.6) & 1115 (59.0) & 0.191 & 0.909 \\
-Current smoker, n (\%) & 110 (30.1) & 230 (26.0) & 477 (25.2) & 3.817 & 0.148 \\
-Any smoke exposure, n (\%) & 293 (80.2) & 732 (82.6) & 1526 (80.7) & 1.607 & 0.448 \\
-Age in years, Mean (SD) & 26.3 (3.6) & 25.8 (3.6) & 26.0 (3.8) & 1.659 & 0.381 \\
-BMI (kg/m2), Mean (SD) & 59.8 (9.3) & 61.0 (8.9) & 62.1 (9.3) & 11.718 & 0.000 \\
-Waist circumference (cm), Mean (SD) & 90.3 (9.8) & 88.3 (10.6) & 88.7 (10.3) & 3.989 & 0.037 \\
-\bottomrule
-\end{talltblr}
-\end{table}
+individual contributed 1890 observations across all three waves, 443
+(31\%) individuals contributed 886 observations across two waves and 365
+(25\%) individuals participated in a single wave. Table 3 shows selected
+demographic characteristics and health behaviors between participants
+who contributed to each study wave. We find no differences in gender or
+smoking across waves, but overall BMI and waist circumference increased
+over time. Table 4 shows similar measures according to whether or
+between participants in each of the three waves with individual
+measurements (\textbf{?@tbl-diff-campaign}).
 
 \subsection{Description of study
 sample}\label{description-of-study-sample}
 
-\textbf{?@tbl-table1} shows the distribution of selected demographic,
-health, and environmental characteristics from the baseline survey,
-prior to any villages being enrolled in the CBHP policy. We provide
-means and standard deviations separately for villages that eventually
-enter into the policy with those that never do so. As noted above,
-although our DiD identification strategy allows for fixed differences
-between treated and untreated villages, overall the differences at
-baseline are generally small and the groups seem well balanced on most
-measures, with the exception of personal exposure to
-PM\textsubscript{2.5}, which was lower in villages that were eventually
-treated.
+\begin{table}
+\centering\centering
+\caption{\label{tab:table1}Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status.}
+\centering
+\fontsize{9}{11}\selectfont
+\begin{tabular}[t]{rrrrrrr}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Never treated (N=603)} & \multicolumn{2}{c}{Ever treated (N=400)} & \multicolumn{2}{c}{ } \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
+  & Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error\\
+\midrule
+\textbf{Demographics:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
+Age (years) & 59.9 & 9.4 & 60.4 & 9.2 & 0.5 & 0.6\\
+Female (\%) & 59.5 & 49.1 & 59.1 & 49.2 & -0.4 & 3.2\\
+No education (\%) & 11.5 & 31.9 & 12.3 & 32.9 & 0.9 & 2.1\\
+Primary education (\%) & 75.5 & 43.0 & 77.6 & 41.7 & 2.1 & 2.8\\
+Secondary+ education (\%) & 12.6 & 33.2 & 9.8 & 29.7 & -2.9 & 2.0\\
+\textbf{Health measures:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
+Never smoker (\%) & 61.9 & 48.6 & 59.5 & 49.1 & -2.4 & 3.2\\
+Former smoker (\%) & 11.9 & 32.4 & 15.1 & 35.8 & 3.2 & 2.2\\
+Current smoker (\%) & 26.2 & 44.0 & 25.4 & 43.6 & -0.8 & 2.8\\
+Never drinker (\%) & 55.9 & 49.7 & 52.5 & 50.0 & -3.4 & 3.2\\
+Occasional drinker (\%) & 26.0 & 43.9 & 25.5 & 43.6 & -0.5 & 2.8\\
+Daily drinker (\%) & 17.8 & 38.3 & 21.9 & 41.4 & 4.1 & 2.6\\
+Systolic (mmHg) & 131.4 & 16.8 & 128.7 & 14.3 & -2.7 & 1.0\\
+Diastolic (mmHg) & 82.7 & 11.6 & 82.1 & 11.3 & -0.6 & 0.8\\
+Waist circumference (cm) & 87.7 & 10.5 & 85.4 & 9.5 & -2.3 & 0.8\\
+Body mass index (kg/m2) & 26.3 & 3.7 & 25.8 & 3.6 & -0.5 & 0.3\\
+Frequency of coughing (\%) & 18.7 & 39.0 & 19.7 & 39.8 & 1.0 & 2.6\\
+Frequency of wheezing (\%) & 6.2 & 24.2 & 6.6 & 24.8 & 0.3 & 1.6\\
+Shortness of breath (\%) & 29.2 & 45.5 & 34.3 & 47.5 & 5.1 & 3.0\\
+Chest trouble (\%) & 11.6 & 32.0 & 14.1 & 34.9 & 2.5 & 2.2\\
+Any respiratory problem (\%) & 50.6 & 50.0 & 54.3 & 49.9 & 3.7 & 3.2\\
+\textbf{Environmental measures:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
+Temperature (°C) & 13.8 & 3.6 & 13.5 & 3.3 & -0.3 & 0.2\\
+Personal PM2.5 (ug/m3) & 150.2 & 300.3 & 103.8 & 107.3 & -46.3 & 19.1\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table 4 shows the distribution of selected demographic, health, and
+environmental characteristics from the baseline survey, prior to any
+villages being enrolled in the CBHP policy. We provide means and
+standard deviations separately for villages that eventually enter into
+the policy with those that never do so. As noted above, although our DiD
+identification strategy allows for fixed differences between treated and
+untreated villages, overall the differences at baseline are generally
+small and the groups seem well balanced on most measures, with the
+exception of personal exposure to PM\textsubscript{2.5}, which was lower
+in villages that were eventually treated.
 
 \subsection{Summary of PM and BC
 measurements}\label{summary-of-pm-and-bc-measurements}

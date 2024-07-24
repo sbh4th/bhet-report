@@ -12,6 +12,8 @@ date: today
 
 format: 
  pdf:
+   # pdf-engine: latexmk
+   # pdf-engine-opt: -xelatex
    toc: true
    keep-tex: true
    number-sections: true
@@ -379,7 +381,7 @@ ds <- read_csv(here("data-clean",
 #| echo: FALSE
 #| # tbl-cap: Example table.
 #| # label: tbl-table2
-#| eval: TRUE
+#| eval: FALSE
   
 # Columns of interest
 columns_of_interest <- c("female", "csmoke", "asmoke", 
@@ -422,7 +424,7 @@ tt(t2,
 #| echo: FALSE
 #| # label: tbl-diff-campaign
 #| # tbl-cap: "Demographic and health characteristics of participants who contributed to different numbers of study waves."
-#| eval: TRUE
+#| eval: FALSE
 
 # revise data set to identify participants 
 # by number of waves contributed
@@ -472,7 +474,7 @@ tt(t3,
 
 ## Description of study sample
 
-```{r make_table1, message=FALSE, cache=TRUE, echo=FALSE, eval=F}
+```{r make_table1, message=FALSE, cache=TRUE, echo=FALSE, eval=T}
 # select variables for table
 d <- read_csv(here("data-clean", 
   "BHET_master_data_05Mar2024.csv"),
@@ -556,14 +558,12 @@ attr(nr, 'position') <- c(1, 7, 23)
 options(modelsummary_format_numeric_latex = "plain")
 ```
 
-```{r table1, cache=TRUE, message=FALSE, echo=FALSE, eval=F}
-#| # label: tbl-table1
-#| tbl-cap: "Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status"
-
+```{r table1, cache=TRUE, message=FALSE, echo=FALSE, eval=T}
 
 t1 <- datasummary_balance(~et, data = dt, 
   add_rows = nr, align = "rrrrrrr",
-  notes = reference, output = 'kableExtra')
+  notes = reference, output = 'kableExtra',
+  title = "Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status.")
 t1 %>%
   kable_styling(font_size = 9) %>%
   row_spec(c(1,7,23), bold = T)

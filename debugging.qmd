@@ -10,35 +10,35 @@ format:
 #  html:
 #    keep-md: true
 #    
-#  docx: 
-#    toc: true
-#    number-sections: true
-#    number-depth: 3
+  docx: 
+    toc: true
+    number-sections: true
+    number-depth: 3
 
- pdf:
-   toc: true
-   keep-tex: true
-   number-sections: true
-   number-depth: 3
-   include-in-header:
-      - text: |
-         \usepackage{wrapfig}
-         \usepackage{colortbl}
-          \makeatletter
-          \renewenvironment{table}%
-            {\renewcommand\familydefault\sfdefault
-             \@float{table}}
-            {\end@float}
-          \renewenvironment{figure}%
-            {\renewcommand\familydefault\sfdefault
-             \@float{figure}}
-            {\end@float}
-          \makeatother
-         \usepackage{changes}
-   geometry: 
-      - right=1in
-      - left=1in
-   fig-pos: H
+# pdf:
+#   toc: true
+#   keep-tex: true
+#   number-sections: true
+#   number-depth: 3
+#   include-in-header:
+#      - text: |
+#         \usepackage{wrapfig}
+#         \usepackage{colortbl}
+#          \makeatletter
+#          \renewenvironment{table}%
+#            {\renewcommand\familydefault\sfdefault
+#             \@float{table}}
+#            {\end@float}
+#          \renewenvironment{figure}%
+#            {\renewcommand\familydefault\sfdefault
+#             \@float{figure}}
+#            {\end@float}
+#          \makeatother
+#         \usepackage{changes}
+#   geometry: 
+#      - right=1in
+#      - left=1in
+#   fig-pos: H
 bibliography: hei-report.bib
 csl: environmental-health-perspectives.csl
 ---
@@ -135,9 +135,11 @@ tx3 <- add_header(tx3, p = "", s1_1 = "Wave 1",
 
 tx3 <- tx3 %>% delete_rows(i=1,part="header")
 
-tx4 <- add_header_row(t)
+tx4 <- add_header_row(tx3,
+  values = c("", "Overall", "Indoor"),
+  colwidths = c(1, 3, 4))
 
-tx3
+tx4
 ```
 
 Problem table:

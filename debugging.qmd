@@ -10,35 +10,35 @@ format:
 #  html:
 #    keep-md: true
 #    
-  docx: 
-    toc: true
-    number-sections: true
-    number-depth: 3
+#  docx: 
+#    toc: true
+#    number-sections: true
+#    number-depth: 3
 
-# pdf:
-#   toc: true
-#   keep-tex: true
-#   number-sections: true
-#   number-depth: 3
-#   include-in-header:
-#      - text: |
-#         \usepackage{wrapfig}
-#         \usepackage{colortbl}
-#          \makeatletter
-#          \renewenvironment{table}%
-#            {\renewcommand\familydefault\sfdefault
-#             \@float{table}}
-#            {\end@float}
-#          \renewenvironment{figure}%
-#            {\renewcommand\familydefault\sfdefault
-#             \@float{figure}}
-#            {\end@float}
-#          \makeatother
-#         \usepackage{changes}
-#   geometry: 
-#      - right=1in
-#      - left=1in
-#   fig-pos: H
+ pdf:
+   toc: true
+   keep-tex: true
+   number-sections: true
+   number-depth: 3
+   include-in-header:
+      - text: |
+         \usepackage{wrapfig}
+         \usepackage{colortbl}
+          \makeatletter
+          \renewenvironment{table}%
+            {\renewcommand\familydefault\sfdefault
+             \@float{table}}
+            {\end@float}
+          \renewenvironment{figure}%
+            {\renewcommand\familydefault\sfdefault
+             \@float{figure}}
+            {\end@float}
+          \makeatother
+         \usepackage{changes}
+   geometry: 
+      - right=1in
+      - left=1in
+   fig-pos: H
 bibliography: hei-report.bib
 csl: environmental-health-perspectives.csl
 ---
@@ -73,9 +73,13 @@ China is deploying an ambitious policy to transition up to 70% of households in 
 
 ## Subheading
 
-First table:
+First table (see @tbl-table1)
 
-```{r, echo=F, message=F, warning=F, eval=T}
+```{r, message=F, warning=F}
+#| echo: FALSE
+#| tbl-cap: Table caption.
+#| label: tbl-table1
+#| eval: TRUE
 
 # options(knitr.kable.NA = "\\")
 tx <- tibble(
@@ -102,14 +106,13 @@ tx2 <- tx %>% pivot_wider(names_from = g,
 colnames(tx2) <- c("Sample", "Wave 1", "Wave 2", "Wave 4", 
     "Wave 1", "Wave 2", "Wave 3", "Wave 4")
 
-# tt(tx2,
-#    caption = "Test caption") |>
-#   format_tt(replace = "-") |>
-#   group_tt(
-#    j = list(
-#       " " = 1,
-#       "Overall" = 2:4,
-#       "Indoor" = 5:8))
+tt(tx2) |>
+ format_tt(replace = "-") |>
+ group_tt(
+  j = list(
+     " " = 1,
+     "Overall" = 2:4,
+     "Indoor" = 5:8))
 
 
 
@@ -120,26 +123,26 @@ colnames(tx2) <- c("Sample", "Wave 1", "Wave 2", "Wave 4",
 #  add_header_above(c(" " = 1, 
 #    "Overall" = 3, "Indoor" = 4))
 
-tx3 <- tx %>% pivot_wider(names_from = g,
-  values_from = c(s1, s2, s4), 
-  names_vary = "slowest") %>%
-  mutate(s3_2 = c(0,0,246,246)) %>%
-  relocate(p,s1_1,s2_1,s4_1,s1_2,s2_2,s3_2,s4_2) %>%
-  flextable()
-
-tx3 <- add_header(tx3, p = "", s1_1 = "Wave 1",
-    s2_1 = "Wave 2", s4_1 = "Wave 4",
-    s1_2= "Wave 1", s2_2 = "Wave 2", 
-    s3_2 = "Wave 3", s4_2 = "Wave 4", 
-    top = FALSE ) 
-
-tx3 <- tx3 %>% delete_rows(i=1,part="header")
-
-tx4 <- add_header_row(tx3,
-  values = c("", "Overall", "Indoor"),
-  colwidths = c(1, 3, 4))
-
-tx4
+# tx3 <- tx %>% pivot_wider(names_from = g,
+#   values_from = c(s1, s2, s4), 
+#   names_vary = "slowest") %>%
+#   mutate(s3_2 = c(0,0,246,246)) %>%
+#   relocate(p,s1_1,s2_1,s4_1,s1_2,s2_2,s3_2,s4_2) %>%
+#   flextable()
+# 
+# tx3 <- add_header(tx3, p = "", s1_1 = "Wave 1",
+#     s2_1 = "Wave 2", s4_1 = "Wave 4",
+#     s1_2= "Wave 1", s2_2 = "Wave 2", 
+#     s3_2 = "Wave 3", s4_2 = "Wave 4", 
+#     top = FALSE ) 
+# 
+# tx3 <- tx3 %>% delete_rows(i=1,part="header")
+# 
+# tx4 <- add_header_row(tx3,
+#   values = c("", "Overall", "Indoor"),
+#   colwidths = c(1, 3, 4))
+# 
+# tx4
 ```
 
 Problem table:
@@ -163,127 +166,55 @@ ds <- read_csv(here("data-clean",
   mutate(across(c(female, csmoke, asmoke), as.integer))
 ```
 
-Now insert the function:
-```{r tab2-function, echo=F, results=F, eval=F}
-# Combined function to process columns
-process_column <- function(ds, column_name) {
-  column_type <- typeof(ds[[column_name]])
-  
-  if (column_type == "integer") {
-    cprops <- ds %>% filter(wave != 3) %>%
-      group_by(wave) %>%
-      summarize(
-        n = n(), 
-        prop = mean(.data[[column_name]], na.rm=TRUE),
-        np = round(n * prop, 0),
-        pr = sprintf('%.1f', prop * 100)) %>% 
-      select(wave, np, pr) %>% 
-      pivot_wider(names_from = wave, 
-                  values_from = c(np, pr), 
-                  names_vary = "slowest") %>%
-      mutate(char = column_name,
-             w1 = paste0(np_1, " (", pr_1, ")"),
-             w2 = paste0(np_2, " (", pr_2, ")"),
-             w4 = paste0(np_4, " (", pr_4, ")")) %>%
-      select(char, w1, w2, w4)
-    
-    cprop_stats <- ds %>%
-      mutate(!!sym(column_name) := as.factor(.data[[column_name]])) %>%
-      infer::chisq_test(as.formula(paste("wave ~", column_name))) %>%
-      select(-chisq_df) %>%
-      mutate(across(c('statistic', 'p_value'), 
-                    ~ sprintf('%.3f', .x)))
-    
-    ctable <- cprops %>% bind_cols(cprop_stats)
-    
-  } else if (column_type == "double") {
-    cmeans <- ds %>% filter(wave != 3) %>%
-      group_by(wave) %>%
-      summarize(
-        vmean = sprintf('%.1f', mean(.data[[column_name]], 
-          na.rm=TRUE)),
-        vsd = sprintf('%.1f', sd(.data[[column_name]], 
-          na.rm=TRUE))) %>%
-      pivot_wider(names_from = wave, 
-                  values_from = c(vmean, vsd), 
-                  names_vary = "slowest") %>%
-      mutate(char = column_name,
-             w1 = paste0(vmean_1, " (", vsd_1, ")"),
-             w2 = paste0(vmean_2, " (", vsd_2, ")"),
-             w4 = paste0(vmean_4, " (", vsd_4, ")")) %>%
-      select(char, w1, w2, w4)
-    
-    formula <- as.formula(paste(column_name, "~ wave"))
-    
-    F_hat <- ds %>% 
-      infer::observe(formula, stat = "F")
-    
-    null_dist_theory <- ds %>%
-      infer::specify(formula) %>%
-      hypothesize(null = "independence") %>%
-      assume(distribution = "F") %>%
-      get_p_value(obs_stat = F_hat, direction = "two-sided")
-    
-    cmeans_stats <- F_hat %>% 
-      bind_cols(null_dist_theory) %>%
-      rename("statistic" = stat) %>%
-      mutate(across(c('statistic', 'p_value'), 
-                    ~ sprintf('%.3f', .x)))
-    
-    ctable <- cmeans %>% bind_cols(cmeans_stats)
-  }
-  
-  return(ctable)
-}
+And then make the table (@tbl-pm-season:
 
-# Combine results for all columns
-process_columns <- function(ds, columns) {
-  result <- bind_rows(lapply(columns, function(col) 
-    process_column(ds, col)))
-  return(result)
-}
-```
 
-```{r tab2-f2, echo=F, results = F}
-source(here("code/functions", "process-columns.R"))
-```
+Another one:
+```{r, message = F, warning=F}
+#| echo: FALSE
+#| tbl-cap: Arithmetic and geometric means for air pollutant concentrations (micrograms per cubic meter) by wave.
+#| label: tbl-pm-season
+#| eval: TRUE
 
-And then make the table:
-```{r table2, echo=F, warning=F, message=F, eval=F}
+ap_season <- read_csv(here("data-clean", 
+  "ap-conc-season.csv"))
 
-# Columns of interest
-columns_of_interest <- c("female", "csmoke", "asmoke", 
-  "bmi", "age_health", "waist_circ")
+tap <- ap_season %>%
+  select(-time, -substance) %>%
+  pivot_longer(
+    cols = Mean_S1:GM_S4,
+    names_to = c("avg", ".value"),
+    names_pattern = "(.*)_S(.)") %>%
+  pivot_wider(
+    names_from = metric,
+    values_from = c(`1`, `2`, `3`, `4`)
+  ) %>%
+  select(-category)
 
-# Apply the function to the data set
-result <- process_columns(ds, columns_of_interest)
-
-t2 <- result %>%
-  mutate(char = c(
-    "Female, n (%)", 
-    "Current smoker, n (%)",
-    "Any smoke exposure, n (%)", 
-    "Age in years, Mean (SD)",
-    "BMI (kg/m2), Mean (SD)", 
-    "Waist circumference (cm), Mean (SD)")) %>%
-  rename("Characteristic" = char)
-
-colnames(t2) <- c("Characteristic", 
-  "Wave 1 (2018-19) N=1003", "Wave 2 (2019-20) N=1110",
-  "Wave 4 (2021-22) N=1028", "Statistic", "p-value")
-
-tt(t2, caption = "Example table.\\label{tbl-table2}",
-   width = c(.4, .15, .15, .15, .1, .1),
-   notes = list(a = list(i=0, j=5,
-     text = "Blah."))) |>
-  theme_tt("multipage") |>
+colnames(tap) <- c("", "", "",  
+                         "Est.", "CI", "Est.", "CI", "Est.", "CI", 
+                         "Est.", "CI")
+tt(tap, 
+  width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
+  notes = "Note: Est. = Estimate, CI = 95 percent confidence interval, GM = Geometric Mean") %>%
+  format_tt(replace = "") %>%
   group_tt(
-    j = list(
-      " " = 1,
-      "Estimates" = 2:4,
-      "Test for Equality" = 5:6)) |>
-  format_tt(escape = TRUE) |>
-  style_tt(j = 1:4, align = "llll")
+    j = list("Wave 1" = 4:5, "Wave 2" = 6:7,
+      "Wave 3" = 8:9, "Wave 4" = 10:11),
+    i = list("Personal measurements" = 1, 
+             "Indoor measurements" = 5,
+             "Outdoor measurements" = 11)) %>%
+  style_tt(i = c(1, 6, 13), align = "l", bold=T) %>%
+  style_tt(
+    i = c(2, 4, 7, 9, 11, 14, 16, 18), j = 2, 
+    rowspan = 2, alignv = "t") %>%
+  style_tt(
+    i = c(2, 9, 16), j = 1, rowspan = 4, alignv = "t") %>%
+  style_tt(
+    i = c(7, 14), j = 1, rowspan = 2, alignv = "t") %>%
+  style_tt(j=1:11, fontsize = 0.8) %>%
+  style_tt(i = 0, align = "c")
+
 ```
 
-
+@tbl-pm-season shows the distribution of selected demographic, health, and environmental characteristics from the baseline survey, prior to any villages being enrolled in the CBHP policy.

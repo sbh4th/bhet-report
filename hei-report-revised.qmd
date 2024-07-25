@@ -172,9 +172,11 @@ knitr::include_graphics(here("images",
 
 In the second, third, and fourth data collection waves we randomly selected six households from the 20 recruited in each village to measure indoor concentrations of PM~2.5~. In w4, we aimed to monitor indoor PM~2.5~ in the same households where we measured indoor PM~2.5~ in w2. If a household dropped out of the project or declined indoor PM~2.5~ monitoring, we then recruited another household already enrolled in this study to measure indoor PM~2.5~. In total, indoor measurements were conducted in 300 households in both w2 and w4 and 246 households in w3 (@tbl-pm-sample).
 
-```{r tab-pm-sample, echo=F, message=F, warning=F}
+```{r, message=F, warning=F}
+#| echo: FALSE
 #| label: tbl-pm-sample
 #| tbl-cap: "Household recruitment for overall and indoor air quality measurements."
+#| eval: TRUE
 
 options(knitr.kable.NA = "\\")
 tx <- tibble(
@@ -194,13 +196,24 @@ tx2 <- tx %>% pivot_wider(names_from = g,
   mutate(s3_2 = c(0,0,246,246)) %>%
   relocate(p,s1_1,s2_1,s4_1,s1_2,s2_2,s3_2,s4_2)
 
-kable(tx2, 
-  col.names = c("Sample", "Wave 1", "Wave 2", "Wave 4", 
-    "Wave 1", "Wave 2", "Wave 3", "Wave 4")) %>%
-  # "latex", booktabs = T) %>%
-  kable_styling() %>%
-  add_header_above(c(" " = 1, 
-                     "Overall" = 3, "Indoor" = 4))
+colnames(tx2) <- c("Sample", "Wave 1", "Wave 2", "Wave 4", 
+    "Wave 1", "Wave 2", "Wave 3", "Wave 4")
+
+tt(tx2) |>
+ format_tt(replace = "-") |>
+ group_tt(
+  j = list(
+     " " = 1,
+     "Overall" = 2:4,
+     "Indoor" = 5:8))
+
+# kable(tx2, 
+#   col.names = c("Sample", "Wave 1", "Wave 2", "Wave 4", 
+#     "Wave 1", "Wave 2", "Wave 3", "Wave 4")) %>%
+#   # "latex", booktabs = T) %>%
+#   kable_styling() %>%
+#   add_header_above(c(" " = 1, 
+#                      "Overall" = 3, "Indoor" = 4))
 ```
 
 Time-resolved indoor PM~2.5~ was measured using the same commercially available sensor (PMS7003 Plantower, Zefan, Inc.) used for outdoor sensor-based PM~2.5~ and recorded every 1 min. The sensor was placed on a table in a room where participants reported spending most of their time when awake. Indoor PM~2.5~ sensors were deployed between late November and mid January within field waves, depending on the village and household visit schedule. Measurement continued from the time of deployment until sensors were recollected from homes in late April to capture the full heating season.
@@ -355,7 +368,7 @@ We retained all 50 study villages during this four-year longitudinal assessment 
 
 By w2, w3, and w4 there were a cumulative total of 10, 17, and 20 (out of 50 total) study villages treated by the CBHP policy, respectively. All of the treated villages selected to install electric-powered air-source heat pumps with 200 RMB per meter square (up to 24,000 RMB) in subsidies and were also provided with 80% night-time electricity subsidies up to 10,000kWh per heating season. To limit coal use, villages enrolled in the policy were no longer allowed to place orders for subsidized coal with the district-level governments that manage the procurement and distribution of coal for residential heating in Beijing. In addition, village committee leaders in treated villages reported feeling accountable to the Environmental Protection Department for limited coal-related air pollution, and were motivated to encourage residents to not burn coal. Some villages were equipped with government air pollution monitors and the Environmental Protection Department conducted village inspections and issued warnings about coal burning. Households burning coal in treated villages were at risk of losing their electricity subsidy. 
 
-Appendix @fig-flowchart shows the participation of villages, households, and participants across the four waves of data collection. We conducted measurements in over 1000 participants in each of the three measurement waves that included individual-level measurements. In total, we enrolled 1432 participants into the study, of which 630 (43%) individual contributed 1890 observations across all three waves, 443 (31%) individuals contributed 886 observations across two waves and 365 (25%) individuals participated in a single wave. Table 3 shows selected demographic characteristics and health behaviors between participants who contributed to each study wave. We find no differences in gender or smoking across waves, but overall BMI and waist circumference increased over time. Table 4 shows similar measures according to whether or between participants in each of the three waves with individual measurements (@tbl-diff-campaign). 
+Appendix @fig-flowchart shows the participation of villages, households, and participants across the four waves of data collection. We conducted measurements in over 1000 participants in each of the three measurement waves that included individual-level measurements. In total, we enrolled 1432 participants into the study, of which 630 (43%) individual contributed 1890 observations across all three waves, 443 (31%) individuals contributed 886 observations across two waves and 365 (25%) individuals participated in a single wave. @tbl-each-campaign shows selected demographic characteristics and health behaviors between participants who contributed to each study wave. We find no differences in gender or smoking across waves, but overall BMI and waist circumference increased over time. @tbl-diff-campaign shows similar measures according to whether or between participants in each of the three waves with individual measurements. 
 
 ```{r, echo=F, message=F, warning=F}
 # read in the data
@@ -379,9 +392,9 @@ ds <- read_csv(here("data-clean",
 
 ```{r, warning=F, message=F}
 #| echo: FALSE
-#| # tbl-cap: Example table.
-#| # label: tbl-table2
-#| eval: FALSE
+#| tbl-cap: Demographic and health characteristics of participants in each study wave.
+#| label: tbl-each-campaign
+#| eval: TRUE
   
 # Columns of interest
 columns_of_interest <- c("female", "csmoke", "asmoke", 
@@ -405,11 +418,9 @@ colnames(t2) <- c("Characteristic",
   "Wave 4 (2021-22) N=1028", "Statistic", "p-value")
 
 tt(t2,
-   caption = "Demographic and health characteristics of participants in each study wave.",
    width = c(.4, .15, .15, .15, .1, .1),
    notes = list(a = list(i=0, j=5,
      text = "Chi-square test for categorical and F-test for continuous characteristics."))) |>
-  # theme_tt("multipage") |>
   group_tt(
     j = list(
       " " = 1,
@@ -422,9 +433,9 @@ tt(t2,
 
 ```{r, warning=F, message=F}
 #| echo: FALSE
-#| # label: tbl-diff-campaign
-#| # tbl-cap: "Demographic and health characteristics of participants who contributed to different numbers of study waves."
-#| eval: FALSE
+#| tbl-cap: "Demographic and health characteristics of participants who contributed to different numbers of study waves."
+#| label: tbl-diff-campaign
+#| eval: TRUE
 
 # revise data set to identify participants 
 # by number of waves contributed
@@ -458,11 +469,9 @@ colnames(t3) <- c("Characteristic",
   "3 Waves N=1890", "Statistic", "p-value")
 
 tt(t3,
-   caption = "Demographic and health characteristics of participants who contributed to different numbers of study waves.",
    width = c(.4, .15, .15, .15, .1, .1),
    notes = list(a = list(i=0, j=5,
      text = "Chi-square test for categorical and F-test for continuous characteristics."))) |>
-  # theme_tt("multipage") |>
   group_tt(
     j = list(
       " " = 1,
@@ -558,18 +567,22 @@ attr(nr, 'position') <- c(1, 7, 23)
 options(modelsummary_format_numeric_latex = "plain")
 ```
 
-```{r table1, cache=TRUE, message=FALSE, echo=FALSE, eval=T}
+```{r, message=FALSE, warning=F}
+#| echo: FALSE
+#| tbl-cap: Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status.
+#| label: tbl-desc
+#| eval: TRUE
+
 
 t1 <- datasummary_balance(~et, data = dt, 
   add_rows = nr, align = "rrrrrrr",
-  notes = reference, output = 'kableExtra',
-  title = "Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status.")
-t1 %>%
-  kable_styling(font_size = 9) %>%
-  row_spec(c(1,7,23), bold = T)
+  notes = reference) %>%
+  style_tt(j = 1:7, fontsize = 0.75) %>%
+  style_tt(i = c(1,7,23), bold=TRUE)
+t1
 ```
 
-Table 4 shows the distribution of selected demographic, health, and environmental characteristics from the baseline survey, prior to any villages being enrolled in the CBHP policy. We provide means and standard deviations separately for villages that eventually enter into the policy with those that never do so. As noted above, although our DiD identification strategy allows for fixed differences between treated and untreated villages, overall the differences at baseline are generally small and the groups seem well balanced on most measures, with the exception of personal exposure to PM~2.5~, which was lower in villages that were eventually treated.
+@tbl-desc shows the distribution of selected demographic, health, and environmental characteristics from the baseline survey, prior to any villages being enrolled in the CBHP policy. We provide means and standard deviations separately for villages that eventually enter into the policy with those that never do so. As noted above, although our DiD identification strategy allows for fixed differences between treated and untreated villages, overall the differences at baseline are generally small and the groups seem well balanced on most measures, with the exception of personal exposure to PM~2.5~, which was lower in villages that were eventually treated.
 
 ## Summary of PM and BC measurements
 

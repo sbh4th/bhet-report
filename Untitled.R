@@ -61,54 +61,53 @@ ds %>%
   get_p_value(direction = "two-sided")
 
 
-F_hat <- ds %>% 
-    observe(age_health ~ wave, stat = "F")
-
-null_dist_theory <- ds %>%
-  specify(age_health ~ wave) %>%
-  hypothesize(null = "independence") %>%
-  assume(distribution = "F") %>%
-  get_p_value(obs_stat = F_hat, direction = "two-sided")
-
-cmeanst <- F_hat %>% 
-  bind_cols(null_dist_theory) %>%
-  rename("statistic" = stat) %>%
-  mutate(across(c('statistic', 'p_value'), 
-                ~ sprintf('%.3f', .x)))
-  
 
 
 
 
-cprops <- ds %>% filter(wave != 3) %>%
-  group_by(wave) %>%
-  summarize(n = n(), 
-    prop = round(mean(female, na.rm=T) * 100, 1),
-    np = round(n * prop/100, 0)) %>% 
-  select(-n) %>% 
-  pivot_wider(names_from = wave, 
-              values_from = c(np, prop), 
-              names_vary = "slowest") %>%
-  mutate(char = "female",
-         w1 = paste0(np_1, " (", prop_1, ")"),
-         w2 = paste0(np_2, " (", prop_2, ")"),
-         w4 = paste0(np_4, " (", prop_4, ")")) %>%
-  select(char, w1, w2, w4)
+tap <- ap_season %>%
+  select(-time, -substance) %>%
+  pivot_longer(
+    cols = Mean_S1:GM_S4,
+    names_to = c("avg", ".value"),
+    names_pattern = "(.*)_S(.)") %>%
+  pivot_wider(
+    names_from = metric,
+    values_from = c(`1`, `2`, `3`, `4`)
+  ) %>%
+  select(-category) 
+
+colnames(tap) <- c("", "", "",  
+                         "Est.", "CI", "Est.", "CI", "Est.", "CI", 
+                         "Est.", "CI")
+
+tt(tap,
+   width = c(2, 2, 1.5, 1, 2, 1, 2, 1, 2, 1, 2),
+   notes = "Note: CI = confidence interval.") %>%
+  group_tt(
+    i = list("Personal measurements" = 1, "Indoor measurements" = 5,
+             "Outdoor measurements" = 11)) %>%
+  style_tt(i = c(1, 6, 13), align = "l") %>%
+  style_tt(
+    i = c(2, 4, 7, 9, 11, 14, 16, 18), j = 2, 
+    rowspan = 2, alignv = "t") %>%
+  style_tt(
+    i = c(2, 9, 16), j = 1, rowspan = 4, alignv = "t") %>%
+  style_tt(
+    i = c(7, 14), j = 1, rowspan = 2, alignv = "t") 
+%>%
+
+%>%
+  style_tt(
+    i = c(2, 9, 16), j = 1, rowspan = 4, alignv = "t") %>%
+  style_tt(
+    i = c(7, 14), j = 1, rowspan = 2, alignv = "t") 
+%>%
+  style_tt(
+    i = c(2,4,7), j = 2, 
+      rowspan = 2, alignv = "m")
 
 
-ctests <- ds %>%
-  mutate(female = as.factor(female)) %>%
-  infer::chisq_test(wave ~ female) %>%
-  select(-chisq_df) %>%
-  mutate(across(c('statistic', 'p_value'), round, 3))
-
-cmeanst <- cprops %>% bind_cols(ctests)
-
-
-
-colnames(cmeanst) <- c("Characteristic", 
-  "Wave 1 (2018-19) N=1003", "Wave 2 (2019-20) N=1110",
-  "Wave 4 (2021-22) N=1028", "Statistic", "p-value")
 
 tt(cmeanst) |>
   # format_tt(replace = "-") |>

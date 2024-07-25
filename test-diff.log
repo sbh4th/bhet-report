@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.7.15)  24 JUL 2024 14:11
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.7.15)  25 JUL 2024 10:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -490,6 +490,125 @@ Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \rotheadsize=\dimen256
 \c@nlinenum=\count322
 \TeXr@lab=\toks33
+) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/tabularray/tabularray.sty
+Package: tabularray 2024-02-16 v2024A Typeset tabulars and arrays with LaTeX3
+\l__tblr_a_int=\count323
+\l__tblr_c_int=\count324
+\l__tblr_r_int=\count325
+\l__tblr_d_dim=\dimen257
+\l__tblr_h_dim=\dimen258
+\l__tblr_o_dim=\dimen259
+\l__tblr_p_dim=\dimen260
+\l__tblr_q_dim=\dimen261
+\l__tblr_r_dim=\dimen262
+\l__tblr_s_dim=\dimen263
+\l__tblr_t_dim=\dimen264
+\l__tblr_v_dim=\dimen265
+\l__tblr_w_dim=\dimen266
+\l__tblr_a_box=\box77
+\l__tblr_b_box=\box78
+\l__tblr_c_box=\box79
+\l__tblr_d_box=\box80
+\g__tblr_table_count_int=\count326
+\c@colnum=\count327
+\c@rowcount=\count328
+\c@colcount=\count329
+\abovesep=\dimen267
+\belowsep=\dimen268
+\leftsep=\dimen269
+\rightsep=\dimen270
+\g_tblr_level_int=\count330
+\g__tblr_data_row_key_count_int=\count331
+\g__tblr_data_column_key_count_int=\count332
+\g__tblr_data_cell_key_count_int=\count333
+\g__tblr_array_int=\count334
+\l__tblr_key_count_int=\count335
+\l__tblr_key_quotient_int=\count336
+\l__tblr_key_quotient_two_int=\count337
+\l__tblr_key_remainder_int=\count338
+\g__tblr_data_str_value_count_int=\count339
+\rulewidth=\dimen271
+\l__tblr_strut_dp_dim=\dimen272
+\l__tblr_strut_ht_dim=\dimen273
+\g__tblr_cell_wd_dim=\dimen274
+\g__tblr_cell_ht_dim=\dimen275
+\g__tblr_cell_head_dim=\dimen276
+\g__tblr_cell_foot_dim=\dimen277
+\l__column_target_dim=\dimen278
+\l__tblr_caption_box=\box81
+\l__tblr_caption_left_box=\box82
+\l__tblr_row_head_box=\box83
+\l__tblr_row_foot_box=\box84
+\l__tblr_row_head_foot_dim=\dimen279
+\tablewidth=\dimen280
+\l__tblr_table_firsthead_box=\box85
+\l__tblr_table_middlehead_box=\box86
+\l__tblr_table_lasthead_box=\box87
+\l__tblr_table_firstfoot_box=\box88
+\l__tblr_table_middlefoot_box=\box89
+\l__tblr_table_lastfoot_box=\box90
+\l__tblr_remain_height_dim=\dimen281
+\l__tblr_long_from_int=\count340
+\l__tblr_long_to_int=\count341
+\l__tblr_curr_i_int=\count342
+\l__tblr_prev_i_int=\count343
+\l__tblr_table_page_int=\count344
+\l__tblr_table_head_box=\box91
+\l__tblr_table_foot_box=\box92
+\l__tblr_table_head_foot_dim=\dimen282
+\l__tblr_table_head_body_foot_dim=\dimen283
+\l__tblr_table_box=\box93
+\l__tblr_table_hlines_box=\box94
+\l__tblr_hline_box=\box95
+\l__tblr_row_box=\box96
+\l__tblr_col_o_wd_dim=\dimen284
+\l__tblr_col_b_wd_dim=\dimen285
+\l__tblr_hline_leftskip_dim=\dimen286
+\l__tblr_hline_rightskip_dim=\dimen287
+\l__tblr_row_ht_dim=\dimen288
+\l__tblr_row_dp_dim=\dimen289
+\l__tblr_row_abovesep_dim=\dimen290
+\l__tblr_row_belowsep_dim=\dimen291
+\l__tblr_row_vlines_box=\box97
+\l__tblr_vline_box=\box98
+\l__tblr_cell_box=\box99
+\l__row_upper_dim=\dimen292
+\l__row_lower_dim=\dimen293
+\l__row_vpace_dim=\dimen294
+\l__tblr_vline_aboveskip_dim=\dimen295
+\l__tblr_vline_belowskip_dim=\dimen296
+\l__tblr_cell_wd_dim=\dimen297
+\l__tblr_cell_ht_dim=\dimen298
+\l__tblr_diag_box=\box100
+) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/siunitx/siunitx.sty
+Package: siunitx 2024-06-24 v3.3.19 A comprehensive (SI) units package
+\l__siunitx_number_uncert_offset_int=\count345
+\l__siunitx_number_exponent_fixed_int=\count346
+\l__siunitx_number_min_decimal_int=\count347
+\l__siunitx_number_min_integer_int=\count348
+\l__siunitx_number_round_precision_int=\count349
+\l__siunitx_number_lower_threshold_int=\count350
+\l__siunitx_number_upper_threshold_int=\count351
+\l__siunitx_number_group_first_int=\count352
+\l__siunitx_number_group_size_int=\count353
+\l__siunitx_number_group_minimum_int=\count354
+\l__siunitx_angle_tmp_dim=\dimen299
+\l__siunitx_angle_marker_box=\box101
+\l__siunitx_angle_unit_box=\box102
+\l__siunitx_compound_count_int=\count355
+\l__siunitx_table_tmp_box=\box103
+\l__siunitx_table_tmp_dim=\dimen300
+\l__siunitx_table_column_width_dim=\dimen301
+\l__siunitx_table_integer_box=\box104
+\l__siunitx_table_decimal_box=\box105
+\l__siunitx_table_uncert_box=\box106
+\l__siunitx_table_before_box=\box107
+\l__siunitx_table_after_box=\box108
+\l__siunitx_table_before_dim=\dimen302
+\l__siunitx_table_carry_dim=\dimen303
+\l__siunitx_unit_tmp_int=\count356
+\l__siunitx_unit_position_int=\count357
+\l__siunitx_unit_total_int=\count358
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/changes/changes.sty
 Package: changes 2021/07/15 v4.2.1 changes package
 
@@ -500,11 +619,11 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 \XKV@toks=\toks34
 \XKV@tempa@toks=\toks35
 )
-\XKV@depth=\count323
+\XKV@depth=\count359
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/xstring/xstring.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/xstring/xstring.tex
-\xs_counta=\count324
-\xs_countb=\count325
+\xs_counta=\count360
+\xs_countb=\count361
 )
 Package: xstring 2023/08/22 v1.86 String manipulations (CT)
 )
@@ -517,10 +636,10 @@ Package: todonotes 2024/01/05
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
 \pgfutil@everybye=\toks36
-\pgfutil@tempdima=\dimen257
-\pgfutil@tempdimb=\dimen258
+\pgfutil@tempdima=\dimen304
+\pgfutil@tempdimb=\dimen305
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box77
+\pgfutil@abb=\box109
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
 ))
@@ -533,26 +652,26 @@ Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
 \pgfkeys@tmptoks=\toks39
 ))
-\pgf@x=\dimen259
-\pgf@y=\dimen260
-\pgf@xa=\dimen261
-\pgf@ya=\dimen262
-\pgf@xb=\dimen263
-\pgf@yb=\dimen264
-\pgf@xc=\dimen265
-\pgf@yc=\dimen266
-\pgf@xd=\dimen267
-\pgf@yd=\dimen268
+\pgf@x=\dimen306
+\pgf@y=\dimen307
+\pgf@xa=\dimen308
+\pgf@ya=\dimen309
+\pgf@xb=\dimen310
+\pgf@yb=\dimen311
+\pgf@xc=\dimen312
+\pgf@yc=\dimen313
+\pgf@xd=\dimen314
+\pgf@yd=\dimen315
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count326
-\c@pgf@countb=\count327
-\c@pgf@countc=\count328
-\c@pgf@countd=\count329
+\c@pgf@counta=\count362
+\c@pgf@countb=\count363
+\c@pgf@countc=\count364
+\c@pgf@countd=\count365
 \t@pgf@toka=\toks40
 \t@pgf@tokb=\toks41
 \t@pgf@tokc=\toks42
-\pgf@sys@id@count=\count330
+\pgf@sys@id@count=\count366
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
@@ -564,62 +683,62 @@ File: pgfsys-dvipdfmx.def 2023-01-15 v3.1.10 (3.1.10)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 )
-\pgfsys@objnum=\count331
+\pgfsys@objnum=\count367
 ))) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count332
-\pgfsyssoftpath@bigbuffer@items=\count333
+\pgfsyssoftpath@smallbuffer@items=\count368
+\pgfsyssoftpath@bigbuffer@items=\count369
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen269
-\pgfmath@count=\count334
-\pgfmath@box=\box78
+\pgfmath@dimen=\dimen316
+\pgfmath@count=\count370
+\pgfmath@box=\box110
 \pgfmath@toks=\toks43
 \pgfmath@stack@operand=\toks44
 \pgfmath@stack@operation=\toks45
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count335
+\c@pgfmathroundto@lastzeros=\count371
 )) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@picminx=\dimen270
-\pgf@picmaxx=\dimen271
-\pgf@picminy=\dimen272
-\pgf@picmaxy=\dimen273
-\pgf@pathminx=\dimen274
-\pgf@pathmaxx=\dimen275
-\pgf@pathminy=\dimen276
-\pgf@pathmaxy=\dimen277
-\pgf@xx=\dimen278
-\pgf@xy=\dimen279
-\pgf@yx=\dimen280
-\pgf@yy=\dimen281
-\pgf@zx=\dimen282
-\pgf@zy=\dimen283
+\pgf@picminx=\dimen317
+\pgf@picmaxx=\dimen318
+\pgf@picminy=\dimen319
+\pgf@picmaxy=\dimen320
+\pgf@pathminx=\dimen321
+\pgf@pathmaxx=\dimen322
+\pgf@pathminy=\dimen323
+\pgf@pathmaxy=\dimen324
+\pgf@xx=\dimen325
+\pgf@xy=\dimen326
+\pgf@yx=\dimen327
+\pgf@yy=\dimen328
+\pgf@zx=\dimen329
+\pgf@zy=\dimen330
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@path@lastx=\dimen284
-\pgf@path@lasty=\dimen285
+\pgf@path@lastx=\dimen331
+\pgf@path@lasty=\dimen332
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@shorten@end@additional=\dimen286
-\pgf@shorten@start@additional=\dimen287
+\pgf@shorten@end@additional=\dimen333
+\pgf@shorten@start@additional=\dimen334
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfpic=\box79
-\pgf@hbox=\box80
-\pgf@layerbox@main=\box81
-\pgf@picture@serial@count=\count336
+\pgfpic=\box111
+\pgf@hbox=\box112
+\pgf@layerbox@main=\box113
+\pgf@picture@serial@count=\count372
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgflinewidth=\dimen288
+\pgflinewidth=\dimen335
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@pt@x=\dimen289
-\pgf@pt@y=\dimen290
-\pgf@pt@temp=\dimen291
+\pgf@pt@x=\dimen336
+\pgf@pt@y=\dimen337
+\pgf@pt@temp=\dimen338
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
@@ -628,17 +747,17 @@ File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowsep=\dimen292
+\pgfarrowsep=\dimen339
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@max=\dimen293
-\pgf@sys@shading@range@num=\count337
-\pgf@shadingcount=\count338
+\pgf@max=\dimen340
+\pgf@sys@shading@range@num=\count373
+\pgf@shadingcount=\count374
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfexternal@startupbox=\box82
+\pgfexternal@startupbox=\box114
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
@@ -649,66 +768,66 @@ File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodeparttextbox=\box83
+\pgfnodeparttextbox=\box115
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
-\pgf@nodesepstart=\dimen294
-\pgf@nodesepend=\dimen295
+\pgf@nodesepstart=\dimen341
+\pgf@nodesepend=\dimen342
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 )) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen296
-\pgffor@skip=\dimen297
+\pgffor@iter=\dimen343
+\pgffor@skip=\dimen344
 \pgffor@stack=\toks46
 \pgffor@toks=\toks47
 )) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count339
-\pgfplotmarksize=\dimen298
+\pgf@plot@mark@count=\count375
+\pgfplotmarksize=\dimen345
 )
-\tikz@lastx=\dimen299
-\tikz@lasty=\dimen300
-\tikz@lastxsaved=\dimen301
-\tikz@lastysaved=\dimen302
-\tikz@lastmovetox=\dimen303
-\tikz@lastmovetoy=\dimen304
-\tikzleveldistance=\dimen305
-\tikzsiblingdistance=\dimen306
-\tikz@figbox=\box84
-\tikz@figbox@bg=\box85
-\tikz@tempbox=\box86
-\tikz@tempbox@bg=\box87
-\tikztreelevel=\count340
-\tikznumberofchildren=\count341
-\tikznumberofcurrentchild=\count342
-\tikz@fig@count=\count343
+\tikz@lastx=\dimen346
+\tikz@lasty=\dimen347
+\tikz@lastxsaved=\dimen348
+\tikz@lastysaved=\dimen349
+\tikz@lastmovetox=\dimen350
+\tikz@lastmovetoy=\dimen351
+\tikzleveldistance=\dimen352
+\tikzsiblingdistance=\dimen353
+\tikz@figbox=\box116
+\tikz@figbox@bg=\box117
+\tikz@tempbox=\box118
+\tikz@tempbox@bg=\box119
+\tikztreelevel=\count376
+\tikznumberofchildren=\count377
+\tikznumberofcurrentchild=\count378
+\tikz@fig@count=\count379
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count344
-\pgfmatrixcurrentcolumn=\count345
-\pgf@matrix@numberofcolumns=\count346
+\pgfmatrixcurrentrow=\count380
+\pgfmatrixcurrentcolumn=\count381
+\pgf@matrix@numberofcolumns=\count382
 )
-\tikz@expandcount=\count347
+\tikz@expandcount=\count383
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
-\c@@todonotes@numberoftodonotes=\count348
+\c@@todonotes@numberoftodonotes=\count384
 )
-\c@Changes@AuthorCount=\count349
-\c@Changes@Author=\count350
-\c@Changes@addedCount=\count351
-\c@Changes@deletedCount=\count352
-\c@Changes@replacedCount=\count353
-\c@Changes@highlightCount=\count354
-\c@Changes@commentCount=\count355
-\c@authorcommentcount=\count356
+\c@Changes@AuthorCount=\count385
+\c@Changes@Author=\count386
+\c@Changes@addedCount=\count387
+\c@Changes@deletedCount=\count388
+\c@Changes@replacedCount=\count389
+\c@Changes@highlightCount=\count390
+\c@Changes@commentCount=\count391
+\c@authorcommentcount=\count392
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/truncate/truncate.sty
 Package: truncate 2001/08/20  ver 3.6
 \@Trunc@RestHyph=\toks48
@@ -719,39 +838,39 @@ Package: truncate 2001/08/20  ver 3.6
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen307
-\captionmargin=\dimen308
-\caption@leftmargin=\dimen309
-\caption@rightmargin=\dimen310
-\caption@width=\dimen311
-\caption@indent=\dimen312
-\caption@parindent=\dimen313
-\caption@hangindent=\dimen314
+\caption@tempdima=\dimen354
+\captionmargin=\dimen355
+\caption@leftmargin=\dimen356
+\caption@rightmargin=\dimen357
+\caption@width=\dimen358
+\caption@indent=\dimen359
+\caption@parindent=\dimen360
+\caption@hangindent=\dimen361
 Package caption Info: KOMA-Script document class detected.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/caption/caption-koma.sto
 File: caption-koma.sto 2023/09/08 v2.0e Adaption of the caption package to the KOMA-Script document classes (AR)
 ))
-\c@caption@flags=\count357
-\c@continuedfloat=\count358
+\c@caption@flags=\count393
+\c@continuedfloat=\count394
 Package caption Info: float package is loaded.
 Package caption Info: longtable package is loaded.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/caption/ltcaption.sty
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: KOMA-Script scrextend package detected.
-\caption@addmargin@hsize=\dimen315
-\caption@addmargin@linewidth=\dimen316
+\caption@addmargin@hsize=\dimen362
+\caption@addmargin@linewidth=\dimen363
 Package caption Info: threeparttable package is loaded.
 Package caption Info: wrapfig package is loaded.
 )
 \@float@every@codelisting=\toks49
-\c@codelisting=\count359
+\c@codelisting=\count395
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
 Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count360
+\c@subfigure=\count396
 Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count361
+\c@subtable=\count397
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -783,19 +902,19 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count362
+\c@section@level=\count398
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
-\@linkdim=\dimen317
-\Hy@linkcounter=\count363
-\Hy@pagecounter=\count364
+\@linkdim=\dimen364
+\Hy@linkcounter=\count399
+\Hy@pagecounter=\count400
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2024-07-10 v7.01j Hyperref: PDFDocEncoding definition (HO)
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count365
+\Hy@SavedSpaceFactor=\count401
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2024-07-10 v7.01j Hyperref: PDF Unicode definition (HO)
 )
@@ -807,21 +926,21 @@ Package hyperref Info: Plain pages OFF on input line 4172.
 Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
-\c@Hy@tempcnt=\count366
+\c@Hy@tempcnt=\count402
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip19
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4763.
-\XeTeXLinkMargin=\dimen318
+\XeTeXLinkMargin=\dimen365
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count367
-\Field@Width=\dimen319
-\Fld@charsize=\dimen320
+\Fld@menulength=\count403
+\Field@Width=\dimen366
+\Fld@charsize=\dimen367
 Package hyperref Info: Hyper figures OFF on input line 6042.
 Package hyperref Info: Link nesting OFF on input line 6047.
 Package hyperref Info: Hyper index ON on input line 6050.
@@ -833,18 +952,18 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count368
-\c@Item=\count369
-\c@Hfootnote=\count370
+\Hy@abspage=\count404
+\c@Item=\count405
+\c@Hfootnote=\count406
 )
 Package hyperref Info: Driver (autodetected): hxetex.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hxetex.def
 File: hxetex.def 2024-07-10 v7.01j Hyperref driver for XeTeX
-\pdfm@box=\box88
-\c@Hy@AnnotLevel=\count371
-\HyField@AnnotCount=\count372
-\Fld@listcount=\count373
-\c@bookmark@seq@number=\count374
+\pdfm@box=\box120
+\c@Hy@AnnotLevel=\count407
+\HyField@AnnotCount=\count408
+\Fld@listcount=\count409
+\c@bookmark@seq@number=\count410
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty
@@ -858,45 +977,45 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 \Hy@SectionHShift=\skip87
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/bookmark/bkm-dvipdfm.def
 File: bkm-dvipdfm.def 2023-12-10 v1.31 bookmark driver for dvipdfm (HO)
-\BKM@id=\count375
+\BKM@id=\count411
 ))
-Package hyperref Info: Option `colorlinks' set `true' on input line 263.
+Package hyperref Info: Option `colorlinks' set `true' on input line 272.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/oberdiek/settobox.sty
 Package: settobox 2016/05/16 v1.5 Assign box dimensions to length registers (HO)
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 )
-\DIFdelgraphicsbox=\box89
+\DIFdelgraphicsbox=\box121
 \DIFdelgraphicswidth=\skip88
 \DIFdelgraphicsheight=\skip89
-LaTeX Info: Redefining \DIFaddbegin on input line 321.
-LaTeX Info: Redefining \DIFaddend on input line 322.
-LaTeX Info: Redefining \DIFdelbegin on input line 323.
-LaTeX Info: Redefining \DIFdelend on input line 324.
-LaTeX Info: Redefining \DIFaddbeginFL on input line 329.
-LaTeX Info: Redefining \DIFaddendFL on input line 330.
-LaTeX Info: Redefining \DIFdelbeginFL on input line 331.
-LaTeX Info: Redefining \DIFdelendFL on input line 332.
+LaTeX Info: Redefining \DIFaddbegin on input line 330.
+LaTeX Info: Redefining \DIFaddend on input line 331.
+LaTeX Info: Redefining \DIFdelbegin on input line 332.
+LaTeX Info: Redefining \DIFdelend on input line 333.
+LaTeX Info: Redefining \DIFaddbeginFL on input line 338.
+LaTeX Info: Redefining \DIFaddendFL on input line 339.
+LaTeX Info: Redefining \DIFdelbeginFL on input line 340.
+LaTeX Info: Redefining \DIFdelendFL on input line 341.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count376
-\lst@gtempboxa=\box90
+\lst@mode=\count412
+\lst@gtempboxa=\box122
 \lst@token=\toks50
-\lst@length=\count377
-\lst@currlwidth=\dimen321
-\lst@column=\count378
-\lst@pos=\count379
-\lst@lostspace=\dimen322
-\lst@width=\dimen323
-\lst@newlines=\count380
-\lst@lineno=\count381
-\lst@maxwidth=\dimen324
+\lst@length=\count413
+\lst@currlwidth=\dimen368
+\lst@column=\count414
+\lst@pos=\count415
+\lst@lostspace=\dimen369
+\lst@width=\dimen370
+\lst@newlines=\count416
+\lst@lineno=\count417
+\lst@maxwidth=\dimen371
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/listings/lstpatch.sty
 File: lstpatch.sty 2024/05/25 1.10b (Carsten Heinz)
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/05/25 1.10b (Carsten Heinz)
-\c@lstnumber=\count382
-\lst@skipnumbers=\count383
-\lst@framebox=\box91
+\c@lstnumber=\count418
+\lst@skipnumbers=\count419
+\lst@framebox=\box123
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2024/05/25 1.10b listings configuration
 ))
@@ -904,49 +1023,49 @@ Package: listings 2024/05/25 1.10b (Carsten Heinz)
  (./test-diff.aux)
 \openout1 = `test-diff.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 351.
-LaTeX Font Info:    ... okay on input line 351.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 351.
-LaTeX Font Info:    ... okay on input line 351.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 351.
-LaTeX Font Info:    ... okay on input line 351.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 351.
-LaTeX Font Info:    ... okay on input line 351.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 351.
-LaTeX Font Info:    ... okay on input line 351.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 351.
-LaTeX Font Info:    ... okay on input line 351.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 351.
-LaTeX Font Info:    ... okay on input line 351.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 351.
-LaTeX Font Info:    ... okay on input line 351.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 351.
-LaTeX Font Info:    ... okay on input line 351.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 351.
-LaTeX Font Info:    ... okay on input line 351.
-Package scrbase Info: activating english \abstractname on input line 351.
-Package scrbase Info: activating english \partname on input line 351.
-Package scrbase Info: activating english \figurename on input line 351.
-Package scrbase Info: activating english \tablename on input line 351.
-Package scrbase Info: activating english \contentsname on input line 351.
-Package scrbase Info: activating english \listfigurename on input line 351.
-Package scrbase Info: activating english \listtablename on input line 351.
-Package scrbase Info: activating english \refname on input line 351.
-Package scrbase Info: activating english \indexname on input line 351.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 360.
+LaTeX Font Info:    ... okay on input line 360.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 360.
+LaTeX Font Info:    ... okay on input line 360.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 360.
+LaTeX Font Info:    ... okay on input line 360.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 360.
+LaTeX Font Info:    ... okay on input line 360.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 360.
+LaTeX Font Info:    ... okay on input line 360.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 360.
+LaTeX Font Info:    ... okay on input line 360.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 360.
+LaTeX Font Info:    ... okay on input line 360.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 360.
+LaTeX Font Info:    ... okay on input line 360.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 360.
+LaTeX Font Info:    ... okay on input line 360.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 360.
+LaTeX Font Info:    ... okay on input line 360.
+Package scrbase Info: activating english \abstractname on input line 360.
+Package scrbase Info: activating english \partname on input line 360.
+Package scrbase Info: activating english \figurename on input line 360.
+Package scrbase Info: activating english \tablename on input line 360.
+Package scrbase Info: activating english \contentsname on input line 360.
+Package scrbase Info: activating english \listfigurename on input line 360.
+Package scrbase Info: activating english \listtablename on input line 360.
+Package scrbase Info: activating english \refname on input line 360.
+Package scrbase Info: activating english \indexname on input line 360.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 351.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 360.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 351.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 360.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 351.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 360.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 351.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 360.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 351.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 360.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 351.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 360.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 351.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 360.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999967668407183.
@@ -974,7 +1093,7 @@ Package fontspec Info:
 (fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 351.
+(Font)              scaled to size 10.95pt on input line 360.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999967668407183.
@@ -1010,15 +1129,15 @@ Package fontspec Info:
 (fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 351.
+(Font)              scaled to size 10.95pt on input line 360.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 351.
+(Font)              `operators' in the math version `normal' on input line 360.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 351.
+(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 360.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 351.
+(Font)              `operators' in the math version `bold' on input line 360.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 351.
+(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 360.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999967668407183.
@@ -1084,13 +1203,13 @@ Package fontspec Info:
 (fontspec)             <->s*[1.000096766517402]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 351.
+(Font)              `symbols' in the math version `normal' on input line 360.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 351.
+(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 360.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 351.
+(Font)              `symbols' in the math version `bold' on input line 360.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 351.
+(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 360.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999967668407183.
@@ -1150,13 +1269,13 @@ Package fontspec Info:
 (fontspec)             <->s*[0.9998967671640342]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 351.
+(Font)              `largesymbols' in the math version `normal' on input line 360.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 351.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 360.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 351.
+(Font)              `largesymbols' in the math version `bold' on input line 360.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 351.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 360.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1192,64 +1311,70 @@ LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+(/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/ninecolors/ninecolors.sty
+Package: ninecolors 2022-02-13 v2022D Select colors with proper color contrast
+)
 
-Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package. on input line 351.
+Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package. on input line 360.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 351.
-\c@lstlisting=\count384
+Package hyperref Info: Link coloring ON on input line 360.
+\c@lstlisting=\count420
 Package tocbasic Info: omitting babel extension for `lol'
-(tocbasic)             because of missing \bbl@set@language on input line 351.
+(tocbasic)             because of missing \bbl@set@language on input line 360.
 \scr@dte@lstlisting@maxnumwidth=\skip90
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 353.
+(Font)              scaled to size 14.4pt on input line 362.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 353.
+(Font)              scaled to size 10.0pt on input line 362.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 353.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 353.
+(Font)              scaled to size 7.0pt on input line 362.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 362.
 (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.4013pt on input line 353.
+(Font)              scaled to size 14.4013pt on input line 362.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 353.
+(Font)              scaled to size 10.00092pt on input line 362.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 353.
+(Font)              scaled to size 7.00064pt on input line 362.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 353.
+(Font)              scaled to size 14.39845pt on input line 362.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 353.
+(Font)              scaled to size 9.99893pt on input line 362.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 353.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 353.
+(Font)              scaled to size 6.99925pt on input line 362.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 362.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 353.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 362.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./test-diff.toc
+) (./test-diff.toc)
+\tf@toc=\write4
+\openout4 = `test-diff.toc'.
+
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.665pt on input line 3.
+(Font)              scaled to size 7.665pt on input line 406.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.475pt on input line 3.
+(Font)              scaled to size 5.475pt on input line 406.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.95099pt on input line 3.
+(Font)              scaled to size 10.95099pt on input line 406.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.66568pt on input line 3.
+(Font)              scaled to size 7.66568pt on input line 406.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.4755pt on input line 3.
+(Font)              scaled to size 5.4755pt on input line 406.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.94882pt on input line 3.
+(Font)              scaled to size 10.94882pt on input line 406.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.66417pt on input line 3.
+(Font)              scaled to size 7.66417pt on input line 406.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.47441pt on input line 3.
+(Font)              scaled to size 5.47441pt on input line 406.
 
 
 [1
@@ -1257,11 +1382,7 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
 ]
 
-[2])
-\tf@toc=\write4
-\openout4 = `test-diff.toc'.
-
-
+[2]
 
 [3]
 
@@ -1270,448 +1391,345 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 [5]
 
 [6]
-
-[7]
-
-[8]
 File: images/policy-implementation-map.png Graphic file (type bmp)
 <images/policy-implementation-map.png>
 
 
-[9]
+[7]
 
-[10]
+[8]
 File: images/sensor-calibration.png Graphic file (type bmp)
 <images/sensor-calibration.png>
 
 
-[11]
+[9]
 Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
+
+
+[10]
+
+[11]
 Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
 
 
 [12]
+Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
+
 
 [13]
+Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
 
 
 [14]
-Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
-
 
 [15]
-Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
-
 
 [16]
 
 [17]
 
 [18]
+File: images/ddfig.png Graphic file (type bmp)
+<images/ddfig.png>
+
 
 [19]
 
 [20]
-File: images/ddfig.png Graphic file (type bmp)
-<images/ddfig.png>
+File: images/dag1.png Graphic file (type bmp)
+<images/dag1.png>
 
 
 [21]
 
 [22]
-File: images/dag1.png Graphic file (type bmp)
-<images/dag1.png>
-
 
 [23]
 
 [24]
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 12.0pt on input line 1867.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 8.0pt on input line 1867.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 6.0pt on input line 1867.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 12.0011pt on input line 1867.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 8.00073pt on input line 1867.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 6.00055pt on input line 1867.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 11.99872pt on input line 1867.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.99915pt on input line 1867.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.99936pt on input line 1867.
+
+
+LaTeX Warning: Reference `fig-afig-mi' on page 25 undefined on input line 1891.
+
+
 
 [25]
 
-[26]
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 1858.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 1858.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 1858.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.0011pt on input line 1858.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00073pt on input line 1858.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 1858.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 1858.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 1858.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 1858.
+LaTeX Warning: Reference `fig-flowchart' on page 26 undefined on input line 1927.
 
 
-[27]
-
-LaTeX Warning: Reference `tbl-each-campaign' on page 28 undefined on input line 1928.
+LaTeX Warning: Reference `tbl-each-campaign' on page 26 undefined on input line 1937.
 
 
-LaTeX Warning: Reference `tbl-diff-campaign' on page 28 undefined on input line 1932.
+LaTeX Warning: Reference `tbl-diff-campaign' on page 26 undefined on input line 1941.
 
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 9.0pt on input line 2076.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 2076.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 9.00082pt on input line 2076.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 2076.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.99904pt on input line 2076.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 2076.
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
 
-LaTeX Warning: Reference `tbl-table1' on page 28 undefined on input line 2111.
+! Package tabularray Error: Unexpandable command \DIFaddFL inside column type!
 
+Type <return> to continue.
+ ...                                              
+                                                  
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing number, treated as zero.
+<to be read again> 
+                   }
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+! Misplaced \noalign.
+\toprule ->\noalign 
+                    {\ifnum 0=`}\fi \@aboverulesep =\abovetopsep \global \@b...
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
 
-
-[28]
-
-[29]
-
-[30]
-
-[31]
-File: images/sanky.jpg Graphic file (type bmp)
-<images/sanky.jpg>
-
-Overfull \hbox (6.71716pt too wide) in paragraph at lines 2462--2463
- [][][] 
+Overfull \hbox (211.25824pt too wide) in paragraph at lines 1989--1989
+ |   [][][]|   [][]\TU/lmss/m/n/10.95 [[]|   [][]][]|   [][][[]|   [][]][]|   [][][[]|   [][]][]|   [][][[]|   [][]][]|   [][][[]|   [][]][]|   [][][[]|   [][]][]|   [] 
  []
 
+! Undefined control sequence.
+\@BTrule ...\doublerulesep \fi \fi \fi \@BTswitch 
+                                                  
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing number, treated as zero.
+<to be read again> 
+                   ;
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ;
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing font identifier.
+<to be read again> 
+                   \g__tblr_cell_1_intarray 
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Use of \??? doesn't match its definition.
+<argument> \???  
+                 ! LaTeX Error: Access to an entry beyond an array's bounds.
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
 
-
-[32]
-
-LaTeX Warning: Float too large for page by 113.03305pt on input line 2744.
-
-
-LaTeX Warning: Float too large for page by 202.43138pt on input line 3031.
-
-
-
-[33]
-
-[34]
-
-[35]
-Overfull \hbox (2.21501pt too wide) in alignment at lines 3226--3240
- [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (11.85884pt too wide) in paragraph at lines 1989--1989
+[]\TU/lmr/m/n/10.95 off 
  []
 
-
-Overfull \hbox (29.4211pt too wide) in alignment at lines 3409--3426
- [] [] [] [] [] [] [] [] [] 
- []
-
-
-
-[36]
-
-[37]
-
-[38]
-
-[39]
-
-[40]
-File: images/source-figure.png Graphic file (type bmp)
-<images/source-figure.png>
-File: images/source-season2.png Graphic file (type bmp)
-<images/source-season2.png>
-
-
-[41]
-
-[42]
-
-[43]
-
-[44]
-
-[45]
-
-[46]
-
-[47]
-Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
-
-
-[48]
-
-[49]
-
-[50]
-
-[51]
-
-[52]
-
-[53]
-File: images/biomarker-boxplot-log.jpg Graphic file (type bmp)
-<images/biomarker-boxplot-log.jpg>
-
-Underfull \hbox (badness 1478) in paragraph at lines 4496--4496
-[][][]|[][]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
- []
-
-
-
-[54]
-File: images/MI_BMI_density.png Graphic file (type bmp)
-<images/MI_BMI_density.png>
-File: images/MI_waist_circ_density.png Graphic file (type bmp)
-<images/MI_waist_circ_density.png>
-File: images/MI_indoorPM_density.png Graphic file (type bmp)
-<images/MI_indoorPM_density.png>
-
-
-[55]
-File: images/Participation-flowchart-Apr12.png Graphic file (type bmp)
-<images/Participation-flowchart-Apr12.png>
-
-
-[56]
-File: images/coal-plot.png Graphic file (type bmp)
-<images/coal-plot.png>
-
-Overfull \hbox (6.80858pt too wide) in paragraph at lines 4591--4592
- [][][] 
- []
-
-
-
-[57]
-
-[58]
-
-[59]
-
-[60]
-
-[61]
-
-[62]
-File: images/did-mixed-ct-wave.png Graphic file (type bmp)
-<images/did-mixed-ct-wave.png>
-
-Overfull \hbox (6.79807pt too wide) in paragraph at lines 4803--4804
- [][][] 
- []
-
-
-
-[63]
-
-[64]
-File: images/did-outdoor-w3.png Graphic file (type bmp)
-<images/did-outdoor-w3.png>
-
-
-[65]
-File: images/never_Y3.png Graphic file (type bmp)
-<images/never_Y3.png>
-File: images/never_Y4.png Graphic file (type bmp)
-<images/never_Y4.png>
-
-
-[66]
-
-[67]
-
-[68]
-
-[69]
-Overfull \hbox (23.77235pt too wide) in paragraph at lines 5021--5025
-\TU/lmr/m/n/10.95 differences estimates? Journal of Financial Economics 144:370–395; doi:[][]10.1016/j.jfineco.2022.01.004[][]. 
- []
-
-
-
-[70]
-
-[71]
-Missing character: There is no 北 (U+5317) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 京 (U+4EAC) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 大 (U+5927) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 学 (U+5B66) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 能 (U+80FD) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 源 (U+6E90) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 研 (U+7814) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 究 (U+7A76) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 院 (U+9662) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 气 (U+6C14) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 候 (U+5019) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 变 (U+53D8) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 化 (U+5316) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 与 (U+4E0E) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 能 (U+80FD) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 源 (U+6E90) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 转 (U+8F6C) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 型 (U+578B) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 项 (U+9879) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 目 (U+76EE) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 中 (U+4E2D) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 国 (U+56FD) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 散 (U+6563) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 煤 (U+7164) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 综 (U+7EFC) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 合 (U+5408) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 治 (U+6CBB) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 理 (U+7406) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 研 (U+7814) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 究 (U+7A76) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 报 (U+62A5) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 告 (U+544A) in font [lmroman10-regular]:mapping=tex-text;!
-
-
-[72]
-Underfull \hbox (badness 1496) in paragraph at lines 5257--5262
-\TU/lmr/m/n/10.95 Related Human Activity Patterns Survey (CEERHAPS). Applied Energy 136:692–703;
- []
-
-
-
-[73]
-
-[74]
-Underfull \hbox (badness 1033) in paragraph at lines 5401--5406
-\TU/lmr/m/n/10.95 particulate matter on Teflon and quartz filters. Atmospheric Environment 149:84–94;
- []
-
-
-
-[75]
-Underfull \hbox (badness 2035) in paragraph at lines 5499--5503
-\TU/lmr/m/n/10.95 elderly in the cold region of China. Indoor and Built Environment 31:2482–2498;
- []
-
-
-
-[76]
-Overfull \hbox (0.10286pt too wide) in paragraph at lines 5584--5586
-[]\TU/lmr/m/n/10.95 Pearl J. 2000. \TU/lmr/m/it/10.95 Causality: Models, reasoning, and inference\TU/lmr/m/n/10.95 . Cambridge University Press:Cambridge,
- []
-
-
-
-[77]
-
-[78]
-Underfull \hbox (badness 1314) in paragraph at lines 5718--5722
-[]\TU/lmr/m/n/10.95 Ruiz-Mercado I, Canuz E, Walker JL, Smith KR. 2013. Quantitative metrics of stove
- []
-
-
-Underfull \hbox (badness 3460) in paragraph at lines 5718--5722
-\TU/lmr/m/n/10.95 adoption using Stove Use Monitors (SUMs). Biomass and Bioenergy 57:136–148;
- []
-
-
-
-[79]
-Underfull \hbox (badness 1337) in paragraph at lines 5805--5810
-\TU/lmr/m/n/10.95 tertime longitudinal study of Chinese adults. Journal of Hypertension 40:1950–1959;
- []
-
-
-
-[80]
-Overfull \hbox (36.56076pt too wide) in paragraph at lines 5934--5938
-\TU/lmr/m/n/10.95 China Prospective (ICP) study. Wellcome Open Research 4:154; doi:[][]10.12688/wellcomeopenres.15470.2[][]. 
- []
-
-Missing character: There is no 杨 (U+6768) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 昆 (U+6606) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ： (U+FF1A) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 电 (U+7535) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 力 (U+529B) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 工 (U+5DE5) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 业 (U+4E1A) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 为 (U+4E3A) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 民 (U+6C11) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 族 (U+65CF) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 复 (U+590D) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 兴 (U+5174) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 提 (U+63D0) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 供 (U+4F9B) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 不 (U+4E0D) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 竭 (U+7AED) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 动 (U+52A8) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 力 (U+529B) in font [lmroman10-regular]:mapping=tex-text;!
-
-
-[81]
-
-[82]
-Underfull \hbox (badness 1584) in paragraph at lines 6082--6085
-|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
- []
-
-File: images/MI_BMI_density.png Graphic file (type bmp)
-<images/MI_BMI_density.png>
-File: images/MI_waist_circ_density.png Graphic file (type bmp)
-<images/MI_waist_circ_density.png>
-File: images/MI_indoorPM_density.png Graphic file (type bmp)
-<images/MI_indoorPM_density.png>
-
-
-[83]
-
-[84]
-Underfull \hbox (badness 2221) in paragraph at lines 6941--7180
-[]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   []   [][]|   []   [][]|   []   [][]|   []
- []
-
-
-
-[85]
-
-[86]
-
-[87]
-\Changes@OutFile=\write5
-\openout5 = `test-diff.soc'.
-
-\tf@loc=\write6
-\openout6 = `test-diff.loc'.
-
-
-
-[88] (./test-diff.aux)
- ***********
-LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2024-05-27>
- ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Too many }'s.
+\hbox_set:Nn ...group_begin: #2\color_group_end: }
+                                                  
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing font identifier.
+<to be read again> 
+                   \g__tblr_cell_1_intarray 
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Use of \??? doesn't match its definition.
+<argument> \???  
+                 ! LaTeX Error: Access to an entry beyond an array's bounds.
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing font identifier.
+<to be read again> 
+                   \g__tblr_cell_1_intarray 
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Use of \??? doesn't match its definition.
+<argument> \???  
+                 ! LaTeX Error: Access to an entry beyond an array's bounds.
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Use of \??? doesn't match its definition.
+<argument> \???  
+                 ! LaTeX Error: Access to an entry beyond an array's bounds.
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Use of \??? doesn't match its definition.
+<argument> \???  
+                 ! LaTeX Error: Access to an entry beyond an array's bounds.
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Use of \??? doesn't match its definition.
+<argument> \???  
+                 ! LaTeX Error: Access to an entry beyond an array's bounds.
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+
+! LaTeX Error: Access to an entry beyond an array's bounds.
+
+For immediate help type H <return>.
+ ...                                              
+                                                  
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing font identifier.
+<to be read again> 
+                   \g__tblr_column_1_intarray 
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Use of \??? doesn't match its definition.
+<argument> \???  
+                 ! LaTeX Error: Access to an entry beyond an array's bounds.
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing font identifier.
+<to be read again> 
+                   \g__tblr_column_1_intarray 
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing font identifier.
+<to be read again> 
+                   \g__tblr_column_1_intarray 
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \g__tblr_column_1_intarray 
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing font identifier.
+<to be read again> 
+                   \g__tblr_column_1_intarray 
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing font identifier.
+<to be read again> 
+                   \g__tblr_column_1_intarray 
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \g__tblr_column_1_intarray 
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing font identifier.
+<to be read again> 
+                   \g__tblr_cell_1_intarray 
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Missing font identifier.
+<to be read again> 
+                   \g__tblr_cell_1_intarray 
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+? 
+! Emergency stop.
+<to be read again> 
+                   \g__tblr_cell_1_intarray 
+l.1989 \DIFdelendFL \DIFaddbeginFL \end
+                                       {talltblr}
+End of file on the terminal!
+
+ 
 Here is how much of TeX's memory you used:
- 36535 strings out of 476239
- 727444 string characters out of 5786143
- 2019557 words of memory out of 5000000
- 58453 multiletter control sequences out of 15000+600000
- 569560 words of font info for 134 fonts, out of 8000000 for 9000
+ 41246 strings out of 476239
+ 867538 string characters out of 5786143
+ 1948557 words of memory out of 5000000
+ 63191 multiletter control sequences out of 15000+600000
+ 569352 words of font info for 115 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 118i,15n,123p,10904b,722s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-Output written on test-diff.pdf (88 pages).
+ 118i,9n,123p,10904b,1423s stack positions out of 10000i,1000n,20000p,200000b,200000s
+Output written on test-diff.pdf (25 pages).

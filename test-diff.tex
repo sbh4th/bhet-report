@@ -1,7 +1,7 @@
 % Options for packages loaded elsewhere
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL hei-report-submitted.tex   Wed Jul 24 11:45:55 2024
-%DIF ADD hei-report-revised.tex     Wed Jul 24 14:06:46 2024
+%DIF ADD hei-report-revised.tex     Thu Jul 25 10:09:20 2024
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
@@ -156,7 +156,7 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
-%DIF 119-128d129
+%DIF 119-128c129-136
 %DIF < \usepackage{siunitx}
 %DIF < 
 %DIF <   \newcolumntype{d}{S[
@@ -167,6 +167,15 @@
 %DIF <     table-align-text-post=false
 %DIF <   ]}
 %DIF <   
+%DIF -------
+\usepackage{tabularray} %DIF > 
+\usepackage[normalem]{ulem} %DIF > 
+\usepackage{graphicx} %DIF > 
+\UseTblrLibrary{booktabs} %DIF > 
+\UseTblrLibrary{siunitx} %DIF > 
+\NewTableCommand{\tinytableDefineColor}[3]{\definecolor{#1}{#2}{#3}} %DIF > 
+\newcommand{\tinytableTabularrayUnderline}[1]{\underline{#1}} %DIF > 
+\newcommand{\tinytableTabularrayStrikeout}[1]{\sout{#1}} %DIF > 
 %DIF -------
 \usepackage{wrapfig}
 \usepackage{colortbl}
@@ -180,12 +189,12 @@
     \@float{figure}}
    {\end@float}
  \makeatother
-%DIF 141a141
+%DIF 141a149
 \usepackage{changes} %DIF > 
 %DIF -------
 \KOMAoption{captions}{tableheading}
 \makeatletter
-%DIF 143-146d144
+%DIF 143-146d152
 %DIF < \makeatother
 %DIF < \makeatletter
 %DIF < \makeatother
@@ -226,13 +235,13 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \makeatother
 \makeatletter
-%DIF 182-183d179
+%DIF 182-183d187
 %DIF < \@ifpackageloaded{caption}{}{\usepackage{caption}}
 %DIF < \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 %DIF -------
 \makeatother
 \makeatletter
-%DIF 186-193c181-182
+%DIF 186-193c189-190
 %DIF < \@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
 %DIF < \makeatother
 %DIF < \makeatletter
@@ -265,7 +274,7 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{\DIFdelbegin \DIFdel{2024-04-27}\DIFdelend \DIFaddbegin \DIFadd{2024-07-24}\DIFaddend }
+\date{\DIFdelbegin \DIFdel{2024-04-27}\DIFdelend \DIFaddbegin \DIFadd{2024-07-25}\DIFaddend }
 %DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
 %DIF UNDERLINE PREAMBLE %DIF PREAMBLE
 \RequirePackage[normalem]{ulem} %DIF PREAMBLE
@@ -1932,68 +1941,55 @@ between participants in each of the three waves with individual
 measurements (\DIFdelbegin \DIFdel{Table~\ref{tbl-diff-campaign}}\DIFdelend \DIFaddbegin \textbf{\DIFadd{?@tbl-diff-campaign}}\DIFaddend ).
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{tbl-each-campaign}{}
-%DIFDELCMD < \begin{table}
 %DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
+\DIFdelend \begin{table}
+\DIFdelbeginFL %DIFDELCMD < \caption{%
 {%DIFAUXCMD
 %DIFDELCMD < \label{tbl-each-campaign}%%%
 \DIFdelFL{Demographic and health characteristics of participants in each study
 wave }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < %%%
-\DIFdelendFL \DIFaddbeginFL \subsection{\DIFaddFL{Description of study
-sample}}\label{description-of-study-sample}
-\DIFaddendFL 
-
-\DIFdelbeginFL %DIFDELCMD < \centering
-%DIFDELCMD < \begin{tabular}{l>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}}
-%DIFDELCMD < \toprule
-%DIFDELCMD < %%%
-\textbf{\DIFdelFL{Characteristic}} %DIFAUXCMD
-%DIFDELCMD < & %%%
-\textbf{\DIFdelFL{Wave 1 (2018-19) N=1003}} %DIFAUXCMD
-%DIFDELCMD < & %%%
-\textbf{\DIFdelFL{Wave 2 (2019-20) N=1110}} %DIFAUXCMD
-%DIFDELCMD < & %%%
-\textbf{\DIFdelFL{Wave 4 (2021-22) N=1028}}%DIFAUXCMD
-%DIFDELCMD < \\
-%DIFDELCMD < \midrule
-%DIFDELCMD < %%%
-\DIFdelFL{Female, n (\%) }%DIFDELCMD < & %%%
-\DIFdelFL{580 (57.8) }%DIFDELCMD < & %%%
-\DIFdelFL{653 (58.8) }%DIFDELCMD < & %%%
-\DIFdelFL{612 (59.5)}%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{Current smoker, n (\%) }%DIFDELCMD < & %%%
-\DIFdelFL{257 (25.6) }%DIFDELCMD < & %%%
-\DIFdelFL{295 (26.6) }%DIFDELCMD < & %%%
-\DIFdelFL{265 (25.8)}%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{Any smoke exposure, n (\%) }%DIFDELCMD < & %%%
-\DIFdelFL{788 (78.6) }%DIFDELCMD < & %%%
-\DIFdelFL{897 (80.8) }%DIFDELCMD < & %%%
-\DIFdelFL{843 (82)}%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{Age in years, Mean (SD) }%DIFDELCMD < & %%%
-\DIFdelFL{60.7 (9.2) }%DIFDELCMD < & %%%
-\DIFdelFL{61.4 (9.1) }%DIFDELCMD < & %%%
-\DIFdelFL{63.1 (9)}%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{BMI in kg/m\textsuperscript{2}, Mean (SD) }%DIFDELCMD < & %%%
-\DIFdelFL{26.1 (3.7) }%DIFDELCMD < & %%%
-\DIFdelFL{25.7 (3.5) }%DIFDELCMD < & %%%
-\DIFdelFL{26.1 (4)}%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{Waist circumference in cm, Mean (SD) }%DIFDELCMD < & %%%
-\DIFdelFL{86.8 (10.2) }%DIFDELCMD < & %%%
-\DIFdelFL{87.4 (9.4) }%DIFDELCMD < & %%%
-\DIFdelFL{91.4 (10.7)}%DIFDELCMD < \\
-%DIFDELCMD < \bottomrule
-%DIFDELCMD < \end{tabular}
-%DIFDELCMD < \end{table}
 %DIFDELCMD < 
 
-%DIFDELCMD < \hypertarget{tbl-diff-campaign}{}
+%DIFDELCMD < %%%
+\DIFdelendFL \centering
+\DIFdelbeginFL %DIFDELCMD < \begin{tabular}{l>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \begin{talltblr}[         %% tabularray outer open
+caption={Demographic and health characteristics of participants in each study wave.},
+note{a}={Chi-square test for categorical and F-test for continuous characteristics.},
+]                     %DIF > % tabularray outer close
+{                     %DIF > % tabularray inner open
+\DIFaddFL{width=}{\DIFaddFL{1}\linewidth}\DIFaddFL{,
+colspec=}{\DIFaddFL{X}[\DIFaddFL{0.380952380952381}]\DIFaddFL{X}[\DIFaddFL{0.142857142857143}]\DIFaddFL{X}[\DIFaddFL{0.142857142857143}]\DIFaddFL{X}[\DIFaddFL{0.142857142857143}]\DIFaddFL{X}[\DIFaddFL{0.0952380952380952}]\DIFaddFL{X}[\DIFaddFL{0.0952380952380952}]}\DIFaddFL{,
+cell}{\DIFaddFL{1}}{\DIFaddFL{1}}\DIFaddFL{=}{\DIFaddFL{c=1,}}{\DIFaddFL{halign=c,}}\DIFaddFL{,
+cell}{\DIFaddFL{1}}{\DIFaddFL{2}}\DIFaddFL{=}{\DIFaddFL{c=3,}}{\DIFaddFL{halign=c,}}\DIFaddFL{,
+cell}{\DIFaddFL{1}}{\DIFaddFL{5}}\DIFaddFL{=}{\DIFaddFL{c=2,}}{\DIFaddFL{halign=c,}}\DIFaddFL{,
+column}{\DIFaddFL{1}}\DIFaddFL{=}{\DIFaddFL{halign=l,}}\DIFaddFL{,
+column}{\DIFaddFL{2}}\DIFaddFL{=}{\DIFaddFL{halign=l,}}\DIFaddFL{,
+column}{\DIFaddFL{3}}\DIFaddFL{=}{\DIFaddFL{halign=l,}}\DIFaddFL{,
+column}{\DIFaddFL{4}}\DIFaddFL{=}{\DIFaddFL{halign=l,}}\DIFaddFL{,
+}}                     %DIF > % tabularray inner close
+\DIFaddendFL \toprule
+\DIFdelbeginFL \textbf{\DIFdelFL{Characteristic}} %DIFAUXCMD
+\DIFdelendFL & \DIFdelbeginFL \textbf{\DIFdelFL{Wave 1 (2018-19) N=1003}} %DIFAUXCMD
+\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Estimates }\DIFaddendFL &  \DIFdelbeginFL \textbf{\DIFdelFL{Wave 2 (2019-20) N=1110}} %DIFAUXCMD
+\DIFdelendFL &  \DIFdelbeginFL \textbf{\DIFdelFL{Wave 4 (2021-22) N=1028}}%DIFAUXCMD
+\DIFdelendFL \DIFaddbeginFL & \DIFaddFL{Test for Equality }&  \DIFaddendFL \\ \DIFaddbeginFL \cmidrule[lr]{1-1}\cmidrule[lr]{2-4}\cmidrule[lr]{5-6}
+\DIFaddFL{Characteristic }& \DIFaddFL{Wave 1 (2018-19) N=1003 }& \DIFaddFL{Wave 2 (2019-20) N=1110 }& \DIFaddFL{Wave 4 (2021-22) N=1028 }& \DIFaddFL{Statistic\textsuperscript{a} }& \DIFaddFL{p-value }\\ \DIFaddendFL \midrule %DIF > % TinyTableHeader
+Female, n (\%) & 580 (57.8) & 653 (58.8) & 612 (59.5) \DIFaddbeginFL & \DIFaddFL{0.616 }& \DIFaddFL{0.735 }\DIFaddendFL \\
+Current smoker, n (\%) & 257 (25.6) & 295 (26.6) & 265 (25.8) \DIFaddbeginFL & \DIFaddFL{0.292 }& \DIFaddFL{0.864 }\DIFaddendFL \\
+Any smoke exposure, n (\%) & \DIFdelbeginFL \DIFdelFL{788 (78.6}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{795 (79.3}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{897 (80.8}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{898 (80.9}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{843 (82) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{857 (83.4) }& \DIFaddFL{5.616 }& \DIFaddFL{0.060 }\DIFaddendFL \\
+Age in years, Mean (SD) & \DIFdelbeginFL \DIFdelFL{60.7 (9.2}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{26.1 (3.7}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{61.4 (9.1}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{25.7 (3.5}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{63.1 (9) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{26.1 (4.0) }& \DIFaddFL{3.273 }& \DIFaddFL{0.076 }\DIFaddendFL \\
+BMI \DIFdelbeginFL \DIFdelFL{in }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{(}\DIFaddendFL kg/\DIFdelbeginFL \DIFdelFL{m\textsuperscript{2}}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{m2)}\DIFaddendFL , Mean (SD) & \DIFdelbeginFL \DIFdelFL{26.1 (3.7}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{60.1 (9.3}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{25.7 (3.5}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{61.1 (9.1}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{26.1 (4) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{63.3 (9.0) }& \DIFaddFL{31.980 }& \DIFaddFL{0.000 }\DIFaddendFL \\
+Waist circumference \DIFdelbeginFL \DIFdelFL{in cm}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{(cm)}\DIFaddendFL , Mean (SD) & 86.8 (10.2) & 87.4 (9.4) & 91.4 (10.7) \DIFaddbeginFL & \DIFaddFL{54.035 }& \DIFaddFL{0.000 }\DIFaddendFL \\
+\bottomrule
+\DIFdelbeginFL %DIFDELCMD < \end{tabular}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \end{talltblr}
+\DIFaddendFL \end{table}
+
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-diff-campaign}{}
 %DIFDELCMD < %%%
 \DIFdelend \begin{table}
 \DIFdelbeginFL %DIFDELCMD < \caption{%
@@ -2005,62 +2001,55 @@ to different numbers of study waves. }}%DIFAUXCMD
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-\DIFdelendFL \centering\DIFdelbeginFL %DIFDELCMD < \begin{tabular}{l>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}}
-%DIFDELCMD < \toprule
+\DIFdelendFL \centering
+\DIFdelbeginFL %DIFDELCMD < \begin{tabular}{l>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}}
 %DIFDELCMD < %%%
-\textbf{\DIFdelFL{Characteristic}} %DIFAUXCMD
-%DIFDELCMD < & %%%
-\textbf{\DIFdelFL{1 Wave N=365}} %DIFAUXCMD
-%DIFDELCMD < & %%%
-\textbf{\DIFdelFL{2 Waves N=443}} %DIFAUXCMD
-%DIFDELCMD < & %%%
-\textbf{\DIFdelFL{3 Waves N=630}}%DIFAUXCMD
-%DIFDELCMD < \\
-%DIFDELCMD < \midrule
+\DIFdelendFL \DIFaddbeginFL \begin{talltblr}[         %% tabularray outer open
+caption={Demographic and health characteristics of participants who contributed to different numbers of study waves.},
+note{a}={Chi-square test for categorical and F-test for continuous characteristics.},
+]                     %DIF > % tabularray outer close
+{                     %DIF > % tabularray inner open
+\DIFaddFL{width=}{\DIFaddFL{1}\linewidth}\DIFaddFL{,
+colspec=}{\DIFaddFL{X}[\DIFaddFL{0.380952380952381}]\DIFaddFL{X}[\DIFaddFL{0.142857142857143}]\DIFaddFL{X}[\DIFaddFL{0.142857142857143}]\DIFaddFL{X}[\DIFaddFL{0.142857142857143}]\DIFaddFL{X}[\DIFaddFL{0.0952380952380952}]\DIFaddFL{X}[\DIFaddFL{0.0952380952380952}]}\DIFaddFL{,
+cell}{\DIFaddFL{1}}{\DIFaddFL{1}}\DIFaddFL{=}{\DIFaddFL{c=1,}}{\DIFaddFL{halign=c,}}\DIFaddFL{,
+cell}{\DIFaddFL{1}}{\DIFaddFL{2}}\DIFaddFL{=}{\DIFaddFL{c=3,}}{\DIFaddFL{halign=c,}}\DIFaddFL{,
+cell}{\DIFaddFL{1}}{\DIFaddFL{5}}\DIFaddFL{=}{\DIFaddFL{c=2,}}{\DIFaddFL{halign=c,}}\DIFaddFL{,
+column}{\DIFaddFL{1}}\DIFaddFL{=}{\DIFaddFL{halign=l,}}\DIFaddFL{,
+column}{\DIFaddFL{2}}\DIFaddFL{=}{\DIFaddFL{halign=l,}}\DIFaddFL{,
+column}{\DIFaddFL{3}}\DIFaddFL{=}{\DIFaddFL{halign=l,}}\DIFaddFL{,
+column}{\DIFaddFL{4}}\DIFaddFL{=}{\DIFaddFL{halign=l,}}\DIFaddFL{,
+}}                     %DIF > % tabularray inner close
+\DIFaddendFL \toprule
+\DIFdelbeginFL \textbf{\DIFdelFL{Characteristic}} %DIFAUXCMD
+\DIFdelendFL & \DIFdelbeginFL \textbf{\DIFdelFL{1 Wave N=365}} %DIFAUXCMD
+\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Estimates }\DIFaddendFL &  \DIFdelbeginFL \textbf{\DIFdelFL{2 Waves N=443}} %DIFAUXCMD
+\DIFdelendFL &  \DIFdelbeginFL \textbf{\DIFdelFL{3 Waves N=630}}%DIFAUXCMD
+\DIFdelendFL \DIFaddbeginFL & \DIFaddFL{Test for Equality }&  \DIFaddendFL \\ \DIFaddbeginFL \cmidrule[lr]{1-1}\cmidrule[lr]{2-4}\cmidrule[lr]{5-6}
+\DIFaddFL{Characteristic }& \DIFaddFL{1 Wave N=365 }& \DIFaddFL{2 Waves N=886 }& \DIFaddFL{3 Waves N=1890 }& \DIFaddFL{Statistic\textsuperscript{a} }& \DIFaddFL{p-value }\\ \DIFaddendFL \midrule %DIF > % TinyTableHeader
+Female, n (\%) & 211 (57.8) & \DIFdelbeginFL \DIFdelFL{253 (57.1}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{519 (58.6}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{370 (58.7) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{1115 (59.0) }& \DIFaddFL{0.191 }& \DIFaddFL{0.909 }\DIFaddendFL \\
+Current smoker, n (\%) & 110 (30.1) & \DIFdelbeginFL \DIFdelFL{117 (26.4}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{230 (26.0}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{161 (25.6) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{477 (25.2) }& \DIFaddFL{3.817 }& \DIFaddFL{0.148 }\DIFaddendFL \\
+Any smoke exposure, n (\%) & \DIFdelbeginFL \DIFdelFL{288 (78.9}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{293 (80.2}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{360 (81.3}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{732 (82.6}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{498 (79) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{1526 (80.7) }& \DIFaddFL{1.607 }& \DIFaddFL{0.448 }\DIFaddendFL \\
+Age in years, Mean (SD) & \DIFdelbeginFL \DIFdelFL{59.9 (9.2}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{26.3 (3.6}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{60.5 (8.8}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{25.8 (3.6}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{61.3 (9.1) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{26.0 (3.8) }& \DIFaddFL{1.659 }& \DIFaddFL{0.381 }\DIFaddendFL \\
+BMI \DIFdelbeginFL \DIFdelFL{in }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{(}\DIFaddendFL kg/\DIFdelbeginFL \DIFdelFL{m\textsuperscript{2}}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{m2)}\DIFaddendFL , Mean (SD) & \DIFdelbeginFL \DIFdelFL{26.3 (3.6}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{59.8 (9.3}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{25.8 (3.5}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{61.0 (8.9}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{26.1 (3.7) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{62.1 (9.3) }& \DIFaddFL{11.718 }& \DIFaddFL{0.000 }\DIFaddendFL \\
+Waist circumference \DIFdelbeginFL \DIFdelFL{in cm}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{(cm)}\DIFaddendFL , Mean (SD) & 90.3 (9.8) & \DIFdelbeginFL \DIFdelFL{86.5 (10}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{88.3 (10.6}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{86.9 (10.4) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{88.7 (10.3) }& \DIFaddFL{3.989 }& \DIFaddFL{0.037 }\DIFaddendFL \\
+\bottomrule
+\DIFdelbeginFL %DIFDELCMD < \end{tabular}
 %DIFDELCMD < %%%
-\DIFdelFL{Female, n (\%) }%DIFDELCMD < & %%%
-\DIFdelFL{211 (57.8) }%DIFDELCMD < & %%%
-\DIFdelFL{253 (57.1) }%DIFDELCMD < & %%%
-\DIFdelFL{370 (58.7)}%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{Current smoker, n (\%) }%DIFDELCMD < & %%%
-\DIFdelFL{110 (30.1) }%DIFDELCMD < & %%%
-\DIFdelFL{117 (26.4) }%DIFDELCMD < & %%%
-\DIFdelFL{161 (25.6)}%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{Any smoke exposure, n (\%) }%DIFDELCMD < & %%%
-\DIFdelFL{288 (78.9) }%DIFDELCMD < & %%%
-\DIFdelFL{360 (81.3) }%DIFDELCMD < & %%%
-\DIFdelFL{498 (79)}%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{Age in years, Mean (SD) }%DIFDELCMD < & %%%
-\DIFdelFL{59.9 (9.2) }%DIFDELCMD < & %%%
-\DIFdelFL{60.5 (8.8) }%DIFDELCMD < & %%%
-\DIFdelFL{61.3 (9.1)}%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{BMI in kg/m\textsuperscript{2}, Mean (SD) }%DIFDELCMD < & %%%
-\DIFdelFL{26.3 (3.6) }%DIFDELCMD < & %%%
-\DIFdelFL{25.8 (3.5) }%DIFDELCMD < & %%%
-\DIFdelFL{26.1 (3.7)}%DIFDELCMD < \\
-%DIFDELCMD < %%%
-\DIFdelFL{Waist circumference in cm, Mean (SD) }%DIFDELCMD < & %%%
-\DIFdelFL{90.3 (9.8) }%DIFDELCMD < & %%%
-\DIFdelFL{86.5 (10) }%DIFDELCMD < & %%%
-\DIFdelFL{86.9 (10.4)}%DIFDELCMD < \\
-%DIFDELCMD < \bottomrule
-%DIFDELCMD < \end{tabular}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
+\DIFdelendFL \DIFaddbeginFL \end{talltblr}
+\DIFaddendFL \end{table}
 
-%DIFDELCMD < \hypertarget{description-of-study-sample}{%
+\DIFdelbegin %DIFDELCMD < \hypertarget{description-of-study-sample}{%
 %DIFDELCMD < \subsection{Description of study
 %DIFDELCMD < sample}\label{description-of-study-sample}}
-%DIFDELCMD < 
-
-%DIFDELCMD < \hypertarget{tbl-table1}{}
-%DIFDELCMD < \begin{table}
 %DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
+\DIFdelend \DIFaddbegin \subsection{\DIFadd{Description of study
+sample}}\label{description-of-study-sample}
+\DIFaddend 
+
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-table1}{}
+%DIFDELCMD < %%%
+\DIFdelend \begin{table}
+\DIFdelbeginFL %DIFDELCMD < \caption{%
 {%DIFAUXCMD
 %DIFDELCMD < \label{tbl-table1}%%%
 \DIFdelFL{Descriptive statistics for selected demographic, health, and
@@ -2069,10 +2058,10 @@ environmental measures at baseline, by treatment status }}%DIFAUXCMD
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-\DIFdelendFL \centering
+\DIFdelendFL \centering\centering
 \DIFaddbeginFL \caption{\label{tab:table1}\DIFaddFL{Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status.}}
-\DIFaddendFL \centering
-\fontsize{9}{11}\selectfont
+\centering
+\DIFaddendFL \fontsize{9}{11}\selectfont
 \begin{tabular}[t]{rrrrrrr}
 \toprule
 \multicolumn{1}{c}{ } & \multicolumn{2}{c}{Never treated (N=603)} & \multicolumn{2}{c}{Ever treated (N=400)} & \multicolumn{2}{c}{ } \\

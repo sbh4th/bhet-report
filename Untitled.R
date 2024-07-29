@@ -61,56 +61,50 @@ ds %>%
   get_p_value(direction = "two-sided")
 
 
-# air pollution results
-ap_table <- read_rds(here("outputs", 
-  "ap-etwfe-table.rds")) 
+kable(otm, digits = 2, longtable = T,
+      col.names = c("", "ATT", "(95%CI)",
+                    "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
+      align = 'lcccccc') %>%
+  kable_styling(font_size = 10,
+                latex_options = "HOLD_position") %>%
+  add_header_above(c(" " = 3, 
+                     "Indoor PM" = 2, "Indoor Temp" = 2, "PM + Temp" = 2)) %>%
+  add_header_above(c(" " = 1, 
+                     "Adjusted Total Effect\\\\textsuperscript{a}" = 2,
+                     "CDE Mediated By:\\\\textsuperscript{b}" = 6),
+                   escape = F) %>%
+  footnote(
+    general = "\\\\small{}",
+    alphabet = c("\\\\small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", "\\\\small{Mediators were set to the mean value for untreated participants at baseline.}"), 
+    general_title = "", threeparttable = T, escape = F)
 
-# temperature results
-temp_table <- tibble(
-  category = "Point", outcome = "Mean", estimate_1 = 1.96,
-  ci_1 = "(0.96, 2.96)", estimate_2 = 1.96, 
-  ci_2 = "(0.96, 2.96)"
-)
+colnames(otm) <- c("", "ATT", "(95%CI)", "ATT", 
+  "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)")
 
-stemp_table <- read_xlsx(here("data-clean",
-  "overall_temp_table.xlsx")) %>%
-  rename(`estimate_1` = att,
-         `ci_1` = ci) %>%
-  mutate(category = rep("Seasonal", times = 6),
-    outcome = c("Mean (all)", "Mean (daytime)", 
-      "Mean (heating season)", "Mean (daytime heating season)",
-      "Min. (all)", "Min. (heating season)"),
-    estimate_2 = `estimate_1`, 
-    ci_2 = `ci_1`) %>%
-  select(-model) %>%
-  relocate(category, outcome)
-
-# join tables
-m_table <- bind_rows(ap_table, temp_table, 
-  stemp_table)
-
-colnames(m_table) <- c(" ", " ", "ATT", "(95% CI)", 
-  "ATT", "(95% CI)")
-
-tt(m_table,
+tt(otm,
    digits = 2,
-  #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
-  notes = list("Note: ATT = Average Treatment Effect on the # Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way # Fixed Effects.", a = list(i=0, j=5,
-     text = "ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted."))) %>%
+   #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
+   notes = list("Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.", a = list(i=0, j=2, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), b = list(i=0, j=c(4,6,8), text = "Mediators were set to the mean value for untreated participants at baseline."))) %>%
   group_tt(
-    j = list("DiD" = 3:4, 
-             "Adjusted DiD" = 5:6),
-    i = list("Air pollution" = 1, 
-             "Indoor temperature" = 7)) %>%
-  style_tt(i = c(1, 8), align = "l", bold=T) %>%
+    j = list("Indoor PM" = 4:5,
+             "Indoor Temp" = 6:7,
+             "PM + Temp" = 8:9)) %>%
+  group_tt(
+    j = list("Adjusted Total Effect\\\\textsuperscript{a}" = 2:3,
+             "CDE Mediated By:" = 4:9)) %>%
+  style_tt(j = 1:9, align = "lcccccccc") %>%
+  format_tt(escape = TRUE) 
+%>%
+
+  style_tt(i = c(1, 10, 18), align = "l", bold=T) %>%
   style_tt(
-    i = c(2, 4, 6), j = 1, 
+    i = c(2, 4, 6, 8), j = 1, 
     rowspan = 2, alignv = "t") %>%
   style_tt(
-    i = 10, j = 1, rowspan = 6, alignv = "t") %>%
-  style_tt(j = 1:6, align = "llcccc")
+    i = 11, j = 1, rowspan = 6, alignv = "t") %>%
+  style_tt(j = 1:6, align = "llcccc") %>%
+  format_tt(escape = TRUE) %>%
+  format_tt(j=c(3,5), sprintf = "%.2f") 
 
-  style_tt(
-    i = c(7, 14), j = 1, rowspan = 2, alignv = "t") %>%
-  style_tt(j=1:11, fontsize = 0.8) %>%
-  style_tt(i = 0, align = "c")
+
+

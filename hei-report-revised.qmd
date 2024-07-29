@@ -723,9 +723,11 @@ With respect to the other potential mediator of temperature, @tbl-did-med shows 
 
 ### Impact of the CBHP policy on health outcomes
 
-```{r tbl-did-bp, echo=F, message=F, warning=F}
+```{r, message=F, warning=F}
+#| echo: FALSE
 #| label: tbl-did-health
 #| tbl-cap: "Overall impacts of the ‘coal-to-clean energy’ policy on blood pressure, respiratory outcomes, and inflammatory markers"
+#| eval: TRUE
 
 # bp results from Talia
 bp_policy_t <- tibble(
@@ -734,12 +736,12 @@ bp_policy_t <- tibble(
   outcome = c("Brachial","Central","Brachial",
     "Central", "Brachial","Central", "Pulse pressure",
     "Systolic BP"),
-  estimate_1 = c(-0.79, -1.04, -1.29, -1.35, 0.5,
-    0.31, 0.1, 0.2),
+  estimate_1 = c(-0.79, -1.04, -1.29, -1.35, 0.50,
+    0.31, 0.10, 0.20),
   ci_1 = c("(-2.63, 1.04)", "(-2.82, 0.73)",
     "(-2.62, 0.04)", "(-2.66, 0.04)", "(-0.71, 1.70)",
     "(-0.85, 1.46)", "(-0.12, 1.40)", "(-0.20, 0.50)"),
-  estimate_2 = c(-1.4, -1.56, -1.60, -1.66, 0.21,
+  estimate_2 = c(-1.40, -1.56, -1.60, -1.66, 0.21,
     0.10, 0.00, 0.10),
   ci_2 = c("(-3.31, 0.51)", "(-3.40, 0.28)",
     "(-2.96, -0.25)", "(-2.97, -0.34)", "(-1.00, 1.41)",
@@ -764,31 +766,54 @@ inf_table <- tibble(
   ci_1 = c("(-12.2, 30.0)", "(-1.3, 56.4)", 
            "(-19.8, 31.6)", "(-8.7, 26.9)"),
   estimate_2 = c(5.9, 24.7, 3.8, 6.5),
-  ci_2 = c("(-13.8, 30.2)", "(-0.9, 54.2)", 
-           "(-19.4, 33.6)", "(-9.7, 25.5)")
+  ci_2 = c("(-13.80, 30.20)", "(-0.90, 54.20)", 
+           "(-19.40, 33.60)", "(-9.70, 25.5)")
 )
 
 # join tables
 op_table <- bind_rows(bp_policy_t, r_table, 
  feno_table, inf_table)
 
-kable(op_table,  digits = 2,
-  col.names = c(" ", " ", "ATT", "(95% CI)", 
-   "ATT", "(95% CI)"), "latex", booktabs = T,
-  longtable = T,
-  linesep = "", align = 'llcccc') %>%
-  kable_styling(full_width = F) %>%
-  collapse_rows(columns = 1:2, valign = "top") %>% 
-  pack_rows("Blood pressure (mmHg)", 1, 8) %>%
-  pack_rows("Respiratory\noutcomes", 9, 15) %>%
-  pack_rows("Inflammatory\nmarkers (%)", 16, 19) %>%
-  add_header_above(c(" " = 2, 
-    "DiD" = 2, "Adjusted DiD\\\\textsuperscript{a}" = 2),
-    escape = F) %>%
-  footnote(
-    general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, pp = percentage points, ppb = parts per billion.}",
-    alphabet = "\\\\small{Blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", 
-    general_title = "", threeparttable = T, escape = F)
+colnames(op_table) <- c(" ", " ", "ATT", "(95% CI)", 
+  "ATT", "(95% CI)")
+
+tt(op_table,
+   digits = 2,
+   #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
+   notes = list("Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects, pp = percentage points, ppb = parts per billion.", a = list(i=0, j=5, text = "ETWFE models for blood pressure models adjusted for #age, sex, waist circumference, smoking, alcohol consumption, and #use of blood pressure medication."))) %>%
+  group_tt(
+    j = list("DiD" = 3:4, 
+             "Adjusted DiD" = 5:6),
+    i = list("Blood pressure (mmHg)" = 1, 
+             "Respiratory outcomes" = 9,
+             "Inflammatory markers (%)" = 16)) %>%
+  style_tt(i = c(1, 10, 18), align = "l", bold=T) %>%
+  style_tt(
+    i = c(2, 4, 6, 8), j = 1, 
+    rowspan = 2, alignv = "t") %>%
+  style_tt(
+    i = 11, j = 1, rowspan = 6, alignv = "t") %>%
+  style_tt(j = 1:6, align = "llcccc") %>%
+  format_tt(escape = TRUE) %>%
+  format_tt(j=c(3,5), sprintf = "%.2f") 
+#
+#kable(op_table,  digits = 2,
+#  col.names = c(" ", " ", "ATT", "(95% CI)", 
+#   "ATT", "(95% CI)"), "latex", booktabs = T,
+#  longtable = T,
+#  linesep = "", align = 'llcccc') %>%
+#  kable_styling(full_width = F) %>%
+#  collapse_rows(columns = 1:2, valign = "top") %>% 
+#  pack_rows("Blood pressure (mmHg)", 1, 8) %>%
+#  pack_rows("Respiratory\noutcomes", 9, 15) %>%
+#  pack_rows("Inflammatory\nmarkers (%)", 16, 19) %>%
+#  add_header_above(c(" " = 2, 
+#    "DiD" = 2, "Adjusted DiD\\\\textsuperscript{a}" = 2),
+#    escape = F) %>%
+#  footnote(
+#    general = "\\\\small{Note: ATT = Average Treatment Effect on #the Treated, DiD = Difference-in-Differences, pp = percentage #points, ppb = parts per billion.}",
+#    alphabet = "\\\\small{Blood pressure models adjusted for age, #sex, waist circumference, smoking, alcohol consumption, and use of #blood pressure medication.}", 
+#    general_title = "", threeparttable = T, escape = F)
 ```
 
 @tbl-did-health shows the impacts of the policy on blood pressure in basic ETWFE models and models further adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Overall exposure to the CBHP policy demonstrated reductions in blood pressure of approximately 1.5 mmHg for both systolic and diastolic BP, but we found little evidence of a meaningful impact on pulse pressure or BP amplification. The effects on brachial and central blood pressures were similar. However, the average effects in @tbl-did-health conceal a fair amount of heterogeneity in treatment effects for blood pressure across treatment cohorts and time. Appendix @tbl-bp-het shows that treatment impacts were considerably stronger for the earlier compared to the later-treated cohorts. For example, the CBHP policy reduced central DBP in the year of treatment by -2.7 mmHg (95%CI: -4.6, -0.8) for the villages first treated in wave 2, but increased central DBP by 1.1 mmHg (95%CI: -0.1, 2.2) for the villages treated in wave 4 (*p*-value for heterogeneity <0.0001).   
@@ -830,22 +855,41 @@ otm <- bind_rows(ot, otmp, otmt, otmm) %>%
   pivot_wider(names_from = model, 
     values_from = c(est, ci), names_vary = "slowest")
 
-kable(otm, digits = 2, longtable = T,
-  col.names = c("", "ATT", "(95%CI)",
-  "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
-  align = 'lcccccc') %>%
-  kable_styling(font_size = 10,
-    latex_options = "HOLD_position") %>%
-  add_header_above(c(" " = 3, 
-  "Indoor PM" = 2, "Indoor Temp" = 2, "PM + Temp" = 2)) %>%
-  add_header_above(c(" " = 1, 
-    "Adjusted Total Effect\\\\textsuperscript{a}" = 2,
-    "CDE Mediated By:\\\\textsuperscript{b}" = 6),
-    escape = F) %>%
-    footnote(
-    general = "\\\\small{Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.}",
-    alphabet = c("\\\\small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", "\\\\small{Mediators were set to the mean value for untreated participants at baseline.}"), 
-    general_title = "", threeparttable = T, escape = F)
+colnames(otm) <- c("", "ATT", "(95%CI)", "ATT", 
+  "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)")
+
+tt(otm,
+   digits = 2,
+   #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
+   notes = list("Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.", a = list(i=0, j=2, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), b = list(i=0, j=c(4,6,8), text = "Mediators were set to the mean value for untreated participants at baseline."))) %>%
+  group_tt(
+    j = list("Indoor PM" = 4:5,
+             "Indoor Temp" = 6:7,
+             "PM + Temp" = 8:9)) %>%
+  group_tt(
+    j = list("Adjusted Total Effect" = 2:3,
+             "CDE Mediated By:" = 4:9)) %>%
+  style_tt(j = 1:9, align = "lcccccccc") %>%
+  style_tt(j=1:9, fontsize = 0.9) %>%
+  format_tt(escape = TRUE) %>%
+  format_tt(j=c(2,4,6,8), sprintf = "%.2f") 
+
+# kable(otm, digits = 2, longtable = T,
+#   col.names = c("", "ATT", "(95%CI)",
+#   "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
+#   align = 'lcccccc') %>%
+#   kable_styling(font_size = 10,
+#     latex_options = "HOLD_position") %>%
+#   add_header_above(c(" " = 3, 
+#   "Indoor PM" = 2, "Indoor Temp" = 2, "PM + Temp" = 2)) %>%
+#   add_header_above(c(" " = 1, 
+#     "Adjusted Total Effect\\\\textsuperscript{a}" = 2,
+#     "CDE Mediated By:\\\\textsuperscript{b}" = 6),
+#     escape = F) %>%
+#     footnote(
+#     general = "\\\\small{Note: Results combined across 30 # multiply-imputed datasets. ATT = Average Treatment Effect on the # Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood # pressure, SBP = Systolic blood pressure.}",
+#     alphabet = c("\\\\small{Adjusted for age, sex, waist # circumference, smoking, alcohol consumption, and use of blood # pressure medication.}", "\\\\small{Mediators were set to the mean # value for untreated participants at baseline.}"), 
+#     general_title = "", threeparttable = T, escape = F)
 ```
 
 @tbl-resp-med shows estimates from similar analyses for the CDE of the policy on respiratory outcomes. For respiratory outcomes we focus on mediation by personal exposure to PM~2.5~ and point temperature and therefore these estimates are derived for the subset of individuals with measures of personal exposure. Thus the total adjusted $ATT$s in @tbl-resp-med are not directly comparable with those in @tbl-did-health. We estimate the CDEs holding the values of both mediators to the average levels for never treated households at baseline. Overall we find no evidence that any of the total effects we observed for self-reported respiratory outcomes in @tbl-did-health were mediated by personal exposure to PM~2.5~ or indoor temperature. Generally the CDEs for all of the outcomes are statistically indistinguishable from the total effects estimated without controlling for mediators. 
@@ -857,23 +901,42 @@ kable(otm, digits = 2, longtable = T,
 cde_resp <- read_rds(here("outputs",
   "resp-cdes.rds"))
 
-kable(cde_resp, digits = 2,
-  col.names = c("", "ATT", "(95%CI)",
-  "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
-  align = 'lcccccc', longtable=T,
-  linesep = "") %>%
-  kable_styling(font_size = 9,
-    latex_options = "HOLD_position") %>%
-  add_header_above(c(" " = 3, 
-  "Indoor PM" = 2, "Indoor Temp" = 2, "PM + Temp" = 2)) %>%
-  add_header_above(c(" " = 1, 
-    "Adjusted Total Effect\\\\textsuperscript{a}" = 2,
-    "CDE Mediated By:\\\\textsuperscript{b}" = 6),
-    escape = F) %>%
-    footnote(
-    general = "\\\\small{Note: Estimated for the subset of individuals with measured personal exposure (n=1274). ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect.}",
-    alphabet = c("\\\\small{Adjusted for age, sex, and smoking.}", "\\\\small{Mediators were set to the mean value for untreated participants at baseline.}"), 
-    general_title = "", threeparttable = T, escape = F)
+colnames(cde_resp) <- c("", "ATT", "(95%CI)", "ATT", 
+  "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)")
+
+tt(cde_resp,
+   digits = 1,
+   #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
+   notes = list("Note: Estimated for the subset of individuals with measured personal exposure (n=1274). ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect.", a = list(i=0, j=2, text = "Adjusted for age, sex, and smoking."), b = list(i=0, j=c(4,6,8), text = "Mediators were set to the mean value for untreated participants at baseline."))) %>%
+  group_tt(
+    j = list("Indoor PM" = 4:5,
+             "Indoor Temp" = 6:7,
+             "PM + Temp" = 8:9)) %>%
+  group_tt(
+    j = list("Adjusted Total Effect" = 2:3,
+             "CDE Mediated By:" = 4:9)) %>%
+  style_tt(j = 1:9, align = "lcccccccc") %>%
+  style_tt(j=1:9, fontsize = 0.9) %>%
+  format_tt(escape = TRUE) %>%
+  format_tt(j=c(2,4,6,8), sprintf = "%.1f") 
+
+#kable(cde_resp, digits = 2,
+#  col.names = c("", "ATT", "(95%CI)",
+#  "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
+#  align = 'lcccccc', longtable=T,
+#  linesep = "") %>%
+#  kable_styling(font_size = 9,
+#    latex_options = "HOLD_position") %>%
+#  add_header_above(c(" " = 3, 
+#  "Indoor PM" = 2, "Indoor Temp" = 2, "PM + Temp" = 2)) %>%
+#  add_header_above(c(" " = 1, 
+#    "Adjusted Total Effect\\\\textsuperscript{a}" = 2,
+#    "CDE Mediated By:\\\\textsuperscript{b}" = 6),
+#    escape = F) %>%
+#    footnote(
+#    general = "\\\\small{Note: Estimated for the subset of #individuals with measured personal exposure (n=1274). ATT = #Average Treatment Effect on the Treated, CDE = Controlled Direct #Effect.}",
+#    alphabet = c("\\\\small{Adjusted for age, sex, and smoking.}", #"\\\\small{Mediators were set to the mean value for untreated #participants at baseline.}"), 
+#    general_title = "", threeparttable = T, escape = F)
 ```
 
 ## Aim 2: Source contributions

@@ -1998,74 +1998,91 @@ minimum temperatures, which increased by 3.8°C (95\%CI: 2.3, 5.4).
 \subsubsection{Impact of the CBHP policy on health
 outcomes}\label{impact-of-the-cbhp-policy-on-health-outcomes}
 
-\begin{ThreePartTable}
-\begin{TableNotes}
-\item \small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, pp = percentage points, ppb = parts per billion.}
-\item[a] \small{Blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}
-\end{TableNotes}
-
-\begin{longtable}{llcccc}
+\begin{table}
 
 \caption{\label{tbl-did-health}Overall impacts of the `coal-to-clean
 energy' policy on blood pressure, respiratory outcomes, and inflammatory
 markers}
 
-\tabularnewline
+\centering{
 
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects, pp = percentage points, ppb = parts per billion.},
+note{a}={ETWFE models for blood pressure models adjusted for \#age, sex, waist circumference, smoking, alcohol consumption, and \#use of blood pressure medication.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+cell{3}{1}={c=6}{},cell{12}{1}={c=6}{},cell{20}{1}={c=6}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+cell{10}{1}={preto={\hspace{1em}}},
+cell{11}{1}={preto={\hspace{1em}}},
+cell{13}{1}={preto={\hspace{1em}}},
+cell{14}{1}={preto={\hspace{1em}}},
+cell{15}{1}={preto={\hspace{1em}}},
+cell{16}{1}={preto={\hspace{1em}}},
+cell{17}{1}={preto={\hspace{1em}}},
+cell{18}{1}={preto={\hspace{1em}}},
+cell{19}{1}={preto={\hspace{1em}}},
+cell{21}{1}={preto={\hspace{1em}}},
+cell{22}{1}={preto={\hspace{1em}}},
+cell{23}{1}={preto={\hspace{1em}}},
+cell{24}{1}={preto={\hspace{1em}}},
+cell{25}{1}={preto={\hspace{1em}}},
+row{3}={halign=l,cmd=\bfseries,},
+row{12}={halign=l,cmd=\bfseries,},
+row{20}={halign=l,cmd=\bfseries,},
+cell{4}{1}={r=2,}{valign=h,},
+cell{6}{1}={r=2,}{valign=h,},
+cell{8}{1}={r=2,}{valign=h,},
+cell{10}{1}={r=2,}{valign=h,},
+cell{13}{1}={r=6,}{valign=h,},
+column{1}={halign=l,},
+column{2}={halign=l,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+}                     %% tabularray inner close
 \toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{DiD} & \multicolumn{2}{c}{Adjusted DiD\textsuperscript{a}} \\
-\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
-  &   & ATT & (95\% CI) & ATT & (95\% CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Blood pressure (mmHg)}}\\
-\hspace{1em} & Brachial & -0.79 & (-2.63, 1.04) & -1.40 & (-3.31, 0.51)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Systolic BP} & Central & -1.04 & (-2.82, 0.73) & -1.56 & (-3.40, 0.28)\\
-\cmidrule{1-6}\pagebreak[0]
-\hspace{1em} & Brachial & -1.29 & (-2.62, 0.04) & -1.60 & (-2.96, -0.25)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Diastolic BP} & Central & -1.35 & (-2.66, 0.04) & -1.66 & (-2.97, -0.34)\\
-\cmidrule{1-6}\pagebreak[0]
-\hspace{1em} & Brachial & 0.50 & (-0.71, 1.70) & 0.21 & (-1.00, 1.41)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Pulse Pressure} & Central & 0.31 & (-0.85, 1.46) & 0.10 & (-1.01, 1.20)\\
-\cmidrule{1-6}\pagebreak[0]
-\hspace{1em} & Pulse pressure & 0.10 & (-0.12, 1.40) & 0.00 & (-1.20, 1.20)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash BP Amplification x10} & Systolic BP & 0.20 & (-0.20, 0.50) & 0.10 & (-0.20, 0.40)\\
-\cmidrule{1-6}\pagebreak[0]
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{\makecell[l]{Respiratory\\outcomes}}}\\
-\hspace{1em} & Any symptom & -7.38 & (-13.98, -0.77) & -7.86 & (-14.63, -1.09)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & Coughing & -1.59 & (-6.41, 3.23) & -1.98 & (-6.8, 2.84)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & Phlegm & -1.22 & (-5.58, 3.15) & -1.82 & (-6.34, 2.69)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & Wheezing attacks & -0.22 & (-3.97, 3.52) & -0.14 & (-3.85, 3.57)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & Trouble breathing & -4.98 & (-11.81, 1.84) & -4.62 & (-11.59, 2.35)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-6}{*}[5\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Self-reported (pp)} & Chest trouble & -6.63 & (-12.51, -0.76) & -6.36 & (-12.14, -0.59)\\
-\cmidrule{1-6}\pagebreak[0]
-\hspace{1em}Measured & FeNO (ppb) & 0.17 & (-2.24, 2.58) & 0.55 & (-2.13, 3.13)\\
-\cmidrule{1-6}\pagebreak[0]
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{\makecell[l]{Inflammatory\\markers (\%)}}}\\
-\hspace{1em} & IL6 & 6.80 & (-12.2, 30.0) & 5.90 & (-13.8, 30.2)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & TNF-alpha & 24.30 & (-1.3, 56.4) & 24.70 & (-0.9, 54.2)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & CRP & 2.70 & (-19.8, 31.6) & 3.80 & (-19.4, 33.6)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-4}{*}[3\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash } & MDA & 7.60 & (-8.7, 26.9) & 6.50 & (-9.7, 25.5)\\
+&  & DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
+&  & ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
+Blood pressure (mmHg) &&&&& \\
+Systolic BP & Brachial & -0.79 & (-2.63, 1.04) & -1.40 & (-3.31, 0.51) \\
+Systolic BP & Central & -1.04 & (-2.82, 0.73) & -1.56 & (-3.40, 0.28) \\
+Diastolic BP & Brachial & -1.29 & (-2.62, 0.04) & -1.60 & (-2.96, -0.25) \\
+Diastolic BP & Central & -1.35 & (-2.66, 0.04) & -1.66 & (-2.97, -0.34) \\
+Pulse Pressure & Brachial & 0.50 & (-0.71, 1.70) & 0.21 & (-1.00, 1.41) \\
+Pulse Pressure & Central & 0.31 & (-0.85, 1.46) & 0.10 & (-1.01, 1.20) \\
+BP Amplification x10 & Pulse pressure & 0.10 & (-0.12, 1.40) & 0.00 & (-1.20, 1.20) \\
+BP Amplification x10 & Systolic BP & 0.20 & (-0.20, 0.50) & 0.10 & (-0.20, 0.40) \\
+Respiratory outcomes &&&&& \\
+Self-reported (pp) & Any symptom & -7.38 & (-13.98, -0.77) & -7.86 & (-14.63, -1.09) \\
+Self-reported (pp) & Coughing & -1.59 & (-6.41, 3.23) & -1.98 & (-6.8, 2.84) \\
+Self-reported (pp) & Phlegm & -1.22 & (-5.58, 3.15) & -1.82 & (-6.34, 2.69) \\
+Self-reported (pp) & Wheezing attacks & -0.22 & (-3.97, 3.52) & -0.14 & (-3.85, 3.57) \\
+Self-reported (pp) & Trouble breathing & -4.98 & (-11.81, 1.84) & -4.62 & (-11.59, 2.35) \\
+Self-reported (pp) & Chest trouble & -6.63 & (-12.51, -0.76) & -6.36 & (-12.14, -0.59) \\
+Measured & FeNO (ppb) & 0.17 & (-2.24, 2.58) & 0.55 & (-2.13, 3.13) \\
+Inflammatory markers (\%) &&&&& \\
+& IL6 & 6.80 & (-12.2, 30.0) & 5.90 & (-13.80, 30.20) \\
+& TNF-alpha & 24.30 & (-1.3, 56.4) & 24.70 & (-0.90, 54.20) \\
+& CRP & 2.70 & (-19.8, 31.6) & 3.80 & (-19.40, 33.60) \\
+& MDA & 7.60 & (-8.7, 26.9) & 6.50 & (-9.70, 25.5) \\
 \bottomrule
-\insertTableNotes
+\end{talltblr}
 
-\end{longtable}
+}
 
-\end{ThreePartTable}
+\end{table}%
 
 Table~\ref{tbl-did-health} shows the impacts of the policy on blood
 pressure in basic ETWFE models and models further adjusted for age, sex,
@@ -2130,40 +2147,60 @@ BP, as the CDE conditional on both mediators was reduced to 0.03
 (95\%CI: -2.0, 2.0) for brachial SBP. The CDE for diastolic BP was
 roughly half the value of the total effect.
 
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{ThreePartTable}
-\begin{TableNotes}
-\item \small{Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.}
-\item[a] \small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}
-\item[b] \small{Mediators were set to the mean value for untreated participants at baseline.}
-\end{TableNotes}
-
-\begin{longtable}[t]{lcccccclc}
+\begin{table}
 
 \caption{\label{tbl-bp-med}Controlled direct effects for the CBHP policy
 on blood pressure}
 
-\tabularnewline
+\centering{
 
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.},
+note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
+note{b}={Mediators were set to the mean value for untreated participants at baseline.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{2}{4}={c=2,}{halign=c,},
+cell{2}{6}={c=2,}{halign=c,},
+cell{2}{8}={c=2,}{halign=c,},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=6,}{halign=c,},
+column{1}={halign=l,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+column{7}={halign=c,},
+column{8}={halign=c,},
+column{9}={halign=c,},
+column{1}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{2}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{3}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{4}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{5}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{6}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{7}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{8}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{9}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+}                     %% tabularray inner close
 \toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Adjusted Total Effect\textsuperscript{a}} & \multicolumn{6}{c}{CDE Mediated By:\textsuperscript{b}} \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-9}
-\multicolumn{3}{c}{ } & \multicolumn{2}{c}{Indoor PM} & \multicolumn{2}{c}{Indoor Temp} & \multicolumn{2}{c}{PM + Temp} \\
-\cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7} \cmidrule(l{3pt}r{3pt}){8-9}
- & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI)\\
-\midrule
-Brachial SBP & -1.40 & (-3.31, 0.51) & -1.05 & (-3.12, 1.02) & -0.46 & (-2.29, 1.36) & -0.03 & (-2.04, 1.97)\\
-Central SBP & -1.56 & (-3.40, 0.28) & -1.15 & (-3.20, 0.89) & -0.68 & (-2.36, 1.00) & -0.20 & (-2.11, 1.70)\\
-Brachial DBP & -1.60 & (-2.96, -0.25) & -1.40 & (-2.97, 0.16) & -1.14 & (-2.33, 0.06) & -0.88 & (-2.30, 0.54)\\
-Central DBP & -1.66 & (-2.97, -0.34) & -1.40 & (-2.96, 0.16) & -1.32 & (-2.50, -0.14) & -1.02 & (-2.45, 0.41)\\
+& Adjusted Total Effect &  & CDE Mediated By: &  &  &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-9}
+&  &  & Indoor PM &  & Indoor Temp &  & PM + Temp &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}
+& ATT\textsuperscript{a} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) \\ \midrule %% TinyTableHeader
+Brachial SBP & -1.40 & (-3.31, 0.51) & -1.05 & (-3.12, 1.02) & -0.46 & (-2.29, 1.36) & -0.03 & (-2.04, 1.97) \\
+Central SBP & -1.56 & (-3.40, 0.28) & -1.15 & (-3.20, 0.89) & -0.68 & (-2.36, 1.00) & -0.20 & (-2.11, 1.70) \\
+Brachial DBP & -1.60 & (-2.96, -0.25) & -1.40 & (-2.97, 0.16) & -1.14 & (-2.33, 0.06) & -0.88 & (-2.30, 0.54) \\
+Central DBP & -1.66 & (-2.97, -0.34) & -1.40 & (-2.96, 0.16) & -1.32 & (-2.50, -0.14) & -1.02 & (-2.45, 0.41) \\
 \bottomrule
-\insertTableNotes
+\end{talltblr}
 
-\end{longtable}
+}
 
-\end{ThreePartTable}
-\endgroup{}
+\end{table}%
 
 Table~\ref{tbl-resp-med} shows estimates from similar analyses for the
 CDE of the policy on respiratory outcomes. For respiratory outcomes we
@@ -2180,43 +2217,62 @@ exposure to PM\textsubscript{2.5} or indoor temperature. Generally the
 CDEs for all of the outcomes are statistically indistinguishable from
 the total effects estimated without controlling for mediators.
 
-\begingroup\fontsize{9}{11}\selectfont
-
-\begin{ThreePartTable}
-\begin{TableNotes}
-\item \small{Note: Estimated for the subset of individuals with measured personal exposure (n=1274). ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect.}
-\item[a] \small{Adjusted for age, sex, and smoking.}
-\item[b] \small{Mediators were set to the mean value for untreated participants at baseline.}
-\end{TableNotes}
-
-\begin{longtable}[t]{lcccccclc}
+\begin{table}
 
 \caption{\label{tbl-resp-med}Controlled direct effects for the CBHP
 policy on self-reported respiratory outcomes}
 
-\tabularnewline
+\centering{
 
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: Estimated for the subset of individuals with measured personal exposure (n=1274). ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect.},
+note{a}={Adjusted for age, sex, and smoking.},
+note{b}={Mediators were set to the mean value for untreated participants at baseline.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{2}{4}={c=2,}{halign=c,},
+cell{2}{6}={c=2,}{halign=c,},
+cell{2}{8}={c=2,}{halign=c,},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=6,}{halign=c,},
+column{1}={halign=l,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+column{7}={halign=c,},
+column{8}={halign=c,},
+column{9}={halign=c,},
+column{1}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{2}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{3}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{4}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{5}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{6}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{7}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{8}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{9}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+}                     %% tabularray inner close
 \toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Adjusted Total Effect\textsuperscript{a}} & \multicolumn{6}{c}{CDE Mediated By:\textsuperscript{b}} \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-9}
-\multicolumn{3}{c}{ } & \multicolumn{2}{c}{Indoor PM} & \multicolumn{2}{c}{Indoor Temp} & \multicolumn{2}{c}{PM + Temp} \\
-\cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7} \cmidrule(l{3pt}r{3pt}){8-9}
- & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI)\\
-\midrule
-Any symptom & -12.23 & (-19.46, -5.00) & -12.25 & (-19.46, -5.04) & -15.13 & (-23.57, -6.69) & -14.86 & (-23.45, -6.26)\\
-Coughing & -11.70 & (-19.49, -3.91) & -11.60 & (-19.28, -3.93) & -14.89 & (-22.85, -6.93) & -15.93 & (-23.78, -8.09)\\
-Phlegm & -9.80 & (-16.34, -3.26) & -9.86 & (-16.39, -3.33) & -14.01 & (-21.32, -6.69) & -13.63 & (-20.94, -6.32)\\
-Wheezing attacks & -4.72 & (-12.56, 3.12) & -4.71 & (-12.61, 3.19) & -6.39 & (-14.44, 1.66) & -4.42 & (-11.38, 2.53)\\
-Trouble breathing & -8.57 & (-18.56, 1.43) & -8.57 & (-18.49, 1.36) & -12.79 & (-24.81, -0.77) & -12.34 & (-24.45, -0.23)\\
-\addlinespace
-Chest trouble & -5.98 & (-13.36, 1.39) & -5.82 & (-12.87, 1.24) & -3.44 & (-10.45, 3.58) & -3.57 & (-9.65, 2.51)\\
+& Adjusted Total Effect &  & CDE Mediated By: &  &  &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-9}
+&  &  & Indoor PM &  & Indoor Temp &  & PM + Temp &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}
+& ATT\textsuperscript{a} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) \\ \midrule %% TinyTableHeader
+Any symptom & -12.2 & (-19.46, -5.00) & -12.2 & (-19.46, -5.04) & -15.1 & (-23.57, -6.69) & -14.9 & (-23.45, -6.26) \\
+Coughing & -11.7 & (-19.49, -3.91) & -11.6 & (-19.28, -3.93) & -14.9 & (-22.85, -6.93) & -15.9 & (-23.78, -8.09) \\
+Phlegm & -9.8 & (-16.34, -3.26) & -9.9 & (-16.39, -3.33) & -14.0 & (-21.32, -6.69) & -13.6 & (-20.94, -6.32) \\
+Wheezing attacks & -4.7 & (-12.56, 3.12) & -4.7 & (-12.61, 3.19) & -6.4 & (-14.44, 1.66) & -4.4 & (-11.38, 2.53) \\
+Trouble breathing & -8.6 & (-18.56, 1.43) & -8.6 & (-18.49, 1.36) & -12.8 & (-24.81, -0.77) & -12.3 & (-24.45, -0.23) \\
+Chest trouble & -6.0 & (-13.36, 1.39) & -5.8 & (-12.87, 1.24) & -3.4 & (-10.45, 3.58) & -3.6 & (-9.65, 2.51) \\
 \bottomrule
-\insertTableNotes
+\end{talltblr}
 
-\end{longtable}
+}
 
-\end{ThreePartTable}
-\endgroup{}
+\end{table}%
 
 \subsection{Aim 2: Source
 contributions}\label{aim-2-source-contributions}

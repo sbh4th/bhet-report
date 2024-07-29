@@ -61,258 +61,56 @@ ds %>%
   get_p_value(direction = "two-sided")
 
 
+# air pollution results
+ap_table <- read_rds(here("outputs", 
+  "ap-etwfe-table.rds")) 
 
+# temperature results
+temp_table <- tibble(
+  category = "Point", outcome = "Mean", estimate_1 = 1.96,
+  ci_1 = "(0.96, 2.96)", estimate_2 = 1.96, 
+  ci_2 = "(0.96, 2.96)"
+)
 
+stemp_table <- read_xlsx(here("data-clean",
+  "overall_temp_table.xlsx")) %>%
+  rename(`estimate_1` = att,
+         `ci_1` = ci) %>%
+  mutate(category = rep("Seasonal", times = 6),
+    outcome = c("Mean (all)", "Mean (daytime)", 
+      "Mean (heating season)", "Mean (daytime heating season)",
+      "Min. (all)", "Min. (heating season)"),
+    estimate_2 = `estimate_1`, 
+    ci_2 = `ci_1`) %>%
+  select(-model) %>%
+  relocate(category, outcome)
 
+# join tables
+m_table <- bind_rows(ap_table, temp_table, 
+  stemp_table)
 
-tap <- ap_season %>%
-  select(-time, -substance) %>%
-  pivot_longer(
-    cols = Mean_S1:GM_S4,
-    names_to = c("avg", ".value"),
-    names_pattern = "(.*)_S(.)") %>%
-  pivot_wider(
-    names_from = metric,
-    values_from = c(`1`, `2`, `3`, `4`)
-  ) %>%
-  select(-category) 
+colnames(m_table) <- c(" ", " ", "ATT", "(95% CI)", 
+  "ATT", "(95% CI)")
 
-colnames(tap) <- c("", "", "",  
-                         "Est.", "CI", "Est.", "CI", "Est.", "CI", 
-                         "Est.", "CI")
-
-tt(tap,
-   width = c(2, 2, 1.5, 1, 2, 1, 2, 1, 2, 1, 2),
-   notes = "Note: CI = confidence interval.") %>%
+tt(m_table,
+   digits = 2,
+  #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
+  notes = list("Note: ATT = Average Treatment Effect on the # Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way # Fixed Effects.", a = list(i=0, j=5,
+     text = "ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted."))) %>%
   group_tt(
-    i = list("Personal measurements" = 1, "Indoor measurements" = 5,
-             "Outdoor measurements" = 11)) %>%
-  style_tt(i = c(1, 6, 13), align = "l") %>%
+    j = list("DiD" = 3:4, 
+             "Adjusted DiD" = 5:6),
+    i = list("Air pollution" = 1, 
+             "Indoor temperature" = 7)) %>%
+  style_tt(i = c(1, 8), align = "l", bold=T) %>%
   style_tt(
-    i = c(2, 4, 7, 9, 11, 14, 16, 18), j = 2, 
+    i = c(2, 4, 6), j = 1, 
     rowspan = 2, alignv = "t") %>%
   style_tt(
-    i = c(2, 9, 16), j = 1, rowspan = 4, alignv = "t") %>%
+    i = 10, j = 1, rowspan = 6, alignv = "t") %>%
+  style_tt(j = 1:6, align = "llcccc")
+
   style_tt(
-    i = c(7, 14), j = 1, rowspan = 2, alignv = "t") 
-%>%
-
-%>%
-  style_tt(
-    i = c(2, 9, 16), j = 1, rowspan = 4, alignv = "t") %>%
-  style_tt(
-    i = c(7, 14), j = 1, rowspan = 2, alignv = "t") 
-%>%
-  style_tt(
-    i = c(2,4,7), j = 2, 
-      rowspan = 2, alignv = "m")
-
-
-
-tt(cmeanst) |>
-  # format_tt(replace = "-") |>
-  group_tt(
-    j = list(
-      " " = 1,
-      "Estimates" = 2:4,
-      "Test for Equality" = 5:6))
-
-
-cmeans <- ds %>% filter(wave != 3) %>%
-  group_by(wave) %>%
-  summarize(vmean = round(mean(bmi, na.rm=T), 1),
-    vsd = sprintf('%.1f', sd(bmi, na.rm=T))) %>%
-  pivot_wider(names_from = wave, 
-              values_from = c(vmean, vsd), 
-              names_vary = "slowest") %>%
-  mutate(char = "bmi",
-         w1 = paste0(vmean_1, " (", vsd_1, ")"),
-         w2 = paste0(vmean_2, " (", vsd_2, ")"),
-         w4 = paste0(vmean_4, " (", vsd_4, ")")) %>%
-  select(char, w1, w2, w4)
-
-
-F_hat <- ds %>% 
-    observe(age_health ~ wave, stat = "F")
-
-null_dist_theory <- ds %>%
-  specify(bmi ~ wave) %>%
-  hypothesize(null = "independence") %>%
-  assume(distribution = "F") %>%
-  get_p_value(obs_stat = F_hat, direction = "two-sided")
-
-cmeanss <- F_hat %>% 
-  bind_cols(null_dist_theory) %>%
-  rename("statistic" = stat) %>%
-  mutate(across(c('statistic', 'p_value'), 
-                ~ sprintf('%.3f', .x)))
-
-cmeanst <- cmeans %>% bind_cols(cmeanss)
-
-
-ds <- read_csv(here("data-clean", 
-                    "BHET_master_data_05Mar2024.csv"),
-  col_select = c("wave", "gender_health", "age_health",
-    "smoking", "waist_circ", "height", "ptc_id", 
-    "weight", "lived_with_smoker", "ID_VILLAGE")) %>%
-  filter(wave != 3) %>%
-  mutate(catvar = recode_factor(wave, 
-    `1` = "1", `2` = "2", `4` = "3"),
-    bmi = (weight / (height/100)^2),
-    female = if_else(gender_health == 2 & !is.na(gender_health),
-      1, 0),
-    csmoke = if_else(smoking==1 & !is.na(smoking), 1, 0),
-    asmoke = if_else(smoking < 3, 1, 
-      if_else(smoking==3 & lived_with_smoker %in% 
-                                    c(2,3), 1, 0))) %>%
-  mutate(across(c(female, csmoke, asmoke), as.integer))
-
-
-
-# Combined function to process columns
-process_column <- function(ds, column_name) {
-  column_type <- typeof(ds[[column_name]])
-  
-  if (column_type == "integer") {
-    cprops <- ds %>% filter(wave != 3) %>%
-      group_by(catvar) %>%
-      summarize(
-        n = n(), 
-        prop = mean(.data[[column_name]], na.rm=TRUE),
-        np = round(n * prop, 0),
-        pr = sprintf('%.1f', prop * 100)) %>% 
-      select(catvar, np, pr) %>% 
-      pivot_wider(names_from = catvar, 
-                  values_from = c(np, pr), 
-                  names_vary = "slowest") %>%
-      mutate(char = column_name,
-             w1 = paste0(np_1, " (", pr_1, ")"),
-             w2 = paste0(np_2, " (", pr_2, ")"),
-             w3 = paste0(np_3, " (", pr_3, ")")) %>%
-      select(char, w1, w2, w3)
-    
-    cprop_stats <- ds %>%
-      mutate(!!sym(column_name) := as.factor(.data[[column_name]])) %>%
-      infer::chisq_test(as.formula(paste("catvar ~", column_name))) %>%
-      select(-chisq_df) %>%
-      mutate(across(c('statistic', 'p_value'), 
-                    ~ sprintf('%.3f', .x)))
-    
-    ctable <- cprops %>% bind_cols(cprop_stats)
-    
-  } else if (column_type == "double") {
-    cmeans <- ds %>% filter(wave != 3) %>%
-      group_by(catvar) %>%
-      summarize(
-        vmean = sprintf('%.1f', mean(.data[[column_name]], 
-                                     na.rm=TRUE)),
-        vsd = sprintf('%.1f', sd(.data[[column_name]], 
-                                 na.rm=TRUE))) %>%
-      pivot_wider(names_from = catvar, 
-                  values_from = c(vmean, vsd), 
-                  names_vary = "slowest") %>%
-      mutate(char = column_name,
-             w1 = paste0(vmean_1, " (", vsd_1, ")"),
-             w2 = paste0(vmean_2, " (", vsd_2, ")"),
-             w3 = paste0(vmean_3, " (", vsd_3, ")")) %>%
-      select(char, w1, w2, w3)
-    
-    formula <- as.formula(paste(column_name, "~ catvar"))
-    
-    F_hat <- ds %>% 
-      infer::observe(formula, stat = "F")
-    
-    null_dist_theory <- ds %>%
-      infer::specify(formula) %>%
-      hypothesize(null = "independence") %>%
-      assume(distribution = "F") %>%
-      get_p_value(obs_stat = F_hat, direction = "two-sided")
-    
-    cmeans_stats <- F_hat %>% 
-      bind_cols(null_dist_theory) %>%
-      rename("statistic" = stat) %>%
-      mutate(across(c('statistic', 'p_value'), 
-                    ~ sprintf('%.3f', .x)))
-    
-    ctable <- cmeans %>% bind_cols(cmeans_stats)
-  }
-  
-  return(ctable)
-}
-
-# Combine results for all columns
-process_columns <- function(ds, columns) {
-  result <- bind_rows(lapply(columns, function(col) 
-    process_column(ds, col)))
-  return(result)
-}
-
-# Columns of interest
-columns_of_interest <- c("female", "csmoke", "asmoke", 
-                         "bmi", "age_health", "waist_circ")
-
-# Apply the function to the data set
-result <- process_columns(ds, columns_of_interest)
-
-
-
-ds <- ds %>%
-  select(-catvar) %>%
-  filter(wave != 3) %>%
-  add_count(ptc_id) %>%
-  mutate(catvar = recode_factor(n, 
-    `1` = "1", `2` = "2", `3` = "3")) %>%
-  group_by(catvar) %>% tally()
-
-t3 <- result %>%
-  mutate(char = c(
-    "Female, n (%)", 
-    "Current smoker, n (%)",
-    "Any smoke exposure, n (%)", 
-    "Age in years, Mean (SD)",
-    "BMI (kg/m2), Mean (SD)", 
-    "Waist circumference (cm), Mean (SD)")) %>%
-  rename("Characteristic" = char)
-
-colnames(t3) <- c("Characteristic", 
-                  "1 Wave N=365", "2 Waves N=886",
-                  "3 Waves N=1890", "Statistic", "p-value")
-
-tt(t3,
-   caption = "Demographic and health characteristics of participants who contributed to different numbers of study waves.",
-   width = c(.4, .15, .15, .15, .1, .1),
-   notes = list(a = list(i=0, j=5,
-                         text = "Chi-square test for categorical and F-test for continuous characteristics."))) |>
-  # theme_tt("multipage") |>
-  group_tt(
-    j = list(
-      " " = 1,
-      "Estimates" = 2:4,
-      "Test for Equality" = 5:6)) |>
-  format_tt(escape = TRUE) |>
-  style_tt(j = 1:4, align = "llll")
-
-
-
-
-
-
-
-d <- read_csv(here("data-clean", 
-  "BHET_master_data_05Mar2024.csv"),
-  col_select = c("wave", "gender_health", "age_health",
-    "smoking", "waist_circ", "height", "ptc_id", 
-    "weight", "lived_with_smoker", "ID_VILLAGE")) %>%
-filter(wave != 3) %>%                                                         # no participant-level data in year 3
-  mutate(ETS = ifelse(smoking == 1, 1, NA),                                     # generate smoking variable
-         ETS = ifelse(smoking == 2, 2, ETS),
-         ETS = ifelse(lived_with_smoker %in% c(2,3) & is.na(ETS), 3, ETS),
-         ETS = ifelse(lived_with_smoker == 1 & is.na(ETS), 4, ETS),
-         ETS = factor(ETS)) %>%
-  # dichotomize into smoke vs. no smoke exposure (1=smoke/0=no smoke)
-  mutate(ETS_binary = ifelse(ETS %in% c(1,2,3), 1, 0)) %>%
-  mutate(BMI = weight/(height/100)^2) %>%
-  group_by(ptc_id) %>%
-  mutate(n_obs = n(),
-         count = 1:n()) %>%
-  ungroup() %>%
+    i = c(7, 14), j = 1, rowspan = 2, alignv = "t") %>%
+  style_tt(j=1:11, fontsize = 0.8) %>%
+  style_tt(i = 0, align = "c")

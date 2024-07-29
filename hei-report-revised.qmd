@@ -588,15 +588,16 @@ t1
 
 At baseline, PM~2.5~ and BC concentrations were higher, on average, for personal exposures compared with outdoor concentrations. From w2 onward, with the inclusion of indoor air pollution measurements, personal exposure air pollution concentrations were still higher than indoor or outdoor concentrations, with indoor levels being higher than outdoors (@tbl-pm-season). This trend (personal > indoor > outdoor) was observed among households in treated and untreated villages. Personal, indoor, and outdoor geometric mean (95% confidence interval) concentrations of PM~2.5~ were 72 (65, 80), 45 (39, 53), and 31 (28, 35), respectively, and elevated relative to health-based guidelines. The current World Health Organization (WHO) guidelines state that annual average concentrations of PM~2.5~ should not exceed 5 µg/m^3^, while 24-hour average exposures should not exceed 15 µg/m^3^ for more than 3 to 4 days per year [@who2021]. Interim targets have been set to support the planning of incremental milestones toward cleaner air, particularly for cities, regions, and countries with higher air pollution levels. For PM~2.5~, the four interim (IT) targets for annual and 24-h means are: IT-1: 35 and 75 µg/m^3^; IT-2: 25 and 50 µg/m^3^; IT-3: 15 and 37.5 µg/m^3^; and IT-4: 10 and 25 µg/m^3^ [@who2021]. In our study, baseline personal exposures to PM~2.5~ did not even meet IT-1, indicating considerable opportunity for air quality exposure reduction with intervention. 
 
-```{r tbl-pm-season, echo=F, message = F, warnings = F}
+```{r, message = F, warning=F}
+#| echo: FALSE
+#| tbl-cap: Arithmetic and geometric means for air pollutant concentrations (micrograms per cubic meter) by wave.
 #| label: tbl-pm-season
-#| tbl-cap: "Arithmetic and geometric means for air pollutant concentrations (micrograms per cubic meter) by wave"
+#| eval: TRUE
 
-options(knitr.kable.NA = " ")
 ap_season <- read_csv(here("data-clean", 
   "ap-conc-season.csv"))
 
-ap_season %>%
+tap <- ap_season %>%
   select(-time, -substance) %>%
   pivot_longer(
     cols = Mean_S1:GM_S4,
@@ -606,21 +607,32 @@ ap_season %>%
     names_from = metric,
     values_from = c(`1`, `2`, `3`, `4`)
   ) %>%
-  select(-category) %>%
-  kable(col.names =c("", "", "",  
-   "Est.", "CI", "Est.", "CI", "Est.", "CI", 
-   "Est.", "CI"), "latex", booktabs = T,
-   longtable = T,
-  linesep = "", align = 'lllcccccccc') %>% 
-  kable_styling(font_size = 9) %>% 
-  collapse_rows(columns = 1:2, valign = "top") %>%
-  pack_rows("Personal", 1, 4, indent = F) %>%
-  pack_rows("Indoor", 5, 10, indent = F) %>%
-  pack_rows("Outdoor", 11, 16, indent = F) %>%
-  add_header_above(c(" " = 3, "Wave 1" = 2,
-    "Wave 2" = 2, "Wave 3" = 2,
-    "Wave 4" = 2)) %>%
-  footnote(general = "Note: Est. = Estimate, CI = 95\\\\% CI, GM = Geometric Mean", general_title = "", escape = F)
+  select(-category)
+
+colnames(tap) <- c("", "", "",  
+                         "Est.", "CI", "Est.", "CI", "Est.", "CI", 
+                         "Est.", "CI")
+tt(tap, 
+  width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
+  notes = "Note: Est. = Estimate, CI = 95 percent confidence interval, GM = Geometric Mean") %>%
+  format_tt(replace = "") %>%
+  group_tt(
+    j = list("Wave 1" = 4:5, "Wave 2" = 6:7,
+      "Wave 3" = 8:9, "Wave 4" = 10:11),
+    i = list("Personal measurements" = 1, 
+             "Indoor measurements" = 5,
+             "Outdoor measurements" = 11)) %>%
+  style_tt(i = c(1, 6, 13), align = "l", bold=T) %>%
+  style_tt(
+    i = c(2, 4, 7, 9, 11, 14, 16, 18), j = 2, 
+    rowspan = 2, alignv = "t") %>%
+  style_tt(
+    i = c(2, 9, 16), j = 1, rowspan = 4, alignv = "t") %>%
+  style_tt(
+    i = c(7, 14), j = 1, rowspan = 2, alignv = "t") %>%
+  style_tt(j=1:11, fontsize = 0.8) %>%
+  style_tt(i = 0, align = "c")
+
 ```
 
 We also present the geometric and arithmetic means (and 95% confidence intervals) for PM~2.5~ and BC in each measurement wave (@tbl-pm-season). Wave 3 (2020/2021) was a partial wave that took place over a time period impacted by the COVID-19 pandemic and did not involve filter-based air pollution sample collection.
@@ -647,9 +659,11 @@ In never treated villages, we also observed a transition to clean energy over th
 
 The average marginal effect ($ATT$) from the basic ETWFE model (@tbl-did-med) shows that exposure to the CBHP policy reduced 24h indoor PM~2.5~ by -19 µg/m^3^ (95%CI: -61, 22). After adjusting outdoor temperature, dewpoint, household smoking status, and the number of residents in each household, the $ATT$ decreased to -14 µg/m^3^ (95%CI: -54, 26). The impact was stronger on seasonal indoor PM~2.5~, with an average $ATT$ of -36 µg/m^3^ (95%CI: -61, -12) that was robust to covariate adjustment. This finding likely reflects the direct benefit of the policy in replacing coal stoves and air quality improvement. We found little evidence of heterogeneity in $ATT$s across cohort and time (all p-values > 0.385 for tests of heterogeneity, see Appendix @tbl-a-het-indoor).
 
-```{r tab-did-med, echo=F, message=F, warning=F}
+```{r, message=F, warning=F}
+#| echo: FALSE
 #| label: tbl-did-med
 #| tbl-cap: "Treatment effect on outdoor and indoor PM~2.5~, personal exposure to PM~2.5~ and black carbon, and measures of indoor temperature. Outdoor and indoor PM~2.5~ were derived from sensor measurements after being adjusted based on co-located gravimetric PM~2.5~ measurements. 24h indicates the mean PM~2.5~ concentrations during the 24 hours when personal exposure samples were collected in each village. 'Seasonal' indicates the seasonal mean PM~2.5~ concentrations in each village, from Jan. 15th to Mar. 15th."
+#| eval: TRUE
 
 # air pollution results
 ap_table <- read_rds(here("outputs", 
@@ -679,23 +693,28 @@ stemp_table <- read_xlsx(here("data-clean",
 m_table <- bind_rows(ap_table, temp_table, 
   stemp_table)
 
-kable(m_table,  digits = 2,
-  col.names = c(" ", " ", "ATT", "(95% CI)", 
-   "ATT", "(95% CI)"), "latex", booktabs = T,
-  longtable = T,
-  linesep = "", align = 'llcccc') %>%
-  kable_styling(full_width = F) %>%
-  collapse_rows(columns = 1:2, valign = "top") %>% 
-  pack_rows("Air pollution (µg/m\\\\textsuperscript{3})", 1, 6,
-            escape = F) %>%
-  pack_rows("Indoor temperature (°C)", 7, 13) %>%
-  add_header_above(c(" " = 2,  
-    "DiD" = 2, "Adjusted DiD\\\\textsuperscript{a}" = 2),
-    escape = F) %>%
-  footnote(
-    general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.}",
-    alphabet = "\\\\small{ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted.}", 
-    general_title = "", threeparttable = T, escape = F)
+colnames(m_table) <- c(" ", " ", "ATT", "(95% CI)", 
+  "ATT", "(95% CI)")
+
+tt(m_table,
+   digits = 2,
+  #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
+  notes = list("Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.", a = list(i=0, j=5,
+     text = "ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted."))) %>%
+  group_tt(
+    j = list("DiD" = 3:4, 
+             "Adjusted DiD" = 5:6),
+    i = list("Air pollution" = 1, 
+             "Indoor temperature" = 7)) %>%
+  style_tt(i = c(1, 8), align = "l", bold=T) %>%
+  style_tt(
+    i = c(2, 4, 6), j = 1, 
+    rowspan = 2, alignv = "t") %>%
+  style_tt(
+    i = 10, j = 1, rowspan = 6, alignv = "t") %>%
+  style_tt(j = 1:6, align = "llcccc") %>%
+  format_tt(escape = TRUE) %>%
+  format_tt(j=c(3,5), sprintf = "%.2f") 
 ```
 
 Overall we found little evidence of an impact of the CBHP policy on 24-h and seasonal outdoor (community) PM~2.5~ or personal exposures to PM~2.5~ and BC. Treatment was associated with lower, but statistically imprecise, personal 24-h BC exposures. This finding is consistent with the expectation that the policy contributed to reducing air pollutant emissions from solid fuel burning, as BC serves as a potential indicator of such combustion.

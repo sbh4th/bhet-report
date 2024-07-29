@@ -225,7 +225,7 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-07-25}
+\date{2024-07-29}
 
 \begin{document}
 \maketitle
@@ -1723,64 +1723,100 @@ baseline personal exposures to PM\textsubscript{2.5} did not even meet
 IT-1, indicating considerable opportunity for air quality exposure
 reduction with intervention.
 
-\begingroup\fontsize{9}{11}\selectfont
-
-\begin{longtable}{lllcccccccc}
+\begin{table}
 
 \caption{\label{tbl-pm-season}Arithmetic and geometric means for air
-pollutant concentrations (micrograms per cubic meter) by wave}
+pollutant concentrations (micrograms per cubic meter) by wave.}
 
-\tabularnewline
+\centering{
 
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: Est. = Estimate, CI = 95 percent confidence interval, GM = Geometric Mean},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={1\linewidth},
+colspec={X[0.2]X[0.171428571428571]X[0.0571428571428571]X[0.0285714285714286]X[0.114285714285714]X[0.0285714285714286]X[0.114285714285714]X[0.0285714285714286]X[0.114285714285714]X[0.0285714285714286]X[0.114285714285714]},
+cell{1}{4}={c=2,}{halign=c,},
+cell{1}{6}={c=2,}{halign=c,},
+cell{1}{8}={c=2,}{halign=c,},
+cell{1}{10}={c=2,}{halign=c,},
+cell{3}{1}={c=11}{},cell{8}{1}={c=11}{},cell{15}{1}={c=11}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+cell{10}{1}={preto={\hspace{1em}}},
+cell{11}{1}={preto={\hspace{1em}}},
+cell{12}{1}={preto={\hspace{1em}}},
+cell{13}{1}={preto={\hspace{1em}}},
+cell{14}{1}={preto={\hspace{1em}}},
+cell{16}{1}={preto={\hspace{1em}}},
+cell{17}{1}={preto={\hspace{1em}}},
+cell{18}{1}={preto={\hspace{1em}}},
+cell{19}{1}={preto={\hspace{1em}}},
+cell{20}{1}={preto={\hspace{1em}}},
+cell{21}{1}={preto={\hspace{1em}}},
+cell{22}{1}={preto={\hspace{1em}}},
+row{3}={halign=l,cmd=\bfseries,},
+row{8}={halign=l,cmd=\bfseries,},
+row{15}={halign=l,cmd=\bfseries,},
+cell{4}{2}={r=2,}{valign=h,},
+cell{6}{2}={r=2,}{valign=h,},
+cell{9}{2}={r=2,}{valign=h,},
+cell{11}{2}={r=2,}{valign=h,},
+cell{13}{2}={r=2,}{valign=h,},
+cell{16}{2}={r=2,}{valign=h,},
+cell{18}{2}={r=2,}{valign=h,},
+cell{20}{2}={r=2,}{valign=h,},
+cell{4}{1}={r=4,}{valign=h,},
+cell{11}{1}={r=4,}{valign=h,},
+cell{18}{1}={r=4,}{valign=h,},
+cell{9}{1}={r=2,}{valign=h,},
+cell{16}{1}={r=2,}{valign=h,},
+column{1}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{2}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{3}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{4}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{5}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{6}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{7}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{8}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{9}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{10}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{11}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+row{2}={halign=c,},
+}                     %% tabularray inner close
 \toprule
-\multicolumn{3}{c}{ } & \multicolumn{2}{c}{Wave 1} & \multicolumn{2}{c}{Wave 2} & \multicolumn{2}{c}{Wave 3} & \multicolumn{2}{c}{Wave 4} \\
-\cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7} \cmidrule(l{3pt}r{3pt}){8-9} \cmidrule(l{3pt}r{3pt}){10-11}
- &  &  & Est. & CI & Est. & CI & Est. & CI & Est. & CI\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{11}{l}{\textbf{Personal}}\\
- &  & Mean & 117 & {}[105, 129] & 97 & {}[87, 107] &  &  & 84 & {}[72, 97]\\
-\cmidrule{3-11}\nopagebreak
- & \multirow[t]{-2}{*}{\raggedright\arraybackslash 24h PM2.5} & GM & 72 & {}[65, 80] & 59 & {}[53, 65] &  &  & 47 & {}[42, 52]\\
-\cmidrule{2-11}\nopagebreak
- &  & Mean & 4 & {}[3.5, 4.4] & 3.5 & {}[2.7, 4.2] &  &  & 3.7 & {}[2.9, 4.5]\\
-\cmidrule{3-11}\nopagebreak
-\multirow[t]{-4}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Filter-derived} & \multirow[t]{-2}{*}{\raggedright\arraybackslash 24h BC} & GM & 2.6 & {}[2.4, 2.8] & 1.9 & {}[1.7, 2.1] &  &  & 1.7 & {}[1.5, 1.9]\\
-\cmidrule{1-11}\pagebreak[0]
-\addlinespace[0.3em]
-\multicolumn{11}{l}{\textbf{Indoor}}\\
- &  & Mean &  &  & 94 & {}[84, 104] & 84 & {}[75, 94] & 67 & {}[60, 75]\\
-\cmidrule{3-11}\nopagebreak
-\multirow[t]{-2}{*}{\raggedright\arraybackslash Sensor-derived} & \multirow[t]{-2}{*}{\raggedright\arraybackslash Seasonal PM2.5} & GM &  &  & 71 & {}[65, 78] & 63 & {}[57, 70] & 47 & {}[42, 52]\\
-\cmidrule{1-11}\pagebreak[0]
- &  & Mean &  &  & 69 & {}[59, 79] &  &  & 59 & {}[49, 69]\\
-\cmidrule{3-11}\nopagebreak
- & \multirow[t]{-2}{*}{\raggedright\arraybackslash 24h PM2.5} & GM &  &  & 45 & {}[39, 53] &  &  & 33 & {}[27, 40]\\
-\cmidrule{2-11}\nopagebreak
- &  & Mean &  &  & 2.3 & {}[1.8, 2.8] &  &  & 2.8 & {}[2.1, 3.4]\\
-\cmidrule{3-11}\nopagebreak
-\multirow[t]{-4}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Filter-derived} & \multirow[t]{-2}{*}{\raggedright\arraybackslash 24h BC} & GM &  &  & 1.6 & {}[1.3, 2.0] &  &  & 1.6 & {}[1.3, 1.9]\\
-\cmidrule{1-11}\pagebreak[0]
-\addlinespace[0.3em]
-\multicolumn{11}{l}{\textbf{Outdoor}}\\
- &  & Mean & 47 & {}[45, 48] & 55 & {}[54, 56] & 33 & {}[32, 34] & 33 & {}[32, 34]\\
-\cmidrule{3-11}\nopagebreak
-\multirow[t]{-2}{*}{\raggedright\arraybackslash Sensor-derived} &  & GM & 36 & {}[35, 37] & 40 & {}[39, 41] & 23 & {}[22, 23] & 22 & {}[22, 23]\\
-\cmidrule{1-1}
-\cmidrule{3-11}\nopagebreak
- &  & Mean & 38 & {}[34, 42] & 38 & {}[34, 41] & 25 & {}[23, 28] & 26 & {}[24, 28]\\
-\cmidrule{3-11}\nopagebreak
- & \multirow[t]{-4}{*}{\raggedright\arraybackslash Seasonal PM2.5} & GM & 33 & {}[29, 36] & 30 & {}[28, 32] & 21 & {}[19, 23] & 22 & {}[21, 24]\\
-\cmidrule{2-11}\nopagebreak
- &  & Mean & 1.5 & {}[1.3, 1.6] & 1.4 & {}[1.3, 1.5] &  &  & 1.2 & {}[1.1, 1.2]\\
-\cmidrule{3-11}\nopagebreak
-\multirow[t]{-4}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Filter-derived} & \multirow[t]{-2}{*}{\raggedright\arraybackslash Seasonal BC} & GM & 1.3 & {}[1.1, 1.4] & 1.1 & {}[1.0, 1.2] &  &  & 1 & {}[0.9, 1.1]\\
+&  &  & Wave 1 &  & Wave 2 &  & Wave 3 &  & Wave 4 &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}\cmidrule[lr]{10-11}
+&  &  & Est. & CI & Est. & CI & Est. & CI & Est. & CI \\ \midrule %% TinyTableHeader
+Personal measurements &&&&&&&&&& \\
+Filter-derived & 24h PM2.5 & Mean & 117 & [105, 129] & 97 & [87, 107] &  &  & 84 & [72, 97] \\
+Filter-derived & 24h PM2.5 & GM & 72 & [65, 80] & 59 & [53, 65] &  &  & 47 & [42, 52] \\
+Filter-derived & 24h BC & Mean & 4 & [3.5, 4.4] & 3.5 & [2.7, 4.2] &  &  & 3.7 & [2.9, 4.5] \\
+Filter-derived & 24h BC & GM & 2.6 & [2.4, 2.8] & 1.9 & [1.7, 2.1] &  &  & 1.7 & [1.5, 1.9] \\
+Indoor measurements &&&&&&&&&& \\
+Sensor-derived & Seasonal PM2.5 & Mean &  &  & 94 & [84, 104] & 84 & [75, 94] & 67 & [60, 75] \\
+Sensor-derived & Seasonal PM2.5 & GM &  &  & 71 & [65, 78] & 63 & [57, 70] & 47 & [42, 52] \\
+Filter-derived & 24h PM2.5 & Mean &  &  & 69 & [59, 79] &  &  & 59 & [49, 69] \\
+Filter-derived & 24h PM2.5 & GM &  &  & 45 & [39, 53] &  &  & 33 & [27, 40] \\
+Filter-derived & 24h BC & Mean &  &  & 2.3 & [1.8, 2.8] &  &  & 2.8 & [2.1, 3.4] \\
+Filter-derived & 24h BC & GM &  &  & 1.6 & [1.3, 2.0] &  &  & 1.6 & [1.3, 1.9] \\
+Outdoor measurements &&&&&&&&&& \\
+Sensor-derived & Seasonal PM2.5 & Mean & 47 & [45, 48] & 55 & [54, 56] & 33 & [32, 34] & 33 & [32, 34] \\
+Sensor-derived & Seasonal PM2.5 & GM & 36 & [35, 37] & 40 & [39, 41] & 23 & [22, 23] & 22 & [22, 23] \\
+Filter-derived & Seasonal PM2.5 & Mean & 38 & [34, 42] & 38 & [34, 41] & 25 & [23, 28] & 26 & [24, 28] \\
+Filter-derived & Seasonal PM2.5 & GM & 33 & [29, 36] & 30 & [28, 32] & 21 & [19, 23] & 22 & [21, 24] \\
+Filter-derived & Seasonal BC & Mean & 1.5 & [1.3, 1.6] & 1.4 & [1.3, 1.5] &  &  & 1.2 & [1.1, 1.2] \\
+Filter-derived & Seasonal BC & GM & 1.3 & [1.1, 1.4] & 1.1 & [1.0, 1.2] &  &  & 1 & [0.9, 1.1] \\
 \bottomrule
-\multicolumn{11}{l}{\rule{0pt}{1em}Note: Est. = Estimate, CI = 95\% CI, GM = Geometric Mean}\\
+\end{talltblr}
 
-\end{longtable}
+}
 
-\endgroup{}
+\end{table}%
 
 We also present the geometric and arithmetic means (and 95\% confidence
 intervals) for PM\textsubscript{2.5} and BC in each measurement wave
@@ -1866,13 +1902,7 @@ improvement. We found little evidence of heterogeneity in \(ATT\)s
 across cohort and time (all p-values \textgreater{} 0.385 for tests of
 heterogeneity, see Appendix Table~\ref{tbl-a-het-indoor}).
 
-\begin{ThreePartTable}
-\begin{TableNotes}
-\item \small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.}
-\item[a] \small{ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted.}
-\end{TableNotes}
-
-\begin{longtable}{llcccc}
+\begin{table}
 
 \caption{\label{tbl-did-med}Treatment effect on outdoor and indoor
 PM\textsubscript{2.5}, personal exposure to PM\textsubscript{2.5} and
@@ -1885,48 +1915,70 @@ collected in each village. `Seasonal' indicates the seasonal mean
 PM\textsubscript{2.5} concentrations in each village, from Jan.~15th to
 Mar.~15th.}
 
-\tabularnewline
+\centering{
 
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.},
+note{a}={ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+cell{3}{1}={c=6}{},cell{10}{1}={c=6}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+cell{11}{1}={preto={\hspace{1em}}},
+cell{12}{1}={preto={\hspace{1em}}},
+cell{13}{1}={preto={\hspace{1em}}},
+cell{14}{1}={preto={\hspace{1em}}},
+cell{15}{1}={preto={\hspace{1em}}},
+cell{16}{1}={preto={\hspace{1em}}},
+cell{17}{1}={preto={\hspace{1em}}},
+cell{18}{1}={preto={\hspace{1em}}},
+row{3}={halign=l,cmd=\bfseries,},
+row{10}={halign=l,cmd=\bfseries,},
+cell{4}{1}={r=2,}{valign=h,},
+cell{6}{1}={r=2,}{valign=h,},
+cell{8}{1}={r=2,}{valign=h,},
+cell{12}{1}={r=6,}{valign=h,},
+column{1}={halign=l,},
+column{2}={halign=l,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+}                     %% tabularray inner close
 \toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{DiD} & \multicolumn{2}{c}{Adjusted DiD\textsuperscript{a}} \\
-\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
-  &   & ATT & (95\% CI) & ATT & (95\% CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Air pollution (µg/m\textsuperscript{3})}}\\
-\hspace{1em} & PM2.5 & -2.09 & (-29.38, 25.2) & 1.95 & (-23.34, 27.23)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Personal} & Black carbon & -0.46 & (-1.73, 0.81) & -0.43 & (-1.67, 0.81)\\
-\cmidrule{1-6}\pagebreak[0]
-\hspace{1em} & Daily & -19.10 & (-60.56, 22.35) & -14.20 & (-53.94, 25.54)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Indoor} & Seasonal & -35.11 & (-59.36, -10.85) & -36.19 & (-60.74, -11.65)\\
-\cmidrule{1-6}\pagebreak[0]
-\hspace{1em} & Daily & -0.11 & (-5.86, 5.64) & -1.73 & (-9.26, 5.81)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Outdoor} & Seasonal & 3.14 & (-3.1, 9.38) & 0.36 & (-6.27, 6.99)\\
-\cmidrule{1-6}\pagebreak[0]
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Indoor temperature (°C)}}\\
-\hspace{1em}Point & Mean & 1.96 & (0.96, 2.96) & 1.96 & (0.96, 2.96)\\
-\cmidrule{1-6}\pagebreak[0]
-\hspace{1em} & Mean (all) & 0.64 & (0, 1.29) & 0.64 & (0, 1.29)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & Mean (daytime) & 0.82 & (-0.08, 1.72) & 0.82 & (-0.08, 1.72)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & Mean (heating season) & 1.80 & (0.96, 2.64) & 1.80 & (0.96, 2.64)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & Mean (daytime heating season) & 1.85 & (0.97, 2.73) & 1.85 & (0.97, 2.73)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & Min. (all) & 3.83 & (2.26, 5.39) & 3.83 & (2.26, 5.39)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-6}{*}[5\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Seasonal} & Min. (heating season) & 3.72 & (2.19, 5.25) & 3.72 & (2.19, 5.25)\\
+&  & DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
+&  & ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
+Air pollution &&&&& \\
+Personal & PM2.5 & -2.09 & (-29.38, 25.2) & 1.95 & (-23.34, 27.23) \\
+Personal & Black carbon & -0.46 & (-1.73, 0.81) & -0.43 & (-1.67, 0.81) \\
+Indoor & Daily & -19.10 & (-60.56, 22.35) & -14.20 & (-53.94, 25.54) \\
+Indoor & Seasonal & -35.11 & (-59.36, -10.85) & -36.19 & (-60.74, -11.65) \\
+Outdoor & Daily & -0.11 & (-5.86, 5.64) & -1.73 & (-9.26, 5.81) \\
+Outdoor & Seasonal & 3.14 & (-3.1, 9.38) & 0.36 & (-6.27, 6.99) \\
+Indoor temperature &&&&& \\
+Point & Mean & 1.96 & (0.96, 2.96) & 1.96 & (0.96, 2.96) \\
+Seasonal & Mean (all) & 0.64 & (0.00, 1.29) & 0.64 & (0.00, 1.29) \\
+Seasonal & Mean (daytime) & 0.82 & (-0.08, 1.72) & 0.82 & (-0.08, 1.72) \\
+Seasonal & Mean (heating season) & 1.80 & (0.96, 2.64) & 1.80 & (0.96, 2.64) \\
+Seasonal & Mean (daytime heating season) & 1.85 & (0.97, 2.73) & 1.85 & (0.97, 2.73) \\
+Seasonal & Min. (all) & 3.83 & (2.26, 5.39) & 3.83 & (2.26, 5.39) \\
+Seasonal & Min. (heating season) & 3.72 & (2.19, 5.25) & 3.72 & (2.19, 5.25) \\
 \bottomrule
-\insertTableNotes
+\end{talltblr}
 
-\end{longtable}
+}
 
-\end{ThreePartTable}
+\end{table}%
 
 Overall we found little evidence of an impact of the CBHP policy on 24-h
 and seasonal outdoor (community) PM\textsubscript{2.5} or personal

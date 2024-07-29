@@ -146,75 +146,60 @@ tt(tx2) |>
 ```
 
 Problem table:
-
-Read in the data for Table 2:
-```{r data-t2, echo=F, message=F, warning=FALSE, eval=F}
-ds <- read_csv(here("data-clean", 
-  "BHET_master_data_05Mar2024.csv"),
-  col_select = c("wave", "gender_health", "age_health",
-      "smoking", "waist_circ", "height", 
-      "weight", "lived_with_smoker", "ID_VILLAGE")) %>%
-  filter(wave != 3) %>%
-  mutate(wave = as.factor(wave),
-         bmi = (weight / (height/100)^2),
-    female = if_else(gender_health == 2 & !is.na(gender_health),
-                     1, 0),
-    csmoke = if_else(smoking==1 & !is.na(smoking), 1, 0),
-    asmoke = if_else(smoking < 3, 1, 
-      if_else(smoking==3 & lived_with_smoker %in% 
-      c(2,3), 1, 0))) %>%
-  mutate(across(c(female, csmoke, asmoke), as.integer))
-```
-
-And then make the table (@tbl-pm-season:
-
-
-Another one:
-```{r, message = F, warning=F}
+```{r, message=F, warning=F}
 #| echo: FALSE
-#| tbl-cap: Arithmetic and geometric means for air pollutant concentrations (micrograms per cubic meter) by wave.
-#| label: tbl-pm-season
+#| label: tbl-did-med
+#| tbl-cap: "Treatment effect on outdoor and indoor PM~2.5~, personal exposure to PM~2.5~ and black carbon, and measures of indoor temperature. Outdoor and indoor PM~2.5~ were derived from sensor measurements after being adjusted based on co-located gravimetric PM~2.5~ measurements. 24h indicates the mean PM~2.5~ concentrations during the 24 hours when personal exposure samples were collected in each village. 'Seasonal' indicates the seasonal mean PM~2.5~ concentrations in each village, from Jan. 15th to Mar. 15th."
 #| eval: TRUE
 
-ap_season <- read_csv(here("data-clean", 
-  "ap-conc-season.csv"))
+# air pollution results
+ap_table <- read_rds(here("outputs", 
+  "ap-etwfe-table.rds")) 
 
-tap <- ap_season %>%
-  select(-time, -substance) %>%
-  pivot_longer(
-    cols = Mean_S1:GM_S4,
-    names_to = c("avg", ".value"),
-    names_pattern = "(.*)_S(.)") %>%
-  pivot_wider(
-    names_from = metric,
-    values_from = c(`1`, `2`, `3`, `4`)
-  ) %>%
-  select(-category)
+# temperature results
+temp_table <- tibble(
+  category = "Point", outcome = "Mean", estimate_1 = 1.96,
+  ci_1 = "(0.96, 2.96)", estimate_2 = 1.96, 
+  ci_2 = "(0.96, 2.96)"
+)
 
-colnames(tap) <- c("", "", "",  
-                         "Est.", "CI", "Est.", "CI", "Est.", "CI", 
-                         "Est.", "CI")
-tt(tap, 
-  width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
-  notes = "Note: Est. = Estimate, CI = 95 percent confidence interval, GM = Geometric Mean") %>%
-  format_tt(replace = "") %>%
+stemp_table <- read_xlsx(here("data-clean",
+  "overall_temp_table.xlsx")) %>%
+  rename(`estimate_1` = att,
+         `ci_1` = ci) %>%
+  mutate(category = rep("Seasonal", times = 6),
+    outcome = c("Mean (all)", "Mean (daytime)", 
+      "Mean (heating season)", "Mean (daytime heating season)",
+      "Min. (all)", "Min. (heating season)"),
+    estimate_2 = `estimate_1`, 
+    ci_2 = `ci_1`) %>%
+  select(-model) %>%
+  relocate(category, outcome)
+
+# join tables
+m_table <- bind_rows(ap_table, temp_table, 
+  stemp_table)
+
+colnames(m_table) <- c(" ", " ", "ATT", "(95% CI)", 
+  "ATT", "(95% CI)")
+
+tt(m_table,
+   digits = 2,
+  #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
+  notes = list("Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.", a = list(i=0, j=5,
+     text = "ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted."))) %>%
   group_tt(
-    j = list("Wave 1" = 4:5, "Wave 2" = 6:7,
-      "Wave 3" = 8:9, "Wave 4" = 10:11),
-    i = list("Personal measurements" = 1, 
-             "Indoor measurements" = 5,
-             "Outdoor measurements" = 11)) %>%
-  style_tt(i = c(1, 6, 13), align = "l", bold=T) %>%
+    j = list("DiD" = 3:4, 
+             "Adjusted DiD" = 5:6),
+    i = list("Air pollution" = 1, 
+             "Indoor temperature" = 7)) %>%
+  style_tt(i = c(1, 8), align = "l", bold=T) %>%
   style_tt(
-    i = c(2, 4, 7, 9, 11, 14, 16, 18), j = 2, 
+    i = c(2, 4, 6), j = 1, 
     rowspan = 2, alignv = "t") %>%
   style_tt(
-    i = c(2, 9, 16), j = 1, rowspan = 4, alignv = "t") %>%
-  style_tt(
-    i = c(7, 14), j = 1, rowspan = 2, alignv = "t") %>%
-  style_tt(j=1:11, fontsize = 0.8) %>%
-  style_tt(i = 0, align = "c")
-
+    i = 10, j = 1, rowspan = 6, alignv = "t") %>%
+  style_tt(j = 1:6, align = "llcccc") %>%
+  format_tt(escape = TRUE) %>%
+  format_tt(j=c(3,5), sprintf = "%.2f") 
 ```
-
-@tbl-pm-season shows the distribution of selected demographic, health, and environmental characteristics from the baseline survey, prior to any villages being enrolled in the CBHP policy.

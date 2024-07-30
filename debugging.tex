@@ -296,53 +296,39 @@ Total recruitment & 977 & 1062 & 1010 &  0 & 300 & 246 & 300 \\
 
 \end{table}%
 
-Problem table (Table~\ref{tbl-pmf}):
+Problem table (Table~\ref{tbl-source-did}):
 
 \begin{table}
 
-\caption{\label{tbl-pmf}PMF error estimation diagnostics.}
+\caption{\label{tbl-source-did}Average treatment effect
+(µg/m\textsuperscript{3}) for outdoor and personal exposure to the mixed
+combustion source.}
 
 \centering{
 
 \centering
-\begin{tblr}[         %% tabularray outer open
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval.},
+note{a}={Models adjusted for temperature; participant smoking status; and whether or not the household reported using biomass fuel.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
-width={1\linewidth},
-colspec={X[0.142857142857143]X[0.214285714285714]X[0.214285714285714]X[0.214285714285714]X[0.214285714285714]},
-cell{1}{2}={c=4,}{halign=c,},
-column{1}={halign=c,},
+colspec={Q[]Q[]Q[]Q[]Q[]},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=2,}{halign=c,},
+column{1}={halign=l,},
 column{2}={halign=c,},
 column{3}={halign=c,},
 column{4}={halign=c,},
 column{5}={halign=c,},
-row{2}={halign=c,},
-cell{7}{1}={}{halign=l,},
-cell{10}{1}={}{halign=l,},
-cell{7}{2}={}{halign=l,},
-cell{10}{2}={}{halign=l,},
-cell{7}{3}={}{halign=l,},
-cell{10}{3}={}{halign=l,},
-cell{7}{4}={}{halign=l,},
-cell{10}{4}={}{halign=l,},
-cell{7}{5}={}{halign=l,},
-cell{10}{5}={}{halign=l,},
 }                     %% tabularray inner close
 \toprule
-& Potential Factor Solution &  &  &  \\ \cmidrule[lr]{2-5}
-Diagnostic & 3 & 4 & 5 & 6 \\ \midrule %% TinyTableHeader
-Qexp & 27936 & 26052 & 24168 & 22284 \\
-Qtrue & 187681 & 147796 & 123236 & 100316 \\
-Qrobust & 174407 & 139910 & 117082 & 95932.5 \\
-Qr/Qexp & 6.24 & 5.37 & 4.84 & 4.3 \\
-Q/Qexp > 6 & wi-Ca, ns-S, ws-Na, ws-Ca, Al, Cl, Pb & ns-S, Na, Al, Cl, Pb, Nitrate & Nitrate, ws-Na, Al, Chloride & Nitrate, ws-Na, Al \\
-DISP \% dQ & <0.1\% & <0.1\% & <0.1\% & <0.1\% \\
-DISP swaps & 0 & 0 & 0 & 0 \\
-BS\_mapping & Dust- 98.5\% & Transported dust- 95\%, Dust- 96.5\%, Sulfur secondary- 97.5\%, Mixed combustion- 96.5\% & Transported dust- 86\%, Mixed combustion- 87\%, Dust- 86\%, Lead- 55\% & Transported dust- 84\%, Mixed combustion- 87.5\%, Dust- 81.5\%, Lead- 72\%
-Chloride- 61.5\%
-Sulfur secondary- 98.5\% \\
+& DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}
+& ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
+Outdoor & 1.07 & (-4.90, 7.04) & 1.53 & (-4.19, 7.26) \\
+Personal exposure & -5.60 & (-13.70, 2.54) & -5.39 & (-13.10, 2.35) \\
 \bottomrule
-\end{tblr}
+\end{talltblr}
 
 }
 

@@ -2455,7 +2455,7 @@ treatment cohorts in Figure~\ref{fig-source-season}.
 solution to the sum of elements, ions, elemental carbon, and organic
 carbon for outdoor and personal PM\textsubscript{2.5} exposure
 measurements. The lines separate the major contributing species to each
-source}
+source.}
 
 \end{figure}%
 
@@ -2484,6 +2484,42 @@ to reducing air pollutant emissions from solid fuel burning, as this
 `mixed combustion' source most likely reflects solid fuel combustion,
 particularly in our study settings. The results were consistent across
 both the unadjusted and adjusted models.
+
+\begin{table}
+
+\caption{\label{tbl-source-did}Average treatment effect
+(µg/m\textsuperscript{3}) for outdoor and personal exposure to the mixed
+combustion source.}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval.},
+note{a}={Models adjusted for temperature; participant smoking status; and whether or not the household reported using biomass fuel.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=2,}{halign=c,},
+column{1}={halign=l,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+}                     %% tabularray inner close
+\toprule
+& DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}
+& ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
+Outdoor & 1.07 & (-4.90, 7.04) & 1.53 & (-4.19, 7.26) \\
+Personal exposure & -5.60 & (-13.70, 2.54) & -5.39 & (-13.1, 2.35) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\end{table}%
 
 When the average treatment effects of the CBHP policy on community
 outdoor levels and personal exposure levels of the mixed combustion

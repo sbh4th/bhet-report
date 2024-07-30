@@ -145,28 +145,45 @@ tt(tx2) |>
 # tx4
 ```
 
-Problem table (@tbl-pmf):
+Problem table (@tbl-source-did):
 ```{r, message=F, warning=F}
 #| echo: FALSE
-#| label: tbl-pmf
-#| tbl-cap: PMF error estimation diagnostics.
+#| label: tbl-source-did
+#| tbl-cap: Average treatment effect (µg/m^3^) for outdoor and personal exposure to the mixed combustion source.
 #| eval: TRUE
 
-# options(knitr.kable.NA = " ")
-t_pmf <- read_csv(here("data-clean", 
-  "pmf-error.csv"))
+# DiD results for mixed combustion
+source_t <- tibble(
+  category = c("Outdoor", "Personal exposure"),
+  did_att = c("1.07", "-5.60"),
+  did_ci = c("(-4.90, 7.04)", "(-13.70, 2.54)"),
+  dida_att = c("1.53", "-5.39"),
+  dida_ci = c("(-4.19, 7.26)", "(-13.10, 2.35)")
+)
 
-tt(t_pmf,
-   width = c(1, 1.5, 1.5, 1.5, 1.5)) %>%
+colnames(source_t) =c(" ", "ATT", "(95% CI)", 
+   "ATT", "(95% CI)")
+
+tt(source_t,
+   digits = 2,
+   notes = list("Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval.", a = list(i=0, j=4, text = "Models adjusted for temperature; participant smoking status; and whether or not the household reported using biomass fuel."))) %>%
   group_tt(j = list(
-    "Potential Factor Solution" = 2:5),
-    ) %>%
-  style_tt(j = 1:5, align = "ccccc") %>%
-  style_tt(i = 0, align = "c") %>%
-  style_tt(i = c(5,8), j = 1:5, align="l") %>%
+     "DiD" = 2:3,
+     "Adjusted DiD" = 4:5)) %>%
+  style_tt(j = 1:5, align = 'lcccc') %>%
   format_tt(escape = TRUE)
 
-#   width = c(0.5, 1.5, 1.5, 1.5, 1.5)) %>%
-#  group_tt(j = list(
-#    "Potential Factor Solution" = 2:5))
+
+# kable(source_t,
+#   col.names = c(" ", "ATT", "(95% CI)", 
+#    "ATT", "(95% CI)"), # "latex", booktabs = T,
+#   linesep = "", align = 'lcccc') %>%
+#   kable_styling(full_width = F,
+#     latex_options = "HOLD_position") %>%
+#   add_header_above(c(" " = 1, 
+#     "DiD" = 2, "Adjusted DiD\\\\textsuperscript{a}" = 2),
+#     escape = F) %>%
+#   footnote(alphabet = "\\\\small{Note: Models adjusted for # temperature; participant smoking status; and whether or not the # household reported using biomass fuel.}",
+#   escape = F, threeparttable = T)
 ```
+

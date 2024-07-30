@@ -985,18 +985,20 @@ tt(t_pmf,
 
 The source profiles for the four-factor solution are presented in @fig-source-figure. The first source was identified as dust based on high percentages of crustal elements like wi-Ca, Si, and wi-Mg. The second source consisted of non-sulfate sulfur as well as secondary inorganic ions (ammonium, nitrate, and sulfate). Non-sulfate sulfur is a tracer for primary coal combustion, while secondary inorganic ions indicate a secondary source. Since industrial coal burning is a source of power generation in our study area, it is likely that the second source is a mixture of primary and secondary emissions that originate from coal and other sulfurous fuel combustion. Additionally, the mean source contribution of the second source is higher in outdoor than personal exposure measurements. Secondary formation occurs outdoors in the presence of sunlight, so higher outdoor concentrations compared to personal exposure further support our naming the second source ‘sulfur secondary’. The third source had high percentages of ws-Ca nd Al, which in our study region, has been found to be indicative of transported dust from dust storms that can occur in the spring. While our samples were collected during winter months only, it is possible that transported dust from previous years still remained. The fourth source was characterized by high percentages of tracers for both coal (OC, wi-K, chloride, Pb) and biomass combustion (EC, ws-K). Coal and biomass combustion are anticipated sources of PM pollution in our study setting, particularly from domestic cooking and heating activities, so this source is likely a mixture of PM emitted from these two household combustion sources. We extend the source profiles across the different treatment cohorts in @fig-source-season.
 
-```{r fig-source-figure, echo=F, message=F, warning=F, out.width="90%"}
+```{r, message=F, warning=F, out.width="90%"}
+#| echo: FALSE
 #| label: fig-source-figure
-#| fig-cap: "Source profiles for the 4-factor PMF solution to the sum of elements, ions, elemental carbon, and organic carbon for outdoor and personal PM~2.5~ exposure measurements. The lines separate the major contributing species to each source"
+#| fig-cap: Source profiles for the 4-factor PMF solution to the sum of elements, ions, elemental carbon, and organic carbon for outdoor and personal PM~2.5~ exposure measurements. The lines separate the major contributing species to each source.
 
 knitr::include_graphics(here("images", "source-figure.png"))
 
 ```
 
 
-```{r fig-source-season, echo=F, message=F, warning=F, out.width="80%"}
+```{r, message=F, warning=F, out.width="80%"}
+#| echo: FALSE
 #| label: fig-source-season
-#| fig-cap: "Arithmetic mean dispersion normalized source contributions found from the 4-factor PMF solution for **A** outdoor and **B** personal PM~2.5~ exposure samples by year the group received treatment."
+#| fig-cap: Arithmetic mean dispersion normalized source contributions found from the 4-factor PMF solution for **A** outdoor and **B** personal PM~2.5~ exposure samples by year the group received treatment.
 
 knitr::include_graphics(here("images", "source-season2.png"))
 
@@ -1004,9 +1006,11 @@ knitr::include_graphics(here("images", "source-season2.png"))
 
 @tbl-source-did shows the average treatment effect of the CBHP policy on community outdoor levels and personal exposure levels of the mixed combustion source was statistically indistinguishable from the null. Treatment was associated with lower, but statistically imprecise, personal exposures to the mixed combustion source. As with BC, this finding is consistent with the expectation that the policy contributed to reducing air pollutant emissions from solid fuel burning, as this ‘mixed combustion’ source most likely reflects solid fuel combustion, particularly in our study settings. The results were consistent across both the unadjusted and adjusted models. 
 
-```{r source-did, echo=F, message=F, warning=F, eval=F}
+```{r, message=F, warning=F}
+#| echo: FALSE
 #| label: tbl-source-did
-#| tbl-cap: "Average treatment effect (µg/m^3^) for outdoor and personal exposure to the mixed combustion source."
+#| tbl-cap: Average treatment effect (µg/m^3^) for outdoor and personal exposure to the mixed combustion source.
+#| eval: TRUE
 
 # DiD results for mixed combustion
 source_t <- tibble(
@@ -1017,17 +1021,29 @@ source_t <- tibble(
   dida_ci = c("(-4.19, 7.26)", "(-13.1, 2.35)")
 )
 
-kable(source_t,
-  col.names = c(" ", "ATT", "(95% CI)", 
-   "ATT", "(95% CI)"), # "latex", booktabs = T,
-  linesep = "", align = 'lcccc') %>%
-  kable_styling(full_width = F,
-    latex_options = "HOLD_position") %>%
-  add_header_above(c(" " = 1, 
-    "DiD" = 2, "Adjusted DiD\\\\textsuperscript{a}" = 2),
-    escape = F) %>%
-  footnote(alphabet = "\\\\small{Note: Models adjusted for temperature; participant smoking status; and whether or not the household reported using biomass fuel.}",
-  escape = F, threeparttable = T)
+colnames(source_t) =c(" ", "ATT", "(95% CI)", 
+   "ATT", "(95% CI)")
+
+tt(source_t,
+   digits = 2,
+   notes = list("Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval.", a = list(i=0, j=4, text = "Models adjusted for temperature; participant smoking status; and whether or not the household reported using biomass fuel."))) %>%
+  group_tt(j = list(
+     "DiD" = 2:3,
+     "Adjusted DiD" = 4:5)) %>%
+  style_tt(j = 1:5, align = 'lcccc') %>%
+  format_tt(escape = TRUE)
+
+# kable(source_t,
+#   col.names = c(" ", "ATT", "(95% CI)", 
+#    "ATT", "(95% CI)"), # "latex", booktabs = T,
+#   linesep = "", align = 'lcccc') %>%
+#   kable_styling(full_width = F,
+#     latex_options = "HOLD_position") %>%
+#   add_header_above(c(" " = 1, 
+#     "DiD" = 2, "Adjusted DiD\\\\textsuperscript{a}" = 2),
+#     escape = F) %>%
+#   footnote(alphabet = "\\\\small{Note: Models adjusted for # temperature; participant smoking status; and whether or not the # household reported using biomass fuel.}",
+#   escape = F, threeparttable = T)
 ```
   
 When the average treatment effects of the CBHP policy on community outdoor levels and personal exposure levels of the mixed combustion source were allowed to vary by treatment year and time, the treatment effect for households most recently treated (i.e., treated in the final wave, w4) was associated with lower personal exposures to the mixed combustion source (Appendix @fig-afig-mixed-ct). In each wave, treatment by the CBHP policy was associated with a reduction in the source contribution to personal PM~2.5~ mass from the mixed combustion source; however, for villages treated in w2 and w3, the effect was statistically imprecise. Treatment was not associated with a reduction or an increase in the source contribution to community outdoor PM~2.5~ mass from the mixed combustion source. Personal exposure measures of this specific air pollution source were found to be more indicative of treatment effect than community outdoor measures of the same source. This finding aligns with the expectation that the pollution source, identified as a mixture of coal and biomass combustion, is characteristic of household use of solid fuels. These fuels, including coal and biomass, produce emissions that are likely to be closer to the people using them rather than near the centrally located community outdoor air samplers.

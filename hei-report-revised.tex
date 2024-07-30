@@ -2561,6 +2561,47 @@ that these treatment effects were meaningfully mediated by exposure to
 the mixed combustion source, as the controlled direct effects were
 generally of similar magnitude as the adjusted total effects.
 
+\begin{table}
+
+\caption{\label{tbl-med-source}Average treatment effects and controlled
+direct effect (mm/Hg) of the CBHP policy on central systolic and
+diastolic blood pressure with mixed combustion source as the potential
+mediator.}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences, CDE = Controlled Direct Effect, DBP = Diastolic Blood Pressure, SBP = Systolic Blood Pressure.},
+note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
+note{b}={Further adjusted for mediation by mixed combustion source (coal and biomass)},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=2,}{halign=c,},
+cell{1}{6}={c=2,}{halign=c,},
+column{1}={halign=l,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+column{7}={halign=c,},
+}                     %% tabularray inner close
+\toprule
+& DiD &  & Adjusted DiD &  & Adjusted CDE &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
+& ATT & (95\%CI) & ATT\textsuperscript{a} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) \\ \midrule %% TinyTableHeader
+Central SBP & -0.43  & (-3.48, 2.62) & -1.61  & (-5.03, 1.82) & -1.50  & (-4.94, 1.94) \\
+Central DBP & -0.58  & (-2.59, 1.43) & -1.26  & (-3.38, 0.87) & -1.37  & (-3.69, 0.96) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\end{table}%
+
 \section{Discussion and Conclusions}\label{discussion-and-conclusions}
 
 Air pollution emitted from residential space heating with coal has

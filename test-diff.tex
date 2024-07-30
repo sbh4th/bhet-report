@@ -1,7 +1,7 @@
 % Options for packages loaded elsewhere
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL hei-report-submitted.tex   Wed Jul 24 11:45:55 2024
-%DIF ADD hei-report-revised.tex     Thu Jul 25 10:09:20 2024
+%DIF ADD hei-report-revised.tex     Tue Jul 30 17:05:49 2024
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
@@ -47,14 +47,40 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{3}
 % Make \paragraph and \subparagraph free-standing
+%DIF 47a47
+\makeatletter %DIF > 
+%DIF -------
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+%DIF 49c50-56
+%DIF <   \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+%DIF -------
+  \renewcommand{\paragraph}{ %DIF > 
+    \@ifstar %DIF > 
+      \xxxParagraphStar %DIF > 
+      \xxxParagraphNoStar %DIF > 
+  } %DIF > 
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}} %DIF > 
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}} %DIF > 
+%DIF -------
 \fi
 \ifx\subparagraph\undefined\else
   \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+%DIF 53c60-66
+%DIF <   \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+%DIF -------
+  \renewcommand{\subparagraph}{ %DIF > 
+    \@ifstar %DIF > 
+      \xxxSubParagraphStar %DIF > 
+      \xxxSubParagraphNoStar %DIF > 
+  } %DIF > 
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}} %DIF > 
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}} %DIF > 
+%DIF -------
 \fi
+%DIF 55a68
+\makeatother %DIF > 
+%DIF -------
 
 
 \providecommand{\tightlist}{%
@@ -81,7 +107,7 @@
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-%DIF 81a81-91
+%DIF 81a95-105
 % definitions for citeproc citations %DIF > 
 \NewDocumentCommand\citeproctext{}{} %DIF > 
 \NewDocumentCommand\citeproc{mm}{% %DIF > 
@@ -98,7 +124,7 @@
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
-%DIF 85-89c96-100
+%DIF 85-89c110-114
 %DIF < \newlength{\cslentryspacingunit} % times entry-spacing
 %DIF < \setlength{\cslentryspacingunit}{\parskip}
 %DIF < \newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
@@ -113,7 +139,7 @@
 %DIF -------
   % turn on hanging indent if param 1 is 1
   \ifodd #1
-%DIF 92-93c103-104
+%DIF 92-93c117-118
 %DIF <   \let\oldpar\par
 %DIF <   \def\par{\hangindent=\cslhangindent\oldpar}
 %DIF -------
@@ -122,7 +148,7 @@
 %DIF -------
   \fi
   % set entry spacing
-%DIF 96-98c107-108
+%DIF 96-98c121-122
 %DIF <   \setlength{\parskip}{#2\cslentryspacingunit}
 %DIF <  }%
 %DIF <  {}
@@ -131,12 +157,12 @@
  {\end{list}} %DIF > 
 %DIF -------
 \usepackage{calc}
-%DIF 100-102c110-112
+%DIF 100-102c124-126
 %DIF < \newcommand{\CSLBlock}[1]{#1\hfill\break}
 %DIF < \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
 %DIF < \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 %DIF -------
-\newcommand{\CSLBlock}[1]{\hfill\break#1\hfill\break} %DIF > 
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}} %DIF > 
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}} %DIF > 
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}} %DIF > 
 %DIF -------
@@ -156,7 +182,7 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
-%DIF 119-128c129-136
+%DIF 119-128c143-150
 %DIF < \usepackage{siunitx}
 %DIF < 
 %DIF <   \newcolumntype{d}{S[
@@ -189,12 +215,12 @@
     \@float{figure}}
    {\end@float}
  \makeatother
-%DIF 141a149
+%DIF 141a163
 \usepackage{changes} %DIF > 
 %DIF -------
 \KOMAoption{captions}{tableheading}
 \makeatletter
-%DIF 143-146d152
+%DIF 143-146d166
 %DIF < \makeatother
 %DIF < \makeatletter
 %DIF < \makeatother
@@ -235,13 +261,15 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \makeatother
 \makeatletter
-%DIF 182-183d187
-%DIF < \@ifpackageloaded{caption}{}{\usepackage{caption}}
-%DIF < \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+%DIF 182a201-202
+\makeatother %DIF > 
+\makeatletter %DIF > 
 %DIF -------
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
-\makeatletter
-%DIF 186-193c189-190
+%DIF 185-194c206
+%DIF < \makeatletter
 %DIF < \@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
 %DIF < \makeatother
 %DIF < \makeatletter
@@ -250,15 +278,19 @@
 %DIF < \makeatletter
 %DIF < \makeatother
 %DIF < \makeatletter
+%DIF < \makeatother
 %DIF -------
-\@ifpackageloaded{caption}{}{\usepackage{caption}} %DIF > 
-\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}} %DIF > 
+ %DIF > 
 %DIF -------
-\makeatother
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+%DIF 198c210-211
+%DIF < \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+%DIF -------
+\usepackage{bookmark} %DIF > 
+ %DIF > 
+%DIF -------
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
@@ -270,17 +302,20 @@
   citecolor={Blue},
   urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
+%DIF 210a223
+ %DIF > 
+%DIF -------
 
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{\DIFdelbegin \DIFdel{2024-04-27}\DIFdelend \DIFaddbegin \DIFadd{2024-07-25}\DIFaddend }
+\date{\DIFdelbegin \DIFdel{2024-04-27}\DIFdelend \DIFaddbegin \DIFadd{2024-07-30}\DIFaddend }
 %DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
 %DIF UNDERLINE PREAMBLE %DIF PREAMBLE
 \RequirePackage[normalem]{ulem} %DIF PREAMBLE
 \RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
-\providecommand{\DIFaddtex}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
-\providecommand{\DIFdeltex}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
 %DIF SAFE PREAMBLE %DIF PREAMBLE
 \providecommand{\DIFaddbegin}{} %DIF PREAMBLE
 \providecommand{\DIFaddend}{} %DIF PREAMBLE
@@ -295,9 +330,6 @@ of the Beijing Household Energy Transitions Team}
 \providecommand{\DIFaddendFL}{} %DIF PREAMBLE
 \providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
 \providecommand{\DIFdelendFL}{} %DIF PREAMBLE
-%DIF HYPERREF PREAMBLE %DIF PREAMBLE
-\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
-\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
 \newcommand{\DIFscaledelfig}{0.5}
 %DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
 \RequirePackage{settobox} %DIF PREAMBLE
@@ -360,10 +392,10 @@ of the Beijing Household Energy Transitions Team}
 \begin{document}
 \maketitle
 \DIFdelbegin %DIFDELCMD < \ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, borderline west={3pt}{0pt}{shadecolor}, sharp corners, interior hidden, boxrule=0pt, frame hidden, enhanced]}{\end{tcolorbox}}\fi
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdelend \renewcommand*\contentsname{Table of contents}
+\DIFdelend 
+
+\renewcommand*\contentsname{Table of contents}
 {
 \hypersetup{linkcolor=}
 \setcounter{tocdepth}{3}
@@ -372,16 +404,17 @@ of the Beijing Household Energy Transitions Team}
 \DIFdelbegin %DIFDELCMD < \hypertarget{abstract}{%
 %DIFDELCMD < \subsection*{Abstract}\label{abstract}}
 %DIFDELCMD < %%%
-\DIFdelend \DIFaddbegin \subsection*{\DIFadd{Abstract}}\label{abstract}
-\DIFaddend 
+\DIFdelend 
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{introduction}{%
 %DIFDELCMD < \subsubsection*{Introduction}\label{introduction}}
 %DIFDELCMD < %%%
-\DIFdelend \DIFaddbegin \subsubsection*{\DIFadd{Introduction}}\label{introduction}
+\DIFdelend \DIFaddbegin \subsection*{\DIFadd{Abstract}}\label{abstract}
 \DIFaddend 
 
-Since 2015, thousands of villages across Beijing and northern China have
+\DIFaddbegin \subsubsection*{\DIFadd{Introduction}}\label{introduction}
+
+\DIFaddend Since 2015, thousands of villages across Beijing and northern China have
 been treated by a Coal Ban and Heat Pump (CBHP) subsidy policy that
 banned household coal burning and subsidized the cost of replacement
 with electric heaters and electricity. Whether this large-scale policy
@@ -1004,18 +1037,24 @@ indoor air quality measurements.}}
 
 \centering{
 
-\begin{longtable*}[t]{lrrrrrrr}
+\centering
+\begin{tblr}[         %% tabularray outer open
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{1}={c=1,}{halign=c,},
+cell{1}{2}={c=3,}{halign=c,},
+cell{1}{5}={c=4,}{halign=c,},
+}                     %% tabularray inner close
 \toprule
-\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Overall} & \multicolumn{4}{c}{Indoor} \\
-\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-8}
-Sample & Wave 1 & Wave 2 & Wave 4 & Wave 1 & Wave 2 & Wave 3 & Wave 4\\
-\midrule
-New recruitment & 977 & 196 & 68 & 0 & 300 & 0 & 52\\
-Wave 1 households & \textbackslash{} & 866 & 780 & \textbackslash{} & 0 & 0 & 0\\
-Wave 2 households & \textbackslash{} & \textbackslash{} & 162 & \textbackslash{} & \textbackslash{} & 246 & 248\\
-Total recruitment & 977 & 1062 & 1010 & 0 & 300 & 246 & 300\\
+& Overall &  &  & Indoor &  &  &  \\ \cmidrule[lr]{1-1}\cmidrule[lr]{2-4}\cmidrule[lr]{5-8}
+Sample & Wave 1 & Wave 2 & Wave 4 & Wave 1 & Wave 2 & Wave 3 & Wave 4 \\ \midrule %% TinyTableHeader
+New recruitment & 977 &  196 &   68 &  0 & 300 &   0 &  52 \\
+Wave 1 households & - &  866 &  780 & - &   0 &   0 &   0 \\
+Wave 2 households & - & - &  162 & - & - & 246 & 248 \\
+Total recruitment & 977 & 1062 & 1010 &  0 & 300 & 246 & 300 \\
 \bottomrule
-\end{longtable*}
+\end{tblr}
 
 }
 
@@ -1931,14 +1970,16 @@ measurement waves that included individual-level measurements. In total,
 we enrolled 1432 participants into the study, of which 630 (43\%)
 \DIFdelbegin \DIFdel{participated in }\DIFdelend \DIFaddbegin \DIFadd{individual contributed 1890 observations across }\DIFaddend all three waves, 443
 (31\%) \DIFdelbegin \DIFdel{participated in }\DIFdelend \DIFaddbegin \DIFadd{individuals contributed 886 observations across }\DIFaddend two waves and 365
-(25\%) \DIFaddbegin \DIFadd{individuals }\DIFaddend participated in a single wave. \DIFdelbegin \DIFdel{We did not observe any
-notable differences in demographic characteristics or }\DIFdelend \DIFaddbegin \DIFadd{Table 3 shows selected
-demographic characteristics and }\DIFaddend health behaviors between participants
-who contributed to \DIFdelbegin \DIFdel{a different number of waves(Table ~\ref{tbl-each-campaign}) }\DIFdelend \DIFaddbegin \DIFadd{each study wave. We find no differences in gender or
-smoking across waves, but overall BMI and waist circumference increased
-over time. Table 4 shows similar measures according to whether }\DIFaddend or
-between participants in each of the three waves with individual
-measurements (\DIFdelbegin \DIFdel{Table~\ref{tbl-diff-campaign}}\DIFdelend \DIFaddbegin \textbf{\DIFadd{?@tbl-diff-campaign}}\DIFaddend ).
+(25\%) \DIFaddbegin \DIFadd{individuals }\DIFaddend participated in a single wave.
+\DIFdelbegin \DIFdel{We did not observe any
+notable differences in demographic characteristics
+or }\DIFdelend \DIFaddbegin \DIFadd{Table~\ref{tbl-each-campaign} shows selected demographic characteristics
+and }\DIFaddend health behaviors between participants who contributed to \DIFdelbegin \DIFdel{a different number of waves(Table~\ref{tbl-each-campaign}) }\DIFdelend \DIFaddbegin \DIFadd{each study
+wave. We find no differences in gender or smoking across waves, but
+overall BMI and waist circumference increased over time.}\comment{EC 4b}
+\DIFadd{Table~\ref{tbl-diff-campaign} shows similar measures according to
+whether }\DIFaddend or between participants in each of the three waves with
+individual measurements\DIFdelbegin \DIFdel{(Table~\ref{tbl-diff-campaign})}\DIFdelend .
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{tbl-each-campaign}{}
 %DIFDELCMD < %%%
@@ -1949,45 +1990,91 @@ measurements (\DIFdelbegin \DIFdel{Table~\ref{tbl-diff-campaign}}\DIFdelend \DIF
 \DIFdelFL{Demographic and health characteristics of participants in each study
 wave }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL 
 
+\DIFdelbeginFL %DIFDELCMD < \centering
+%DIFDELCMD < \begin{tabular}{l>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}}
+%DIFDELCMD < \toprule
 %DIFDELCMD < %%%
-\DIFdelendFL \centering
-\DIFdelbeginFL %DIFDELCMD < \begin{tabular}{l>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}}
+\textbf{\DIFdelFL{Characteristic}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{Wave 1 (2018-19) N=1003}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{Wave 2 (2019-20) N=1110}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{Wave 4 (2021-22) N=1028}}%DIFAUXCMD
+%DIFDELCMD < \\
+%DIFDELCMD < \midrule
 %DIFDELCMD < %%%
-\DIFdelendFL \DIFaddbeginFL \begin{talltblr}[         %% tabularray outer open
-caption={Demographic and health characteristics of participants in each study wave.},
+\DIFdelFL{Female, n (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{580 (57.8) }%DIFDELCMD < & %%%
+\DIFdelFL{653 (58.8) }%DIFDELCMD < & %%%
+\DIFdelFL{612 (59.5)}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Current smoker, n (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{257 (25.6) }%DIFDELCMD < & %%%
+\DIFdelFL{295 (26.6) }%DIFDELCMD < & %%%
+\DIFdelFL{265 (25.8)}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Any smoke exposure, n (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{788 (78.6) }%DIFDELCMD < & %%%
+\DIFdelFL{897 (80.8) }%DIFDELCMD < & %%%
+\DIFdelFL{843 (82)}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Age in years, Mean (SD) }%DIFDELCMD < & %%%
+\DIFdelFL{60.7 (9.2) }%DIFDELCMD < & %%%
+\DIFdelFL{61.4 (9.1) }%DIFDELCMD < & %%%
+\DIFdelFL{63.1 (9)}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{BMI in kg/m\textsuperscript{2}, Mean (SD) }%DIFDELCMD < & %%%
+\DIFdelFL{26.1 (3.7) }%DIFDELCMD < & %%%
+\DIFdelFL{25.7 (3.5) }%DIFDELCMD < & %%%
+\DIFdelFL{26.1 (4)}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Waist circumference in cm, Mean (SD) }%DIFDELCMD < & %%%
+\DIFdelFL{86.8 (10.2) }%DIFDELCMD < & %%%
+\DIFdelFL{87.4 (9.4) }%DIFDELCMD < & %%%
+\DIFdelFL{91.4 (10.7)}%DIFDELCMD < \\
+%DIFDELCMD < \bottomrule
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-each-campaign}\DIFaddFL{Demographic and health characteristics
+of participants in each study wave.}}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
 note{a}={Chi-square test for categorical and F-test for continuous characteristics.},
-]                     %DIF > % tabularray outer close
-{                     %DIF > % tabularray inner open
-\DIFaddFL{width=}{\DIFaddFL{1}\linewidth}\DIFaddFL{,
-colspec=}{\DIFaddFL{X}[\DIFaddFL{0.380952380952381}]\DIFaddFL{X}[\DIFaddFL{0.142857142857143}]\DIFaddFL{X}[\DIFaddFL{0.142857142857143}]\DIFaddFL{X}[\DIFaddFL{0.142857142857143}]\DIFaddFL{X}[\DIFaddFL{0.0952380952380952}]\DIFaddFL{X}[\DIFaddFL{0.0952380952380952}]}\DIFaddFL{,
-cell}{\DIFaddFL{1}}{\DIFaddFL{1}}\DIFaddFL{=}{\DIFaddFL{c=1,}}{\DIFaddFL{halign=c,}}\DIFaddFL{,
-cell}{\DIFaddFL{1}}{\DIFaddFL{2}}\DIFaddFL{=}{\DIFaddFL{c=3,}}{\DIFaddFL{halign=c,}}\DIFaddFL{,
-cell}{\DIFaddFL{1}}{\DIFaddFL{5}}\DIFaddFL{=}{\DIFaddFL{c=2,}}{\DIFaddFL{halign=c,}}\DIFaddFL{,
-column}{\DIFaddFL{1}}\DIFaddFL{=}{\DIFaddFL{halign=l,}}\DIFaddFL{,
-column}{\DIFaddFL{2}}\DIFaddFL{=}{\DIFaddFL{halign=l,}}\DIFaddFL{,
-column}{\DIFaddFL{3}}\DIFaddFL{=}{\DIFaddFL{halign=l,}}\DIFaddFL{,
-column}{\DIFaddFL{4}}\DIFaddFL{=}{\DIFaddFL{halign=l,}}\DIFaddFL{,
-}}                     %DIF > % tabularray inner close
-\DIFaddendFL \toprule
-\DIFdelbeginFL \textbf{\DIFdelFL{Characteristic}} %DIFAUXCMD
-\DIFdelendFL & \DIFdelbeginFL \textbf{\DIFdelFL{Wave 1 (2018-19) N=1003}} %DIFAUXCMD
-\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Estimates }\DIFaddendFL &  \DIFdelbeginFL \textbf{\DIFdelFL{Wave 2 (2019-20) N=1110}} %DIFAUXCMD
-\DIFdelendFL &  \DIFdelbeginFL \textbf{\DIFdelFL{Wave 4 (2021-22) N=1028}}%DIFAUXCMD
-\DIFdelendFL \DIFaddbeginFL & \DIFaddFL{Test for Equality }&  \DIFaddendFL \\ \DIFaddbeginFL \cmidrule[lr]{1-1}\cmidrule[lr]{2-4}\cmidrule[lr]{5-6}
-\DIFaddFL{Characteristic }& \DIFaddFL{Wave 1 (2018-19) N=1003 }& \DIFaddFL{Wave 2 (2019-20) N=1110 }& \DIFaddFL{Wave 4 (2021-22) N=1028 }& \DIFaddFL{Statistic\textsuperscript{a} }& \DIFaddFL{p-value }\\ \DIFaddendFL \midrule %DIF > % TinyTableHeader
-Female, n (\%) & 580 (57.8) & 653 (58.8) & 612 (59.5) \DIFaddbeginFL & \DIFaddFL{0.616 }& \DIFaddFL{0.735 }\DIFaddendFL \\
-Current smoker, n (\%) & 257 (25.6) & 295 (26.6) & 265 (25.8) \DIFaddbeginFL & \DIFaddFL{0.292 }& \DIFaddFL{0.864 }\DIFaddendFL \\
-Any smoke exposure, n (\%) & \DIFdelbeginFL \DIFdelFL{788 (78.6}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{795 (79.3}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{897 (80.8}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{898 (80.9}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{843 (82) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{857 (83.4) }& \DIFaddFL{5.616 }& \DIFaddFL{0.060 }\DIFaddendFL \\
-Age in years, Mean (SD) & \DIFdelbeginFL \DIFdelFL{60.7 (9.2}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{26.1 (3.7}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{61.4 (9.1}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{25.7 (3.5}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{63.1 (9) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{26.1 (4.0) }& \DIFaddFL{3.273 }& \DIFaddFL{0.076 }\DIFaddendFL \\
-BMI \DIFdelbeginFL \DIFdelFL{in }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{(}\DIFaddendFL kg/\DIFdelbeginFL \DIFdelFL{m\textsuperscript{2}}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{m2)}\DIFaddendFL , Mean (SD) & \DIFdelbeginFL \DIFdelFL{26.1 (3.7}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{60.1 (9.3}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{25.7 (3.5}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{61.1 (9.1}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{26.1 (4) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{63.3 (9.0) }& \DIFaddFL{31.980 }& \DIFaddFL{0.000 }\DIFaddendFL \\
-Waist circumference \DIFdelbeginFL \DIFdelFL{in cm}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{(cm)}\DIFaddendFL , Mean (SD) & 86.8 (10.2) & 87.4 (9.4) & 91.4 (10.7) \DIFaddbeginFL & \DIFaddFL{54.035 }& \DIFaddFL{0.000 }\DIFaddendFL \\
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={1\linewidth},
+colspec={X[0.380952380952381]X[0.142857142857143]X[0.142857142857143]X[0.142857142857143]X[0.0952380952380952]X[0.0952380952380952]},
+cell{1}{1}={c=1,}{halign=c,},
+cell{1}{2}={c=3,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+column{1}={halign=l,},
+column{2}={halign=l,},
+column{3}={halign=l,},
+column{4}={halign=l,},
+}                     %% tabularray inner close
+\toprule
+& Estimates &  &  & Test for Equality &  \\ \cmidrule[lr]{1-1}\cmidrule[lr]{2-4}\cmidrule[lr]{5-6}
+Characteristic & Wave 1 (2018-19) N=1003 & Wave 2 (2019-20) N=1110 & Wave 4 (2021-22) N=1028 & Statistic\textsuperscript{a} & p-value \\ \midrule %% TinyTableHeader
+Female, n (\%) & 580 (57.8) & 653 (58.8) & 612 (59.5) & 0.616 & 0.735 \\
+Current smoker, n (\%) & 257 (25.6) & 295 (26.6) & 265 (25.8) & 0.292 & 0.864 \\
+Any smoke exposure, n (\%) & 795 (79.3) & 898 (80.9) & 857 (83.4) & 5.616 & 0.060 \\
+Age in years, Mean (SD) & 26.1 (3.7) & 25.7 (3.5) & 26.1 (4.0) & 3.273 & 0.076 \\
+BMI (kg/m2), Mean (SD) & 60.1 (9.3) & 61.1 (9.1) & 63.3 (9.0) & 31.980 & 0.000 \\
+Waist circumference (cm), Mean (SD) & 86.8 (10.2) & 87.4 (9.4) & 91.4 (10.7) & 54.035 & 0.000 \\
 \bottomrule
-\DIFdelbeginFL %DIFDELCMD < \end{tabular}
-%DIFDELCMD < %%%
-\DIFdelendFL \DIFaddbeginFL \end{talltblr}
-\DIFaddendFL \end{table}
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{tbl-diff-campaign}{}
 %DIFDELCMD < %%%
@@ -1998,45 +2085,91 @@ Waist circumference \DIFdelbeginFL \DIFdelFL{in cm}\DIFdelendFL \DIFaddbeginFL \
 \DIFdelFL{Demographic and health characteristics of participants who contributed
 to different numbers of study waves. }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL 
 
+\DIFdelbeginFL %DIFDELCMD < \centering
+%DIFDELCMD < \begin{tabular}{l>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}}
+%DIFDELCMD < \toprule
 %DIFDELCMD < %%%
-\DIFdelendFL \centering
-\DIFdelbeginFL %DIFDELCMD < \begin{tabular}{l>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}}
+\textbf{\DIFdelFL{Characteristic}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{1 Wave N=365}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{2 Waves N=443}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{3 Waves N=630}}%DIFAUXCMD
+%DIFDELCMD < \\
+%DIFDELCMD < \midrule
 %DIFDELCMD < %%%
-\DIFdelendFL \DIFaddbeginFL \begin{talltblr}[         %% tabularray outer open
-caption={Demographic and health characteristics of participants who contributed to different numbers of study waves.},
+\DIFdelFL{Female, n (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{211 (57.8) }%DIFDELCMD < & %%%
+\DIFdelFL{253 (57.1) }%DIFDELCMD < & %%%
+\DIFdelFL{370 (58.7)}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Current smoker, n (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{110 (30.1) }%DIFDELCMD < & %%%
+\DIFdelFL{117 (26.4) }%DIFDELCMD < & %%%
+\DIFdelFL{161 (25.6)}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Any smoke exposure, n (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{288 (78.9) }%DIFDELCMD < & %%%
+\DIFdelFL{360 (81.3) }%DIFDELCMD < & %%%
+\DIFdelFL{498 (79)}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Age in years, Mean (SD) }%DIFDELCMD < & %%%
+\DIFdelFL{59.9 (9.2) }%DIFDELCMD < & %%%
+\DIFdelFL{60.5 (8.8) }%DIFDELCMD < & %%%
+\DIFdelFL{61.3 (9.1)}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{BMI in kg/m\textsuperscript{2}, Mean (SD) }%DIFDELCMD < & %%%
+\DIFdelFL{26.3 (3.6) }%DIFDELCMD < & %%%
+\DIFdelFL{25.8 (3.5) }%DIFDELCMD < & %%%
+\DIFdelFL{26.1 (3.7)}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Waist circumference in cm, Mean (SD) }%DIFDELCMD < & %%%
+\DIFdelFL{90.3 (9.8) }%DIFDELCMD < & %%%
+\DIFdelFL{86.5 (10) }%DIFDELCMD < & %%%
+\DIFdelFL{86.9 (10.4)}%DIFDELCMD < \\
+%DIFDELCMD < \bottomrule
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-diff-campaign}\DIFaddFL{Demographic and health characteristics
+of participants who contributed to different numbers of study waves.}}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
 note{a}={Chi-square test for categorical and F-test for continuous characteristics.},
-]                     %DIF > % tabularray outer close
-{                     %DIF > % tabularray inner open
-\DIFaddFL{width=}{\DIFaddFL{1}\linewidth}\DIFaddFL{,
-colspec=}{\DIFaddFL{X}[\DIFaddFL{0.380952380952381}]\DIFaddFL{X}[\DIFaddFL{0.142857142857143}]\DIFaddFL{X}[\DIFaddFL{0.142857142857143}]\DIFaddFL{X}[\DIFaddFL{0.142857142857143}]\DIFaddFL{X}[\DIFaddFL{0.0952380952380952}]\DIFaddFL{X}[\DIFaddFL{0.0952380952380952}]}\DIFaddFL{,
-cell}{\DIFaddFL{1}}{\DIFaddFL{1}}\DIFaddFL{=}{\DIFaddFL{c=1,}}{\DIFaddFL{halign=c,}}\DIFaddFL{,
-cell}{\DIFaddFL{1}}{\DIFaddFL{2}}\DIFaddFL{=}{\DIFaddFL{c=3,}}{\DIFaddFL{halign=c,}}\DIFaddFL{,
-cell}{\DIFaddFL{1}}{\DIFaddFL{5}}\DIFaddFL{=}{\DIFaddFL{c=2,}}{\DIFaddFL{halign=c,}}\DIFaddFL{,
-column}{\DIFaddFL{1}}\DIFaddFL{=}{\DIFaddFL{halign=l,}}\DIFaddFL{,
-column}{\DIFaddFL{2}}\DIFaddFL{=}{\DIFaddFL{halign=l,}}\DIFaddFL{,
-column}{\DIFaddFL{3}}\DIFaddFL{=}{\DIFaddFL{halign=l,}}\DIFaddFL{,
-column}{\DIFaddFL{4}}\DIFaddFL{=}{\DIFaddFL{halign=l,}}\DIFaddFL{,
-}}                     %DIF > % tabularray inner close
-\DIFaddendFL \toprule
-\DIFdelbeginFL \textbf{\DIFdelFL{Characteristic}} %DIFAUXCMD
-\DIFdelendFL & \DIFdelbeginFL \textbf{\DIFdelFL{1 Wave N=365}} %DIFAUXCMD
-\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Estimates }\DIFaddendFL &  \DIFdelbeginFL \textbf{\DIFdelFL{2 Waves N=443}} %DIFAUXCMD
-\DIFdelendFL &  \DIFdelbeginFL \textbf{\DIFdelFL{3 Waves N=630}}%DIFAUXCMD
-\DIFdelendFL \DIFaddbeginFL & \DIFaddFL{Test for Equality }&  \DIFaddendFL \\ \DIFaddbeginFL \cmidrule[lr]{1-1}\cmidrule[lr]{2-4}\cmidrule[lr]{5-6}
-\DIFaddFL{Characteristic }& \DIFaddFL{1 Wave N=365 }& \DIFaddFL{2 Waves N=886 }& \DIFaddFL{3 Waves N=1890 }& \DIFaddFL{Statistic\textsuperscript{a} }& \DIFaddFL{p-value }\\ \DIFaddendFL \midrule %DIF > % TinyTableHeader
-Female, n (\%) & 211 (57.8) & \DIFdelbeginFL \DIFdelFL{253 (57.1}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{519 (58.6}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{370 (58.7) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{1115 (59.0) }& \DIFaddFL{0.191 }& \DIFaddFL{0.909 }\DIFaddendFL \\
-Current smoker, n (\%) & 110 (30.1) & \DIFdelbeginFL \DIFdelFL{117 (26.4}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{230 (26.0}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{161 (25.6) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{477 (25.2) }& \DIFaddFL{3.817 }& \DIFaddFL{0.148 }\DIFaddendFL \\
-Any smoke exposure, n (\%) & \DIFdelbeginFL \DIFdelFL{288 (78.9}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{293 (80.2}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{360 (81.3}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{732 (82.6}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{498 (79) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{1526 (80.7) }& \DIFaddFL{1.607 }& \DIFaddFL{0.448 }\DIFaddendFL \\
-Age in years, Mean (SD) & \DIFdelbeginFL \DIFdelFL{59.9 (9.2}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{26.3 (3.6}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{60.5 (8.8}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{25.8 (3.6}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{61.3 (9.1) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{26.0 (3.8) }& \DIFaddFL{1.659 }& \DIFaddFL{0.381 }\DIFaddendFL \\
-BMI \DIFdelbeginFL \DIFdelFL{in }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{(}\DIFaddendFL kg/\DIFdelbeginFL \DIFdelFL{m\textsuperscript{2}}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{m2)}\DIFaddendFL , Mean (SD) & \DIFdelbeginFL \DIFdelFL{26.3 (3.6}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{59.8 (9.3}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{25.8 (3.5}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{61.0 (8.9}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{26.1 (3.7) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{62.1 (9.3) }& \DIFaddFL{11.718 }& \DIFaddFL{0.000 }\DIFaddendFL \\
-Waist circumference \DIFdelbeginFL \DIFdelFL{in cm}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{(cm)}\DIFaddendFL , Mean (SD) & 90.3 (9.8) & \DIFdelbeginFL \DIFdelFL{86.5 (10}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{88.3 (10.6}\DIFaddendFL ) & \DIFdelbeginFL \DIFdelFL{86.9 (10.4) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{88.7 (10.3) }& \DIFaddFL{3.989 }& \DIFaddFL{0.037 }\DIFaddendFL \\
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={1\linewidth},
+colspec={X[0.380952380952381]X[0.142857142857143]X[0.142857142857143]X[0.142857142857143]X[0.0952380952380952]X[0.0952380952380952]},
+cell{1}{1}={c=1,}{halign=c,},
+cell{1}{2}={c=3,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+column{1}={halign=l,},
+column{2}={halign=l,},
+column{3}={halign=l,},
+column{4}={halign=l,},
+}                     %% tabularray inner close
+\toprule
+& Estimates &  &  & Test for Equality &  \\ \cmidrule[lr]{1-1}\cmidrule[lr]{2-4}\cmidrule[lr]{5-6}
+Characteristic & 1 Wave N=365 & 2 Waves N=886 & 3 Waves N=1890 & Statistic\textsuperscript{a} & p-value \\ \midrule %% TinyTableHeader
+Female, n (\%) & 211 (57.8) & 519 (58.6) & 1115 (59.0) & 0.191 & 0.909 \\
+Current smoker, n (\%) & 110 (30.1) & 230 (26.0) & 477 (25.2) & 3.817 & 0.148 \\
+Any smoke exposure, n (\%) & 293 (80.2) & 732 (82.6) & 1526 (80.7) & 1.607 & 0.448 \\
+Age in years, Mean (SD) & 26.3 (3.6) & 25.8 (3.6) & 26.0 (3.8) & 1.659 & 0.381 \\
+BMI (kg/m2), Mean (SD) & 59.8 (9.3) & 61.0 (8.9) & 62.1 (9.3) & 11.718 & 0.000 \\
+Waist circumference (cm), Mean (SD) & 90.3 (9.8) & 88.3 (10.6) & 88.7 (10.3) & 3.989 & 0.037 \\
 \bottomrule
-\DIFdelbeginFL %DIFDELCMD < \end{tabular}
-%DIFDELCMD < %%%
-\DIFdelendFL \DIFaddbeginFL \end{talltblr}
-\DIFaddendFL \end{table}
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{description-of-study-sample}{%
 %DIFDELCMD < \subsection{Description of study
@@ -2055,58 +2188,339 @@ sample}}\label{description-of-study-sample}
 \DIFdelFL{Descriptive statistics for selected demographic, health, and
 environmental measures at baseline, by treatment status }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdelendFL \centering\centering
-\DIFaddbeginFL \caption{\label{tab:table1}\DIFaddFL{Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status.}}
-\centering
-\DIFaddendFL \fontsize{9}{11}\selectfont
-\begin{tabular}[t]{rrrrrrr}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Never treated (N=603)} & \multicolumn{2}{c}{Ever treated (N=400)} & \multicolumn{2}{c}{ } \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
-  & Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error\\
-\midrule
-\textbf{Demographics:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
-Age (years) & 59.9 & 9.4 & 60.4 & 9.2 & 0.5 & 0.6\\
-Female (\%) & 59.5 & 49.1 & 59.1 & 49.2 & -0.4 & 3.2\\
-No education (\%) & 11.5 & 31.9 & 12.3 & 32.9 & 0.9 & 2.1\\
-Primary education (\%) & 75.5 & 43.0 & 77.6 & 41.7 & 2.1 & 2.8\\
-Secondary+ education (\%) & 12.6 & 33.2 & 9.8 & 29.7 & -2.9 & 2.0\\
-\textbf{Health measures:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
-Never smoker (\%) & 61.9 & 48.6 & 59.5 & 49.1 & -2.4 & 3.2\\
-Former smoker (\%) & 11.9 & 32.4 & 15.1 & 35.8 & 3.2 & 2.2\\
-Current smoker (\%) & 26.2 & 44.0 & 25.4 & 43.6 & -0.8 & 2.8\\
-Never drinker (\%) & 55.9 & 49.7 & 52.5 & 50.0 & -3.4 & 3.2\\
-Occasional drinker (\%) & 26.0 & 43.9 & 25.5 & 43.6 & -0.5 & 2.8\\
-Daily drinker (\%) & 17.8 & 38.3 & 21.9 & 41.4 & 4.1 & 2.6\\
-Systolic (mmHg) & 131.4 & 16.8 & 128.7 & 14.3 & -2.7 & 1.0\\
-Diastolic (mmHg) & 82.7 & 11.6 & 82.1 & 11.3 & -0.6 & 0.8\\
-Waist circumference (cm) & 87.7 & 10.5 & 85.4 & 9.5 & -2.3 & 0.8\\
-Body mass index (kg/m2) & 26.3 & 3.7 & 25.8 & 3.6 & -0.5 & 0.3\\
-Frequency of coughing (\%) & 18.7 & 39.0 & 19.7 & 39.8 & 1.0 & 2.6\\
-Frequency of wheezing (\%) & 6.2 & 24.2 & 6.6 & 24.8 & 0.3 & 1.6\\
-Shortness of breath (\%) & 29.2 & 45.5 & 34.3 & 47.5 & 5.1 & 3.0\\
-Chest trouble (\%) & 11.6 & 32.0 & 14.1 & 34.9 & 2.5 & 2.2\\
-Any respiratory problem (\%) & 50.6 & 50.0 & 54.3 & 49.9 & 3.7 & 3.2\\
-\textbf{Environmental measures:} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{}\\
-Temperature (°C) & 13.8 & 3.6 & 13.5 & 3.3 & -0.3 & 0.2\\
-Personal PM2.5 (ug/m3) & 150.2 & 300.3 & 103.8 & 107.3 & -46.3 & 19.1\\
-\bottomrule
-\end{tabular}
-\end{table}
+\DIFdelendFL 
 
-Table \DIFdelbegin \DIFdel{~\ref{tbl-table1} }\DIFdelend \DIFaddbegin \DIFadd{4 }\DIFaddend shows the distribution of selected demographic, health, and
-environmental characteristics from the baseline survey, prior to any
-villages being enrolled in the CBHP policy. We provide means and
-standard deviations separately for villages that eventually enter into
-the policy with those that never do so. As noted above, although our DiD
-identification strategy allows for fixed differences between treated and
-untreated villages, overall the differences at baseline are generally
-small and the groups seem well balanced on most measures, with the
-exception of personal exposure to PM\textsubscript{2.5}, which was lower
-in villages that were eventually treated.
+\DIFdelbeginFL %DIFDELCMD < \centering\centering
+%DIFDELCMD < \fontsize{9}{11}\selectfont
+%DIFDELCMD < \begin{tabular}[t]{rrrrrrr}
+%DIFDELCMD < \toprule
+%DIFDELCMD < \multicolumn{1}{c}{ } & \multicolumn{2}{c}{Never treated (N=603)} & \multicolumn{2}{c}{Ever treated (N=400)} & \multicolumn{2}{c}{ } \\
+%DIFDELCMD < \cmidrule%%%
+\DIFdelFL{(l}%DIFDELCMD < {%%%
+\DIFdelFL{3pt}%DIFDELCMD < }%%%
+\DIFdelFL{r}%DIFDELCMD < {%%%
+\DIFdelFL{3pt}%DIFDELCMD < }%%%
+\DIFdelFL{)}%DIFDELCMD < {%%%
+\DIFdelFL{2-3}%DIFDELCMD < } \cmidrule%%%
+\DIFdelFL{(l}%DIFDELCMD < {%%%
+\DIFdelFL{3pt}%DIFDELCMD < }%%%
+\DIFdelFL{r}%DIFDELCMD < {%%%
+\DIFdelFL{3pt}%DIFDELCMD < }%%%
+\DIFdelFL{)}%DIFDELCMD < {%%%
+\DIFdelFL{4-5}%DIFDELCMD < }
+%DIFDELCMD <   & %%%
+\DIFdelFL{Mean }%DIFDELCMD < & %%%
+\DIFdelFL{Std. Dev. }%DIFDELCMD < & %%%
+\DIFdelFL{Mean }%DIFDELCMD < & %%%
+\DIFdelFL{Std. Dev. }%DIFDELCMD < & %%%
+\DIFdelFL{Diff. in Means }%DIFDELCMD < & %%%
+\DIFdelFL{Std. Error}%DIFDELCMD < \\
+%DIFDELCMD < \midrule
+%DIFDELCMD < %%%
+\textbf{\DIFdelFL{Demographics:}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{}%DIFAUXCMD
+%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Age (years) }%DIFDELCMD < & %%%
+\DIFdelFL{59.9 }%DIFDELCMD < & %%%
+\DIFdelFL{9.4 }%DIFDELCMD < & %%%
+\DIFdelFL{60.4 }%DIFDELCMD < & %%%
+\DIFdelFL{9.2 }%DIFDELCMD < & %%%
+\DIFdelFL{0.5 }%DIFDELCMD < & %%%
+\DIFdelFL{0.6}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Female (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{59.5 }%DIFDELCMD < & %%%
+\DIFdelFL{49.1 }%DIFDELCMD < & %%%
+\DIFdelFL{59.1 }%DIFDELCMD < & %%%
+\DIFdelFL{49.2 }%DIFDELCMD < & %%%
+\DIFdelFL{-0.4 }%DIFDELCMD < & %%%
+\DIFdelFL{3.2}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{No education (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{11.5 }%DIFDELCMD < & %%%
+\DIFdelFL{31.9 }%DIFDELCMD < & %%%
+\DIFdelFL{12.3 }%DIFDELCMD < & %%%
+\DIFdelFL{32.9 }%DIFDELCMD < & %%%
+\DIFdelFL{0.9 }%DIFDELCMD < & %%%
+\DIFdelFL{2.1}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Primary education (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{75.5 }%DIFDELCMD < & %%%
+\DIFdelFL{43.0 }%DIFDELCMD < & %%%
+\DIFdelFL{77.6 }%DIFDELCMD < & %%%
+\DIFdelFL{41.7 }%DIFDELCMD < & %%%
+\DIFdelFL{2.1 }%DIFDELCMD < & %%%
+\DIFdelFL{2.8}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Secondary+ education (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{12.6 }%DIFDELCMD < & %%%
+\DIFdelFL{33.2 }%DIFDELCMD < & %%%
+\DIFdelFL{9.8 }%DIFDELCMD < & %%%
+\DIFdelFL{29.7 }%DIFDELCMD < & %%%
+\DIFdelFL{-2.9 }%DIFDELCMD < & %%%
+\DIFdelFL{2.0}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\textbf{\DIFdelFL{Health measures:}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{}%DIFAUXCMD
+%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Never smoker (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{61.9 }%DIFDELCMD < & %%%
+\DIFdelFL{48.6 }%DIFDELCMD < & %%%
+\DIFdelFL{59.5 }%DIFDELCMD < & %%%
+\DIFdelFL{49.1 }%DIFDELCMD < & %%%
+\DIFdelFL{-2.4 }%DIFDELCMD < & %%%
+\DIFdelFL{3.2}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Former smoker (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{11.9 }%DIFDELCMD < & %%%
+\DIFdelFL{32.4 }%DIFDELCMD < & %%%
+\DIFdelFL{15.1 }%DIFDELCMD < & %%%
+\DIFdelFL{35.8 }%DIFDELCMD < & %%%
+\DIFdelFL{3.2 }%DIFDELCMD < & %%%
+\DIFdelFL{2.2}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Current smoker (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{26.2 }%DIFDELCMD < & %%%
+\DIFdelFL{44.0 }%DIFDELCMD < & %%%
+\DIFdelFL{25.4 }%DIFDELCMD < & %%%
+\DIFdelFL{43.6 }%DIFDELCMD < & %%%
+\DIFdelFL{-0.8 }%DIFDELCMD < & %%%
+\DIFdelFL{2.8}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Never drinker (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{55.9 }%DIFDELCMD < & %%%
+\DIFdelFL{49.7 }%DIFDELCMD < & %%%
+\DIFdelFL{52.5 }%DIFDELCMD < & %%%
+\DIFdelFL{50.0 }%DIFDELCMD < & %%%
+\DIFdelFL{-3.4 }%DIFDELCMD < & %%%
+\DIFdelFL{3.2}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Occasional drinker (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{26.0 }%DIFDELCMD < & %%%
+\DIFdelFL{43.9 }%DIFDELCMD < & %%%
+\DIFdelFL{25.5 }%DIFDELCMD < & %%%
+\DIFdelFL{43.6 }%DIFDELCMD < & %%%
+\DIFdelFL{-0.5 }%DIFDELCMD < & %%%
+\DIFdelFL{2.8}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Daily drinker (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{17.8 }%DIFDELCMD < & %%%
+\DIFdelFL{38.3 }%DIFDELCMD < & %%%
+\DIFdelFL{21.9 }%DIFDELCMD < & %%%
+\DIFdelFL{41.4 }%DIFDELCMD < & %%%
+\DIFdelFL{4.1 }%DIFDELCMD < & %%%
+\DIFdelFL{2.6}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Systolic (mmHg) }%DIFDELCMD < & %%%
+\DIFdelFL{131.4 }%DIFDELCMD < & %%%
+\DIFdelFL{16.8 }%DIFDELCMD < & %%%
+\DIFdelFL{128.7 }%DIFDELCMD < & %%%
+\DIFdelFL{14.3 }%DIFDELCMD < & %%%
+\DIFdelFL{-2.7 }%DIFDELCMD < & %%%
+\DIFdelFL{1.0}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Diastolic (mmHg) }%DIFDELCMD < & %%%
+\DIFdelFL{82.7 }%DIFDELCMD < & %%%
+\DIFdelFL{11.6 }%DIFDELCMD < & %%%
+\DIFdelFL{82.1 }%DIFDELCMD < & %%%
+\DIFdelFL{11.3 }%DIFDELCMD < & %%%
+\DIFdelFL{-0.6 }%DIFDELCMD < & %%%
+\DIFdelFL{0.8}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Waist circumference (cm) }%DIFDELCMD < & %%%
+\DIFdelFL{87.7 }%DIFDELCMD < & %%%
+\DIFdelFL{10.5 }%DIFDELCMD < & %%%
+\DIFdelFL{85.4 }%DIFDELCMD < & %%%
+\DIFdelFL{9.5 }%DIFDELCMD < & %%%
+\DIFdelFL{-2.3 }%DIFDELCMD < & %%%
+\DIFdelFL{0.8}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Body mass index (kg/m2) }%DIFDELCMD < & %%%
+\DIFdelFL{26.3 }%DIFDELCMD < & %%%
+\DIFdelFL{3.7 }%DIFDELCMD < & %%%
+\DIFdelFL{25.8 }%DIFDELCMD < & %%%
+\DIFdelFL{3.6 }%DIFDELCMD < & %%%
+\DIFdelFL{-0.5 }%DIFDELCMD < & %%%
+\DIFdelFL{0.3}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Frequency of coughing (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{18.7 }%DIFDELCMD < & %%%
+\DIFdelFL{39.0 }%DIFDELCMD < & %%%
+\DIFdelFL{19.7 }%DIFDELCMD < & %%%
+\DIFdelFL{39.8 }%DIFDELCMD < & %%%
+\DIFdelFL{1.0 }%DIFDELCMD < & %%%
+\DIFdelFL{2.6}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Frequency of wheezing (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{6.2 }%DIFDELCMD < & %%%
+\DIFdelFL{24.2 }%DIFDELCMD < & %%%
+\DIFdelFL{6.6 }%DIFDELCMD < & %%%
+\DIFdelFL{24.8 }%DIFDELCMD < & %%%
+\DIFdelFL{0.3 }%DIFDELCMD < & %%%
+\DIFdelFL{1.6}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Shortness of breath (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{29.2 }%DIFDELCMD < & %%%
+\DIFdelFL{45.5 }%DIFDELCMD < & %%%
+\DIFdelFL{34.3 }%DIFDELCMD < & %%%
+\DIFdelFL{47.5 }%DIFDELCMD < & %%%
+\DIFdelFL{5.1 }%DIFDELCMD < & %%%
+\DIFdelFL{3.0}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Chest trouble (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{11.6 }%DIFDELCMD < & %%%
+\DIFdelFL{32.0 }%DIFDELCMD < & %%%
+\DIFdelFL{14.1 }%DIFDELCMD < & %%%
+\DIFdelFL{34.9 }%DIFDELCMD < & %%%
+\DIFdelFL{2.5 }%DIFDELCMD < & %%%
+\DIFdelFL{2.2}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Any respiratory problem (\%) }%DIFDELCMD < & %%%
+\DIFdelFL{50.6 }%DIFDELCMD < & %%%
+\DIFdelFL{50.0 }%DIFDELCMD < & %%%
+\DIFdelFL{54.3 }%DIFDELCMD < & %%%
+\DIFdelFL{49.9 }%DIFDELCMD < & %%%
+\DIFdelFL{3.7 }%DIFDELCMD < & %%%
+\DIFdelFL{3.2}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\textbf{\DIFdelFL{Environmental measures:}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{}%DIFAUXCMD
+%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Temperature (°C) }%DIFDELCMD < & %%%
+\DIFdelFL{13.8 }%DIFDELCMD < & %%%
+\DIFdelFL{3.6 }%DIFDELCMD < & %%%
+\DIFdelFL{13.5 }%DIFDELCMD < & %%%
+\DIFdelFL{3.3 }%DIFDELCMD < & %%%
+\DIFdelFL{-0.3 }%DIFDELCMD < & %%%
+\DIFdelFL{0.2}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Personal PM2.5 (ug/m3) }%DIFDELCMD < & %%%
+\DIFdelFL{150.2 }%DIFDELCMD < & %%%
+\DIFdelFL{300.3 }%DIFDELCMD < & %%%
+\DIFdelFL{103.8 }%DIFDELCMD < & %%%
+\DIFdelFL{107.3 }%DIFDELCMD < & %%%
+\DIFdelFL{-46.3 }%DIFDELCMD < & %%%
+\DIFdelFL{19.1}%DIFDELCMD < \\
+%DIFDELCMD < \bottomrule
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-desc}\DIFaddFL{Descriptive statistics for selected
+demographic, health, and environmental measures at baseline, by
+treatment status.}}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=2,}{halign=c,},
+column{1}={halign=r,},
+column{2}={halign=r,},
+column{3}={halign=r,},
+column{4}={halign=r,},
+column{5}={halign=r,},
+column{6}={halign=r,},
+column{7}={halign=r,},
+row{1}={halign=c,},
+column{1}={font=\fontsize{0.75em}{1.05em}\selectfont,},
+column{2}={font=\fontsize{0.75em}{1.05em}\selectfont,},
+column{3}={font=\fontsize{0.75em}{1.05em}\selectfont,},
+column{4}={font=\fontsize{0.75em}{1.05em}\selectfont,},
+column{5}={font=\fontsize{0.75em}{1.05em}\selectfont,},
+column{6}={font=\fontsize{0.75em}{1.05em}\selectfont,},
+column{7}={font=\fontsize{0.75em}{1.05em}\selectfont,},
+row{3}={,cmd=\bfseries,},
+row{9}={,cmd=\bfseries,},
+row{25}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+& Never treated (N=603) &  & Ever treated (N=400) &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}
+& Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error \\ \midrule %% TinyTableHeader
+Demographics:                 &              &              &              &              &              &             \\
+Age (years)                   & \num{59.9}  & \num{9.4}   & \num{60.4}  & \num{9.2}   & \num{0.5}   & \num{0.6}  \\
+Female (\%)                  & \num{59.5}  & \num{49.1}  & \num{59.1}  & \num{49.2}  & \num{-0.4}  & \num{3.2}  \\
+No education (\%)            & \num{11.5}  & \num{31.9}  & \num{12.3}  & \num{32.9}  & \num{0.9}   & \num{2.1}  \\
+Primary education (\%)       & \num{75.5}  & \num{43.0}  & \num{77.6}  & \num{41.7}  & \num{2.1}   & \num{2.8}  \\
+Secondary+ education (\%)    & \num{12.6}  & \num{33.2}  & \num{9.8}   & \num{29.7}  & \num{-2.9}  & \num{2.0}  \\
+Health measures:              &              &              &              &              &              &             \\
+Never smoker (\%)            & \num{61.9}  & \num{48.6}  & \num{59.5}  & \num{49.1}  & \num{-2.4}  & \num{3.2}  \\
+Former smoker (\%)           & \num{11.9}  & \num{32.4}  & \num{15.1}  & \num{35.8}  & \num{3.2}   & \num{2.2}  \\
+Current smoker (\%)          & \num{26.2}  & \num{44.0}  & \num{25.4}  & \num{43.6}  & \num{-0.8}  & \num{2.8}  \\
+Never drinker (\%)           & \num{55.9}  & \num{49.7}  & \num{52.5}  & \num{50.0}  & \num{-3.4}  & \num{3.2}  \\
+Occasional drinker (\%)      & \num{26.0}  & \num{43.9}  & \num{25.5}  & \num{43.6}  & \num{-0.5}  & \num{2.8}  \\
+Daily drinker (\%)           & \num{17.8}  & \num{38.3}  & \num{21.9}  & \num{41.4}  & \num{4.1}   & \num{2.6}  \\
+Systolic (mmHg)               & \num{131.4} & \num{16.8}  & \num{128.7} & \num{14.3}  & \num{-2.7}  & \num{1.0}  \\
+Diastolic (mmHg)              & \num{82.7}  & \num{11.6}  & \num{82.1}  & \num{11.3}  & \num{-0.6}  & \num{0.8}  \\
+Waist circumference (cm)      & \num{87.7}  & \num{10.5}  & \num{85.4}  & \num{9.5}   & \num{-2.3}  & \num{0.8}  \\
+Body mass index (kg/m2)       & \num{26.3}  & \num{3.7}   & \num{25.8}  & \num{3.6}   & \num{-0.5}  & \num{0.3}  \\
+Frequency of coughing (\%)   & \num{18.7}  & \num{39.0}  & \num{19.7}  & \num{39.8}  & \num{1.0}   & \num{2.6}  \\
+Frequency of wheezing (\%)   & \num{6.2}   & \num{24.2}  & \num{6.6}   & \num{24.8}  & \num{0.3}   & \num{1.6}  \\
+Shortness of breath (\%)     & \num{29.2}  & \num{45.5}  & \num{34.3}  & \num{47.5}  & \num{5.1}   & \num{3.0}  \\
+Chest trouble (\%)           & \num{11.6}  & \num{32.0}  & \num{14.1}  & \num{34.9}  & \num{2.5}   & \num{2.2}  \\
+Any respiratory problem (\%) & \num{50.6}  & \num{50.0}  & \num{54.3}  & \num{49.9}  & \num{3.7}   & \num{3.2}  \\
+Environmental measures:       &              &              &              &              &              &             \\
+Temperature (°C)              & \num{13.8}  & \num{3.6}   & \num{13.5}  & \num{3.3}   & \num{-0.3}  & \num{0.2}  \\
+Personal PM2.5 (ug/m3)        & \num{150.2} & \num{300.3} & \num{103.8} & \num{107.3} & \num{-46.3} & \num{19.1} \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
+
+Table~\DIFdelbegin \DIFdel{\ref{tbl-table1} }\DIFdelend \DIFaddbegin \DIFadd{\ref{tbl-desc} }\DIFaddend shows the distribution of selected demographic,
+health, and environmental characteristics from the baseline survey,
+prior to any villages being enrolled in the CBHP policy. We provide
+means and standard deviations separately for villages that eventually
+enter into the policy with those that never do so. As noted above,
+although our DiD identification strategy allows for fixed differences
+between treated and untreated villages, overall the differences at
+baseline are generally small and the groups seem well balanced on most
+measures, with the exception of personal exposure to
+PM\textsubscript{2.5}, which was lower in villages that were eventually
+treated.
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{summary-of-pm-and-bc-measurements}{%
 %DIFDELCMD < \subsection{Summary of PM and BC
@@ -2158,7 +2572,7 @@ reduction with intervention.
 \DIFdelbeginFL %DIFDELCMD < \centering\begingroup\fontsize{9}{11}\selectfont
 %DIFDELCMD < %%%
 \DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-pm-season}\DIFaddFL{Arithmetic and geometric means for air
-pollutant concentrations (micrograms per cubic meter) by wave}}
+pollutant concentrations (micrograms per cubic meter) by wave.}}
 \DIFaddendFL 
 
 \DIFdelbeginFL %DIFDELCMD < \begin{tabular}{lllcccccccc}
@@ -2356,56 +2770,89 @@ pollutant concentrations (micrograms per cubic meter) by wave}}
 %DIFDELCMD < %%%
 \DIFdelendFL \DIFaddbeginFL \centering{
 
-\begingroup\fontsize{9}{11}\selectfont
-
-\begin{longtable*}{lllcccccccc}
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: Est. = Estimate, CI = 95 percent confidence interval, GM = Geometric Mean},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={1\linewidth},
+colspec={X[0.2]X[0.171428571428571]X[0.0571428571428571]X[0.0285714285714286]X[0.114285714285714]X[0.0285714285714286]X[0.114285714285714]X[0.0285714285714286]X[0.114285714285714]X[0.0285714285714286]X[0.114285714285714]},
+cell{1}{4}={c=2,}{halign=c,},
+cell{1}{6}={c=2,}{halign=c,},
+cell{1}{8}={c=2,}{halign=c,},
+cell{1}{10}={c=2,}{halign=c,},
+cell{3}{1}={c=11}{},cell{8}{1}={c=11}{},cell{15}{1}={c=11}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+cell{10}{1}={preto={\hspace{1em}}},
+cell{11}{1}={preto={\hspace{1em}}},
+cell{12}{1}={preto={\hspace{1em}}},
+cell{13}{1}={preto={\hspace{1em}}},
+cell{14}{1}={preto={\hspace{1em}}},
+cell{16}{1}={preto={\hspace{1em}}},
+cell{17}{1}={preto={\hspace{1em}}},
+cell{18}{1}={preto={\hspace{1em}}},
+cell{19}{1}={preto={\hspace{1em}}},
+cell{20}{1}={preto={\hspace{1em}}},
+cell{21}{1}={preto={\hspace{1em}}},
+cell{22}{1}={preto={\hspace{1em}}},
+row{3}={halign=l,cmd=\bfseries,},
+row{8}={halign=l,cmd=\bfseries,},
+row{15}={halign=l,cmd=\bfseries,},
+cell{4}{2}={r=2,}{valign=h,},
+cell{6}{2}={r=2,}{valign=h,},
+cell{9}{2}={r=2,}{valign=h,},
+cell{11}{2}={r=2,}{valign=h,},
+cell{13}{2}={r=2,}{valign=h,},
+cell{16}{2}={r=2,}{valign=h,},
+cell{18}{2}={r=2,}{valign=h,},
+cell{20}{2}={r=2,}{valign=h,},
+cell{4}{1}={r=4,}{valign=h,},
+cell{11}{1}={r=4,}{valign=h,},
+cell{18}{1}={r=4,}{valign=h,},
+cell{9}{1}={r=2,}{valign=h,},
+cell{16}{1}={r=2,}{valign=h,},
+column{1}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{2}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{3}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{4}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{5}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{6}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{7}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{8}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{9}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{10}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{11}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+row{2}={halign=c,},
+}                     %% tabularray inner close
 \toprule
-\multicolumn{3}{c}{ } & \multicolumn{2}{c}{Wave 1} & \multicolumn{2}{c}{Wave 2} & \multicolumn{2}{c}{Wave 3} & \multicolumn{2}{c}{Wave 4} \\
-\cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7} \cmidrule(l{3pt}r{3pt}){8-9} \cmidrule(l{3pt}r{3pt}){10-11}
- &  &  & Est. & CI & Est. & CI & Est. & CI & Est. & CI\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{11}{l}{\textbf{Personal}}\\
- &  & Mean & 117 & {}[105, 129] & 97 & {}[87, 107] &  &  & 84 & {}[72, 97]\\
-\cmidrule{3-11}\nopagebreak
- & \multirow[t]{-2}{*}{\raggedright\arraybackslash 24h PM2.5} & GM & 72 & {}[65, 80] & 59 & {}[53, 65] &  &  & 47 & {}[42, 52]\\
-\cmidrule{2-11}\nopagebreak
- &  & Mean & 4 & {}[3.5, 4.4] & 3.5 & {}[2.7, 4.2] &  &  & 3.7 & {}[2.9, 4.5]\\
-\cmidrule{3-11}\nopagebreak
-\multirow[t]{-4}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Filter-derived} & \multirow[t]{-2}{*}{\raggedright\arraybackslash 24h BC} & GM & 2.6 & {}[2.4, 2.8] & 1.9 & {}[1.7, 2.1] &  &  & 1.7 & {}[1.5, 1.9]\\
-\cmidrule{1-11}\pagebreak[0]
-\addlinespace[0.3em]
-\multicolumn{11}{l}{\textbf{Indoor}}\\
- &  & Mean &  &  & 94 & {}[84, 104] & 84 & {}[75, 94] & 67 & {}[60, 75]\\
-\cmidrule{3-11}\nopagebreak
-\multirow[t]{-2}{*}{\raggedright\arraybackslash Sensor-derived} & \multirow[t]{-2}{*}{\raggedright\arraybackslash Seasonal PM2.5} & GM &  &  & 71 & {}[65, 78] & 63 & {}[57, 70] & 47 & {}[42, 52]\\
-\cmidrule{1-11}\pagebreak[0]
- &  & Mean &  &  & 69 & {}[59, 79] &  &  & 59 & {}[49, 69]\\
-\cmidrule{3-11}\nopagebreak
- & \multirow[t]{-2}{*}{\raggedright\arraybackslash 24h PM2.5} & GM &  &  & 45 & {}[39, 53] &  &  & 33 & {}[27, 40]\\
-\cmidrule{2-11}\nopagebreak
- &  & Mean &  &  & 2.3 & {}[1.8, 2.8] &  &  & 2.8 & {}[2.1, 3.4]\\
-\cmidrule{3-11}\nopagebreak
-\multirow[t]{-4}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Filter-derived} & \multirow[t]{-2}{*}{\raggedright\arraybackslash 24h BC} & GM &  &  & 1.6 & {}[1.3, 2.0] &  &  & 1.6 & {}[1.3, 1.9]\\
-\cmidrule{1-11}\pagebreak[0]
-\addlinespace[0.3em]
-\multicolumn{11}{l}{\textbf{Outdoor}}\\
- &  & Mean & 47 & {}[45, 48] & 55 & {}[54, 56] & 33 & {}[32, 34] & 33 & {}[32, 34]\\
-\cmidrule{3-11}\nopagebreak
-\multirow[t]{-2}{*}{\raggedright\arraybackslash Sensor-derived} &  & GM & 36 & {}[35, 37] & 40 & {}[39, 41] & 23 & {}[22, 23] & 22 & {}[22, 23]\\
-\cmidrule{1-1}
-\cmidrule{3-11}\nopagebreak
- &  & Mean & 38 & {}[34, 42] & 38 & {}[34, 41] & 25 & {}[23, 28] & 26 & {}[24, 28]\\
-\cmidrule{3-11}\nopagebreak
- & \multirow[t]{-4}{*}{\raggedright\arraybackslash Seasonal PM2.5} & GM & 33 & {}[29, 36] & 30 & {}[28, 32] & 21 & {}[19, 23] & 22 & {}[21, 24]\\
-\cmidrule{2-11}\nopagebreak
- &  & Mean & 1.5 & {}[1.3, 1.6] & 1.4 & {}[1.3, 1.5] &  &  & 1.2 & {}[1.1, 1.2]\\
-\cmidrule{3-11}\nopagebreak
-\multirow[t]{-4}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Filter-derived} & \multirow[t]{-2}{*}{\raggedright\arraybackslash Seasonal BC} & GM & 1.3 & {}[1.1, 1.4] & 1.1 & {}[1.0, 1.2] &  &  & 1 & {}[0.9, 1.1]\\
+&  &  & Wave 1 &  & Wave 2 &  & Wave 3 &  & Wave 4 &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}\cmidrule[lr]{10-11}
+&  &  & Est. & CI & Est. & CI & Est. & CI & Est. & CI \\ \midrule %% TinyTableHeader
+Personal measurements &&&&&&&&&& \\
+Filter-derived & 24h PM2.5 & Mean & 117 & [105, 129] & 97 & [87, 107] &  &  & 84 & [72, 97] \\
+Filter-derived & 24h PM2.5 & GM & 72 & [65, 80] & 59 & [53, 65] &  &  & 47 & [42, 52] \\
+Filter-derived & 24h BC & Mean & 4 & [3.5, 4.4] & 3.5 & [2.7, 4.2] &  &  & 3.7 & [2.9, 4.5] \\
+Filter-derived & 24h BC & GM & 2.6 & [2.4, 2.8] & 1.9 & [1.7, 2.1] &  &  & 1.7 & [1.5, 1.9] \\
+Indoor measurements &&&&&&&&&& \\
+Sensor-derived & Seasonal PM2.5 & Mean &  &  & 94 & [84, 104] & 84 & [75, 94] & 67 & [60, 75] \\
+Sensor-derived & Seasonal PM2.5 & GM &  &  & 71 & [65, 78] & 63 & [57, 70] & 47 & [42, 52] \\
+Filter-derived & 24h PM2.5 & Mean &  &  & 69 & [59, 79] &  &  & 59 & [49, 69] \\
+Filter-derived & 24h PM2.5 & GM &  &  & 45 & [39, 53] &  &  & 33 & [27, 40] \\
+Filter-derived & 24h BC & Mean &  &  & 2.3 & [1.8, 2.8] &  &  & 2.8 & [2.1, 3.4] \\
+Filter-derived & 24h BC & GM &  &  & 1.6 & [1.3, 2.0] &  &  & 1.6 & [1.3, 1.9] \\
+Outdoor measurements &&&&&&&&&& \\
+Sensor-derived & Seasonal PM2.5 & Mean & 47 & [45, 48] & 55 & [54, 56] & 33 & [32, 34] & 33 & [32, 34] \\
+Sensor-derived & Seasonal PM2.5 & GM & 36 & [35, 37] & 40 & [39, 41] & 23 & [22, 23] & 22 & [22, 23] \\
+Filter-derived & Seasonal PM2.5 & Mean & 38 & [34, 42] & 38 & [34, 41] & 25 & [23, 28] & 26 & [24, 28] \\
+Filter-derived & Seasonal PM2.5 & GM & 33 & [29, 36] & 30 & [28, 32] & 21 & [19, 23] & 22 & [21, 24] \\
+Filter-derived & Seasonal BC & Mean & 1.5 & [1.3, 1.6] & 1.4 & [1.3, 1.5] &  &  & 1.2 & [1.1, 1.2] \\
+Filter-derived & Seasonal BC & GM & 1.3 & [1.1, 1.4] & 1.1 & [1.0, 1.2] &  &  & 1 & [0.9, 1.1] \\
 \bottomrule
-\multicolumn{11}{l}{\rule{0pt}{1em}Note: Est. = Estimate, CI = 95\% CI, GM = Geometric Mean}\\
-\end{longtable*}
-\endgroup{}
+\end{talltblr}
 
 }
 
@@ -2683,50 +3130,64 @@ Mar.~15th.}}
 
 \centering{
 
-\begin{ThreePartTable}
-\begin{TableNotes}
-\item \small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.}
-\item[\DIFaddFL{a}] \small{ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted.}
-\end{TableNotes}
-\begin{longtable*}{llcccc}
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.},
+note{a}={ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+cell{3}{1}={c=6}{},cell{10}{1}={c=6}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+cell{11}{1}={preto={\hspace{1em}}},
+cell{12}{1}={preto={\hspace{1em}}},
+cell{13}{1}={preto={\hspace{1em}}},
+cell{14}{1}={preto={\hspace{1em}}},
+cell{15}{1}={preto={\hspace{1em}}},
+cell{16}{1}={preto={\hspace{1em}}},
+cell{17}{1}={preto={\hspace{1em}}},
+cell{18}{1}={preto={\hspace{1em}}},
+row{3}={halign=l,cmd=\bfseries,},
+row{10}={halign=l,cmd=\bfseries,},
+cell{4}{1}={r=2,}{valign=h,},
+cell{6}{1}={r=2,}{valign=h,},
+cell{8}{1}={r=2,}{valign=h,},
+cell{12}{1}={r=6,}{valign=h,},
+column{1}={halign=l,},
+column{2}={halign=l,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+}                     %% tabularray inner close
 \toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{DiD} & \multicolumn{2}{c}{Adjusted DiD\textsuperscript{a}} \\
-\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
-  &   & ATT & (95\% CI) & ATT & (95\% CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Air pollution (µg/m\textsuperscript{3})}}\\
-\hspace{1em} & PM2.5 & -2.09 & (-29.38, 25.2) & 1.95 & (-23.34, 27.23)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Personal} & Black carbon & -0.46 & (-1.73, 0.81) & -0.43 & (-1.67, 0.81)\\
-\cmidrule{1-6}\pagebreak[0]
-\hspace{1em} & Daily & -19.10 & (-60.56, 22.35) & -14.20 & (-53.94, 25.54)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Indoor} & Seasonal & -35.11 & (-59.36, -10.85) & -36.19 & (-60.74, -11.65)\\
-\cmidrule{1-6}\pagebreak[0]
-\hspace{1em} & Daily & -0.11 & (-5.86, 5.64) & -1.73 & (-9.26, 5.81)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Outdoor} & Seasonal & 3.14 & (-3.1, 9.38) & 0.36 & (-6.27, 6.99)\\
-\cmidrule{1-6}\pagebreak[0]
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Indoor temperature (°C)}}\\
-\hspace{1em}Point & Mean & 1.96 & (0.96, 2.96) & 1.96 & (0.96, 2.96)\\
-\cmidrule{1-6}\pagebreak[0]
-\hspace{1em} & Mean (all) & 0.64 & (0, 1.29) & 0.64 & (0, 1.29)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & Mean (daytime) & 0.82 & (-0.08, 1.72) & 0.82 & (-0.08, 1.72)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & Mean (heating season) & 1.80 & (0.96, 2.64) & 1.80 & (0.96, 2.64)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & Mean (daytime heating season) & 1.85 & (0.97, 2.73) & 1.85 & (0.97, 2.73)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & Min. (all) & 3.83 & (2.26, 5.39) & 3.83 & (2.26, 5.39)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-6}{*}[5\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Seasonal} & Min. (heating season) & 3.72 & (2.19, 5.25) & 3.72 & (2.19, 5.25)\\
+&  & DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
+&  & ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
+Air pollution &&&&& \\
+Personal & PM2.5 & -2.09 & (-29.38, 25.2) & 1.95 & (-23.34, 27.23) \\
+Personal & Black carbon & -0.46 & (-1.73, 0.81) & -0.43 & (-1.67, 0.81) \\
+Indoor & Daily & -19.10 & (-60.56, 22.35) & -14.20 & (-53.94, 25.54) \\
+Indoor & Seasonal & -35.11 & (-59.36, -10.85) & -36.19 & (-60.74, -11.65) \\
+Outdoor & Daily & -0.11 & (-5.86, 5.64) & -1.73 & (-9.26, 5.81) \\
+Outdoor & Seasonal & 3.14 & (-3.1, 9.38) & 0.36 & (-6.27, 6.99) \\
+Indoor temperature &&&&& \\
+Point & Mean & 1.96 & (0.96, 2.96) & 1.96 & (0.96, 2.96) \\
+Seasonal & Mean (all) & 0.64 & (0.00, 1.29) & 0.64 & (0.00, 1.29) \\
+Seasonal & Mean (daytime) & 0.82 & (-0.08, 1.72) & 0.82 & (-0.08, 1.72) \\
+Seasonal & Mean (heating season) & 1.80 & (0.96, 2.64) & 1.80 & (0.96, 2.64) \\
+Seasonal & Mean (daytime heating season) & 1.85 & (0.97, 2.73) & 1.85 & (0.97, 2.73) \\
+Seasonal & Min. (all) & 3.83 & (2.26, 5.39) & 3.83 & (2.26, 5.39) \\
+Seasonal & Min. (heating season) & 3.72 & (2.19, 5.25) & 3.72 & (2.19, 5.25) \\
 \bottomrule
-\insertTableNotes
-\end{longtable*}
-\end{ThreePartTable}
+\end{talltblr}
 
 }
 
@@ -2956,64 +3417,79 @@ markers}}
 
 \centering{
 
-\begin{ThreePartTable}
-\begin{TableNotes}
-\item \small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, pp = percentage points, ppb = parts per billion.}
-\item[\DIFaddFL{a}] \small{Blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}
-\end{TableNotes}
-\begin{longtable*}{llcccc}
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects, pp = percentage points, ppb = parts per billion.},
+note{a}={ETWFE models for blood pressure models adjusted for \#age, sex, waist circumference, smoking, alcohol consumption, and \#use of blood pressure medication.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+cell{3}{1}={c=6}{},cell{12}{1}={c=6}{},cell{20}{1}={c=6}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+cell{10}{1}={preto={\hspace{1em}}},
+cell{11}{1}={preto={\hspace{1em}}},
+cell{13}{1}={preto={\hspace{1em}}},
+cell{14}{1}={preto={\hspace{1em}}},
+cell{15}{1}={preto={\hspace{1em}}},
+cell{16}{1}={preto={\hspace{1em}}},
+cell{17}{1}={preto={\hspace{1em}}},
+cell{18}{1}={preto={\hspace{1em}}},
+cell{19}{1}={preto={\hspace{1em}}},
+cell{21}{1}={preto={\hspace{1em}}},
+cell{22}{1}={preto={\hspace{1em}}},
+cell{23}{1}={preto={\hspace{1em}}},
+cell{24}{1}={preto={\hspace{1em}}},
+cell{25}{1}={preto={\hspace{1em}}},
+row{3}={halign=l,cmd=\bfseries,},
+row{12}={halign=l,cmd=\bfseries,},
+row{20}={halign=l,cmd=\bfseries,},
+cell{4}{1}={r=2,}{valign=h,},
+cell{6}{1}={r=2,}{valign=h,},
+cell{8}{1}={r=2,}{valign=h,},
+cell{10}{1}={r=2,}{valign=h,},
+cell{13}{1}={r=6,}{valign=h,},
+column{1}={halign=l,},
+column{2}={halign=l,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+}                     %% tabularray inner close
 \toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{DiD} & \multicolumn{2}{c}{Adjusted DiD\textsuperscript{a}} \\
-\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6}
-  &   & ATT & (95\% CI) & ATT & (95\% CI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Blood pressure (mmHg)}}\\
-\hspace{1em} & Brachial & -0.79 & (-2.63, 1.04) & -1.40 & (-3.31, 0.51)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Systolic BP} & Central & -1.04 & (-2.82, 0.73) & -1.56 & (-3.40, 0.28)\\
-\cmidrule{1-6}\pagebreak[0]
-\hspace{1em} & Brachial & -1.29 & (-2.62, 0.04) & -1.60 & (-2.96, -0.25)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Diastolic BP} & Central & -1.35 & (-2.66, 0.04) & -1.66 & (-2.97, -0.34)\\
-\cmidrule{1-6}\pagebreak[0]
-\hspace{1em} & Brachial & 0.50 & (-0.71, 1.70) & 0.21 & (-1.00, 1.41)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Pulse Pressure} & Central & 0.31 & (-0.85, 1.46) & 0.10 & (-1.01, 1.20)\\
-\cmidrule{1-6}\pagebreak[0]
-\hspace{1em} & Pulse pressure & 0.10 & (-0.12, 1.40) & 0.00 & (-1.20, 1.20)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash BP Amplification x10} & Systolic BP & 0.20 & (-0.20, 0.50) & 0.10 & (-0.20, 0.40)\\
-\cmidrule{1-6}\pagebreak[0]
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{\makecell[l]{Respiratory\\outcomes}}}\\
-\hspace{1em} & Any symptom & -7.38 & (-13.98, -0.77) & -7.86 & (-14.63, -1.09)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & Coughing & -1.59 & (-6.41, 3.23) & -1.98 & (-6.8, 2.84)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & Phlegm & -1.22 & (-5.58, 3.15) & -1.82 & (-6.34, 2.69)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & Wheezing attacks & -0.22 & (-3.97, 3.52) & -0.14 & (-3.85, 3.57)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & Trouble breathing & -4.98 & (-11.81, 1.84) & -4.62 & (-11.59, 2.35)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-6}{*}[5\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Self-reported (pp)} & Chest trouble & -6.63 & (-12.51, -0.76) & -6.36 & (-12.14, -0.59)\\
-\cmidrule{1-6}\pagebreak[0]
-\hspace{1em}Measured & FeNO (ppb) & 0.17 & (-2.24, 2.58) & 0.55 & (-2.13, 3.13)\\
-\cmidrule{1-6}\pagebreak[0]
-\addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{\makecell[l]{Inflammatory\\markers (\%)}}}\\
-\hspace{1em} & IL6 & 6.80 & (-12.2, 30.0) & 5.90 & (-13.8, 30.2)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & TNF-alpha & 24.30 & (-1.3, 56.4) & 24.70 & (-0.9, 54.2)\\
-\cmidrule{2-6}\nopagebreak
-\hspace{1em} & CRP & 2.70 & (-19.8, 31.6) & 3.80 & (-19.4, 33.6)\\
-\cmidrule{2-6}\nopagebreak
-\multirow[t]{-4}{*}[3\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash } & MDA & 7.60 & (-8.7, 26.9) & 6.50 & (-9.7, 25.5)\\
+&  & DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
+&  & ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
+Blood pressure (mmHg) &&&&& \\
+Systolic BP & Brachial & -0.79 & (-2.63, 1.04) & -1.40 & (-3.31, 0.51) \\
+Systolic BP & Central & -1.04 & (-2.82, 0.73) & -1.56 & (-3.40, 0.28) \\
+Diastolic BP & Brachial & -1.29 & (-2.62, 0.04) & -1.60 & (-2.96, -0.25) \\
+Diastolic BP & Central & -1.35 & (-2.66, 0.04) & -1.66 & (-2.97, -0.34) \\
+Pulse Pressure & Brachial & 0.50 & (-0.71, 1.70) & 0.21 & (-1.00, 1.41) \\
+Pulse Pressure & Central & 0.31 & (-0.85, 1.46) & 0.10 & (-1.01, 1.20) \\
+BP Amplification x10 & Pulse pressure & 0.10 & (-0.12, 1.40) & 0.00 & (-1.20, 1.20) \\
+BP Amplification x10 & Systolic BP & 0.20 & (-0.20, 0.50) & 0.10 & (-0.20, 0.40) \\
+Respiratory outcomes &&&&& \\
+Self-reported (pp) & Any symptom & -7.38 & (-13.98, -0.77) & -7.86 & (-14.63, -1.09) \\
+Self-reported (pp) & Coughing & -1.59 & (-6.41, 3.23) & -1.98 & (-6.8, 2.84) \\
+Self-reported (pp) & Phlegm & -1.22 & (-5.58, 3.15) & -1.82 & (-6.34, 2.69) \\
+Self-reported (pp) & Wheezing attacks & -0.22 & (-3.97, 3.52) & -0.14 & (-3.85, 3.57) \\
+Self-reported (pp) & Trouble breathing & -4.98 & (-11.81, 1.84) & -4.62 & (-11.59, 2.35) \\
+Self-reported (pp) & Chest trouble & -6.63 & (-12.51, -0.76) & -6.36 & (-12.14, -0.59) \\
+Measured & FeNO (ppb) & 0.17 & (-2.24, 2.58) & 0.55 & (-2.13, 3.13) \\
+Inflammatory markers (\%) &&&&& \\
+& IL6 & 6.80 & (-12.2, 30.0) & 5.90 & (-13.80, 30.20) \\
+& TNF-alpha & 24.30 & (-1.3, 56.4) & 24.70 & (-0.90, 54.20) \\
+& CRP & 2.70 & (-19.8, 31.6) & 3.80 & (-19.40, 33.60) \\
+& MDA & 7.60 & (-8.7, 26.9) & 6.50 & (-9.70, 25.5) \\
 \bottomrule
-\insertTableNotes
-\end{longtable*}
-\end{ThreePartTable}
+\end{talltblr}
 
 }
 
@@ -3102,7 +3578,7 @@ roughly half the value of the total effect.
 \DIFdelbeginFL %DIFDELCMD < \centering\begingroup\fontsize{10}{12}\selectfont
 %DIFDELCMD < %%%
 \DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-bp-med}\DIFaddFL{Controlled direct effects for the CBHP policy
-on blood pressure}}
+on blood pressure.}}
 \DIFaddendFL 
 
 \DIFdelbeginFL %DIFDELCMD < \begin{threeparttable}
@@ -3204,31 +3680,49 @@ on blood pressure}}
 %DIFDELCMD < %%%
 \DIFdelendFL \DIFaddbeginFL \centering{
 
-\begingroup\fontsize{10}{12}\selectfont
-
-\begin{ThreePartTable}
-\begin{TableNotes}
-\item \small{Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.}
-\item[\DIFaddFL{a}] \small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}
-\item[\DIFaddFL{b}] \small{Mediators were set to the mean value for untreated participants at baseline.}
-\end{TableNotes}
-\begin{longtable*}[t]{lcccccclc}
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.},
+note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
+note{b}={Mediators were set to the mean value for untreated participants at baseline.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{2}{4}={c=2,}{halign=c,},
+cell{2}{6}={c=2,}{halign=c,},
+cell{2}{8}={c=2,}{halign=c,},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=6,}{halign=c,},
+column{1}={halign=l,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+column{7}={halign=c,},
+column{8}={halign=c,},
+column{9}={halign=c,},
+column{1}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{2}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{3}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{4}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{5}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{6}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{7}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{8}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{9}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+}                     %% tabularray inner close
 \toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Adjusted Total Effect\textsuperscript{a}} & \multicolumn{6}{c}{CDE Mediated By:\textsuperscript{b}} \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-9}
-\multicolumn{3}{c}{ } & \multicolumn{2}{c}{Indoor PM} & \multicolumn{2}{c}{Indoor Temp} & \multicolumn{2}{c}{PM + Temp} \\
-\cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7} \cmidrule(l{3pt}r{3pt}){8-9}
- & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI)\\
-\midrule
-Brachial SBP & -1.40 & (-3.31, 0.51) & -1.05 & (-3.12, 1.02) & -0.46 & (-2.29, 1.36) & -0.03 & (-2.04, 1.97)\\
-Central SBP & -1.56 & (-3.40, 0.28) & -1.15 & (-3.20, 0.89) & -0.68 & (-2.36, 1.00) & -0.20 & (-2.11, 1.70)\\
-Brachial DBP & -1.60 & (-2.96, -0.25) & -1.40 & (-2.97, 0.16) & -1.14 & (-2.33, 0.06) & -0.88 & (-2.30, 0.54)\\
-Central DBP & -1.66 & (-2.97, -0.34) & -1.40 & (-2.96, 0.16) & -1.32 & (-2.50, -0.14) & -1.02 & (-2.45, 0.41)\\
+& Adjusted Total Effect &  & CDE Mediated By: &  &  &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-9}
+&  &  & Indoor PM &  & Indoor Temp &  & PM + Temp &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}
+& ATT\textsuperscript{a} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) \\ \midrule %% TinyTableHeader
+Brachial SBP & -1.40 & (-3.31, 0.51) & -1.05 & (-3.12, 1.02) & -0.46 & (-2.29, 1.36) & -0.03 & (-2.04, 1.97) \\
+Central SBP & -1.56 & (-3.40, 0.28) & -1.15 & (-3.20, 0.89) & -0.68 & (-2.36, 1.00) & -0.20 & (-2.11, 1.70) \\
+Brachial DBP & -1.60 & (-2.96, -0.25) & -1.40 & (-2.97, 0.16) & -1.14 & (-2.33, 0.06) & -0.88 & (-2.30, 0.54) \\
+Central DBP & -1.66 & (-2.97, -0.34) & -1.40 & (-2.96, 0.16) & -1.32 & (-2.50, -0.14) & -1.02 & (-2.45, 0.41) \\
 \bottomrule
-\insertTableNotes
-\end{longtable*}
-\end{ThreePartTable}
-\endgroup{}
+\end{talltblr}
 
 }
 
@@ -3387,34 +3881,51 @@ policy on self-reported respiratory outcomes}}
 %DIFDELCMD < %%%
 \DIFdelendFL \DIFaddbeginFL \centering{
 
-\begingroup\fontsize{9}{11}\selectfont
-
-\begin{ThreePartTable}
-\begin{TableNotes}
-\item \small{Note: Estimated for the subset of individuals with measured personal exposure (n=1274). ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect.}
-\item[\DIFaddFL{a}] \small{Adjusted for age, sex, and smoking.}
-\item[\DIFaddFL{b}] \small{Mediators were set to the mean value for untreated participants at baseline.}
-\end{TableNotes}
-\begin{longtable*}[t]{lcccccclc}
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: Estimated for the subset of individuals with measured personal exposure (n=1274). ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect.},
+note{a}={Adjusted for age, sex, and smoking.},
+note{b}={Mediators were set to the mean value for untreated participants at baseline.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{2}{4}={c=2,}{halign=c,},
+cell{2}{6}={c=2,}{halign=c,},
+cell{2}{8}={c=2,}{halign=c,},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=6,}{halign=c,},
+column{1}={halign=l,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+column{7}={halign=c,},
+column{8}={halign=c,},
+column{9}={halign=c,},
+column{1}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{2}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{3}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{4}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{5}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{6}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{7}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{8}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{9}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+}                     %% tabularray inner close
 \toprule
-\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Adjusted Total Effect\textsuperscript{a}} & \multicolumn{6}{c}{CDE Mediated By:\textsuperscript{b}} \\
-\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-9}
-\multicolumn{3}{c}{ } & \multicolumn{2}{c}{Indoor PM} & \multicolumn{2}{c}{Indoor Temp} & \multicolumn{2}{c}{PM + Temp} \\
-\cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7} \cmidrule(l{3pt}r{3pt}){8-9}
- & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI) & ATT & (95\%CI)\\
-\midrule
-Any symptom & -12.23 & (-19.46, -5.00) & -12.25 & (-19.46, -5.04) & -15.13 & (-23.57, -6.69) & -14.86 & (-23.45, -6.26)\\
-Coughing & -11.70 & (-19.49, -3.91) & -11.60 & (-19.28, -3.93) & -14.89 & (-22.85, -6.93) & -15.93 & (-23.78, -8.09)\\
-Phlegm & -9.80 & (-16.34, -3.26) & -9.86 & (-16.39, -3.33) & -14.01 & (-21.32, -6.69) & -13.63 & (-20.94, -6.32)\\
-Wheezing attacks & -4.72 & (-12.56, 3.12) & -4.71 & (-12.61, 3.19) & -6.39 & (-14.44, 1.66) & -4.42 & (-11.38, 2.53)\\
-Trouble breathing & -8.57 & (-18.56, 1.43) & -8.57 & (-18.49, 1.36) & -12.79 & (-24.81, -0.77) & -12.34 & (-24.45, -0.23)\\
-\addlinespace
-Chest trouble & -5.98 & (-13.36, 1.39) & -5.82 & (-12.87, 1.24) & -3.44 & (-10.45, 3.58) & -3.57 & (-9.65, 2.51)\\
+& Adjusted Total Effect &  & CDE Mediated By: &  &  &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-9}
+&  &  & Indoor PM &  & Indoor Temp &  & PM + Temp &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}
+& ATT\textsuperscript{a} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) \\ \midrule %% TinyTableHeader
+Any symptom & -12.2 & (-19.46, -5.00) & -12.2 & (-19.46, -5.04) & -15.1 & (-23.57, -6.69) & -14.9 & (-23.45, -6.26) \\
+Coughing & -11.7 & (-19.49, -3.91) & -11.6 & (-19.28, -3.93) & -14.9 & (-22.85, -6.93) & -15.9 & (-23.78, -8.09) \\
+Phlegm & -9.8 & (-16.34, -3.26) & -9.9 & (-16.39, -3.33) & -14.0 & (-21.32, -6.69) & -13.6 & (-20.94, -6.32) \\
+Wheezing attacks & -4.7 & (-12.56, 3.12) & -4.7 & (-12.61, 3.19) & -6.4 & (-14.44, 1.66) & -4.4 & (-11.38, 2.53) \\
+Trouble breathing & -8.6 & (-18.56, 1.43) & -8.6 & (-18.49, 1.36) & -12.8 & (-24.81, -0.77) & -12.3 & (-24.45, -0.23) \\
+Chest trouble & -6.0 & (-13.36, 1.39) & -5.8 & (-12.87, 1.24) & -3.4 & (-10.45, 3.58) & -3.6 & (-9.65, 2.51) \\
 \bottomrule
-\insertTableNotes
-\end{longtable*}
-\end{ThreePartTable}
-\endgroup{}
+\end{talltblr}
 
 }
 
@@ -3530,7 +4041,7 @@ source solution for the data.
 
 \DIFdelbeginFL %DIFDELCMD < \centering\begingroup\fontsize{9}{11}\selectfont
 %DIFDELCMD < %%%
-\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-pmf}\DIFaddFL{PMF error estimation diagnostics}}
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-pmf}\DIFaddFL{PMF error estimation diagnostics.}}
 \DIFaddendFL 
 
 \DIFdelbeginFL %DIFDELCMD < \begin{tabular}{l>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}>{\raggedright\arraybackslash}p{10em}}
@@ -3606,6 +4117,46 @@ Sulfur secondary- 98.5\%}%DIFDELCMD < \\
 %DIFDELCMD < %%%
 \DIFdelendFL \DIFaddbeginFL \centering{
 
+\centering
+\begin{tblr}[         %% tabularray outer open
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={1\linewidth},
+colspec={X[0.142857142857143]X[0.214285714285714]X[0.214285714285714]X[0.214285714285714]X[0.214285714285714]},
+cell{1}{2}={c=4,}{halign=c,},
+column{1}={halign=c,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+row{2}={halign=c,},
+cell{7}{1}={}{halign=l,},
+cell{10}{1}={}{halign=l,},
+cell{7}{2}={}{halign=l,},
+cell{10}{2}={}{halign=l,},
+cell{7}{3}={}{halign=l,},
+cell{10}{3}={}{halign=l,},
+cell{7}{4}={}{halign=l,},
+cell{10}{4}={}{halign=l,},
+cell{7}{5}={}{halign=l,},
+cell{10}{5}={}{halign=l,},
+}                     %% tabularray inner close
+\toprule
+& Potential Factor Solution &  &  &  \\ \cmidrule[lr]{2-5}
+Diagnostic & 3 & 4 & 5 & 6 \\ \midrule %% TinyTableHeader
+Qexp & 27936 & 26052 & 24168 & 22284 \\
+Qtrue & 187681 & 147796 & 123236 & 100316 \\
+Qrobust & 174407 & 139910 & 117082 & 95932.5 \\
+Qr/Qexp & 6.24 & 5.37 & 4.84 & 4.3 \\
+Q/Qexp > 6 & wi-Ca, ns-S, ws-Na, ws-Ca, Al, Cl, Pb & ns-S, Na, Al, Cl, Pb, Nitrate & Nitrate, ws-Na, Al, Chloride & Nitrate, ws-Na, Al \\
+DISP \% dQ & <0.1\% & <0.1\% & <0.1\% & <0.1\% \\
+DISP swaps & 0 & 0 & 0 & 0 \\
+BS\_mapping & Dust- 98.5\% & Transported dust- 95\%, Dust- 96.5\%, Sulfur secondary- 97.5\%, Mixed combustion- 96.5\% & Transported dust- 86\%, Mixed combustion- 87\%, Dust- 86\%, Lead- 55\% & Transported dust- 84\%, Mixed combustion- 87.5\%, Dust- 81.5\%, Lead- 72\%
+Chloride- 61.5\%
+Sulfur secondary- 98.5\% \\
+\bottomrule
+\end{tblr}
+
 }
 
 \DIFaddendFL \end{table}%DIF > 
@@ -3649,16 +4200,27 @@ treatment cohorts in Figure~\ref{fig-source-season}.
 \DIFaddendFL 
 
 \DIFdelbeginFL %DIFDELCMD < }
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdelendFL \caption{\label{fig-source-figure}Source profiles for the 4-factor PMF
+\DIFdelendFL \DIFaddbeginFL \caption{\label{fig-source-figure}\DIFaddFL{Source profiles for the 4-factor PMF
 solution to the sum of elements, ions, elemental carbon, and organic
 carbon for outdoor and personal PM\textsubscript{2.5} exposure
 measurements. The lines separate the major contributing species to each
-source}
+source.}}
+\DIFaddendFL 
 
-\end{figure}%DIF > 
+\DIFdelbeginFL %DIFDELCMD < \caption{%
+{%DIFAUXCMD
+%DIFDELCMD < \label{fig-source-figure}%%%
+\DIFdelFL{Source profiles for the 4-factor PMF
+solution to the sum of elements, ions, elemental carbon, and organic
+carbon for outdoor and personal PM\textsubscript{2.5} exposure
+measurements. The lines separate the major contributing species to each
+source}}
+%DIFAUXCMD
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelendFL \end{figure}%DIF > 
 
 \begin{figure}[H]
 
@@ -3754,6 +4316,30 @@ personal exposure to the mixed combustion source. }}%DIFAUXCMD
 combustion source.}}
 
 \centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval.},
+note{a}={Models adjusted for temperature; participant smoking status; and whether or not the household reported using biomass fuel.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=2,}{halign=c,},
+column{1}={halign=l,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+}                     %% tabularray inner close
+\toprule
+& DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}
+& ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
+Outdoor & 1.07 & (-4.90, 7.04) & 1.53 & (-4.19, 7.26) \\
+Personal exposure & -5.60 & (-13.70, 2.54) & -5.39 & (-13.1, 2.35) \\
+\bottomrule
+\end{talltblr}
 
 }
 
@@ -3881,6 +4467,34 @@ diastolic blood pressure with mixed combustion source as the potential
 mediator.}}
 
 \centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences, CDE = Controlled Direct Effect, DBP = Diastolic Blood Pressure, SBP = Systolic Blood Pressure.},
+note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
+note{b}={Further adjusted for mediation by mixed combustion source (coal and biomass)},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=2,}{halign=c,},
+cell{1}{6}={c=2,}{halign=c,},
+column{1}={halign=l,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+column{7}={halign=c,},
+}                     %% tabularray inner close
+\toprule
+& DiD &  & Adjusted DiD &  & Adjusted CDE &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
+& ATT & (95\%CI) & ATT\textsuperscript{a} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) \\ \midrule %% TinyTableHeader
+Central SBP & -0.43  & (-3.48, 2.62) & -1.61  & (-5.03, 1.82) & -1.50  & (-4.94, 1.94) \\
+Central DBP & -0.58  & (-2.59, 1.43) & -1.26  & (-3.38, 0.87) & -1.37  & (-3.69, 0.96) \\
+\bottomrule
+\end{talltblr}
 
 }
 
@@ -4455,493 +5069,8 @@ Ahmed, and Laojie Li.
 %DIFDELCMD < \begin{CSLReferences}{1}{0}
 %DIFDELCMD < \leavevmode\vadjust %%%
 \DIFdel{pre}%DIFDELCMD < {\hypertarget{ref-ahmed2009}{}}%%%
-\DIFdelend \DIFaddbegin \newpage
-\appendix
-\renewcommand{\thefigure}{A\arabic{figure}}
-\renewcommand{\thetable}{A\arabic{table}}
-\setcounter{figure}{0}
-\setcounter{table}{0}
-
-\section{\DIFadd{Appendices}}\label{appendices}
-
-\subsection{\DIFadd{Biomarker descriptives}}\label{biomarker-descriptives}
-
-\DIFadd{Below we show boxplots for the logged values of the blood inflammatory
-and oxidative stress markers.
-}
-
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=0.9\textwidth,height=\textheight]{images/biomarker-boxplot-log.jpg}
-
-}
-
-\caption{\label{fig-afig-biomarkers}\DIFaddFL{Boxplots for markers of systemic
-inflammation including C-reactive protein (CRP), interleukin-6 (IL-6),
-tumour necrosis factor alpha (TNF-\(\alpha\)) and markers of oxidative
-stress including 8-hydroxy-2'-deoxyguanosine (8-OHdG) and
-malondialdehyde (MDA)}}
-
-\end{figure}\DIFaddend %
-\DIFaddbegin 
-
-\newpage
-
-\subsection{\DIFadd{Imputation results}}\label{imputation-results}
-
-\DIFadd{The figures below show density plots for the values of body mass index,
-waist circumference, and indoor PM\textsubscript{2.5} from the multiple
-imputation models. The red lines show the values for each of the 30
-imputed datasets, and the black line shows the value for the observed
-data.
-}
-
-\begin{figure}[H]
-
-\begin{minipage}[t]{0.50\linewidth}
-
-\centering{
-
-\captionsetup{labelsep=none}\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_BMI_density.png}
-
-}
-
-\subcaption{\label{fig-afig-mi-1}}
-
-\end{minipage}%DIF > 
-%DIF > 
-\begin{minipage}[t]{0.50\linewidth}
-
-\centering{
-
-\captionsetup{labelsep=none}\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_waist_circ_density.png}
-
-}
-
-\subcaption{\label{fig-afig-mi-2}}
-
-\end{minipage}%DIF > 
-\newline
-\begin{minipage}[t]{0.50\linewidth}
-
-\centering{
-
-\captionsetup{labelsep=none}\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_indoorPM_density.png}
-
-}
-
-\subcaption{\label{fig-afig-mi-3}}
-
-\end{minipage}%DIF > 
-
-\caption{\label{fig-afig-mi}\DIFaddFL{Kernal density plots showing distribution of
-multiply-imputed values for body mass index (kg/m\textsuperscript{2}),
-waist circumference (cm), and indoor PM\textsubscript{2.5}
-(µg/m\textsuperscript{3}) (red lines) and observed values (heavy black
-line)}}
-
-\end{figure}%DIF > 
-
-\newpage
-
-\subsection{\DIFadd{Participant flow diagram}}\label{participant-flow-diagram}
-
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=0.8\textwidth,height=\textheight]{images/Participation-flowchart-Apr12.png}
-
-}
-
-\caption{\label{fig-flowchart}\DIFaddFL{Flow chart of BHET study participation at
-the participant, household, and village levels across study years.}}
-
-\end{figure}%DIF > 
-
-\newpage
-
-\newpage
-
-\subsection{\DIFadd{Policy uptake}}\label{policy-uptake-1}
-
-\DIFadd{Figure~\ref{fig-afig-coal} shows trends over time in self-reported coal
-and biomass consumption over each season. Table~\ref{tbl-fuel-did} shows
-results from applying our extended two-way fixed effects models (in
-separate analyses) to coal and biomass consumption.
-}
-
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=1\textwidth,height=\textheight]{images/coal-plot.png}
-
-}
-
-\caption{\label{fig-afig-coal}\DIFaddFL{Trends in self-reported coal and biomass,
-by treatment season}}
-
-\end{figure}%DIF > 
-
-\begin{table}
-
-\caption{\label{tbl-fuel-did}\DIFaddFL{Policy impacts on self-reported fuel use
-(kg)}}
-
-\centering{
-
-}
-
-\end{table}%DIF > 
-
-\newpage
-
-\subsection{\DIFadd{Heterogeneity in treament
-effects}}\label{heterogeneity-in-treament-effects}
-
-\subsubsection{\DIFadd{Personal exposure}}\label{personal-exposure}
-
-\DIFadd{Table Table~\ref{tbl-a-het-personal} shows limited evidence that the
-\(ATT\)s across cohorts and time demonstrate meaningful heterogeneity.
-}
-
-\begin{table}
-
-\caption{\label{tbl-a-het-personal}\DIFaddFL{Heterogenous treatment effects:
-Personal exposures}}
-
-\centering{
-
-}
-
-\end{table}%DIF > 
-
-\subsubsection{\texorpdfstring{Indoor
-PM\textsubscript{2.5}}{Indoor PM2.5}}\label{indoor-pm2.5-1}
-
-\DIFadd{Table Table~\ref{tbl-a-het-indoor} shows estimates for cohort-time
-\(ATT\)s for daily and seasonal indoor PM\textsubscript{2.5}.
-}
-
-\begin{table}
-
-\caption{\label{tbl-a-het-indoor}\DIFaddFL{Heterogenous treatment effects: Indoor}}
-
-\centering{
-
-}
-
-\end{table}%DIF > 
-
-\newpage
-
-\subsubsection{\DIFadd{Indoor temperature}}\label{indoor-temperature}
-
-\begin{table}
-
-\caption{\label{tbl-a-het-temp}\DIFaddFL{Heterogenous treatment effects: Indoor
-temperature}}
-
-\centering{
-
-}
-
-\end{table}%DIF > 
-
-\newpage
-
-\subsubsection{\DIFadd{Blood pressure outcomes}}\label{blood-pressure-outcomes}
-
-\DIFadd{Table~\ref{tbl-bp-het} shows \(ATT\)s by treatment cohort and time, as
-well as the results of joint tests of heterogeneity across \(ATT\)s.
-}
-
-\begin{table}
-
-\caption{\label{tbl-bp-het}\DIFaddFL{Heterogenous treatment effects for the total
-effect of the CBHP policy on blood pressure.}}
-
-\centering{
-
-}
-
-\end{table}%DIF > 
-
-\newpage
-
-\subsubsection{\DIFadd{Mediation analyses for blood
-pressure}}\label{mediation-analyses-for-blood-pressure}
-
-\DIFadd{Table~\ref{tbl-a-bp-med-het} shows the cohort-time treatment effects for
-the mediation model for blood pressure.
-}
-
-\begin{table}
-
-\caption{\label{tbl-a-bp-med-het}\DIFaddFL{Heterogenous treatment effects for
-blood pressure mediation model}}
-
-\centering{
-
-}
-
-\end{table}%DIF > 
-
-\begin{table}
-
-\caption{\label{tbl-a-bp-med-het-tests}\DIFaddFL{Heterogenous treatment effects
-and tests for cohort-time heterogeneity across CDEs for multiple
-mediation blood pressure mediation model.}}
-
-\centering{
-
-}
-
-\end{table}%DIF > 
-
-\newpage
-
-\subsubsection{\DIFadd{Respiratory outcomes}}\label{respiratory-outcomes}
-
-\DIFadd{Appendix tables \ref{tbl-a-het-resp}, \ref{tbl-a-het-cough},
-\ref{tbl-a-het-phlegm}, \ref{tbl-a-het-wheeze}, \ref{tbl-a-het-breath},
-\ref{tbl-a-het-nochest} below show Average Treatment Effect on the
-Treated (\(ATT\)s) by treatment cohort and time. ATTs are derived from
-estimating marginal effects from extended two-way fixed effects models
-with additional adjustment for age, sex, and smoking status.
-}
-
-\begin{table}
-
-\caption{\label{tbl-a-het-resp}\DIFaddFL{Heterogenous treatment effects for
-self-reported respiratory outcomes: Any respiratory symptom}}
-
-\centering{
-
-}
-
-\end{table}%DIF > 
-
-\begin{table}
-
-\caption{\label{tbl-a-het-cough}\DIFaddFL{Heterogenous treatment effects for
-self-reported respiratory outcomes: Coughing}}
-
-\centering{
-
-}
-
-\end{table}%DIF > 
-
-\begin{table}
-
-\caption{\label{tbl-a-het-phlegm}\DIFaddFL{Heterogenous treatment effects for
-self-reported respiratory outcomes: Phlegm}}
-
-\centering{
-
-}
-
-\end{table}%DIF > 
-
-\begin{table}
-
-\caption{\label{tbl-a-het-wheeze}\DIFaddFL{Heterogenous treatment effects for
-self-reported respiratory outcomes: Wheezing attacks}}
-
-\centering{
-
-}
-
-\end{table}%DIF > 
-
-\begin{table}
-
-\caption{\label{tbl-a-het-breath}\DIFaddFL{Heterogenous treatment effects for
-self-reported respiratory outcomes: Trouble breathing}}
-
-\centering{
-
-}
-
-\end{table}%DIF > 
-
-\begin{table}
-
-\caption{\label{tbl-a-het-nochest}\DIFaddFL{Heterogenous treatment effects for
-self-reported respiratory outcomes: Chest trouble}}
-
-\centering{
-
-}
-
-\end{table}%DIF > 
-
-\newpage
-
-\subsubsection{\DIFadd{Outdoor and personal mixed
-combustion}}\label{outdoor-and-personal-mixed-combustion}
-
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=1\textwidth,height=\textheight]{images/did-mixed-ct-wave.png}
-
-}
-
-\caption{\label{fig-afig-mixed-ct}\DIFaddFL{Adjusted and unadjusted treatment
-effect for outdoor and personal exposure (µg/m\textsuperscript{3}) to
-the mixed combustion source by treatment year.}}
-
-\end{figure}%DIF > 
-
-\newpage
-
-\subsection{\DIFadd{Impact of sample composition on FeNO
-results}}\label{impact-of-sample-composition-on-feno-results}
-
-\DIFadd{Table~\ref{tbl-a-feno} shows differences in the \(ATT\)s for the impact
-of the CBHP policy on FeNO depending on whether the estimation sample
-includes all individuals or is limited to those with repeated measures
-across campaigns.
-}
-
-\begin{table}
-
-\caption{\label{tbl-a-feno}\DIFaddFL{Effects of the CBHP policy on FeNO (ppb)
-based on the number of individuals with repeated measurements.}}
-
-\centering{
-
-}
-
-\end{table}%DIF > 
-
-\newpage
-
-\subsection{\DIFadd{Impact of including Season 3
-data}}\label{impact-of-including-season-3-data}
-
-\DIFadd{Table~\ref{tbl-a-ind-s3} shows differences in the \(ATT\)s for the
-impact of seasonal indoor PM\textsubscript{2.5} when season 3 data
-(collected in 41 villages during COVID-19) are included versus excluded.
-}
-
-\begin{table}
-
-\caption{\label{tbl-a-ind-s3}\DIFaddFL{Effects of the CBHP policy on indoor
-seasonal PM\textsubscript{2.5} based on whether Season 3 data are
-included vs.~excluded.}}
-
-\centering{
-
-}
-
-\end{table}%DIF > 
-
-\DIFadd{Figure~\ref{fig-afig-did-opm-w3} shows the impact of including Wave 3
-data on the estimates of the impact of the policy on seasonal outdoor
-PM\textsubscript{2.5}.
-}
-
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=0.6\textwidth,height=\textheight]{images/did-outdoor-w3.png}
-
-}
-
-\caption{\label{fig-afig-did-opm-w3}\DIFaddFL{Effects of the CBHP policy on
-outdoor seasonal PM\textsubscript{2.5} based on whether Season 3 data
-are included vs.~excluded.}}
-
-\end{figure}%DIF > 
-
-\newpage
-
-\subsection{\DIFadd{Pre-trends for blood
-pressure}}\label{pre-trends-for-blood-pressure}
-
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=0.8\textwidth,height=\textheight]{images/never_Y3.png}
-
-}
-
-\caption{\label{fig-afig-pt3}\DIFaddFL{Comparison of pre-interventions trends in
-blood pressure between waves 1 and 2 for never treated and villages
-later treated in wave 3}}
-
-\end{figure}%DIF > 
-
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=0.7\textwidth,height=\textheight]{images/never_Y4.png}
-
-}
-
-\caption{\label{fig-afig-pt4}\DIFaddFL{Comparison of pre-interventions trends in
-blood pressure between waves 1 and 2 for never treated and villages
-later treated in wave 4}}
-
-\end{figure}%DIF > 
-
-\newpage
-
-\newpage
-
-\subsection{\DIFadd{Impact of group and time fixed
-effects}}\label{impact-of-group-and-time-fixed-effects}
-
-\begin{table}
-
-\caption{\label{tbl-a-fe}\DIFaddFL{Effects of the CBHP policy on personal exposure
-(\(\mu g / m^{3}\)) with variations in fixed effects for treatment group
-and time.}}
-
-\centering{
-
-}
-
-\end{table}%DIF > 
-
-\newpage
-
-\section*{\DIFadd{About the authors}}\label{about-the-authors}
-\addcontentsline{toc}{section}{\DIFadd{About the authors}}
-
-\section*{\DIFadd{Other publications}}\label{other-publications}
-\addcontentsline{toc}{section}{\DIFadd{Other publications}}
-
-\DIFadd{Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G,
-et al.~2022a. Socioeconomic and Demographic Associations with Wintertime
-Air Pollution Exposures at Household, Community, and District Scales in
-Rural Beijing, China. Environ Sci Technol 56:8308--8318;
-doi:10.1021/acs.est.1c07402.
-}
-
-\DIFadd{Li X, Baumgartner J, Harper S, Zhang X, Sternbach T, Barrington-Leigh C,
-et al.~2022b. Field measurements of indoor and community air quality in
-rural Beijing before, during, and after the COVID-19 lockdown. Indoor
-Air 32:e13095; doi:10.1111/ina.13095.
-}
-
-\DIFadd{Sternbach TJ, Harper S, Li X, Zhang X, Carter E, Zhang Y, et al.~2022.
-Effects of indoor and outdoor temperatures on blood pressure and central
-hemodynamics in a wintertime longitudinal study of Chinese adults. J
-Hypertension 40:1950--1959; doi:10.1097/HJH.0000000000003198.
-}
-
-\phantomsection\label{refs}
+%DIF < 
+\DIFdelend \DIFaddbegin \phantomsection\label{refs}
 \begin{CSLReferences}{1}{1}
 \bibitem[\citeproctext]{ref-ahmed2009}
 \DIFaddend Ahmed T, Dutkiewicz VA, Shareef A, Tuncel G, Tuncel S, Husain L. 2009.
@@ -6028,105 +6157,121 @@ of air quality regulations. {Research} report 187.} Health Effects
 Institute / Health Effects Institute:Boston, MA.
 
 \end{CSLReferences}
-\DIFdelbegin %DIFDELCMD < 
 
-%DIFDELCMD < \newpage
-%DIFDELCMD < \appendix
-%DIFDELCMD < \renewcommand{\thefigure}{A\arabic{figure}}
-%DIFDELCMD < \renewcommand{\thetable}{A\arabic{table}}
-%DIFDELCMD < \setcounter{figure}{0}
-%DIFDELCMD < \setcounter{table}{0}
-%DIFDELCMD < 
+\newpage
+\appendix
+\renewcommand{\thefigure}{A\arabic{figure}}
+\renewcommand{\thetable}{A\arabic{table}}
+\setcounter{figure}{0}
+\setcounter{table}{0}
 
-%DIFDELCMD < \hypertarget{appendices}{%
+\DIFdelbegin %DIFDELCMD < \hypertarget{appendices}{%
 %DIFDELCMD < \section{Appendices}\label{appendices}}
-%DIFDELCMD < 
-
-%DIFDELCMD < \hypertarget{biomarker-descriptives}{%
-%DIFDELCMD < \subsection{Biomarker descriptives}\label{biomarker-descriptives}}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdel{Below we show boxplots for the logged values of the blood inflammatory
+\DIFdelend \DIFaddbegin \section{\DIFadd{Appendices}}\label{appendices}
+\DIFaddend 
+
+\DIFdelbegin %DIFDELCMD < \hypertarget{biomarker-descriptives}{%
+%DIFDELCMD < \subsection{Biomarker descriptives}\label{biomarker-descriptives}}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \subsection{\DIFadd{Biomarker descriptives}}\label{biomarker-descriptives}
+\DIFaddend 
+
+Below we show boxplots for the logged values of the blood inflammatory
 and oxidative stress markers.
-}%DIFDELCMD < 
 
-%DIFDELCMD < \begin{figure}[H]
-%DIFDELCMD < 
+\begin{figure}[H]
 
-%DIFDELCMD < {\centering \includegraphics[width=0.9\textwidth,height=\textheight]{images/biomarker-boxplot-log.jpg}
+\DIFdelbeginFL %DIFDELCMD < {\centering \includegraphics[width=0.9\textwidth,height=\textheight]{images/biomarker-boxplot-log.jpg}
 %DIFDELCMD < 
 
 %DIFDELCMD < }
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-%DIFDELCMD < \label{fig-afig-biomarkers}%%%
-\DIFdelFL{Boxplots for markers of systemic
+\DIFdelendFL \caption{\label{fig-afig-biomarkers}Boxplots for markers of systemic
 inflammation including C-reactive protein (CRP), interleukin-6 (IL-6),
 tumour necrosis factor alpha (TNF-\(\alpha\)) and markers of oxidative
 stress including 8-hydroxy-2'-deoxyguanosine (8-OHdG) and
-malondialdehyde (MDA)}}
-%DIFAUXCMD
-%DIFDELCMD < 
+malondialdehyde (MDA)}
 
-%DIFDELCMD < \end{figure}
-%DIFDELCMD < 
+\DIFaddbeginFL \centering{
 
-%DIFDELCMD < \newpage
-%DIFDELCMD < 
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/biomarker-boxplot-log.jpg}
 
-%DIFDELCMD < \hypertarget{imputation-results}{%
+}
+
+\DIFaddendFL \end{figure}%DIF > 
+
+\newpage
+
+\DIFdelbegin %DIFDELCMD < \hypertarget{imputation-results}{%
 %DIFDELCMD < \subsection{Imputation results}\label{imputation-results}}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdel{The figures below show density plots for the values of body mass index,
+\DIFdelend \DIFaddbegin \subsection{\DIFadd{Imputation results}}\label{imputation-results}
+\DIFaddend 
+
+The figures below show density plots for the values of body mass index,
 waist circumference, and indoor PM\textsubscript{2.5} from the multiple
 imputation models. The red lines show the values for each of the 30
 imputed datasets, and the black line shows the value for the observed
 data.
-}%DIFDELCMD < 
 
-%DIFDELCMD < \begin{figure}
-%DIFDELCMD < 
-
-%DIFDELCMD < \begin{minipage}[t]{0.50\linewidth}
-%DIFDELCMD < 
-
-%DIFDELCMD < {\centering 
-%DIFDELCMD < 
-
+\DIFdelbegin %DIFDELCMD < \begin{figure}
 %DIFDELCMD < %%%
-\DIFdelFL{\raisebox{-\height}{
+\DIFdelendFL \DIFaddbeginFL \begin{figure}[H]
+\DIFaddendFL 
+
+\DIFdelbeginFL %DIFDELCMD < \begin{minipage}[t]{0.50\linewidth}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \caption{\label{fig-afig-mi}\DIFaddFL{Kernal density plots showing distribution of
+multiply-imputed values for body mass index (kg/m\textsuperscript{2}),
+waist circumference (cm), and indoor PM\textsubscript{2.5}
+(µg/m\textsuperscript{3}) (red lines) and observed values (heavy black
+line)}}
+\DIFaddendFL 
+
+\DIFdelbeginFL %DIFDELCMD < {\centering 
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \begin{minipage}{0.50\linewidth}
+\DIFaddendFL 
+
+\DIFdelbeginFL \DIFdelFL{\raisebox{-\height}{
 
 \includegraphics{images/MI_BMI_density.png}
 
 }
-}%DIFDELCMD < 
+}\DIFdelendFL \DIFaddbeginFL \centering{
 
-%DIFDELCMD < }
-%DIFDELCMD < 
+\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_BMI_density.png}
 
-%DIFDELCMD < %%%
-%DIFDELCMD < \subcaption{%
-{%DIFAUXCMD
-%DIFDELCMD < \label{fig-afig-mi-1}%%%
 }
-%DIFAUXCMD
-%DIFDELCMD < \end{minipage}%%%
-%DIF < 
-%DIF < 
-%DIFDELCMD < \begin{minipage}[t]{0.50\linewidth}
-%DIFDELCMD < 
+\DIFaddendFL 
 
-%DIFDELCMD < {\centering 
+\DIFdelbeginFL %DIFDELCMD < }
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-\DIFdelFL{\raisebox{-\height}{
+\DIFdelendFL \subcaption{\label{fig-afig-mi-1}}
+\DIFaddbeginFL 
+
+\DIFaddendFL \end{minipage}%
+%
+\DIFdelbeginFL %DIFDELCMD < \begin{minipage}[t]{0.50\linewidth}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \begin{minipage}{0.50\linewidth}
+\DIFaddendFL 
+
+\DIFdelbeginFL %DIFDELCMD < {\centering 
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \centering{
+
+\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_waist_circ_density.png}
+
+}
+\DIFaddendFL 
+
+\DIFdelbeginFL \DIFdelFL{\raisebox{-\height}{
 
 \includegraphics{images/MI_waist_circ_density.png}
 
@@ -6137,22 +6282,26 @@ data.
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-%DIFDELCMD < \subcaption{%
-{%DIFAUXCMD
-%DIFDELCMD < \label{fig-afig-mi-2}%%%
-}
-%DIFAUXCMD
-%DIFDELCMD < \end{minipage}%%%
-%DIF < 
-%DIFDELCMD < \newline
-%DIFDELCMD < \begin{minipage}[t]{0.50\linewidth}
-%DIFDELCMD < 
+\DIFdelendFL \subcaption{\label{fig-afig-mi-2}}
+\DIFaddbeginFL 
 
-%DIFDELCMD < {\centering 
-%DIFDELCMD < 
-
+\DIFaddendFL \end{minipage}%
+\newline
+\DIFdelbeginFL %DIFDELCMD < \begin{minipage}[t]{0.50\linewidth}
 %DIFDELCMD < %%%
-\DIFdelFL{\raisebox{-\height}{
+\DIFdelendFL \DIFaddbeginFL \begin{minipage}{0.50\linewidth}
+\DIFaddendFL 
+
+\DIFdelbeginFL %DIFDELCMD < {\centering 
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \centering{
+
+\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_indoorPM_density.png}
+
+}
+\DIFaddendFL 
+
+\DIFdelbeginFL \DIFdelFL{\raisebox{-\height}{
 
 \includegraphics{images/MI_indoorPM_density.png}
 
@@ -6163,17 +6312,12 @@ data.
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-%DIFDELCMD < \subcaption{%
-{%DIFAUXCMD
-%DIFDELCMD < \label{fig-afig-mi-3}%%%
-}
-%DIFAUXCMD
-%DIFDELCMD < \end{minipage}%%%
-%DIF < 
-%DIFDELCMD < 
+\DIFdelendFL \subcaption{\label{fig-afig-mi-3}}
+\DIFaddbeginFL 
 
-%DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
+\DIFaddendFL \end{minipage}%
+
+\DIFdelbeginFL %DIFDELCMD < \caption{%
 {%DIFAUXCMD
 %DIFDELCMD < \label{fig-afig-mi}%%%
 \DIFdelFL{Kernal density plots showing distribution of
@@ -6184,76 +6328,73 @@ line)}}
 %DIFAUXCMD
 %DIFDELCMD < 
 
-%DIFDELCMD < \end{figure}
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL \end{figure}%DIF > 
 
-%DIFDELCMD < \newpage
-%DIFDELCMD < 
+\newpage
 
-%DIFDELCMD < \hypertarget{participant-flow-diagram}{%
+\DIFdelbegin %DIFDELCMD < \hypertarget{participant-flow-diagram}{%
 %DIFDELCMD < \subsection{Participant flow diagram}\label{participant-flow-diagram}}
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \subsection{\DIFadd{Participant flow diagram}}\label{participant-flow-diagram}
+\DIFaddend 
 
-%DIFDELCMD < \begin{figure}[H]
-%DIFDELCMD < 
+\begin{figure}[H]
 
-%DIFDELCMD < {\centering \includegraphics[width=0.8\textwidth,height=\textheight]{images/Participation-flowchart-Apr12.png}
-%DIFDELCMD < 
+\DIFdelbeginFL %DIFDELCMD < {\centering \includegraphics[width=0.8\textwidth,height=\textheight]{images/Participation-flowchart-Apr12.png}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \centering{
 
-%DIFDELCMD < }
+\includegraphics[width=0.8\textwidth,height=\textheight]{images/Participation-flowchart-Apr12.png}
+
+}
+\DIFaddendFL 
+
+\DIFdelbeginFL %DIFDELCMD < }
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-%DIFDELCMD < \label{fig-flowchart}%%%
-\DIFdelFL{Flow chart of BHET study participation at
-the participant, household, and village levels across study years.}}
-%DIFAUXCMD
-%DIFDELCMD < 
+\DIFdelendFL \caption{\label{fig-flowchart}Flow chart of BHET study participation at
+the participant, household, and village levels across study years.}
 
-%DIFDELCMD < \end{figure}
-%DIFDELCMD < 
+\end{figure}%DIF > 
 
-%DIFDELCMD < \newpage
-%DIFDELCMD < 
+\newpage
 
-%DIFDELCMD < \newpage
-%DIFDELCMD < 
+\newpage
 
-%DIFDELCMD < \hypertarget{policy-uptake-1}{%
+\DIFdelbegin %DIFDELCMD < \hypertarget{policy-uptake-1}{%
 %DIFDELCMD < \subsection{Policy uptake}\label{policy-uptake-1}}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdel{Figure~\ref{fig-afig-coal} shows trends over time in self-reported coal
+\DIFdelend \DIFaddbegin \subsection{\DIFadd{Policy uptake}}\label{policy-uptake-1}
+\DIFaddend 
+
+Figure~\ref{fig-afig-coal} shows trends over time in self-reported coal
 and biomass consumption over each season. Table~\ref{tbl-fuel-did} shows
 results from applying our extended two-way fixed effects models (in
 separate analyses) to coal and biomass consumption.
-}%DIFDELCMD < 
 
-%DIFDELCMD < \begin{figure}[H]
-%DIFDELCMD < 
+\begin{figure}[H]
 
-%DIFDELCMD < {\centering \includegraphics[width=1\textwidth,height=\textheight]{images/coal-plot.png}
-%DIFDELCMD < 
+\DIFdelbeginFL %DIFDELCMD < {\centering \includegraphics[width=1\textwidth,height=\textheight]{images/coal-plot.png}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \centering{
 
-%DIFDELCMD < }
+\includegraphics[width=1\textwidth,height=\textheight]{images/coal-plot.png}
+
+}
+\DIFaddendFL 
+
+\DIFdelbeginFL %DIFDELCMD < }
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-%DIFDELCMD < \label{fig-afig-coal}%%%
-\DIFdelFL{Trends in self-reported coal and biomass,
-by treatment season}}
-%DIFAUXCMD
-%DIFDELCMD < 
+\DIFdelendFL \caption{\label{fig-afig-coal}Trends in self-reported coal and biomass,
+by treatment season}
 
-%DIFDELCMD < \end{figure}
-%DIFDELCMD < 
+\end{figure}%DIF > 
 
-%DIFDELCMD < \hypertarget{tbl-fuel-did}{}
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-fuel-did}{}
 %DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
 %DIFDELCMD < \caption{%
@@ -6334,24 +6475,27 @@ by treatment season}}
 %DIFDELCMD < \end{table}
 %DIFDELCMD < 
 
-%DIFDELCMD < \newpage
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelend \newpage
 
-%DIFDELCMD < \hypertarget{heterogeneity-in-treament-effects}{%
+\DIFdelbegin %DIFDELCMD < \hypertarget{heterogeneity-in-treament-effects}{%
 %DIFDELCMD < \subsection{Heterogeneity in treament
 %DIFDELCMD < effects}\label{heterogeneity-in-treament-effects}}
-%DIFDELCMD < 
-
-%DIFDELCMD < \hypertarget{personal-exposure}{%
-%DIFDELCMD < \subsubsection{Personal exposure}\label{personal-exposure}}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdel{Table Table~\ref{tbl-a-het-personal} shows limited evidence that the
-\(ATT\)s across cohorts and time demonstrate meaningful heterogeneity.
-}%DIFDELCMD < 
+\DIFdelend \DIFaddbegin \subsection{\DIFadd{Heterogeneity in treament
+effects}}\label{heterogeneity-in-treament-effects}
+\DIFaddend 
 
-%DIFDELCMD < \hypertarget{tbl-a-het-personal}{}
+\DIFdelbegin %DIFDELCMD < \hypertarget{personal-exposure}{%
+%DIFDELCMD < \subsubsection{Personal exposure}\label{personal-exposure}}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \subsubsection{\DIFadd{Personal exposure}}\label{personal-exposure}
+\DIFaddend 
+
+Table Table~\ref{tbl-a-het-personal} shows limited evidence that the
+\(ATT\)s across cohorts and time demonstrate meaningful heterogeneity.
+
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-het-personal}{}
 %DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
 %DIFDELCMD < \caption{%
@@ -6359,9 +6503,12 @@ by treatment season}}
 %DIFDELCMD < \label{tbl-a-het-personal}%%%
 \DIFdelFL{Heterogenous treatment effects: Personal exposures }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \subsubsection{\texorpdfstring{Indoor
+PM\textsubscript{2.5}}{Indoor PM2.5}}\label{indoor-pm2.5-1}
+\DIFaddendFL 
 
-%DIFDELCMD < \centering
+\DIFdelbeginFL %DIFDELCMD < \centering
 %DIFDELCMD < \begin{tabular}{>{\centering\arraybackslash}p{1.5cm}>{\centering\arraybackslash}p{1.5cm}cccc}
 %DIFDELCMD < \toprule
 %DIFDELCMD < \multicolumn{2}{c}{ } & \multicolumn{2}{c}{PM2.5\textsuperscript{a}} & \multicolumn{2}{c}{Black carbon\textsuperscript{b}} \\
@@ -6438,11 +6585,10 @@ by treatment season}}
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-\DIFdel{Table Table~\ref{tbl-a-het-indoor} shows estimates for cohort-time
+\DIFdelend Table Table~\ref{tbl-a-het-indoor} shows estimates for cohort-time
 \(ATT\)s for daily and seasonal indoor PM\textsubscript{2.5}.
-}%DIFDELCMD < 
 
-%DIFDELCMD < \hypertarget{tbl-a-het-indoor}{}
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-het-indoor}{}
 %DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
 %DIFDELCMD < \caption{%
@@ -6509,14 +6655,16 @@ by treatment season}}
 %DIFDELCMD < \end{table}
 %DIFDELCMD < 
 
-%DIFDELCMD < \newpage
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelend \newpage
 
-%DIFDELCMD < \hypertarget{indoor-temperature}{%
+\DIFdelbegin %DIFDELCMD < \hypertarget{indoor-temperature}{%
 %DIFDELCMD < \subsubsection{Indoor temperature}\label{indoor-temperature}}
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \subsubsection{\DIFadd{Indoor temperature}}\label{indoor-temperature}
+\DIFaddend 
 
-%DIFDELCMD < \hypertarget{tbl-a-het-temp}{}
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-het-temp}{}
 %DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
 %DIFDELCMD < \caption{%
@@ -6740,19 +6888,19 @@ by treatment season}}
 %DIFDELCMD < \end{table}
 %DIFDELCMD < 
 
-%DIFDELCMD < \newpage
-%DIFDELCMD < 
-
-%DIFDELCMD < \hypertarget{blood-pressure-outcomes}{%
-%DIFDELCMD < \subsubsection{Blood pressure outcomes}\label{blood-pressure-outcomes}}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdel{Table~\ref{tbl-bp-het} shows \(ATT\)s by treatment cohort and time, as
-well as the results of joint tests of heterogeneity across \(ATT\)s.
-}%DIFDELCMD < 
+\DIFdelend \newpage
 
-%DIFDELCMD < \hypertarget{tbl-bp-het}{}
+\DIFdelbegin %DIFDELCMD < \hypertarget{blood-pressure-outcomes}{%
+%DIFDELCMD < \subsubsection{Blood pressure outcomes}\label{blood-pressure-outcomes}}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \subsubsection{\DIFadd{Blood pressure outcomes}}\label{blood-pressure-outcomes}
+\DIFaddend 
+
+Table~\ref{tbl-bp-het} shows \(ATT\)s by treatment cohort and time, as
+well as the results of joint tests of heterogeneity across \(ATT\)s.
+
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-bp-het}{}
 %DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
 %DIFDELCMD < \caption{%
@@ -6896,20 +7044,21 @@ on blood pressure. }}%DIFAUXCMD
 %DIFDELCMD < \end{table}
 %DIFDELCMD < 
 
-%DIFDELCMD < \newpage
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelend \newpage
 
-%DIFDELCMD < \hypertarget{mediation-analyses-for-blood-pressure}{%
+\DIFdelbegin %DIFDELCMD < \hypertarget{mediation-analyses-for-blood-pressure}{%
 %DIFDELCMD < \subsubsection{Mediation analyses for blood
 %DIFDELCMD < pressure}\label{mediation-analyses-for-blood-pressure}}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdel{Table~\ref{tbl-a-bp-med-het} shows the cohort-time treatment effects for
-the mediation model for blood pressure.
-}%DIFDELCMD < 
+\DIFdelend \DIFaddbegin \subsubsection{\DIFadd{Mediation analyses for blood
+pressure}}\label{mediation-analyses-for-blood-pressure}
+\DIFaddend 
 
-%DIFDELCMD < \hypertarget{tbl-a-bp-med-het}{}
+Table~\ref{tbl-a-bp-med-het} shows the cohort-time treatment effects for
+the mediation model for blood pressure.
+
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-bp-med-het}{}
 %DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
 %DIFDELCMD < \caption{%
@@ -7311,23 +7460,23 @@ across CDEs for multiple mediation blood pressure mediation model. }}%DIFAUXCMD
 %DIFDELCMD < \end{table}
 %DIFDELCMD < 
 
-%DIFDELCMD < \newpage
-%DIFDELCMD < 
-
-%DIFDELCMD < \hypertarget{respiratory-outcomes}{%
-%DIFDELCMD < \subsubsection{Respiratory outcomes}\label{respiratory-outcomes}}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdel{Appendix tables \ref{tbl-a-het-resp}, \ref{tbl-a-het-cough},
+\DIFdelend \newpage
+
+\DIFdelbegin %DIFDELCMD < \hypertarget{respiratory-outcomes}{%
+%DIFDELCMD < \subsubsection{Respiratory outcomes}\label{respiratory-outcomes}}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \subsubsection{\DIFadd{Respiratory outcomes}}\label{respiratory-outcomes}
+\DIFaddend 
+
+Appendix tables \ref{tbl-a-het-resp}, \ref{tbl-a-het-cough},
 \ref{tbl-a-het-phlegm}, \ref{tbl-a-het-wheeze}, \ref{tbl-a-het-breath},
 \ref{tbl-a-het-nochest} below show Average Treatment Effect on the
 Treated (\(ATT\)s) by treatment cohort and time. ATTs are derived from
 estimating marginal effects from extended two-way fixed effects models
 with additional adjustment for age, sex, and smoking status.
-}%DIFDELCMD < 
 
-%DIFDELCMD < \hypertarget{tbl-a-het-resp}{}
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-het-resp}{}
 %DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
 %DIFDELCMD < \caption{%
@@ -7657,52 +7806,54 @@ Chest trouble }}%DIFAUXCMD
 %DIFDELCMD < \end{table}
 %DIFDELCMD < 
 
-%DIFDELCMD < \newpage
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelend \newpage
 
-%DIFDELCMD < \hypertarget{outdoor-and-personal-mixed-combustion}{%
+\DIFdelbegin %DIFDELCMD < \hypertarget{outdoor-and-personal-mixed-combustion}{%
 %DIFDELCMD < \subsubsection{Outdoor and personal mixed
 %DIFDELCMD < combustion}\label{outdoor-and-personal-mixed-combustion}}
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \subsubsection{\DIFadd{Outdoor and personal mixed
+combustion}}\label{outdoor-and-personal-mixed-combustion}
+\DIFaddend 
 
-%DIFDELCMD < \begin{figure}[H]
-%DIFDELCMD < 
+\begin{figure}[H]
 
-%DIFDELCMD < {\centering \includegraphics[width=1\textwidth,height=\textheight]{images/did-mixed-ct-wave.png}
-%DIFDELCMD < 
+\DIFdelbeginFL %DIFDELCMD < {\centering \includegraphics[width=1\textwidth,height=\textheight]{images/did-mixed-ct-wave.png}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \centering{
 
-%DIFDELCMD < }
+\includegraphics[width=1\textwidth,height=\textheight]{images/did-mixed-ct-wave.png}
+
+}
+\DIFaddendFL 
+
+\DIFdelbeginFL %DIFDELCMD < }
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-%DIFDELCMD < \label{fig-afig-mixed-ct}%%%
-\DIFdelFL{Adjusted and unadjusted treatment
+\DIFdelendFL \caption{\label{fig-afig-mixed-ct}Adjusted and unadjusted treatment
 effect for outdoor and personal exposure (µg/m\textsuperscript{3}) to
-the mixed combustion source by treatment year.}}
-%DIFAUXCMD
-%DIFDELCMD < 
+the mixed combustion source by treatment year.}
 
-%DIFDELCMD < \end{figure}
-%DIFDELCMD < 
+\end{figure}%DIF > 
 
-%DIFDELCMD < \newpage
-%DIFDELCMD < 
+\newpage
 
-%DIFDELCMD < \hypertarget{impact-of-sample-composition-on-feno-results}{%
+\DIFdelbegin %DIFDELCMD < \hypertarget{impact-of-sample-composition-on-feno-results}{%
 %DIFDELCMD < \subsection{Impact of sample composition on FeNO
 %DIFDELCMD < results}\label{impact-of-sample-composition-on-feno-results}}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdel{Table~\ref{tbl-a-feno} shows differences in the \(ATT\)s for the impact
+\DIFdelend \DIFaddbegin \subsection{\DIFadd{Impact of sample composition on FeNO
+results}}\label{impact-of-sample-composition-on-feno-results}
+\DIFaddend 
+
+Table~\ref{tbl-a-feno} shows differences in the \(ATT\)s for the impact
 of the CBHP policy on FeNO depending on whether the estimation sample
 includes all individuals or is limited to those with repeated measures
 across campaigns.
-}%DIFDELCMD < 
 
-%DIFDELCMD < \hypertarget{tbl-a-feno}{}
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-feno}{}
 %DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
 %DIFDELCMD < \caption{%
@@ -7770,21 +7921,22 @@ individuals with repeated measurements. }}%DIFAUXCMD
 %DIFDELCMD < \end{table}
 %DIFDELCMD < 
 
-%DIFDELCMD < \newpage
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelend \newpage
 
-%DIFDELCMD < \hypertarget{impact-of-including-season-3-data}{%
+\DIFdelbegin %DIFDELCMD < \hypertarget{impact-of-including-season-3-data}{%
 %DIFDELCMD < \subsection{Impact of including Season 3
 %DIFDELCMD < data}\label{impact-of-including-season-3-data}}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdel{Table~\ref{tbl-a-ind-s3} shows differences in the \(ATT\)s for the
+\DIFdelend \DIFaddbegin \subsection{\DIFadd{Impact of including Season 3
+data}}\label{impact-of-including-season-3-data}
+\DIFaddend 
+
+Table~\ref{tbl-a-ind-s3} shows differences in the \(ATT\)s for the
 impact of seasonal indoor PM\textsubscript{2.5} when season 3 data
 (collected in 41 villages during COVID-19) are included versus excluded.
-}%DIFDELCMD < 
 
-%DIFDELCMD < \hypertarget{tbl-a-ind-s3}{}
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-ind-s3}{}
 %DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
 %DIFDELCMD < \caption{%
@@ -7860,97 +8012,96 @@ based on whether Season 3 data are included vs.~excluded. }}%DIFAUXCMD
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-\DIFdel{Figure~\ref{fig-afig-did-opm-w3} shows the impact of including Wave 3
+\DIFdelend Figure~\ref{fig-afig-did-opm-w3} shows the impact of including Wave 3
 data on the estimates of the impact of the policy on seasonal outdoor
 PM\textsubscript{2.5}.
-}%DIFDELCMD < 
 
-%DIFDELCMD < \begin{figure}[H]
-%DIFDELCMD < 
+\begin{figure}[H]
 
-%DIFDELCMD < {\centering \includegraphics[width=0.6\textwidth,height=\textheight]{images/did-outdoor-w3.png}
+\DIFdelbeginFL %DIFDELCMD < {\centering \includegraphics[width=0.6\textwidth,height=\textheight]{images/did-outdoor-w3.png}
 %DIFDELCMD < 
 
 %DIFDELCMD < }
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-%DIFDELCMD < \label{fig-afig-did-opm-w3}%%%
-\DIFdelFL{Effects of the CBHP policy on
+\DIFdelendFL \caption{\label{fig-afig-did-opm-w3}Effects of the CBHP policy on
 outdoor seasonal PM\textsubscript{2.5} based on whether Season 3 data
-are included vs.~excluded.}}
-%DIFAUXCMD
-%DIFDELCMD < 
+are included vs.~excluded.}
 
-%DIFDELCMD < \end{figure}
-%DIFDELCMD < 
+\DIFaddbeginFL \centering{
 
-%DIFDELCMD < \newpage
-%DIFDELCMD < 
+\includegraphics[width=0.6\textwidth,height=\textheight]{images/did-outdoor-w3.png}
 
-%DIFDELCMD < \hypertarget{pre-trends-for-blood-pressure}{%
+}
+
+\DIFaddendFL \end{figure}%DIF > 
+
+\newpage
+
+\DIFdelbegin %DIFDELCMD < \hypertarget{pre-trends-for-blood-pressure}{%
 %DIFDELCMD < \subsection{Pre-trends for blood
 %DIFDELCMD < pressure}\label{pre-trends-for-blood-pressure}}
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \subsection{\DIFadd{Pre-trends for blood
+pressure}}\label{pre-trends-for-blood-pressure}
+\DIFaddend 
 
-%DIFDELCMD < \begin{figure}[H]
-%DIFDELCMD < 
+\begin{figure}[H]
 
-%DIFDELCMD < {\centering \includegraphics[width=0.8\textwidth,height=\textheight]{images/never_Y3.png}
+\DIFdelbeginFL %DIFDELCMD < {\centering \includegraphics[width=0.8\textwidth,height=\textheight]{images/never_Y3.png}
 %DIFDELCMD < 
 
 %DIFDELCMD < }
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-%DIFDELCMD < \label{fig-afig-pt3}%%%
-\DIFdelFL{Comparison of pre-interventions trends in
+\DIFdelendFL \caption{\label{fig-afig-pt3}Comparison of pre-interventions trends in
 blood pressure between waves 1 and 2 for never treated and villages
-later treated in wave 3}}
-%DIFAUXCMD
-%DIFDELCMD < 
+later treated in wave 3}
 
-%DIFDELCMD < \end{figure}
-%DIFDELCMD < 
+\DIFaddbeginFL \centering{
 
-%DIFDELCMD < \begin{figure}[H]
-%DIFDELCMD < 
+\includegraphics[width=0.8\textwidth,height=\textheight]{images/never_Y3.png}
 
-%DIFDELCMD < {\centering \includegraphics[width=0.7\textwidth,height=\textheight]{images/never_Y4.png}
+}
+
+\DIFaddendFL \end{figure}%DIF > 
+
+\begin{figure}[H]
+
+\DIFdelbeginFL %DIFDELCMD < {\centering \includegraphics[width=0.7\textwidth,height=\textheight]{images/never_Y4.png}
 %DIFDELCMD < 
 
 %DIFDELCMD < }
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-%DIFDELCMD < \label{fig-afig-pt4}%%%
-\DIFdelFL{Comparison of pre-interventions trends in
+\DIFdelendFL \caption{\label{fig-afig-pt4}Comparison of pre-interventions trends in
 blood pressure between waves 1 and 2 for never treated and villages
-later treated in wave 4}}
-%DIFAUXCMD
-%DIFDELCMD < 
+later treated in wave 4}
 
-%DIFDELCMD < \end{figure}
-%DIFDELCMD < 
+\DIFaddbeginFL \centering{
 
-%DIFDELCMD < \newpage
-%DIFDELCMD < 
+\includegraphics[width=0.7\textwidth,height=\textheight]{images/never_Y4.png}
 
-%DIFDELCMD < \newpage
-%DIFDELCMD < 
+}
 
-%DIFDELCMD < \hypertarget{impact-of-group-and-time-fixed-effects}{%
+\DIFaddendFL \end{figure}%DIF > 
+
+\newpage
+
+\newpage
+
+\DIFdelbegin %DIFDELCMD < \hypertarget{impact-of-group-and-time-fixed-effects}{%
 %DIFDELCMD < \subsection{Impact of group and time fixed
 %DIFDELCMD < effects}\label{impact-of-group-and-time-fixed-effects}}
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \subsection{\DIFadd{Impact of group and time fixed
+effects}}\label{impact-of-group-and-time-fixed-effects}
+\DIFaddend 
 
-%DIFDELCMD < \hypertarget{tbl-a-fe}{}
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-fe}{}
 %DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
 %DIFDELCMD < \caption{%
@@ -7995,44 +8146,37 @@ variations in fixed effects for treatment group and time. }}%DIFAUXCMD
 %DIFDELCMD < \end{table}
 %DIFDELCMD < 
 
-%DIFDELCMD < \newpage
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelend \newpage
 
-%DIFDELCMD < \hypertarget{about-the-authors}{%
+\DIFdelbegin %DIFDELCMD < \hypertarget{about-the-authors}{%
 %DIFDELCMD < \section*{About the authors}\label{about-the-authors}}
 %DIFDELCMD < %%%
-\addcontentsline{toc}{section}{\DIFdel{About the authors}}
-%DIFAUXCMD
-%DIFDELCMD < 
+\DIFdelend \DIFaddbegin \section*{\DIFadd{About the authors}}\label{about-the-authors}
+\DIFaddend \addcontentsline{toc}{section}{About the authors}
 
-%DIFDELCMD < \hypertarget{other-publications}{%
+\DIFdelbegin %DIFDELCMD < \hypertarget{other-publications}{%
 %DIFDELCMD < \section*{Other publications}\label{other-publications}}
 %DIFDELCMD < %%%
-\addcontentsline{toc}{section}{\DIFdel{Other publications}}
-%DIFAUXCMD
-%DIFDELCMD < 
+\DIFdelend \DIFaddbegin \section*{\DIFadd{Other publications}}\label{other-publications}
+\DIFaddend \addcontentsline{toc}{section}{Other publications}
 
-%DIFDELCMD < %%%
-\DIFdel{Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G,
+Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G,
 et al.~2022a. Socioeconomic and Demographic Associations with Wintertime
 Air Pollution Exposures at Household, Community, and District Scales in
 Rural Beijing, China. Environ Sci Technol 56:8308--8318;
 doi:10.1021/acs.est.1c07402.
-}%DIFDELCMD < 
 
-%DIFDELCMD < %%%
-\DIFdel{Li X, Baumgartner J, Harper S, Zhang X, Sternbach T, Barrington-Leigh C,
+Li X, Baumgartner J, Harper S, Zhang X, Sternbach T, Barrington-Leigh C,
 et al.~2022b. Field measurements of indoor and community air quality in
 rural Beijing before, during, and after the COVID-19 lockdown. Indoor
 Air 32:e13095; doi:10.1111/ina.13095.
-}%DIFDELCMD < 
 
-%DIFDELCMD < %%%
-\DIFdel{Sternbach TJ, Harper S, Li X, Zhang X, Carter E, Zhang Y, et al.~2022.
+Sternbach TJ, Harper S, Li X, Zhang X, Carter E, Zhang Y, et al.~2022.
 Effects of indoor and outdoor temperatures on blood pressure and central
 hemodynamics in a wintertime longitudinal study of Chinese adults. J
 Hypertension 40:1950--1959; doi:10.1097/HJH.0000000000003198.
-}\DIFdelend 
+
 
 
 

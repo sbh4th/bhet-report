@@ -1052,9 +1052,11 @@ When the average treatment effects of the CBHP policy on community outdoor level
 
 @tbl-med-source shows results from the mediation analysis by personal exposure to the mixed combustion source (coal and biomass), estimated for the subset of participants with personal exposure measurements. The CDE in this model estimates the impact of exposure to the CBHP policy on central and systolic blood pressure while holding constant values of mixed combustion source at the mean baseline values for untreated population. The marginal policy effects (ATTs) from the adjusted ETWFE models for this subset of participants were largely similar to those from the full sample for central SBP (around a 1.6 mmHg decrease), but slightly smaller for central DBP (-1.7 mmHg in the full sample vs. -1.3 mmHg in the subset with personal exposure measurements) and were estimated with greater imprecision. We found little evidence that these treatment effects were meaningfully mediated by exposure to the mixed combustion source, as the controlled direct effects were generally of similar magnitude as the adjusted total effects.  
 
-```{r tbl-med-source, echo=F, message=F, warning=F, eval=F}
+```{r, message=F, warning=F}
+#| echo: FALSE
 #| label: tbl-med-source
-#| tbl-cap: "Average treatment effects and controlled direct effect (mm/Hg) of the CBHP policy on central systolic and diastolic blood pressure with mixed combustion source as the potential mediator."
+#| tbl-cap: Average treatment effects and controlled direct effect (mm/Hg) of the CBHP policy on central systolic and diastolic blood pressure with mixed combustion source as the potential mediator.
+#| eval: TRUE
 
 # read in mediation by source results
 med_source <- read_csv(here("data-clean", 
@@ -1072,22 +1074,36 @@ med_source_t <- med_source %>%
   pivot_wider(names_from = "model", 
     values_from = c("att", "attci"), names_vary = "slowest")
 
-kable(med_source_t,
-  col.names =c("", "ATT", "(95%CI)", "ATT", "(95%CI)",
-   "ATT", "(95%CI)"), 
-   # "latex", booktabs = T,
-  linesep = "", align = 'lcccccc') %>%
-  kable_styling(full_width = F,
-    latex_options = "HOLD_position") %>%
-  add_header_above(c(" " = 1, 
-    "DiD" = 2, 
-    "Adjusted DiD\\\\textsuperscript{a}" = 2,
-    "Adjusted CDE\\\\textsuperscript{b}" = 2),
-    escape = F) %>%
-  footnote(
-    general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, CDE = Controlled Direct Effect, DBP = Diastolic Blood Pressure, SBP = Systolic Blood Pressure.}",
-    alphabet = c("\\\\small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", "\\\\small{Further adjusted for mediation by mixed combustion source (coal and biomass)}"), 
-    general_title = "", threeparttable = T, escape = F)
+colnames(med_source_t) = c("", "ATT", 
+  "(95%CI)", "ATT", "(95%CI)", 
+  "ATT", "(95%CI)")
+
+tt(med_source_t, 
+   digits = 2, 
+   notes = list("Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences, CDE = Controlled Direct Effect, DBP = Diastolic Blood Pressure, SBP = Systolic Blood Pressure.", a = list(i = 0, j = 4, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), b = list(i =0, j = 6, text = "Further adjusted for mediation by mixed combustion source (coal and biomass)"))) %>%
+  group_tt(j = list(
+     "DiD" = 2:3,
+     "Adjusted DiD" = 4:5,
+     "Adjusted CDE" = 6:7)) %>%
+  format_tt(escape = TRUE) %>%
+  style_tt(j = 1:7, align = 'lcccccc')
+
+# kable(med_source_t,
+#   col.names =c("", "ATT", "(95%CI)", "ATT", "(95%CI)",
+#    "ATT", "(95%CI)"), 
+#    # "latex", booktabs = T,
+#   linesep = "", align = 'lcccccc') %>%
+#   kable_styling(full_width = F,
+#     latex_options = "HOLD_position") %>%
+#   add_header_above(c(" " = 1, 
+#     "DiD" = 2, 
+#     "Adjusted DiD\\\\textsuperscript{a}" = 2,
+#     "Adjusted CDE\\\\textsuperscript{b}" = 2),
+#     escape = F) %>%
+#   footnote(
+#     general = "\\\\small{Note: ATT = Average Treatment Effect on # the Treated, DiD = Difference-in-Differences, CDE = Controlled # Direct Effect, DBP = Diastolic Blood Pressure, SBP = Systolic # Blood Pressure.}",
+#     alphabet = c("\\\\small{Adjusted for age, sex, waist # circumference, smoking, alcohol consumption, and use of blood # pressure medication.}", "\\\\small{Further adjusted for mediation # by mixed combustion source (coal and biomass)}"), 
+#     general_title = "", threeparttable = T, escape = F)
 ```
 
 # Discussion and Conclusions

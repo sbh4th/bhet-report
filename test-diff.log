@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.7.15)  25 JUL 2024 10:19
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.7.15)  30 JUL 2024 17:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -335,7 +335,7 @@ Package: longtable 2024-04-26 v4.20 Multi-page Table package (DPC)
 \c@LT@chunks=\count301
 \LT@p@ftn=\toks24
 )
-Class scrartcl Info: longtable captions redefined on input line 62.
+Class scrartcl Info: longtable captions redefined on input line 88.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen163
@@ -979,7 +979,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 File: bkm-dvipdfm.def 2023-12-10 v1.31 bookmark driver for dvipdfm (HO)
 \BKM@id=\count411
 ))
-Package hyperref Info: Option `colorlinks' set `true' on input line 272.
+Package hyperref Info: Option `colorlinks' set `true' on input line 304.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/oberdiek/settobox.sty
 Package: settobox 2016/05/16 v1.5 Assign box dimensions to length registers (HO)
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
@@ -988,14 +988,14 @@ Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 \DIFdelgraphicsbox=\box121
 \DIFdelgraphicswidth=\skip88
 \DIFdelgraphicsheight=\skip89
-LaTeX Info: Redefining \DIFaddbegin on input line 330.
-LaTeX Info: Redefining \DIFaddend on input line 331.
-LaTeX Info: Redefining \DIFdelbegin on input line 332.
-LaTeX Info: Redefining \DIFdelend on input line 333.
-LaTeX Info: Redefining \DIFaddbeginFL on input line 338.
-LaTeX Info: Redefining \DIFaddendFL on input line 339.
-LaTeX Info: Redefining \DIFdelbeginFL on input line 340.
-LaTeX Info: Redefining \DIFdelendFL on input line 341.
+LaTeX Info: Redefining \DIFaddbegin on input line 362.
+LaTeX Info: Redefining \DIFaddend on input line 363.
+LaTeX Info: Redefining \DIFdelbegin on input line 364.
+LaTeX Info: Redefining \DIFdelend on input line 365.
+LaTeX Info: Redefining \DIFaddbeginFL on input line 370.
+LaTeX Info: Redefining \DIFaddendFL on input line 371.
+LaTeX Info: Redefining \DIFdelbeginFL on input line 372.
+LaTeX Info: Redefining \DIFdelendFL on input line 373.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count412
 \lst@gtempboxa=\box122
@@ -1023,49 +1023,49 @@ Package: listings 2024/05/25 1.10b (Carsten Heinz)
  (./test-diff.aux)
 \openout1 = `test-diff.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 360.
-LaTeX Font Info:    ... okay on input line 360.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 360.
-LaTeX Font Info:    ... okay on input line 360.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 360.
-LaTeX Font Info:    ... okay on input line 360.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 360.
-LaTeX Font Info:    ... okay on input line 360.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 360.
-LaTeX Font Info:    ... okay on input line 360.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 360.
-LaTeX Font Info:    ... okay on input line 360.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 360.
-LaTeX Font Info:    ... okay on input line 360.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 360.
-LaTeX Font Info:    ... okay on input line 360.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 360.
-LaTeX Font Info:    ... okay on input line 360.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 360.
-LaTeX Font Info:    ... okay on input line 360.
-Package scrbase Info: activating english \abstractname on input line 360.
-Package scrbase Info: activating english \partname on input line 360.
-Package scrbase Info: activating english \figurename on input line 360.
-Package scrbase Info: activating english \tablename on input line 360.
-Package scrbase Info: activating english \contentsname on input line 360.
-Package scrbase Info: activating english \listfigurename on input line 360.
-Package scrbase Info: activating english \listtablename on input line 360.
-Package scrbase Info: activating english \refname on input line 360.
-Package scrbase Info: activating english \indexname on input line 360.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 392.
+LaTeX Font Info:    ... okay on input line 392.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 392.
+LaTeX Font Info:    ... okay on input line 392.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 392.
+LaTeX Font Info:    ... okay on input line 392.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 392.
+LaTeX Font Info:    ... okay on input line 392.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 392.
+LaTeX Font Info:    ... okay on input line 392.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 392.
+LaTeX Font Info:    ... okay on input line 392.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 392.
+LaTeX Font Info:    ... okay on input line 392.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 392.
+LaTeX Font Info:    ... okay on input line 392.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 392.
+LaTeX Font Info:    ... okay on input line 392.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 392.
+LaTeX Font Info:    ... okay on input line 392.
+Package scrbase Info: activating english \abstractname on input line 392.
+Package scrbase Info: activating english \partname on input line 392.
+Package scrbase Info: activating english \figurename on input line 392.
+Package scrbase Info: activating english \tablename on input line 392.
+Package scrbase Info: activating english \contentsname on input line 392.
+Package scrbase Info: activating english \listfigurename on input line 392.
+Package scrbase Info: activating english \listtablename on input line 392.
+Package scrbase Info: activating english \refname on input line 392.
+Package scrbase Info: activating english \indexname on input line 392.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 360.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 392.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 360.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 392.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 360.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 392.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 360.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 392.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 360.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 392.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 360.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 392.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 360.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 392.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999967668407183.
@@ -1093,7 +1093,7 @@ Package fontspec Info:
 (fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 360.
+(Font)              scaled to size 10.95pt on input line 392.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999967668407183.
@@ -1129,15 +1129,15 @@ Package fontspec Info:
 (fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 360.
+(Font)              scaled to size 10.95pt on input line 392.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 360.
+(Font)              `operators' in the math version `normal' on input line 392.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 360.
+(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 392.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 360.
+(Font)              `operators' in the math version `bold' on input line 392.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 360.
+(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 392.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999967668407183.
@@ -1203,13 +1203,13 @@ Package fontspec Info:
 (fontspec)             <->s*[1.000096766517402]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 360.
+(Font)              `symbols' in the math version `normal' on input line 392.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 360.
+(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 392.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 360.
+(Font)              `symbols' in the math version `bold' on input line 392.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 360.
+(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 392.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999967668407183.
@@ -1269,13 +1269,13 @@ Package fontspec Info:
 (fontspec)             <->s*[0.9998967671640342]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 360.
+(Font)              `largesymbols' in the math version `normal' on input line 392.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 360.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 392.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 360.
+(Font)              `largesymbols' in the math version `bold' on input line 392.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 360.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 392.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1315,44 +1315,47 @@ LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 Package: ninecolors 2022-02-13 v2022D Select colors with proper color contrast
 )
 
-Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package. on input line 360.
+Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package. on input line 392.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 360.
+Package hyperref Info: Link coloring ON on input line 392.
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
 \c@lstlisting=\count420
 Package tocbasic Info: omitting babel extension for `lol'
-(tocbasic)             because of missing \bbl@set@language on input line 360.
+(tocbasic)             because of missing \bbl@set@language on input line 392.
 \scr@dte@lstlisting@maxnumwidth=\skip90
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 362.
+(Font)              scaled to size 14.4pt on input line 394.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 362.
+(Font)              scaled to size 10.0pt on input line 394.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 362.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 362.
+(Font)              scaled to size 7.0pt on input line 394.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 394.
 (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.4013pt on input line 362.
+(Font)              scaled to size 14.4013pt on input line 394.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 362.
+(Font)              scaled to size 10.00092pt on input line 394.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 362.
+(Font)              scaled to size 7.00064pt on input line 394.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 362.
+(Font)              scaled to size 14.39845pt on input line 394.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 362.
+(Font)              scaled to size 9.99893pt on input line 394.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 362.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 362.
+(Font)              scaled to size 6.99925pt on input line 394.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 394.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 362.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 394.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (./test-diff.toc)
@@ -1360,21 +1363,21 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout4 = `test-diff.toc'.
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.665pt on input line 406.
+(Font)              scaled to size 7.665pt on input line 439.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.475pt on input line 406.
+(Font)              scaled to size 5.475pt on input line 439.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.95099pt on input line 406.
+(Font)              scaled to size 10.95099pt on input line 439.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.66568pt on input line 406.
+(Font)              scaled to size 7.66568pt on input line 439.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.4755pt on input line 406.
+(Font)              scaled to size 5.4755pt on input line 439.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.94882pt on input line 406.
+(Font)              scaled to size 10.94882pt on input line 439.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.66417pt on input line 406.
+(Font)              scaled to size 7.66417pt on input line 439.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.47441pt on input line 406.
+(Font)              scaled to size 5.47441pt on input line 439.
 
 
 [1
@@ -1384,11 +1387,98 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
 [2]
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 539.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 539.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 545.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 545.
+
+
+
 [3]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 585.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 585.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 625.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 625.
+
+
 
 [4]
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 680.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 680.
+
+
+
 [5]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 718.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 718.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 745.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 745.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 751.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 751.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 772.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 772.
+
+
+LaTeX Warning: Reference `fig-cbhp-map' on page 6 undefined on input line 781.
+
+
 
 [6]
 File: images/policy-implementation-map.png Graphic file (type bmp)
@@ -1397,12 +1487,43 @@ File: images/policy-implementation-map.png Graphic file (type bmp)
 
 [7]
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 828.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 828.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 857.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 857.
+
+
+
 [8]
+
+LaTeX Warning: Reference `fig-calibration' on page 9 undefined on input line 913.
+
 File: images/sensor-calibration.png Graphic file (type bmp)
 <images/sensor-calibration.png>
 
 
 [9]
+
+LaTeX Warning: Reference `tbl-pm-sample' on page 10 undefined on input line 956.
+
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
 Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
 
@@ -1424,312 +1545,1644 @@ Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=t
 
 [14]
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1331.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 1331.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1361.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 1361.
+
+
+
 [15]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1405.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 1405.
+
+
 
 [16]
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1450.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 1450.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1480.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 1480.
+
+
+
 [17]
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 1511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1567.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 1567.
+
+
+
 [18]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1586.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 1586.
+
 File: images/ddfig.png Graphic file (type bmp)
 <images/ddfig.png>
 
 
 [19]
 
+LaTeX Warning: Reference `fig-didfig' on page 20 undefined on input line 1643.
+
+
+
 [20]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1685.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 1685.
+
+
+LaTeX Warning: Reference `fig-dag1' on page 21 undefined on input line 1692.
+
 File: images/dag1.png Graphic file (type bmp)
 <images/dag1.png>
 
 
 [21]
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1738.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 1738.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1752.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 1752.
+
+
+
 [22]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1792.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 1792.
+
+
+LaTeX Warning: Reference `eq-etwfe' on page 23 undefined on input line 1797.
+
+
+LaTeX Warning: Reference `eq-etwfe' on page 23 undefined on input line 1800.
+
+
+LaTeX Warning: Reference `eq-etwfem' on page 23 undefined on input line 1826.
+
+
 
 [23]
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1846.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 1846.
+
+
+
 [24]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 1867.
+(Font)              scaled to size 12.0pt on input line 1906.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 1867.
+(Font)              scaled to size 8.0pt on input line 1906.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 1867.
+(Font)              scaled to size 6.0pt on input line 1906.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.0011pt on input line 1867.
+(Font)              scaled to size 12.0011pt on input line 1906.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00073pt on input line 1867.
+(Font)              scaled to size 8.00073pt on input line 1906.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 1867.
+(Font)              scaled to size 6.00055pt on input line 1906.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 1867.
+(Font)              scaled to size 11.99872pt on input line 1906.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 1867.
+(Font)              scaled to size 7.99915pt on input line 1906.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 1867.
+(Font)              scaled to size 5.99936pt on input line 1906.
 
 
-LaTeX Warning: Reference `fig-afig-mi' on page 25 undefined on input line 1891.
+LaTeX Warning: Reference `fig-afig-mi' on page 25 undefined on input line 1930.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1938.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 1938.
 
 
 
 [25]
 
-LaTeX Warning: Reference `fig-flowchart' on page 26 undefined on input line 1927.
+LaTeX Warning: Reference `fig-flowchart' on page 26 undefined on input line 1966.
 
 
-LaTeX Warning: Reference `tbl-each-campaign' on page 26 undefined on input line 1937.
+LaTeX Warning: Reference `tbl-each-campaign' on page 26 undefined on input line 1977.
 
 
-LaTeX Warning: Reference `tbl-diff-campaign' on page 26 undefined on input line 1941.
+LaTeX Warning: Reference `tbl-each-campaign' on page 26 undefined on input line 1977.
+
+Package hyperref Info: bookmark level for unknown comment defaults to 0 on input line 1979.
+
+LaTeX Warning: Reference `tbl-diff-campaign' on page 26 undefined on input line 1981.
+
+
+LaTeX Warning: Reference `tbl-diff-campaign' on page 26 undefined on input line 1982.
 
 > Step: init table outer spec.
 > Step: parse table options.
 > Step: split table.
 > Step: init table inner spec.
 > Step: parse table inner spec.
-
-! Package tabularray Error: Unexpandable command \DIFaddFL inside column type!
-
-Type <return> to continue.
- ...                                              
-                                                  
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing number, treated as zero.
-<to be read again> 
-                   }
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   }
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
-! Misplaced \noalign.
-\toprule ->\noalign 
-                    {\ifnum 0=`}\fi \@aboverulesep =\abovetopsep \global \@b...
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
 
-Overfull \hbox (211.25824pt too wide) in paragraph at lines 1989--1989
- |   [][][]|   [][]\TU/lmss/m/n/10.95 [[]|   [][]][]|   [][][[]|   [][]][]|   [][][[]|   [][]][]|   [][][[]|   [][]][]|   [][][[]|   [][]][]|   [][][[]|   [][]][]|   [] 
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2073--2073
+[]\TU/lmss/m/n/10.95 Statistic$[]$ 
  []
 
-! Undefined control sequence.
-\@BTrule ...\doublerulesep \fi \fi \fi \@BTswitch 
-                                                  
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing number, treated as zero.
-<to be read again> 
-                   ;
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   ;
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing font identifier.
-<to be read again> 
-                   \g__tblr_cell_1_intarray 
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Use of \??? doesn't match its definition.
-<argument> \???  
-                 ! LaTeX Error: Access to an entry beyond an array's bounds.
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
 
-Overfull \hbox (11.85884pt too wide) in paragraph at lines 1989--1989
-[]\TU/lmr/m/n/10.95 off 
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2073--2073
+[]\TU/lmss/m/n/10.95 Statistic$[]$ 
  []
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Too many }'s.
-\hbox_set:Nn ...group_begin: #2\color_group_end: }
-                                                  
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing font identifier.
-<to be read again> 
-                   \g__tblr_cell_1_intarray 
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Use of \??? doesn't match its definition.
-<argument> \???  
-                 ! LaTeX Error: Access to an entry beyond an array's bounds.
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing font identifier.
-<to be read again> 
-                   \g__tblr_cell_1_intarray 
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Use of \??? doesn't match its definition.
-<argument> \???  
-                 ! LaTeX Error: Access to an entry beyond an array's bounds.
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Use of \??? doesn't match its definition.
-<argument> \???  
-                 ! LaTeX Error: Access to an entry beyond an array's bounds.
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Use of \??? doesn't match its definition.
-<argument> \???  
-                 ! LaTeX Error: Access to an entry beyond an array's bounds.
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Use of \??? doesn't match its definition.
-<argument> \???  
-                 ! LaTeX Error: Access to an entry beyond an array's bounds.
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
+> Step: build the whole table.
 
-! LaTeX Error: Access to an entry beyond an array's bounds.
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2073--2073
+[]\TU/lmss/m/n/10.95 Statistic$[]$ 
+ []
 
-For immediate help type H <return>.
- ...                                              
-                                                  
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing font identifier.
-<to be read again> 
-                   \g__tblr_column_1_intarray 
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Use of \??? doesn't match its definition.
-<argument> \???  
-                 ! LaTeX Error: Access to an entry beyond an array's bounds.
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing font identifier.
-<to be read again> 
-                   \g__tblr_column_1_intarray 
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing font identifier.
-<to be read again> 
-                   \g__tblr_column_1_intarray 
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   \g__tblr_column_1_intarray 
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing font identifier.
-<to be read again> 
-                   \g__tblr_column_1_intarray 
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing font identifier.
-<to be read again> 
-                   \g__tblr_column_1_intarray 
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   \g__tblr_column_1_intarray 
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing font identifier.
-<to be read again> 
-                   \g__tblr_cell_1_intarray 
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Missing font identifier.
-<to be read again> 
-                   \g__tblr_cell_1_intarray 
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-? 
-! Emergency stop.
-<to be read again> 
-                   \g__tblr_cell_1_intarray 
-l.1989 \DIFdelendFL \DIFaddbeginFL \end
-                                       {talltblr}
-End of file on the terminal!
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
 
- 
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2168--2168
+[]\TU/lmss/m/n/10.95 Statistic$[]$ 
+ []
+
+
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2168--2168
+[]\TU/lmss/m/n/10.95 Statistic$[]$ 
+ []
+
+> Step: build the whole table.
+
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2168--2168
+[]\TU/lmss/m/n/10.95 Statistic$[]$ 
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 2179.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 2179.
+
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+LaTeX Font Info:    Calculating math sizes for size <8.2125> on input line 2507.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 8.2125pt on input line 2507.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.74872pt on input line 2507.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 4.10625pt on input line 2507.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 8.21324pt on input line 2507.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.74924pt on input line 2507.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 4.10661pt on input line 2507.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 8.21161pt on input line 2507.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.7481pt on input line 2507.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.1058pt on input line 2507.
+> Step: build the whole table.
+
+LaTeX Warning: Float too large for page by 167.88713pt on input line 2511.
+
+
+LaTeX Warning: Reference `tbl-table1' on page 26 undefined on input line 2513.
+
+
+LaTeX Warning: Reference `tbl-desc' on page 26 undefined on input line 2513.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 2530.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 2530.
+
+
+LaTeX Warning: Reference `tbl-pm-season' on page 26 undefined on input line 2538.
+
+
+
+[26]
+
+[27]
+
+[28]
+
+[29]
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+
+Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+[] \TU/lmss/m/n/8.76003 Sensor-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+[] \TU/lmss/m/n/8.76003 Sensor-
+ []
+
+
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+ []\TU/lmss/m/n/8.76003 Est. 
+ []
+
+
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+ []\TU/lmss/m/n/8.76003 Est. 
+ []
+
+
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+ []\TU/lmss/m/n/8.76003 Est. 
+ []
+
+
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+ []\TU/lmss/m/n/8.76003 Est. 
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (3.86003pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 117 
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 3.5 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 3.7 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 2.6 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.9 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.7 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Seasonal
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 2.3 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 2.8 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.6 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.6 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Seasonal
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Seasonal
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.5 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.4 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.2 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.3 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.1 
+ []
+
+
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+ []\TU/lmss/m/n/8.76003 Est. 
+ []
+
+
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+ []\TU/lmss/m/n/8.76003 Est. 
+ []
+
+
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+ []\TU/lmss/m/n/8.76003 Est. 
+ []
+
+
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+ []\TU/lmss/m/n/8.76003 Est. 
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (3.86003pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 117 
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 3.5 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 3.7 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 2.6 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.9 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.7 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Seasonal
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 2.3 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 2.8 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.6 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.6 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Seasonal
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Seasonal
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.5 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.4 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.2 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.3 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.1 
+ []
+
+> Step: build the whole table.
+
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+ []\TU/lmss/m/n/8.76003 Est. 
+ []
+
+
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+ []\TU/lmss/m/n/8.76003 Est. 
+ []
+
+
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+ []\TU/lmss/m/n/8.76003 Est. 
+ []
+
+
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+ []\TU/lmss/m/n/8.76003 Est. 
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (3.86003pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 117 
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 3.5 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 3.7 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 2.6 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.9 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.7 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Seasonal
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 2.3 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 2.8 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.6 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.6 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Seasonal
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Seasonal
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 Mean 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.5 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.4 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.2 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.3 
+ []
+
+
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+[]\TU/lmss/m/n/8.76003 1.1 
+ []
+
+
+LaTeX Warning: Reference `tbl-pm-season' on page 30 undefined on input line 2863.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 2870.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 2870.
+
+
+LaTeX Warning: Reference `fig-sankey' on page 30 undefined on input line 2881.
+
+File: images/sanky.jpg Graphic file (type bmp)
+<images/sanky.jpg>
+
+Overfull \hbox (6.71716pt too wide) in paragraph at lines 2898--2899
+ [][][] 
+ []
+
+
+
+[30]
+
+[31]
+
+LaTeX Warning: Reference `fig-afig-coal' on page 32 undefined on input line 2914.
+
+
+LaTeX Warning: Reference `tbl-fuel-did' on page 32 undefined on input line 2916.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 2941.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 2941.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 2949.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 2949.
+
+
+LaTeX Warning: Reference `tbl-did-med' on page 32 undefined on input line 2953.
+
+
+LaTeX Warning: Reference `tbl-a-het-indoor' on page 32 undefined on input line 2964.
+
+
+
+[32]
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+
+
+LaTeX Warning: Float too large for page by 81.97313pt on input line 3194.
+
+
+LaTeX Warning: Reference `tbl-did-med' on page 33 undefined on input line 3205.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 3216.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 3216.
+
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+
+LaTeX Warning: Float too large for page by 137.17303pt on input line 3496.
+
+
+LaTeX Warning: Reference `tbl-did-health' on page 33 undefined on input line 3498.
+
+
+LaTeX Warning: Reference `tbl-did-health' on page 33 undefined on input line 3506.
+
+
+LaTeX Warning: Reference `tbl-bp-het' on page 33 undefined on input line 3508.
+
+
+LaTeX Warning: Reference `tbl-did-health' on page 33 undefined on input line 3516.
+
+
+LaTeX Warning: Reference `tbl-a-het-resp' on page 33 undefined on input line 3523.
+
+
+LaTeX Warning: Reference `tbl-a-het-cough' on page 33 undefined on input line 3523.
+
+
+LaTeX Warning: Reference `tbl-a-het-phlegm' on page 33 undefined on input line 3524.
+
+
+LaTeX Warning: Reference `tbl-a-het-wheeze' on page 33 undefined on input line 3524.
+
+
+LaTeX Warning: Reference `tbl-a-het-breath' on page 33 undefined on input line 3524.
+
+
+LaTeX Warning: Reference `tbl-a-het-nochest' on page 33 undefined on input line 3525.
+
+
+LaTeX Warning: Reference `tbl-did-health' on page 33 undefined on input line 3529.
+
+
+LaTeX Warning: Reference `tbl-a-feno' on page 33 undefined on input line 3540.
+
+
+
+[33]
+
+[34]
+
+[35]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 3547.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 3547.
+
+
+LaTeX Warning: Reference `tbl-bp-med' on page 36 undefined on input line 3559.
+
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+LaTeX Font Info:    Calculating math sizes for size <9.85492> on input line 3725.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 9.85492pt on input line 3725.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 6.8984pt on input line 3725.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 4.92746pt on input line 3725.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 9.85582pt on input line 3725.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 6.89903pt on input line 3725.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 4.9279pt on input line 3725.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 9.85387pt on input line 3725.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.89766pt on input line 3725.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.92693pt on input line 3725.
+
+Package tabularray Warning: Table width is too small, need 3.32875pt more!
+
+> Step: build the whole table.
+
+Overfull \hbox (3.32875pt too wide) in paragraph at lines 3725--3726
+ [][] 
+ []
+
+
+LaTeX Warning: Reference `tbl-resp-med' on page 36 undefined on input line 3731.
+
+
+LaTeX Warning: Reference `tbl-resp-med' on page 36 undefined on input line 3736.
+
+
+LaTeX Warning: Reference `tbl-did-health' on page 36 undefined on input line 3737.
+
+
+LaTeX Warning: Reference `tbl-did-health' on page 36 undefined on input line 3741.
+
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+LaTeX Font Info:    Calculating math sizes for size <8.76003> on input line 3928.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 8.76003pt on input line 3928.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 6.13199pt on input line 3928.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 4.38pt on input line 3928.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 8.76082pt on input line 3928.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 6.13254pt on input line 3928.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 4.3804pt on input line 3928.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 8.75908pt on input line 3928.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.13133pt on input line 3928.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.37953pt on input line 3928.
+
+Package tabularray Warning: Table width is too small, need 10.39012pt more!
+
+> Step: build the whole table.
+
+Overfull \hbox (10.39012pt too wide) in paragraph at lines 3928--3929
+ [][] 
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 3939.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 3939.
+
+
+LaTeX Warning: Reference `fig-source-figure' on page 36 undefined on input line 3962.
+
+
+
+[36]
+
+[37]
+
+[38]
+
+LaTeX Warning: Reference `tbl-pmf' on page 39 undefined on input line 4002.
+
+
+
+[39]
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+
+Overfull \hbox (1.1958pt too wide) in paragraph at lines 4158--4158
+[]\TU/lmss/m/n/10.95 BS_mapping  
+ []
+
+
+Overfull \hbox (1.1958pt too wide) in paragraph at lines 4158--4158
+[]\TU/lmss/m/n/10.95 BS_mapping  
+ []
+
+> Step: build the whole table.
+
+Overfull \hbox (1.1958pt too wide) in paragraph at lines 4158--4158
+[]\TU/lmss/m/n/10.95 BS_mapping  
+ []
+
+
+LaTeX Warning: Reference `fig-source-figure' on page 40 undefined on input line 4165.
+
+
+LaTeX Warning: Reference `fig-source-season' on page 40 undefined on input line 4189.
+
+File: images/source-figure.png Graphic file (type bmp)
+<images/source-figure.png>
+
+
+[40]
+
+[41]
+File: images/source-season2.png Graphic file (type bmp)
+<images/source-season2.png>
+
+
+[42]
+
+LaTeX Warning: Reference `tbl-source-did' on page 43 undefined on input line 4247.
+
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+
+LaTeX Warning: Reference `fig-afig-mixed-ct' on page 43 undefined on input line 4353.
+
+
+
+[43]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 4374.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 4374.
+
+
+LaTeX Warning: Reference `tbl-med-source' on page 44 undefined on input line 4377.
+
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 4506.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 4506.
+
+
+
+[44]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 4527.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 4527.
+
+
+
+[45]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 4573.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 4573.
+
+
+
+[46]
+
+[47]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 4695.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 4695.
+
+
+
+[48]
+Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
+
+
+[49]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 4843.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 4843.
+
+
+LaTeX Warning: Reference `fig-afig-pt3' on page 50 undefined on input line 4866.
+
+
+LaTeX Warning: Reference `fig-afig-pt4' on page 50 undefined on input line 4867.
+
+
+
+[50]
+
+LaTeX Warning: Reference `tbl-a-fe' on page 51 undefined on input line 4899.
+
+
+
+[51]
+
+[52]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 4993.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 4993.
+
+
+
+[53]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 5028.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 5028.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 5039.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 5039.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 5065.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 5065.
+
+
+
+[54]
+Overfull \hbox (23.77235pt too wide) in paragraph at lines 5139--5143
+\TU/lmr/m/n/10.95 differences estimates? Journal of Financial Economics 144:370–395; doi:[][]10.1016/j.jfineco.2022.01.004[][]. 
+ []
+
+
+
+[55]
+
+[56]
+
+[57]
+Missing character: There is no 北 (U+5317) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 京 (U+4EAC) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 大 (U+5927) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 学 (U+5B66) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 能 (U+80FD) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 源 (U+6E90) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 研 (U+7814) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 究 (U+7A76) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 院 (U+9662) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 气 (U+6C14) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 候 (U+5019) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 变 (U+53D8) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 化 (U+5316) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 与 (U+4E0E) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 能 (U+80FD) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 源 (U+6E90) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 转 (U+8F6C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 型 (U+578B) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 项 (U+9879) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 目 (U+76EE) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 中 (U+4E2D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 国 (U+56FD) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 散 (U+6563) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 煤 (U+7164) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 综 (U+7EFC) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 合 (U+5408) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 治 (U+6CBB) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 理 (U+7406) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 研 (U+7814) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 究 (U+7A76) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 报 (U+62A5) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 告 (U+544A) in font [lmroman10-regular]:mapping=tex-text;!
+
+Underfull \hbox (badness 1496) in paragraph at lines 5375--5380
+\TU/lmr/m/n/10.95 Related Human Activity Patterns Survey (CEERHAPS). Applied Energy 136:692–703;
+ []
+
+
+
+[58]
+
+[59]
+Underfull \hbox (badness 1033) in paragraph at lines 5519--5524
+\TU/lmr/m/n/10.95 particulate matter on Teflon and quartz filters. Atmospheric Environment 149:84–94;
+ []
+
+
+
+[60]
+Underfull \hbox (badness 2035) in paragraph at lines 5617--5621
+\TU/lmr/m/n/10.95 elderly in the cold region of China. Indoor and Built Environment 31:2482–2498;
+ []
+
+
+
+[61]
+Overfull \hbox (0.10286pt too wide) in paragraph at lines 5702--5704
+[]\TU/lmr/m/n/10.95 Pearl J. 2000. \TU/lmr/m/it/10.95 Causality: Models, reasoning, and inference\TU/lmr/m/n/10.95 . Cambridge University Press:Cambridge,
+ []
+
+
+
+[62]
+
+[63]
+Underfull \hbox (badness 1314) in paragraph at lines 5836--5840
+[]\TU/lmr/m/n/10.95 Ruiz-Mercado I, Canuz E, Walker JL, Smith KR. 2013. Quantitative metrics of stove
+ []
+
+
+Underfull \hbox (badness 3460) in paragraph at lines 5836--5840
+\TU/lmr/m/n/10.95 adoption using Stove Use Monitors (SUMs). Biomass and Bioenergy 57:136–148;
+ []
+
+
+
+[64]
+Underfull \hbox (badness 1337) in paragraph at lines 5923--5928
+\TU/lmr/m/n/10.95 tertime longitudinal study of Chinese adults. Journal of Hypertension 40:1950–1959;
+ []
+
+
+
+[65]
+
+[66]
+Overfull \hbox (36.56076pt too wide) in paragraph at lines 6052--6056
+\TU/lmr/m/n/10.95 China Prospective (ICP) study. Wellcome Open Research 4:154; doi:[][]10.12688/wellcomeopenres.15470.2[][]. 
+ []
+
+Missing character: There is no 杨 (U+6768) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 昆 (U+6606) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ： (U+FF1A) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 电 (U+7535) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 力 (U+529B) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 工 (U+5DE5) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 业 (U+4E1A) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 为 (U+4E3A) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 民 (U+6C11) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 族 (U+65CF) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 复 (U+590D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 兴 (U+5174) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 提 (U+63D0) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 供 (U+4F9B) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 不 (U+4E0D) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 竭 (U+7AED) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 动 (U+52A8) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 力 (U+529B) in font [lmroman10-regular]:mapping=tex-text;!
+
+
+[67]
+
+[68]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 6171.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 6171.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 6177.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 6177.
+
+
+Underfull \hbox (badness 1478) in paragraph at lines 6196--6196
+[][][]|[]\TU/lmss/m/n/10.95 Boxplots for markers of systemic inflammation including C-reactive protein (CRP),
+ []
+
+File: images/biomarker-boxplot-log.jpg Graphic file (type bmp)
+<images/biomarker-boxplot-log.jpg>
+
+
+[69]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 6211.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 6211.
+
+File: images/MI_BMI_density.png Graphic file (type bmp)
+<images/MI_BMI_density.png>
+File: images/MI_BMI_density.png Graphic file (type bmp)
+<images/MI_BMI_density.png>
+File: images/MI_waist_circ_density.png Graphic file (type bmp)
+<images/MI_waist_circ_density.png>
+File: images/MI_waist_circ_density.png Graphic file (type bmp)
+<images/MI_waist_circ_density.png>
+File: images/MI_indoorPM_density.png Graphic file (type bmp)
+<images/MI_indoorPM_density.png>
+File: images/MI_indoorPM_density.png Graphic file (type bmp)
+<images/MI_indoorPM_density.png>
+
+
+[70]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 6339.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 6339.
+
+File: images/Participation-flowchart-Apr12.png Graphic file (type bmp)
+<images/Participation-flowchart-Apr12.png>
+
+
+[71]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 6369.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 6369.
+
+
+LaTeX Warning: Reference `fig-afig-coal' on page 72 undefined on input line 6372.
+
+
+LaTeX Warning: Reference `tbl-fuel-did' on page 72 undefined on input line 6373.
+
+File: images/coal-plot.png Graphic file (type bmp)
+<images/coal-plot.png>
+
+Overfull \hbox (6.80858pt too wide) in paragraph at lines 6383--6384
+ [][][] 
+ []
+
+
+
+[72]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 6486.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 6486.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 6492.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 6492.
+
+
+LaTeX Warning: Reference `tbl-a-het-personal' on page 73 undefined on input line 6495.
+
+
+LaTeX Warning: Reference `tbl-a-het-indoor' on page 73 undefined on input line 6588.
+
+
+
+[73]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 6664.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 6664.
+
+
+
+[74]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 6897.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 6897.
+
+
+LaTeX Warning: Reference `tbl-bp-het' on page 75 undefined on input line 6900.
+
+
+
+[75]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 7055.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 7055.
+
+
+LaTeX Warning: Reference `tbl-a-bp-med-het' on page 76 undefined on input line 7058.
+
+
+Underfull \hbox (badness 2221) in paragraph at lines 7079--7318
+[]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   []   [][]|   []   [][]|   []   [][]|   []
+ []
+
+
+
+[76]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 7469.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 7469.
+
+
+LaTeX Warning: Reference `tbl-a-het-resp' on page 77 undefined on input line 7472.
+
+
+LaTeX Warning: Reference `tbl-a-het-cough' on page 77 undefined on input line 7472.
+
+
+LaTeX Warning: Reference `tbl-a-het-phlegm' on page 77 undefined on input line 7473.
+
+
+LaTeX Warning: Reference `tbl-a-het-wheeze' on page 77 undefined on input line 7473.
+
+
+LaTeX Warning: Reference `tbl-a-het-breath' on page 77 undefined on input line 7473.
+
+
+LaTeX Warning: Reference `tbl-a-het-nochest' on page 77 undefined on input line 7474.
+
+
+
+[77]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 7817.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 7817.
+
+File: images/did-mixed-ct-wave.png Graphic file (type bmp)
+<images/did-mixed-ct-wave.png>
+
+Overfull \hbox (6.79807pt too wide) in paragraph at lines 7826--7827
+ [][][] 
+ []
+
+
+
+[78]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 7848.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 7848.
+
+
+LaTeX Warning: Reference `tbl-a-feno' on page 79 undefined on input line 7851.
+
+
+
+[79]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 7932.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 7932.
+
+
+LaTeX Warning: Reference `tbl-a-ind-s3' on page 80 undefined on input line 7935.
+
+
+LaTeX Warning: Reference `fig-afig-did-opm-w3' on page 80 undefined on input line 8015.
+
+File: images/did-outdoor-w3.png Graphic file (type bmp)
+<images/did-outdoor-w3.png>
+
+
+[80]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 8047.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 8047.
+
+File: images/never_Y3.png Graphic file (type bmp)
+<images/never_Y3.png>
+File: images/never_Y4.png Graphic file (type bmp)
+<images/never_Y4.png>
+
+
+[81]
+
+[82]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 8101.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 8101.
+
+
+
+[83]
+\Changes@OutFile=\write5
+\openout5 = `test-diff.soc'.
+
+\tf@loc=\write6
+\openout6 = `test-diff.loc'.
+
+
+
+[84] (./test-diff.aux)
+ ***********
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-05-27>
+ ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 41246 strings out of 476239
- 867538 string characters out of 5786143
- 1948557 words of memory out of 5000000
- 63191 multiletter control sequences out of 15000+600000
- 569352 words of font info for 115 fonts, out of 8000000 for 9000
+ 42562 strings out of 476239
+ 906986 string characters out of 5786143
+ 2066557 words of memory out of 5000000
+ 64439 multiletter control sequences out of 15000+600000
+ 604448 words of font info for 220 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 118i,9n,123p,10904b,1423s stack positions out of 10000i,1000n,20000p,200000b,200000s
-Output written on test-diff.pdf (25 pages).
+ 118i,17n,123p,10904b,1469s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on test-diff.pdf (84 pages).

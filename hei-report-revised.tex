@@ -225,7 +225,7 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-07-29}
+\date{2024-07-30}
 
 \begin{document}
 \maketitle
@@ -1524,7 +1524,7 @@ individual contributed 1890 observations across all three waves, 443
 Table~\ref{tbl-each-campaign} shows selected demographic characteristics
 and health behaviors between participants who contributed to each study
 wave. We find no differences in gender or smoking across waves, but
-overall BMI and waist circumference increased over time.
+overall BMI and waist circumference increased over time.\comment{EC 4b}
 Table~\ref{tbl-diff-campaign} shows similar measures according to
 whether or between participants in each of the three waves with
 individual measurements.
@@ -2150,7 +2150,7 @@ roughly half the value of the total effect.
 \begin{table}
 
 \caption{\label{tbl-bp-med}Controlled direct effects for the CBHP policy
-on blood pressure}
+on blood pressure.}
 
 \centering{
 
@@ -2247,15 +2247,15 @@ column{6}={halign=c,},
 column{7}={halign=c,},
 column{8}={halign=c,},
 column{9}={halign=c,},
-column{1}={font=\fontsize{0.9em}{1.2em}\selectfont,},
-column{2}={font=\fontsize{0.9em}{1.2em}\selectfont,},
-column{3}={font=\fontsize{0.9em}{1.2em}\selectfont,},
-column{4}={font=\fontsize{0.9em}{1.2em}\selectfont,},
-column{5}={font=\fontsize{0.9em}{1.2em}\selectfont,},
-column{6}={font=\fontsize{0.9em}{1.2em}\selectfont,},
-column{7}={font=\fontsize{0.9em}{1.2em}\selectfont,},
-column{8}={font=\fontsize{0.9em}{1.2em}\selectfont,},
-column{9}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{1}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{2}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{3}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{4}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{5}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{6}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{7}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{8}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{9}={font=\fontsize{0.8em}{1.1em}\selectfont,},
 }                     %% tabularray inner close
 \toprule
 & Adjusted Total Effect &  & CDE Mediated By: &  &  &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-9}
@@ -2365,6 +2365,56 @@ during displacement, which indicates that all of the potential solutions
 are stable. Based on the Q/Qexp, BS mapping, and interpretability of the
 factors, the four-factor solution was selected as the most appropriate
 source solution for the data.
+
+\begin{table}
+
+\caption{\label{tbl-pmf}PMF error estimation diagnostics.}
+
+\centering{
+
+\centering
+\begin{tblr}[         %% tabularray outer open
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={1\linewidth},
+colspec={X[0.142857142857143]X[0.214285714285714]X[0.214285714285714]X[0.214285714285714]X[0.214285714285714]},
+cell{1}{2}={c=4,}{halign=c,},
+column{1}={halign=c,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+row{2}={halign=c,},
+cell{7}{1}={}{halign=l,},
+cell{10}{1}={}{halign=l,},
+cell{7}{2}={}{halign=l,},
+cell{10}{2}={}{halign=l,},
+cell{7}{3}={}{halign=l,},
+cell{10}{3}={}{halign=l,},
+cell{7}{4}={}{halign=l,},
+cell{10}{4}={}{halign=l,},
+cell{7}{5}={}{halign=l,},
+cell{10}{5}={}{halign=l,},
+}                     %% tabularray inner close
+\toprule
+& Potential Factor Solution &  &  &  \\ \cmidrule[lr]{2-5}
+Diagnostic & 3 & 4 & 5 & 6 \\ \midrule %% TinyTableHeader
+Qexp & 27936 & 26052 & 24168 & 22284 \\
+Qtrue & 187681 & 147796 & 123236 & 100316 \\
+Qrobust & 174407 & 139910 & 117082 & 95932.5 \\
+Qr/Qexp & 6.24 & 5.37 & 4.84 & 4.3 \\
+Q/Qexp > 6 & wi-Ca, ns-S, ws-Na, ws-Ca, Al, Cl, Pb & ns-S, Na, Al, Cl, Pb, Nitrate & Nitrate, ws-Na, Al, Chloride & Nitrate, ws-Na, Al \\
+DISP \% dQ & <0.1\% & <0.1\% & <0.1\% & <0.1\% \\
+DISP swaps & 0 & 0 & 0 & 0 \\
+BS\_mapping & Dust- 98.5\% & Transported dust- 95\%, Dust- 96.5\%, Sulfur secondary- 97.5\%, Mixed combustion- 96.5\% & Transported dust- 86\%, Mixed combustion- 87\%, Dust- 86\%, Lead- 55\% & Transported dust- 84\%, Mixed combustion- 87.5\%, Dust- 81.5\%, Lead- 72\%
+Chloride- 61.5\%
+Sulfur secondary- 98.5\% \\
+\bottomrule
+\end{tblr}
+
+}
+
+\end{table}%
 
 The source profiles for the four-factor solution are presented in
 Figure~\ref{fig-source-figure}. The first source was identified as dust

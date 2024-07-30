@@ -368,7 +368,7 @@ We retained all 50 study villages during this four-year longitudinal assessment 
 
 By w2, w3, and w4 there were a cumulative total of 10, 17, and 20 (out of 50 total) study villages treated by the CBHP policy, respectively. All of the treated villages selected to install electric-powered air-source heat pumps with 200 RMB per meter square (up to 24,000 RMB) in subsidies and were also provided with 80% night-time electricity subsidies up to 10,000kWh per heating season. To limit coal use, villages enrolled in the policy were no longer allowed to place orders for subsidized coal with the district-level governments that manage the procurement and distribution of coal for residential heating in Beijing. In addition, village committee leaders in treated villages reported feeling accountable to the Environmental Protection Department for limited coal-related air pollution, and were motivated to encourage residents to not burn coal. Some villages were equipped with government air pollution monitors and the Environmental Protection Department conducted village inspections and issued warnings about coal burning. Households burning coal in treated villages were at risk of losing their electricity subsidy. 
 
-Appendix @fig-flowchart shows the participation of villages, households, and participants across the four waves of data collection. We conducted measurements in over 1000 participants in each of the three measurement waves that included individual-level measurements. In total, we enrolled 1432 participants into the study, of which 630 (43%) individual contributed 1890 observations across all three waves, 443 (31%) individuals contributed 886 observations across two waves and 365 (25%) individuals participated in a single wave. @tbl-each-campaign shows selected demographic characteristics and health behaviors between participants who contributed to each study wave. We find no differences in gender or smoking across waves, but overall BMI and waist circumference increased over time. @tbl-diff-campaign shows similar measures according to whether or between participants in each of the three waves with individual measurements. 
+Appendix @fig-flowchart shows the participation of villages, households, and participants across the four waves of data collection. We conducted measurements in over 1000 participants in each of the three measurement waves that included individual-level measurements. In total, we enrolled 1432 participants into the study, of which 630 (43%) individual contributed 1890 observations across all three waves, 443 (31%) individuals contributed 886 observations across two waves and 365 (25%) individuals participated in a single wave. @tbl-each-campaign shows selected demographic characteristics and health behaviors between participants who contributed to each study wave. We find no differences in gender or smoking across waves, but overall BMI and waist circumference increased over time.\comment{EC 4b} @tbl-diff-campaign shows similar measures according to whether or between participants in each of the three waves with individual measurements. 
 
 ```{r, echo=F, message=F, warning=F}
 # read in the data
@@ -662,7 +662,7 @@ The average marginal effect ($ATT$) from the basic ETWFE model (@tbl-did-med) sh
 ```{r, message=F, warning=F}
 #| echo: FALSE
 #| label: tbl-did-med
-#| tbl-cap: "Treatment effect on outdoor and indoor PM~2.5~, personal exposure to PM~2.5~ and black carbon, and measures of indoor temperature. Outdoor and indoor PM~2.5~ were derived from sensor measurements after being adjusted based on co-located gravimetric PM~2.5~ measurements. 24h indicates the mean PM~2.5~ concentrations during the 24 hours when personal exposure samples were collected in each village. 'Seasonal' indicates the seasonal mean PM~2.5~ concentrations in each village, from Jan. 15th to Mar. 15th."
+#| tbl-cap: Treatment effect on outdoor and indoor PM~2.5~, personal exposure to PM~2.5~ and black carbon, and measures of indoor temperature. Outdoor and indoor PM~2.5~ were derived from sensor measurements after being adjusted based on co-located gravimetric PM~2.5~ measurements. 24h indicates the mean PM~2.5~ concentrations during the 24 hours when personal exposure samples were collected in each village. 'Seasonal' indicates the seasonal mean PM~2.5~ concentrations in each village, from Jan. 15th to Mar. 15th.
 #| eval: TRUE
 
 # air pollution results
@@ -826,9 +826,11 @@ tt(op_table,
 
 As noted above, we aimed to assess whether any health impacts of the CBHP policy may work specifically through pathways involving changes in PM~2.5~ and indoor temperature. Below we show results from several mediation models. We evaluated potential mediation for each mediator (indoor temperature and exposure to indoor PM~2.5~) separately and in a single model accounting for multiple mediators, and we set the values of both mediators to the  mean value for untreated participants at baseline (wave 1). For mediation analysis, we focused on BP outcomes for which we observed an effect of the policy. In @tbl-bp-med we show that conditioning on indoor PM~2.5~ and indoor temperature largely explains the entire total effect of the CBHP policy on blood pressure for systolic BP, as the CDE conditional on both mediators was reduced to 0.03 (95%CI: -2.0, 2.0) for brachial SBP. The CDE for diastolic BP was roughly half the value of the total effect. 
 
-```{r tbl-bp-med, echo=F, message=F, warning=F}
+```{r, message=F, warning=F}
+#| echo: FALSE
 #| label: tbl-bp-med
-#| tbl-cap: "Controlled direct effects for the CBHP policy on blood pressure"
+#| tbl-cap: Controlled direct effects for the CBHP policy on blood pressure.
+#| eval: TRUE
 
 ot <- read_xlsx(here("data-clean", 
   "overall_total_effect_adjusted.xlsx")) %>%
@@ -894,9 +896,11 @@ tt(otm,
 
 @tbl-resp-med shows estimates from similar analyses for the CDE of the policy on respiratory outcomes. For respiratory outcomes we focus on mediation by personal exposure to PM~2.5~ and point temperature and therefore these estimates are derived for the subset of individuals with measures of personal exposure. Thus the total adjusted $ATT$s in @tbl-resp-med are not directly comparable with those in @tbl-did-health. We estimate the CDEs holding the values of both mediators to the average levels for never treated households at baseline. Overall we find no evidence that any of the total effects we observed for self-reported respiratory outcomes in @tbl-did-health were mediated by personal exposure to PM~2.5~ or indoor temperature. Generally the CDEs for all of the outcomes are statistically indistinguishable from the total effects estimated without controlling for mediators. 
 
-```{r tbl-resp-med, echo=F, message=F, warning=F}
+```{r, message=F, warning=F}
+#| echo: FALSE
 #| label: tbl-resp-med
 #| tbl-cap: "Controlled direct effects for the CBHP policy on self-reported respiratory outcomes"
+#| eval: TRUE
 
 cde_resp <- read_rds(here("outputs",
   "resp-cdes.rds"))
@@ -916,7 +920,7 @@ tt(cde_resp,
     j = list("Adjusted Total Effect" = 2:3,
              "CDE Mediated By:" = 4:9)) %>%
   style_tt(j = 1:9, align = "lcccccccc") %>%
-  style_tt(j=1:9, fontsize = 0.9) %>%
+  style_tt(j=1:9, fontsize = 0.8) %>%
   format_tt(escape = TRUE) %>%
   format_tt(j=c(2,4,6,8), sprintf = "%.1f") 
 
@@ -949,22 +953,34 @@ The meteorological data included hourly boundary layer height, 2-m temperature, 
 
 The model diagnostics for the three- to six-factor PMF solutions are given in @tbl-pmf. Model fit was assessed using Q/Qexp (how our model fit divided by the expected fit). As the change in Q/Qexp decreases as more factors are added, the model may be fitting additional sources that do not improve the overall fit. The largest change in Q/Qexp was from three to four sources (6.24 to 5.37) while the changes moving from four to five and five to six were similar, which suggests that the four factors solution is sufficient to explain the variation in our data. We assessed the random error in our model by randomly sampling blocks of data, fitting new models with the blocks, and comparing how the source profiles compared to the original model (bootstrap (BS) mapping). The three- and four-factor solutions had high BS mapping (all factors found in > 96.5% of bootstrap runs). The additional sources identified in the five-factor (lead) and six-factor (chloride) solutions had low BS mapping (> 72%), which means those solutions are not as consistent as the three- and four-factor solutions. The possibility that multiple, different, solutions could result in the same Q value was assessed using displacement. The displacement approach takes the original factor profiles and modifies the values for each species up or down to maintain a small change in Q, reruns the solution with the new species values, and then compares the profiles of the new model to the original. Any swaps indicate that small changes in the species values could result in factor profiles that look different from the original solution, and that the original solution is unstable. None of the factors were swapped during displacement, which indicates that all of the potential solutions are stable. Based on the Q/Qexp, BS mapping, and interpretability of the factors, the four-factor solution was selected as the most appropriate source solution for the data.
 
-```{r tbl-source-error, echo=F, message=F, warning=F, eval=F}
+```{r, message=F, warning=F}
+#| echo: FALSE
 #| label: tbl-pmf
-#| tbl-cap: "PMF error estimation diagnostics"
+#| tbl-cap: PMF error estimation diagnostics.
+#| eval: TRUE
 
-options(knitr.kable.NA = " ")
+# options(knitr.kable.NA = " ")
 t_pmf <- read_csv(here("data-clean", 
   "pmf-error.csv"))
 
-kable(t_pmf,
- # "latex", booktabs = T,
-  linesep = "", align = 'lllll') %>%
-  kable_styling(full_width = F,
-    font_size = 9) %>%
-  column_spec(2:5, width = "10em") %>%
-  add_header_above(c(" " = 1, 
-    "Potential Factor Solution" = 4))
+tt(t_pmf,
+   width = c(1, 1.5, 1.5, 1.5, 1.5)) %>%
+  group_tt(j = list(
+    "Potential Factor Solution" = 2:5),
+    ) %>%
+  style_tt(j = 1:5, align = "ccccc") %>%
+  style_tt(i = 0, align = "c") %>%
+  style_tt(i = c(5,8), j = 1:5, align="l") %>%
+  format_tt(escape = TRUE)
+
+#kable(t_pmf,
+# # "latex", booktabs = T,
+#  linesep = "", align = 'lllll') %>%
+#  kable_styling(full_width = F,
+#    font_size = 9) %>%
+#  column_spec(2:5, width = "10em") %>%
+#  add_header_above(c(" " = 1, 
+#    "Potential Factor Solution" = 4))
 ```
 
 The source profiles for the four-factor solution are presented in @fig-source-figure. The first source was identified as dust based on high percentages of crustal elements like wi-Ca, Si, and wi-Mg. The second source consisted of non-sulfate sulfur as well as secondary inorganic ions (ammonium, nitrate, and sulfate). Non-sulfate sulfur is a tracer for primary coal combustion, while secondary inorganic ions indicate a secondary source. Since industrial coal burning is a source of power generation in our study area, it is likely that the second source is a mixture of primary and secondary emissions that originate from coal and other sulfurous fuel combustion. Additionally, the mean source contribution of the second source is higher in outdoor than personal exposure measurements. Secondary formation occurs outdoors in the presence of sunlight, so higher outdoor concentrations compared to personal exposure further support our naming the second source ‘sulfur secondary’. The third source had high percentages of ws-Ca nd Al, which in our study region, has been found to be indicative of transported dust from dust storms that can occur in the spring. While our samples were collected during winter months only, it is possible that transported dust from previous years still remained. The fourth source was characterized by high percentages of tracers for both coal (OC, wi-K, chloride, Pb) and biomass combustion (EC, ws-K). Coal and biomass combustion are anticipated sources of PM pollution in our study setting, particularly from domestic cooking and heating activities, so this source is likely a mixture of PM emitted from these two household combustion sources. We extend the source profiles across the different treatment cohorts in @fig-source-season.

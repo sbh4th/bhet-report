@@ -145,61 +145,28 @@ tt(tx2) |>
 # tx4
 ```
 
-Problem table:
+Problem table (@tbl-pmf):
 ```{r, message=F, warning=F}
 #| echo: FALSE
-#| label: tbl-did-med
-#| tbl-cap: "Treatment effect on outdoor and indoor PM~2.5~, personal exposure to PM~2.5~ and black carbon, and measures of indoor temperature. Outdoor and indoor PM~2.5~ were derived from sensor measurements after being adjusted based on co-located gravimetric PM~2.5~ measurements. 24h indicates the mean PM~2.5~ concentrations during the 24 hours when personal exposure samples were collected in each village. 'Seasonal' indicates the seasonal mean PM~2.5~ concentrations in each village, from Jan. 15th to Mar. 15th."
+#| label: tbl-pmf
+#| tbl-cap: PMF error estimation diagnostics.
 #| eval: TRUE
 
-# air pollution results
-ap_table <- read_rds(here("outputs", 
-  "ap-etwfe-table.rds")) 
+# options(knitr.kable.NA = " ")
+t_pmf <- read_csv(here("data-clean", 
+  "pmf-error.csv"))
 
-# temperature results
-temp_table <- tibble(
-  category = "Point", outcome = "Mean", estimate_1 = 1.96,
-  ci_1 = "(0.96, 2.96)", estimate_2 = 1.96, 
-  ci_2 = "(0.96, 2.96)"
-)
+tt(t_pmf,
+   width = c(1, 1.5, 1.5, 1.5, 1.5)) %>%
+  group_tt(j = list(
+    "Potential Factor Solution" = 2:5),
+    ) %>%
+  style_tt(j = 1:5, align = "ccccc") %>%
+  style_tt(i = 0, align = "c") %>%
+  style_tt(i = c(5,8), j = 1:5, align="l") %>%
+  format_tt(escape = TRUE)
 
-stemp_table <- read_xlsx(here("data-clean",
-  "overall_temp_table.xlsx")) %>%
-  rename(`estimate_1` = att,
-         `ci_1` = ci) %>%
-  mutate(category = rep("Seasonal", times = 6),
-    outcome = c("Mean (all)", "Mean (daytime)", 
-      "Mean (heating season)", "Mean (daytime heating season)",
-      "Min. (all)", "Min. (heating season)"),
-    estimate_2 = `estimate_1`, 
-    ci_2 = `ci_1`) %>%
-  select(-model) %>%
-  relocate(category, outcome)
-
-# join tables
-m_table <- bind_rows(ap_table, temp_table, 
-  stemp_table)
-
-colnames(m_table) <- c(" ", " ", "ATT", "(95% CI)", 
-  "ATT", "(95% CI)")
-
-tt(m_table,
-   digits = 2,
-  #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
-  notes = list("Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.", a = list(i=0, j=5,
-     text = "ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted."))) %>%
-  group_tt(
-    j = list("DiD" = 3:4, 
-             "Adjusted DiD" = 5:6),
-    i = list("Air pollution" = 1, 
-             "Indoor temperature" = 7)) %>%
-  style_tt(i = c(1, 8), align = "l", bold=T) %>%
-  style_tt(
-    i = c(2, 4, 6), j = 1, 
-    rowspan = 2, alignv = "t") %>%
-  style_tt(
-    i = 10, j = 1, rowspan = 6, alignv = "t") %>%
-  style_tt(j = 1:6, align = "llcccc") %>%
-  format_tt(escape = TRUE) %>%
-  format_tt(j=c(3,5), sprintf = "%.2f") 
+#   width = c(0.5, 1.5, 1.5, 1.5, 1.5)) %>%
+#  group_tt(j = list(
+#    "Potential Factor Solution" = 2:5))
 ```

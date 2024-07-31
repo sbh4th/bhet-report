@@ -201,4 +201,26 @@ tt(med_source_t,
 #     general_title = "", threeparttable = T, escape = F)
 ```
 
+What about this figure? (@fig-afig-mi)
+```{r, echo=FALSE}
+#| echo: FALSE
+#| fig-cap-location: top
+#| label: fig-afig-mi
+#| fig-cap: Kernal density plots showing distribution of multiply-imputed values for body mass index (kg/m^2^), waist circumference (cm), and indoor PM~2.5~ (µg/m^3^) (red lines) and observed values (heavy black line).
+#| fig-width: 7
+#| fig-subcap: 
+#|   - ""
+#|   - ""
+#|   - ""
+#| layout-nrow: 2
 
+knitr::include_graphics(here("images", 
+  "MI_BMI_density.png"))
+
+knitr::include_graphics(here("images", 
+ "MI_waist_circ_density.png"))
+
+knitr::include_graphics(here("images", 
+ "MI_indoorPM_density.png"))
+
+```

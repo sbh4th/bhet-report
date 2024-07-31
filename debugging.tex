@@ -225,7 +225,7 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-07-30}
+\date{2024-07-31}
 
 \begin{document}
 \maketitle
@@ -310,7 +310,7 @@ mediator.}
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, CDE = Controlled Direct Effect, DBP = Diastolic Blood Pressure, SBP = Systolic Blood Pressure.},
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences, CDE = Controlled Direct Effect, DBP = Diastolic Blood Pressure, SBP = Systolic Blood Pressure.},
 note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
 note{b}={Further adjusted for mediation by mixed combustion source (coal and biomass)},
 ]                     %% tabularray outer close
@@ -338,6 +338,54 @@ Central DBP & -0.58  & (-2.59, 1.43) & -1.26  & (-3.38, 0.87) & -1.37  & (-3.69,
 }
 
 \end{table}%
+
+What about this figure? (Figure~\ref{fig-afig-mi})
+
+\begin{figure}[H]
+
+\caption{\label{fig-afig-mi}Kernal density plots showing distribution of
+multiply-imputed values for body mass index (kg/m\textsuperscript{2}),
+waist circumference (cm), and indoor PM\textsubscript{2.5}
+(µg/m\textsuperscript{3}) (red lines) and observed values (heavy black
+line).}
+
+\begin{minipage}{0.50\linewidth}
+
+\centering{
+
+\includegraphics{images/MI_BMI_density.png}
+
+}
+
+\subcaption{\label{fig-afig-mi-1}}
+
+\end{minipage}%
+%
+\begin{minipage}{0.50\linewidth}
+
+\centering{
+
+\includegraphics{images/MI_waist_circ_density.png}
+
+}
+
+\subcaption{\label{fig-afig-mi-2}}
+
+\end{minipage}%
+\newline
+\begin{minipage}{0.50\linewidth}
+
+\centering{
+
+\includegraphics{images/MI_indoorPM_density.png}
+
+}
+
+\subcaption{\label{fig-afig-mi-3}}
+
+\end{minipage}%
+
+\end{figure}%
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{1}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.7.15)  30 JUL 2024 17:34
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.7.15)  31 JUL 2024 09:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -980,43 +980,57 @@ File: bkm-dvipdfm.def 2023-12-10 v1.31 bookmark driver for dvipdfm (HO)
 \BKM@id=\count411
 ))
 Package hyperref Info: Option `colorlinks' set `true' on input line 304.
- (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/oberdiek/settobox.sty
-Package: settobox 2016/05/16 v1.5 Assign box dimensions to length registers (HO)
-) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
-Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
-)
-\DIFdelgraphicsbox=\box121
-\DIFdelgraphicswidth=\skip88
-\DIFdelgraphicsheight=\skip89
-LaTeX Info: Redefining \DIFaddbegin on input line 362.
-LaTeX Info: Redefining \DIFaddend on input line 363.
-LaTeX Info: Redefining \DIFdelbegin on input line 364.
-LaTeX Info: Redefining \DIFdelend on input line 365.
-LaTeX Info: Redefining \DIFaddbeginFL on input line 370.
-LaTeX Info: Redefining \DIFaddendFL on input line 371.
-LaTeX Info: Redefining \DIFdelbeginFL on input line 372.
-LaTeX Info: Redefining \DIFdelendFL on input line 373.
- (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count412
-\lst@gtempboxa=\box122
-\lst@token=\toks50
-\lst@length=\count413
-\lst@currlwidth=\dimen368
-\lst@column=\count414
-\lst@pos=\count415
-\lst@lostspace=\dimen369
-\lst@width=\dimen370
-\lst@newlines=\count416
-\lst@lineno=\count417
-\lst@maxwidth=\dimen371
- (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/listings/lstpatch.sty
-File: lstpatch.sty 2024/05/25 1.10b (Carsten Heinz)
-) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2024/05/25 1.10b (Carsten Heinz)
-\c@lstnumber=\count418
-\lst@skipnumbers=\count419
-\lst@framebox=\box123
-) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/listings/listings.cfg
+ (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/changebar/changebar.sty
+Package: changebar 2024/07/17 v3.7e Indicate changes with marginal bars
+\cb@nextpoint=\count412
+\cb@topleft=\count413
+\cb@topright=\count414
+\cb@botleft=\count415
+\cb@botright=\count416
+\cb@cnta=\count417
+\cb@cntb=\count418
+\cb@dima=\dimen368
+\cb@curbarwd=\dimen369
+\cb@page=\count419
+\cb@pagecount=\count420
+\cb@odd@left=\dimen370
+\cb@odd@right=\dimen371
+\cb@even@left=\dimen372
+\cb@even@right=\dimen373
+\cb@writexy=\write4
+\cb@readxy=\read3
+\openout4 = `test-diff.cb2'.
+
+
+
+! Package changebar Error: PDFTeX option cannot be used.
+
+See the changebar package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.218 \ProcessOptions\relax
+                           
+? 
+! Emergency stop.
+ ...                                              
+                                                  
+l.218 \ProcessOptions\relax
+                           
+You are using a LaTeX run which does not generate PDF
+or you are using a very old version of PDFTeX
+
+ 
+Here is how much of TeX's memory you used:
+ 38571 strings out of 476239
+ 814493 string characters out of 5786143
+ 1921557 words of memory out of 5000000
+ 60626 multiletter control sequences out of 15000+600000
+ 558551 words of font info for 40 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 118i,1n,120p,10904b,275s stack positions out of 10000i,1000n,20000p,200000b,200000s
+No pages of output.
+t/tex/latex/listings/listings.cfg
 File: listings.cfg 2024/05/25 1.10b listings configuration
 ))
 Package: listings 2024/05/25 1.10b (Carsten Heinz)
@@ -1322,9 +1336,6 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring ON on input line 392.
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
 \c@lstlisting=\count420
 Package tocbasic Info: omitting babel extension for `lol'
 (tocbasic)             because of missing \bbl@set@language on input line 392.
@@ -1358,26 +1369,23 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 394.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./test-diff.toc)
-\tf@toc=\write4
-\openout4 = `test-diff.toc'.
-
+) (./test-diff.toc
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.665pt on input line 439.
+(Font)              scaled to size 7.665pt on input line 3.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.475pt on input line 439.
+(Font)              scaled to size 5.475pt on input line 3.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.95099pt on input line 439.
+(Font)              scaled to size 10.95099pt on input line 3.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.66568pt on input line 439.
+(Font)              scaled to size 7.66568pt on input line 3.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.4755pt on input line 439.
+(Font)              scaled to size 5.4755pt on input line 3.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.94882pt on input line 439.
+(Font)              scaled to size 10.94882pt on input line 3.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.66417pt on input line 439.
+(Font)              scaled to size 7.66417pt on input line 3.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.47441pt on input line 439.
+(Font)              scaled to size 5.47441pt on input line 3.
 
 
 [1
@@ -1385,14 +1393,60 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
 ]
 
-[2]
+[2])
+\tf@toc=\write4
+\openout4 = `test-diff.toc'.
+
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 12.0pt on input line 412.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 8.0pt on input line 412.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 6.0pt on input line 412.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 12.0011pt on input line 412.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 8.00073pt on input line 412.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 6.00055pt on input line 412.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 11.99872pt on input line 412.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.99915pt on input line 412.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.99936pt on input line 412.
+
+
+[3]
+
+[4]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 511.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 511.
+(hyperref)                removing `math shift' on input line 511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 511.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1400,7 +1454,27 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 539.
+(hyperref)                removing `math shift' on input line 539.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 539.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 539.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 539.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 539.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 539.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1408,18 +1482,58 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 545.
+(hyperref)                removing `math shift' on input line 545.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 545.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 545.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 545.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 545.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 545.
 
 
 
-[3]
+[5]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 585.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 585.
+(hyperref)                removing `math shift' on input line 585.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 585.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 585.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 585.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 585.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 585.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1427,29 +1541,89 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 625.
+(hyperref)                removing `math shift' on input line 625.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 625.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 625.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 625.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 625.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 625.
 
 
 
-[4]
+[6]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 680.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 680.
+(hyperref)                removing `math shift' on input line 680.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 680.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 680.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 680.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 680.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 680.
 
 
 
-[5]
+[7]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 718.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 718.
+(hyperref)                removing `math shift' on input line 718.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 718.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 718.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 718.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 718.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 718.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1457,7 +1631,27 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 745.
+(hyperref)                removing `math shift' on input line 745.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 745.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 745.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 745.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 745.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 745.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1465,7 +1659,27 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 751.
+(hyperref)                removing `math shift' on input line 751.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 751.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 751.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 751.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 751.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 751.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1473,26 +1687,63 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 772.
+(hyperref)                removing `math shift' on input line 772.
 
 
-LaTeX Warning: Reference `fig-cbhp-map' on page 6 undefined on input line 781.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 772.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 772.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 772.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 772.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 772.
 
 
 
-[6]
+[8]
 File: images/policy-implementation-map.png Graphic file (type bmp)
 <images/policy-implementation-map.png>
 
 
-[7]
+[9]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 828.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 828.
+(hyperref)                removing `math shift' on input line 828.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 828.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 828.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 828.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 828.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 828.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1500,22 +1751,36 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 857.
+(hyperref)                removing `math shift' on input line 857.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 857.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 857.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 857.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 857.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 857.
 
 
 
-[8]
-
-LaTeX Warning: Reference `fig-calibration' on page 9 undefined on input line 913.
-
+[10]
 File: images/sensor-calibration.png Graphic file (type bmp)
 <images/sensor-calibration.png>
 
 
-[9]
-
-LaTeX Warning: Reference `tbl-pm-sample' on page 10 undefined on input line 956.
-
+[11]
 > Step: init table outer spec.
 > Step: parse table options.
 > Step: split table.
@@ -1524,33 +1789,54 @@ LaTeX Warning: Reference `tbl-pm-sample' on page 10 undefined on input line 956.
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 > Step: build the whole table.
+
 Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
-
-
-[10]
-
-[11]
 Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
 
 
 [12]
-Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
-
 
 [13]
-Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
 
 
 [14]
+Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
+
+
+[15]
+Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
+
+
+[16]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 1331.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 1331.
+(hyperref)                removing `math shift' on input line 1331.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 1331.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 1331.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 1331.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 1331.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1331.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1558,29 +1844,89 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 1361.
+(hyperref)                removing `math shift' on input line 1361.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 1361.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 1361.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 1361.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 1361.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1361.
 
 
 
-[15]
+[17]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 1405.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 1405.
+(hyperref)                removing `math shift' on input line 1405.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 1405.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 1405.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 1405.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 1405.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1405.
 
 
 
-[16]
+[18]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 1450.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 1450.
+(hyperref)                removing `math shift' on input line 1450.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 1450.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 1450.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 1450.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 1450.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1450.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1588,18 +1934,58 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 1480.
+(hyperref)                removing `math shift' on input line 1480.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 1480.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 1480.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 1480.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 1480.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1480.
 
 
 
-[17]
+[19]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 1511.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 1511.
+(hyperref)                removing `math shift' on input line 1511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 1511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 1511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 1511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 1511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1511.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1607,53 +1993,126 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 1567.
-
-
-
-[18]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1586.
+(hyperref)                removing `math shift' on input line 1567.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 1586.
-
-File: images/ddfig.png Graphic file (type bmp)
-<images/ddfig.png>
+(hyperref)                removing `\@@underline' on input line 1567.
 
 
-[19]
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 1567.
 
-LaTeX Warning: Reference `fig-didfig' on page 20 undefined on input line 1643.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 1567.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 1567.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1567.
 
 
 
 [20]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1586.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1586.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 1586.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 1586.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 1586.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 1586.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1586.
+
+File: images/ddfig.png Graphic file (type bmp)
+<images/ddfig.png>
+
+
+[21]
+
+[22]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 1685.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 1685.
+(hyperref)                removing `math shift' on input line 1685.
 
 
-LaTeX Warning: Reference `fig-dag1' on page 21 undefined on input line 1692.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 1685.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 1685.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 1685.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 1685.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1685.
 
 File: images/dag1.png Graphic file (type bmp)
 <images/dag1.png>
 
 
-[21]
+[23]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 1738.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 1738.
+(hyperref)                removing `math shift' on input line 1738.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 1738.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 1738.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 1738.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 1738.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1738.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1661,90 +2120,164 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 1752.
+(hyperref)                removing `math shift' on input line 1752.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 1752.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 1752.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 1752.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 1752.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1752.
 
 
 
-[22]
+[24]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 1792.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 1792.
+(hyperref)                removing `math shift' on input line 1792.
 
 
-LaTeX Warning: Reference `eq-etwfe' on page 23 undefined on input line 1797.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 1792.
 
 
-LaTeX Warning: Reference `eq-etwfe' on page 23 undefined on input line 1800.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 1792.
 
 
-LaTeX Warning: Reference `eq-etwfem' on page 23 undefined on input line 1826.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 1792.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 1792.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1792.
 
 
 
-[23]
+[25]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 1846.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 1846.
+(hyperref)                removing `math shift' on input line 1846.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 1846.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 1846.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 1846.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 1846.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1846.
 
 
 
-[24]
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 1906.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 1906.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 1906.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.0011pt on input line 1906.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00073pt on input line 1906.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 1906.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 1906.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 1906.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 1906.
-
-
-LaTeX Warning: Reference `fig-afig-mi' on page 25 undefined on input line 1930.
-
+[26]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 1938.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 1938.
+(hyperref)                removing `math shift' on input line 1938.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 1938.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 1938.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 1938.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 1938.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1938.
 
 
 
-[25]
-
-LaTeX Warning: Reference `fig-flowchart' on page 26 undefined on input line 1966.
-
-
-LaTeX Warning: Reference `tbl-each-campaign' on page 26 undefined on input line 1977.
-
-
-LaTeX Warning: Reference `tbl-each-campaign' on page 26 undefined on input line 1977.
-
+[27]
 Package hyperref Info: bookmark level for unknown comment defaults to 0 on input line 1979.
 
-LaTeX Warning: Reference `tbl-diff-campaign' on page 26 undefined on input line 1981.
+Underfull \hbox (badness 3260) in paragraph at lines 1966--1983
+[]\TU/lmr/m/n/10.95 Appendix Figure [][]A3[][] shows the participation of villages, households, and participants
+ []
 
 
-LaTeX Warning: Reference `tbl-diff-campaign' on page 26 undefined on input line 1982.
+Underfull \hbox (badness 3168) in paragraph at lines 1966--1983
+\TU/lmr/m/n/10.95 ticipants in each of the three measurement waves that included individual-level mea-
+ []
+
+
+Underfull \hbox (badness 1028) in paragraph at lines 1966--1983
+\TU/lmr/m/n/10.95 surements. In total, we enrolled 1432 participants into the study, of which 630 (43%)
+ []
+
+
+Underfull \hbox (badness 3965) in paragraph at lines 1966--1983
+[]|   []   |   []   [][]$[]$[]\TU/lmr/m/n/10.95 all three waves, 443 (31%)
+ []
+
+
+Underfull \hbox (badness 6658) in paragraph at lines 1966--1983
+[]|   []   |   []   [][]$[]$[]\TU/lmr/m/n/10.95 two waves and 365 (25%)
+ []
+
+
+Underfull \hbox (badness 6001) in paragraph at lines 1966--1983
+|   []   |   []   |   []   [][]$[]$[]\TU/lmr/m/n/10.95 health
+ []
+
+
+Underfull \hbox (badness 1231) in paragraph at lines 1966--1983
+\TU/lmr/m/n/10.95 behaviors between participants who contributed to []|   []   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (190.8035pt too wide) in paragraph at lines 1966--1983
+[][]$[]$[][][][]
+ []
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -1767,6 +2300,11 @@ Overfull \hbox (4.02856pt too wide) in paragraph at lines 2073--2073
 
 Overfull \hbox (4.02856pt too wide) in paragraph at lines 2073--2073
 []\TU/lmss/m/n/10.95 Statistic$[]$ 
+ []
+
+
+Overfull \hbox (69.1929pt too wide) in paragraph at lines 2138--2138
+[][][]|[][]$[]$[]| 
  []
 
 > Step: init table outer spec.
@@ -1798,7 +2336,32 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 2179.
+(hyperref)                removing `math shift' on input line 2179.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 2179.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 2179.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 2179.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 2179.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2179.
+
+
+Overfull \hbox (104.58327pt too wide) in paragraph at lines 2446--2446
+[][][]|[][]$[]$[]| 
+ []
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -1828,13 +2391,10 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 4.1058pt on input line 2507.
 > Step: build the whole table.
 
-LaTeX Warning: Float too large for page by 167.88713pt on input line 2511.
+LaTeX Warning: Float too large for page by 157.49173pt on input line 2511.
 
 
-LaTeX Warning: Reference `tbl-table1' on page 26 undefined on input line 2513.
-
-
-LaTeX Warning: Reference `tbl-desc' on page 26 undefined on input line 2513.
+LaTeX Warning: Reference `tbl-table1' on page 28 undefined on input line 2513.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1842,20 +2402,41 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 2530.
+(hyperref)                removing `math shift' on input line 2530.
 
 
-LaTeX Warning: Reference `tbl-pm-season' on page 26 undefined on input line 2538.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 2530.
 
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 2530.
 
-[26]
 
-[27]
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 2530.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 2530.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2530.
+
+
 
 [28]
 
 [29]
+
+[30]
+
+[31]
+Overfull \hbox (49.24199pt too wide) in paragraph at lines 2575--2575
+[][][]|[][]$[]$[]| 
+ []
+
 > Step: init table outer spec.
 > Step: parse table options.
 > Step: split table.
@@ -2325,18 +2906,32 @@ Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
  []
 
 
-LaTeX Warning: Reference `tbl-pm-season' on page 30 undefined on input line 2863.
-
-
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 2870.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 2870.
+(hyperref)                removing `math shift' on input line 2870.
 
 
-LaTeX Warning: Reference `fig-sankey' on page 30 undefined on input line 2881.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 2870.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 2870.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 2870.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 2870.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2870.
 
 File: images/sanky.jpg Graphic file (type bmp)
 <images/sanky.jpg>
@@ -2347,14 +2942,11 @@ Overfull \hbox (6.71716pt too wide) in paragraph at lines 2898--2899
 
 
 
-[30]
+[32]
 
-[31]
+[33]
 
-LaTeX Warning: Reference `fig-afig-coal' on page 32 undefined on input line 2914.
-
-
-LaTeX Warning: Reference `tbl-fuel-did' on page 32 undefined on input line 2916.
+LaTeX Warning: Reference `tbl-fuel-did' on page 34 undefined on input line 2916.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -2362,7 +2954,27 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 2941.
+(hyperref)                removing `math shift' on input line 2941.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 2941.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 2941.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 2941.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 2941.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2941.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -2370,17 +2982,38 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 2949.
+(hyperref)                removing `math shift' on input line 2949.
 
 
-LaTeX Warning: Reference `tbl-did-med' on page 32 undefined on input line 2953.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 2949.
 
 
-LaTeX Warning: Reference `tbl-a-het-indoor' on page 32 undefined on input line 2964.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 2949.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 2949.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 2949.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2949.
+
+
+LaTeX Warning: Reference `tbl-a-het-indoor' on page 34 undefined on input line 2964.
 
 
 
-[32]
+[34]
+Overfull \hbox (1919.26453pt too wide) in paragraph at lines 3129--3129
+[][][]|[][]$[]$[]| 
+ []
+
 > Step: init table outer spec.
 > Step: parse table options.
 > Step: split table.
@@ -2390,11 +3023,7 @@ LaTeX Warning: Reference `tbl-a-het-indoor' on page 32 undefined on input line 2
 > Step: calculate cell and line sizes.
 > Step: build the whole table.
 
-
-LaTeX Warning: Float too large for page by 81.97313pt on input line 3194.
-
-
-LaTeX Warning: Reference `tbl-did-med' on page 33 undefined on input line 3205.
+LaTeX Warning: Float too large for page by 15.29126pt on input line 3194.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -2402,7 +3031,32 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 3216.
+(hyperref)                removing `math shift' on input line 3216.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 3216.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 3216.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 3216.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 3216.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 3216.
+
+
+Overfull \hbox (115.70848pt too wide) in paragraph at lines 3416--3416
+[][][]|[][]$[]$[]| 
+ []
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -2413,61 +3067,66 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 > Step: calculate cell and line sizes.
 > Step: build the whole table.
 
-LaTeX Warning: Float too large for page by 137.17303pt on input line 3496.
+LaTeX Warning: Float too large for page by 124.28104pt on input line 3496.
 
 
-LaTeX Warning: Reference `tbl-did-health' on page 33 undefined on input line 3498.
+LaTeX Warning: Reference `tbl-bp-het' on page 35 undefined on input line 3508.
 
 
-LaTeX Warning: Reference `tbl-did-health' on page 33 undefined on input line 3506.
+LaTeX Warning: Reference `tbl-a-het-resp' on page 35 undefined on input line 3523.
 
 
-LaTeX Warning: Reference `tbl-bp-het' on page 33 undefined on input line 3508.
+LaTeX Warning: Reference `tbl-a-het-cough' on page 35 undefined on input line 3523.
 
 
-LaTeX Warning: Reference `tbl-did-health' on page 33 undefined on input line 3516.
+LaTeX Warning: Reference `tbl-a-het-phlegm' on page 35 undefined on input line 3524.
 
 
-LaTeX Warning: Reference `tbl-a-het-resp' on page 33 undefined on input line 3523.
+LaTeX Warning: Reference `tbl-a-het-wheeze' on page 35 undefined on input line 3524.
 
 
-LaTeX Warning: Reference `tbl-a-het-cough' on page 33 undefined on input line 3523.
+LaTeX Warning: Reference `tbl-a-het-breath' on page 35 undefined on input line 3524.
 
 
-LaTeX Warning: Reference `tbl-a-het-phlegm' on page 33 undefined on input line 3524.
+LaTeX Warning: Reference `tbl-a-het-nochest' on page 35 undefined on input line 3525.
 
 
-LaTeX Warning: Reference `tbl-a-het-wheeze' on page 33 undefined on input line 3524.
+LaTeX Warning: Reference `tbl-a-feno' on page 35 undefined on input line 3540.
 
 
-LaTeX Warning: Reference `tbl-a-het-breath' on page 33 undefined on input line 3524.
-
-
-LaTeX Warning: Reference `tbl-a-het-nochest' on page 33 undefined on input line 3525.
-
-
-LaTeX Warning: Reference `tbl-did-health' on page 33 undefined on input line 3529.
-
-
-LaTeX Warning: Reference `tbl-a-feno' on page 33 undefined on input line 3540.
-
-
-
-[33]
-
-[34]
 
 [35]
+
+[36]
+
+[37]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 3547.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 3547.
+(hyperref)                removing `math shift' on input line 3547.
 
 
-LaTeX Warning: Reference `tbl-bp-med' on page 36 undefined on input line 3559.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 3547.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 3547.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 3547.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 3547.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 3547.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -2503,18 +3162,6 @@ Package tabularray Warning: Table width is too small, need 3.32875pt more!
 Overfull \hbox (3.32875pt too wide) in paragraph at lines 3725--3726
  [][] 
  []
-
-
-LaTeX Warning: Reference `tbl-resp-med' on page 36 undefined on input line 3731.
-
-
-LaTeX Warning: Reference `tbl-resp-med' on page 36 undefined on input line 3736.
-
-
-LaTeX Warning: Reference `tbl-did-health' on page 36 undefined on input line 3737.
-
-
-LaTeX Warning: Reference `tbl-did-health' on page 36 undefined on input line 3741.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -2557,67 +3204,80 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 3939.
+(hyperref)                removing `math shift' on input line 3939.
 
 
-LaTeX Warning: Reference `fig-source-figure' on page 36 undefined on input line 3962.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 3939.
 
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 3939.
 
-[36]
 
-[37]
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 3939.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 3939.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 3939.
+
+
 
 [38]
 
-LaTeX Warning: Reference `tbl-pmf' on page 39 undefined on input line 4002.
-
-
-
 [39]
-> Step: init table outer spec.
-> Step: parse table options.
-> Step: split table.
-> Step: init table inner spec.
-> Step: parse table inner spec.
-> Step: execute table commands.
-> Step: calculate cell and line sizes.
-
-Overfull \hbox (1.1958pt too wide) in paragraph at lines 4158--4158
-[]\TU/lmss/m/n/10.95 BS_mapping  
- []
-
-
-Overfull \hbox (1.1958pt too wide) in paragraph at lines 4158--4158
-[]\TU/lmss/m/n/10.95 BS_mapping  
- []
-
-> Step: build the whole table.
-
-Overfull \hbox (1.1958pt too wide) in paragraph at lines 4158--4158
-[]\TU/lmss/m/n/10.95 BS_mapping  
- []
-
-
-LaTeX Warning: Reference `fig-source-figure' on page 40 undefined on input line 4165.
-
-
-LaTeX Warning: Reference `fig-source-season' on page 40 undefined on input line 4189.
-
-File: images/source-figure.png Graphic file (type bmp)
-<images/source-figure.png>
-
 
 [40]
 
 [41]
-File: images/source-season2.png Graphic file (type bmp)
-<images/source-season2.png>
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+
+Overfull \hbox (1.1958pt too wide) in paragraph at lines 4158--4158
+[]\TU/lmss/m/n/10.95 BS_mapping  
+ []
+
+
+Overfull \hbox (1.1958pt too wide) in paragraph at lines 4158--4158
+[]\TU/lmss/m/n/10.95 BS_mapping  
+ []
+
+> Step: build the whole table.
+
+Overfull \hbox (1.1958pt too wide) in paragraph at lines 4158--4158
+[]\TU/lmss/m/n/10.95 BS_mapping  
+ []
+
+File: images/source-figure.png Graphic file (type bmp)
+<images/source-figure.png>
+
+Overfull \hbox (657.10431pt too wide) in paragraph at lines 4208--4208
+[][][]|[][]$[]$[]| 
+ []
+
 
 
 [42]
 
-LaTeX Warning: Reference `tbl-source-did' on page 43 undefined on input line 4247.
+[43]
+File: images/source-season2.png Graphic file (type bmp)
+<images/source-season2.png>
+
+
+[44]
+Overfull \hbox (45.19444pt too wide) in paragraph at lines 4316--4316
+[][][]|[][]$[]$[]| 
+ []
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -2628,21 +3288,40 @@ LaTeX Warning: Reference `tbl-source-did' on page 43 undefined on input line 424
 > Step: calculate cell and line sizes.
 > Step: build the whole table.
 
-LaTeX Warning: Reference `fig-afig-mixed-ct' on page 43 undefined on input line 4353.
 
-
-
-[43]
+[45]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 4374.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 4374.
+(hyperref)                removing `math shift' on input line 4374.
 
 
-LaTeX Warning: Reference `tbl-med-source' on page 44 undefined on input line 4377.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 4374.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 4374.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 4374.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 4374.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4374.
+
+
+Overfull \hbox (443.29955pt too wide) in paragraph at lines 4467--4467
+[][][]|[][]$[]$[]| 
+ []
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -2658,104 +3337,258 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 4506.
+(hyperref)                removing `math shift' on input line 4506.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 4506.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 4506.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 4506.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 4506.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4506.
 
 
 
-[44]
+[46]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 4527.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 4527.
+(hyperref)                removing `math shift' on input line 4527.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 4527.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 4527.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 4527.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 4527.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4527.
 
 
 
-[45]
+[47]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 4573.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 4573.
+(hyperref)                removing `math shift' on input line 4573.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 4573.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 4573.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 4573.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 4573.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4573.
 
 
 
-[46]
+[48]
 
-[47]
+[49]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 4695.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 4695.
+(hyperref)                removing `math shift' on input line 4695.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 4695.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 4695.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 4695.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 4695.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4695.
 
 
 
-[48]
+[50]
 Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=tex-text;!
 
 
-[49]
+[51]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 4843.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 4843.
+(hyperref)                removing `math shift' on input line 4843.
 
 
-LaTeX Warning: Reference `fig-afig-pt3' on page 50 undefined on input line 4866.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 4843.
 
 
-LaTeX Warning: Reference `fig-afig-pt4' on page 50 undefined on input line 4867.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 4843.
 
 
-
-[50]
-
-LaTeX Warning: Reference `tbl-a-fe' on page 51 undefined on input line 4899.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 4843.
 
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 4843.
 
-[51]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4843.
+
+
 
 [52]
+
+LaTeX Warning: Reference `tbl-a-fe' on page 53 undefined on input line 4899.
+
+
+
+[53]
+
+[54]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 4993.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 4993.
+(hyperref)                removing `math shift' on input line 4993.
 
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 4993.
 
-[53]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 4993.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 4993.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 4993.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4993.
+
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 5028.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 5028.
+(hyperref)                removing `math shift' on input line 5028.
 
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 5028.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 5028.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 5028.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 5028.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 5028.
+
+
+
+[55]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 5039.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 5039.
+(hyperref)                removing `math shift' on input line 5039.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 5039.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 5039.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 5039.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 5039.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 5039.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -2763,22 +3596,42 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 5065.
+(hyperref)                removing `math shift' on input line 5065.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 5065.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 5065.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 5065.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 5065.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 5065.
 
 
 
-[54]
+[56]
 Overfull \hbox (23.77235pt too wide) in paragraph at lines 5139--5143
 \TU/lmr/m/n/10.95 differences estimates? Journal of Financial Economics 144:370–395; doi:[][]10.1016/j.jfineco.2022.01.004[][]. 
  []
 
 
 
-[55]
-
-[56]
-
 [57]
+
+[58]
+
+[59]
 Missing character: There is no 北 (U+5317) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 京 (U+4EAC) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 大 (U+5927) in font [lmroman10-regular]:mapping=tex-text;!
@@ -2818,32 +3671,32 @@ Underfull \hbox (badness 1496) in paragraph at lines 5375--5380
 
 
 
-[58]
+[60]
 
-[59]
+[61]
 Underfull \hbox (badness 1033) in paragraph at lines 5519--5524
 \TU/lmr/m/n/10.95 particulate matter on Teflon and quartz filters. Atmospheric Environment 149:84–94;
  []
 
 
 
-[60]
+[62]
 Underfull \hbox (badness 2035) in paragraph at lines 5617--5621
 \TU/lmr/m/n/10.95 elderly in the cold region of China. Indoor and Built Environment 31:2482–2498;
  []
 
 
 
-[61]
+[63]
 Overfull \hbox (0.10286pt too wide) in paragraph at lines 5702--5704
 []\TU/lmr/m/n/10.95 Pearl J. 2000. \TU/lmr/m/it/10.95 Causality: Models, reasoning, and inference\TU/lmr/m/n/10.95 . Cambridge University Press:Cambridge,
  []
 
 
 
-[62]
+[64]
 
-[63]
+[65]
 Underfull \hbox (badness 1314) in paragraph at lines 5836--5840
 []\TU/lmr/m/n/10.95 Ruiz-Mercado I, Canuz E, Walker JL, Smith KR. 2013. Quantitative metrics of stove
  []
@@ -2855,16 +3708,16 @@ Underfull \hbox (badness 3460) in paragraph at lines 5836--5840
 
 
 
-[64]
+[66]
 Underfull \hbox (badness 1337) in paragraph at lines 5923--5928
 \TU/lmr/m/n/10.95 tertime longitudinal study of Chinese adults. Journal of Hypertension 40:1950–1959;
  []
 
 
 
-[65]
+[67]
 
-[66]
+[68]
 Overfull \hbox (36.56076pt too wide) in paragraph at lines 6052--6056
 \TU/lmr/m/n/10.95 China Prospective (ICP) study. Wellcome Open Research 4:154; doi:[][]10.12688/wellcomeopenres.15470.2[][]. 
  []
@@ -2889,16 +3742,36 @@ Missing character: There is no 动 (U+52A8) in font [lmroman10-regular]:mapping=
 Missing character: There is no 力 (U+529B) in font [lmroman10-regular]:mapping=tex-text;!
 
 
-[67]
+[69]
 
-[68]
+[70]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 6171.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6171.
+(hyperref)                removing `math shift' on input line 6171.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 6171.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 6171.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 6171.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 6171.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 6171.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -2906,7 +3779,27 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6177.
+(hyperref)                removing `math shift' on input line 6177.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 6177.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 6177.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 6177.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 6177.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 6177.
 
 
 Underfull \hbox (badness 1478) in paragraph at lines 6196--6196
@@ -2917,14 +3810,39 @@ File: images/biomarker-boxplot-log.jpg Graphic file (type bmp)
 <images/biomarker-boxplot-log.jpg>
 
 
-[69]
+[71]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 6211.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6211.
+(hyperref)                removing `math shift' on input line 6211.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 6211.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 6211.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 6211.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 6211.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 6211.
+
+
+Overfull \hbox (510.43706pt too wide) in paragraph at lines 6231--6231
+[][][]|[][]$[]$[]| 
+ []
 
 File: images/MI_BMI_density.png Graphic file (type bmp)
 <images/MI_BMI_density.png>
@@ -2940,33 +3858,70 @@ File: images/MI_indoorPM_density.png Graphic file (type bmp)
 <images/MI_indoorPM_density.png>
 
 
-[70]
+[72]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 6339.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6339.
+(hyperref)                removing `math shift' on input line 6339.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 6339.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 6339.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 6339.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 6339.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 6339.
 
 File: images/Participation-flowchart-Apr12.png Graphic file (type bmp)
 <images/Participation-flowchart-Apr12.png>
 
 
-[71]
+[73]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 6369.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6369.
+(hyperref)                removing `math shift' on input line 6369.
 
 
-LaTeX Warning: Reference `fig-afig-coal' on page 72 undefined on input line 6372.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 6369.
 
 
-LaTeX Warning: Reference `tbl-fuel-did' on page 72 undefined on input line 6373.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 6369.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 6369.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 6369.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 6369.
+
+
+LaTeX Warning: Reference `tbl-fuel-did' on page 74 undefined on input line 6373.
 
 File: images/coal-plot.png Graphic file (type bmp)
 <images/coal-plot.png>
@@ -2977,14 +3932,34 @@ Overfull \hbox (6.80858pt too wide) in paragraph at lines 6383--6384
 
 
 
-[72]
+[74]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 6486.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6486.
+(hyperref)                removing `math shift' on input line 6486.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 6486.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 6486.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 6486.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 6486.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 6486.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -2992,52 +3967,132 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6492.
-
-
-LaTeX Warning: Reference `tbl-a-het-personal' on page 73 undefined on input line 6495.
-
-
-LaTeX Warning: Reference `tbl-a-het-indoor' on page 73 undefined on input line 6588.
-
-
-
-[73]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6664.
+(hyperref)                removing `math shift' on input line 6492.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6664.
-
-
-
-[74]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6897.
+(hyperref)                removing `\@@underline' on input line 6492.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6897.
+(hyperref)                removing `\hbox' on input line 6492.
 
 
-LaTeX Warning: Reference `tbl-bp-het' on page 75 undefined on input line 6900.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 6492.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 6492.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 6492.
+
+
+LaTeX Warning: Reference `tbl-a-het-personal' on page 75 undefined on input line 6495.
+
+
+LaTeX Warning: Reference `tbl-a-het-indoor' on page 75 undefined on input line 6588.
 
 
 
 [75]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 6664.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 6664.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 6664.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 6664.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 6664.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 6664.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 6664.
+
+
+
+[76]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 6897.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 6897.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 6897.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 6897.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 6897.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 6897.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 6897.
+
+
+LaTeX Warning: Reference `tbl-bp-het' on page 77 undefined on input line 6900.
+
+
+
+[77]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 7055.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 7055.
+(hyperref)                removing `math shift' on input line 7055.
 
 
-LaTeX Warning: Reference `tbl-a-bp-med-het' on page 76 undefined on input line 7058.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 7055.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 7055.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 7055.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 7055.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 7055.
+
+
+LaTeX Warning: Reference `tbl-a-bp-med-het' on page 78 undefined on input line 7058.
 
 
 Underfull \hbox (badness 2221) in paragraph at lines 7079--7318
@@ -3046,43 +4101,83 @@ Underfull \hbox (badness 2221) in paragraph at lines 7079--7318
 
 
 
-[76]
+[78]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 7469.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 7469.
+(hyperref)                removing `math shift' on input line 7469.
 
 
-LaTeX Warning: Reference `tbl-a-het-resp' on page 77 undefined on input line 7472.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 7469.
 
 
-LaTeX Warning: Reference `tbl-a-het-cough' on page 77 undefined on input line 7472.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 7469.
 
 
-LaTeX Warning: Reference `tbl-a-het-phlegm' on page 77 undefined on input line 7473.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 7469.
 
 
-LaTeX Warning: Reference `tbl-a-het-wheeze' on page 77 undefined on input line 7473.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 7469.
 
 
-LaTeX Warning: Reference `tbl-a-het-breath' on page 77 undefined on input line 7473.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 7469.
 
 
-LaTeX Warning: Reference `tbl-a-het-nochest' on page 77 undefined on input line 7474.
+LaTeX Warning: Reference `tbl-a-het-resp' on page 79 undefined on input line 7472.
+
+
+LaTeX Warning: Reference `tbl-a-het-cough' on page 79 undefined on input line 7472.
+
+
+LaTeX Warning: Reference `tbl-a-het-phlegm' on page 79 undefined on input line 7473.
+
+
+LaTeX Warning: Reference `tbl-a-het-wheeze' on page 79 undefined on input line 7473.
+
+
+LaTeX Warning: Reference `tbl-a-het-breath' on page 79 undefined on input line 7473.
+
+
+LaTeX Warning: Reference `tbl-a-het-nochest' on page 79 undefined on input line 7474.
 
 
 
-[77]
+[79]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 7817.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 7817.
+(hyperref)                removing `math shift' on input line 7817.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 7817.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 7817.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 7817.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 7817.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 7817.
 
 File: images/did-mixed-ct-wave.png Graphic file (type bmp)
 <images/did-mixed-ct-wave.png>
@@ -3093,47 +4188,104 @@ Overfull \hbox (6.79807pt too wide) in paragraph at lines 7826--7827
 
 
 
-[78]
+[80]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 7848.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 7848.
+(hyperref)                removing `math shift' on input line 7848.
 
 
-LaTeX Warning: Reference `tbl-a-feno' on page 79 undefined on input line 7851.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 7848.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 7848.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 7848.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 7848.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 7848.
+
+
+LaTeX Warning: Reference `tbl-a-feno' on page 81 undefined on input line 7851.
 
 
 
-[79]
+[81]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 7932.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 7932.
+(hyperref)                removing `math shift' on input line 7932.
 
 
-LaTeX Warning: Reference `tbl-a-ind-s3' on page 80 undefined on input line 7935.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 7932.
 
 
-LaTeX Warning: Reference `fig-afig-did-opm-w3' on page 80 undefined on input line 8015.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 7932.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 7932.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 7932.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 7932.
+
+
+LaTeX Warning: Reference `tbl-a-ind-s3' on page 82 undefined on input line 7935.
 
 File: images/did-outdoor-w3.png Graphic file (type bmp)
 <images/did-outdoor-w3.png>
 
 
-[80]
+[82]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 8047.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 8047.
+(hyperref)                removing `math shift' on input line 8047.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 8047.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 8047.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 8047.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 8047.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 8047.
 
 File: images/never_Y3.png Graphic file (type bmp)
 <images/never_Y3.png>
@@ -3141,20 +4293,40 @@ File: images/never_Y4.png Graphic file (type bmp)
 <images/never_Y4.png>
 
 
-[81]
+[83]
 
-[82]
+[84]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 8101.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 8101.
+(hyperref)                removing `math shift' on input line 8101.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 8101.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 8101.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 8101.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 8101.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 8101.
 
 
 
-[83]
+[85]
 \Changes@OutFile=\write5
 \openout5 = `test-diff.soc'.
 
@@ -3163,7 +4335,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 
-[84] (./test-diff.aux)
+[86] (./test-diff.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
@@ -3177,12 +4349,12 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 42562 strings out of 476239
- 906986 string characters out of 5786143
- 2066557 words of memory out of 5000000
- 64439 multiletter control sequences out of 15000+600000
- 604448 words of font info for 220 fonts, out of 8000000 for 9000
+ 42573 strings out of 476239
+ 907277 string characters out of 5786143
+ 2058557 words of memory out of 5000000
+ 64447 multiletter control sequences out of 15000+600000
+ 604472 words of font info for 223 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  118i,17n,123p,10904b,1469s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on test-diff.pdf (84 pages).
+Output written on test-diff.pdf (86 pages).

@@ -1209,10 +1209,12 @@ knitr::include_graphics(here("images",
 ## Imputation results
 The figures below show density plots for the values of body mass index, waist circumference, and indoor PM~2.5~ from the multiple imputation models. The red lines show the values for each of the 30 imputed datasets, and the black line shows the value for the observed data. 
 
-```{r mi-plots, echo=FALSE, out.width = "50%"}
+```{r, echo=FALSE}
+#| echo: FALSE
 #| fig-cap-location: top
 #| label: fig-afig-mi
-#| fig-cap: "Kernal density plots showing distribution of multiply-imputed values for body mass index (kg/m^2^), waist circumference (cm), and indoor PM~2.5~ (µg/m^3^) (red lines) and observed values (heavy black line)"
+#| fig-cap: Kernal density plots showing distribution of multiply-imputed values for body mass index (kg/m^2^), waist circumference (cm), and indoor PM~2.5~ (µg/m^3^) (red lines) and observed values (heavy black line).
+#| fig-width: 7
 #| fig-subcap: 
 #|   - ""
 #|   - ""
@@ -1227,7 +1229,6 @@ knitr::include_graphics(here("images",
 
 knitr::include_graphics(here("images", 
  "MI_indoorPM_density.png"))
-
 ```
 
 \newpage

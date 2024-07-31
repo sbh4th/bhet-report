@@ -44,14 +44,28 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{3}
 % Make \paragraph and \subparagraph free-standing
+\makeatletter
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
 \fi
 \ifx\subparagraph\undefined\else
   \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
+\makeatother
 
 
 \providecommand{\tightlist}{%
@@ -107,7 +121,7 @@
   \setlength{\itemsep}{#2\baselineskip}}}
  {\end{list}}
 \usepackage{calc}
-\newcommand{\CSLBlock}[1]{\hfill\break#1\hfill\break}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
@@ -190,10 +204,12 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
+
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\usepackage{bookmark}
+
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
@@ -206,19 +222,22 @@
   urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
 
+
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-07-23}
+\date{2024-07-31}
 
 \begin{document}
 \maketitle
+
 \renewcommand*\contentsname{Table of contents}
 {
 \hypersetup{linkcolor=}
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
+
 \subsection*{Abstract}\label{abstract}
 
 \subsubsection*{Introduction}\label{introduction}
@@ -674,7 +693,7 @@ conducted in 300 households in both w2 and w4 and 246 households in w3
 (Table 1).
 
 \begin{longtable}[t]{lrrrrrrr}
-\caption{\label{tab:tab-pm-sample}Household recruitment for overall and indoor air quality measurements.}\\
+\caption{Household recruitment for overall and indoor air quality measurements.}\\
 \toprule
 \multicolumn{1}{c}{ } & \multicolumn{3}{c}{Overall} & \multicolumn{4}{c}{Indoor} \\
 \cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-8}
@@ -1491,7 +1510,7 @@ between participants who contributed to a different number of waves
 individual measurements (Table 3).
 
 \begin{longtable}[t]{l>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}}
-\caption{\label{tab:tab-each-campaigns}Demographic and health characteristics of participants in each study wave.}\\
+\caption{Demographic and health characteristics of participants in each study wave.}\\
 \toprule
 \textbf{Characteristic} & \textbf{Wave 1 (2018-19) N=1003} & \textbf{Wave 2 (2019-20) N=1110} & \textbf{Wave 4 (2021-22) N=1028}\\
 \midrule
@@ -1506,7 +1525,7 @@ Waist circumference in cm, Mean (SD) & 86.8 (10.2) & 87.4 (9.4) & 91.4 (10.7)\\
 \end{longtable}
 
 \begin{longtable}[t]{l>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}}
-\caption{\label{tab:tab-diff-campaign}Demographic and health characteristics of participants in each study wave.}\\
+\caption{Demographic and health characteristics of participants in each study wave.}\\
 \toprule
 \textbf{Characteristic} & \textbf{1 Wave N=365} & \textbf{2 Waves N=443} & \textbf{3 Waves N=630}\\
 \midrule
@@ -1525,7 +1544,7 @@ sample}\label{description-of-study-sample}
 
 \begin{table}
 \centering\centering
-\caption{\label{tab:table1}Title}
+\caption{Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status.}
 \centering
 \fontsize{9}{11}\selectfont
 \begin{tabular}[t]{rrrrrrr}
@@ -1603,17 +1622,6 @@ targets for annual and 24-h means are: IT-1: 35 and 75
 baseline personal exposures to PM\textsubscript{2.5} did not even meet
 IT-1, indicating considerable opportunity for air quality exposure
 reduction with intervention.
-
-\begin{table}
-
-\caption{\label{tbl-pm-season}Arithmetic and geometric means for air
-pollutant concentrations (micrograms per cubic meter) by wave}
-
-\centering{
-
-}
-
-\end{table}%
 
 We also present the geometric and arithmetic means (and 95\% confidence
 intervals) for PM\textsubscript{2.5} and BC in each measurement wave
@@ -1699,25 +1707,6 @@ improvement. We found little evidence of heterogeneity in \(ATT\)s
 across cohort and time (all p-values \textgreater{} 0.385 for tests of
 heterogeneity, see Appendix Table~\ref{tbl-a-het-indoor}).
 
-\begin{table}
-
-\caption{\label{tbl-did-med}Treatment effect on outdoor and indoor
-PM\textsubscript{2.5}, personal exposure to PM\textsubscript{2.5} and
-black carbon, and measures of indoor temperature. Outdoor and indoor
-PM\textsubscript{2.5} were derived from sensor measurements after being
-adjusted based on co-located gravimetric PM\textsubscript{2.5}
-measurements. 24h indicates the mean PM\textsubscript{2.5}
-concentrations during the 24 hours when personal exposure samples were
-collected in each village. `Seasonal' indicates the seasonal mean
-PM\textsubscript{2.5} concentrations in each village, from Jan.~15th to
-Mar.~15th.}
-
-\centering{
-
-}
-
-\end{table}%
-
 Overall we found little evidence of an impact of the CBHP policy on 24-h
 and seasonal outdoor (community) PM\textsubscript{2.5} or personal
 exposures to PM\textsubscript{2.5} and BC. Treatment was associated with
@@ -1735,18 +1724,6 @@ minimum temperatures, which increased by 3.8°C (95\%CI: 2.3, 5.4).
 
 \subsubsection{Impact of the CBHP policy on health
 outcomes}\label{impact-of-the-cbhp-policy-on-health-outcomes}
-
-\begin{table}
-
-\caption{\label{tbl-did-health}Overall impacts of the `coal-to-clean
-energy' policy on blood pressure, respiratory outcomes, and inflammatory
-markers}
-
-\centering{
-
-}
-
-\end{table}%
 
 Table~\ref{tbl-did-health} shows the impacts of the policy on blood
 pressure in basic ETWFE models and models further adjusted for age, sex,
@@ -1811,17 +1788,6 @@ BP, as the CDE conditional on both mediators was reduced to 0.03
 (95\%CI: -2.0, 2.0) for brachial SBP. The CDE for diastolic BP was
 roughly half the value of the total effect.
 
-\begin{table}
-
-\caption{\label{tbl-bp-med}Controlled direct effects for the CBHP policy
-on blood pressure}
-
-\centering{
-
-}
-
-\end{table}%
-
 Table~\ref{tbl-resp-med} shows estimates from similar analyses for the
 CDE of the policy on respiratory outcomes. For respiratory outcomes we
 focus on mediation by personal exposure to PM\textsubscript{2.5} and
@@ -1836,17 +1802,6 @@ outcomes in Table~\ref{tbl-did-health} were mediated by personal
 exposure to PM\textsubscript{2.5} or indoor temperature. Generally the
 CDEs for all of the outcomes are statistically indistinguishable from
 the total effects estimated without controlling for mediators.
-
-\begin{table}
-
-\caption{\label{tbl-resp-med}Controlled direct effects for the CBHP
-policy on self-reported respiratory outcomes}
-
-\centering{
-
-}
-
-\end{table}%
 
 \subsection{Aim 2: Source
 contributions}\label{aim-2-source-contributions}
@@ -1940,16 +1895,6 @@ are stable. Based on the Q/Qexp, BS mapping, and interpretability of the
 factors, the four-factor solution was selected as the most appropriate
 source solution for the data.
 
-\begin{table}
-
-\caption{\label{tbl-pmf}PMF error estimation diagnostics}
-
-\centering{
-
-}
-
-\end{table}%
-
 The source profiles for the four-factor solution are presented in
 Figure~\ref{fig-source-figure}. The first source was identified as dust
 based on high percentages of crustal elements like wi-Ca, Si, and wi-Mg.
@@ -2019,18 +1964,6 @@ to reducing air pollutant emissions from solid fuel burning, as this
 particularly in our study settings. The results were consistent across
 both the unadjusted and adjusted models.
 
-\begin{table}
-
-\caption{\label{tbl-source-did}Average treatment effect
-(µg/m\textsuperscript{3}) for outdoor and personal exposure to the mixed
-combustion source.}
-
-\centering{
-
-}
-
-\end{table}%
-
 When the average treatment effects of the CBHP policy on community
 outdoor levels and personal exposure levels of the mixed combustion
 source were allowed to vary by treatment year and time, the treatment
@@ -2070,19 +2003,6 @@ and were estimated with greater imprecision. We found little evidence
 that these treatment effects were meaningfully mediated by exposure to
 the mixed combustion source, as the controlled direct effects were
 generally of similar magnitude as the adjusted total effects.
-
-\begin{table}
-
-\caption{\label{tbl-med-source}Average treatment effects and controlled
-direct effect (mm/Hg) of the CBHP policy on central systolic and
-diastolic blood pressure with mixed combustion source as the potential
-mediator.}
-
-\centering{
-
-}
-
-\end{table}%
 
 \section{Discussion and Conclusions}\label{discussion-and-conclusions}
 
@@ -2607,477 +2527,6 @@ efforts of project coordinators in Canada and China: Leona Siaw, Neha
 Ahmed, and Laojie Li.
 
 \section{References}\label{references}
-
-\newpage
-\appendix
-\renewcommand{\thefigure}{A\arabic{figure}}
-\renewcommand{\thetable}{A\arabic{table}}
-\setcounter{figure}{0}
-\setcounter{table}{0}
-
-\section{Appendices}\label{appendices}
-
-\subsection{Biomarker descriptives}\label{biomarker-descriptives}
-
-Below we show boxplots for the logged values of the blood inflammatory
-and oxidative stress markers.
-
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=0.9\textwidth,height=\textheight]{images/biomarker-boxplot-log.jpg}
-
-}
-
-\caption{\label{fig-afig-biomarkers}Boxplots for markers of systemic
-inflammation including C-reactive protein (CRP), interleukin-6 (IL-6),
-tumour necrosis factor alpha (TNF-\(\alpha\)) and markers of oxidative
-stress including 8-hydroxy-2'-deoxyguanosine (8-OHdG) and
-malondialdehyde (MDA)}
-
-\end{figure}%
-
-\newpage
-
-\subsection{Imputation results}\label{imputation-results}
-
-The figures below show density plots for the values of body mass index,
-waist circumference, and indoor PM\textsubscript{2.5} from the multiple
-imputation models. The red lines show the values for each of the 30
-imputed datasets, and the black line shows the value for the observed
-data.
-
-\begin{figure}[H]
-
-\begin{minipage}[t]{0.50\linewidth}
-
-\centering{
-
-\captionsetup{labelsep=none}\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_BMI_density.png}
-
-}
-
-\subcaption{\label{fig-afig-mi-1}}
-
-\end{minipage}%
-%
-\begin{minipage}[t]{0.50\linewidth}
-
-\centering{
-
-\captionsetup{labelsep=none}\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_waist_circ_density.png}
-
-}
-
-\subcaption{\label{fig-afig-mi-2}}
-
-\end{minipage}%
-\newline
-\begin{minipage}[t]{0.50\linewidth}
-
-\centering{
-
-\captionsetup{labelsep=none}\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_indoorPM_density.png}
-
-}
-
-\subcaption{\label{fig-afig-mi-3}}
-
-\end{minipage}%
-
-\caption{\label{fig-afig-mi}Kernal density plots showing distribution of
-multiply-imputed values for body mass index (kg/m\textsuperscript{2}),
-waist circumference (cm), and indoor PM\textsubscript{2.5}
-(µg/m\textsuperscript{3}) (red lines) and observed values (heavy black
-line)}
-
-\end{figure}%
-
-\newpage
-
-\subsection{Participant flow diagram}\label{participant-flow-diagram}
-
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=0.8\textwidth,height=\textheight]{images/Participation-flowchart-Apr12.png}
-
-}
-
-\caption{\label{fig-flowchart}Flow chart of BHET study participation at
-the participant, household, and village levels across study years.}
-
-\end{figure}%
-
-\newpage
-
-\newpage
-
-\subsection{Policy uptake}\label{policy-uptake-1}
-
-Figure~\ref{fig-afig-coal} shows trends over time in self-reported coal
-and biomass consumption over each season. Table~\ref{tbl-fuel-did} shows
-results from applying our extended two-way fixed effects models (in
-separate analyses) to coal and biomass consumption.
-
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=1\textwidth,height=\textheight]{images/coal-plot.png}
-
-}
-
-\caption{\label{fig-afig-coal}Trends in self-reported coal and biomass,
-by treatment season}
-
-\end{figure}%
-
-\begin{table}
-
-\caption{\label{tbl-fuel-did}Policy impacts on self-reported fuel use
-(kg)}
-
-\centering{
-
-}
-
-\end{table}%
-
-\newpage
-
-\subsection{Heterogeneity in treament
-effects}\label{heterogeneity-in-treament-effects}
-
-\subsubsection{Personal exposure}\label{personal-exposure}
-
-Table Table~\ref{tbl-a-het-personal} shows limited evidence that the
-\(ATT\)s across cohorts and time demonstrate meaningful heterogeneity.
-
-\begin{table}
-
-\caption{\label{tbl-a-het-personal}Heterogenous treatment effects:
-Personal exposures}
-
-\centering{
-
-}
-
-\end{table}%
-
-\subsubsection{\texorpdfstring{Indoor
-PM\textsubscript{2.5}}{Indoor PM2.5}}\label{indoor-pm2.5-1}
-
-Table Table~\ref{tbl-a-het-indoor} shows estimates for cohort-time
-\(ATT\)s for daily and seasonal indoor PM\textsubscript{2.5}.
-
-\begin{table}
-
-\caption{\label{tbl-a-het-indoor}Heterogenous treatment effects: Indoor}
-
-\centering{
-
-}
-
-\end{table}%
-
-\newpage
-
-\subsubsection{Indoor temperature}\label{indoor-temperature}
-
-\begin{table}
-
-\caption{\label{tbl-a-het-temp}Heterogenous treatment effects: Indoor
-temperature}
-
-\centering{
-
-}
-
-\end{table}%
-
-\newpage
-
-\subsubsection{Blood pressure outcomes}\label{blood-pressure-outcomes}
-
-Table~\ref{tbl-bp-het} shows \(ATT\)s by treatment cohort and time, as
-well as the results of joint tests of heterogeneity across \(ATT\)s.
-
-\begin{table}
-
-\caption{\label{tbl-bp-het}Heterogenous treatment effects for the total
-effect of the CBHP policy on blood pressure.}
-
-\centering{
-
-}
-
-\end{table}%
-
-\newpage
-
-\subsubsection{Mediation analyses for blood
-pressure}\label{mediation-analyses-for-blood-pressure}
-
-Table~\ref{tbl-a-bp-med-het} shows the cohort-time treatment effects for
-the mediation model for blood pressure.
-
-\begin{table}
-
-\caption{\label{tbl-a-bp-med-het}Heterogenous treatment effects for
-blood pressure mediation model}
-
-\centering{
-
-}
-
-\end{table}%
-
-\begin{table}
-
-\caption{\label{tbl-a-bp-med-het-tests}Heterogenous treatment effects
-and tests for cohort-time heterogeneity across CDEs for multiple
-mediation blood pressure mediation model.}
-
-\centering{
-
-}
-
-\end{table}%
-
-\newpage
-
-\subsubsection{Respiratory outcomes}\label{respiratory-outcomes}
-
-Appendix tables \ref{tbl-a-het-resp}, \ref{tbl-a-het-cough},
-\ref{tbl-a-het-phlegm}, \ref{tbl-a-het-wheeze}, \ref{tbl-a-het-breath},
-\ref{tbl-a-het-nochest} below show Average Treatment Effect on the
-Treated (\(ATT\)s) by treatment cohort and time. ATTs are derived from
-estimating marginal effects from extended two-way fixed effects models
-with additional adjustment for age, sex, and smoking status.
-
-\begin{table}
-
-\caption{\label{tbl-a-het-resp}Heterogenous treatment effects for
-self-reported respiratory outcomes: Any respiratory symptom}
-
-\centering{
-
-}
-
-\end{table}%
-
-\begin{table}
-
-\caption{\label{tbl-a-het-cough}Heterogenous treatment effects for
-self-reported respiratory outcomes: Coughing}
-
-\centering{
-
-}
-
-\end{table}%
-
-\begin{table}
-
-\caption{\label{tbl-a-het-phlegm}Heterogenous treatment effects for
-self-reported respiratory outcomes: Phlegm}
-
-\centering{
-
-}
-
-\end{table}%
-
-\begin{table}
-
-\caption{\label{tbl-a-het-wheeze}Heterogenous treatment effects for
-self-reported respiratory outcomes: Wheezing attacks}
-
-\centering{
-
-}
-
-\end{table}%
-
-\begin{table}
-
-\caption{\label{tbl-a-het-breath}Heterogenous treatment effects for
-self-reported respiratory outcomes: Trouble breathing}
-
-\centering{
-
-}
-
-\end{table}%
-
-\begin{table}
-
-\caption{\label{tbl-a-het-nochest}Heterogenous treatment effects for
-self-reported respiratory outcomes: Chest trouble}
-
-\centering{
-
-}
-
-\end{table}%
-
-\newpage
-
-\subsubsection{Outdoor and personal mixed
-combustion}\label{outdoor-and-personal-mixed-combustion}
-
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=1\textwidth,height=\textheight]{images/did-mixed-ct-wave.png}
-
-}
-
-\caption{\label{fig-afig-mixed-ct}Adjusted and unadjusted treatment
-effect for outdoor and personal exposure (µg/m\textsuperscript{3}) to
-the mixed combustion source by treatment year.}
-
-\end{figure}%
-
-\newpage
-
-\subsection{Impact of sample composition on FeNO
-results}\label{impact-of-sample-composition-on-feno-results}
-
-Table~\ref{tbl-a-feno} shows differences in the \(ATT\)s for the impact
-of the CBHP policy on FeNO depending on whether the estimation sample
-includes all individuals or is limited to those with repeated measures
-across campaigns.
-
-\begin{table}
-
-\caption{\label{tbl-a-feno}Effects of the CBHP policy on FeNO (ppb)
-based on the number of individuals with repeated measurements.}
-
-\centering{
-
-}
-
-\end{table}%
-
-\newpage
-
-\subsection{Impact of including Season 3
-data}\label{impact-of-including-season-3-data}
-
-Table~\ref{tbl-a-ind-s3} shows differences in the \(ATT\)s for the
-impact of seasonal indoor PM\textsubscript{2.5} when season 3 data
-(collected in 41 villages during COVID-19) are included versus excluded.
-
-\begin{table}
-
-\caption{\label{tbl-a-ind-s3}Effects of the CBHP policy on indoor
-seasonal PM\textsubscript{2.5} based on whether Season 3 data are
-included vs.~excluded.}
-
-\centering{
-
-}
-
-\end{table}%
-
-Figure~\ref{fig-afig-did-opm-w3} shows the impact of including Wave 3
-data on the estimates of the impact of the policy on seasonal outdoor
-PM\textsubscript{2.5}.
-
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=0.6\textwidth,height=\textheight]{images/did-outdoor-w3.png}
-
-}
-
-\caption{\label{fig-afig-did-opm-w3}Effects of the CBHP policy on
-outdoor seasonal PM\textsubscript{2.5} based on whether Season 3 data
-are included vs.~excluded.}
-
-\end{figure}%
-
-\newpage
-
-\subsection{Pre-trends for blood
-pressure}\label{pre-trends-for-blood-pressure}
-
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=0.8\textwidth,height=\textheight]{images/never_Y3.png}
-
-}
-
-\caption{\label{fig-afig-pt3}Comparison of pre-interventions trends in
-blood pressure between waves 1 and 2 for never treated and villages
-later treated in wave 3}
-
-\end{figure}%
-
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=0.7\textwidth,height=\textheight]{images/never_Y4.png}
-
-}
-
-\caption{\label{fig-afig-pt4}Comparison of pre-interventions trends in
-blood pressure between waves 1 and 2 for never treated and villages
-later treated in wave 4}
-
-\end{figure}%
-
-\newpage
-
-\newpage
-
-\subsection{Impact of group and time fixed
-effects}\label{impact-of-group-and-time-fixed-effects}
-
-\begin{table}
-
-\caption{\label{tbl-a-fe}Effects of the CBHP policy on personal exposure
-(\(\mu g / m^{3}\)) with variations in fixed effects for treatment group
-and time.}
-
-\centering{
-
-}
-
-\end{table}%
-
-\newpage
-
-\section*{About the authors}\label{about-the-authors}
-\addcontentsline{toc}{section}{About the authors}
-
-\section*{Other publications}\label{other-publications}
-\addcontentsline{toc}{section}{Other publications}
-
-Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G,
-et al.~2022a. Socioeconomic and Demographic Associations with Wintertime
-Air Pollution Exposures at Household, Community, and District Scales in
-Rural Beijing, China. Environ Sci Technol 56:8308--8318;
-doi:10.1021/acs.est.1c07402.
-
-Li X, Baumgartner J, Harper S, Zhang X, Sternbach T, Barrington-Leigh C,
-et al.~2022b. Field measurements of indoor and community air quality in
-rural Beijing before, during, and after the COVID-19 lockdown. Indoor
-Air 32:e13095; doi:10.1111/ina.13095.
-
-Sternbach TJ, Harper S, Li X, Zhang X, Carter E, Zhang Y, et al.~2022.
-Effects of indoor and outdoor temperatures on blood pressure and central
-hemodynamics in a wintertime longitudinal study of Chinese adults. J
-Hypertension 40:1950--1959; doi:10.1097/HJH.0000000000003198.
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{1}
@@ -3821,6 +3270,300 @@ of air quality regulations. {Research} report 187.} Health Effects
 Institute / Health Effects Institute:Boston, MA.
 
 \end{CSLReferences}
+
+\newpage
+\appendix
+\renewcommand{\thefigure}{A\arabic{figure}}
+\renewcommand{\thetable}{A\arabic{table}}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
+\section{Appendices}\label{appendices}
+
+\subsection{Biomarker descriptives}\label{biomarker-descriptives}
+
+Below we show boxplots for the logged values of the blood inflammatory
+and oxidative stress markers.
+
+\begin{figure}[H]
+
+\caption{\label{fig-afig-biomarkers}Boxplots for markers of systemic
+inflammation including C-reactive protein (CRP), interleukin-6 (IL-6),
+tumour necrosis factor alpha (TNF-\(\alpha\)) and markers of oxidative
+stress including 8-hydroxy-2'-deoxyguanosine (8-OHdG) and
+malondialdehyde (MDA)}
+
+\centering{
+
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/biomarker-boxplot-log.jpg}
+
+}
+
+\end{figure}%
+
+\newpage
+
+\subsection{Imputation results}\label{imputation-results}
+
+The figures below show density plots for the values of body mass index,
+waist circumference, and indoor PM\textsubscript{2.5} from the multiple
+imputation models. The red lines show the values for each of the 30
+imputed datasets, and the black line shows the value for the observed
+data.
+
+\begin{figure}[H]
+
+\caption{\label{fig-afig-mi}Kernal density plots showing distribution of
+multiply-imputed values for body mass index (kg/m\textsuperscript{2}),
+waist circumference (cm), and indoor PM\textsubscript{2.5}
+(µg/m\textsuperscript{3}) (red lines) and observed values (heavy black
+line)}
+
+\begin{minipage}{0.50\linewidth}
+
+\centering{
+
+\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_BMI_density.png}
+
+}
+
+\subcaption{\label{fig-afig-mi-1}}
+
+\end{minipage}%
+%
+\begin{minipage}{0.50\linewidth}
+
+\centering{
+
+\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_waist_circ_density.png}
+
+}
+
+\subcaption{\label{fig-afig-mi-2}}
+
+\end{minipage}%
+\newline
+\begin{minipage}{0.50\linewidth}
+
+\centering{
+
+\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_indoorPM_density.png}
+
+}
+
+\subcaption{\label{fig-afig-mi-3}}
+
+\end{minipage}%
+
+\end{figure}%
+
+\newpage
+
+\subsection{Participant flow diagram}\label{participant-flow-diagram}
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=0.8\textwidth,height=\textheight]{images/Participation-flowchart-Apr12.png}
+
+}
+
+\caption{\label{fig-flowchart}Flow chart of BHET study participation at
+the participant, household, and village levels across study years.}
+
+\end{figure}%
+
+\newpage
+
+\newpage
+
+\subsection{Policy uptake}\label{policy-uptake-1}
+
+Figure~\ref{fig-afig-coal} shows trends over time in self-reported coal
+and biomass consumption over each season. Table~\ref{tbl-fuel-did} shows
+results from applying our extended two-way fixed effects models (in
+separate analyses) to coal and biomass consumption.
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/coal-plot.png}
+
+}
+
+\caption{\label{fig-afig-coal}Trends in self-reported coal and biomass,
+by treatment season}
+
+\end{figure}%
+
+\newpage
+
+\subsection{Heterogeneity in treament
+effects}\label{heterogeneity-in-treament-effects}
+
+\subsubsection{Personal exposure}\label{personal-exposure}
+
+Table Table~\ref{tbl-a-het-personal} shows limited evidence that the
+\(ATT\)s across cohorts and time demonstrate meaningful heterogeneity.
+
+\subsubsection{\texorpdfstring{Indoor
+PM\textsubscript{2.5}}{Indoor PM2.5}}\label{indoor-pm2.5-1}
+
+Table Table~\ref{tbl-a-het-indoor} shows estimates for cohort-time
+\(ATT\)s for daily and seasonal indoor PM\textsubscript{2.5}.
+
+\newpage
+
+\subsubsection{Indoor temperature}\label{indoor-temperature}
+
+\newpage
+
+\subsubsection{Blood pressure outcomes}\label{blood-pressure-outcomes}
+
+Table~\ref{tbl-bp-het} shows \(ATT\)s by treatment cohort and time, as
+well as the results of joint tests of heterogeneity across \(ATT\)s.
+
+\newpage
+
+\subsubsection{Mediation analyses for blood
+pressure}\label{mediation-analyses-for-blood-pressure}
+
+Table~\ref{tbl-a-bp-med-het} shows the cohort-time treatment effects for
+the mediation model for blood pressure.
+
+\newpage
+
+\subsubsection{Respiratory outcomes}\label{respiratory-outcomes}
+
+Appendix tables \ref{tbl-a-het-resp}, \ref{tbl-a-het-cough},
+\ref{tbl-a-het-phlegm}, \ref{tbl-a-het-wheeze}, \ref{tbl-a-het-breath},
+\ref{tbl-a-het-nochest} below show Average Treatment Effect on the
+Treated (\(ATT\)s) by treatment cohort and time. ATTs are derived from
+estimating marginal effects from extended two-way fixed effects models
+with additional adjustment for age, sex, and smoking status.
+
+\newpage
+
+\subsubsection{Outdoor and personal mixed
+combustion}\label{outdoor-and-personal-mixed-combustion}
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/did-mixed-ct-wave.png}
+
+}
+
+\caption{\label{fig-afig-mixed-ct}Adjusted and unadjusted treatment
+effect for outdoor and personal exposure (µg/m\textsuperscript{3}) to
+the mixed combustion source by treatment year.}
+
+\end{figure}%
+
+\newpage
+
+\subsection{Impact of sample composition on FeNO
+results}\label{impact-of-sample-composition-on-feno-results}
+
+Table~\ref{tbl-a-feno} shows differences in the \(ATT\)s for the impact
+of the CBHP policy on FeNO depending on whether the estimation sample
+includes all individuals or is limited to those with repeated measures
+across campaigns.
+
+\newpage
+
+\subsection{Impact of including Season 3
+data}\label{impact-of-including-season-3-data}
+
+Table~\ref{tbl-a-ind-s3} shows differences in the \(ATT\)s for the
+impact of seasonal indoor PM\textsubscript{2.5} when season 3 data
+(collected in 41 villages during COVID-19) are included versus excluded.
+
+Figure~\ref{fig-afig-did-opm-w3} shows the impact of including Wave 3
+data on the estimates of the impact of the policy on seasonal outdoor
+PM\textsubscript{2.5}.
+
+\begin{figure}[H]
+
+\caption{\label{fig-afig-did-opm-w3}Effects of the CBHP policy on
+outdoor seasonal PM\textsubscript{2.5} based on whether Season 3 data
+are included vs.~excluded.}
+
+\centering{
+
+\includegraphics[width=0.6\textwidth,height=\textheight]{images/did-outdoor-w3.png}
+
+}
+
+\end{figure}%
+
+\newpage
+
+\subsection{Pre-trends for blood
+pressure}\label{pre-trends-for-blood-pressure}
+
+\begin{figure}[H]
+
+\caption{\label{fig-afig-pt3}Comparison of pre-interventions trends in
+blood pressure between waves 1 and 2 for never treated and villages
+later treated in wave 3}
+
+\centering{
+
+\includegraphics[width=0.8\textwidth,height=\textheight]{images/never_Y3.png}
+
+}
+
+\end{figure}%
+
+\begin{figure}[H]
+
+\caption{\label{fig-afig-pt4}Comparison of pre-interventions trends in
+blood pressure between waves 1 and 2 for never treated and villages
+later treated in wave 4}
+
+\centering{
+
+\includegraphics[width=0.7\textwidth,height=\textheight]{images/never_Y4.png}
+
+}
+
+\end{figure}%
+
+\newpage
+
+\newpage
+
+\subsection{Impact of group and time fixed
+effects}\label{impact-of-group-and-time-fixed-effects}
+
+\newpage
+
+\section*{About the authors}\label{about-the-authors}
+\addcontentsline{toc}{section}{About the authors}
+
+\section*{Other publications}\label{other-publications}
+\addcontentsline{toc}{section}{Other publications}
+
+Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G,
+et al.~2022a. Socioeconomic and Demographic Associations with Wintertime
+Air Pollution Exposures at Household, Community, and District Scales in
+Rural Beijing, China. Environ Sci Technol 56:8308--8318;
+doi:10.1021/acs.est.1c07402.
+
+Li X, Baumgartner J, Harper S, Zhang X, Sternbach T, Barrington-Leigh C,
+et al.~2022b. Field measurements of indoor and community air quality in
+rural Beijing before, during, and after the COVID-19 lockdown. Indoor
+Air 32:e13095; doi:10.1111/ina.13095.
+
+Sternbach TJ, Harper S, Li X, Zhang X, Carter E, Zhang Y, et al.~2022.
+Effects of indoor and outdoor temperatures on blood pressure and central
+hemodynamics in a wintertime longitudinal study of Chinese adults. J
+Hypertension 40:1950--1959; doi:10.1097/HJH.0000000000003198.
+
 
 
 

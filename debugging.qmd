@@ -10,35 +10,35 @@ format:
 #  html:
 #    keep-md: true
 #    
-  docx: 
-    toc: true
-    number-sections: true
-    number-depth: 3
+#  docx: 
+#    toc: true
+#    number-sections: true
+#    number-depth: 3
 
-# pdf:
-#   toc: true
-#   keep-tex: true
-#   number-sections: true
-#   number-depth: 3
-#   include-in-header:
-#      - text: |
-#         \usepackage{wrapfig}
-#         \usepackage{colortbl}
-#          \makeatletter
-#          \renewenvironment{table}%
-#            {\renewcommand\familydefault\sfdefault
-#             \@float{table}}
-#            {\end@float}
-#          \renewenvironment{figure}%
-#            {\renewcommand\familydefault\sfdefault
-#             \@float{figure}}
-#            {\end@float}
-#          \makeatother
-#         \usepackage{changes}
-#   geometry: 
-#      - right=1in
-#      - left=1in
-#   fig-pos: H
+ pdf:
+   toc: true
+   keep-tex: true
+   number-sections: true
+   number-depth: 3
+   include-in-header:
+      - text: |
+         \usepackage{wrapfig}
+         \usepackage{colortbl}
+          \makeatletter
+          \renewenvironment{table}%
+            {\renewcommand\familydefault\sfdefault
+             \@float{table}}
+            {\end@float}
+          \renewenvironment{figure}%
+            {\renewcommand\familydefault\sfdefault
+             \@float{figure}}
+            {\end@float}
+          \makeatother
+         \usepackage{changes}
+   geometry: 
+      - right=1in
+      - left=1in
+   fig-pos: H
 bibliography: hei-report.bib
 csl: environmental-health-perspectives.csl
 ---
@@ -201,69 +201,120 @@ tt(med_source_t,
 #     general_title = "", threeparttable = T, escape = F)
 ```
 
-What about this table? (@tbl-fuel-did)
+What about this table? (@tbl-a-het-temp)
 ```{r}
 #| echo: FALSE
-#| label: tbl-fuel-did
-#| tbl-cap: Policy impacts on self-reported fuel use (kg).
+#| label: tbl-a-het-temp
+#| tbl-cap: Heterogenous treatment effects for indoor temperature
 
-# read in fuel use table
-fuel_table <- read_rds(here("outputs", 
-  "fuel-table-het.rds"))
+ctt <- read_xlsx(here("data-clean", 
+  "ct_temp_table.xlsx"))
 
-models_coal <- read_rds(here("outputs/models", 
-  "m_coal.rds"))
-models_bio <- read_rds(here("outputs/models", 
-  "m_biomass.rds"))
+options(knitr.kable.NA = " ")
+ctt_table <- ctt %>% 
+  pivot_longer(!ct_labels, names_to = "outcome", 
+    values_to = "est_ci", cols_vary = "slowest") %>%
+  separate_wider_delim(est_ci, delim = "(", 
+    names = c("att", "attci"), cols_remove = TRUE) %>% 
+  mutate(attci = paste("(", sprintf("%12s", attci), sep=""),
+    measure = rep(c("All", "Daytime", "Heating season",
+      "Daytime heating season", "All", "Heating season"),
+      each = 6),
+    stat = c(rep(2, times = 24), rep(3, times = 12)),
+    cohort = rep(c(2019,2019,2019,2020,2020,2021), 
+                 times = 6),
+    time = rep(c(2019,2020,2021,2020,2021,2021), 
+               times = 6),
+    att = as.numeric(att)) %>%
+  select(cohort, stat, time, measure, att, attci) %>%
+  relocate(measure, stat, cohort, time)
 
-models_coal_note <- paste("Joint test that all cohort-time ATTs are equal: ", 
-    "F(", models_coal$ht1$df1, ", ", 
-    models_coal$ht1$df2, ")= " , 
-    round(models_coal$ht1$statistic, digits=3), ", p= ", 
-    round(models_coal$ht1$p.value, digits=3), sep="")
+ctt_point_temp <- read_xlsx(here("data-clean",
+  "unadjusted_pointtemp_results_apr3.xlsx")) %>%
+  filter(type != "Overall ATT") %>%
+  separate_wider_delim(att, delim = "(", 
+    names = c("att", "attci"), cols_remove = TRUE) %>%
+  mutate(att = as.numeric(att),
+         measure = "All",
+         cohort = c(2019, 2019, 2020, 2021),
+         time = c(2019, 2021, 2021, 2021),
+         stat = 1,
+         attci = paste("(", attci, sep="")) %>%
+  select(stat, measure, cohort, time, att, attci) %>%
+  relocate(measure, stat, cohort, time)
 
-models_bio_note <- paste("Joint test that all cohort-time ATTs are equal: ", 
-    "F(", models_bio$ht1$df1, ", ", 
-    models_bio$ht1$df2, ")= " , 
-    round(models_bio$ht1$statistic, digits=3), ", p= ", 
-    round(models_bio$ht1$p.value, digits=3), sep="")
+ctt_temp_atts <- bind_rows(ctt_point_temp, ctt_table)
 
-colnames(fuel_table) <- c("Cohort", "Time", 
-  "ATT", "(95% CI)", "ATT", "(95% CI)")
+ctt_het_stats <- read_xlsx(here("data-clean",
+  "gt_temp_heterogeneity.xlsx"))  %>%
+  rename(measure = temp_metric,
+         test = f_stat,
+         pval = p_value) %>%
+  mutate(measure = c("All", "Daytime", "Heating season",
+      "Daytime heating season", "All", "Heating season",
+      "All"),
+    stat = c(2,2,2,2,3,3,1),
+    test = sprintf("%.1f", test),
+    pval = sprintf("%.3f", pval),
+    cohort = 2021,
+    time = 2021) %>%
+  select(measure, stat, cohort, time, test, pval)
 
-tt(fuel_table,
-   # width = c(.8, .8, 1, 1, 1, 1),
-   digits = 2,
-   notes = list("Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval", 
-  a = list(i = 0, j = 3, text = models_coal_note), 
-  b = list(i =0, j = 5, text = models_bio_note))) %>%
-    group_tt(
-      j = list(
-        "Coal" = 3:4,
-        "Biomass" = 5:6),
-      i = list(
-        "Average ATT" = 1, 
-        "Cohort-Time ATTs" = 2)) %>%
-  style_tt(i = c(1,3), bold = TRUE) %>%
-  style_tt(i = 7, line = "b", line_color = "black") %>%
+
+ctt_temp_het_table <- ctt_temp_atts %>% 
+  left_join(ctt_het_stats, 
+    join_by(measure, stat, cohort, time)) %>%
+  pivot_wider(names_from = stat, 
+    values_from = c(att,attci,test,pval), 
+    names_vary = "slowest") %>%
+  arrange(measure, cohort, time) %>%
+  mutate(ct = paste(cohort, time, sep=" ")) %>%
+  select(-measure, -test_1, -test_2, -test_3,
+         -cohort, -time) %>%
+  relocate(ct)
+
+
+colnames(ctt_temp_het_table) <- c("Cohort Time", "ATT", "(95%CI)", "p-value", "ATT", 
+  "(95%CI)", "p-value", "ATT", "(95%CI)", "p-value")
+
+tt(ctt_temp_het_table,
+   width = c(1.2, 0.5, 1.2, 0.5, 0.5, 
+             1.2, 0.5, 0.5, 1.2, 0.5)) %>%
+  group_tt(
+  i = list(
+    "All times" = 1, 
+    "Daytime" = 7,
+    "Daytime heating" = 13,
+    "Heating season" = 19),
+  j = list(
+    "Point temp (°C)" = 2:4,
+    "Mean temp (°C)" = 5:7,
+    "Min temp (°C)" = 8:10)) %>%
+  style_tt(i = c(1,8,15,22), bold = TRUE,
+           align = "c") %>%
+  # style_tt(
+  #   i = c(2,9,16,23), j = 1, 
+  #     rowspan = 3, alignv = "t") %>%
+  # style_tt(
+  #   i = c(4,10,16,22), j = 1, 
+  #     rowspan = 2, alignv = "t") %>%
+  style_tt(j=1:10, fontsize = 0.8) %>%
+  style_tt(j=c(2,5,8), sprintf = "%.2f") %>%
   format_tt(escape = TRUE)
-  #%>%
-  #style_tt(
-  #  i = c(2, 4, 6, 8), j = 1, 
-  #  rowspan = 2, alignv = "t") %>%    
+  
 
-#kable(fuel_table, digits = 0, escape = FALSE,
-#  col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
-#   "ATT", "(95\\%CI)"), # "latex", booktabs = T,
-#  linesep = "", align = 'cccccc') %>%
-#  column_spec(1:2, width = "1.5cm") %>%
-#  kable_styling(full_width = F, 
-#    latex_options = "HOLD_position") %>%
-#  pack_rows("Average ATT", 1, 2, indent = F) %>%
-#  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
-#  add_header_above(c(" " = 2, 
-#    "Coal\\\\textsuperscript{a}" = 2, 
-#    "Biomass\\\\textsuperscript{b}" = 2),
-#    escape = FALSE) %>%
-#  footnote(alphabet=c(models_coal_note, models_bio_note)) 
+    
+# kable(ctt_temp_het_table, digits = 2, 
+#   col.names = c("Cohort", "Time", "ATT", "(95%CI)",
+#     "p-value", "ATT", "(95%CI)", "p-value",
+#     "ATT", "(95%CI)", "p-value")) %>%
+#   kable_styling(latex_options = "HOLD_position",
+#     font_size = 9) %>%
+#   pack_rows("All times", 1, 6) %>%
+#   pack_rows("Daytime", 7, 12) %>%
+#   pack_rows("Daytime heating", 13, 18) %>%
+#   pack_rows("Heating season", 19, 24) %>%
+#   collapse_rows(columns = 1, valign = "top") %>%
+#   add_header_above(c(" " = 2, "Point temp (°C)" = 3,
+#     "Mean temp (°C)" = 3, "Min temp (°C)" = 3))
 ```

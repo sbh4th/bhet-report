@@ -1331,7 +1331,8 @@ tt(fuel_table,
 ### Personal exposure 
 Table @tbl-a-het-personal shows limited evidence that the $ATT$s across cohorts and time demonstrate meaningful heterogeneity.
 
-```{r atbl-het-pe, echo=F, eval=F}
+```{r}
+#| echo: FALSE
 #| label: tbl-a-het-personal
 #| tbl-cap: "Heterogenous treatment effects: Personal exposures"
 
@@ -1342,40 +1343,60 @@ aph_table <- read_rds(here("outputs",
 models_ppm <- read_rds(here("outputs/models", "m_ppm.rds"))
 models_pbc <- read_rds(here("outputs/models", "m_pbc.rds"))
 
-models_ppm_note <- paste("Joint test that all ATTs are equal: ", 
+models_ppm_note <- paste("Joint test that all cohort-time ATTs are equal: ", 
     "F(", models_ppm$ht1$df1, ", ", 
     models_ppm$ht1$df2, ")= " , 
     round(models_ppm$ht1$statistic, digits=3), ", p= ", 
     round(models_ppm$ht1$p.value, digits=3), sep="")
 
-models_pbc_note <- paste("Joint test that all ATTs are equal: ", 
+models_pbc_note <- paste("Joint test that all cohort-time ATTs are equal: ", 
     "F(", models_pbc$ht1$df1, ", ", 
     models_pbc$ht1$df2, ")= " , 
     round(models_pbc$ht1$statistic, digits=3), ", p= ", 
     round(models_pbc$ht1$p.value, digits=3), sep="")
 
-kable(aph_table, digits = 2, escape = FALSE,
-  col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
-   "ATT", "(95\\%CI)"), # "latex", booktabs = T,
-  linesep = "", align = 'cccccc') %>%
-  column_spec(1:2, width = "1.5cm") %>%
-  kable_styling(full_width = F, 
-    latex_options = "HOLD_position") %>%
-  pack_rows("Average ATT", 1, 2, indent = F) %>%
-  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
-  add_header_above(c(" " = 2, 
-    "PM2.5\\\\textsuperscript{a}" = 2, 
-    "Black carbon\\\\textsuperscript{b}" = 2),
-    escape = FALSE) %>%
-  footnote(alphabet=c(models_ppm_note, models_pbc_note)) 
+colnames(aph_table) <- c("Cohort", "Time", 
+  "ATT", "(95% CI)", "ATT", "(95% CI)")
+
+tt(aph_table,
+   # width = c(.8, .8, 1, 1, 1, 1),
+   digits = 2,
+   notes = list("Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval", 
+  a = list(i = 0, j = 3, text = models_ppm_note), 
+  b = list(i =0, j = 5, text = models_pbc_note))) %>%
+    group_tt(
+      j = list(
+        "PM2.5" = 3:4,
+        "Black carbon" = 5:6),
+      i = list(
+        "Average ATT" = 1, 
+        "Cohort-Time ATTs" = 2)) %>%
+  style_tt(i = c(1,3), bold = TRUE) %>%
+  format_tt(escape = TRUE)
+
+# kable(aph_table, digits = 2, escape = FALSE,
+#   col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
+#    "ATT", "(95\\%CI)"), # "latex", booktabs = T,
+#   linesep = "", align = 'cccccc') %>%
+#   column_spec(1:2, width = "1.5cm") %>%
+#   kable_styling(full_width = F, 
+#     latex_options = "HOLD_position") %>%
+#   pack_rows("Average ATT", 1, 2, indent = F) %>%
+#   pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+#   add_header_above(c(" " = 2, 
+#     "PM2.5\\\\textsuperscript{a}" = 2, 
+#     "Black carbon\\\\textsuperscript{b}" = 2),
+#     escape = FALSE) %>%
+#   footnote(alphabet=c(models_ppm_note, models_pbc_note)) 
 ```
 
 ### Indoor PM~2.5~
 Table @tbl-a-het-indoor shows estimates for cohort-time $ATT$s for daily and seasonal indoor PM~2.5~.
 
-```{r atbl-het-ipm, echo=F, eval=F}
+```{r, echo=F}
+#| echo: FALSE
 #| label: tbl-a-het-indoor
-#| tbl-cap: "Heterogenous treatment effects: Indoor"
+#| tbl-cap: Heterogenous treatment effects: Indoor PM~2.5~.
 
 # read in personal exposure heterogeneity table
 aph_table_ind <- read_rds(here("outputs", 
@@ -1396,20 +1417,40 @@ models_is_note <- paste("Joint test that all ATTs are equal: ",
     round(models_is$ht1$statistic, digits=3), ", p= ", 
     round(models_is$ht1$p.value, digits=3), sep="")
 
-kable(aph_table_ind, digits = 2, escape = FALSE,
-  col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
-   "ATT", "(95\\%CI)"), # "latex", booktabs = T,
-  linesep = "", align = 'cccccc') %>%
-  column_spec(1:2, width = "1.5cm") %>%
-  kable_styling(full_width = F,
-    latex_options = "HOLD_position") %>%
-  pack_rows("Average ATT", 1, 2, indent = F) %>%
-  pack_rows("Cohort-Time ATTs", 2, 3, indent = F) %>%
-  add_header_above(c(" " = 2, 
-    "Daily\\\\textsuperscript{a}" = 2, 
-    "Seasonal\\\\textsuperscript{b}" = 2),
-    escape = FALSE) %>%
-  footnote(alphabet=c(models_i24_note, models_is_note)) 
+colnames(aph_table_ind) <- c("Cohort", "Time", 
+  "ATT", "(95% CI)", "ATT", "(95% CI)")
+
+tt(aph_table_ind,
+   # width = c(.8, .8, 1, 1, 1, 1),
+   digits = 2,
+   notes = list("Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval", 
+  a = list(i = 0, j = 3, text = models_i24_note), 
+  b = list(i =0, j = 5, text = models_is_note))) %>%
+    group_tt(
+      j = list(
+        "Daily" = 3:4,
+        "Seasonal" = 5:6),
+      i = list(
+        "Average ATT" = 1, 
+        "Cohort-Time ATTs" = 2)) %>%
+  style_tt(i = c(1,3), bold = TRUE) %>%
+  format_tt(j = c(3,5), sprintf = "%.2f") %>%
+  format_tt(escape = TRUE)
+
+# kable(aph_table_ind, digits = 2, escape = FALSE,
+#   col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
+#    "ATT", "(95\\%CI)"), # "latex", booktabs = T,
+#   linesep = "", align = 'cccccc') %>%
+#   column_spec(1:2, width = "1.5cm") %>%
+#   kable_styling(full_width = F,
+#     latex_options = "HOLD_position") %>%
+#   pack_rows("Average ATT", 1, 2, indent = F) %>%
+#   pack_rows("Cohort-Time ATTs", 2, 3, indent = F) %>%
+#   add_header_above(c(" " = 2, 
+#     "Daily\\\\textsuperscript{a}" = 2, 
+#     "Seasonal\\\\textsuperscript{b}" = 2),
+#     escape = FALSE) %>%
+#   footnote(alphabet=c(models_i24_note, models_is_note)) 
 ```
 
 \newpage

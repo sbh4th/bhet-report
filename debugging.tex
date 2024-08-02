@@ -225,7 +225,7 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-07-31}
+\date{2024-08-02}
 
 \begin{document}
 \maketitle
@@ -339,53 +339,52 @@ Central DBP & -0.58  & (-2.59, 1.43) & -1.26  & (-3.38, 0.87) & -1.37  & (-3.69,
 
 \end{table}%
 
-What about this figure? (Figure~\ref{fig-afig-mi})
+What about this table? (Table~\ref{tbl-fuel-did})
 
-\begin{figure}[H]
+\begin{table}
 
-\caption{\label{fig-afig-mi}Kernal density plots showing distribution of
-multiply-imputed values for body mass index (kg/m\textsuperscript{2}),
-waist circumference (cm), and indoor PM\textsubscript{2.5}
-(µg/m\textsuperscript{3}) (red lines) and observed values (heavy black
-line).}
-
-\begin{minipage}{0.50\linewidth}
+\caption{\label{tbl-fuel-did}Policy impacts on self-reported fuel use
+(kg).}
 
 \centering{
 
-\includegraphics{images/MI_BMI_density.png}
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval},
+note{a}={Joint test that all cohort-time ATTs are equal: F(3, 2886)= 1.856, p= 0.135},
+note{b}={Joint test that all cohort-time ATTs are equal: F(3, 2886)= 5.545, p= 0.001},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+cell{3}{1}={c=6}{},cell{5}{1}={c=6}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+cell{10}{1}={preto={\hspace{1em}}},
+row{3}={,cmd=\bfseries,},
+row{5}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+&  & Coal &  & Biomass &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
+Cohort & Time & ATT\textsuperscript{a} & (95\% CI) & ATT\textsuperscript{b} & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT &&&&& \\
+All & All & -2361 & (-2677, -2044) & -487 & (-805, -168) \\
+Cohort-Time ATTs &&&&& \\
+2019 & 2019 & -2631 & (-2913, -2348) & -653 & (-991, -315) \\
+2019 & 2021 & -2416 & (-2847, -1984) & -633 & (-1201, -64) \\
+2020 & 2021 & -2018 & (-2474, -1562) & -350 & (-701, 0) \\
+2021 & 2021 & -1961 & (-2895, -1027) &  338 & (-30, 705) \\
+\bottomrule
+\end{talltblr}
 
 }
 
-\subcaption{\label{fig-afig-mi-1}}
-
-\end{minipage}%
-%
-\begin{minipage}{0.50\linewidth}
-
-\centering{
-
-\includegraphics{images/MI_waist_circ_density.png}
-
-}
-
-\subcaption{\label{fig-afig-mi-2}}
-
-\end{minipage}%
-\newline
-\begin{minipage}{0.50\linewidth}
-
-\centering{
-
-\includegraphics{images/MI_indoorPM_density.png}
-
-}
-
-\subcaption{\label{fig-afig-mi-3}}
-
-\end{minipage}%
-
-\end{figure}%
+\end{table}%
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{1}

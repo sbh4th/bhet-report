@@ -10,35 +10,35 @@ format:
 #  html:
 #    keep-md: true
 #    
-#  docx: 
-#    toc: true
-#    number-sections: true
-#    number-depth: 3
+  docx: 
+    toc: true
+    number-sections: true
+    number-depth: 3
 
- pdf:
-   toc: true
-   keep-tex: true
-   number-sections: true
-   number-depth: 3
-   include-in-header:
-      - text: |
-         \usepackage{wrapfig}
-         \usepackage{colortbl}
-          \makeatletter
-          \renewenvironment{table}%
-            {\renewcommand\familydefault\sfdefault
-             \@float{table}}
-            {\end@float}
-          \renewenvironment{figure}%
-            {\renewcommand\familydefault\sfdefault
-             \@float{figure}}
-            {\end@float}
-          \makeatother
-         \usepackage{changes}
-   geometry: 
-      - right=1in
-      - left=1in
-   fig-pos: H
+# pdf:
+#   toc: true
+#   keep-tex: true
+#   number-sections: true
+#   number-depth: 3
+#   include-in-header:
+#      - text: |
+#         \usepackage{wrapfig}
+#         \usepackage{colortbl}
+#          \makeatletter
+#          \renewenvironment{table}%
+#            {\renewcommand\familydefault\sfdefault
+#             \@float{table}}
+#            {\end@float}
+#          \renewenvironment{figure}%
+#            {\renewcommand\familydefault\sfdefault
+#             \@float{figure}}
+#            {\end@float}
+#          \makeatother
+#         \usepackage{changes}
+#   geometry: 
+#      - right=1in
+#      - left=1in
+#   fig-pos: H
 bibliography: hei-report.bib
 csl: environmental-health-perspectives.csl
 ---
@@ -201,26 +201,69 @@ tt(med_source_t,
 #     general_title = "", threeparttable = T, escape = F)
 ```
 
-What about this figure? (@fig-afig-mi)
-```{r, echo=FALSE}
+What about this table? (@tbl-fuel-did)
+```{r}
 #| echo: FALSE
-#| fig-cap-location: top
-#| label: fig-afig-mi
-#| fig-cap: Kernal density plots showing distribution of multiply-imputed values for body mass index (kg/m^2^), waist circumference (cm), and indoor PM~2.5~ (µg/m^3^) (red lines) and observed values (heavy black line).
-#| fig-width: 7
-#| fig-subcap: 
-#|   - ""
-#|   - ""
-#|   - ""
-#| layout-nrow: 2
+#| label: tbl-fuel-did
+#| tbl-cap: Policy impacts on self-reported fuel use (kg).
 
-knitr::include_graphics(here("images", 
-  "MI_BMI_density.png"))
+# read in fuel use table
+fuel_table <- read_rds(here("outputs", 
+  "fuel-table-het.rds"))
 
-knitr::include_graphics(here("images", 
- "MI_waist_circ_density.png"))
+models_coal <- read_rds(here("outputs/models", 
+  "m_coal.rds"))
+models_bio <- read_rds(here("outputs/models", 
+  "m_biomass.rds"))
 
-knitr::include_graphics(here("images", 
- "MI_indoorPM_density.png"))
+models_coal_note <- paste("Joint test that all cohort-time ATTs are equal: ", 
+    "F(", models_coal$ht1$df1, ", ", 
+    models_coal$ht1$df2, ")= " , 
+    round(models_coal$ht1$statistic, digits=3), ", p= ", 
+    round(models_coal$ht1$p.value, digits=3), sep="")
 
+models_bio_note <- paste("Joint test that all cohort-time ATTs are equal: ", 
+    "F(", models_bio$ht1$df1, ", ", 
+    models_bio$ht1$df2, ")= " , 
+    round(models_bio$ht1$statistic, digits=3), ", p= ", 
+    round(models_bio$ht1$p.value, digits=3), sep="")
+
+colnames(fuel_table) <- c("Cohort", "Time", 
+  "ATT", "(95% CI)", "ATT", "(95% CI)")
+
+tt(fuel_table,
+   # width = c(.8, .8, 1, 1, 1, 1),
+   digits = 2,
+   notes = list("Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval", 
+  a = list(i = 0, j = 3, text = models_coal_note), 
+  b = list(i =0, j = 5, text = models_bio_note))) %>%
+    group_tt(
+      j = list(
+        "Coal" = 3:4,
+        "Biomass" = 5:6),
+      i = list(
+        "Average ATT" = 1, 
+        "Cohort-Time ATTs" = 2)) %>%
+  style_tt(i = c(1,3), bold = TRUE) %>%
+  style_tt(i = 7, line = "b", line_color = "black") %>%
+  format_tt(escape = TRUE)
+  #%>%
+  #style_tt(
+  #  i = c(2, 4, 6, 8), j = 1, 
+  #  rowspan = 2, alignv = "t") %>%    
+
+#kable(fuel_table, digits = 0, escape = FALSE,
+#  col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
+#   "ATT", "(95\\%CI)"), # "latex", booktabs = T,
+#  linesep = "", align = 'cccccc') %>%
+#  column_spec(1:2, width = "1.5cm") %>%
+#  kable_styling(full_width = F, 
+#    latex_options = "HOLD_position") %>%
+#  pack_rows("Average ATT", 1, 2, indent = F) %>%
+#  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
+#  add_header_above(c(" " = 2, 
+#    "Coal\\\\textsuperscript{a}" = 2, 
+#    "Biomass\\\\textsuperscript{b}" = 2),
+#    escape = FALSE) %>%
+#  footnote(alphabet=c(models_coal_note, models_bio_note)) 
 ```

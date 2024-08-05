@@ -1594,6 +1594,7 @@ tt(bp_het_table,
 #| echo: FALSE
 #| label: tbl-a-bp-med-het
 #| tbl-cap: Heterogenous treatment effects for blood pressure mediation model.
+#| tbl-pos: H
 
 ctot <- read_xlsx(here("data-clean", 
   "ct_total_effect_adjusted.xlsx")) %>%
@@ -1654,9 +1655,11 @@ tt(ctotm,
   style_tt(i = c(1,6,11,16), bold = TRUE)
 ```
 
-```{r atbl-bp-het-med-tests, echo=F, message=F, eval=F}
+```{r, message=F}
+#| echo: FALSE
 #| label: tbl-a-bp-med-het-tests
-#| tbl-cap: "Heterogenous treatment effects and tests for cohort-time heterogeneity across CDEs for multiple mediation blood pressure mediation model."
+#| tbl-cap: Heterogenous treatment effects and tests for cohort-time heterogeneity across CDEs for multiple mediation blood pressure mediation model.
+#| tbl-pos: H
 
 mhet_model <- read_xlsx(here("data-clean", 
   "ct_mult_mediation_adjusted.xlsx")) %>%
@@ -1686,26 +1689,31 @@ mhet_stats <- read_xlsx(here("data-clean",
 bp_mmed_het_table <- mhet_model %>% 
   left_join(mhet_stats, join_by(bp, cohort, time)) %>%
   select(-bp)
-  
-  kable(bp_mmed_het_table, digits = 2,
-  col.names =c("Cohort", "Time", "ATT", "(95%CI)",
-   "F-Statistic", "p-value"), 
-   # "latex", booktabs = T,
-  linesep = "", align = 'llcccc') %>%
-  column_spec(1:2, width = "2cm") %>%
-  kable_styling(full_width = F) %>%
-  pack_rows("Brachial SBP", 1, 4) %>%
-  pack_rows("Central SBP", 5, 8) %>%
-  pack_rows("Brachial DBP", 9, 12) %>%
-  pack_rows("Central DBP", 13, 16) %>%
-  add_header_above(c(" " = 2, 
-    "Adjusted CDE\\\\textsuperscript{a}" = 2,
-    "Heterogeneity tests\\\\textsuperscript{b}" = 2),
-    escape = F) %>%
-  footnote(
-    general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, CDE = Controlled Direct Effect.}",
-    alphabet = c("\\\\small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", "\\\\small{F-statistics and p-values for joint tests of equality across cohort and time ATTs}"), 
-    general_title = "", threeparttable = T, escape = F)
+
+colnames(bp_mmed_het_table) <- c("Cohort", 
+  "Time", "ATT", "(95% CI)",
+  "F-Statistic", "p-value")
+
+tt(bp_mmed_het_table,
+   digits = 2,
+   notes = 
+     list("Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences, CDE = Controlled Direct Effect.", 
+     a = list(i=0, j=3, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."),
+     b = list(i=0, j=5, text = "F-statistics and p-values for joint tests of equality across cohort and time ATTs"))) %>%
+  group_tt(
+    j = list(
+      "Adjusted CDE" = 3:4,
+      "Heterogeneity tests" = 5:6)) %>%
+  format_tt(escape = TRUE) %>%
+  format_tt(j=3, sprintf = "%.2f") %>%
+  group_tt(
+    i = list(
+        "Brachial SBP" = 1, 
+        "Central SBP" = 5,
+        "Brachial DBP" = 9,
+        "Central DBP" = 13)) %>%
+  style_tt(i = c(1,6,11,16), bold = TRUE) %>%
+  style_tt(j = 1:6, align = "llcccc")
 ```
 
 \newpage
@@ -1714,9 +1722,11 @@ bp_mmed_het_table <- mhet_model %>%
 
 Appendix tables [-@tbl-a-het-resp], [-@tbl-a-het-cough], [-@tbl-a-het-phlegm], [-@tbl-a-het-wheeze], [-@tbl-a-het-breath], [-@tbl-a-het-nochest] below show Average Treatment Effect on the Treated ($ATT$s) by treatment cohort and time. ATTs are derived from estimating marginal effects from extended two-way fixed effects models with additional adjustment for age, sex, and smoking status. 
 
-```{r atbl-het-resp, echo=F, eval=F}
+```{r}
+#| echo: FALSE
 #| label: tbl-a-het-resp
-#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Any respiratory symptom"
+#| tbl-cap: Heterogenous treatment effects for self-reported respiratory outcomes for Any respiratory symptom.
+#| tbl-pos: H
 
 
 # read in personal exposure heterogeneity table
@@ -1727,31 +1737,32 @@ resp_any_table <- read_rds(here("outputs",
 models_resp <- read_rds(here("outputs/models", 
   "r_het_tests.rds"))
 
-models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+models_resp_note <- paste("Note: Joint test that all ATTs are equal: ", 
     "F(", models_resp$resp$df1, ", ", 
     models_resp$resp$df2, ")= " , 
     round(models_resp$resp$statistic, digits=3), ", p= ", 
-    round(models_resp$resp$p.value, digits=3),".}", sep="")
+    round(models_resp$resp$p.value, digits=3),".", sep="")
 
-#model_adj_note <- ""
+colnames(resp_any_table) <- c("Cohort", "Time", 
+    "ATT", "(95% CI)")
 
-kable(resp_any_table, digits = 2, escape = FALSE,
-  col.names =c("Cohort", "Time", 
-    "ATT", "(95\\%CI)"), 
-   # "latex", booktabs = T,
-  linesep = "", align = 'cccc') %>%
-  column_spec(1:2, width = "2cm") %>%
-  kable_styling(full_width = F,
-    latex_options = "HOLD_position") %>%
-  pack_rows("Average ATT", 1, 2, indent = F) %>%
-  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
-  footnote(general=models_resp_note,
-    general_title = "", escape = F)
+tt(resp_any_table,
+   digits = 2,
+   width = 0.7,
+   notes = models_resp_note) %>%
+  group_tt(i = list(
+    "Average ATT" = 1,
+    "Cohort-Time ATTs" = 2)) %>%
+  style_tt(i = c(1,3), bold = TRUE) %>%
+  format_tt(escape = TRUE)
+
 ```
 
-```{r atbl-het-cough, echo=F, eval=F}
+```{r}
+#| echo: FALSE
 #| label: tbl-a-het-cough
-#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Coughing"
+#| tbl-cap: Heterogenous treatment effects for self-reported respiratory outcomes for Coughing.
+#| tbl-pos: H
 
 
 # read in personal exposure heterogeneity table
@@ -1762,25 +1773,27 @@ resp_cough_table <- read_rds(here("outputs",
 models_resp <- read_rds(here("outputs/models", 
   "r_het_tests.rds"))
 
-models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+models_resp_note <- paste("Note: Joint test that all ATTs are equal: ", 
     "F(", models_resp$cough$df1, ", ", 
     models_resp$cough$df2, ")= " , 
     round(models_resp$cough$statistic, digits=3), ", p= ", 
-    round(models_resp$cough$p.value, digits=3),".}", sep="")
+    round(models_resp$cough$p.value, digits=3),".", sep="")
 
-kable(resp_cough_table, digits = 2, escape = FALSE,
-  col.names =c("Cohort", "Time", 
-    "ATT", "(95\\%CI)"), 
-   # "latex", booktabs = T,
-  linesep = "", align = 'cccc') %>%
-  column_spec(1:2, width = "2cm") %>%
-  kable_styling(full_width = F,
-    latex_options = "HOLD_position") %>%
-  pack_rows("Average ATT", 1, 2, indent = F) %>%
-  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
-  footnote(general=models_resp_note,
-    general_title = "", escape = F)
+colnames(resp_cough_table) <- c("Cohort", "Time", 
+    "ATT", "(95% CI)")
+
+tt(resp_cough_table,
+   digits = 2,
+   width = 0.7,
+   notes = models_resp_note) %>%
+  group_tt(i = list(
+    "Average ATT" = 1,
+    "Cohort-Time ATTs" = 2)) %>%
+  style_tt(i = c(1,3), bold = TRUE) %>%
+  format_tt(escape = TRUE)
+
 ```
+
 
 ```{r atbl-het-phlegm, echo=F, eval=F}
 #| label: tbl-a-het-phlegm

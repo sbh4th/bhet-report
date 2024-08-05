@@ -72,89 +72,42 @@ China is deploying an ambitious policy to transition up to 70% of households in 
 
 ## Subheading
 
-What about this table? (@tbl-a-bp-med-het)
+\newpage
 
-```{r, message=F}
+What about this table? (@tbl-a-het-cough)
+
+```{r}
 #| echo: FALSE
-#| label: tbl-a-bp-med-het
-#| tbl-cap: Heterogenous treatment effects for blood pressure mediation model.
+#| label: tbl-a-het-cough
+#| tbl-cap: Heterogenous treatment effects for self-reported respiratory outcomes for Coughing.
+#| tbl-pos: H
 
-ctot <- read_xlsx(here("data-clean", 
-  "ct_total_effect_adjusted.xlsx")) %>%
-  mutate(model = 1)
 
-ctotmp <- read_xlsx(here("data-clean", 
-  "ct_pm_mediation_adjusted.xlsx")) %>%
-  mutate(model = 2)
+# read in personal exposure heterogeneity table
+resp_cough_table <- read_rds(here("outputs", 
+  "resp-het-cough.rds")) %>%
+  select(-outcome)
 
-ctotmt <- read_xlsx(here("data-clean", 
-  "ct_temp_mediation_adjusted.xlsx")) %>%
-  mutate(model = 3)
+models_resp <- read_rds(here("outputs/models", 
+  "r_het_tests.rds"))
 
-ctotmm <- read_xlsx(here("data-clean", 
-  "ct_mult_mediation_adjusted.xlsx")) %>%
-  mutate(model = 4)
+models_resp_note <- paste("Note: Joint test that all ATTs are equal: ", 
+    "F(", models_resp$cough$df1, ", ", 
+    models_resp$cough$df2, ")= " , 
+    round(models_resp$cough$statistic, digits=3), ", p= ", 
+    round(models_resp$cough$p.value, digits=3),".", sep="")
 
-ctotm <- bind_rows(ctot, ctotmp, ctotmt, ctotmm) %>%
-  rename(est = theta_bar, ll = lower_95CI,
-         ul = upper_95CI) %>%
-  mutate(ci = paste("(", sprintf('%.2f', ll), ", ",
-    sprintf('%.2f', ul), ")", sep=""),
-    cohort = rep(c(2019,2019,2020,2021),
-                      times = 16),
-         time = rep(c(2019,2021,2021,2021),
-                    times = 16)) %>%
-  select(bp, cohort, time, model, est, ci) %>%
-  pivot_wider(names_from = model, 
-    values_from = c(est, ci), names_vary = "slowest") %>%
-  select(-bp)
+colnames(resp_cough_table) <- c("Cohort", "Time", 
+    "ATT", "(95% CI)")
 
-colnames(ctotm) <- c("Cohort", "Time", 
-  "ATT", "(95% CI)", "ATT", "(95% CI)", 
-  "ATT", "(95% CI)", "ATT", "(95% CI)")
-
-tt(ctotm,
+tt(resp_cough_table,
    digits = 2,
-   notes = list("Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.", 
-     a = list(i=0, j=3, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), 
-     b = list(i=0, j=c(5,7,9), text = "Mediators were set to the mean value for untreated participants at baseline."))) %>%
-  group_tt(
-    j = list("Indoor PM" = 5:6,
-             "Indoor Temp" = 7:8,
-             "PM + Temp" = 9:10)) %>%
-  group_tt(
-    j = list("Adjusted Total Effect" = 3:4,
-             "CDE Mediated By:" = 5:10)) %>%
-  style_tt(j = 1:10, align = "llcccccccc") %>%
-  style_tt(j=1:10, fontsize = 0.8) %>%
-  format_tt(escape = TRUE) %>%
-  format_tt(j=c(3,5,7,9), sprintf = "%.2f") %>%
-  group_tt(
-    i = list(
-        "Brachial SBP" = 1, 
-        "Central SBP" = 5,
-        "Brachial DBP" = 9,
-        "Central DBP" = 13)) %>%
-  style_tt(i = c(1,6,11,16), bold = TRUE)
+   width = 0.7,
+   notes = models_resp_note) %>%
+  group_tt(i = list(
+    "Average ATT" = 1,
+    "Cohort-Time ATTs" = 2)) %>%
+  style_tt(i = c(1,3), bold = TRUE) %>%
+  format_tt(escape = TRUE)
 
-# kable(ctotm, digits = 2,
-#   col.names = c("Cohort", "Time", "ATT", "(95%CI)",
-#   "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
-#   align = 'llcccccccc') %>%
-#   kable_styling(font_size = 10,
-#     latex_options = "HOLD_position") %>%
-#   pack_rows("Brachial SBP", 1, 4) %>%
-#   pack_rows("Central SBP", 5, 8) %>%
-#   pack_rows("Brachial DBP", 9, 12) %>%
-#   pack_rows("Central DBP", 13, 16) %>%
-#   add_header_above(c(" " = 4, 
-#   "Indoor PM" = 2, "Indoor Temp" = 2, "PM + Temp" = 2)) %>%
-#   add_header_above(c(" " = 2, 
-#     "Adjusted Total Effect\\\\textsuperscript{a}" = 2,
-#     "CDE Mediated By:\\\\textsuperscript{b}" = 6),
-#     escape = F) %>%
-#     footnote(
-#     general = "\\\\small{Note: Results combined across 30 # multiply-imputed datasets. ATT = Average Treatment Effect on the # Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood # pressure, SBP = Systolic blood pressure.}",
-#     alphabet = c("\\\\small{Adjusted for age, sex, waist # circumference, smoking, alcohol consumption, and use of blood # pressure medication.}", "\\\\small{Mediators were set to the mean # value for untreated participants at baseline.}"), 
-#     general_title = "", threeparttable = T, escape = F)
 ```

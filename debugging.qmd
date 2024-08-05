@@ -201,120 +201,67 @@ tt(med_source_t,
 #     general_title = "", threeparttable = T, escape = F)
 ```
 
-What about this table? (@tbl-a-het-temp)
+What about this table? (@tbl-bp-het)
+
+
 ```{r}
 #| echo: FALSE
-#| label: tbl-a-het-temp
-#| tbl-cap: Heterogenous treatment effects for indoor temperature
-
-ctt <- read_xlsx(here("data-clean", 
-  "ct_temp_table.xlsx"))
+#| label: tbl-bp-het
+#| tbl-cap: "Heterogenous treatment effects for the total effect of the CBHP policy on blood pressure."
 
 options(knitr.kable.NA = " ")
-ctt_table <- ctt %>% 
-  pivot_longer(!ct_labels, names_to = "outcome", 
-    values_to = "est_ci", cols_vary = "slowest") %>%
-  separate_wider_delim(est_ci, delim = "(", 
+temp_table <- read_xlsx(here("data-clean",
+  "adjusted_CT_results_table.xlsx")) %>%
+  select(bp, parameter, `Adjusted DiD`) %>%
+  rename(attci = `Adjusted DiD`) %>%
+  mutate(cohort = rep(c(2019,2019,2020,2021),
+                      times = 4),
+         time = rep(c(2019,2021,2021,2021),
+                    times = 4)) %>%
+  separate_wider_delim(attci, delim = "(", 
     names = c("att", "attci"), cols_remove = TRUE) %>% 
-  mutate(attci = paste("(", sprintf("%12s", attci), sep=""),
-    measure = rep(c("All", "Daytime", "Heating season",
-      "Daytime heating season", "All", "Heating season"),
-      each = 6),
-    stat = c(rep(2, times = 24), rep(3, times = 12)),
-    cohort = rep(c(2019,2019,2019,2020,2020,2021), 
-                 times = 6),
-    time = rep(c(2019,2020,2021,2020,2021,2021), 
-               times = 6),
-    att = as.numeric(att)) %>%
-  select(cohort, stat, time, measure, att, attci) %>%
-  relocate(measure, stat, cohort, time)
-
-ctt_point_temp <- read_xlsx(here("data-clean",
-  "unadjusted_pointtemp_results_apr3.xlsx")) %>%
-  filter(type != "Overall ATT") %>%
-  separate_wider_delim(att, delim = "(", 
-    names = c("att", "attci"), cols_remove = TRUE) %>%
-  mutate(att = as.numeric(att),
-         measure = "All",
-         cohort = c(2019, 2019, 2020, 2021),
-         time = c(2019, 2021, 2021, 2021),
-         stat = 1,
-         attci = paste("(", attci, sep="")) %>%
-  select(stat, measure, cohort, time, att, attci) %>%
-  relocate(measure, stat, cohort, time)
-
-ctt_temp_atts <- bind_rows(ctt_point_temp, ctt_table)
-
-ctt_het_stats <- read_xlsx(here("data-clean",
-  "gt_temp_heterogeneity.xlsx"))  %>%
-  rename(measure = temp_metric,
-         test = f_stat,
-         pval = p_value) %>%
-  mutate(measure = c("All", "Daytime", "Heating season",
-      "Daytime heating season", "All", "Heating season",
-      "All"),
-    stat = c(2,2,2,2,3,3,1),
-    test = sprintf("%.1f", test),
-    pval = sprintf("%.3f", pval),
-    cohort = 2021,
-    time = 2021) %>%
-  select(measure, stat, cohort, time, test, pval)
+  mutate(attci = paste("(", attci, sep="")) %>% 
+  select(bp, att, attci, cohort, time) %>%
+  relocate(bp, cohort, time)
 
 
-ctt_temp_het_table <- ctt_temp_atts %>% 
-  left_join(ctt_het_stats, 
-    join_by(measure, stat, cohort, time)) %>%
-  pivot_wider(names_from = stat, 
-    values_from = c(att,attci,test,pval), 
-    names_vary = "slowest") %>%
-  arrange(measure, cohort, time) %>%
-  mutate(ct = paste(cohort, time, sep=" ")) %>%
-  select(-measure, -test_1, -test_2, -test_3,
-         -cohort, -time) %>%
-  relocate(ct)
+het_stats <- read_xlsx(here("data-clean",
+  "ct-heterogeneity-results.xlsx")) %>%
+  filter(Model == "Adjusted DiD") %>%
+  rename(bp = `BP measure`,
+         test = `Test statistic`,
+         pval = `P-value`) %>%
+  mutate(test = sprintf("%.1f", test),
+         pval = sprintf("%.3f", pval),
+         cohort = 2021,
+         time = 2021) %>%
+  select(bp, cohort, time, test, pval)
 
+bp_het_table <- temp_table %>% 
+  left_join(het_stats, join_by(bp, cohort, time)) %>%
+  select(-bp)
 
-colnames(ctt_temp_het_table) <- c("Cohort Time", "ATT", "(95%CI)", "p-value", "ATT", 
-  "(95%CI)", "p-value", "ATT", "(95%CI)", "p-value")
+colnames(bp_het_table) <- c("Cohort", "Time", 
+  "ATT", "(95% CI)", "F-Statistic", "p-value")
 
-tt(ctt_temp_het_table,
-   width = c(1.2, 0.5, 1.2, 0.5, 0.5, 
-             1.2, 0.5, 0.5, 1.2, 0.5)) %>%
+tt(bp_het_table,
+   digits = 2,
+   width = c(1, 1, 1, 1.25, 1, 1),
+   notes = list("Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences.", 
+     a = list(i = 0, j = 3, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), 
+     b = list(i = 0, j = 5, text = "F-statistics and p-values for joint tests of equality across cohort and time ATTs"))) %>%
   group_tt(
-  i = list(
-    "All times" = 1, 
-    "Daytime" = 7,
-    "Daytime heating" = 13,
-    "Heating season" = 19),
-  j = list(
-    "Point temp (°C)" = 2:4,
-    "Mean temp (°C)" = 5:7,
-    "Min temp (°C)" = 8:10)) %>%
-  style_tt(i = c(1,8,15,22), bold = TRUE,
-           align = "c") %>%
-  # style_tt(
-  #   i = c(2,9,16,23), j = 1, 
-  #     rowspan = 3, alignv = "t") %>%
-  # style_tt(
-  #   i = c(4,10,16,22), j = 1, 
-  #     rowspan = 2, alignv = "t") %>%
-  style_tt(j=1:10, fontsize = 0.8) %>%
-  style_tt(j=c(2,5,8), sprintf = "%.2f") %>%
+    j = list(
+      "Adjusted DiD" = 3:4,
+      "Heterogeneity tests" = 5:6),
+    i = list(
+      "Brachial SBP" = 1,
+      "Central SBP" = 5,
+      "Brachial DBP" = 9,
+      "Central DBP" = 13)) %>%
+  style_tt(i = c(1,6,11,16), bold = TRUE) %>%
+  # style_tt(i = c(2,7,12,17), rowspan = 2) %>%
   format_tt(escape = TRUE)
-  
 
-    
-# kable(ctt_temp_het_table, digits = 2, 
-#   col.names = c("Cohort", "Time", "ATT", "(95%CI)",
-#     "p-value", "ATT", "(95%CI)", "p-value",
-#     "ATT", "(95%CI)", "p-value")) %>%
-#   kable_styling(latex_options = "HOLD_position",
-#     font_size = 9) %>%
-#   pack_rows("All times", 1, 6) %>%
-#   pack_rows("Daytime", 7, 12) %>%
-#   pack_rows("Daytime heating", 13, 18) %>%
-#   pack_rows("Heating season", 19, 24) %>%
-#   collapse_rows(columns = 1, valign = "top") %>%
-#   add_header_above(c(" " = 2, "Point temp (°C)" = 3,
-#     "Mean temp (°C)" = 3, "Min temp (°C)" = 3))
 ```
+

@@ -1396,7 +1396,7 @@ Table @tbl-a-het-indoor shows estimates for cohort-time $ATT$s for daily and sea
 ```{r, echo=F}
 #| echo: FALSE
 #| label: tbl-a-het-indoor
-#| tbl-cap: Heterogenous treatment effects: Indoor PM~2.5~.
+#| tbl-cap: Heterogenous treatment effects for Indoor PM~2.5~.
 
 # read in personal exposure heterogeneity table
 aph_table_ind <- read_rds(here("outputs", 
@@ -1457,9 +1457,10 @@ tt(aph_table_ind,
 
 ### Indoor temperature
 
-```{r atbl-het-temp, echo = F, message = F, eval=F}
+```{r}
+#| echo: FALSE
 #| label: tbl-a-het-temp
-#| tbl-cap: "Heterogenous treatment effects: Indoor temperature"
+#| tbl-cap: Heterogenous treatment effects for indoor temperature
 
 ctt <- read_xlsx(here("data-clean", 
   "ct_temp_table.xlsx"))
@@ -1470,7 +1471,7 @@ ctt_table <- ctt %>%
     values_to = "est_ci", cols_vary = "slowest") %>%
   separate_wider_delim(est_ci, delim = "(", 
     names = c("att", "attci"), cols_remove = TRUE) %>% 
-  mutate(attci = paste("(", attci, sep=""),
+  mutate(attci = paste("(", sprintf("%12s", attci), sep=""),
     measure = rep(c("All", "Daytime", "Heating season",
       "Daytime heating season", "All", "Heating season"),
       each = 6),
@@ -1522,31 +1523,69 @@ ctt_temp_het_table <- ctt_temp_atts %>%
     values_from = c(att,attci,test,pval), 
     names_vary = "slowest") %>%
   arrange(measure, cohort, time) %>%
-  select(-measure, -test_1, -test_2, -test_3)
+  mutate(ct = paste(cohort, time, sep=" ")) %>%
+  select(-measure, -test_1, -test_2, -test_3,
+         -cohort, -time) %>%
+  relocate(ct)
+
+
+colnames(ctt_temp_het_table) <- c("Cohort Time", "ATT", "(95% CI)", "p-val", "ATT", 
+  "(95% CI)", "p-val", "ATT", "(95% CI)", "p-val")
+
+tt(ctt_temp_het_table,
+   width = c(1.2, 0.5, 1.2, 0.5, 0.5, 
+             1.2, 0.5, 0.5, 1.2, 0.5),
+   notes = "Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval") %>%
+  group_tt(
+  i = list(
+    "All times" = 1, 
+    "Daytime" = 7,
+    "Daytime heating" = 13,
+    "Heating season" = 19),
+  j = list(
+    "Point temp (°C)" = 2:4,
+    "Mean temp (°C)" = 5:7,
+    "Min temp (°C)" = 8:10)) %>%
+  style_tt(i = c(1,8,15,22), bold = TRUE,
+           align = "c") %>%
+  # style_tt(
+  #   i = c(2,9,16,23), j = 1, 
+  #     rowspan = 3, alignv = "t") %>%
+  # style_tt(
+  #   i = c(4,10,16,22), j = 1, 
+  #     rowspan = 2, alignv = "t") %>%
+  style_tt(j=1:10, fontsize = 0.8) %>%
+  style_tt(j=c(2,5,8), sprintf = "%.2f") %>%
+  style_tt(j = 1, align = "l") %>%
+  format_tt(escape = TRUE)
+  
+
     
-kable(ctt_temp_het_table, digits = 2, 
-  col.names = c("Cohort", "Time", "ATT", "(95%CI)",
-    "p-value", "ATT", "(95%CI)", "p-value",
-    "ATT", "(95%CI)", "p-value")) %>%
-  kable_styling(latex_options = "HOLD_position",
-    font_size = 9) %>%
-  pack_rows("All times", 1, 6) %>%
-  pack_rows("Daytime", 7, 12) %>%
-  pack_rows("Daytime heating", 13, 18) %>%
-  pack_rows("Heating season", 19, 24) %>%
-  collapse_rows(columns = 1, valign = "top") %>%
-  add_header_above(c(" " = 2, "Point temp (°C)" = 3,
-    "Mean temp (°C)" = 3, "Min temp (°C)" = 3))
+# kable(ctt_temp_het_table, digits = 2, 
+#   col.names = c("Cohort", "Time", "ATT", "(95%CI)",
+#     "p-value", "ATT", "(95%CI)", "p-value",
+#     "ATT", "(95%CI)", "p-value")) %>%
+#   kable_styling(latex_options = "HOLD_position",
+#     font_size = 9) %>%
+#   pack_rows("All times", 1, 6) %>%
+#   pack_rows("Daytime", 7, 12) %>%
+#   pack_rows("Daytime heating", 13, 18) %>%
+#   pack_rows("Heating season", 19, 24) %>%
+#   collapse_rows(columns = 1, valign = "top") %>%
+#   add_header_above(c(" " = 2, "Point temp (°C)" = 3,
+#     "Mean temp (°C)" = 3, "Min temp (°C)" = 3))
 ```
+
 
 \newpage
 
 ### Blood pressure outcomes
 @tbl-bp-het shows $ATT$s by treatment cohort and time, as well as the results of joint tests of heterogeneity across $ATT$s.
 
-```{r atbl-bp-het, echo=F, message=F, eval=F}
+```{r}
+#| echo: FALSE
 #| label: tbl-bp-het
-#| tbl-cap: "Heterogenous treatment effects for the total effect of the CBHP policy on blood pressure."
+#| tbl-cap: Heterogenous treatment effects for the total effect of the CBHP policy on blood pressure.
 
 options(knitr.kable.NA = " ")
 temp_table <- read_xlsx(here("data-clean",
@@ -1579,27 +1618,29 @@ het_stats <- read_xlsx(here("data-clean",
 bp_het_table <- temp_table %>% 
   left_join(het_stats, join_by(bp, cohort, time)) %>%
   select(-bp)
-  
-kable(bp_het_table,
-  col.names =c("Cohort", "Time", "ATT", "(95%CI)",
-   "F-Statistic", "p-value"), 
-   # "latex", booktabs = T,
-  linesep = "", align = 'llcccc') %>%
-  column_spec(1:2, width = "2cm") %>%
-  kable_styling(full_width = F,
-    latex_options = "HOLD_position") %>%
-  pack_rows("Brachial SBP", 1, 4) %>%
-  pack_rows("Central SBP", 5, 8) %>%
-  pack_rows("Brachial DBP", 9, 12) %>%
-  pack_rows("Central DBP", 13, 16) %>%
-  add_header_above(c(" " = 2, 
-    "Adjusted DiD\\\\textsuperscript{a}" = 2,
-    "Heterogeneity tests\\\\textsuperscript{b}" = 2),
-    escape = F) %>%
-  footnote(
-    general = "\\\\small{Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, CDE = Controlled Direct Effect.}",
-    alphabet = c("\\\\small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", "\\\\small{F-statistics and p-values for joint tests of equality across cohort and time ATTs}"), 
-    general_title = "", threeparttable = T, escape = F)
+
+colnames(bp_het_table) <- c("Cohort", "Time", 
+  "ATT", "(95% CI)", "F-Statistic", "p-value")
+
+tt(bp_het_table,
+   digits = 2,
+   width = c(1, 1, 1, 1.25, 1, 1),
+   notes = list("Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences.", 
+     a = list(i = 0, j = 3, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), 
+     b = list(i = 0, j = 5, text = "F-statistics and p-values for joint tests of equality across cohort and time ATTs"))) %>%
+  group_tt(
+    j = list(
+      "Adjusted DiD" = 3:4,
+      "Heterogeneity tests" = 5:6),
+    i = list(
+      "Brachial SBP" = 1,
+      "Central SBP" = 5,
+      "Brachial DBP" = 9,
+      "Central DBP" = 13)) %>%
+  style_tt(i = c(1,6,11,16), bold = TRUE) %>%
+  # style_tt(i = c(2,7,12,17), rowspan = 2) %>%
+  format_tt(escape = TRUE)
+
 ```
 
 \newpage
@@ -1609,7 +1650,7 @@ kable(bp_het_table,
 
 ```{r atbl-bp-het-med, echo=F, message=F, eval=F}
 #| label: tbl-a-bp-med-het
-#| tbl-cap: "Heterogenous treatment effects for blood pressure mediation model"
+#| tbl-cap: Heterogenous treatment effects for blood pressure mediation model.
 
 ctot <- read_xlsx(here("data-clean", 
   "ct_total_effect_adjusted.xlsx")) %>%

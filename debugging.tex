@@ -267,42 +267,44 @@ outdoor air pollution, as well as heating behaviors and health outcomes.
 
 \newpage
 
-What about this table? (Table~\ref{tbl-a-het-cough})
+What about this table? (\textbf{?@tbl-a-feno})
 
 \begin{table}[H]
 
-\caption{\label{tbl-a-het-cough}Heterogenous treatment effects for
-self-reported respiratory outcomes for Coughing.}
+\caption{\label{tbl-a-ind-s3}Effects of the CBHP policy on indoor
+seasonal PM\textsubscript{2.5} based on whether Season 3 data are
+included vs.~excluded.}
 
 \centering{
 
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: Joint test that all ATTs are equal: F(3, 2579)= 0.732, p= 0.533.},
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
-width={0.7\linewidth},
-colspec={X[]X[]X[]X[]},
-cell{2}{1}={c=4}{},cell{4}{1}={c=4}{},
-cell{3}{1}={preto={\hspace{1em}}},
-cell{5}{1}={preto={\hspace{1em}}},
+width={1\linewidth},
+colspec={X[0.119047619047619]X[0.119047619047619]X[0.142857142857143]X[0.238095238095238]X[0.142857142857143]X[0.238095238095238]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+cell{3}{1}={c=6}{},cell{5}{1}={c=6}{},
+cell{4}{1}={preto={\hspace{1em}}},
 cell{6}{1}={preto={\hspace{1em}}},
 cell{7}{1}={preto={\hspace{1em}}},
 cell{8}{1}={preto={\hspace{1em}}},
 cell{9}{1}={preto={\hspace{1em}}},
-row{2}={,cmd=\bfseries,},
-row{4}={,cmd=\bfseries,},
+row{3}={,cmd=\bfseries,},
+row{5}={,cmd=\bfseries,},
 }                     %% tabularray inner close
 \toprule
-Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
-Average ATT &&& \\
-All & All & -0.0198 & (-0.07, 0.03) \\
-Cohort-Time ATTs &&& \\
-2019 & 2019 & -0.0383 & (-0.11, 0.03) \\
-2019 & 2021 &  0.0069 & (-0.07, 0.08) \\
-2020 & 2021 & -0.026  & (-0.10, 0.05) \\
-2021 & 2021 & -0.0384 & (-0.09, 0.02) \\
+&  & With Season 3 data &  & Without Season 3 data &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
+Cohort & Time & ATT & (95\% CI) & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT &&&&& \\
+All & All & -37.49 & (-60.11, -14.88) & -35.11 & (-59.36, -10.85) \\
+Cohort-Time ATTs &&&&& \\
+2020 & 2020 & -36.94 & (-61.39, -12.49) &  &  \\
+2020 & 2021 & -33.51 & (-66.84, -0.18) & -30.22 & (-63.77, 3.32) \\
+2021 & 2021 & -46.82 & (-58.57, -35.07) & -44.88 & (-60.41, -29.34) \\
 \bottomrule
 \end{talltblr}
 

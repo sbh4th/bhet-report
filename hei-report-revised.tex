@@ -4443,7 +4443,8 @@ note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumptio
 note{b}={F-statistics and p-values for joint tests of equality across cohort and time ATTs},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
-colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
+width={0.7\linewidth},
+colspec={X[]X[]X[]X[]X[]X[]},
 cell{1}{3}={c=2,}{halign=c,},
 cell{1}{5}={c=2,}{halign=c,},
 cell{3}{1}={c=6}{},cell{8}{1}={c=6}{},cell{13}{1}={c=6}{},cell{18}{1}={c=6}{},
@@ -4771,7 +4772,7 @@ combustion}\label{outdoor-and-personal-mixed-combustion}
 
 \centering{
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/did-mixed-ct-wave.png}
+\includegraphics{images/did-mixed-ct-wave.png}
 
 }
 
@@ -4791,6 +4792,44 @@ of the CBHP policy on FeNO depending on whether the estimation sample
 includes all individuals or is limited to those with repeated measures
 across campaigns.
 
+\begin{table}[H]
+
+\caption{\label{tbl-a-feno}Effects of the CBHP policy on FeNO (ppb)
+based on the number of individuals with repeated measurements.}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = Confidence Interval, DiD = Difference-in-Differences},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=2,}{halign=c,},
+cell{1}{6}={c=2,}{halign=c,},
+column{1}={halign=l,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+column{7}={halign=c,},
+}                     %% tabularray inner close
+\toprule
+& All participants &  & Participants with \textgreater{}1 measure &  & Participants with 3 measures &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
+& ATT & (95\% CI) & ATT & (95\% CI) & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+DiD & 0.17 & (-2.24, 2.58) & 0.13 & (-3.09, 3.35) & -0.57 & (-3.08, 1.94) \\
+Adjusted DiD & 0.55 & (-2.03, 3.13) & 0.24 & (-3.19, 3.67) & 0.27 & (-2.39, 2.92) \\
+Observations & 794 &  & 526 &  & 252 &  \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\end{table}%
+
 \newpage
 
 \subsection{Impact of including Season 3
@@ -4799,6 +4838,49 @@ data}\label{impact-of-including-season-3-data}
 Table~\ref{tbl-a-ind-s3} shows differences in the \(ATT\)s for the
 impact of seasonal indoor PM\textsubscript{2.5} when season 3 data
 (collected in 41 villages during COVID-19) are included versus excluded.
+
+\begin{table}[H]
+
+\caption{\label{tbl-a-ind-s3}Effects of the CBHP policy on indoor
+seasonal PM\textsubscript{2.5} based on whether Season 3 data are
+included vs.~excluded.}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={1\linewidth},
+colspec={X[0.119047619047619]X[0.119047619047619]X[0.142857142857143]X[0.238095238095238]X[0.142857142857143]X[0.238095238095238]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+cell{3}{1}={c=6}{},cell{5}{1}={c=6}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+row{3}={,cmd=\bfseries,},
+row{5}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+&  & With Season 3 data &  & Without Season 3 data &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
+Cohort & Time & ATT & (95\% CI) & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT &&&&& \\
+All & All & -37.49 & (-60.11, -14.88) & -35.11 & (-59.36, -10.85) \\
+Cohort-Time ATTs &&&&& \\
+2020 & 2020 & -36.94 & (-61.39, -12.49) &  &  \\
+2020 & 2021 & -33.51 & (-66.84, -0.18) & -30.22 & (-63.77, 3.32) \\
+2021 & 2021 & -46.82 & (-58.57, -35.07) & -44.88 & (-60.41, -29.34) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\end{table}%
 
 Figure~\ref{fig-afig-did-opm-w3} shows the impact of including Wave 3
 data on the estimates of the impact of the policy on seasonal outdoor

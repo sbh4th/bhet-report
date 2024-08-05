@@ -115,5 +115,4 @@ tt(temp_table@data,
   style_tt(j = 2:5, align = "c") %>%
   format_tt(escape = TRUE)
 
-
 ```

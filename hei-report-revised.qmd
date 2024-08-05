@@ -1917,11 +1917,11 @@ resp_nochest_table <- read_rds(here("outputs",
 models_resp <- read_rds(here("outputs/models", 
   "r_het_tests.rds"))
 
-models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+models_resp_note <- paste("Note: Joint test that all ATTs are equal: ", 
     "F(", models_resp$nochest$df1, ", ", 
     models_resp$nochest$df2, ")= " , 
     round(models_resp$nochest$statistic, digits=3), ", p= ", 
-    round(models_resp$nochest$p.value, digits=3),".}", sep="")
+    round(models_resp$nochest$p.value, digits=3),".", sep="")
 
 colnames(resp_nochest_table) <- c("Cohort", "Time", 
     "ATT", "(95% CI)")
@@ -2066,7 +2066,7 @@ knitr::include_graphics(here("images",
 \newpage
 
 ## Impact of group and time fixed effects
-Table @tbl-a-fe shows the impact of adding different sets of cohort and time fixed effects to the model for personal exposure.
+@tbl-a-fe shows the impact of adding different sets of cohort and time fixed effects to the model for personal exposure.
 
 ```{r}
 #| echo: FALSE

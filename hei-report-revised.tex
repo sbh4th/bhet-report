@@ -4923,7 +4923,7 @@ later treated in wave 3}
 
 \caption{\label{fig-afig-pt4}Comparison of pre-interventions trends in
 blood pressure between waves 1 and 2 for never treated and villages
-later treated in wave 4}
+later treated in wave 4.}
 
 \centering{
 
@@ -4939,6 +4939,44 @@ later treated in wave 4}
 
 \subsection{Impact of group and time fixed
 effects}\label{impact-of-group-and-time-fixed-effects}
+
+Table Table~\ref{tbl-a-fe} shows the impact of adding different sets of
+cohort and time fixed effects to the model for personal exposure.
+
+\begin{table}[H]
+
+\caption{\label{tbl-a-fe}Effects of the CBHP policy on personal exposure
+(\(\mu g / m^{3}\)) with variations in fixed effects for treatment group
+and time.}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: All models adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Standard errors clustered by village.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]},
+row{1}={,cmd=\bfseries,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+}                     %% tabularray inner close
+\toprule
+& Adjusted DiD & No time FE & No group FE & No FE \\ \midrule %% TinyTableHeader
+ATT & 1.95 & -31.43 & -5.91 & -24.13 \\
+& [-23.34, 27.23] & [-49.42, -13.44] & [-24.36, 12.54] & [-41.42, -6.83] \\
+Observations & 1,281 & 1,281 & 1,281 & 1,281 \\
+Year fixed effects & X &  & X &  \\
+Cohort fixed effects & X & X &  &  \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\end{table}%
 
 \newpage
 

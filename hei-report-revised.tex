@@ -4519,7 +4519,7 @@ with additional adjustment for age, sex, and smoking status.
 \begin{table}[H]
 
 \caption{\label{tbl-a-het-resp}Heterogenous treatment effects for
-self-reported respiratory outcomes for Any respiratory symptom.}
+self-reported respiratory outcomes: Any respiratory symptom.}
 
 \centering{
 
@@ -4544,12 +4544,12 @@ row{4}={,cmd=\bfseries,},
 \toprule
 Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
 Average ATT &&& \\
-All & All & -0.079 & (-0.15, -0.01) \\
+All & All & -0.08 & (-0.15, -0.01) \\
 Cohort-Time ATTs &&& \\
-2019 & 2019 & -0.113 & (-0.20, -0.02) \\
-2019 & 2021 & -0.101 & (-0.21, 0.00) \\
-2020 & 2021 &  0.014 & (-0.10, 0.13) \\
-2021 & 2021 & -0.116 & (-0.22, -0.01) \\
+2019 & 2019 & -0.11 & (-0.20, -0.02) \\
+2019 & 2021 & -0.10 & (-0.21, 0.00) \\
+2020 & 2021 & 0.01 & (-0.10, 0.13) \\
+2021 & 2021 & -0.12 & (-0.22, -0.01) \\
 \bottomrule
 \end{talltblr}
 
@@ -4560,7 +4560,7 @@ Cohort-Time ATTs &&& \\
 \begin{table}[H]
 
 \caption{\label{tbl-a-het-cough}Heterogenous treatment effects for
-self-reported respiratory outcomes for Coughing.}
+self-reported respiratory outcomes: Coughing.}
 
 \centering{
 
@@ -4585,12 +4585,176 @@ row{4}={,cmd=\bfseries,},
 \toprule
 Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
 Average ATT &&& \\
-All & All & -0.0198 & (-0.07, 0.03) \\
+All & All & -0.02 & (-0.07, 0.03) \\
 Cohort-Time ATTs &&& \\
-2019 & 2019 & -0.0383 & (-0.11, 0.03) \\
-2019 & 2021 &  0.0069 & (-0.07, 0.08) \\
-2020 & 2021 & -0.026  & (-0.10, 0.05) \\
-2021 & 2021 & -0.0384 & (-0.09, 0.02) \\
+2019 & 2019 & -0.04 & (-0.11, 0.03) \\
+2019 & 2021 & 0.01 & (-0.07, 0.08) \\
+2020 & 2021 & -0.03 & (-0.10, 0.05) \\
+2021 & 2021 & -0.04 & (-0.09, 0.02) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\end{table}%
+
+\begin{table}
+
+\caption{\label{tbl-a-het-phlegm}Heterogenous treatment effects for
+self-reported respiratory outcomes: Phlegm}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: Joint test that all ATTs are equal: F(3, 2579)= 1.735, p= 0.158.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={0.7\linewidth},
+colspec={X[]X[]X[]X[]},
+cell{2}{1}={c=4}{},cell{4}{1}={c=4}{},
+cell{3}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+row{2}={,cmd=\bfseries,},
+row{4}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT &&& \\
+All & All & -0.02 & (-0.06, 0.03) \\
+Cohort-Time ATTs &&& \\
+2019 & 2019 & -0.06 & (-0.16, 0.03) \\
+2019 & 2021 & -0.03 & (-0.10, 0.04) \\
+2020 & 2021 & 0.04 & (-0.02, 0.09) \\
+2021 & 2021 & 0.03 & (-0.04, 0.09) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\end{table}%
+
+\begin{table}[H]
+
+\caption{\label{tbl-a-het-wheeze}Heterogenous treatment effects for
+self-reported respiratory outcomes: Wheezing attacks.}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: Joint test that all ATTs are equal: F(3, 2579)= 2.923, p= 0.033.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={0.7\linewidth},
+colspec={X[]X[]X[]X[]},
+cell{2}{1}={c=4}{},cell{4}{1}={c=4}{},
+cell{3}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+row{2}={,cmd=\bfseries,},
+row{4}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT &&& \\
+All & All & -0.00 & (-0.04, 0.04) \\
+Cohort-Time ATTs &&& \\
+2019 & 2019 & -0.02 & (-0.06, 0.01) \\
+2019 & 2021 & 0.01 & (-0.04, 0.06) \\
+2020 & 2021 & -0.03 & (-0.11, 0.05) \\
+2021 & 2021 & 0.09 & (-0.00, 0.18) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\end{table}%
+
+\begin{table}
+
+\caption{\label{tbl-a-het-breath}Heterogenous treatment effects for
+self-reported respiratory outcomes: Trouble breathing}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: Joint test that all ATTs are equal: F(3, 2579)= 0.718, p= 0.541.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={0.7\linewidth},
+colspec={X[]X[]X[]X[]},
+cell{2}{1}={c=4}{},cell{4}{1}={c=4}{},
+cell{3}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+row{2}={,cmd=\bfseries,},
+row{4}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT &&& \\
+All & All & -0.05 & (-0.12, 0.02) \\
+Cohort-Time ATTs &&& \\
+2019 & 2019 & -0.06 & (-0.16, 0.04) \\
+2019 & 2021 & -0.07 & (-0.16, 0.03) \\
+2020 & 2021 & 0.01 & (-0.09, 0.11) \\
+2021 & 2021 & -0.07 & (-0.20, 0.06) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\end{table}%
+
+\begin{table}
+
+\caption{\label{tbl-a-het-nochest}Heterogenous treatment effects for
+self-reported respiratory outcomes: Chest trouble}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={\textbackslash{}\textbackslash{}small\{Note: Joint test that all ATTs are equal: F(3, 2579)= 1.046, p= 0.371.\}},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={0.7\linewidth},
+colspec={X[]X[]X[]X[]},
+cell{2}{1}={c=4}{},cell{4}{1}={c=4}{},
+cell{3}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+row{2}={,cmd=\bfseries,},
+row{4}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT &&& \\
+All & All & -0.06 & (-0.12, -0.01) \\
+Cohort-Time ATTs &&& \\
+2019 & 2019 & -0.06 & (-0.13, 0.01) \\
+2019 & 2021 & -0.06 & (-0.15, 0.03) \\
+2020 & 2021 & -0.05 & (-0.16, 0.05) \\
+2021 & 2021 & -0.14 & (-0.22, -0.05) \\
 \bottomrule
 \end{talltblr}
 

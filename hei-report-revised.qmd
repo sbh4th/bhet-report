@@ -1725,7 +1725,7 @@ Appendix tables [-@tbl-a-het-resp], [-@tbl-a-het-cough], [-@tbl-a-het-phlegm], [
 ```{r}
 #| echo: FALSE
 #| label: tbl-a-het-resp
-#| tbl-cap: Heterogenous treatment effects for self-reported respiratory outcomes for Any respiratory symptom.
+#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Any respiratory symptom."
 #| tbl-pos: H
 
 
@@ -1754,6 +1754,7 @@ tt(resp_any_table,
     "Average ATT" = 1,
     "Cohort-Time ATTs" = 2)) %>%
   style_tt(i = c(1,3), bold = TRUE) %>%
+  format_tt(j=3, sprintf = "%.2f") %>%
   format_tt(escape = TRUE)
 
 ```
@@ -1761,7 +1762,7 @@ tt(resp_any_table,
 ```{r}
 #| echo: FALSE
 #| label: tbl-a-het-cough
-#| tbl-cap: Heterogenous treatment effects for self-reported respiratory outcomes for Coughing.
+#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Coughing."
 #| tbl-pos: H
 
 
@@ -1790,12 +1791,14 @@ tt(resp_cough_table,
     "Average ATT" = 1,
     "Cohort-Time ATTs" = 2)) %>%
   style_tt(i = c(1,3), bold = TRUE) %>%
+  format_tt(j=3, sprintf = "%.2f") %>%
   format_tt(escape = TRUE)
 
 ```
 
 
-```{r atbl-het-phlegm, echo=F, eval=F}
+```{r}
+#| echo: FALSE
 #| label: tbl-a-het-phlegm
 #| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Phlegm"
 
@@ -1808,29 +1811,32 @@ resp_phlegm_table <- read_rds(here("outputs",
 models_resp <- read_rds(here("outputs/models", 
   "r_het_tests.rds"))
 
-models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+models_resp_note <- paste("Note: Joint test that all ATTs are equal: ", 
     "F(", models_resp$phlegm$df1, ", ", 
     models_resp$phlegm$df2, ")= " , 
     round(models_resp$phlegm$statistic, digits=3), ", p= ", 
-    round(models_resp$phlegm$p.value, digits=3),".}", sep="")
+    round(models_resp$phlegm$p.value, digits=3),".", sep="")
 
-kable(resp_phlegm_table, digits = 2, escape = FALSE,
-  col.names =c("Cohort", "Time", 
-    "ATT", "(95\\%CI)"), 
-   # "latex", booktabs = T,
-  linesep = "", align = 'cccc') %>%
-  column_spec(1:2, width = "2cm") %>%
-  kable_styling(full_width = F,
-    latex_options = "HOLD_position") %>%
-  pack_rows("Average ATT", 1, 2, indent = F) %>%
-  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
-  footnote(general=models_resp_note,
-    general_title = "", escape = F)
+colnames(resp_phlegm_table) <- c("Cohort", "Time", 
+    "ATT", "(95% CI)")
+
+tt(resp_phlegm_table,
+   digits = 2,
+   width = 0.7,
+   notes = models_resp_note) %>%
+  group_tt(i = list(
+    "Average ATT" = 1,
+    "Cohort-Time ATTs" = 2)) %>%
+  style_tt(i = c(1,3), bold = TRUE) %>%
+  format_tt(j=3, sprintf = "%.2f") %>%
+  format_tt(escape = TRUE)
 ```
 
-```{r atbl-het-wheeze, echo=F, eval=F}
+```{r}
+#| echo: FALSE
 #| label: tbl-a-het-wheeze
-#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Wheezing attacks"
+#| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Wheezing attacks."
+#| tbl-pos: H
 
 
 # read in personal exposure heterogeneity table
@@ -1841,27 +1847,29 @@ resp_wheeze_table <- read_rds(here("outputs",
 models_resp <- read_rds(here("outputs/models", 
   "r_het_tests.rds"))
 
-models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+models_resp_note <- paste("Note: Joint test that all ATTs are equal: ", 
     "F(", models_resp$wheeze$df1, ", ", 
     models_resp$wheeze$df2, ")= " , 
     round(models_resp$wheeze$statistic, digits=3), ", p= ", 
-    round(models_resp$wheeze$p.value, digits=3),".}", sep="")
+    round(models_resp$wheeze$p.value, digits=3),".", sep="")
 
-kable(resp_wheeze_table, digits = 2, escape = FALSE,
-  col.names =c("Cohort", "Time", 
-    "ATT", "(95\\%CI)"), 
-   # "latex", booktabs = T,
-  linesep = "", align = 'cccc') %>%
-  column_spec(1:2, width = "2cm") %>%
-  kable_styling(full_width = F,
-                latex_options = "HOLD_position") %>%
-  pack_rows("Average ATT", 1, 2, indent = F) %>%
-  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
-  footnote(general=models_resp_note,
-    general_title = "", escape = F)
+colnames(resp_wheeze_table) <- c("Cohort", "Time", 
+    "ATT", "(95% CI)")
+
+tt(resp_wheeze_table,
+   digits = 2,
+   width = 0.7,
+   notes = models_resp_note) %>%
+  group_tt(i = list(
+    "Average ATT" = 1,
+    "Cohort-Time ATTs" = 2)) %>%
+  style_tt(i = c(1,3), bold = TRUE) %>%
+  format_tt(j=3, sprintf = "%.2f") %>%
+  format_tt(escape = TRUE)
 ```
 
-```{r atbl-het-breath, echo=F, eval=F}
+```{r}
+#| echo: FALSE
 #| label: tbl-a-het-breath
 #| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Trouble breathing"
 
@@ -1874,27 +1882,29 @@ resp_breath_table <- read_rds(here("outputs",
 models_resp <- read_rds(here("outputs/models", 
   "r_het_tests.rds"))
 
-models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: ", 
+models_resp_note <- paste("Note: Joint test that all ATTs are equal: ", 
     "F(", models_resp$breath$df1, ", ", 
     models_resp$breath$df2, ")= " , 
     round(models_resp$breath$statistic, digits=3), ", p= ", 
-    round(models_resp$breath$p.value, digits=3),".}", sep="")
+    round(models_resp$breath$p.value, digits=3),".", sep="")
 
-kable(resp_breath_table, digits = 2, escape = FALSE,
-  col.names =c("Cohort", "Time", 
-    "ATT", "(95\\%CI)"), 
-   # "latex", booktabs = T,
-  linesep = "", align = 'cccc') %>%
-  column_spec(1:2, width = "2cm") %>%
-  kable_styling(full_width = F,
-                latex_options = "HOLD_position") %>%
-  pack_rows("Average ATT", 1, 2, indent = F) %>%
-  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
-  footnote(general=models_resp_note,
-    general_title = "", escape = F)
+colnames(resp_breath_table) <- c("Cohort", "Time", 
+    "ATT", "(95% CI)")
+
+tt(resp_breath_table,
+   digits = 2,
+   width = 0.7,
+   notes = models_resp_note) %>%
+  group_tt(i = list(
+    "Average ATT" = 1,
+    "Cohort-Time ATTs" = 2)) %>%
+  style_tt(i = c(1,3), bold = TRUE) %>%
+  format_tt(j=3, sprintf = "%.2f") %>%
+  format_tt(escape = TRUE)
 ```
 
-```{r atbl-het-breath, echo=F, eval=F}
+```{r}
+#| echo: FALSE
 #| label: tbl-a-het-nochest
 #| tbl-cap: "Heterogenous treatment effects for self-reported respiratory outcomes: Chest trouble"
 
@@ -1913,18 +1923,19 @@ models_resp_note <- paste("\\\\small{Note: Joint test that all ATTs are equal: "
     round(models_resp$nochest$statistic, digits=3), ", p= ", 
     round(models_resp$nochest$p.value, digits=3),".}", sep="")
 
-kable(resp_nochest_table, digits = 2, escape = FALSE,
-  col.names =c("Cohort", "Time", 
-    "ATT", "(95\\%CI)"), 
-   # "latex", booktabs = T,
-  linesep = "", align = 'cccc') %>%
-  column_spec(1:2, width = "2cm") %>%
-  kable_styling(full_width = F,
-                latex_options = "HOLD_position") %>%
-  pack_rows("Average ATT", 1, 2, indent = F) %>%
-  pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
-  footnote(general=models_resp_note,
-    general_title = "", escape = F)
+colnames(resp_nochest_table) <- c("Cohort", "Time", 
+    "ATT", "(95% CI)")
+
+tt(resp_nochest_table,
+   digits = 2,
+   width = 0.7,
+   notes = models_resp_note) %>%
+  group_tt(i = list(
+    "Average ATT" = 1,
+    "Cohort-Time ATTs" = 2)) %>%
+  style_tt(i = c(1,3), bold = TRUE) %>%
+  format_tt(j=3, sprintf = "%.2f") %>%
+  format_tt(escape = TRUE)
 ```
 
 \newpage

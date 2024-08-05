@@ -1307,21 +1307,6 @@ tt(fuel_table,
         "Cohort-Time ATTs" = 2)) %>%
   style_tt(i = c(1,3), bold = TRUE) %>%
   format_tt(escape = TRUE)
-
-# kable(fuel_table, digits = 0, escape = FALSE,
-#   col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
-#    "ATT", "(95\\%CI)"), # "latex", booktabs = T,
-#   linesep = "", align = 'cccccc') %>%
-#   column_spec(1:2, width = "1.5cm") %>%
-#   kable_styling(full_width = F, 
-#     latex_options = "HOLD_position") %>%
-#   pack_rows("Average ATT", 1, 2, indent = F) %>%
-#   pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
-#   add_header_above(c(" " = 2, 
-#     "Coal\\\\textsuperscript{a}" = 2, 
-#     "Biomass\\\\textsuperscript{b}" = 2),
-#     escape = FALSE) %>%
-#   footnote(alphabet=c(models_coal_note, models_bio_note)) 
 ```
 
 \newpage
@@ -1373,21 +1358,6 @@ tt(aph_table,
         "Cohort-Time ATTs" = 2)) %>%
   style_tt(i = c(1,3), bold = TRUE) %>%
   format_tt(escape = TRUE)
-
-# kable(aph_table, digits = 2, escape = FALSE,
-#   col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
-#    "ATT", "(95\\%CI)"), # "latex", booktabs = T,
-#   linesep = "", align = 'cccccc') %>%
-#   column_spec(1:2, width = "1.5cm") %>%
-#   kable_styling(full_width = F, 
-#     latex_options = "HOLD_position") %>%
-#   pack_rows("Average ATT", 1, 2, indent = F) %>%
-#   pack_rows("Cohort-Time ATTs", 2, 5, indent = F) %>%
-#   add_header_above(c(" " = 2, 
-#     "PM2.5\\\\textsuperscript{a}" = 2, 
-#     "Black carbon\\\\textsuperscript{b}" = 2),
-#     escape = FALSE) %>%
-#   footnote(alphabet=c(models_ppm_note, models_pbc_note)) 
 ```
 
 ### Indoor PM~2.5~
@@ -1437,20 +1407,6 @@ tt(aph_table_ind,
   format_tt(j = c(3,5), sprintf = "%.2f") %>%
   format_tt(escape = TRUE)
 
-# kable(aph_table_ind, digits = 2, escape = FALSE,
-#   col.names =c("Cohort", "Time", "ATT", "(95\\%CI)", 
-#    "ATT", "(95\\%CI)"), # "latex", booktabs = T,
-#   linesep = "", align = 'cccccc') %>%
-#   column_spec(1:2, width = "1.5cm") %>%
-#   kable_styling(full_width = F,
-#     latex_options = "HOLD_position") %>%
-#   pack_rows("Average ATT", 1, 2, indent = F) %>%
-#   pack_rows("Cohort-Time ATTs", 2, 3, indent = F) %>%
-#   add_header_above(c(" " = 2, 
-#     "Daily\\\\textsuperscript{a}" = 2, 
-#     "Seasonal\\\\textsuperscript{b}" = 2),
-#     escape = FALSE) %>%
-#   footnote(alphabet=c(models_i24_note, models_is_note)) 
 ```
 
 \newpage
@@ -1558,22 +1514,7 @@ tt(ctt_temp_het_table,
   style_tt(j=c(2,5,8), sprintf = "%.2f") %>%
   style_tt(j = 1, align = "l") %>%
   format_tt(escape = TRUE)
-  
 
-    
-# kable(ctt_temp_het_table, digits = 2, 
-#   col.names = c("Cohort", "Time", "ATT", "(95%CI)",
-#     "p-value", "ATT", "(95%CI)", "p-value",
-#     "ATT", "(95%CI)", "p-value")) %>%
-#   kable_styling(latex_options = "HOLD_position",
-#     font_size = 9) %>%
-#   pack_rows("All times", 1, 6) %>%
-#   pack_rows("Daytime", 7, 12) %>%
-#   pack_rows("Daytime heating", 13, 18) %>%
-#   pack_rows("Heating season", 19, 24) %>%
-#   collapse_rows(columns = 1, valign = "top") %>%
-#   add_header_above(c(" " = 2, "Point temp (°C)" = 3,
-#     "Mean temp (°C)" = 3, "Min temp (°C)" = 3))
 ```
 
 
@@ -1648,7 +1589,9 @@ tt(bp_het_table,
 ### Mediation analyses for blood pressure
 @tbl-a-bp-med-het shows the cohort-time treatment effects for the mediation model for blood pressure.
 
-```{r atbl-bp-het-med, echo=F, message=F, eval=F}
+
+```{r, message=F}
+#| echo: FALSE
 #| label: tbl-a-bp-med-het
 #| tbl-cap: Heterogenous treatment effects for blood pressure mediation model.
 
@@ -1682,27 +1625,33 @@ ctotm <- bind_rows(ctot, ctotmp, ctotmt, ctotmm) %>%
     values_from = c(est, ci), names_vary = "slowest") %>%
   select(-bp)
 
-kable(ctotm, digits = 2,
-  col.names = c("Cohort", "Time", "ATT", "(95%CI)",
-  "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
-  align = 'llcccccccc') %>%
-  kable_styling(font_size = 10,
-    latex_options = "HOLD_position") %>%
-  pack_rows("Brachial SBP", 1, 4) %>%
-  pack_rows("Central SBP", 5, 8) %>%
-  pack_rows("Brachial DBP", 9, 12) %>%
-  pack_rows("Central DBP", 13, 16) %>%
-  add_header_above(c(" " = 4, 
-  "Indoor PM" = 2, "Indoor Temp" = 2, "PM + Temp" = 2)) %>%
-  add_header_above(c(" " = 2, 
-    "Adjusted Total Effect\\\\textsuperscript{a}" = 2,
-    "CDE Mediated By:\\\\textsuperscript{b}" = 6),
-    escape = F) %>%
-    footnote(
-    general = "\\\\small{Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.}",
-    alphabet = c("\\\\small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", "\\\\small{Mediators were set to the mean value for untreated participants at baseline.}"), 
-    general_title = "", threeparttable = T, escape = F)
-  
+colnames(ctotm) <- c("Cohort", "Time", 
+  "ATT", "(95% CI)", "ATT", "(95% CI)", 
+  "ATT", "(95% CI)", "ATT", "(95% CI)")
+
+tt(ctotm,
+   digits = 2,
+   notes = list("Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.", 
+     a = list(i=0, j=3, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), 
+     b = list(i=0, j=c(5,7,9), text = "Mediators were set to the mean value for untreated participants at baseline."))) %>%
+  group_tt(
+    j = list("Indoor PM" = 5:6,
+             "Indoor Temp" = 7:8,
+             "PM + Temp" = 9:10)) %>%
+  group_tt(
+    j = list("Adjusted Total Effect" = 3:4,
+             "CDE Mediated By:" = 5:10)) %>%
+  style_tt(j = 1:10, align = "llcccccccc") %>%
+  style_tt(j=1:10, fontsize = 0.8) %>%
+  format_tt(escape = TRUE) %>%
+  format_tt(j=c(3,5,7,9), sprintf = "%.2f") %>%
+  group_tt(
+    i = list(
+        "Brachial SBP" = 1, 
+        "Central SBP" = 5,
+        "Brachial DBP" = 9,
+        "Central DBP" = 13)) %>%
+  style_tt(i = c(1,6,11,16), bold = TRUE)
 ```
 
 ```{r atbl-bp-het-med-tests, echo=F, message=F, eval=F}

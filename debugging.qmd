@@ -52,7 +52,6 @@ library(readxl)
 library(marginaleffects)
 library(tinytable)
 library(tidymodels)
-library(flextable)
 ```
 
 ```{r master_data, include = FALSE, cache = TRUE, echo=FALSE}
@@ -73,195 +72,89 @@ China is deploying an ambitious policy to transition up to 70% of households in 
 
 ## Subheading
 
-First table (see @tbl-table1)
+What about this table? (@tbl-a-bp-med-het)
 
-```{r, message=F, warning=F}
+```{r, message=F}
 #| echo: FALSE
-#| tbl-cap: Table caption.
-#| label: tbl-table1
-#| eval: TRUE
+#| label: tbl-a-bp-med-het
+#| tbl-cap: Heterogenous treatment effects for blood pressure mediation model.
 
-# options(knitr.kable.NA = "\\")
-tx <- tibble(
-  p = factor(rep(c("New recruitment",
-  "Wave 1 households", "Wave 2 households",
-  "Total recruitment"),2), levels = c("New recruitment",
-  "Wave 1 households", "Wave 2 households",
-  "Total recruitment")),
-  g = c(1,1,1,1,2,2,2,2),
-  s1 = c(977,NA,NA,977, 0,NA,NA,0),
-  s2 = c(196,866,NA, 1062, 300, 0,NA, 300),
-  s4 = c(68, 780, 162, 1010, 52, 0, 248, 300)
-)
-tx2 <- tx %>% pivot_wider(names_from = g,
-  values_from = c(s1, s2, s4), 
-  names_vary = "slowest") %>%
-  mutate(s3_2 = c(0,0,246,246)) %>%
-  relocate(p,s1_1,s2_1,s4_1,s1_2,s2_2,s3_2,s4_2) 
-  # rename("Sample" = p, "Wave 1" = s1_1, 
-  #  "Wave 2" = s2_1, "Wave 4" = s4_1,
-  #  "Wave 1" = s1_2, "Wave 2" = s2_2,
-  #  "Wave 3" = s3_2, "Wave 4" = s4_2)
+ctot <- read_xlsx(here("data-clean", 
+  "ct_total_effect_adjusted.xlsx")) %>%
+  mutate(model = 1)
 
-colnames(tx2) <- c("Sample", "Wave 1", "Wave 2", "Wave 4", 
-    "Wave 1", "Wave 2", "Wave 3", "Wave 4")
+ctotmp <- read_xlsx(here("data-clean", 
+  "ct_pm_mediation_adjusted.xlsx")) %>%
+  mutate(model = 2)
 
-tt(tx2) |>
- format_tt(replace = "-") |>
- group_tt(
-  j = list(
-     " " = 1,
-     "Overall" = 2:4,
-     "Indoor" = 5:8))
+ctotmt <- read_xlsx(here("data-clean", 
+  "ct_temp_mediation_adjusted.xlsx")) %>%
+  mutate(model = 3)
 
+ctotmm <- read_xlsx(here("data-clean", 
+  "ct_mult_mediation_adjusted.xlsx")) %>%
+  mutate(model = 4)
 
-
-#kable(tx2,
-#  col.names = c("Sample", "Wave 1", "Wave 2", "Wave 4", 
-#    "Wave 1", "Wave 2", "Wave 3", "Wave 4")) %>%
-#  kable_styling() %>%
-#  add_header_above(c(" " = 1, 
-#    "Overall" = 3, "Indoor" = 4))
-
-# tx3 <- tx %>% pivot_wider(names_from = g,
-#   values_from = c(s1, s2, s4), 
-#   names_vary = "slowest") %>%
-#   mutate(s3_2 = c(0,0,246,246)) %>%
-#   relocate(p,s1_1,s2_1,s4_1,s1_2,s2_2,s3_2,s4_2) %>%
-#   flextable()
-# 
-# tx3 <- add_header(tx3, p = "", s1_1 = "Wave 1",
-#     s2_1 = "Wave 2", s4_1 = "Wave 4",
-#     s1_2= "Wave 1", s2_2 = "Wave 2", 
-#     s3_2 = "Wave 3", s4_2 = "Wave 4", 
-#     top = FALSE ) 
-# 
-# tx3 <- tx3 %>% delete_rows(i=1,part="header")
-# 
-# tx4 <- add_header_row(tx3,
-#   values = c("", "Overall", "Indoor"),
-#   colwidths = c(1, 3, 4))
-# 
-# tx4
-```
-
-Problem table (@tbl-med-source):
-```{r, message=F, warning=F}
-#| echo: FALSE
-#| label: tbl-med-source
-#| tbl-cap: Average treatment effects and controlled direct effect (mm/Hg) of the CBHP policy on central systolic and diastolic blood pressure with mixed combustion source as the potential mediator.
-#| eval: TRUE
-
-# read in mediation by source results
-med_source <- read_csv(here("data-clean", 
-  "mixed_med_table_overall.csv")) 
-
-med_source_t <- med_source %>%
-  select(-type, -model) %>%
-  mutate(outcome = c("Central SBP", "Central SBP",  
-    "Central DBP", "Central DBP", "Central SBP",
-    "Central DBP"),
-    model = c(1,2,1,2,3,3)) %>%
-  separate_wider_delim(att, delim = "(", 
-    names = c("att", "attci"), cols_remove = TRUE) %>% 
-  mutate(attci = paste("(", attci, sep="")) %>% 
-  pivot_wider(names_from = "model", 
-    values_from = c("att", "attci"), names_vary = "slowest")
-
-colnames(med_source_t) = c("", "ATT", 
-  "(95%CI)", "ATT", "(95%CI)", 
-  "ATT", "(95%CI)")
-
-tt(med_source_t, 
-   digits = 2, 
-   notes = list("Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences, CDE = Controlled Direct Effect, DBP = Diastolic Blood Pressure, SBP = Systolic Blood Pressure.", a = list(i = 0, j = 4, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), b = list(i =0, j = 6, text = "Further adjusted for mediation by mixed combustion source (coal and biomass)"))) %>%
-  group_tt(j = list(
-     "DiD" = 2:3,
-     "Adjusted DiD" = 4:5,
-     "Adjusted CDE" = 6:7)) %>%
-  format_tt(escape = TRUE) %>%
-  style_tt(j = 1:7, align = 'lcccccc')
-
-
-# kable(med_source_t,
-#   col.names =c("", "ATT", "(95%CI)", "ATT", "(95%CI)",
-#    "ATT", "(95%CI)"), 
-#    # "latex", booktabs = T,
-#   linesep = "", align = 'lcccccc') %>%
-#   kable_styling(full_width = F,
-#     latex_options = "HOLD_position") %>%
-#   add_header_above(c(" " = 1, 
-#     "DiD" = 2, 
-#     "Adjusted DiD\\\\textsuperscript{a}" = 2,
-#     "Adjusted CDE\\\\textsuperscript{b}" = 2),
-#     escape = F) %>%
-#   footnote(
-#     general = "\\\\small{Note: ATT = Average Treatment Effect on # the Treated, DiD = Difference-in-Differences, CDE = Controlled # Direct Effect, DBP = Diastolic Blood Pressure, SBP = Systolic Blood # Pressure.}",
-#     alphabet = c("\\\\small{Adjusted for age, sex, waist # circumference, smoking, alcohol consumption, and use of blood # pressure medication.}", "\\\\small{Further adjusted for mediation # by mixed combustion source (coal and biomass)}"), 
-#     general_title = "", threeparttable = T, escape = F)
-```
-
-What about this table? (@tbl-bp-het)
-
-
-```{r}
-#| echo: FALSE
-#| label: tbl-bp-het
-#| tbl-cap: "Heterogenous treatment effects for the total effect of the CBHP policy on blood pressure."
-
-options(knitr.kable.NA = " ")
-temp_table <- read_xlsx(here("data-clean",
-  "adjusted_CT_results_table.xlsx")) %>%
-  select(bp, parameter, `Adjusted DiD`) %>%
-  rename(attci = `Adjusted DiD`) %>%
-  mutate(cohort = rep(c(2019,2019,2020,2021),
-                      times = 4),
+ctotm <- bind_rows(ctot, ctotmp, ctotmt, ctotmm) %>%
+  rename(est = theta_bar, ll = lower_95CI,
+         ul = upper_95CI) %>%
+  mutate(ci = paste("(", sprintf('%.2f', ll), ", ",
+    sprintf('%.2f', ul), ")", sep=""),
+    cohort = rep(c(2019,2019,2020,2021),
+                      times = 16),
          time = rep(c(2019,2021,2021,2021),
-                    times = 4)) %>%
-  separate_wider_delim(attci, delim = "(", 
-    names = c("att", "attci"), cols_remove = TRUE) %>% 
-  mutate(attci = paste("(", attci, sep="")) %>% 
-  select(bp, att, attci, cohort, time) %>%
-  relocate(bp, cohort, time)
-
-
-het_stats <- read_xlsx(here("data-clean",
-  "ct-heterogeneity-results.xlsx")) %>%
-  filter(Model == "Adjusted DiD") %>%
-  rename(bp = `BP measure`,
-         test = `Test statistic`,
-         pval = `P-value`) %>%
-  mutate(test = sprintf("%.1f", test),
-         pval = sprintf("%.3f", pval),
-         cohort = 2021,
-         time = 2021) %>%
-  select(bp, cohort, time, test, pval)
-
-bp_het_table <- temp_table %>% 
-  left_join(het_stats, join_by(bp, cohort, time)) %>%
+                    times = 16)) %>%
+  select(bp, cohort, time, model, est, ci) %>%
+  pivot_wider(names_from = model, 
+    values_from = c(est, ci), names_vary = "slowest") %>%
   select(-bp)
 
-colnames(bp_het_table) <- c("Cohort", "Time", 
-  "ATT", "(95% CI)", "F-Statistic", "p-value")
+colnames(ctotm) <- c("Cohort", "Time", 
+  "ATT", "(95% CI)", "ATT", "(95% CI)", 
+  "ATT", "(95% CI)", "ATT", "(95% CI)")
 
-tt(bp_het_table,
+tt(ctotm,
    digits = 2,
-   width = c(1, 1, 1, 1.25, 1, 1),
-   notes = list("Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences.", 
-     a = list(i = 0, j = 3, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), 
-     b = list(i = 0, j = 5, text = "F-statistics and p-values for joint tests of equality across cohort and time ATTs"))) %>%
+   notes = list("Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.", 
+     a = list(i=0, j=3, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), 
+     b = list(i=0, j=c(5,7,9), text = "Mediators were set to the mean value for untreated participants at baseline."))) %>%
   group_tt(
-    j = list(
-      "Adjusted DiD" = 3:4,
-      "Heterogeneity tests" = 5:6),
+    j = list("Indoor PM" = 5:6,
+             "Indoor Temp" = 7:8,
+             "PM + Temp" = 9:10)) %>%
+  group_tt(
+    j = list("Adjusted Total Effect" = 3:4,
+             "CDE Mediated By:" = 5:10)) %>%
+  style_tt(j = 1:10, align = "llcccccccc") %>%
+  style_tt(j=1:10, fontsize = 0.8) %>%
+  format_tt(escape = TRUE) %>%
+  format_tt(j=c(3,5,7,9), sprintf = "%.2f") %>%
+  group_tt(
     i = list(
-      "Brachial SBP" = 1,
-      "Central SBP" = 5,
-      "Brachial DBP" = 9,
-      "Central DBP" = 13)) %>%
-  style_tt(i = c(1,6,11,16), bold = TRUE) %>%
-  # style_tt(i = c(2,7,12,17), rowspan = 2) %>%
-  format_tt(escape = TRUE)
+        "Brachial SBP" = 1, 
+        "Central SBP" = 5,
+        "Brachial DBP" = 9,
+        "Central DBP" = 13)) %>%
+  style_tt(i = c(1,6,11,16), bold = TRUE)
 
+# kable(ctotm, digits = 2,
+#   col.names = c("Cohort", "Time", "ATT", "(95%CI)",
+#   "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
+#   align = 'llcccccccc') %>%
+#   kable_styling(font_size = 10,
+#     latex_options = "HOLD_position") %>%
+#   pack_rows("Brachial SBP", 1, 4) %>%
+#   pack_rows("Central SBP", 5, 8) %>%
+#   pack_rows("Brachial DBP", 9, 12) %>%
+#   pack_rows("Central DBP", 13, 16) %>%
+#   add_header_above(c(" " = 4, 
+#   "Indoor PM" = 2, "Indoor Temp" = 2, "PM + Temp" = 2)) %>%
+#   add_header_above(c(" " = 2, 
+#     "Adjusted Total Effect\\\\textsuperscript{a}" = 2,
+#     "CDE Mediated By:\\\\textsuperscript{b}" = 6),
+#     escape = F) %>%
+#     footnote(
+#     general = "\\\\small{Note: Results combined across 30 # multiply-imputed datasets. ATT = Average Treatment Effect on the # Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood # pressure, SBP = Systolic blood pressure.}",
+#     alphabet = c("\\\\small{Adjusted for age, sex, waist # circumference, smoking, alcohol consumption, and use of blood # pressure medication.}", "\\\\small{Mediators were set to the mean # value for untreated participants at baseline.}"), 
+#     general_title = "", threeparttable = T, escape = F)
 ```
-

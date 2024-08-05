@@ -267,44 +267,36 @@ outdoor air pollution, as well as heating behaviors and health outcomes.
 
 \newpage
 
-What about this table? (\textbf{?@tbl-a-feno})
+What about this table? (Table~\ref{tbl-a-fe})
 
 \begin{table}[H]
 
-\caption{\label{tbl-a-ind-s3}Effects of the CBHP policy on indoor
-seasonal PM\textsubscript{2.5} based on whether Season 3 data are
-included vs.~excluded.}
+\caption{\label{tbl-a-fe}Effects of the CBHP policy on personal exposure
+(\(\mu g / m^{3}\)) with variations in fixed effects for treatment group
+and time.}
 
 \centering{
 
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval.},
+note{}={Note: All models adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Standard errors clustered by village.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
-width={1\linewidth},
-colspec={X[0.119047619047619]X[0.119047619047619]X[0.142857142857143]X[0.238095238095238]X[0.142857142857143]X[0.238095238095238]},
-cell{1}{3}={c=2,}{halign=c,},
-cell{1}{5}={c=2,}{halign=c,},
-cell{3}{1}={c=6}{},cell{5}{1}={c=6}{},
-cell{4}{1}={preto={\hspace{1em}}},
-cell{6}{1}={preto={\hspace{1em}}},
-cell{7}{1}={preto={\hspace{1em}}},
-cell{8}{1}={preto={\hspace{1em}}},
-cell{9}{1}={preto={\hspace{1em}}},
-row{3}={,cmd=\bfseries,},
-row{5}={,cmd=\bfseries,},
+colspec={Q[]Q[]Q[]Q[]Q[]},
+row{1}={,cmd=\bfseries,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
 }                     %% tabularray inner close
 \toprule
-&  & With Season 3 data &  & Without Season 3 data &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
-Cohort & Time & ATT & (95\% CI) & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
-Average ATT &&&&& \\
-All & All & -37.49 & (-60.11, -14.88) & -35.11 & (-59.36, -10.85) \\
-Cohort-Time ATTs &&&&& \\
-2020 & 2020 & -36.94 & (-61.39, -12.49) &  &  \\
-2020 & 2021 & -33.51 & (-66.84, -0.18) & -30.22 & (-63.77, 3.32) \\
-2021 & 2021 & -46.82 & (-58.57, -35.07) & -44.88 & (-60.41, -29.34) \\
+& Adjusted DiD & No time FE & No group FE & No FE \\ \midrule %% TinyTableHeader
+ATT & 1.95 & -31.43 & -5.91 & -24.13 \\
+& [-23.34, 27.23] & [-49.42, -13.44] & [-24.36, 12.54] & [-41.42, -6.83] \\
+Observations & 1,281 & 1,281 & 1,281 & 1,281 \\
+Year fixed effects & X &  & X &  \\
+Cohort fixed effects & X & X &  &  \\
 \bottomrule
 \end{talltblr}
 

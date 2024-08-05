@@ -2023,10 +2023,12 @@ tt(a_is3_table,
 
 @fig-afig-did-opm-w3 shows the impact of including Wave 3 data on the estimates of the impact of the policy on seasonal outdoor PM~2.5~.
 
-```{r ap-w3-plots, echo=FALSE, out.width="60%"}
+```{r, out.width = "60%"}
+#| echo: FALSE
 #| fig-cap-location: top
 #| label: fig-afig-did-opm-w3
-#| fig-cap: "Effects of the CBHP policy on outdoor seasonal PM~2.5~ based on whether Season 3 data are included vs. excluded."
+#| fig-cap: Effects of the CBHP policy on outdoor seasonal PM~2.5~ based on whether Season 3 data are included vs. excluded.
+#| fig-width: 6
 
 knitr::include_graphics(here("images", 
  "did-outdoor-w3.png"))
@@ -2048,10 +2050,11 @@ knitr::include_graphics(here("images",
 ```
 
 
-```{r pretw4-plots, echo=FALSE, out.width = "70%"}
+```{r, out.width = "70%"}
+#| echo: FALSE
 #| fig-cap-location: top
 #| label: fig-afig-pt4
-#| fig-cap: "Comparison of pre-interventions trends in blood pressure between waves 1 and 2 for never treated and villages later treated in wave 4"
+#| fig-cap: Comparison of pre-interventions trends in blood pressure between waves 1 and 2 for never treated and villages later treated in wave 4.
 
 knitr::include_graphics(here("images", 
   "never_Y4.png"))
@@ -2063,10 +2066,13 @@ knitr::include_graphics(here("images",
 \newpage
 
 ## Impact of group and time fixed effects
+Table @tbl-a-fe shows the impact of adding different sets of cohort and time fixed effects to the model for personal exposure.
 
-```{r, echo=FALSE, message = FALSE, eval=F}
+```{r}
+#| echo: FALSE
 #| label: tbl-a-fe
 #| tbl-cap: "Effects of the CBHP policy on personal exposure ($\\mu g / m^{3}$) with variations in fixed effects for treatment group and time."
+#| tbl-pos: H
 
 
 pe_etwfe_me <- read_rds(here("outputs/models", 
@@ -2078,17 +2084,28 @@ pe_etwfe_ng_me <- read_rds(here("outputs/models",
 pe_etwfe_nfe_me <- read_rds(here("outputs/models", 
   "pe_etwfe_nfe_me.rds"))
 
-modelsummary(list("Adjusted DiD" = pe_etwfe_me, 
+f <- function(x) format(round(x, 0), big.mark=",")
+gm <- list(
+  list("raw" = "nobs", "clean" = "Observations", "fmt" = f),
+  list("raw" = "FE..year", "clean" = "Year fixed effects", "fmt" = f),
+  list("raw" = "FE..cohort_year", "clean" = "Cohort fixed effects", "fmt" = f))
+
+temp_table <- modelsummary(list("Adjusted DiD" = pe_etwfe_me, 
   "No time FE" = pe_etwfe_ny_me, 
   "No group FE" = pe_etwfe_ng_me, 
   "No FE" = pe_etwfe_nfe_me), 
   coef_rename = c("treat" = "ATT"), 
   statistic = "conf.int", fmt = 2, 
   gof_omit = 'DF|Deviance|R2|AIC|BIC|RMSE',
-  output = 'kableExtra',
-  notes = c("Note: All models adjusted for household size, smoking, outdoor temperature, and outdoor humidity.", 
-            "Standard errors clustered by village.")) %>%
-  kable_styling(latex_options = "HOLD")
+  gof_map = gm,
+  output = "tinytable")
+
+tt(temp_table@data,
+   notes = list("Note: All models adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Standard errors clustered by village.")) %>%
+  style_tt(i=0, bold = TRUE) %>%
+  style_tt(j = 2:5, align = "c") %>%
+  format_tt(escape = TRUE)
+
 ```
 
 \newpage

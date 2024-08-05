@@ -74,33 +74,46 @@ China is deploying an ambitious policy to transition up to 70% of households in 
 
 \newpage
 
-What about this table? (@tbl-a-feno)
+What about this table? (@tbl-a-fe)
+
 
 ```{r}
 #| echo: FALSE
-#| label: tbl-a-ind-s3
-#| tbl-cap: Effects of the CBHP policy on indoor seasonal PM~2.5~ based on whether Season 3 data are included vs. excluded.
+#| label: tbl-a-fe
+#| tbl-cap: "Effects of the CBHP policy on personal exposure ($\\mu g / m^{3}$) with variations in fixed effects for treatment group and time."
 #| tbl-pos: H
 
-a_is3_table <- read_rds(here("outputs", 
-  "ap-is3_table.rds")) %>%
-   mutate(estimate_woS3 = na_if(estimate_woS3, 0),
-          ci_woS3 = na_if(ci_woS3, "(NA, NA)"))
 
-colnames(a_is3_table) <- c("Cohort", "Time", 
-  "ATT", "(95% CI)", "ATT", "(95% CI)")
+pe_etwfe_me <- read_rds(here("outputs/models", 
+  "pe_etwfe_me.rds"))
+pe_etwfe_ny_me <- read_rds(here("outputs/models", 
+  "pe_etwfe_ny_me.rds"))
+pe_etwfe_ng_me <- read_rds(here("outputs/models", 
+  "pe_etwfe_ng_me.rds"))
+pe_etwfe_nfe_me <- read_rds(here("outputs/models", 
+  "pe_etwfe_nfe_me.rds"))
 
-tt(a_is3_table,
-   digits = 2, width = c(.5,.5,.6,1,.6,1),
-   notes = "Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval.") %>%
-  group_tt(j = list(
-    "With Season 3 data" = 3:4,
-    "Without Season 3 data" = 5:6),
-    i = list(
-    "Average ATT" = 1,
-    "Cohort-Time ATTs" = 2)) %>%
-  style_tt(i = c(1,3), bold = TRUE) %>%
-  format_tt(j=c(3,5), sprintf = "%.2f") %>%
+f <- function(x) format(round(x, 0), big.mark=",")
+gm <- list(
+  list("raw" = "nobs", "clean" = "Observations", "fmt" = f),
+  list("raw" = "FE..year", "clean" = "Year fixed effects", "fmt" = f),
+  list("raw" = "FE..cohort_year", "clean" = "Cohort fixed effects", "fmt" = f))
+
+temp_table <- modelsummary(list("Adjusted DiD" = pe_etwfe_me, 
+  "No time FE" = pe_etwfe_ny_me, 
+  "No group FE" = pe_etwfe_ng_me, 
+  "No FE" = pe_etwfe_nfe_me), 
+  coef_rename = c("treat" = "ATT"), 
+  statistic = "conf.int", fmt = 2, 
+  gof_omit = 'DF|Deviance|R2|AIC|BIC|RMSE',
+  gof_map = gm,
+  output = "tinytable")
+
+tt(temp_table@data,
+   notes = list("Note: All models adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Standard errors clustered by village.")) %>%
+  style_tt(i=0, bold = TRUE) %>%
+  style_tt(j = 2:5, align = "c") %>%
   format_tt(escape = TRUE)
- 
+
+
 ```

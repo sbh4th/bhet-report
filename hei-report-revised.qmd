@@ -133,15 +133,16 @@ Beijing is the capital of China (pop. 21.9 million in 2020) and covers a large g
 
 ## Location and participant recruitment and enrolment
 
-Between December 2018 and January 2019 we recruited 50 villages across 4 administrative districts (Fangshan, Huairou, Mentougou, and Miyun) in the Beijing municipality in northern China. The villages predominately used coal for heating at the time of enrollment and were eligible for but not currently participating in the CBHP policy. Roughly half of the villages were expected to enter into the policy during our study (@fig-cbhp-map). We used local guides in each village to help determine a roster of households that were not vacant during the winter months, from which we randomly selected households to recruit for participation. 
+Between December 2018 and January 2019 we recruited 50 villages across 4 administrative districts (Fangshan, Huairou, Mentougou, and Miyun) in the Beijing municipality in northern China. The villages predominately used coal for heating at the time of enrollment and were eligible for but not currently participating in the CBHP policy. Roughly half of the villages were expected to enter into the policy during our study \comment{EC 10c} (@fig-cbhp-map). We used local guides in each village to help determine a roster of households that were not vacant during the winter months, from which we randomly selected households to recruit for participation. 
 
 
-```{r fig-map, echo=FALSE, out.width = "70%"}
+```{r, out.width = "90%"}
+#| echo: FALSE
 #| label: fig-cbhp-map
-#| fig-cap: "Map of village implementation of CBHP policy"
+#| fig-cap: "Map of village implementation of CBHP policy. Each circle represents one recruited village. The colors of the circles indicate the year the villages were exposed to the household energy transition policy."
 
 knitr::include_graphics(here("images", 
-  "policy-implementation-map.png"))
+  "village-map.png"))
 ```
 
 We recruited approximately 20 households in each village and randomly selected one eligible person from each household to participate. Household members were eligible to participate if they were over 40 years old, lived in the study villages, were not planning to move out of the village in the next year, and were not on current immunotherapy or treatment with corticosteroids. Research staff introduced the study and its measurements to an eligible adult in each household and answered any questions related to the study. In follow-up visits to the study villages, staff first approached households with participants from an earlier wave. If previous participants were not at home or refused to participate, staff first tried to randomly recruit an eligible participant from the same household. If there was not another eligible or willing participant in the household, we randomly selected and recruited a participant from a new household using the village roster. All participants provided written informed consent prior to joining the study. The study protocols were approved by research ethics boards at Peking University (IRB00001052-18090), Peking Union Medical College Hospital (HS-3184) and McGill University (A08-E53-18B).

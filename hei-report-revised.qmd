@@ -1147,7 +1147,7 @@ To comprehensively evaluate a large-scale policy like the CBHP policy, our study
 
 ## Assumptions, strengths, and limitations
 
-The validity of our DiD approach is subject to two key assumptions [@callaway2021; @wooldridge2021]. First, no anticipation: we assume that anticipation of the CBHP policy did not affect outcomes prior to policy implementation and did not differ between treated and untreated villages. We selected villages that were eligible for the policy but not currently treated. It was generally understood that the policy would first be implemented in the plains areas with more updated electric grids and then gradually expand into more remote and mountainous areas of Beijing, though most of our study villages were far from Beijing's urban core. In addition to these geographical parameters, some of our study villages were assigned to the policy whereas others applied to the local government, but they were generally unaware of if or when they would be treated at the time of enrollment. Second, parallel trends: our analysis assumes that in the absence of the policy the trends in air quality and health in treated and untreated villages would have remained the same over time. Because the parallel trends assumption is based on a counterfactual it cannot be empirically verified (similar to the assumption of no unmeasured confounding); however, we observed similar pre-intervention trends in BP outcomes between waves 1 and 2 in never treated villages and those treated later in waves 3 and 4 (see Appendix @fig-afig-pt3 and @fig-afig-pt4). We also adjusted for relevant time-varying confounders in estimating total effects and in mediation analyses, which aims to improve the credibility of parallel trends assumption. 
+The validity of our DiD approach is subject to two key assumptions [@callaway2021; @wooldridge2021]. First, no anticipation: we assume that anticipation of the CBHP policy did not affect outcomes prior to policy implementation and did not differ between treated and untreated villages. We selected villages that were eligible for the policy but not currently treated. It was generally understood that the policy would first be implemented in the plains areas with more updated electric grids and then gradually expand into more remote and mountainous areas of Beijing, though most of our study villages were far from Beijing's urban core. In addition to these geographical parameters, some of our study villages were assigned to the policy whereas others applied to the local government, but they were generally unaware of if or when they would be treated at the time of enrollment. Second, parallel trends: our analysis assumes that in the absence of the policy the trends in air quality and health in treated and untreated villages would have remained the same over time. Because the parallel trends assumption is based on a counterfactual it cannot be empirically verified (similar to the assumption of no unmeasured confounding). However,\comment{EC 4a} given that we had two pre-intervention periods prior to the 2021 cohort being treated, we assessed the similarity of pre-intervention trends between w1 and w2 for the never treated group and the group eventually treated in 2021. Estimates and 95% CIs for the difference in pre-trends are given in the Appendix for BP outcomes (@fig-afig-pt3 and @fig-afig-pt4), personal exposure to PM~2.5~ and black carbon (@fig-afig-pt5), and self-reported respiratory outcomes (@fig-afig-pt6). We found little strong evidence for systematic differences in pre-trends for any outcome, but some estimates were imprecise and tests for pre-trends are generally considered to have low power [@roth2022]. We also adjusted for relevant time-varying confounders in estimating total effects and in mediation analyses, which aims to improve the credibility of parallel trends assumption. 
 
 We also note that, in general, the addition of covariates to our “basic” ETWFE models did not appreciably change our estimates. Nevertheless, we cannot entirely rule out the possibility that other programs or policies differentially affected air quality or health in treated and untreated villages, which could lead to over- or under-estimation of its effects. To investigate this possibility we surveyed village leaders about other rural development or health policies and programs in their villages throughout our four-year study period and did not identify any co-implemented programs that would differentially impact villages by treatment status and affect outcomes or mediators. Finally, our mediation analysis assumes no residual time-varying confounding between our mediators (air pollution and temperature) and our health outcomes. Although we measured and evaluated a large number of time-varying risk factors for BP, we cannot entirely eliminate the possibility of potential residual confounding which could over-or under-estimate the mediating effects of indoor environmental factors. 
  
@@ -2057,13 +2057,11 @@ knitr::include_graphics(here("images",
 #| echo: FALSE
 #| fig-cap-location: top
 #| label: fig-afig-pt4
-#| fig-cap: Comparison of pre-interventions trends in blood pressure between waves 1 and 2 for never treated and villages later treated in wave 4.
+#| fig-cap: Comparison of pre-intervention trends in blood pressure between waves 1 and 2 for never treated and villages later treated in wave 4.
 
 knitr::include_graphics(here("images", 
   "never_Y4.png"))
 ```
-
-\newpage
 
 ### Personal exposure and black carbon
 
@@ -2071,7 +2069,7 @@ knitr::include_graphics(here("images",
 #| echo: FALSE
 #| fig-cap-location: top
 #| label: fig-afig-pt5
-#| fig-cap: Comparison of pre-interventions trends in personal exposure and black carbon between waves 1 and 2 for never treated and villages later treated in wave 4.
+#| fig-cap: Comparison of pre-intervention trends in personal exposure and black carbon between waves 1 and 2 for never treated and villages later treated in wave 4.
 
 knitr::include_graphics(here("images", 
   "pe-bc-pretrends.png"))
@@ -2083,7 +2081,7 @@ knitr::include_graphics(here("images",
 #| echo: FALSE
 #| fig-cap-location: top
 #| label: fig-afig-pt6
-#| fig-cap: Comparison of pre-interventions trends in self-reported respiratory outcoems between waves 1 and 2 for never treated and villages later treated in wave 4.
+#| fig-cap: Comparison of pre-intervention trends in self-reported respiratory outcomes between waves 1 and 2 for never treated and villages later treated in wave 4.
 
 knitr::include_graphics(here("images", 
   "resp-pretrends.png"))

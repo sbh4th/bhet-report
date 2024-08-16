@@ -138,6 +138,3 @@ ggsave(here("images", "pe-bc-pretrends.png"),
        plot=pt_plots, width=6.5, height=9)
 
 
-## 3 pre-trends for respiratory outcomes ----
-
-

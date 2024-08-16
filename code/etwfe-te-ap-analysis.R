@@ -14,6 +14,7 @@ library(fixest)
 library(marginaleffects)
 library(modelsummary)
 library(kableExtra)
+library(patchwork)
 
 
 ## 1 read in clean air pollution datasets ----
@@ -297,25 +298,6 @@ aph_table_i <- bind_rows(ap_table_i24h, ap_table_ish) %>%
 write_rds(aph_table_i, file = here("outputs", 
   "ap-het-table-indoor.rds"))
 
-# html table for design
-# kable(aph_table, digits = 2,
-#   col.names = c("Cohort", "Year", "ATT", "(95% CI)", 
-#    "ATT", "(95% CI)"), #"latex", booktabs = T,
-#   linesep = "") %>%
-#   kable_styling(full_width = F) %>%
-#   # collapse_rows(columns = 1:2, valign = "top") %>% 
-#   add_header_above(c(" " = 2, 
-#                     "PM2.5" = 2, "Black carbon" = 2)) %>%
-#   footnote(symbol=c(paste("Joint test that all ATTs are equal: ", 
-#     "F(", m_ppm$ht1$df1, ", ", m_ppm$ht1$df2, ")= " , 
-#     round(m_ppm$ht1$statistic, digits=3), ", p= ", 
-#     round(m_ppm$ht1$p.value, digits=3)), 
-#     paste("Joint test that all ATTs are equal: ", 
-#           "F(", m_pbc$ht1$df1, ", ", m_pbc$ht1$df2, ")= " ,
-#           round(m_pbc$ht1$statistic, digits=3), ", p= ", 
-#           round(m_pbc$ht1$p.value, digits=3))), 
-#     footnote_as_chunk = T) 
-
 
 ## 5 Impact of S3 air pollution data ----
 
@@ -475,6 +457,7 @@ pe_etwfe_nfe_me <- slopes(pe_etwfe_nfe,
 write_rds(pe_etwfe_nfe_me, file = here("outputs/models", 
   "pe_etwfe_nfe_me.rds"))
 
+
 ## 7 Pre-trends for AP data
 # set theme for pre-trends
 theme_pt <- function() {
@@ -483,10 +466,11 @@ theme_pt <- function() {
       axis.text = element_text(size = 14),
       legend.title = element_text(size = 14),
       legend.text = element_text(size = 14),
-      plot.subtitle = element_text(size = 14))
+      plot.subtitle = element_text(size = 12))
 }
 
 # Personal exposure
+# limit to pre-intervention years/cohort
 d_p_r <- d_p %>% filter(year < 2021) %>%
   mutate(et = case_when(cohort_year_2021==1 ~ "Yes",
                         cohort_year_2021==0 ~ "No"))
@@ -494,27 +478,35 @@ d_p_r <- d_p %>% filter(year < 2021) %>%
 pt_p <- glm(PM25conc_exposureugm3 ~ year * et,
             data = d_p_r)
 
+# Time trends by treatment status
 avg_comparisons(pt_p, 
   var = "year",
   by = "cohort_year_2021",
   vcov = ~ v_id)
 
+# Difference in time trends by treatment
 pt_pt <- avg_comparisons(pt_p, 
   var = "year",
   by = "cohort_year_2021",
   hypothesis = "b2 - b1 = 0",
   vcov = ~ v_id)
 
-pt_p_test <- paste("Difference in trend (SE) for treated vs. untreated villages: ", sprintf("%.1f", pt_pt$estimate),
+# Gather estimates for difference in pre-trends
+pt_text <- "Difference in trend (SE) for treated vs. untreated villages:" 
+pt_p_stats <- paste(sprintf("%.1f", pt_pt$estimate),
   " (", sprintf("%.1f", pt_pt$std.error), ")", 
   ", 95% CI: ", sprintf("%.1f", pt_pt$conf.low),
   ", ", sprintf("%.1f", pt_pt$conf.high), sep="")
 
-plot_predictions(pt_p, condition = c("year",
+pt_p_test <- paste(pt_text, pt_p_stats, sep = "\n")
+
+# Plot of trends and estimates
+pt_pe_plot <- plot_predictions(pt_p, condition = c("year",
   "et")) + scale_y_continuous(limits = c(0, 150)) +
   scale_x_continuous(breaks = c(2018, 2019)) +
   labs(subtitle = pt_p_test,
-       y = expression("Personal PM"["2.5"] ~ "(µg/" ~ m^3~")"), x = "") +
+  y = expression("Personal PM"["2.5"] ~ "(µg/" ~ m^3~")"), 
+    x = "") +
   scale_color_manual(name = "Treated in 2021?",
     labels = c("No", "Yes"),
     values = c("#e41a1c", "#377eb8")) +
@@ -529,25 +521,30 @@ d_bc_r <- d_bc %>% filter(year < 2021) %>%
 pt_bc <- glm(bc_exp_conc ~ year * et,
             data = d_bc_r)
 
+# Time trends by treatment status
 avg_comparisons(pt_bc, 
   var = "year",
   by = "et",
   vcov = ~ v_id)
 
+# Difference in time trends by treatment
 pt_bct <- avg_comparisons(pt_bc, 
   var = "year",
   by = "cohort_year_2021",
   hypothesis = "b2 - b1 = 0",
   vcov = ~ v_id)
 
-# summary of pre-trends test
-pt_bc_test <- paste("Difference in trend (SE) for treated vs. untreated villages: ", sprintf("%.1f", pt_bct$estimate),
+# Gather estimates for difference in pre-trends
+pt_bc_stats <- paste(sprintf("%.1f", pt_bct$estimate),
   " (", sprintf("%.1f", pt_bct$std.error), ")", 
   ", 95% CI: ", sprintf("%.1f", pt_bct$conf.low),
   ", ", sprintf("%.1f", pt_bct$conf.high), sep="")
 
-# plot of pre-trends
-pt_personal_plot <- plot_predictions(pt_bc, 
+pt_bc_test <- paste(pt_text, pt_bc_stats, sep = "\n")
+
+
+# Plot of trends and estimates
+pt_bc_plot <- plot_predictions(pt_bc, 
   condition = c("year", "et")) + 
   scale_y_continuous(limits = c(-0.5, 5)) +
   scale_x_continuous(breaks = c(2018, 2019)) +
@@ -562,46 +559,10 @@ pt_personal_plot <- plot_predictions(pt_bc,
   theme_pt()
 
 
-# Personal black carbon
-d_bc_r <- d_bc %>% filter(year < 2021) %>%
-  mutate(et = case_when(cohort_year_2021==1 ~ "Yes",
-                        cohort_year_2021==0 ~ "No"))
+# add personal plots together
+pt_plots <- pt_pe_plot / pt_bc_plot
 
-# estimate model for difference in pre-trends
-pt_bc <- glm(bc_exp_conc ~ year * et,
-             data = d_bc_r)
-
-# predicted trends by treatment status
-avg_comparisons(pt_bc, 
-  var = "year",
-  by = "et",
-  vcov = ~ v_id)
-
-# difference in trends by treatment status
-pt_bct <- avg_comparisons(pt_bc, 
-  var = "year",
-  by = "cohort_year_2021",
-  hypothesis = "b2 - b1 = 0",
-  vcov = ~ v_id)
-
-# summary of pre-trends test
-pt_bc_test <- paste("Difference in trend (SE) for treated vs. untreated villages: ", sprintf("%.1f", pt_bct$estimate),
-  " (", sprintf("%.1f", pt_bct$std.error), ")", 
-  ", 95% CI: ", sprintf("%.1f", pt_bct$conf.low),
-  ", ", sprintf("%.1f", pt_bct$conf.high), sep="")
-
-pt_bc_plot <- plot_predictions(pt_bc, 
-                 condition = c("year", "et")) + 
-  scale_y_continuous(limits = c(-0.5, 5)) +
-  scale_x_continuous(breaks = c(2018, 2019)) +
-  labs(subtitle = pt_bc_test,
-       y = "Personal Black Carbon", x = "") +
-  scale_color_manual(name = "Treated in 2021?",
-                     labels = c("No", "Yes"),
-                     values = c("#e41a1c", "#377eb8")) +
-  scale_fill_manual(name = "Treated in 2021?",
-                    labels = c("No", "Yes"),
-                    values = c("#e41a1c", "#377eb8")) + 
-  theme_pt()
+ggsave(here("images", "pe-bc-pretrends.png"), 
+       plot=pt_plots, width=6.5, height=9)
 
 

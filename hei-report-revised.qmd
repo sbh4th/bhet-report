@@ -145,7 +145,7 @@ knitr::include_graphics(here("images",
   "village-map.png"))
 ```
 
-We recruited approximately 20 households in each village and randomly selected one eligible person from each household to participate. Household members were eligible to participate if they were over 40 years old, lived in the study villages, were not planning to move out of the village in the next year, and were not on current immunotherapy or treatment with corticosteroids. Research staff introduced the study and its measurements to an eligible adult in each household and answered any questions related to the study. In follow-up visits to the study villages, staff first approached households with participants from an earlier wave. If previous participants were not at home or refused to participate, staff first tried to randomly recruit an eligible participant from the same household. If there was not another eligible or willing participant in the household, we randomly selected and recruited a participant from a new household using the village roster. All participants provided written informed consent prior to joining the study. The study protocols were approved by research ethics boards at Peking University (IRB00001052-18090), Peking Union Medical College Hospital (HS-3184) and McGill University (A08-E53-18B).
+We recruited approximately 20 households in each village and, in each household, obtained a household roster. Our\comment{EC 2c} tablet-based survey incorporated a randomization tool than randomly ordered household occupants listed on the roster. We recruited a participant in each household by starting at the top of the randomly ordered list until an eligible participant was identified. Household members were eligible to participate if they were over 40 years old, lived in the study villages, were not planning to move out of the village in the next year, and were not on current immunotherapy or treatment with corticosteroids. Research staff introduced the study and its measurements to an eligible adult in each household and answered any questions related to the study. In follow-up visits to the study villages, staff first approached households with participants from an earlier wave. If previous participants were not at home or refused to participate, staff first tried to randomly recruit the next eligible participant listed on the randomized household roster. If\comment{EC 2d} there was not another eligible or willing participant in the same household, we randomly selected and recruited a participant from a new household using the same process for household and participant selection described above. All participants provided written informed consent prior to joining the study. The study protocols were approved by research ethics boards at Peking University (IRB00001052-18090), Peking Union Medical College Hospital (HS-3184) and McGill University (A08-E53-18B).
 
 ## Data Collection Overview
 
@@ -2039,7 +2039,9 @@ knitr::include_graphics(here("images",
 
 \newpage
 
-## Pre-trends for blood pressure
+## Pre-trends
+
+### Blood pressure
 
 ```{r pretw3-plots, echo=FALSE, out.width="80%"}
 #| fig-cap-location: top
@@ -2062,6 +2064,30 @@ knitr::include_graphics(here("images",
 ```
 
 \newpage
+
+### Personal exposure and black carbon
+
+```{r, out.width = "90%"}
+#| echo: FALSE
+#| fig-cap-location: top
+#| label: fig-afig-pt5
+#| fig-cap: Comparison of pre-interventions trends in personal exposure and black carbon between waves 1 and 2 for never treated and villages later treated in wave 4.
+
+knitr::include_graphics(here("images", 
+  "pe-bc-pretrends.png"))
+```
+
+### Self-reported respiratory outcomes
+
+```{r, out.width = "90%"}
+#| echo: FALSE
+#| fig-cap-location: top
+#| label: fig-afig-pt6
+#| fig-cap: Comparison of pre-interventions trends in self-reported respiratory outcoems between waves 1 and 2 for never treated and villages later treated in wave 4.
+
+knitr::include_graphics(here("images", 
+  "resp-pretrends.png"))
+```
 
 
 \newpage

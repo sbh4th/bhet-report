@@ -1,11 +1,12 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.7.15)  31 JUL 2024 09:24
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.3)  14 AUG 2024 07:12
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **test-diff.tex
 (./test-diff.tex
 LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2024-05-27>
+L3 programming layer <2024-07-20>
 (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrartcl.cls
 Document Class: scrartcl 2023/07/07 v3.41 KOMA-Script document class (article)
 (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrkbase.sty
@@ -193,7 +194,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 )) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-05-27 L3 programming layer (loader) 
+Package: expl3 2024-07-20 L3 programming layer (loader) 
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
 \g__graphics_track_int=\count277
@@ -276,6 +277,30 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+)) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2024/03/29 v3.1b Micro-typographical refinements (RS)
+ (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count294
+)
+\MT@toks=\toks23
+\MT@tempbox=\box57
+\MT@count=\count295
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1061.
+LaTeX Info: Redefining \leftprotrusion on input line 1062.
+\MT@prot@toks=\toks24
+LaTeX Info: Redefining \rightprotrusion on input line 1081.
+LaTeX Info: Redefining \textls on input line 1392.
+\MT@outer@kern=\dimen154
+LaTeX Info: Redefining \textmicrotypecontext on input line 2013.
+\MT@listname@count=\count296
+ (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype-xetex.def
+File: microtype-xetex.def 2024/03/29 v3.1b Definitions specific to xetex (RS)
+LaTeX Info: Redefining \lsstyle on input line 238.
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+ (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2024/03/29 v3.1b microtype main configuration file (RS)
 )) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
@@ -304,85 +329,83 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count294
-\Gm@cntv=\count295
-\c@Gm@tempcnt=\count296
-\Gm@bindingoffset=\dimen154
-\Gm@wd@mp=\dimen155
-\Gm@odd@mp=\dimen156
-\Gm@even@mp=\dimen157
-\Gm@layoutwidth=\dimen158
-\Gm@layoutheight=\dimen159
-\Gm@layouthoffset=\dimen160
-\Gm@layoutvoffset=\dimen161
-\Gm@dimlist=\toks23
+\Gm@cnth=\count297
+\Gm@cntv=\count298
+\c@Gm@tempcnt=\count299
+\Gm@bindingoffset=\dimen155
+\Gm@wd@mp=\dimen156
+\Gm@odd@mp=\dimen157
+\Gm@even@mp=\dimen158
+\Gm@layoutwidth=\dimen159
+\Gm@layoutheight=\dimen160
+\Gm@layouthoffset=\dimen161
+\Gm@layoutvoffset=\dimen162
+\Gm@dimlist=\toks25
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2024-04-26 v4.20 Multi-page Table package (DPC)
 \LTleft=\skip68
 \LTright=\skip69
 \LTpre=\skip70
 \LTpost=\skip71
-\LTchunksize=\count297
-\LTcapwidth=\dimen162
-\LT@head=\box57
-\LT@firsthead=\box58
-\LT@foot=\box59
-\LT@lastfoot=\box60
-\LT@gbox=\box61
-\LT@cols=\count298
-\LT@rows=\count299
-\c@LT@tables=\count300
-\c@LT@chunks=\count301
-\LT@p@ftn=\toks24
+\LTchunksize=\count300
+\LTcapwidth=\dimen163
+\LT@head=\box58
+\LT@firsthead=\box59
+\LT@foot=\box60
+\LT@lastfoot=\box61
+\LT@gbox=\box62
+\LT@cols=\count301
+\LT@rows=\count302
+\c@LT@tables=\count303
+\c@LT@chunks=\count304
+\LT@p@ftn=\toks26
 )
 Class scrartcl Info: longtable captions redefined on input line 88.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen163
-\lightrulewidth=\dimen164
-\cmidrulewidth=\dimen165
-\belowrulesep=\dimen166
-\belowbottomsep=\dimen167
-\aboverulesep=\dimen168
-\abovetopsep=\dimen169
-\cmidrulesep=\dimen170
-\cmidrulekern=\dimen171
-\defaultaddspace=\dimen172
-\@cmidla=\count302
-\@cmidlb=\count303
-\@aboverulesep=\dimen173
-\@belowrulesep=\dimen174
-\@thisruleclass=\count304
-\@lastruleclass=\count305
-\@thisrulewidth=\dimen175
+\heavyrulewidth=\dimen164
+\lightrulewidth=\dimen165
+\cmidrulewidth=\dimen166
+\belowrulesep=\dimen167
+\belowbottomsep=\dimen168
+\aboverulesep=\dimen169
+\abovetopsep=\dimen170
+\cmidrulesep=\dimen171
+\cmidrulekern=\dimen172
+\defaultaddspace=\dimen173
+\@cmidla=\count305
+\@cmidlb=\count306
+\@aboverulesep=\dimen174
+\@belowrulesep=\dimen175
+\@thisruleclass=\count307
+\@lastruleclass=\count308
+\@thisrulewidth=\dimen176
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/tools/array.sty
 Package: array 2024/06/14 v2.6d Tabular extension package (FMi)
-\col@sep=\dimen176
-\ar@mcellbox=\box62
-\extrarowheight=\dimen177
-\NC@list=\toks25
+\col@sep=\dimen177
+\ar@mcellbox=\box63
+\extrarowheight=\dimen178
+\NC@list=\toks27
 \extratabsurround=\skip72
 \backup@length=\skip73
-\ar@cellbox=\box63
+\ar@cellbox=\box64
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count306
-\calc@Bcount=\count307
-\calc@Adimen=\dimen178
-\calc@Bdimen=\dimen179
+\calc@Acount=\count309
+\calc@Bcount=\count310
+\calc@Adimen=\dimen179
+\calc@Bdimen=\dimen180
 \calc@Askip=\skip74
 \calc@Bskip=\skip75
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count308
+\calc@Ccount=\count311
 \calc@Cskip=\skip76
-) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count309
-) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/mdwtools/footnote.sty
-Package: footnote 1997/01/28 1.13 Save footnotes around boxes
-\fn@notes=\box64
-\fn@width=\dimen180
+) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/footnotehyper/footnotehyper.sty
+Package: footnotehyper 2021/08/13 v1.1e hyperref aware footnote.sty (JFB)
+\FNH@notes=\box65
+\FNH@width=\dimen181
+\FNH@toks=\toks28
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
@@ -394,36 +417,36 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: xetex.def on input line 106.
 )
-\Gin@req@height=\dimen181
-\Gin@req@width=\dimen182
+\Gin@req@height=\dimen182
+\Gin@req@width=\dimen183
 )
 \cslhangindent=\skip77
 \csllabelwidth=\skip78
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@colwidth=\skip79
-\multirow@cntb=\count310
+\multirow@cntb=\count312
 \multirow@dima=\skip80
-\bigstrutjot=\dimen183
+\bigstrutjot=\dimen184
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.sty
-\wrapoverhang=\dimen184
-\WF@size=\dimen185
-\c@WF@wrappedlines=\count311
-\WF@box=\box65
-\WF@everypar=\toks26
+\wrapoverhang=\dimen185
+\WF@size=\dimen186
+\c@WF@wrappedlines=\count313
+\WF@box=\box66
+\WF@everypar=\toks29
 Package: wrapfig 2003/01/31  v 3.6
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count312
-\float@exts=\toks27
-\float@box=\box66
-\@float@everytoks=\toks28
-\@floatcapt=\box67
+\c@float@type=\count314
+\float@exts=\toks30
+\float@box=\box67
+\@float@everytoks=\toks31
+\@floatcapt=\box68
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2024/07/06 v1.0i Color table columns (DPC)
-\everycr=\toks29
+\everycr=\toks32
 \minrowclearance=\skip81
-\rownum=\count313
+\rownum=\count315
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
@@ -436,36 +459,36 @@ Package pdflscape Info: Auto-detected driver: dvipdfm (xetex) on input line 98.
 Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box68
-\sift@deathcycles=\count314
-\@vwid@loff=\dimen186
-\@vwid@roff=\dimen187
+\@vwid@box=\box69
+\sift@deathcycles=\count316
+\@vwid@loff=\dimen187
+\@vwid@roff=\dimen188
 )
-\c@taburow=\count315
-\tabu@nbcols=\count316
-\tabu@cnt=\count317
-\tabu@Xcol=\count318
-\tabu@alloc=\count319
-\tabu@nested=\count320
-\tabu@target=\dimen188
-\tabu@spreadtarget=\dimen189
-\tabu@naturalX=\dimen190
-\tabucolX=\dimen191
-\tabu@Xsum=\dimen192
-\extrarowdepth=\dimen193
-\abovetabulinesep=\dimen194
-\belowtabulinesep=\dimen195
-\tabustrutrule=\dimen196
-\tabu@thebody=\toks30
-\tabu@footnotes=\toks31
-\tabu@box=\box69
-\tabu@arstrutbox=\box70
-\tabu@hleads=\box71
-\tabu@vleads=\box72
+\c@taburow=\count317
+\tabu@nbcols=\count318
+\tabu@cnt=\count319
+\tabu@Xcol=\count320
+\tabu@alloc=\count321
+\tabu@nested=\count322
+\tabu@target=\dimen189
+\tabu@spreadtarget=\dimen190
+\tabu@naturalX=\dimen191
+\tabucolX=\dimen192
+\tabu@Xsum=\dimen193
+\extrarowdepth=\dimen194
+\abovetabulinesep=\dimen195
+\belowtabulinesep=\dimen196
+\tabustrutrule=\dimen197
+\tabu@thebody=\toks33
+\tabu@footnotes=\toks34
+\tabu@box=\box70
+\tabu@arstrutbox=\box71
+\tabu@hleads=\box72
+\tabu@vleads=\box73
 \tabu@cellskip=\skip82
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/threeparttable/threeparttable.sty
 Package: threeparttable 2003/06/13  v 3.0
-\@tempboxb=\box73
+\@tempboxb=\box74
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/threeparttablex/threeparttablex.sty
 Package: threeparttablex 2013/07/23 v0.3 by daleif
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/environ/environ.sty
@@ -475,140 +498,140 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
 \TPTL@width=\skip83
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/ulem/ulem.sty
-\UL@box=\box74
-\UL@hyphenbox=\box75
+\UL@box=\box75
+\UL@hyphenbox=\box76
 \UL@skip=\skip84
-\UL@hook=\toks32
-\UL@height=\dimen197
-\UL@pe=\count321
-\UL@pixel=\dimen198
-\ULC@box=\box76
+\UL@hook=\toks35
+\UL@height=\dimen198
+\UL@pe=\count323
+\UL@pixel=\dimen199
+\ULC@box=\box77
 Package: ulem 2019/11/18
-\ULdepth=\dimen199
+\ULdepth=\dimen256
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/makecell/makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen256
-\c@nlinenum=\count322
-\TeXr@lab=\toks33
+\rotheadsize=\dimen257
+\c@nlinenum=\count324
+\TeXr@lab=\toks36
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/tabularray/tabularray.sty
 Package: tabularray 2024-02-16 v2024A Typeset tabulars and arrays with LaTeX3
-\l__tblr_a_int=\count323
-\l__tblr_c_int=\count324
-\l__tblr_r_int=\count325
-\l__tblr_d_dim=\dimen257
-\l__tblr_h_dim=\dimen258
-\l__tblr_o_dim=\dimen259
-\l__tblr_p_dim=\dimen260
-\l__tblr_q_dim=\dimen261
-\l__tblr_r_dim=\dimen262
-\l__tblr_s_dim=\dimen263
-\l__tblr_t_dim=\dimen264
-\l__tblr_v_dim=\dimen265
-\l__tblr_w_dim=\dimen266
-\l__tblr_a_box=\box77
-\l__tblr_b_box=\box78
-\l__tblr_c_box=\box79
-\l__tblr_d_box=\box80
-\g__tblr_table_count_int=\count326
-\c@colnum=\count327
-\c@rowcount=\count328
-\c@colcount=\count329
-\abovesep=\dimen267
-\belowsep=\dimen268
-\leftsep=\dimen269
-\rightsep=\dimen270
-\g_tblr_level_int=\count330
-\g__tblr_data_row_key_count_int=\count331
-\g__tblr_data_column_key_count_int=\count332
-\g__tblr_data_cell_key_count_int=\count333
-\g__tblr_array_int=\count334
-\l__tblr_key_count_int=\count335
-\l__tblr_key_quotient_int=\count336
-\l__tblr_key_quotient_two_int=\count337
-\l__tblr_key_remainder_int=\count338
-\g__tblr_data_str_value_count_int=\count339
-\rulewidth=\dimen271
-\l__tblr_strut_dp_dim=\dimen272
-\l__tblr_strut_ht_dim=\dimen273
-\g__tblr_cell_wd_dim=\dimen274
-\g__tblr_cell_ht_dim=\dimen275
-\g__tblr_cell_head_dim=\dimen276
-\g__tblr_cell_foot_dim=\dimen277
-\l__column_target_dim=\dimen278
-\l__tblr_caption_box=\box81
-\l__tblr_caption_left_box=\box82
-\l__tblr_row_head_box=\box83
-\l__tblr_row_foot_box=\box84
-\l__tblr_row_head_foot_dim=\dimen279
-\tablewidth=\dimen280
-\l__tblr_table_firsthead_box=\box85
-\l__tblr_table_middlehead_box=\box86
-\l__tblr_table_lasthead_box=\box87
-\l__tblr_table_firstfoot_box=\box88
-\l__tblr_table_middlefoot_box=\box89
-\l__tblr_table_lastfoot_box=\box90
-\l__tblr_remain_height_dim=\dimen281
-\l__tblr_long_from_int=\count340
-\l__tblr_long_to_int=\count341
-\l__tblr_curr_i_int=\count342
-\l__tblr_prev_i_int=\count343
-\l__tblr_table_page_int=\count344
-\l__tblr_table_head_box=\box91
-\l__tblr_table_foot_box=\box92
-\l__tblr_table_head_foot_dim=\dimen282
-\l__tblr_table_head_body_foot_dim=\dimen283
-\l__tblr_table_box=\box93
-\l__tblr_table_hlines_box=\box94
-\l__tblr_hline_box=\box95
-\l__tblr_row_box=\box96
-\l__tblr_col_o_wd_dim=\dimen284
-\l__tblr_col_b_wd_dim=\dimen285
-\l__tblr_hline_leftskip_dim=\dimen286
-\l__tblr_hline_rightskip_dim=\dimen287
-\l__tblr_row_ht_dim=\dimen288
-\l__tblr_row_dp_dim=\dimen289
-\l__tblr_row_abovesep_dim=\dimen290
-\l__tblr_row_belowsep_dim=\dimen291
-\l__tblr_row_vlines_box=\box97
-\l__tblr_vline_box=\box98
-\l__tblr_cell_box=\box99
-\l__row_upper_dim=\dimen292
-\l__row_lower_dim=\dimen293
-\l__row_vpace_dim=\dimen294
-\l__tblr_vline_aboveskip_dim=\dimen295
-\l__tblr_vline_belowskip_dim=\dimen296
-\l__tblr_cell_wd_dim=\dimen297
-\l__tblr_cell_ht_dim=\dimen298
-\l__tblr_diag_box=\box100
+\l__tblr_a_int=\count325
+\l__tblr_c_int=\count326
+\l__tblr_r_int=\count327
+\l__tblr_d_dim=\dimen258
+\l__tblr_h_dim=\dimen259
+\l__tblr_o_dim=\dimen260
+\l__tblr_p_dim=\dimen261
+\l__tblr_q_dim=\dimen262
+\l__tblr_r_dim=\dimen263
+\l__tblr_s_dim=\dimen264
+\l__tblr_t_dim=\dimen265
+\l__tblr_v_dim=\dimen266
+\l__tblr_w_dim=\dimen267
+\l__tblr_a_box=\box78
+\l__tblr_b_box=\box79
+\l__tblr_c_box=\box80
+\l__tblr_d_box=\box81
+\g__tblr_table_count_int=\count328
+\c@colnum=\count329
+\c@rowcount=\count330
+\c@colcount=\count331
+\abovesep=\dimen268
+\belowsep=\dimen269
+\leftsep=\dimen270
+\rightsep=\dimen271
+\g_tblr_level_int=\count332
+\g__tblr_data_row_key_count_int=\count333
+\g__tblr_data_column_key_count_int=\count334
+\g__tblr_data_cell_key_count_int=\count335
+\g__tblr_array_int=\count336
+\l__tblr_key_count_int=\count337
+\l__tblr_key_quotient_int=\count338
+\l__tblr_key_quotient_two_int=\count339
+\l__tblr_key_remainder_int=\count340
+\g__tblr_data_str_value_count_int=\count341
+\rulewidth=\dimen272
+\l__tblr_strut_dp_dim=\dimen273
+\l__tblr_strut_ht_dim=\dimen274
+\g__tblr_cell_wd_dim=\dimen275
+\g__tblr_cell_ht_dim=\dimen276
+\g__tblr_cell_head_dim=\dimen277
+\g__tblr_cell_foot_dim=\dimen278
+\l__column_target_dim=\dimen279
+\l__tblr_caption_box=\box82
+\l__tblr_caption_left_box=\box83
+\l__tblr_row_head_box=\box84
+\l__tblr_row_foot_box=\box85
+\l__tblr_row_head_foot_dim=\dimen280
+\tablewidth=\dimen281
+\l__tblr_table_firsthead_box=\box86
+\l__tblr_table_middlehead_box=\box87
+\l__tblr_table_lasthead_box=\box88
+\l__tblr_table_firstfoot_box=\box89
+\l__tblr_table_middlefoot_box=\box90
+\l__tblr_table_lastfoot_box=\box91
+\l__tblr_remain_height_dim=\dimen282
+\l__tblr_long_from_int=\count342
+\l__tblr_long_to_int=\count343
+\l__tblr_curr_i_int=\count344
+\l__tblr_prev_i_int=\count345
+\l__tblr_table_page_int=\count346
+\l__tblr_table_head_box=\box92
+\l__tblr_table_foot_box=\box93
+\l__tblr_table_head_foot_dim=\dimen283
+\l__tblr_table_head_body_foot_dim=\dimen284
+\l__tblr_table_box=\box94
+\l__tblr_table_hlines_box=\box95
+\l__tblr_hline_box=\box96
+\l__tblr_row_box=\box97
+\l__tblr_col_o_wd_dim=\dimen285
+\l__tblr_col_b_wd_dim=\dimen286
+\l__tblr_hline_leftskip_dim=\dimen287
+\l__tblr_hline_rightskip_dim=\dimen288
+\l__tblr_row_ht_dim=\dimen289
+\l__tblr_row_dp_dim=\dimen290
+\l__tblr_row_abovesep_dim=\dimen291
+\l__tblr_row_belowsep_dim=\dimen292
+\l__tblr_row_vlines_box=\box98
+\l__tblr_vline_box=\box99
+\l__tblr_cell_box=\box100
+\l__row_upper_dim=\dimen293
+\l__row_lower_dim=\dimen294
+\l__row_vpace_dim=\dimen295
+\l__tblr_vline_aboveskip_dim=\dimen296
+\l__tblr_vline_belowskip_dim=\dimen297
+\l__tblr_cell_wd_dim=\dimen298
+\l__tblr_cell_ht_dim=\dimen299
+\l__tblr_diag_box=\box101
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/siunitx/siunitx.sty
-Package: siunitx 2024-06-24 v3.3.19 A comprehensive (SI) units package
-\l__siunitx_number_uncert_offset_int=\count345
-\l__siunitx_number_exponent_fixed_int=\count346
-\l__siunitx_number_min_decimal_int=\count347
-\l__siunitx_number_min_integer_int=\count348
-\l__siunitx_number_round_precision_int=\count349
-\l__siunitx_number_lower_threshold_int=\count350
-\l__siunitx_number_upper_threshold_int=\count351
-\l__siunitx_number_group_first_int=\count352
-\l__siunitx_number_group_size_int=\count353
-\l__siunitx_number_group_minimum_int=\count354
-\l__siunitx_angle_tmp_dim=\dimen299
-\l__siunitx_angle_marker_box=\box101
-\l__siunitx_angle_unit_box=\box102
-\l__siunitx_compound_count_int=\count355
-\l__siunitx_table_tmp_box=\box103
-\l__siunitx_table_tmp_dim=\dimen300
-\l__siunitx_table_column_width_dim=\dimen301
-\l__siunitx_table_integer_box=\box104
-\l__siunitx_table_decimal_box=\box105
-\l__siunitx_table_uncert_box=\box106
-\l__siunitx_table_before_box=\box107
-\l__siunitx_table_after_box=\box108
-\l__siunitx_table_before_dim=\dimen302
-\l__siunitx_table_carry_dim=\dimen303
-\l__siunitx_unit_tmp_int=\count356
-\l__siunitx_unit_position_int=\count357
-\l__siunitx_unit_total_int=\count358
+Package: siunitx 2024-08-01 v3.3.20 A comprehensive (SI) units package
+\l__siunitx_number_uncert_offset_int=\count347
+\l__siunitx_number_exponent_fixed_int=\count348
+\l__siunitx_number_min_decimal_int=\count349
+\l__siunitx_number_min_integer_int=\count350
+\l__siunitx_number_round_precision_int=\count351
+\l__siunitx_number_lower_threshold_int=\count352
+\l__siunitx_number_upper_threshold_int=\count353
+\l__siunitx_number_group_first_int=\count354
+\l__siunitx_number_group_size_int=\count355
+\l__siunitx_number_group_minimum_int=\count356
+\l__siunitx_angle_tmp_dim=\dimen300
+\l__siunitx_angle_marker_box=\box102
+\l__siunitx_angle_unit_box=\box103
+\l__siunitx_compound_count_int=\count357
+\l__siunitx_table_tmp_box=\box104
+\l__siunitx_table_tmp_dim=\dimen301
+\l__siunitx_table_column_width_dim=\dimen302
+\l__siunitx_table_integer_box=\box105
+\l__siunitx_table_decimal_box=\box106
+\l__siunitx_table_uncert_box=\box107
+\l__siunitx_table_before_box=\box108
+\l__siunitx_table_after_box=\box109
+\l__siunitx_table_before_dim=\dimen303
+\l__siunitx_table_carry_dim=\dimen304
+\l__siunitx_unit_tmp_int=\count358
+\l__siunitx_unit_position_int=\count359
+\l__siunitx_unit_total_int=\count360
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/changes/changes.sty
 Package: changes 2021/07/15 v4.2.1 changes package
 
@@ -616,14 +639,14 @@ Package: changes 2021/07/15 v4.2.1 changes package
 (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks34
-\XKV@tempa@toks=\toks35
+\XKV@toks=\toks37
+\XKV@tempa@toks=\toks38
 )
-\XKV@depth=\count359
+\XKV@depth=\count361
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/xstring/xstring.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/xstring/xstring.tex
-\xs_counta=\count360
-\xs_countb=\count361
+\xs_counta=\count362
+\xs_countb=\count363
 )
 Package: xstring 2023/08/22 v1.86 String manipulations (CT)
 )
@@ -635,11 +658,11 @@ Package: todonotes 2024/01/05
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks36
-\pgfutil@tempdima=\dimen304
-\pgfutil@tempdimb=\dimen305
+\pgfutil@everybye=\toks39
+\pgfutil@tempdima=\dimen305
+\pgfutil@tempdimb=\dimen306
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box109
+\pgfutil@abb=\box110
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
 ))
@@ -647,31 +670,31 @@ Package: pgf 2023-01-15 v3.1.10 (3.1.10)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks37
-\pgfkeys@temptoks=\toks38
+\pgfkeys@pathtoks=\toks40
+\pgfkeys@temptoks=\toks41
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks39
+\pgfkeys@tmptoks=\toks42
 ))
-\pgf@x=\dimen306
-\pgf@y=\dimen307
-\pgf@xa=\dimen308
-\pgf@ya=\dimen309
-\pgf@xb=\dimen310
-\pgf@yb=\dimen311
-\pgf@xc=\dimen312
-\pgf@yc=\dimen313
-\pgf@xd=\dimen314
-\pgf@yd=\dimen315
+\pgf@x=\dimen307
+\pgf@y=\dimen308
+\pgf@xa=\dimen309
+\pgf@ya=\dimen310
+\pgf@xb=\dimen311
+\pgf@yb=\dimen312
+\pgf@xc=\dimen313
+\pgf@yc=\dimen314
+\pgf@xd=\dimen315
+\pgf@yd=\dimen316
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count362
-\c@pgf@countb=\count363
-\c@pgf@countc=\count364
-\c@pgf@countd=\count365
-\t@pgf@toka=\toks40
-\t@pgf@tokb=\toks41
-\t@pgf@tokc=\toks42
-\pgf@sys@id@count=\count366
+\c@pgf@counta=\count364
+\c@pgf@countb=\count365
+\c@pgf@countc=\count366
+\c@pgf@countd=\count367
+\t@pgf@toka=\toks43
+\t@pgf@tokb=\toks44
+\t@pgf@tokc=\toks45
+\pgf@sys@id@count=\count368
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
@@ -683,62 +706,62 @@ File: pgfsys-dvipdfmx.def 2023-01-15 v3.1.10 (3.1.10)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 )
-\pgfsys@objnum=\count367
+\pgfsys@objnum=\count369
 ))) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count368
-\pgfsyssoftpath@bigbuffer@items=\count369
+\pgfsyssoftpath@smallbuffer@items=\count370
+\pgfsyssoftpath@bigbuffer@items=\count371
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen316
-\pgfmath@count=\count370
-\pgfmath@box=\box110
-\pgfmath@toks=\toks43
-\pgfmath@stack@operand=\toks44
-\pgfmath@stack@operation=\toks45
+\pgfmath@dimen=\dimen317
+\pgfmath@count=\count372
+\pgfmath@box=\box111
+\pgfmath@toks=\toks46
+\pgfmath@stack@operand=\toks47
+\pgfmath@stack@operation=\toks48
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count371
+\c@pgfmathroundto@lastzeros=\count373
 )) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@picminx=\dimen317
-\pgf@picmaxx=\dimen318
-\pgf@picminy=\dimen319
-\pgf@picmaxy=\dimen320
-\pgf@pathminx=\dimen321
-\pgf@pathmaxx=\dimen322
-\pgf@pathminy=\dimen323
-\pgf@pathmaxy=\dimen324
-\pgf@xx=\dimen325
-\pgf@xy=\dimen326
-\pgf@yx=\dimen327
-\pgf@yy=\dimen328
-\pgf@zx=\dimen329
-\pgf@zy=\dimen330
+\pgf@picminx=\dimen318
+\pgf@picmaxx=\dimen319
+\pgf@picminy=\dimen320
+\pgf@picmaxy=\dimen321
+\pgf@pathminx=\dimen322
+\pgf@pathmaxx=\dimen323
+\pgf@pathminy=\dimen324
+\pgf@pathmaxy=\dimen325
+\pgf@xx=\dimen326
+\pgf@xy=\dimen327
+\pgf@yx=\dimen328
+\pgf@yy=\dimen329
+\pgf@zx=\dimen330
+\pgf@zy=\dimen331
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@path@lastx=\dimen331
-\pgf@path@lasty=\dimen332
+\pgf@path@lastx=\dimen332
+\pgf@path@lasty=\dimen333
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@shorten@end@additional=\dimen333
-\pgf@shorten@start@additional=\dimen334
+\pgf@shorten@end@additional=\dimen334
+\pgf@shorten@start@additional=\dimen335
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfpic=\box111
-\pgf@hbox=\box112
-\pgf@layerbox@main=\box113
-\pgf@picture@serial@count=\count372
+\pgfpic=\box112
+\pgf@hbox=\box113
+\pgf@layerbox@main=\box114
+\pgf@picture@serial@count=\count374
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgflinewidth=\dimen335
+\pgflinewidth=\dimen336
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@pt@x=\dimen336
-\pgf@pt@y=\dimen337
-\pgf@pt@temp=\dimen338
+\pgf@pt@x=\dimen337
+\pgf@pt@y=\dimen338
+\pgf@pt@temp=\dimen339
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
@@ -747,17 +770,17 @@ File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowsep=\dimen339
+\pgfarrowsep=\dimen340
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@max=\dimen340
-\pgf@sys@shading@range@num=\count373
-\pgf@shadingcount=\count374
+\pgf@max=\dimen341
+\pgf@sys@shading@range@num=\count375
+\pgf@shadingcount=\count376
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfexternal@startupbox=\box114
+\pgfexternal@startupbox=\box115
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
@@ -768,69 +791,69 @@ File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodeparttextbox=\box115
+\pgfnodeparttextbox=\box116
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
-\pgf@nodesepstart=\dimen341
-\pgf@nodesepend=\dimen342
+\pgf@nodesepstart=\dimen342
+\pgf@nodesepend=\dimen343
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 )) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen343
-\pgffor@skip=\dimen344
-\pgffor@stack=\toks46
-\pgffor@toks=\toks47
+\pgffor@iter=\dimen344
+\pgffor@skip=\dimen345
+\pgffor@stack=\toks49
+\pgffor@toks=\toks50
 )) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count375
-\pgfplotmarksize=\dimen345
+\pgf@plot@mark@count=\count377
+\pgfplotmarksize=\dimen346
 )
-\tikz@lastx=\dimen346
-\tikz@lasty=\dimen347
-\tikz@lastxsaved=\dimen348
-\tikz@lastysaved=\dimen349
-\tikz@lastmovetox=\dimen350
-\tikz@lastmovetoy=\dimen351
-\tikzleveldistance=\dimen352
-\tikzsiblingdistance=\dimen353
-\tikz@figbox=\box116
-\tikz@figbox@bg=\box117
-\tikz@tempbox=\box118
-\tikz@tempbox@bg=\box119
-\tikztreelevel=\count376
-\tikznumberofchildren=\count377
-\tikznumberofcurrentchild=\count378
-\tikz@fig@count=\count379
+\tikz@lastx=\dimen347
+\tikz@lasty=\dimen348
+\tikz@lastxsaved=\dimen349
+\tikz@lastysaved=\dimen350
+\tikz@lastmovetox=\dimen351
+\tikz@lastmovetoy=\dimen352
+\tikzleveldistance=\dimen353
+\tikzsiblingdistance=\dimen354
+\tikz@figbox=\box117
+\tikz@figbox@bg=\box118
+\tikz@tempbox=\box119
+\tikz@tempbox@bg=\box120
+\tikztreelevel=\count378
+\tikznumberofchildren=\count379
+\tikznumberofcurrentchild=\count380
+\tikz@fig@count=\count381
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count380
-\pgfmatrixcurrentcolumn=\count381
-\pgf@matrix@numberofcolumns=\count382
+\pgfmatrixcurrentrow=\count382
+\pgfmatrixcurrentcolumn=\count383
+\pgf@matrix@numberofcolumns=\count384
 )
-\tikz@expandcount=\count383
+\tikz@expandcount=\count385
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
-\c@@todonotes@numberoftodonotes=\count384
+\c@@todonotes@numberoftodonotes=\count386
 )
-\c@Changes@AuthorCount=\count385
-\c@Changes@Author=\count386
-\c@Changes@addedCount=\count387
-\c@Changes@deletedCount=\count388
-\c@Changes@replacedCount=\count389
-\c@Changes@highlightCount=\count390
-\c@Changes@commentCount=\count391
-\c@authorcommentcount=\count392
+\c@Changes@AuthorCount=\count387
+\c@Changes@Author=\count388
+\c@Changes@addedCount=\count389
+\c@Changes@deletedCount=\count390
+\c@Changes@replacedCount=\count391
+\c@Changes@highlightCount=\count392
+\c@Changes@commentCount=\count393
+\c@authorcommentcount=\count394
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/truncate/truncate.sty
 Package: truncate 2001/08/20  ver 3.6
-\@Trunc@RestHyph=\toks48
+\@Trunc@RestHyph=\toks51
 )
 \Changestruncatewidth=\skip85
 \Changes@summary@width=\skip86
@@ -838,39 +861,39 @@ Package: truncate 2001/08/20  ver 3.6
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen354
-\captionmargin=\dimen355
-\caption@leftmargin=\dimen356
-\caption@rightmargin=\dimen357
-\caption@width=\dimen358
-\caption@indent=\dimen359
-\caption@parindent=\dimen360
-\caption@hangindent=\dimen361
+\caption@tempdima=\dimen355
+\captionmargin=\dimen356
+\caption@leftmargin=\dimen357
+\caption@rightmargin=\dimen358
+\caption@width=\dimen359
+\caption@indent=\dimen360
+\caption@parindent=\dimen361
+\caption@hangindent=\dimen362
 Package caption Info: KOMA-Script document class detected.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/caption/caption-koma.sto
 File: caption-koma.sto 2023/09/08 v2.0e Adaption of the caption package to the KOMA-Script document classes (AR)
 ))
-\c@caption@flags=\count393
-\c@continuedfloat=\count394
+\c@caption@flags=\count395
+\c@continuedfloat=\count396
 Package caption Info: float package is loaded.
 Package caption Info: longtable package is loaded.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/caption/ltcaption.sty
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: KOMA-Script scrextend package detected.
-\caption@addmargin@hsize=\dimen362
-\caption@addmargin@linewidth=\dimen363
+\caption@addmargin@hsize=\dimen363
+\caption@addmargin@linewidth=\dimen364
 Package caption Info: threeparttable package is loaded.
 Package caption Info: wrapfig package is loaded.
 )
-\@float@every@codelisting=\toks49
-\c@codelisting=\count395
+\@float@every@codelisting=\toks52
+\c@codelisting=\count397
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
 Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count396
+\c@subfigure=\count398
 Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count397
+\c@subtable=\count399
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -902,19 +925,19 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count398
+\c@section@level=\count400
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
-\@linkdim=\dimen364
-\Hy@linkcounter=\count399
-\Hy@pagecounter=\count400
+\@linkdim=\dimen365
+\Hy@linkcounter=\count401
+\Hy@pagecounter=\count402
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2024-07-10 v7.01j Hyperref: PDFDocEncoding definition (HO)
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count401
+\Hy@SavedSpaceFactor=\count403
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2024-07-10 v7.01j Hyperref: PDF Unicode definition (HO)
 )
@@ -926,21 +949,21 @@ Package hyperref Info: Plain pages OFF on input line 4172.
 Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
-\c@Hy@tempcnt=\count402
+\c@Hy@tempcnt=\count404
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip19
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4763.
-\XeTeXLinkMargin=\dimen365
+\XeTeXLinkMargin=\dimen366
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count403
-\Field@Width=\dimen366
-\Fld@charsize=\dimen367
+\Fld@menulength=\count405
+\Field@Width=\dimen367
+\Fld@charsize=\dimen368
 Package hyperref Info: Hyper figures OFF on input line 6042.
 Package hyperref Info: Link nesting OFF on input line 6047.
 Package hyperref Info: Hyper index ON on input line 6050.
@@ -952,18 +975,18 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count404
-\c@Item=\count405
-\c@Hfootnote=\count406
+\Hy@abspage=\count406
+\c@Item=\count407
+\c@Hfootnote=\count408
 )
 Package hyperref Info: Driver (autodetected): hxetex.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hxetex.def
 File: hxetex.def 2024-07-10 v7.01j Hyperref driver for XeTeX
-\pdfm@box=\box120
-\c@Hy@AnnotLevel=\count407
-\HyField@AnnotCount=\count408
-\Fld@listcount=\count409
-\c@bookmark@seq@number=\count410
+\pdfm@box=\box121
+\c@Hy@AnnotLevel=\count409
+\HyField@AnnotCount=\count410
+\Fld@listcount=\count411
+\c@bookmark@seq@number=\count412
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty
@@ -977,60 +1000,46 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 \Hy@SectionHShift=\skip87
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/bookmark/bkm-dvipdfm.def
 File: bkm-dvipdfm.def 2023-12-10 v1.31 bookmark driver for dvipdfm (HO)
-\BKM@id=\count411
+\BKM@id=\count413
 ))
 Package hyperref Info: Option `colorlinks' set `true' on input line 304.
- (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/changebar/changebar.sty
-Package: changebar 2024/07/17 v3.7e Indicate changes with marginal bars
-\cb@nextpoint=\count412
-\cb@topleft=\count413
-\cb@topright=\count414
-\cb@botleft=\count415
-\cb@botright=\count416
-\cb@cnta=\count417
-\cb@cntb=\count418
-\cb@dima=\dimen368
-\cb@curbarwd=\dimen369
-\cb@page=\count419
-\cb@pagecount=\count420
-\cb@odd@left=\dimen370
-\cb@odd@right=\dimen371
-\cb@even@left=\dimen372
-\cb@even@right=\dimen373
-\cb@writexy=\write4
-\cb@readxy=\read3
-\openout4 = `test-diff.cb2'.
-
-
-
-! Package changebar Error: PDFTeX option cannot be used.
-
-See the changebar package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.218 \ProcessOptions\relax
-                           
-? 
-! Emergency stop.
- ...                                              
-                                                  
-l.218 \ProcessOptions\relax
-                           
-You are using a LaTeX run which does not generate PDF
-or you are using a very old version of PDFTeX
-
- 
-Here is how much of TeX's memory you used:
- 38571 strings out of 476239
- 814493 string characters out of 5786143
- 1921557 words of memory out of 5000000
- 60626 multiletter control sequences out of 15000+600000
- 558551 words of font info for 40 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 118i,1n,120p,10904b,275s stack positions out of 10000i,1000n,20000p,200000b,200000s
-No pages of output.
-t/tex/latex/listings/listings.cfg
+ (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/oberdiek/settobox.sty
+Package: settobox 2016/05/16 v1.5 Assign box dimensions to length registers (HO)
+) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+\DIFdelgraphicsbox=\box122
+\DIFdelgraphicswidth=\skip88
+\DIFdelgraphicsheight=\skip89
+LaTeX Info: Redefining \DIFaddbegin on input line 362.
+LaTeX Info: Redefining \DIFaddend on input line 363.
+LaTeX Info: Redefining \DIFdelbegin on input line 364.
+LaTeX Info: Redefining \DIFdelend on input line 365.
+LaTeX Info: Redefining \DIFaddbeginFL on input line 370.
+LaTeX Info: Redefining \DIFaddendFL on input line 371.
+LaTeX Info: Redefining \DIFdelbeginFL on input line 372.
+LaTeX Info: Redefining \DIFdelendFL on input line 373.
+ (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count414
+\lst@gtempboxa=\box123
+\lst@token=\toks53
+\lst@length=\count415
+\lst@currlwidth=\dimen369
+\lst@column=\count416
+\lst@pos=\count417
+\lst@lostspace=\dimen370
+\lst@width=\dimen371
+\lst@newlines=\count418
+\lst@lineno=\count419
+\lst@maxwidth=\dimen372
+ (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/listings/lstpatch.sty
+File: lstpatch.sty 2024/05/25 1.10b (Carsten Heinz)
+) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2024/05/25 1.10b (Carsten Heinz)
+\c@lstnumber=\count420
+\lst@skipnumbers=\count421
+\lst@framebox=\box124
+) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2024/05/25 1.10b listings configuration
 ))
 Package: listings 2024/05/25 1.10b (Carsten Heinz)
@@ -1290,7 +1299,20 @@ LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
 (Font)              `largesymbols' in the math version `bold' on input line 392.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 392.
-
+LaTeX Info: Redefining \microtypecontext on input line 392.
+Package microtype Info: Applying patch `item' on input line 392.
+Package microtype Info: Applying patch `toc' on input line 392.
+Package microtype Info: Applying patch `eqnum' on input line 392.
+Package microtype Info: Applying patch `footnote' on input line 392.
+Package microtype Info: Applying patch `verbatim' on input line 392.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using protrusion set `basicmath'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of spacing.
+Package microtype Info: No adjustment of kerning.
+ (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
+File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Modern Roman (RS)
+)
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1336,10 +1358,14 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring ON on input line 392.
-\c@lstlisting=\count420
+\c@lstlisting=\count422
 Package tocbasic Info: omitting babel extension for `lol'
 (tocbasic)             because of missing \bbl@set@language on input line 392.
 \scr@dte@lstlisting@maxnumwidth=\skip90
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmss' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
 (Font)              scaled to size 14.4pt on input line 394.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
@@ -1365,27 +1391,33 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 LaTeX Font Info:    Trying to load font information for U+msa on input line 394.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 394.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./test-diff.toc
+) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+Package tocbasic Info: character protrusion at toc deactivated on input line 402.
+ (./test-diff.toc
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.665pt on input line 3.
+(Font)              scaled to size 7.665pt on input line 1.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.475pt on input line 3.
+(Font)              scaled to size 5.475pt on input line 1.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.95099pt on input line 3.
+(Font)              scaled to size 10.95099pt on input line 1.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.66568pt on input line 3.
+(Font)              scaled to size 7.66568pt on input line 1.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.4755pt on input line 3.
+(Font)              scaled to size 5.4755pt on input line 1.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.94882pt on input line 3.
+(Font)              scaled to size 10.94882pt on input line 1.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.66417pt on input line 3.
+(Font)              scaled to size 7.66417pt on input line 1.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.47441pt on input line 3.
+(Font)              scaled to size 5.47441pt on input line 1.
 
 
 [1
@@ -1397,24 +1429,6 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 \tf@toc=\write4
 \openout4 = `test-diff.toc'.
 
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 412.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 412.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 412.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.0011pt on input line 412.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00073pt on input line 412.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 412.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 412.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 412.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 412.
 
 
 [3]
@@ -1426,27 +1440,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 511.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 511.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 511.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 511.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 511.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 511.
+(hyperref)                removing `\uwave' on input line 511.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1454,27 +1448,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 539.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 539.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 539.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 539.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 539.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 539.
+(hyperref)                removing `\uwave' on input line 539.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1482,27 +1456,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 545.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 545.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 545.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 545.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 545.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 545.
+(hyperref)                removing `\uwave' on input line 545.
 
 
 
@@ -1513,27 +1467,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 585.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 585.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 585.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 585.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 585.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 585.
+(hyperref)                removing `\uwave' on input line 585.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1541,27 +1475,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 625.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 625.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 625.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 625.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 625.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 625.
+(hyperref)                removing `\uwave' on input line 625.
 
 
 
@@ -1572,27 +1486,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 680.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 680.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 680.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 680.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 680.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 680.
+(hyperref)                removing `\uwave' on input line 680.
 
 
 
@@ -1603,27 +1497,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 718.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 718.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 718.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 718.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 718.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 718.
+(hyperref)                removing `\uwave' on input line 718.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1631,27 +1505,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 745.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 745.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 745.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 745.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 745.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 745.
+(hyperref)                removing `\uwave' on input line 745.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1659,27 +1513,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 751.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 751.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 751.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 751.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 751.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 751.
+(hyperref)                removing `\uwave' on input line 751.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1687,91 +1521,32 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 772.
+(hyperref)                removing `\uwave' on input line 772.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 772.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 772.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 772.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 772.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 772.
-
+Package hyperref Info: bookmark level for unknown comment defaults to 0 on input line 781.
 
 
 [8]
-File: images/policy-implementation-map.png Graphic file (type bmp)
-<images/policy-implementation-map.png>
+File: images/village-map.png Graphic file (type bmp)
+<images/village-map.png>
 
 
 [9]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 828.
+(hyperref)                removing `\@ifnextchar' on input line 846.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 828.
+(hyperref)                removing `\uwave' on input line 846.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 828.
+(hyperref)                removing `\@ifnextchar' on input line 875.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 828.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 828.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 828.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 828.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 857.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 857.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 857.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 857.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 857.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 857.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 857.
+(hyperref)                removing `\uwave' on input line 875.
 
 
 
@@ -1812,239 +1587,79 @@ Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=t
 [16]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1331.
+(hyperref)                removing `\@ifnextchar' on input line 1349.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1331.
+(hyperref)                removing `\uwave' on input line 1349.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 1331.
+(hyperref)                removing `\@ifnextchar' on input line 1379.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 1331.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 1331.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 1331.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1331.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1361.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1361.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 1361.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 1361.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 1361.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 1361.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1361.
+(hyperref)                removing `\uwave' on input line 1379.
 
 
 
 [17]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1405.
+(hyperref)                removing `\@ifnextchar' on input line 1423.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1405.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 1405.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 1405.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 1405.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 1405.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1405.
+(hyperref)                removing `\uwave' on input line 1423.
 
 
 
 [18]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1450.
+(hyperref)                removing `\@ifnextchar' on input line 1468.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1450.
+(hyperref)                removing `\uwave' on input line 1468.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 1450.
+(hyperref)                removing `\@ifnextchar' on input line 1498.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 1450.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 1450.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 1450.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1450.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1480.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1480.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 1480.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 1480.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 1480.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 1480.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1480.
+(hyperref)                removing `\uwave' on input line 1498.
 
 
 
 [19]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1511.
+(hyperref)                removing `\@ifnextchar' on input line 1529.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1511.
+(hyperref)                removing `\uwave' on input line 1529.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 1511.
+(hyperref)                removing `\@ifnextchar' on input line 1585.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 1511.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 1511.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 1511.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1511.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1567.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1567.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 1567.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 1567.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 1567.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 1567.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1567.
+(hyperref)                removing `\uwave' on input line 1585.
 
 
 
 [20]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1586.
+(hyperref)                removing `\@ifnextchar' on input line 1604.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1586.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 1586.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 1586.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 1586.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 1586.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1586.
+(hyperref)                removing `\uwave' on input line 1604.
 
 File: images/ddfig.png Graphic file (type bmp)
 <images/ddfig.png>
@@ -2055,31 +1670,11 @@ File: images/ddfig.png Graphic file (type bmp)
 [22]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1685.
+(hyperref)                removing `\@ifnextchar' on input line 1703.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1685.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 1685.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 1685.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 1685.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 1685.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1685.
+(hyperref)                removing `\uwave' on input line 1703.
 
 File: images/dag1.png Graphic file (type bmp)
 <images/dag1.png>
@@ -2088,195 +1683,96 @@ File: images/dag1.png Graphic file (type bmp)
 [23]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1738.
+(hyperref)                removing `\@ifnextchar' on input line 1756.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1738.
+(hyperref)                removing `\uwave' on input line 1756.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 1738.
+(hyperref)                removing `\@ifnextchar' on input line 1770.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 1738.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 1738.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 1738.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1738.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1752.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1752.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 1752.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 1752.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 1752.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 1752.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1752.
+(hyperref)                removing `\uwave' on input line 1770.
 
 
 
 [24]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1792.
+(hyperref)                removing `\@ifnextchar' on input line 1810.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1792.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 1792.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 1792.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 1792.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 1792.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1792.
+(hyperref)                removing `\uwave' on input line 1810.
 
 
 
 [25]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1846.
+(hyperref)                removing `\@ifnextchar' on input line 1864.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1846.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 1846.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 1846.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 1846.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 1846.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1846.
+(hyperref)                removing `\uwave' on input line 1864.
 
 
 
 [26]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1938.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1938.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 1938.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 1938.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 1938.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 1938.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 12.0pt on input line 1924.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 8.0pt on input line 1924.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 6.0pt on input line 1924.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 12.0011pt on input line 1924.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 8.00073pt on input line 1924.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 6.00055pt on input line 1924.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 11.99872pt on input line 1924.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.99915pt on input line 1924.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.99936pt on input line 1924.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1938.
+(hyperref)                removing `\@ifnextchar' on input line 1956.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 1956.
 
 
 
 [27]
-Package hyperref Info: bookmark level for unknown comment defaults to 0 on input line 1979.
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
 
-Underfull \hbox (badness 3260) in paragraph at lines 1966--1983
-[]\TU/lmr/m/n/10.95 Appendix Figure [][]A3[][] shows the participation of villages, households, and participants
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2091--2091
+[]\TU/lmss/m/n/10.95 Statistic$[]$ 
  []
 
 
-Underfull \hbox (badness 3168) in paragraph at lines 1966--1983
-\TU/lmr/m/n/10.95 ticipants in each of the three measurement waves that included individual-level mea-
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2091--2091
+[]\TU/lmss/m/n/10.95 Statistic$[]$ 
  []
 
+> Step: build the whole table.
 
-Underfull \hbox (badness 1028) in paragraph at lines 1966--1983
-\TU/lmr/m/n/10.95 surements. In total, we enrolled 1432 participants into the study, of which 630 (43%)
- []
-
-
-Underfull \hbox (badness 3965) in paragraph at lines 1966--1983
-[]|   []   |   []   [][]$[]$[]\TU/lmr/m/n/10.95 all three waves, 443 (31%)
- []
-
-
-Underfull \hbox (badness 6658) in paragraph at lines 1966--1983
-[]|   []   |   []   [][]$[]$[]\TU/lmr/m/n/10.95 two waves and 365 (25%)
- []
-
-
-Underfull \hbox (badness 6001) in paragraph at lines 1966--1983
-|   []   |   []   |   []   [][]$[]$[]\TU/lmr/m/n/10.95 health
- []
-
-
-Underfull \hbox (badness 1231) in paragraph at lines 1966--1983
-\TU/lmr/m/n/10.95 behaviors between participants who contributed to []|   []   |   []   |   []   |   []   |   []   |   []
- []
-
-
-Overfull \hbox (190.8035pt too wide) in paragraph at lines 1966--1983
-[][]$[]$[][][][]
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2091--2091
+[]\TU/lmss/m/n/10.95 Statistic$[]$ 
  []
 
 > Step: init table outer spec.
@@ -2287,25 +1783,28 @@ Overfull \hbox (190.8035pt too wide) in paragraph at lines 1966--1983
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 2073--2073
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2186--2186
 []\TU/lmss/m/n/10.95 Statistic$[]$ 
  []
 
 
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 2073--2073
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2186--2186
 []\TU/lmss/m/n/10.95 Statistic$[]$ 
  []
 
 > Step: build the whole table.
 
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 2073--2073
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2186--2186
 []\TU/lmss/m/n/10.95 Statistic$[]$ 
  []
 
 
-Overfull \hbox (69.1929pt too wide) in paragraph at lines 2138--2138
-[][][]|[][]$[]$[]| 
- []
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 2197.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 2197.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -2314,115 +1813,39 @@ Overfull \hbox (69.1929pt too wide) in paragraph at lines 2138--2138
 > Step: parse table inner spec.
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
-
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 2168--2168
-[]\TU/lmss/m/n/10.95 Statistic$[]$ 
- []
-
-
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 2168--2168
-[]\TU/lmss/m/n/10.95 Statistic$[]$ 
- []
-
+LaTeX Font Info:    Calculating math sizes for size <8.2125> on input line 2525.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 8.2125pt on input line 2525.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.74872pt on input line 2525.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 4.10625pt on input line 2525.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 8.21324pt on input line 2525.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.74924pt on input line 2525.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 4.10661pt on input line 2525.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 8.21161pt on input line 2525.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.7481pt on input line 2525.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.1058pt on input line 2525.
 > Step: build the whole table.
 
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 2168--2168
-[]\TU/lmss/m/n/10.95 Statistic$[]$ 
- []
+LaTeX Warning: Float too large for page by 167.88713pt on input line 2529.
+
+
+LaTeX Warning: Reference `tbl-table1' on page 28 undefined on input line 2531.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 2179.
+(hyperref)                removing `\@ifnextchar' on input line 2548.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2179.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 2179.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 2179.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 2179.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 2179.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2179.
-
-
-Overfull \hbox (104.58327pt too wide) in paragraph at lines 2446--2446
-[][][]|[][]$[]$[]| 
- []
-
-> Step: init table outer spec.
-> Step: parse table options.
-> Step: split table.
-> Step: init table inner spec.
-> Step: parse table inner spec.
-> Step: execute table commands.
-> Step: calculate cell and line sizes.
-LaTeX Font Info:    Calculating math sizes for size <8.2125> on input line 2507.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.2125pt on input line 2507.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.74872pt on input line 2507.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 4.10625pt on input line 2507.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.21324pt on input line 2507.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.74924pt on input line 2507.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 4.10661pt on input line 2507.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.21161pt on input line 2507.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.7481pt on input line 2507.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.1058pt on input line 2507.
-> Step: build the whole table.
-
-LaTeX Warning: Float too large for page by 157.49173pt on input line 2511.
-
-
-LaTeX Warning: Reference `tbl-table1' on page 28 undefined on input line 2513.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 2530.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2530.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 2530.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 2530.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 2530.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 2530.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2530.
+(hyperref)                removing `\uwave' on input line 2548.
 
 
 
@@ -2433,10 +1856,6 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [30]
 
 [31]
-Overfull \hbox (49.24199pt too wide) in paragraph at lines 2575--2575
-[][][]|[][]$[]$[]| 
- []
-
 > Step: init table outer spec.
 > Step: parse table options.
 > Step: split table.
@@ -2445,498 +1864,478 @@ Overfull \hbox (49.24199pt too wide) in paragraph at lines 2575--2575
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+Underfull \hbox (badness 10000) in paragraph at lines 2873--2873
 [] \TU/lmss/m/n/8.76003 Sensor-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+Underfull \hbox (badness 10000) in paragraph at lines 2873--2873
 [] \TU/lmss/m/n/8.76003 Sensor-
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2873--2873
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2873--2873
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2873--2873
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2873--2873
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (3.86003pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (3.86003pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 117 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 3.5 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 3.7 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 2.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.9 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.7 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+Underfull \hbox (badness 10000) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 2.3 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 2.8 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+Underfull \hbox (badness 10000) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+Underfull \hbox (badness 10000) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.5 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.4 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.2 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.3 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.1 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2873--2873
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2873--2873
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2873--2873
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2873--2873
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (3.86003pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (3.86003pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 117 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 3.5 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 3.7 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 2.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.9 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.7 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+Underfull \hbox (badness 10000) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 2.3 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 2.8 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+Underfull \hbox (badness 10000) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+Underfull \hbox (badness 10000) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.5 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.4 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.2 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.3 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.1 
  []
 
 > Step: build the whole table.
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2873--2873
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2873--2873
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2873--2873
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2873--2873
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (3.86003pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (3.86003pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 117 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 3.5 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 3.7 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 2.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.9 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.7 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+Underfull \hbox (badness 10000) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 2.3 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 2.8 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+Underfull \hbox (badness 10000) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2855--2855
+Underfull \hbox (badness 10000) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.5 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.4 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.2 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.3 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2855--2855
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2873--2873
 []\TU/lmss/m/n/8.76003 1.1 
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 2870.
+(hyperref)                removing `\@ifnextchar' on input line 2888.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2870.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 2870.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 2870.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 2870.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 2870.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2870.
+(hyperref)                removing `\uwave' on input line 2888.
 
 File: images/sanky.jpg Graphic file (type bmp)
 <images/sanky.jpg>
 
-Overfull \hbox (6.71716pt too wide) in paragraph at lines 2898--2899
+Overfull \hbox (6.71716pt too wide) in paragraph at lines 2916--2917
  [][][] 
  []
 
@@ -2946,73 +2345,49 @@ Overfull \hbox (6.71716pt too wide) in paragraph at lines 2898--2899
 
 [33]
 
-LaTeX Warning: Reference `tbl-fuel-did' on page 34 undefined on input line 2916.
+LaTeX Warning: Reference `tbl-fuel-did' on page 34 undefined on input line 2934.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 2941.
+(hyperref)                removing `\@ifnextchar' on input line 2959.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2941.
+(hyperref)                removing `\uwave' on input line 2959.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 2941.
+(hyperref)                removing `\@ifnextchar' on input line 2967.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 2941.
+(hyperref)                removing `\uwave' on input line 2967.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 2941.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 2941.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2941.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 2949.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2949.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 2949.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 2949.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 2949.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 2949.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2949.
-
-
-LaTeX Warning: Reference `tbl-a-het-indoor' on page 34 undefined on input line 2964.
+LaTeX Warning: Reference `tbl-a-het-indoor' on page 34 undefined on input line 2982.
 
 
 
 [34]
-Overfull \hbox (1919.26453pt too wide) in paragraph at lines 3129--3129
-[][][]|[][]$[]$[]| 
- []
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+
+
+LaTeX Warning: Float too large for page by 81.97313pt on input line 3212.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 3234.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 3234.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -3023,75 +2398,31 @@ Overfull \hbox (1919.26453pt too wide) in paragraph at lines 3129--3129
 > Step: calculate cell and line sizes.
 > Step: build the whole table.
 
-LaTeX Warning: Float too large for page by 15.29126pt on input line 3194.
+LaTeX Warning: Float too large for page by 137.17303pt on input line 3514.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 3216.
+LaTeX Warning: Reference `tbl-bp-het' on page 35 undefined on input line 3526.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 3216.
+LaTeX Warning: Reference `tbl-a-het-resp' on page 35 undefined on input line 3541.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 3216.
+LaTeX Warning: Reference `tbl-a-het-cough' on page 35 undefined on input line 3541.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 3216.
+LaTeX Warning: Reference `tbl-a-het-phlegm' on page 35 undefined on input line 3542.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 3216.
+LaTeX Warning: Reference `tbl-a-het-wheeze' on page 35 undefined on input line 3542.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 3216.
+LaTeX Warning: Reference `tbl-a-het-breath' on page 35 undefined on input line 3542.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 3216.
+LaTeX Warning: Reference `tbl-a-het-nochest' on page 35 undefined on input line 3543.
 
 
-Overfull \hbox (115.70848pt too wide) in paragraph at lines 3416--3416
-[][][]|[][]$[]$[]| 
- []
-
-> Step: init table outer spec.
-> Step: parse table options.
-> Step: split table.
-> Step: init table inner spec.
-> Step: parse table inner spec.
-> Step: execute table commands.
-> Step: calculate cell and line sizes.
-> Step: build the whole table.
-
-LaTeX Warning: Float too large for page by 124.28104pt on input line 3496.
-
-
-LaTeX Warning: Reference `tbl-bp-het' on page 35 undefined on input line 3508.
-
-
-LaTeX Warning: Reference `tbl-a-het-resp' on page 35 undefined on input line 3523.
-
-
-LaTeX Warning: Reference `tbl-a-het-cough' on page 35 undefined on input line 3523.
-
-
-LaTeX Warning: Reference `tbl-a-het-phlegm' on page 35 undefined on input line 3524.
-
-
-LaTeX Warning: Reference `tbl-a-het-wheeze' on page 35 undefined on input line 3524.
-
-
-LaTeX Warning: Reference `tbl-a-het-breath' on page 35 undefined on input line 3524.
-
-
-LaTeX Warning: Reference `tbl-a-het-nochest' on page 35 undefined on input line 3525.
-
-
-LaTeX Warning: Reference `tbl-a-feno' on page 35 undefined on input line 3540.
+LaTeX Warning: Reference `tbl-a-feno' on page 35 undefined on input line 3558.
 
 
 
@@ -3102,31 +2433,11 @@ LaTeX Warning: Reference `tbl-a-feno' on page 35 undefined on input line 3540.
 [37]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 3547.
+(hyperref)                removing `\@ifnextchar' on input line 3565.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 3547.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 3547.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 3547.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 3547.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 3547.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 3547.
+(hyperref)                removing `\uwave' on input line 3565.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -3135,31 +2446,31 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 > Step: parse table inner spec.
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
-LaTeX Font Info:    Calculating math sizes for size <9.85492> on input line 3725.
+LaTeX Font Info:    Calculating math sizes for size <9.85492> on input line 3743.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 9.85492pt on input line 3725.
+(Font)              scaled to size 9.85492pt on input line 3743.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.8984pt on input line 3725.
+(Font)              scaled to size 6.8984pt on input line 3743.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 4.92746pt on input line 3725.
+(Font)              scaled to size 4.92746pt on input line 3743.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 9.85582pt on input line 3725.
+(Font)              scaled to size 9.85582pt on input line 3743.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.89903pt on input line 3725.
+(Font)              scaled to size 6.89903pt on input line 3743.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 4.9279pt on input line 3725.
+(Font)              scaled to size 4.9279pt on input line 3743.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.85387pt on input line 3725.
+(Font)              scaled to size 9.85387pt on input line 3743.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.89766pt on input line 3725.
+(Font)              scaled to size 6.89766pt on input line 3743.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.92693pt on input line 3725.
+(Font)              scaled to size 4.92693pt on input line 3743.
 
 Package tabularray Warning: Table width is too small, need 3.32875pt more!
 
 > Step: build the whole table.
 
-Overfull \hbox (3.32875pt too wide) in paragraph at lines 3725--3726
+Overfull \hbox (3.32875pt too wide) in paragraph at lines 3743--3744
  [][] 
  []
 
@@ -3170,61 +2481,41 @@ Overfull \hbox (3.32875pt too wide) in paragraph at lines 3725--3726
 > Step: parse table inner spec.
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
-LaTeX Font Info:    Calculating math sizes for size <8.76003> on input line 3928.
+LaTeX Font Info:    Calculating math sizes for size <8.76003> on input line 3946.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.76003pt on input line 3928.
+(Font)              scaled to size 8.76003pt on input line 3946.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.13199pt on input line 3928.
+(Font)              scaled to size 6.13199pt on input line 3946.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 4.38pt on input line 3928.
+(Font)              scaled to size 4.38pt on input line 3946.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.76082pt on input line 3928.
+(Font)              scaled to size 8.76082pt on input line 3946.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.13254pt on input line 3928.
+(Font)              scaled to size 6.13254pt on input line 3946.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 4.3804pt on input line 3928.
+(Font)              scaled to size 4.3804pt on input line 3946.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.75908pt on input line 3928.
+(Font)              scaled to size 8.75908pt on input line 3946.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.13133pt on input line 3928.
+(Font)              scaled to size 6.13133pt on input line 3946.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.37953pt on input line 3928.
+(Font)              scaled to size 4.37953pt on input line 3946.
 
 Package tabularray Warning: Table width is too small, need 10.39012pt more!
 
 > Step: build the whole table.
 
-Overfull \hbox (10.39012pt too wide) in paragraph at lines 3928--3929
+Overfull \hbox (10.39012pt too wide) in paragraph at lines 3946--3947
  [][] 
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 3939.
+(hyperref)                removing `\@ifnextchar' on input line 3957.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 3939.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 3939.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 3939.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 3939.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 3939.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 3939.
+(hyperref)                removing `\uwave' on input line 3957.
 
 
 
@@ -3243,28 +2534,23 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Overfull \hbox (1.1958pt too wide) in paragraph at lines 4158--4158
+Overfull \hbox (1.1958pt too wide) in paragraph at lines 4176--4176
 []\TU/lmss/m/n/10.95 BS_mapping  
  []
 
 
-Overfull \hbox (1.1958pt too wide) in paragraph at lines 4158--4158
+Overfull \hbox (1.1958pt too wide) in paragraph at lines 4176--4176
 []\TU/lmss/m/n/10.95 BS_mapping  
  []
 
 > Step: build the whole table.
 
-Overfull \hbox (1.1958pt too wide) in paragraph at lines 4158--4158
+Overfull \hbox (1.1958pt too wide) in paragraph at lines 4176--4176
 []\TU/lmss/m/n/10.95 BS_mapping  
  []
 
 File: images/source-figure.png Graphic file (type bmp)
 <images/source-figure.png>
-
-Overfull \hbox (657.10431pt too wide) in paragraph at lines 4208--4208
-[][][]|[][]$[]$[]| 
- []
-
 
 
 [42]
@@ -3275,10 +2561,6 @@ File: images/source-season2.png Graphic file (type bmp)
 
 
 [44]
-Overfull \hbox (45.19444pt too wide) in paragraph at lines 4316--4316
-[][][]|[][]$[]$[]| 
- []
-
 > Step: init table outer spec.
 > Step: parse table options.
 > Step: split table.
@@ -3292,36 +2574,11 @@ Overfull \hbox (45.19444pt too wide) in paragraph at lines 4316--4316
 [45]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 4374.
+(hyperref)                removing `\@ifnextchar' on input line 4392.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 4374.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 4374.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 4374.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 4374.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 4374.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 4374.
-
-
-Overfull \hbox (443.29955pt too wide) in paragraph at lines 4467--4467
-[][][]|[][]$[]$[]| 
- []
+(hyperref)                removing `\uwave' on input line 4392.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -3333,93 +2590,33 @@ Overfull \hbox (443.29955pt too wide) in paragraph at lines 4467--4467
 > Step: build the whole table.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 4506.
+(hyperref)                removing `\@ifnextchar' on input line 4524.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 4506.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 4506.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 4506.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 4506.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 4506.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 4506.
+(hyperref)                removing `\uwave' on input line 4524.
 
 
 
 [46]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 4527.
+(hyperref)                removing `\@ifnextchar' on input line 4545.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 4527.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 4527.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 4527.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 4527.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 4527.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 4527.
+(hyperref)                removing `\uwave' on input line 4545.
 
 
 
 [47]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 4573.
+(hyperref)                removing `\@ifnextchar' on input line 4591.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 4573.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 4573.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 4573.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 4573.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 4573.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 4573.
+(hyperref)                removing `\uwave' on input line 4591.
 
 
 
@@ -3428,31 +2625,11 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [49]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 4695.
+(hyperref)                removing `\@ifnextchar' on input line 4713.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 4695.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 4695.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 4695.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 4695.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 4695.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 4695.
+(hyperref)                removing `\uwave' on input line 4713.
 
 
 
@@ -3466,37 +2643,17 @@ Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=t
 [51]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 4843.
+(hyperref)                removing `\@ifnextchar' on input line 4861.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 4843.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 4843.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 4843.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 4843.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 4843.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 4843.
+(hyperref)                removing `\uwave' on input line 4861.
 
 
 
 [52]
 
-LaTeX Warning: Reference `tbl-a-fe' on page 53 undefined on input line 4899.
+LaTeX Warning: Reference `tbl-a-fe' on page 53 undefined on input line 4917.
 
 
 
@@ -3505,123 +2662,43 @@ LaTeX Warning: Reference `tbl-a-fe' on page 53 undefined on input line 4899.
 [54]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 4993.
+(hyperref)                removing `\@ifnextchar' on input line 5011.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 4993.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 4993.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 4993.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 4993.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 4993.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 4993.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 5028.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 5028.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 5028.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 5028.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 5028.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 5028.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 5028.
+(hyperref)                removing `\uwave' on input line 5011.
 
 
 
 [55]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 5039.
+(hyperref)                removing `\@ifnextchar' on input line 5046.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 5039.
+(hyperref)                removing `\uwave' on input line 5046.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 5039.
+(hyperref)                removing `\@ifnextchar' on input line 5057.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 5039.
+(hyperref)                removing `\uwave' on input line 5057.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 5039.
+(hyperref)                removing `\@ifnextchar' on input line 5083.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 5039.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 5039.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 5065.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 5065.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 5065.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 5065.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 5065.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 5065.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 5065.
+(hyperref)                removing `\uwave' on input line 5083.
 
 
 
 [56]
-Overfull \hbox (23.77235pt too wide) in paragraph at lines 5139--5143
+Overfull \hbox (21.6371pt too wide) in paragraph at lines 5157--5161
 \TU/lmr/m/n/10.95 differences estimates? Journal of Financial Economics 144:370–395; doi:[][]10.1016/j.jfineco.2022.01.004[][]. 
  []
 
@@ -3665,51 +2742,51 @@ Missing character: There is no 究 (U+7A76) in font [lmroman10-regular]:mapping=
 Missing character: There is no 报 (U+62A5) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 告 (U+544A) in font [lmroman10-regular]:mapping=tex-text;!
 
-Underfull \hbox (badness 1496) in paragraph at lines 5375--5380
+Underfull \hbox (badness 1694) in paragraph at lines 5393--5398
 \TU/lmr/m/n/10.95 Related Human Activity Patterns Survey (CEERHAPS). Applied Energy 136:692–703;
  []
 
 
 
 [60]
+Underfull \hbox (badness 1072) in paragraph at lines 5479--5484
+\TU/lmr/m/n/10.95 Network Randomized Controlled Trial. Environmental Health Perspectives 130:097005;
+ []
+
+
 
 [61]
-Underfull \hbox (badness 1033) in paragraph at lines 5519--5524
+Underfull \hbox (badness 1648) in paragraph at lines 5537--5542
+\TU/lmr/m/n/10.95 color space sensing system to quantify elemental and organic carbon in atmospheric
+ []
+
+
+Underfull \hbox (badness 1147) in paragraph at lines 5537--5542
 \TU/lmr/m/n/10.95 particulate matter on Teflon and quartz filters. Atmospheric Environment 149:84–94;
  []
 
 
 
 [62]
-Underfull \hbox (badness 2035) in paragraph at lines 5617--5621
+Underfull \hbox (badness 2181) in paragraph at lines 5635--5639
 \TU/lmr/m/n/10.95 elderly in the cold region of China. Indoor and Built Environment 31:2482–2498;
  []
 
 
 
 [63]
-Overfull \hbox (0.10286pt too wide) in paragraph at lines 5702--5704
-[]\TU/lmr/m/n/10.95 Pearl J. 2000. \TU/lmr/m/it/10.95 Causality: Models, reasoning, and inference\TU/lmr/m/n/10.95 . Cambridge University Press:Cambridge,
- []
-
-
 
 [64]
 
 [65]
-Underfull \hbox (badness 1314) in paragraph at lines 5836--5840
-[]\TU/lmr/m/n/10.95 Ruiz-Mercado I, Canuz E, Walker JL, Smith KR. 2013. Quantitative metrics of stove
- []
-
-
-Underfull \hbox (badness 3460) in paragraph at lines 5836--5840
-\TU/lmr/m/n/10.95 adoption using Stove Use Monitors (SUMs). Biomass and Bioenergy 57:136–148;
+Overfull \hbox (23.37817pt too wide) in paragraph at lines 5854--5858
+\TU/lmr/m/n/10.95 Stove Use Monitors (SUMs). Biomass and Bioenergy 57:136–148; doi:[][]10.1016/j.biombioe.2013.07.002[][]. 
  []
 
 
 
 [66]
-Underfull \hbox (badness 1337) in paragraph at lines 5923--5928
+Underfull \hbox (badness 1472) in paragraph at lines 5941--5946
 \TU/lmr/m/n/10.95 tertime longitudinal study of Chinese adults. Journal of Hypertension 40:1950–1959;
  []
 
@@ -3718,7 +2795,7 @@ Underfull \hbox (badness 1337) in paragraph at lines 5923--5928
 [67]
 
 [68]
-Overfull \hbox (36.56076pt too wide) in paragraph at lines 6052--6056
+Overfull \hbox (34.4255pt too wide) in paragraph at lines 6070--6074
 \TU/lmr/m/n/10.95 China Prospective (ICP) study. Wellcome Open Research 4:154; doi:[][]10.12688/wellcomeopenres.15470.2[][]. 
  []
 
@@ -3747,62 +2824,22 @@ Missing character: There is no 力 (U+529B) in font [lmroman10-regular]:mapping=
 [70]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6171.
+(hyperref)                removing `\@ifnextchar' on input line 6189.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6171.
+(hyperref)                removing `\uwave' on input line 6189.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 6171.
+(hyperref)                removing `\@ifnextchar' on input line 6195.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 6171.
+(hyperref)                removing `\uwave' on input line 6195.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 6171.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 6171.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6171.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6177.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6177.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 6177.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 6177.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 6177.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 6177.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6177.
-
-
-Underfull \hbox (badness 1478) in paragraph at lines 6196--6196
+Underfull \hbox (badness 1648) in paragraph at lines 6214--6214
 [][][]|[]\TU/lmss/m/n/10.95 Boxplots for markers of systemic inflammation including C-reactive protein (CRP),
  []
 
@@ -3813,120 +2850,59 @@ File: images/biomarker-boxplot-log.jpg Graphic file (type bmp)
 [71]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6211.
+(hyperref)                removing `\@ifnextchar' on input line 6229.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6211.
+(hyperref)                removing `\uwave' on input line 6229.
 
+File: images/MI_BMI_density.png Graphic file (type bmp)
+<images/MI_BMI_density.png>
+File: images/MI_BMI_density.png Graphic file (type bmp)
+<images/MI_BMI_density.png>
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 6211.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 6211.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 6211.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 6211.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6211.
-
-
-Overfull \hbox (510.43706pt too wide) in paragraph at lines 6231--6231
-[][][]|[][]$[]$[]| 
+Overfull \hbox (133.27782pt too wide) in paragraph at lines 6264--6265
+ [][][] 
  []
 
-File: images/MI_BMI_density.png Graphic file (type bmp)
-<images/MI_BMI_density.png>
-File: images/MI_BMI_density.png Graphic file (type bmp)
-<images/MI_BMI_density.png>
 File: images/MI_waist_circ_density.png Graphic file (type bmp)
 <images/MI_waist_circ_density.png>
+
+Overfull \hbox (133.27782pt too wide) in paragraph at lines 6287--6288
+ [][][] 
+ []
+
 File: images/MI_waist_circ_density.png Graphic file (type bmp)
 <images/MI_waist_circ_density.png>
 File: images/MI_indoorPM_density.png Graphic file (type bmp)
 <images/MI_indoorPM_density.png>
+
+Overfull \hbox (133.27782pt too wide) in paragraph at lines 6317--6318
+ [][][] 
+ []
+
 File: images/MI_indoorPM_density.png Graphic file (type bmp)
 <images/MI_indoorPM_density.png>
 
 
 [72]
+Overfull \vbox (167.50993pt too high) has occurred while \output is active []
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6339.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6339.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 6339.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 6339.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 6339.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 6339.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6339.
-
-File: images/Participation-flowchart-Apr12.png Graphic file (type bmp)
-<images/Participation-flowchart-Apr12.png>
 
 
 [73]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6369.
+(hyperref)                removing `\@ifnextchar' on input line 6357.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6369.
+(hyperref)                removing `\uwave' on input line 6357.
 
+File: images/Participation-flowchart-Apr12.png Graphic file (type bmp)
+<images/Participation-flowchart-Apr12.png>
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 6369.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 6369.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 6369.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 6369.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6369.
-
-
-LaTeX Warning: Reference `tbl-fuel-did' on page 74 undefined on input line 6373.
-
-File: images/coal-plot.png Graphic file (type bmp)
-<images/coal-plot.png>
-
-Overfull \hbox (6.80858pt too wide) in paragraph at lines 6383--6384
+Overfull \hbox (269.15215pt too wide) in paragraph at lines 6366--6367
  [][][] 
  []
 
@@ -3935,357 +2911,336 @@ Overfull \hbox (6.80858pt too wide) in paragraph at lines 6383--6384
 [74]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6486.
+(hyperref)                removing `\@ifnextchar' on input line 6387.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6486.
+(hyperref)                removing `\uwave' on input line 6387.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 6486.
+LaTeX Warning: Reference `tbl-fuel-did' on page 75 undefined on input line 6391.
 
+File: images/coal-plot.png Graphic file (type bmp)
+<images/coal-plot.png>
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 6486.
+Overfull \hbox (6.80858pt too wide) in paragraph at lines 6401--6402
+ [][][] 
+ []
 
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 6486.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 6486.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6486.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6492.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6492.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 6492.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 6492.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 6492.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 6492.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6492.
-
-
-LaTeX Warning: Reference `tbl-a-het-personal' on page 75 undefined on input line 6495.
-
-
-LaTeX Warning: Reference `tbl-a-het-indoor' on page 75 undefined on input line 6588.
-
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
 
 
 [75]
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6664.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6664.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 6664.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 6664.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 6664.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 6664.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6664.
-
-
-
 [76]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6897.
+(hyperref)                removing `\@ifnextchar' on input line 6554.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6897.
+(hyperref)                removing `\uwave' on input line 6554.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 6897.
+(hyperref)                removing `\@ifnextchar' on input line 6560.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 6897.
+(hyperref)                removing `\uwave' on input line 6560.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 6897.
+LaTeX Warning: Reference `tbl-a-het-personal' on page 77 undefined on input line 6563.
 
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 6897.
+LaTeX Warning: Reference `tbl-a-het-indoor' on page 77 undefined on input line 6698.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6897.
-
-
-LaTeX Warning: Reference `tbl-bp-het' on page 77 undefined on input line 6900.
-
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
 
 
 [77]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 7055.
+(hyperref)                removing `\@ifnextchar' on input line 6812.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 7055.
+(hyperref)                removing `\uwave' on input line 6812.
 
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 7055.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 7055.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 7055.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 7055.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 7055.
-
-
-LaTeX Warning: Reference `tbl-a-bp-med-het' on page 78 undefined on input line 7058.
-
-
-Underfull \hbox (badness 2221) in paragraph at lines 7079--7318
-[]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   [][][]|   []   [][]|   []   [][]|   []   [][]|   []
+Underfull \hbox (badness 10000) in paragraph at lines 7129--7129
+[]\TU/lmss/m/n/8.76003 p-
  []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7129--7129
+[]\TU/lmss/m/n/8.76003 p-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7129--7129
+[]\TU/lmss/m/n/8.76003 p-
+ []
+
+> Step: build the whole table.
+
+LaTeX Warning: Float too large for page by 161.6876pt on input line 7133.
 
 
 
 [78]
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 7469.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 7469.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 7469.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 7469.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 7469.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 7469.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 7469.
-
-
-LaTeX Warning: Reference `tbl-a-het-resp' on page 79 undefined on input line 7472.
-
-
-LaTeX Warning: Reference `tbl-a-het-cough' on page 79 undefined on input line 7472.
-
-
-LaTeX Warning: Reference `tbl-a-het-phlegm' on page 79 undefined on input line 7473.
-
-
-LaTeX Warning: Reference `tbl-a-het-wheeze' on page 79 undefined on input line 7473.
-
-
-LaTeX Warning: Reference `tbl-a-het-breath' on page 79 undefined on input line 7473.
-
-
-LaTeX Warning: Reference `tbl-a-het-nochest' on page 79 undefined on input line 7474.
-
-
-
 [79]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 7817.
+(hyperref)                removing `\@ifnextchar' on input line 7140.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 7817.
+(hyperref)                removing `\uwave' on input line 7140.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 7817.
+LaTeX Warning: Reference `tbl-bp-het' on page 80 undefined on input line 7143.
 
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 7817.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 7817.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 7817.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 7817.
-
-File: images/did-mixed-ct-wave.png Graphic file (type bmp)
-<images/did-mixed-ct-wave.png>
-
-Overfull \hbox (6.79807pt too wide) in paragraph at lines 7826--7827
- [][][] 
- []
+LaTeX Warning: Float too large for page by 21.21928pt on input line 7358.
 
 
 
 [80]
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 7848.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 7848.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 7848.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 7848.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 7848.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 7848.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 7848.
-
-
-LaTeX Warning: Reference `tbl-a-feno' on page 81 undefined on input line 7851.
-
-
-
 [81]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 7932.
+(hyperref)                removing `\@ifnextchar' on input line 7367.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 7932.
+(hyperref)                removing `\uwave' on input line 7367.
+
+
+LaTeX Warning: Reference `tbl-a-bp-med-het' on page 82 undefined on input line 7370.
+
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+
+
+[82]
+Overfull \vbox (186.47363pt too high) has occurred while \output is active []
+
+
+
+[83]
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+
+
+[84]
+Overfull \vbox (288.25595pt too high) has occurred while \output is active []
+
+
+
+[85]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 7949.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 7932.
+(hyperref)                removing `\uwave' on input line 7949.
+
+
+LaTeX Warning: Reference `tbl-a-het-resp' on page 86 undefined on input line 7952.
+
+
+LaTeX Warning: Reference `tbl-a-het-cough' on page 86 undefined on input line 7952.
+
+
+LaTeX Warning: Reference `tbl-a-het-phlegm' on page 86 undefined on input line 7953.
+
+
+LaTeX Warning: Reference `tbl-a-het-wheeze' on page 86 undefined on input line 7953.
+
+
+LaTeX Warning: Reference `tbl-a-het-breath' on page 86 undefined on input line 7953.
+
+
+LaTeX Warning: Reference `tbl-a-het-nochest' on page 86 undefined on input line 7954.
+
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+
+
+[86]
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+
+
+[87]
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+
+
+[88]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 8527.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 7932.
+(hyperref)                removing `\uwave' on input line 8527.
+
+File: images/did-mixed-ct-wave.png Graphic file (type bmp)
+<images/did-mixed-ct-wave.png>
+
+
+[89]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 8558.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 7932.
+(hyperref)                removing `\uwave' on input line 8558.
+
+
+LaTeX Warning: Reference `tbl-a-feno' on page 90 undefined on input line 8561.
+
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+
+
+[90]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 8676.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 7932.
+(hyperref)                removing `\uwave' on input line 8676.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 7932.
+LaTeX Warning: Reference `tbl-a-ind-s3' on page 91 undefined on input line 8679.
 
-
-LaTeX Warning: Reference `tbl-a-ind-s3' on page 82 undefined on input line 7935.
-
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
 File: images/did-outdoor-w3.png Graphic file (type bmp)
 <images/did-outdoor-w3.png>
 
 
-[82]
+[91]
+
+[92]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 8047.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 8047.
+(hyperref)                removing `\@ifnextchar' on input line 8830.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 8047.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 8047.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 8047.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 8047.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 8047.
+(hyperref)                removing `\uwave' on input line 8830.
 
 File: images/never_Y3.png Graphic file (type bmp)
 <images/never_Y3.png>
@@ -4293,40 +3248,31 @@ File: images/never_Y4.png Graphic file (type bmp)
 <images/never_Y4.png>
 
 
-[83]
+[93]
 
-[84]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 8101.
-
+[94]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 8101.
+(hyperref)                removing `\@ifnextchar' on input line 8893.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 8101.
+(hyperref)                removing `\uwave' on input line 8893.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 8101.
+LaTeX Warning: Reference `tbl-a-fe' on page 95 undefined on input line 8900.
+
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 8101.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 8101.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 8101.
-
-
-
-[85]
+[95]
 \Changes@OutFile=\write5
 \openout5 = `test-diff.soc'.
 
@@ -4335,10 +3281,10 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 
-[86] (./test-diff.aux)
+[96] (./test-diff.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2024-05-27>
+L3 programming layer <2024-07-20>
  ***********
 
 
@@ -4349,12 +3295,12 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 42573 strings out of 476239
- 907277 string characters out of 5786143
- 2058557 words of memory out of 5000000
- 64447 multiletter control sequences out of 15000+600000
- 604472 words of font info for 223 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
+ 44664 strings out of 476173
+ 953098 string characters out of 5784000
+ 2070609 words of memory out of 5000000
+ 66529 multiletter control sequences out of 15000+600000
+ 639408 words of font info for 268 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
  118i,17n,123p,10904b,1469s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on test-diff.pdf (86 pages).
+Output written on test-diff.pdf (96 pages).

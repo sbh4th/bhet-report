@@ -1,7 +1,7 @@
 % Options for packages loaded elsewhere
 %DIF LATEXDIFF DIFFERENCE FILE
-%DIF DEL hei-report-submitted.tex   Wed Jul 24 11:45:55 2024
-%DIF ADD hei-report-revised.tex     Tue Jul 30 17:05:49 2024
+%DIF DEL hei-report-submitted.tex   Sat Aug  3 15:44:25 2024
+%DIF ADD hei-report-revised.tex     Wed Aug 14 07:02:00 2024
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
@@ -309,12 +309,12 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{\DIFdelbegin \DIFdel{2024-04-27}\DIFdelend \DIFaddbegin \DIFadd{2024-07-30}\DIFaddend }
+\date{\DIFdelbegin \DIFdel{2024-04-27}\DIFdelend \DIFaddbegin \DIFadd{2024-08-14}\DIFaddend }
 %DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
 %DIF UNDERLINE PREAMBLE %DIF PREAMBLE
 \RequirePackage[normalem]{ulem} %DIF PREAMBLE
 \RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
-\providecommand{\DIFadd}[1]{{\protect\color{blue}\underline{#1}}} %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
 \providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
 %DIF SAFE PREAMBLE %DIF PREAMBLE
 \providecommand{\DIFaddbegin}{} %DIF PREAMBLE
@@ -778,10 +778,10 @@ the Beijing municipality in northern China. The villages predominately
 used coal for heating at the time of enrollment and were eligible for
 but not currently participating in the CBHP policy. Roughly half of the
 villages were expected to enter into the policy during our study
-(Figure~\ref{fig-cbhp-map}). We used local guides in each village to
-help determine a roster of households that were not vacant during the
-winter months, from which we randomly selected households to recruit for
-participation.
+\DIFaddbegin \comment{EC 10c} \DIFaddend (Figure~\ref{fig-cbhp-map}). We used local guides in
+each village to help determine a roster of households that were not
+vacant during the winter months, from which we randomly selected
+households to recruit for participation.
 
 \begin{figure}[H]
 
@@ -789,35 +789,53 @@ participation.
 %DIFDELCMD < %%%
 \DIFdelendFL \DIFaddbeginFL \centering{
 
-\includegraphics[width=0.7\textwidth,height=\textheight]{images/policy-implementation-map.png}
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/village-map.png}
 
 }
 \DIFaddendFL 
 
 \DIFdelbeginFL %DIFDELCMD < }
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \caption{\label{fig-cbhp-map}\DIFaddFL{Map of village implementation of CBHP
+policy. Each circle represents one recruited village. The colors of the
+circles indicate the year the villages were exposed to the household
+energy transition policy.}}
+\DIFaddendFL 
+
+\DIFdelbeginFL %DIFDELCMD < \caption{%
+{%DIFAUXCMD
+%DIFDELCMD < \label{fig-cbhp-map}%%%
+\DIFdelFL{Map of village implementation of CBHP
+policy}}
+%DIFAUXCMD
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-\DIFdelendFL \caption{\label{fig-cbhp-map}Map of village implementation of CBHP
-policy}
+\DIFdelendFL \end{figure}%DIF > 
 
-\end{figure}%DIF > 
-
-We recruited approximately 20 households in each village and randomly
-selected one eligible person from each household to participate.
-Household members were eligible to participate if they were over 40
-years old, lived in the study villages, were not planning to move out of
-the village in the next year, and were not on current immunotherapy or
-treatment with corticosteroids. Research staff introduced the study and
-its measurements to an eligible adult in each household and answered any
-questions related to the study. In follow-up visits to the study
-villages, staff first approached households with participants from an
-earlier wave. If previous participants were not at home or refused to
-participate, staff first tried to randomly recruit an eligible
-participant from the same household. If there was not another eligible
-or willing participant in the household, we randomly selected and
-recruited a participant from a new household using the village roster.
-All participants provided written informed consent prior to joining the
+We recruited approximately 20 households in each village and\DIFdelbegin \DIFdel{randomly
+selected one eligible person from each
+household to participate}\DIFdelend \DIFaddbegin \DIFadd{, in each
+household, obtained a household roster. Our}\comment{EC 2c} \DIFadd{tablet-based
+survey incorporated a randomization tool than randomly ordered household
+occupants listed on the roster. We recruited a participant in each
+household by starting at the top of the randomly ordered list until an
+eligible participant was identified}\DIFaddend . Household members were eligible to
+participate if they were over 40 years old, lived in the study villages,
+were not planning to move out of the village in the next year, and were
+not on current immunotherapy or treatment with corticosteroids. Research
+staff introduced the study and its measurements to an eligible adult in
+each household and answered any questions related to the study. In
+follow-up visits to the study villages, staff first approached
+households with participants from an earlier wave. If previous
+participants were not at home or refused to participate, staff first
+tried to randomly recruit \DIFdelbegin \DIFdel{an eligible participant from the
+same household . If }\DIFdelend \DIFaddbegin \DIFadd{the next eligible participant listed on the
+randomized household roster. If}\comment{EC 2d} \DIFaddend there was not another
+eligible or willing participant in the \DIFaddbegin \DIFadd{same }\DIFaddend household, we randomly
+selected and recruited a participant from a new household using the \DIFdelbegin \DIFdel{village roster}\DIFdelend \DIFaddbegin \DIFadd{same
+process for household and participant selection described above}\DIFaddend . All
+participants provided written informed consent prior to joining the
 study. The study protocols were approved by research ethics boards at
 Peking University (IRB00001052-18090), Peking Union Medical College
 Hospital (HS-3184) and McGill University (A08-E53-18B).
@@ -6228,7 +6246,7 @@ data.
 multiply-imputed values for body mass index (kg/m\textsuperscript{2}),
 waist circumference (cm), and indoor PM\textsubscript{2.5}
 (µg/m\textsuperscript{3}) (red lines) and observed values (heavy black
-line)}}
+line).}}
 \DIFaddendFL 
 
 \DIFdelbeginFL %DIFDELCMD < {\centering 
@@ -6243,7 +6261,7 @@ line)}}
 }
 }\DIFdelendFL \DIFaddbeginFL \centering{
 
-\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_BMI_density.png}
+\includegraphics[width=5in,height=\textheight]{images/MI_BMI_density.png}
 
 }
 \DIFaddendFL 
@@ -6266,7 +6284,7 @@ line)}}
 %DIFDELCMD < %%%
 \DIFdelendFL \DIFaddbeginFL \centering{
 
-\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_waist_circ_density.png}
+\includegraphics[width=5in,height=\textheight]{images/MI_waist_circ_density.png}
 
 }
 \DIFaddendFL 
@@ -6296,7 +6314,7 @@ line)}}
 %DIFDELCMD < %%%
 \DIFdelendFL \DIFaddbeginFL \centering{
 
-\includegraphics[width=0.5\textwidth,height=\textheight]{images/MI_indoorPM_density.png}
+\includegraphics[width=5in,height=\textheight]{images/MI_indoorPM_density.png}
 
 }
 \DIFaddendFL 
@@ -6345,7 +6363,7 @@ line)}}
 %DIFDELCMD < %%%
 \DIFdelendFL \DIFaddbeginFL \centering{
 
-\includegraphics[width=0.8\textwidth,height=\textheight]{images/Participation-flowchart-Apr12.png}
+\includegraphics[width=10.13in,height=\textheight]{images/Participation-flowchart-Apr12.png}
 
 }
 \DIFaddendFL 
@@ -6386,13 +6404,21 @@ separate analyses) to coal and biomass consumption.
 \DIFaddendFL 
 
 \DIFdelbeginFL %DIFDELCMD < }
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \caption{\label{fig-afig-coal}\DIFaddFL{Trends in self-reported coal and biomass,
+by treatment season.}}
+\DIFaddendFL 
+
+\DIFdelbeginFL %DIFDELCMD < \caption{%
+{%DIFAUXCMD
+%DIFDELCMD < \label{fig-afig-coal}%%%
+\DIFdelFL{Trends in self-reported coal and biomass,
+by treatment season}}
+%DIFAUXCMD
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-\DIFdelendFL \caption{\label{fig-afig-coal}Trends in self-reported coal and biomass,
-by treatment season}
-
-\end{figure}%DIF > 
+\DIFdelendFL \end{figure}%DIF > 
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{tbl-fuel-did}{}
 %DIFDELCMD < \begin{table}[H]
@@ -6402,9 +6428,11 @@ by treatment season}
 %DIFDELCMD < \label{tbl-fuel-did}%%%
 \DIFdelFL{Policy impacts on self-reported fuel use (kg) }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \begin{table}
+\DIFaddendFL 
 
-%DIFDELCMD < \centering
+\DIFdelbeginFL %DIFDELCMD < \centering
 %DIFDELCMD < \begin{tabular}{>{\centering\arraybackslash}p{1.5cm}>{\centering\arraybackslash}p{1.5cm}cccc}
 %DIFDELCMD < \toprule
 %DIFDELCMD < \multicolumn{2}{c}{ } & \multicolumn{2}{c}{Coal\textsuperscript{a}} & \multicolumn{2}{c}{Biomass\textsuperscript{b}} \\
@@ -6472,11 +6500,51 @@ by treatment season}
 %DIFDELCMD < \multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{a} Joint test that all ATTs are equal: F(3, 2886)= 1.856, p= 0.135}\\
 %DIFDELCMD < \multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{b} Joint test that all ATTs are equal: F(3, 2886)= 5.545, p= 0.001}\\
 %DIFDELCMD < \end{tabular}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdelend \newpage
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-fuel-did}\DIFaddFL{Policy impacts on self-reported fuel use
+(kg)}}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval},
+note{a}={Joint test that all ATTs are equal: F(3, 2886)= 1.856, p= 0.135},
+note{b}={Joint test that all ATTs are equal: F(3, 2886)= 5.545, p= 0.001},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+cell{3}{1}={c=6}{},cell{5}{1}={c=6}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+cell{10}{1}={preto={\hspace{1em}}},
+row{3}={,cmd=\bfseries,},
+row{5}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+&  & Coal &  & Biomass &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
+Cohort & Time & ATT\textsuperscript{a} & (95\% CI) & ATT\textsuperscript{b} & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT &&&&& \\
+All & All & -2361 & (-2677, -2044) & -487 & (-805, -168) \\
+Cohort-Time ATTs &&&&& \\
+2019 & 2019 & -2631 & (-2913, -2348) & -653 & (-991, -315) \\
+2019 & 2021 & -2416 & (-2847, -1984) & -633 & (-1201, -64) \\
+2020 & 2021 & -2018 & (-2474, -1562) & -350 & (-701, 0) \\
+2021 & 2021 & -1961 & (-2895, -1027) &  338 & (-30, 705) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
+
+\newpage
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{heterogeneity-in-treament-effects}{%
 %DIFDELCMD < \subsection{Heterogeneity in treament
@@ -6504,8 +6572,7 @@ Table Table~\ref{tbl-a-het-personal} shows limited evidence that the
 \DIFdelFL{Heterogenous treatment effects: Personal exposures }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
 %DIFDELCMD < %%%
-\DIFdelendFL \DIFaddbeginFL \subsubsection{\texorpdfstring{Indoor
-PM\textsubscript{2.5}}{Indoor PM2.5}}\label{indoor-pm2.5-1}
+\DIFdelendFL \DIFaddbeginFL \begin{table}
 \DIFaddendFL 
 
 \DIFdelbeginFL %DIFDELCMD < \centering
@@ -6576,16 +6643,59 @@ PM\textsubscript{2.5}}{Indoor PM2.5}}\label{indoor-pm2.5-1}
 %DIFDELCMD < \multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{a} Joint test that all ATTs are equal: F(3, 1271)= 0.431, p= 0.731}\\
 %DIFDELCMD < \multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{b} Joint test that all ATTs are equal: F(3, 1253)= 0.613, p= 0.607}\\
 %DIFDELCMD < \end{tabular}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-a-het-personal}\DIFaddFL{Heterogenous treatment effects:
+Personal exposures}}
 
-%DIFDELCMD < \hypertarget{indoor-pm2.5-1}{%
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval},
+note{a}={Joint test that all cohort-time ATTs are equal: F(3, 1271)= 0.431, p= 0.731},
+note{b}={Joint test that all cohort-time ATTs are equal: F(3, 1253)= 0.613, p= 0.607},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+cell{3}{1}={c=6}{},cell{5}{1}={c=6}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+cell{10}{1}={preto={\hspace{1em}}},
+row{3}={,cmd=\bfseries,},
+row{5}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+&  & PM2.5 &  & Black carbon &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
+Cohort & Time & ATT\textsuperscript{a} & (95\% CI) & ATT\textsuperscript{b} & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT &&&&& \\
+All & All &   1.95 & (-23.34, 27.23) & -0.43 & (-1.67, 0.81) \\
+Cohort-Time ATTs &&&&& \\
+2019 & 2019 &  -0.05 & (-28.97, 28.87) & -0.69 & (-1.84, 0.45) \\
+2019 & 2021 &  -4.31 & (-41.92, 33.3) & -0.25 & (-2.11, 1.62) \\
+2020 & 2021 &  23.61 & (-19.88, 67.11) & -0.27 & (-2.04, 1.5) \\
+2021 & 2021 & -19.06 & (-43.19, 5.07) & -0.56 & (-2.46, 1.34) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
+
+\DIFdelbegin %DIFDELCMD < \hypertarget{indoor-pm2.5-1}{%
 %DIFDELCMD < \subsubsection{\texorpdfstring{Indoor
 %DIFDELCMD < PM\textsubscript{2.5}}{Indoor PM2.5}}\label{indoor-pm2.5-1}}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdelend Table Table~\ref{tbl-a-het-indoor} shows estimates for cohort-time
+\DIFdelend \DIFaddbegin \subsubsection{\texorpdfstring{Indoor
+PM\textsubscript{2.5}}{Indoor PM2.5}}\label{indoor-pm2.5-1}
+\DIFaddend 
+
+Table Table~\ref{tbl-a-het-indoor} shows estimates for cohort-time
 \(ATT\)s for daily and seasonal indoor PM\textsubscript{2.5}.
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-het-indoor}{}
@@ -6596,9 +6706,11 @@ PM\textsubscript{2.5}}{Indoor PM2.5}}\label{indoor-pm2.5-1}
 %DIFDELCMD < \label{tbl-a-het-indoor}%%%
 \DIFdelFL{Heterogenous treatment effects: Indoor }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \begin{table}
+\DIFaddendFL 
 
-%DIFDELCMD < \centering
+\DIFdelbeginFL %DIFDELCMD < \centering
 %DIFDELCMD < \begin{tabular}{>{\centering\arraybackslash}p{1.5cm}>{\centering\arraybackslash}p{1.5cm}cccc}
 %DIFDELCMD < \toprule
 %DIFDELCMD < \multicolumn{2}{c}{ } & \multicolumn{2}{c}{Daily\textsuperscript{a}} & \multicolumn{2}{c}{Seasonal\textsuperscript{b}} \\
@@ -6652,11 +6764,47 @@ PM\textsubscript{2.5}}{Indoor PM2.5}}\label{indoor-pm2.5-1}
 %DIFDELCMD < \multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{a} Joint test that all ATTs are equal: F(1, 405)= 0.064, p= 0.8}\\
 %DIFDELCMD < \multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{b} Joint test that all ATTs are equal: F(1, 368)= 0.756, p= 0.385}\\
 %DIFDELCMD < \end{tabular}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdelend \newpage
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-a-het-indoor}\DIFaddFL{Heterogenous treatment effects for
+Indoor PM\textsubscript{2.5}.}}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval},
+note{a}={Joint test that all ATTs are equal: F(1, 405)= 0.064, p= 0.8},
+note{b}={Joint test that all ATTs are equal: F(1, 368)= 0.756, p= 0.385},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+cell{3}{1}={c=6}{},cell{5}{1}={c=6}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+row{3}={,cmd=\bfseries,},
+row{5}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+&  & Daily &  & Seasonal &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
+Cohort & Time & ATT\textsuperscript{a} & (95\% CI) & ATT\textsuperscript{b} & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT &&&&& \\
+All & All & -14.20 & (-53.94, 25.54) & -36.19 & (-60.74, -11.65) \\
+Cohort-Time ATTs &&&&& \\
+2020 & 2021 & -4.71 & (-56.93, 47.5) & -25.44 & (-58.02, 7.13) \\
+2021 & 2021 & -37.24 & (-74.15, -0.33) & -59.23 & (-79.61, -38.85) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
+
+\newpage
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{indoor-temperature}{%
 %DIFDELCMD < \subsubsection{Indoor temperature}\label{indoor-temperature}}
@@ -6672,12 +6820,17 @@ PM\textsubscript{2.5}}{Indoor PM2.5}}\label{indoor-pm2.5-1}
 %DIFDELCMD < \label{tbl-a-het-temp}%%%
 \DIFdelFL{Heterogenous treatment effects: Indoor temperature }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \begin{table}
+\DIFaddendFL 
 
-%DIFDELCMD < \centering\begingroup\fontsize{9}{11}\selectfont
-%DIFDELCMD < 
+\DIFdelbeginFL %DIFDELCMD < \centering\begingroup\fontsize{9}{11}\selectfont
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-a-het-temp}\DIFaddFL{Heterogenous treatment effects for indoor
+temperature}}
+\DIFaddendFL 
 
-%DIFDELCMD < \begin{tabular}{rrrllrllrll}
+\DIFdelbeginFL %DIFDELCMD < \begin{tabular}{rrrllrllrll}
 %DIFDELCMD < \toprule
 %DIFDELCMD < \multicolumn{2}{c}{ } & \multicolumn{3}{c}{Point temp (°C)} & \multicolumn{3}{c}{Mean temp (°C)} & \multicolumn{3}{c}{Min temp (°C)} \\
 %DIFDELCMD < \cmidrule%%%
@@ -6885,11 +7038,101 @@ PM\textsubscript{2.5}}{Indoor PM2.5}}\label{indoor-pm2.5-1}
 %DIFDELCMD < \bottomrule
 %DIFDELCMD < \end{tabular}
 %DIFDELCMD < \endgroup{}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdelend \newpage
+\DIFdelendFL \DIFaddbeginFL \centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={1\linewidth},
+colspec={X[0.153846153846154]X[0.0641025641025641]X[0.153846153846154]X[0.0641025641025641]X[0.0641025641025641]X[0.153846153846154]X[0.0641025641025641]X[0.0641025641025641]X[0.153846153846154]X[0.0641025641025641]},
+cell{1}{2}={c=3,}{halign=c,},
+cell{1}{5}={c=3,}{halign=c,},
+cell{1}{8}={c=3,}{halign=c,},
+cell{3}{1}={c=10}{},cell{10}{1}={c=10}{},cell{17}{1}={c=10}{},cell{24}{1}={c=10}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+cell{11}{1}={preto={\hspace{1em}}},
+cell{12}{1}={preto={\hspace{1em}}},
+cell{13}{1}={preto={\hspace{1em}}},
+cell{14}{1}={preto={\hspace{1em}}},
+cell{15}{1}={preto={\hspace{1em}}},
+cell{16}{1}={preto={\hspace{1em}}},
+cell{18}{1}={preto={\hspace{1em}}},
+cell{19}{1}={preto={\hspace{1em}}},
+cell{20}{1}={preto={\hspace{1em}}},
+cell{21}{1}={preto={\hspace{1em}}},
+cell{22}{1}={preto={\hspace{1em}}},
+cell{23}{1}={preto={\hspace{1em}}},
+cell{25}{1}={preto={\hspace{1em}}},
+cell{26}{1}={preto={\hspace{1em}}},
+cell{27}{1}={preto={\hspace{1em}}},
+cell{28}{1}={preto={\hspace{1em}}},
+cell{29}{1}={preto={\hspace{1em}}},
+cell{30}{1}={preto={\hspace{1em}}},
+cell{31}{1}={preto={\hspace{1em}}},
+row{3}={halign=c,cmd=\bfseries,},
+row{10}={halign=c,cmd=\bfseries,},
+row{17}={halign=c,cmd=\bfseries,},
+row{24}={halign=c,cmd=\bfseries,},
+column{1}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{2}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{3}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{4}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{5}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{6}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{7}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{8}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{9}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{10}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{1}={halign=l,},
+}                     %% tabularray inner close
+\toprule
+& Point temp (°C) &  &  & Mean temp (°C) &  &  & Min temp (°C) &  &  \\ \cmidrule[lr]{2-4}\cmidrule[lr]{5-7}\cmidrule[lr]{8-10}
+Cohort Time & ATT & (95\% CI) & p-val & ATT & (95\% CI) & p-val & ATT & (95\% CI) & p-val \\ \midrule %% TinyTableHeader
+All times &&&&&&&&& \\
+2019 2019 & 1.77 & (0.66, 2.88) &  & 0.43 & (-0.71, 1.57) &  & 1.96 & ( 0.43, 3.48) &  \\
+2019 2020 &  &  &  & 0.52 & (-0.22, 1.26) &  & 2.42 & (  0.54, 4.3) &  \\
+2019 2021 & 2.29 & (0.51, 4.07) &  & 0.79 & ( 0.00, 1.57) &  & 4.93 & ( 2.28, 7.58) &  \\
+2020 2020 &  &  &  & 0.87 & (-0.20, 1.93) &  & 5.00 & ( 3.22, 6.79) &  \\
+2020 2021 & 2.36 & (0.54, 4.17) &  & 0.58 & (-0.66, 1.82) &  & 6.87 & ( 4.35, 9.39) &  \\
+2021 2021 & 0.64 & (-1.08, 2.35) & 0.440 & 1.06 & ( 0.32, 1.79) & 0.320 & 2.04 & ( 0.08, 4.00) & 0.000 \\
+Daytime &&&&&&&&& \\
+2019 2019 &  &  &  & 0.44 & (-0.96, 1.83) &  &  &  &  \\
+2019 2020 &  &  &  & 1.26 & ( 0.36, 2.17) &  &  &  &  \\
+2019 2021 &  &  &  & 1.50 & ( 0.55, 2.46) &  &  &  &  \\
+2020 2020 &  &  &  & 0.28 & (-1.45, 2.02) &  &  &  &  \\
+2020 2021 &  &  &  & 0.13 & (-1.70, 1.97) &  &  &  &  \\
+2021 2021 &  &  &  & 1.44 & ( 0.64, 2.25) & 0.260 &  &  &  \\
+Daytime heating &&&&&&&&& \\
+2019 2019 &  &  &  & 0.80 & (-0.48, 2.09) &  &  &  &  \\
+2019 2020 &  &  &  & 1.43 & ( 0.04, 2.83) &  &  &  &  \\
+2019 2021 &  &  &  & 2.33 & ( 1.03, 3.62) &  &  &  &  \\
+2020 2020 &  &  &  & 2.63 & ( 1.87, 3.39) &  &  &  &  \\
+2020 2021 &  &  &  & 2.46 & ( 1.46, 3.46) &  &  &  &  \\
+2021 2021 &  &  &  & 2.13 & ( 0.67, 3.59) & 0.000 &  &  &  \\
+Heating season &&&&&&&&& \\
+2019 2019 &  &  &  & 1.05 & (-0.10, 2.20) &  & 1.94 & ( 0.42, 3.47) &  \\
+2019 2020 &  &  &  & 1.23 & (-0.11, 2.58) &  & 2.41 & ( 0.53, 4.30) &  \\
+2019 2021 &  &  &  & 2.07 & ( 0.88, 3.27) &  & 5.34 & ( 2.66, 8.02) &  \\
+2020 2020 &  &  &  & 2.71 & ( 2.04, 3.37) &  & 4.35 & ( 3.17, 5.53) &  \\
+2020 2021 &  &  &  & 2.48 & ( 1.33, 3.62) &  & 6.27 & ( 3.73, 8.81) &  \\
+2021 2021 &  &  &  & 1.97 & ( 0.53, 3.41) & 0.000 & 2.23 & ( 0.26, 4.21) & 0.000 \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
+
+\newpage
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{blood-pressure-outcomes}{%
 %DIFDELCMD < \subsubsection{Blood pressure outcomes}\label{blood-pressure-outcomes}}
@@ -6909,9 +7152,11 @@ well as the results of joint tests of heterogeneity across \(ATT\)s.
 \DIFdelFL{Heterogenous treatment effects for the total effect of the CBHP policy
 on blood pressure. }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \begin{table}
+\DIFaddendFL 
 
-%DIFDELCMD < \centering
+\DIFdelbeginFL %DIFDELCMD < \centering
 %DIFDELCMD < \begin{threeparttable}
 %DIFDELCMD < \begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}cccc}
 %DIFDELCMD < \toprule
@@ -7041,11 +7286,78 @@ on blood pressure. }}%DIFAUXCMD
 %DIFDELCMD < \item[b] \small{F-statistics and p-values for joint tests of equality across cohort and time ATTs}
 %DIFDELCMD < \end{tablenotes}
 %DIFDELCMD < \end{threeparttable}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdelend \newpage
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-bp-het}\DIFaddFL{Heterogenous treatment effects for the total
+effect of the CBHP policy on blood pressure.}}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences.},
+note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
+note{b}={F-statistics and p-values for joint tests of equality across cohort and time ATTs},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={1\linewidth},
+colspec={X[0.16]X[0.16]X[0.16]X[0.2]X[0.16]X[0.16]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+cell{3}{1}={c=6}{},cell{8}{1}={c=6}{},cell{13}{1}={c=6}{},cell{18}{1}={c=6}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+cell{10}{1}={preto={\hspace{1em}}},
+cell{11}{1}={preto={\hspace{1em}}},
+cell{12}{1}={preto={\hspace{1em}}},
+cell{14}{1}={preto={\hspace{1em}}},
+cell{15}{1}={preto={\hspace{1em}}},
+cell{16}{1}={preto={\hspace{1em}}},
+cell{17}{1}={preto={\hspace{1em}}},
+cell{19}{1}={preto={\hspace{1em}}},
+cell{20}{1}={preto={\hspace{1em}}},
+cell{21}{1}={preto={\hspace{1em}}},
+cell{22}{1}={preto={\hspace{1em}}},
+cell{23}{1}={preto={\hspace{1em}}},
+row{3}={,cmd=\bfseries,},
+row{8}={,cmd=\bfseries,},
+row{13}={,cmd=\bfseries,},
+row{18}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+&  & Adjusted DiD &  & Heterogeneity tests &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
+Cohort & Time & ATT\textsuperscript{a} & (95\% CI) & F-Statistic\textsuperscript{b} & p-value \\ \midrule %% TinyTableHeader
+Brachial SBP &&&&& \\
+2019 & 2019 & -2.36  & (-5.23, 0.5) &  &  \\
+2019 & 2021 & -1.51  & (-4.01, 0.98) &  &  \\
+2020 & 2021 & -1.26  & (-4.97, 2.45) &  &  \\
+2021 & 2021 & 2.39  & (-0.49, 5.28) & 2.3 & 0.080 \\
+Central SBP &&&&& \\
+2019 & 2019 & -2.03  & (-4.69, 0.63) &  &  \\
+2019 & 2021 & -1.96  & (-4.45, 0.52) &  &  \\
+2020 & 2021 & -1.78  & (-5.07, 1.52) &  &  \\
+2021 & 2021 & 2.11  & (-1.09, 5.31) & 1.9 & 0.140 \\
+Brachial DBP &&&&& \\
+2019 & 2019 & -2.66  & (-4.67, -0.65) &  &  \\
+2019 & 2021 & -2.37  & (-4.01, -0.72) &  &  \\
+2020 & 2021 & 0.2  & (-1.54, 1.94) &  &  \\
+2021 & 2021 & 0.78  & (-0.48, 2.05) & 6.8 & 0.000 \\
+Central DBP &&&&& \\
+2019 & 2019 & -2.67  & (-4.57, -0.78) &  &  \\
+2019 & 2021 & -2.55  & (-4.15, -0.94) &  &  \\
+2020 & 2021 & 0.11  & (-1.67, 1.9) &  &  \\
+2021 & 2021 & 1.09  & (-0.06, 2.23) & 10.0 & 0.000 \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
+
+\newpage
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{mediation-analyses-for-blood-pressure}{%
 %DIFDELCMD < \subsubsection{Mediation analyses for blood
@@ -7059,19 +7371,23 @@ Table~\ref{tbl-a-bp-med-het} shows the cohort-time treatment effects for
 the mediation model for blood pressure.
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-bp-med-het}{}
-%DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
+\DIFdelend \begin{table}[H]
+\DIFdelbeginFL %DIFDELCMD < \caption{%
 {%DIFAUXCMD
 %DIFDELCMD < \label{tbl-a-bp-med-het}%%%
 \DIFdelFL{Heterogenous treatment effects for blood pressure mediation model }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL 
 
-%DIFDELCMD < \centering\begingroup\fontsize{10}{12}\selectfont
-%DIFDELCMD < 
+\DIFdelbeginFL %DIFDELCMD < \centering\begingroup\fontsize{10}{12}\selectfont
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-a-bp-med-het}\DIFaddFL{Heterogenous treatment effects for
+blood pressure mediation model.}}
+\DIFaddendFL 
 
-%DIFDELCMD < \begin{threeparttable}
+\DIFdelbeginFL %DIFDELCMD < \begin{threeparttable}
 %DIFDELCMD < \begin{tabular}{llcccccccc}
 %DIFDELCMD < \toprule
 %DIFDELCMD < \multicolumn{2}{c}{ } & \multicolumn{2}{c}{Adjusted Total Effect\textsuperscript{a}} & \multicolumn{6}{c}{CDE Mediated By:\textsuperscript{b}} \\
@@ -7313,10 +7629,98 @@ the mediation model for blood pressure.
 %DIFDELCMD < \end{tablenotes}
 %DIFDELCMD < \end{threeparttable}
 %DIFDELCMD < \endgroup{}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \centering{
 
-%DIFDELCMD < \hypertarget{tbl-a-bp-med-het-tests}{}
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.},
+note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
+note{b}={Mediators were set to the mean value for untreated participants at baseline.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{2}{5}={c=2,}{halign=c,},
+cell{2}{7}={c=2,}{halign=c,},
+cell{2}{9}={c=2,}{halign=c,},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=6,}{halign=c,},
+cell{4}{1}={c=10}{},cell{9}{1}={c=10}{},cell{14}{1}={c=10}{},cell{19}{1}={c=10}{},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{10}{1}={preto={\hspace{1em}}},
+cell{11}{1}={preto={\hspace{1em}}},
+cell{12}{1}={preto={\hspace{1em}}},
+cell{13}{1}={preto={\hspace{1em}}},
+cell{15}{1}={preto={\hspace{1em}}},
+cell{16}{1}={preto={\hspace{1em}}},
+cell{17}{1}={preto={\hspace{1em}}},
+cell{18}{1}={preto={\hspace{1em}}},
+cell{20}{1}={preto={\hspace{1em}}},
+cell{21}{1}={preto={\hspace{1em}}},
+cell{22}{1}={preto={\hspace{1em}}},
+cell{23}{1}={preto={\hspace{1em}}},
+cell{24}{1}={preto={\hspace{1em}}},
+column{1}={halign=l,},
+column{2}={halign=l,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+column{7}={halign=c,},
+column{8}={halign=c,},
+column{9}={halign=c,},
+column{10}={halign=c,},
+column{1}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{2}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{3}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{4}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{5}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{6}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{7}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{8}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{9}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{10}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+row{4}={,cmd=\bfseries,},
+row{9}={,cmd=\bfseries,},
+row{14}={,cmd=\bfseries,},
+row{19}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+&  & Adjusted Total Effect &  & CDE Mediated By: &  &  &  &  &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-10}
+&  &  &  & Indoor PM &  & Indoor Temp &  & PM + Temp &  \\ \cmidrule[lr]{5-6}\cmidrule[lr]{7-8}\cmidrule[lr]{9-10}
+Cohort & Time & ATT\textsuperscript{a} & (95\% CI) & ATT\textsuperscript{b} & (95\% CI) & ATT\textsuperscript{b} & (95\% CI) & ATT\textsuperscript{b} & (95\% CI) \\ \midrule %% TinyTableHeader
+Brachial SBP &&&&&&&&& \\
+2019 & 2019 & -2.36 & (-5.23, 0.50) & -2.15 & (-5.14, 0.84) & -1.69 & (-4.54, 1.15) & -1.24 & (-4.20, 1.72) \\
+2019 & 2021 & -1.51 & (-4.01, 0.98) & -1.27 & (-4.01, 1.47) & -0.41 & (-2.92, 2.10) & 0.01 & (-2.71, 2.74) \\
+2020 & 2021 & -1.26 & (-4.97, 2.45) & -0.54 & (-4.25, 3.17) & 0.43 & (-2.86, 3.73) & 1.04 & (-2.59, 4.67) \\
+2021 & 2021 & 2.39 & (-0.49, 5.28) & 2.68 & (-0.42, 5.79) & 1.95 & (-1.74, 5.64) & 1.88 & (-1.92, 5.67) \\
+Central SBP &&&&&&&&& \\
+2019 & 2019 & -2.03 & (-4.69, 0.63) & -1.75 & (-4.61, 1.11) & -1.40 & (-4.06, 1.27) & -0.89 & (-3.73, 1.95) \\
+2019 & 2021 & -1.96 & (-4.45, 0.52) & -1.65 & (-4.40, 1.11) & -0.93 & (-3.18, 1.32) & -0.44 & (-2.95, 2.07) \\
+2020 & 2021 & -1.78 & (-5.07, 1.52) & -1.00 & (-4.36, 2.36) & -0.15 & (-3.18, 2.88) & 0.47 & (-2.95, 3.89) \\
+2021 & 2021 & 2.11 & (-1.09, 5.31) & 2.45 & (-0.83, 5.73) & 1.66 & (-1.73, 5.05) & 1.63 & (-1.82, 5.08) \\
+Brachial DBP &&&&&&&&& \\
+2019 & 2019 & -2.66 & (-4.67, -0.65) & -2.47 & (-4.70, -0.25) & -2.29 & (-4.18, -0.40) & -1.94 & (-4.03, 0.14) \\
+2019 & 2021 & -2.37 & (-4.01, -0.72) & -2.10 & (-4.09, -0.11) & -1.81 & (-3.21, -0.41) & -1.50 & (-3.28, 0.27) \\
+2020 & 2021 & 0.20 & (-1.54, 1.94) & 0.31 & (-1.43, 2.04) & 1.14 & (-0.65, 2.94) & 1.23 & (-0.70, 3.15) \\
+2021 & 2021 & 0.78 & (-0.48, 2.05) & 1.05 & (-0.59, 2.69) & 0.20 & (-1.21, 1.62) & 0.36 & (-1.34, 2.06) \\
+Central DBP &&&&&&&&& \\
+2019 & 2019 & -2.67 & (-4.57, -0.78) & -2.43 & (-4.58, -0.28) & -2.52 & (-4.34, -0.70) & -2.13 & (-4.18, -0.08) \\
+2019 & 2021 & -2.55 & (-4.15, -0.94) & -2.20 & (-4.18, -0.22) & -2.18 & (-3.60, -0.76) & -1.80 & (-3.58, -0.03) \\
+2020 & 2021 & 0.11 & (-1.67, 1.90) & 0.22 & (-1.58, 2.01) & 1.07 & (-0.74, 2.87) & 1.16 & (-0.80, 3.13) \\
+2021 & 2021 & 1.09 & (-0.06, 2.23) & 1.39 & (-0.16, 2.94) & 0.51 & (-0.80, 1.82) & 0.70 & (-0.94, 2.34) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
+
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-bp-med-het-tests}{}
 %DIFDELCMD < \begin{table}
 %DIFDELCMD < %%%
 %DIFDELCMD < \caption{%
@@ -7325,9 +7729,11 @@ the mediation model for blood pressure.
 \DIFdelFL{Heterogenous treatment effects and tests for cohort-time heterogeneity
 across CDEs for multiple mediation blood pressure mediation model. }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \begin{table}[H]
+\DIFaddendFL 
 
-%DIFDELCMD < \centering
+\DIFdelbeginFL %DIFDELCMD < \centering
 %DIFDELCMD < \begin{threeparttable}
 %DIFDELCMD < \begin{tabular}{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}cccc}
 %DIFDELCMD < \toprule
@@ -7457,11 +7863,85 @@ across CDEs for multiple mediation blood pressure mediation model. }}%DIFAUXCMD
 %DIFDELCMD < \item[b] \small{F-statistics and p-values for joint tests of equality across cohort and time ATTs}
 %DIFDELCMD < \end{tablenotes}
 %DIFDELCMD < \end{threeparttable}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdelend \newpage
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-a-bp-med-het-tests}\DIFaddFL{Heterogenous treatment effects
+and tests for cohort-time heterogeneity across CDEs for multiple
+mediation blood pressure mediation model.}}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences, CDE = Controlled Direct Effect.},
+note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
+note{b}={F-statistics and p-values for joint tests of equality across cohort and time ATTs},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={0.7\linewidth},
+colspec={X[]X[]X[]X[]X[]X[]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+cell{3}{1}={c=6}{},cell{8}{1}={c=6}{},cell{13}{1}={c=6}{},cell{18}{1}={c=6}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+cell{10}{1}={preto={\hspace{1em}}},
+cell{11}{1}={preto={\hspace{1em}}},
+cell{12}{1}={preto={\hspace{1em}}},
+cell{14}{1}={preto={\hspace{1em}}},
+cell{15}{1}={preto={\hspace{1em}}},
+cell{16}{1}={preto={\hspace{1em}}},
+cell{17}{1}={preto={\hspace{1em}}},
+cell{19}{1}={preto={\hspace{1em}}},
+cell{20}{1}={preto={\hspace{1em}}},
+cell{21}{1}={preto={\hspace{1em}}},
+cell{22}{1}={preto={\hspace{1em}}},
+cell{23}{1}={preto={\hspace{1em}}},
+row{3}={,cmd=\bfseries,},
+row{8}={,cmd=\bfseries,},
+row{13}={,cmd=\bfseries,},
+row{18}={,cmd=\bfseries,},
+column{1}={halign=l,},
+column{2}={halign=l,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+}                     %% tabularray inner close
+\toprule
+&  & Adjusted CDE &  & Heterogeneity tests &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
+Cohort & Time & ATT\textsuperscript{a} & (95\% CI) & F-Statistic\textsuperscript{b} & p-value \\ \midrule %% TinyTableHeader
+Brachial SBP &&&&& \\
+2019 & 2019 & -1.24 & (-4.20, 1.72) &  &  \\
+2019 & 2021 & 0.01 & (-2.71, 2.74) &  &  \\
+2020 & 2021 & 1.04 & (-2.59, 4.67) &  &  \\
+2021 & 2021 & 1.88 & (-1.92, 5.67) & 0.8 & 0.513 \\
+Central SBP &&&&& \\
+2019 & 2019 & -0.89 & (-3.73, 1.95) &  &  \\
+2019 & 2021 & -0.44 & (-2.95, 2.07) &  &  \\
+2020 & 2021 & 0.47 & (-2.95, 3.89) &  &  \\
+2021 & 2021 & 1.63 & (-1.82, 5.08) & 0.6 & 0.608 \\
+Brachial DBP &&&&& \\
+2019 & 2019 & -1.94 & (-4.03, 0.14) &  &  \\
+2019 & 2021 & -1.50 & (-3.28, 0.27) &  &  \\
+2020 & 2021 & 1.23 & (-0.70, 3.15) &  &  \\
+2021 & 2021 & 0.36 & (-1.34, 2.06) & 3.9 & 0.008 \\
+Central DBP &&&&& \\
+2019 & 2019 & -2.13 & (-4.18, -0.08) &  &  \\
+2019 & 2021 & -1.80 & (-3.58, -0.03) &  &  \\
+2020 & 2021 & 1.16 & (-0.80, 3.13) &  &  \\
+2021 & 2021 & 0.70 & (-0.94, 2.34) & 4.8 & 0.003 \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
+
+\newpage
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{respiratory-outcomes}{%
 %DIFDELCMD < \subsubsection{Respiratory outcomes}\label{respiratory-outcomes}}
@@ -7477,17 +7957,18 @@ estimating marginal effects from extended two-way fixed effects models
 with additional adjustment for age, sex, and smoking status.
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-het-resp}{}
-%DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
+\DIFdelend \begin{table}[H]
+\DIFdelbeginFL %DIFDELCMD < \caption{%
 {%DIFAUXCMD
 %DIFDELCMD < \label{tbl-a-het-resp}%%%
 \DIFdelFL{Heterogenous treatment effects for self-reported respiratory outcomes:
 Any respiratory symptom }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL 
 
-%DIFDELCMD < \centering
+\DIFdelbeginFL %DIFDELCMD < \centering
 %DIFDELCMD < \begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
 %DIFDELCMD < \toprule
 %DIFDELCMD < %%%
@@ -7528,21 +8009,59 @@ Any respiratory symptom }}%DIFAUXCMD
 %DIFDELCMD < \bottomrule
 %DIFDELCMD < \multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 1.283, p= 0.278.}}\\
 %DIFDELCMD < \end{tabular}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
-%DIFDELCMD < \hypertarget{tbl-a-het-cough}{}
-%DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-a-het-resp}\DIFaddFL{Heterogenous treatment effects for
+self-reported respiratory outcomes: Any respiratory symptom.}}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: Joint test that all ATTs are equal: F(3, 2579)= 1.283, p= 0.278.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={0.7\linewidth},
+colspec={X[]X[]X[]X[]},
+cell{2}{1}={c=4}{},cell{4}{1}={c=4}{},
+cell{3}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+row{2}={,cmd=\bfseries,},
+row{4}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT &&& \\
+All & All & -0.08 & (-0.15, -0.01) \\
+Cohort-Time ATTs &&& \\
+2019 & 2019 & -0.11 & (-0.20, -0.02) \\
+2019 & 2021 & -0.10 & (-0.21, 0.00) \\
+2020 & 2021 & 0.01 & (-0.10, 0.13) \\
+2021 & 2021 & -0.12 & (-0.22, -0.01) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
+
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-het-cough}{}
+%DIFDELCMD < %%%
+\DIFdelend \begin{table}[H]
+\DIFdelbeginFL %DIFDELCMD < \caption{%
 {%DIFAUXCMD
 %DIFDELCMD < \label{tbl-a-het-cough}%%%
 \DIFdelFL{Heterogenous treatment effects for self-reported respiratory outcomes:
 Coughing }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL 
 
-%DIFDELCMD < \centering
+\DIFdelbeginFL %DIFDELCMD < \centering
 %DIFDELCMD < \begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
 %DIFDELCMD < \toprule
 %DIFDELCMD < %%%
@@ -7583,10 +8102,47 @@ Coughing }}%DIFAUXCMD
 %DIFDELCMD < \bottomrule
 %DIFDELCMD < \multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 0.732, p= 0.533.}}\\
 %DIFDELCMD < \end{tabular}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-a-het-cough}\DIFaddFL{Heterogenous treatment effects for
+self-reported respiratory outcomes: Coughing.}}
 
-%DIFDELCMD < \hypertarget{tbl-a-het-phlegm}{}
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: Joint test that all ATTs are equal: F(3, 2579)= 0.732, p= 0.533.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={0.7\linewidth},
+colspec={X[]X[]X[]X[]},
+cell{2}{1}={c=4}{},cell{4}{1}={c=4}{},
+cell{3}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+row{2}={,cmd=\bfseries,},
+row{4}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT &&& \\
+All & All & -0.02 & (-0.07, 0.03) \\
+Cohort-Time ATTs &&& \\
+2019 & 2019 & -0.04 & (-0.11, 0.03) \\
+2019 & 2021 & 0.01 & (-0.07, 0.08) \\
+2020 & 2021 & -0.03 & (-0.10, 0.05) \\
+2021 & 2021 & -0.04 & (-0.09, 0.02) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
+
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-het-phlegm}{}
 %DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
 %DIFDELCMD < \caption{%
@@ -7595,9 +8151,11 @@ Coughing }}%DIFAUXCMD
 \DIFdelFL{Heterogenous treatment effects for self-reported respiratory outcomes:
 Phlegm }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \begin{table}
+\DIFaddendFL 
 
-%DIFDELCMD < \centering
+\DIFdelbeginFL %DIFDELCMD < \centering
 %DIFDELCMD < \begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
 %DIFDELCMD < \toprule
 %DIFDELCMD < %%%
@@ -7638,21 +8196,59 @@ Phlegm }}%DIFAUXCMD
 %DIFDELCMD < \bottomrule
 %DIFDELCMD < \multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 1.735, p= 0.158.}}\\
 %DIFDELCMD < \end{tabular}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
-%DIFDELCMD < \hypertarget{tbl-a-het-wheeze}{}
-%DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-a-het-phlegm}\DIFaddFL{Heterogenous treatment effects for
+self-reported respiratory outcomes: Phlegm}}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: Joint test that all ATTs are equal: F(3, 2579)= 1.735, p= 0.158.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={0.7\linewidth},
+colspec={X[]X[]X[]X[]},
+cell{2}{1}={c=4}{},cell{4}{1}={c=4}{},
+cell{3}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+row{2}={,cmd=\bfseries,},
+row{4}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT &&& \\
+All & All & -0.02 & (-0.06, 0.03) \\
+Cohort-Time ATTs &&& \\
+2019 & 2019 & -0.06 & (-0.16, 0.03) \\
+2019 & 2021 & -0.03 & (-0.10, 0.04) \\
+2020 & 2021 & 0.04 & (-0.02, 0.09) \\
+2021 & 2021 & 0.03 & (-0.04, 0.09) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
+
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-het-wheeze}{}
+%DIFDELCMD < %%%
+\DIFdelend \begin{table}[H]
+\DIFdelbeginFL %DIFDELCMD < \caption{%
 {%DIFAUXCMD
 %DIFDELCMD < \label{tbl-a-het-wheeze}%%%
 \DIFdelFL{Heterogenous treatment effects for self-reported respiratory outcomes:
 Wheezing attacks }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL 
 
-%DIFDELCMD < \centering
+\DIFdelbeginFL %DIFDELCMD < \centering
 %DIFDELCMD < \begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
 %DIFDELCMD < \toprule
 %DIFDELCMD < %%%
@@ -7693,10 +8289,47 @@ Wheezing attacks }}%DIFAUXCMD
 %DIFDELCMD < \bottomrule
 %DIFDELCMD < \multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 2.923, p= 0.033.}}\\
 %DIFDELCMD < \end{tabular}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-a-het-wheeze}\DIFaddFL{Heterogenous treatment effects for
+self-reported respiratory outcomes: Wheezing attacks.}}
 
-%DIFDELCMD < \hypertarget{tbl-a-het-breath}{}
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: Joint test that all ATTs are equal: F(3, 2579)= 2.923, p= 0.033.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={0.7\linewidth},
+colspec={X[]X[]X[]X[]},
+cell{2}{1}={c=4}{},cell{4}{1}={c=4}{},
+cell{3}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+row{2}={,cmd=\bfseries,},
+row{4}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT &&& \\
+All & All & -0.00 & (-0.04, 0.04) \\
+Cohort-Time ATTs &&& \\
+2019 & 2019 & -0.02 & (-0.06, 0.01) \\
+2019 & 2021 & 0.01 & (-0.04, 0.06) \\
+2020 & 2021 & -0.03 & (-0.11, 0.05) \\
+2021 & 2021 & 0.09 & (-0.00, 0.18) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
+
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-het-breath}{}
 %DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
 %DIFDELCMD < \caption{%
@@ -7705,9 +8338,11 @@ Wheezing attacks }}%DIFAUXCMD
 \DIFdelFL{Heterogenous treatment effects for self-reported respiratory outcomes:
 Trouble breathing }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \begin{table}
+\DIFaddendFL 
 
-%DIFDELCMD < \centering
+\DIFdelbeginFL %DIFDELCMD < \centering
 %DIFDELCMD < \begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
 %DIFDELCMD < \toprule
 %DIFDELCMD < %%%
@@ -7748,10 +8383,47 @@ Trouble breathing }}%DIFAUXCMD
 %DIFDELCMD < \bottomrule
 %DIFDELCMD < \multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 0.718, p= 0.541.}}\\
 %DIFDELCMD < \end{tabular}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-a-het-breath}\DIFaddFL{Heterogenous treatment effects for
+self-reported respiratory outcomes: Trouble breathing}}
 
-%DIFDELCMD < \hypertarget{tbl-a-het-nochest}{}
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: Joint test that all ATTs are equal: F(3, 2579)= 0.718, p= 0.541.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={0.7\linewidth},
+colspec={X[]X[]X[]X[]},
+cell{2}{1}={c=4}{},cell{4}{1}={c=4}{},
+cell{3}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+row{2}={,cmd=\bfseries,},
+row{4}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT &&& \\
+All & All & -0.05 & (-0.12, 0.02) \\
+Cohort-Time ATTs &&& \\
+2019 & 2019 & -0.06 & (-0.16, 0.04) \\
+2019 & 2021 & -0.07 & (-0.16, 0.03) \\
+2020 & 2021 & 0.01 & (-0.09, 0.11) \\
+2021 & 2021 & -0.07 & (-0.20, 0.06) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
+
+\DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-het-nochest}{}
 %DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
 %DIFDELCMD < \caption{%
@@ -7760,9 +8432,11 @@ Trouble breathing }}%DIFAUXCMD
 \DIFdelFL{Heterogenous treatment effects for self-reported respiratory outcomes:
 Chest trouble }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \begin{table}
+\DIFaddendFL 
 
-%DIFDELCMD < \centering
+\DIFdelbeginFL %DIFDELCMD < \centering
 %DIFDELCMD < \begin{tabular}{>{\centering\arraybackslash}p{2cm}>{\centering\arraybackslash}p{2cm}cc}
 %DIFDELCMD < \toprule
 %DIFDELCMD < %%%
@@ -7803,11 +8477,47 @@ Chest trouble }}%DIFAUXCMD
 %DIFDELCMD < \bottomrule
 %DIFDELCMD < \multicolumn{4}{l}{\rule{0pt}{1em}\small{Note: Joint test that all ATTs are equal: F(3, 2579)= 1.046, p= 0.371.}}\\
 %DIFDELCMD < \end{tabular}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdelend \newpage
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-a-het-nochest}\DIFaddFL{Heterogenous treatment effects for
+self-reported respiratory outcomes: Chest trouble}}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: Joint test that all ATTs are equal: F(3, 2579)= 1.046, p= 0.371.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={0.7\linewidth},
+colspec={X[]X[]X[]X[]},
+cell{2}{1}={c=4}{},cell{4}{1}={c=4}{},
+cell{3}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+row{2}={,cmd=\bfseries,},
+row{4}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT &&& \\
+All & All & -0.06 & (-0.12, -0.01) \\
+Cohort-Time ATTs &&& \\
+2019 & 2019 & -0.06 & (-0.13, 0.01) \\
+2019 & 2021 & -0.06 & (-0.15, 0.03) \\
+2020 & 2021 & -0.05 & (-0.16, 0.05) \\
+2021 & 2021 & -0.14 & (-0.22, -0.05) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
+
+\newpage
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{outdoor-and-personal-mixed-combustion}{%
 %DIFDELCMD < \subsubsection{Outdoor and personal mixed
@@ -7823,7 +8533,7 @@ combustion}}\label{outdoor-and-personal-mixed-combustion}
 %DIFDELCMD < %%%
 \DIFdelendFL \DIFaddbeginFL \centering{
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/did-mixed-ct-wave.png}
+\includegraphics[width=4.55in,height=\textheight]{images/did-mixed-ct-wave.png}
 
 }
 \DIFaddendFL 
@@ -7854,17 +8564,18 @@ includes all individuals or is limited to those with repeated measures
 across campaigns.
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-feno}{}
-%DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
+\DIFdelend \begin{table}[H]
+\DIFdelbeginFL %DIFDELCMD < \caption{%
 {%DIFAUXCMD
 %DIFDELCMD < \label{tbl-a-feno}%%%
 \DIFdelFL{Effects of the CBHP policy on FeNO (ppb) based on the number of
 individuals with repeated measurements. }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL 
 
-%DIFDELCMD < \centering
+\DIFdelbeginFL %DIFDELCMD < \centering
 %DIFDELCMD < \begin{tabular}{lcccccc}
 %DIFDELCMD < \toprule
 %DIFDELCMD < \multicolumn{1}{c}{ } & \multicolumn{2}{c}{All participants} & \multicolumn{2}{c}{Participants with >1 measure} & \multicolumn{2}{c}{Participants with 3 measures} \\
@@ -7918,11 +8629,44 @@ individuals with repeated measurements. }}%DIFAUXCMD
 \DIFdelFL{252 }%DIFDELCMD < & \\
 %DIFDELCMD < \bottomrule
 %DIFDELCMD < \end{tabular}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdelend \newpage
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-a-feno}\DIFaddFL{Effects of the CBHP policy on FeNO (ppb)
+based on the number of individuals with repeated measurements.}}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = Confidence Interval, DiD = Difference-in-Differences},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=2,}{halign=c,},
+cell{1}{6}={c=2,}{halign=c,},
+column{1}={halign=l,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+column{7}={halign=c,},
+}                     %% tabularray inner close
+\toprule
+& All participants &  & Participants with \textgreater{}1 measure &  & Participants with 3 measures &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
+& ATT & (95\% CI) & ATT & (95\% CI) & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+DiD & 0.17 & (-2.24, 2.58) & 0.13 & (-3.09, 3.35) & -0.57 & (-3.08, 1.94) \\
+Adjusted DiD & 0.55 & (-2.03, 3.13) & 0.24 & (-3.19, 3.67) & 0.27 & (-2.39, 2.92) \\
+Observations & 794 &  & 526 &  & 252 &  \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
+
+\newpage
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{impact-of-including-season-3-data}{%
 %DIFDELCMD < \subsection{Impact of including Season 3
@@ -7937,17 +8681,18 @@ impact of seasonal indoor PM\textsubscript{2.5} when season 3 data
 (collected in 41 villages during COVID-19) are included versus excluded.
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-ind-s3}{}
-%DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
+\DIFdelend \begin{table}[H]
+\DIFdelbeginFL %DIFDELCMD < \caption{%
 {%DIFAUXCMD
 %DIFDELCMD < \label{tbl-a-ind-s3}%%%
 \DIFdelFL{Effects of the CBHP policy on indoor seasonal PM\textsubscript{2.5}
 based on whether Season 3 data are included vs.~excluded. }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL 
 
-%DIFDELCMD < \centering
+\DIFdelbeginFL %DIFDELCMD < \centering
 %DIFDELCMD < \begin{tabular}{>{\centering\arraybackslash}p{1.5cm}>{\centering\arraybackslash}p{1.5cm}cccc}
 %DIFDELCMD < \toprule
 %DIFDELCMD < \multicolumn{2}{c}{ } & \multicolumn{2}{c}{With Season 3 data} & \multicolumn{2}{c}{Without Season 3 data} \\
@@ -8008,11 +8753,49 @@ based on whether Season 3 data are included vs.~excluded. }}%DIFAUXCMD
 %DIFDELCMD < \multicolumn{6}{l}{\rule{0pt}{1em}\textit{Note: }}\\
 %DIFDELCMD < \multicolumn{6}{l}{\rule{0pt}{1em}}\\
 %DIFDELCMD < \end{tabular}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdelend Figure~\ref{fig-afig-did-opm-w3} shows the impact of including Wave 3
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-a-ind-s3}\DIFaddFL{Effects of the CBHP policy on indoor
+seasonal PM\textsubscript{2.5} based on whether Season 3 data are
+included vs.~excluded.}}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={1\linewidth},
+colspec={X[0.119047619047619]X[0.119047619047619]X[0.142857142857143]X[0.238095238095238]X[0.142857142857143]X[0.238095238095238]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+cell{3}{1}={c=6}{},cell{5}{1}={c=6}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+row{3}={,cmd=\bfseries,},
+row{5}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+&  & With Season 3 data &  & Without Season 3 data &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
+Cohort & Time & ATT & (95\% CI) & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT &&&&& \\
+All & All & -37.49 & (-60.11, -14.88) & -35.11 & (-59.36, -10.85) \\
+Cohort-Time ATTs &&&&& \\
+2020 & 2020 & -36.94 & (-61.39, -12.49) &  &  \\
+2020 & 2021 & -33.51 & (-66.84, -0.18) & -30.22 & (-63.77, 3.32) \\
+2021 & 2021 & -46.82 & (-58.57, -35.07) & -44.88 & (-60.41, -29.34) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
+
+Figure~\ref{fig-afig-did-opm-w3} shows the impact of including Wave 3
 data on the estimates of the impact of the policy on seasonal outdoor
 PM\textsubscript{2.5}.
 
@@ -8071,23 +8854,32 @@ later treated in wave 3}
 \begin{figure}[H]
 
 \DIFdelbeginFL %DIFDELCMD < {\centering \includegraphics[width=0.7\textwidth,height=\textheight]{images/never_Y4.png}
-%DIFDELCMD < 
-
-%DIFDELCMD < }
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdelendFL \caption{\label{fig-afig-pt4}Comparison of pre-interventions trends in
+\DIFdelendFL \DIFaddbeginFL \caption{\label{fig-afig-pt4}\DIFaddFL{Comparison of pre-interventions trends in
 blood pressure between waves 1 and 2 for never treated and villages
-later treated in wave 4}
+later treated in wave 4.}}
+\DIFaddendFL 
 
-\DIFaddbeginFL \centering{
+\DIFdelbeginFL %DIFDELCMD < }
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \centering{
 
 \includegraphics[width=0.7\textwidth,height=\textheight]{images/never_Y4.png}
 
 }
+\DIFaddendFL 
 
-\DIFaddendFL \end{figure}%DIF > 
+\DIFdelbeginFL %DIFDELCMD < \caption{%
+{%DIFAUXCMD
+%DIFDELCMD < \label{fig-afig-pt4}%%%
+\DIFdelFL{Comparison of pre-interventions trends in
+blood pressure between waves 1 and 2 for never treated and villages
+later treated in wave 4}}
+%DIFAUXCMD
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelendFL \end{figure}%DIF > 
 
 \newpage
 
@@ -8102,17 +8894,22 @@ effects}}\label{impact-of-group-and-time-fixed-effects}
 \DIFaddend 
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{tbl-a-fe}{}
-%DIFDELCMD < \begin{table}[H]
 %DIFDELCMD < %%%
-%DIFDELCMD < \caption{%
+\DIFdelend \DIFaddbegin \DIFadd{Table~\ref{tbl-a-fe} shows the impact of adding different sets of cohort
+and time fixed effects to the model for personal exposure.
+}
+
+\DIFaddend \begin{table}[H]
+\DIFdelbeginFL %DIFDELCMD < \caption{%
 {%DIFAUXCMD
 %DIFDELCMD < \label{tbl-a-fe}%%%
 \DIFdelFL{Effects of the CBHP policy on personal exposure (\(\mu g / m^{3}\)) with
 variations in fixed effects for treatment group and time. }}%DIFAUXCMD
 %DIFDELCMD < \tabularnewline
-%DIFDELCMD < 
+%DIFDELCMD < %%%
+\DIFdelendFL 
 
-%DIFDELCMD < \centering\centering
+\DIFdelbeginFL %DIFDELCMD < \centering\centering
 %DIFDELCMD < \begin{tabular}[t]{lcccc}
 %DIFDELCMD < \toprule
 %DIFDELCMD <   & %%%
@@ -8130,7 +8927,8 @@ variations in fixed effects for treatment group and time. }}%DIFAUXCMD
 \DIFdelFL{, }%DIFDELCMD < \num{-6.83}]\\
 %DIFDELCMD < \midrule
 %DIFDELCMD < %%%
-\DIFdelFL{Num.Obs. }%DIFDELCMD < & \num{1281} & \num{1281} & \num{1281} & \num{1281}\\
+\DIFdelFL{Num.
+Obs. }%DIFDELCMD < & \num{1281} & \num{1281} & \num{1281} & \num{1281}\\
 %DIFDELCMD < %%%
 \DIFdelFL{FE..year }%DIFDELCMD < & %%%
 \DIFdelFL{X }%DIFDELCMD < &  & %%%
@@ -8143,11 +8941,41 @@ variations in fixed effects for treatment group and time. }}%DIFAUXCMD
 %DIFDELCMD < \multicolumn{5}{l}{\rule{0pt}{1em}Note: All models adjusted for household size, smoking, outdoor temperature, and outdoor humidity.}\\
 %DIFDELCMD < \multicolumn{5}{l}{\rule{0pt}{1em}Standard errors clustered by village.}\\
 %DIFDELCMD < \end{tabular}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
 %DIFDELCMD < %%%
-\DIFdelend \newpage
+\DIFdelendFL \DIFaddbeginFL \caption{\label{tbl-a-fe}\DIFaddFL{Effects of the CBHP policy on personal exposure
+(\(\mu g / m^{3}\)) with variations in fixed effects for treatment group
+and time.}}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: All models adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Standard errors clustered by village.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]},
+row{1}={,cmd=\bfseries,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+}                     %% tabularray inner close
+\toprule
+& Adjusted DiD & No time FE & No group FE & No FE \\ \midrule %% TinyTableHeader
+ATT & 1.95 & -31.43 & -5.91 & -24.13 \\
+& [-23.34, 27.23] & [-49.42, -13.44] & [-24.36, 12.54] & [-41.42, -6.83] \\
+Observations & 1,281 & 1,281 & 1,281 & 1,281 \\
+Year fixed effects & X &  & X &  \\
+Cohort fixed effects & X & X &  &  \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\DIFaddendFL \end{table}%DIF > 
+
+\newpage
 
 \DIFdelbegin %DIFDELCMD < \hypertarget{about-the-authors}{%
 %DIFDELCMD < \section*{About the authors}\label{about-the-authors}}

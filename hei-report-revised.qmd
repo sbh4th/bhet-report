@@ -12,8 +12,6 @@ date: today
 
 format: 
  pdf:
-   # pdf-engine: latexmk
-   # pdf-engine-opt: -xelatex
    toc: true
    keep-tex: true
    number-sections: true
@@ -149,7 +147,7 @@ We recruited approximately 20 households in each village and, in each household,
 
 ## Data Collection Overview
 
-We conducted study measurements over four consecutive waves of data collection in winter 2018-19, 2019-20, 2020-21, and 2021-22 (referred to hereafter as Wave 1 [w1], w2, w3 and w4, respectively). Field data collection was conducted by ~20 trained staff members who traveled to participants’ homes to conduct tablet-based household and individual questionnaires, measure participant blood pressure, and distribute temperature sensors (for measurement of indoor temperature and stove use) and air pollution monitors in all 50 study villages in w1, w2, and w4. Anthropometrics (height, weight, and waist circumference), measurement of airway inflammation, and whole blood samples were obtained no more than a month later at a village clinic in w1 and w2. In w3, which was during the height of the COVID-19 pandemic, we limited household measurements to indoor air quality and sensor-based measurement of indoor temperature and stove use in 41 villages, including all 17 treated villages and 24 untreated villages, prior to COVID-19-related travel restrictions that halted field data collection. In w4, which also occurred during the COVID-19 pandemic, we returned to conducting individual-level assessments. However, unlike in w1 and w2, anthropometric measurements and airway inflammation were assessed in participant homes rather than clinics to avoid group contact, and blood samples were not collected. Outdoor (community) air pollution was measured throughout the study period.
+We conducted study measurements over four consecutive waves of data collection in winter 2018-19, 2019-20, 2020-21, and 2021-22 (referred to hereafter as Wave 1 [w1], w2, w3 and w4, respectively). Field data collection was conducted by ~20 trained staff members who traveled to participants’ homes to conduct tablet-based household and individual questionnaires, measure participant blood pressure, and distribute temperature sensors (for measurement of indoor temperature and stove use) and air pollution monitors in all 50 study villages in w1, w2, and w4. Anthropometrics (height, weight, and waist circumference), measurement of airway inflammation, and whole blood samples were obtained no more than a month later at a village clinic in w1 and w2. In w3, which was during the height of the COVID-19 pandemic, we limited household measurements to indoor air quality and sensor-based measurement of indoor temperature and stove use in 41 villages, including all 17 treated villages and 24 untreated villages, prior to Beijing-wide COVID-19-related travel restrictions that halted field data collection. In w4, which also occurred during the COVID-19 pandemic, we returned to conducting individual-level assessments. However, unlike in w1 and w2, anthropometric measurements and airway inflammation were assessed in participant homes rather than clinics to avoid group contact, and blood samples were not collected. Outdoor (community) air pollution was measured throughout the study period.
  
 ### Air Pollution  
 
@@ -333,30 +331,30 @@ To understand how the policy’s impact on health may be mediated by different p
 ## Total Effect
 To estimate the total effect of the policy we used a DiD analysis that accommodates staggered treatment rollout. To allow for heterogeneity in the context of staggered rollout we used 'extended' two-way fixed effects (ETWFE) models [@wooldridge2021] to estimate the total effect of the CBHP policy. The mean outcome (replaced by a suitable link function $g(\cdot)$ for binary or count outcomes) was defined using a set of linear predictors:
 
-$$Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) + \varepsilon_{ijt}$$ {#eq-etwfe}
+$$Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rs} (d_{r} \times fs_{t}) + \varepsilon_{ijt}$$ {#eq-etwfe}
 
-where $Y_{ijt}$ is the outcome for individual $i$ in village $j$ at time $t$, $d_{r}$ represent treatment cohort dummies, i.e., fixed effects for cohorts of villages that were first exposed to the policy at the same time $q$ (e.g., in 2019, 2020, or 2021), $fs_{t}$ are time fixed effects corresponding to different winter data collection waves (2018-19, 2019-20, or 2021-22), and $\tau_{rt}$ are the cohort-time $ATT$s in the context of a linear model. For binary or count outcomes the cohort-time $ATT$s are derived by estimating marginal effects from non-linear models [@arel-bundock2024]. For all models we cluster standard errors at the village level, consistent with the unit of treatment assignment [@cameron2015]. The ETWFE and other approaches that allow for several (potentially heterogeneous) treatment effects may also be averaged to provide a weighted summary $ATT$. Several potential possibilities are feasible, including weighting by treatment cohorts or time since policy adoption [@goin2023]. We generally focus on two types of $ATT$s for this report: simple averages across all treatment cohorts and the full set of cohort-time $ATT$s to evaluate heterogeneous treatment effects. Although we primarily focus on reporting the simple average $ATT$ for most outcomes, we also used omnibus joint *F*-tests to assess whether there was sufficient evidence to reject the assumption of homogeneity across the $ATT$s.
+where $Y_{ijt}$ is the outcome for individual $i$ in village $j$ at time $t$, $d_{r}$ represent treatment cohort dummies, i.e., fixed effects for each cohort of villages $r$ that were first exposed to the policy at the same time $q$ (e.g., in 2019, 2020, or 2021), $fs_{t}$ are fixed effects for each time period $s$ corresponding to different winter data collection waves (2018-19, 2019-20, or 2021-22), and $\tau_{rs}$ are the cohort-time $ATT$s in the context of a linear model. For binary or count outcomes the cohort-time $ATT$s are derived by estimating marginal effects from non-linear models [@arel-bundock2024]. For all models we cluster standard errors at the village level, consistent with the unit of treatment assignment [@cameron2015]. The ETWFE and other approaches that allow for several (potentially heterogeneous) treatment effects may also be averaged to provide a weighted summary $ATT$. Several potential possibilities are feasible, including weighting by treatment cohorts or time since policy adoption [@goin2023]. We generally focus on two types of $ATT$s for this report: simple averages across all treatment cohorts and the full set of cohort-time $ATT$s to evaluate heterogeneous treatment effects. Although we primarily focus on reporting the simple average $ATT$ for most outcomes, we also used omnibus joint *F*-tests to assess whether there was sufficient evidence to reject the assumption of homogeneity across the $ATT$s.
 
 ## Mediation Analysis
 As noted above, with respect to the mediation analysis we are chiefly interested in the $CDE$, which can be derived by adding relevant mediators $M$ to @eq-etwfe. If we also allow for exposure-mediator interaction and potentially allow for adjustment for confounders $W$ of the mediator-outcome effect, we can extend equation @eq-etwfe as follows:
 
 $$
 \begin{aligned}
-Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) \\ + \delta M_{it} + \sum_{r=q}^{T} \sum_{s=r}^{T} \eta_{rt} (d_{r} \times fs_{t} \times M_{it}) + \zeta \mathbf{W} + \varepsilon_{ijt}
+Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rs} (d_{r} \times fs_{t}) \\ + \delta M_{it} + \sum_{r=q}^{T} \sum_{s=r}^{T} \eta_{rs} (d_{r} \times fs_{t} \times M_{it}) + \zeta \mathbf{W} + \varepsilon_{ijt}
 \end{aligned}
 $$ {#eq-etwfem}
 
 where now $\delta$ is the conditional effect of the mediator $M$ at the reference level of the treatment (again, represented via the series of group-time interaction terms), and the collection of $\eta$ terms are coefficients for the product terms allowing for mediator-treatment interaction. Finally, $\zeta$ is a vector of coefficients for the set of confounders contained within $\mathbf{W}$. 
 
-As noted above, in the staggered DiD framework that allows for heterogeneity we do not have a single treatment effect but a collection of group-time treatment effects that may be averaged in different ways. This extends to the estimation of the $CDE$, in which case we will also have several $CDE$s that can be averaged to make inferences about the extent to which the policy's impact is mediated by PM~2.5~. Based on the setup in @eq-etwfem the $CDE$ is estimated as: $\delta + \eta_{rt}MT$. In the absence of interaction between the exposure and the mediator (i.e., $\eta_{rt}=0$) the $CDE$ will simply be the estimated treatment effects $\sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt}$, i.e., the effect of the policy holding $M$ constant. For a valid estimate of the $CDE$ we must account for confounding of the mediator-outcome effect, represented by $W$ in the equation above. The inclusion of baseline measures of both the outcome and the proposed mediators inherent in our DiD strategy help to reduce the potential for unmeasured confounding of the mediator-outcome effect [@keele2015]. Given the large number of outcomes of interest in this study, as well as the potential for heterogeneous treatment effects, we limited the mediation analysis to health outcomes for which we observed a total effect of the CBHP policy. 
+As noted above, in the staggered DiD framework that allows for heterogeneity we do not have a single treatment effect but a collection of group-time treatment effects that may be averaged in different ways. This extends to the estimation of the $CDE$, in which case we will also have several $CDE$s that can be averaged to make inferences about the extent to which the policy's impact is mediated by PM~2.5~. Based on the setup in @eq-etwfem the $CDE$ is estimated as: $\delta + \eta_{rt}MT$. In the absence of interaction between the exposure and the mediator (i.e., $\eta_{rs}=0$) the $CDE$ will simply be the estimated treatment effects $\sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rs}$, i.e., the effect of the policy holding $M$ constant. For a valid estimate of the $CDE$ we must account for confounding of the mediator-outcome effect, represented by $W$ in the equation above. The inclusion of baseline measures of both the outcome and the proposed mediators inherent in our DiD strategy help to reduce the potential for unmeasured confounding of the mediator-outcome effect [@keele2015]. Given the large number of outcomes of interest in this study, as well as the potential for heterogeneous treatment effects, we limited the mediation analysis to health outcomes for which we observed a total effect of the CBHP policy. 
 
 ## Identification of potential confounders and model covariates 
 
-In contrast to typical analytic approaches such as regression adjustment or propensity scores that solely focus on measured covariates, our DiD approach helps to minimize the risk of some sources of *unmeasured* confounding. Treatment cohort fixed effects control for measured and unmeasured time-constant factors that may differ between treatment cohorts (e.g., genetics, altitude), and time fixed effects control for secular trends, capturing any unmeasured factors that affect outcomes in all treatment cohorts (including the untreated) similarly over the study period (e.g., background improvements in ambient air quality or household transition to more efficient heating). The latter are particularly helpful in the context of the documented declines in PM~2.5~ in China attributable to sources other than the CBHP policy [@vandonkelaar2021; @zhang2019]
+In contrast to typical analytic approaches such as regression adjustment or propensity scores that solely focus on measured covariates, our DiD approach helps to minimize the risk of some sources of *unmeasured* confounding. Treatment cohort fixed effects control for measured and unmeasured time-constant factors that may differ between treatment cohorts (e.g., genetics, altitude), and time fixed effects control for secular trends, capturing any unmeasured factors that affect outcomes in all treatment cohorts (including the untreated) similarly over the study period (e.g., background improvements in ambient air quality or household transition to more efficient heating). The latter are particularly helpful in the context of the documented declines in ambient PM~2.5~ in the Beijing region attributable to sources other than the CBHP policy [@vandonkelaar2021; @zhang2019]
 
-For models estimating the effect of the policy on health outcomes, we used DAGs [@pearl2000] to identify potential time-varying causes of both treatment by the policy and our study outcome(s) that could differ between treatment groups, and adjusted for those potential confounders in the regression models. For the mediation analysis, we identified potential mediator-outcome confounders using the same approach. These variables were identified from the relevant peer-reviewed literature and our team’s substantive knowledge about the CBHP policy. In the multivariable models, we also adjusted for strong predictors of the outcome that were not affected by treatment, and thus not confounders, to improve model precision. The covariates included in each of the models are provided in the tables. 
+For models estimating the effect of the policy on health outcomes, we used DAGs [@pearl2000] to identify potential time-varying causes of both treatment by the policy and our study outcome(s) that could differ between treatment groups, and adjusted for those potential confounders in the regression models. For the mediation analysis, we identified potential mediator-outcome confounders using the same approach. These variables were identified from the relevant peer-reviewed literature and our team’s substantive knowledge about the CBHP policy. In the multivariable models, we also adjusted for strong predictors of the outcome that were not affected by treatment, and thus not confounders, to improve model precision. The covariates included in each of the models for blood pressure and respiratory health outcomes are provided in the tables. 
 
-For air pollution outcomes, we considered the following covariates: village population and total number of households in the village; temperature, relative humidity, wind direction, wind speed, boundary layer height; home area and home area heated; home insulation; smoking status of participant and whether or not they lived with a smoker; whether or not the household reported using wood (i.e., biomass) for household energy activities, and if so, self-reported quantity of wood. Potential non-linearity between continuous covariates and our study outcomes were evaluated using natural cubic splines with different degrees of freedom. Ultimately, the following covariates were included in the final DiD models for outdoor, indoor, and personal exposures to air pollution, based on whether measurable changes in the covariate over time were observed. For the final adjusted DiD model for personal exposure source contributions due to mixed combustion of solid fuels (hereafter ‘mixed combustion’), we adjusted for: temperature (represented by a spline with 2 degrees of freedom); participant smoking status; and whether or not the household reported using biomass fuel. For the final adjusted DiD model for outdoor (community) ‘mixed combustion’ source contributions, the following covariates were included: total number of households in the village; village population; and ambient relative humidity (represented by a spline with 2 degrees of freedom). 
+For air pollution outcomes, the evidence on predictors of personal exposures and indoor air pollution in rural China is inconsistent. We considered the following covariates that could potentially be determinants of air pollution in our study setting: village population and total number of households in the village; temperature, relative humidity, wind direction, wind speed, boundary layer height; home area and home area heated; home insulation; smoking status of participant and whether or not they lived with a smoker; whether or not the household reported using wood (i.e., biomass) for household energy activities, and if so, self-reported quantity of wood. Potential non-linearity between continuous covariates and our study outcomes were evaluated using natural cubic splines with different degrees of freedom. Ultimately, the following covariates were included in the final DiD models for outdoor, indoor, and personal exposures to air pollution, based on whether measurable changes in the covariate were observed over time. For the final adjusted DiD model for personal exposure source contributions due to mixed combustion of solid fuels (hereafter ‘mixed combustion’), we adjusted for: temperature (represented by a spline with 2 degrees of freedom); participant smoking status; and whether or not the household reported using biomass fuel. For the final adjusted DiD model for outdoor (community) ‘mixed combustion’ source contributions, the following covariates were included: total number of households in the village; village population; and ambient relative humidity (represented by a spline with 2 degrees of freedom). 
 
 ##  Multiple imputation for covariates and indoor PM~2.5~ in analyses with BP outcomes
 
@@ -574,13 +572,17 @@ options(modelsummary_format_numeric_latex = "plain")
 #| label: tbl-desc
 #| eval: TRUE
 
-
 t1 <- datasummary_balance(~et, data = dt, 
-  add_rows = nr, align = "rrrrrrr",
-  notes = reference) %>%
-  style_tt(j = 1:7, fontsize = 0.75) %>%
-  style_tt(i = c(1,7,23), bold=TRUE)
-t1
+  add_rows = nr)
+
+t1f <- tt(t1@table_dataframe) %>%
+  style_tt(j = 1:7, fontsize = 0.9, align = "lrrrrrr") %>%
+  style_tt(i = c(1,7,23), bold=TRUE) %>%
+  group_tt(j = list(`Never enrolled (N=603)` = 2:3, 
+    `Ever enrolled (N=400)` = 4:5)) %>%
+  style_tt(tabularray_inner = "rowsep={.1em}") %>%
+  theme_tt("resize", width = 0.95)
+t1f
 ```
 
 @tbl-desc shows the distribution of selected demographic, health, and environmental characteristics from the baseline survey, prior to any villages being enrolled in the CBHP policy. We provide means and standard deviations separately for villages that eventually enter into the policy with those that never do so. As noted above, although our DiD identification strategy allows for fixed differences between treated and untreated villages, overall the differences at baseline are generally small and the groups seem well balanced on most measures, with the exception of personal exposure to PM~2.5~, which was lower in villages that were eventually treated.
@@ -656,7 +658,7 @@ In never treated villages, we also observed a transition to clean energy over th
 
 ## Aim 1: Policy impacts and potential mediation
 
-### Impact of the CBHP policy on potential mediators
+### Impact of policy on potential mediators (air pollution and indoor temperature)
 
 The average marginal effect ($ATT$) from the basic ETWFE model (@tbl-did-med) shows that exposure to the CBHP policy reduced 24h indoor PM~2.5~ by -19 µg/m^3^ (95%CI: -61, 22). After adjusting outdoor temperature, dewpoint, household smoking status, and the number of residents in each household, the $ATT$ decreased to -14 µg/m^3^ (95%CI: -54, 26). The impact was stronger on seasonal indoor PM~2.5~, with an average $ATT$ of -36 µg/m^3^ (95%CI: -61, -12) that was robust to covariate adjustment. This finding likely reflects the direct benefit of the policy in replacing coal stoves and air quality improvement. We found little evidence of heterogeneity in $ATT$s across cohort and time (all p-values > 0.385 for tests of heterogeneity, see Appendix @tbl-a-het-indoor).
 
@@ -672,9 +674,9 @@ ap_table <- read_rds(here("outputs",
 
 # temperature results
 temp_table <- tibble(
-  category = "Point", outcome = "Mean", estimate_1 = 1.96,
-  ci_1 = "(0.96, 2.96)", estimate_2 = 1.96, 
-  ci_2 = "(0.96, 2.96)"
+  category = "Point", outcome = "Mean", nobs = NA, estimate_1 = 1.96,
+  ci_1 = "(0.96, 2.96)", estimate_2 = NA, 
+  ci_2 = ""
 )
 
 stemp_table <- read_xlsx(here("data-clean",
@@ -684,9 +686,9 @@ stemp_table <- read_xlsx(here("data-clean",
   mutate(category = rep("Seasonal", times = 6),
     outcome = c("Mean (all)", "Mean (daytime)", 
       "Mean (heating season)", "Mean (daytime heating season)",
-      "Min. (all)", "Min. (heating season)"),
-    estimate_2 = `estimate_1`, 
-    ci_2 = `ci_1`) %>%
+      "Min. (all)", "Min. (heating season)"), nobs = NA,
+    estimate_2 = NA, 
+    ci_2 = "") %>%
   select(-model) %>%
   relocate(category, outcome)
 
@@ -694,17 +696,18 @@ stemp_table <- read_xlsx(here("data-clean",
 m_table <- bind_rows(ap_table, temp_table, 
   stemp_table)
 
-colnames(m_table) <- c(" ", " ", "ATT", "(95% CI)", 
+colnames(m_table) <- c(" ", " ", "Obs", "ATT", "(95% CI)", 
   "ATT", "(95% CI)")
 
 tt(m_table,
    digits = 2,
   #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
-  notes = list("Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.", a = list(i=0, j=5,
-     text = "ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted."))) %>%
+  notes = list("Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences.", 
+     a = list(i=0, j=6,
+     text = "Extended two-way fixed effects models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted."))) %>%
   group_tt(
-    j = list("DiD" = 3:4, 
-             "Adjusted DiD" = 5:6),
+    j = list("DiD" = 4:5, 
+             "Adjusted DiD" = 6:7),
     i = list("Air pollution" = 1, 
              "Indoor temperature" = 7)) %>%
   style_tt(i = c(1, 8), align = "l", bold=T) %>%
@@ -713,9 +716,9 @@ tt(m_table,
     rowspan = 2, alignv = "t") %>%
   style_tt(
     i = 10, j = 1, rowspan = 6, alignv = "t") %>%
-  style_tt(j = 1:6, align = "llcccc") %>%
+  style_tt(j = 1:7, align = "llccccc") %>%
   format_tt(escape = TRUE) %>%
-  format_tt(j=c(3,5), sprintf = "%.2f") 
+  format_tt(j=c(4,6), sprintf = "%.2f") 
 ```
 
 Overall we found little evidence of an impact of the CBHP policy on 24-h and seasonal outdoor (community) PM~2.5~ or personal exposures to PM~2.5~ and BC. Treatment was associated with lower, but statistically imprecise, personal 24-h BC exposures. This finding is consistent with the expectation that the policy contributed to reducing air pollutant emissions from solid fuel burning, as BC serves as a potential indicator of such combustion.
@@ -781,7 +784,7 @@ colnames(op_table) <- c(" ", " ", "ATT", "(95% CI)",
 tt(op_table,
    digits = 2,
    #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
-   notes = list("Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects, pp = percentage points, ppb = parts per billion.", a = list(i=0, j=5, text = "ETWFE models for blood pressure models adjusted for #age, sex, waist circumference, smoking, alcohol consumption, and #use of blood pressure medication."))) %>%
+   notes = list("Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects, pp = percentage points, ppb = parts per billion.", a = list(i=0, j=5, text = "ETWFE models for blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Self-reported respiratory outcomes adjusted for age, gender, and smoking. Measured respiratory outcome (FeNO) adjusted age, gender, body mass index, frequency of drinking, tobacco smoking, and frequency of exercise, occupation, time of measurement. Inflammatory marker outcome models adjusted for age, waist circumference, occupation, wealth index quantile, frequency of drinking, tobacco smoking, and frequency of farming." ))) %>%
   group_tt(
     j = list("DiD" = 3:4, 
              "Adjusted DiD" = 5:6),
@@ -914,7 +917,7 @@ tt(cde_resp,
    #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
    notes = list("Note: Estimated for the subset of individuals with measured personal exposure (n=1274). ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect.", a = list(i=0, j=2, text = "Adjusted for age, sex, and smoking."), b = list(i=0, j=c(4,6,8), text = "Mediators were set to the mean value for untreated participants at baseline."))) %>%
   group_tt(
-    j = list("Indoor PM" = 4:5,
+    j = list("Personal PM" = 4:5,
              "Indoor Temp" = 6:7,
              "PM + Temp" = 8:9)) %>%
   group_tt(
@@ -1149,11 +1152,11 @@ To comprehensively evaluate a large-scale policy like the CBHP policy, our study
 
 The validity of our DiD approach is subject to two key assumptions [@callaway2021; @wooldridge2021]. First, no anticipation: we assume that anticipation of the CBHP policy did not affect outcomes prior to policy implementation and did not differ between treated and untreated villages. We selected villages that were eligible for the policy but not currently treated. It was generally understood that the policy would first be implemented in the plains areas with more updated electric grids and then gradually expand into more remote and mountainous areas of Beijing, though most of our study villages were far from Beijing's urban core. In addition to these geographical parameters, some of our study villages were assigned to the policy whereas others applied to the local government, but they were generally unaware of if or when they would be treated at the time of enrollment. Second, parallel trends: our analysis assumes that in the absence of the policy the trends in air quality and health in treated and untreated villages would have remained the same over time. Because the parallel trends assumption is based on a counterfactual it cannot be empirically verified (similar to the assumption of no unmeasured confounding). However,\comment{EC 4a} given that we had two pre-intervention periods prior to the 2021 cohort being treated, we assessed the similarity of pre-intervention trends between w1 and w2 for the never treated group and the group eventually treated in 2021. Estimates and 95% CIs for the difference in pre-trends are given in the Appendix for BP outcomes (@fig-afig-pt3 and @fig-afig-pt4), personal exposure to PM~2.5~ and black carbon (@fig-afig-pt5), and self-reported respiratory outcomes (@fig-afig-pt6). We found little strong evidence for systematic differences in pre-trends for any outcome, but some estimates were imprecise and tests for pre-trends are generally considered to have low power [@roth2022]. We also adjusted for relevant time-varying confounders in estimating total effects and in mediation analyses, which aims to improve the credibility of parallel trends assumption. 
 
-We also note that, in general, the addition of covariates to our “basic” ETWFE models did not appreciably change our estimates. Nevertheless, we cannot entirely rule out the possibility that other programs or policies differentially affected air quality or health in treated and untreated villages, which could lead to over- or under-estimation of its effects. To investigate this possibility we surveyed village leaders about other rural development or health policies and programs in their villages throughout our four-year study period and did not identify any co-implemented programs that would differentially impact villages by treatment status and affect outcomes or mediators. Finally, our mediation analysis assumes no residual time-varying confounding between our mediators (air pollution and temperature) and our health outcomes. Although we measured and evaluated a large number of time-varying risk factors for BP, we cannot entirely eliminate the possibility of potential residual confounding which could over-or under-estimate the mediating effects of indoor environmental factors. 
+We also note that, in general, the addition of covariates to our “basic” ETWFE models did not appreciably change our estimates. Nevertheless, we cannot entirely rule out the possibility that other programs or policies differentially affected air quality or health in treated and untreated villages, which could lead to over- or under-estimation of its effects. To investigate this possibility we surveyed village leaders about other rural development or health policies and programs in their villages throughout our four-year study period and did not identify any co-implemented programs that would differentially impact villages by treatment status and affect outcomes or mediators. Though \comment{EC 1} a number of citywide and district-level COVID-19-related preventative measures were implemented during the pandemic (e.g., lockdowns, travel restrictions), our study villages were not differentially exposed to any such measures. Finally, our mediation analysis assumes no residual time-varying confounding between our mediators (air pollution and temperature) and our health outcomes. Although we measured and evaluated a large number of time-varying risk factors for BP, we cannot entirely eliminate the possibility of potential residual confounding which could over-or under-estimate the mediating effects of indoor environmental factors. 
  
 Strengths of this comprehensive, field-based assessment of the CBHP policy include our quasi-experimental design to evaluate a real-world clean energy intervention that would be near impossible to experimentally manipulate at the scale of our study. Our study design controlled for secular changes in health and we additionally collected data on and adjusted for important time-varying covariates. It’s perhaps worth noting that control for secular trends was important in our context. For personal exposure, supplementary analyses that dropped the time fixed effects or compared treated vs. untreated villages with covariate adjustment would have suggested a substantial impact of the policy (Appendix @tbl-a-fe). Our numerous sensitivity analyses showed the robustness of our findings to various analytic decisions. Most previous field-based household energy intervention studies were less than two-years in duration with a single post-treatment wave [@lai2024; @quansah2017], and our four-year study enabled longer-term evaluation of compliance with the coal ban and heat pump adoption/use and their impacts on air pollution and health. Despite the logistical challenges of COVID-19 pandemic shutdowns and related government restrictions that occurred throughout half of our study period, we were able to continue the study and successfully retain participants in all 50 study villages over four years. Our large sample size of 1000 participants in 50 villages across multiple study waves enabled us to evaluate both the total effects of the policy and separately for different treatment cohorts. By comparison, the few previous field-based assessments of household energy interventions (trials and pre-post designs with controls) and blood pressure ranged in size from 44 to 324 participants [@lai2024; @kumar2021; @onakomaiya2019], with exception of HAPIN trial that enrolled ~3000 pregnant women [@ye2022].
 
-This study also has several limitations to consider when interpreting our results. First, the COVID-19 pandemic began in the middle of our study and roughly half of our treated villages entered into the policy during the pandemic, which likely had some influence on the roll-out of the policy in those villages. We observed the largest benefits in BP and several respiratory outcomes in villages treated before the pandemic. However, we cannot differentiate between treatment cohort effects attributable treatment during the COVID-19 pandemic versus other factors that different between treatment cohorts (i.e., geographic location, access to biomass, fuel prices).
+This study also has several limitations to consider when interpreting our results. First, the COVID-19 pandemic began in the middle of our study. Although there were no recorded covid infections in our study villages during the study period, Beijing’s city-wide preventative measures impacted all study villages at the same time (e.g., travel restrictions, closure of public spaces, lockdowns, and quarantines). Roughly half of our treated villages entered into the policy during the pandemic, which likely had some influence on its roll out. We observed the largest benefits in BP and several respiratory outcomes in villages treated before the pandemic compared with those treated after it started. However, we cannot differentiate between treatment cohort effects attributable treatment during the COVID-19 pandemic versus other factors that different between treatment cohorts (i.e., geographic location, access to biomass, fuel prices).
 
 Second, the CBHP policy roll-out began in 2016 but we did not begin enrolling villages into our study until 2018. Thus, many of our study villages are farther from the urban core and generally of lower socioeconomic status than many villages treated in the first three years of the policy. Previous studies of the CBHP policy suggest that treated villages of all socioeconomic levels benefited from less-polluted and warmer indoor environments, but that the benefits were larger in wealthier villages that were more likely to use the heat pumps more often and set to a higher indoor temperature [@barrington-leigh2019; @meng2023]. Further, most of our study villages had relatively easy access to (free) biomass fuel, and may be more likely to use biomass-burning kangs compared with villages near the urban core where biomass fuel is less readily available. Thus our results may not be generalizable to all of rural and peri-urban Beijing, especially to the more urbanized, wealthier villages treated between 2016 and 2018, and may underestimate the impacts of the policy on indoor environmental factors that were important cardio-respiratory health mediators in our study.
 

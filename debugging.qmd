@@ -74,45 +74,138 @@ China is deploying an ambitious policy to transition up to 70% of households in 
 
 \newpage
 
-What about this table? (@tbl-a-fe)
+## Description of study sample
 
-
-```{r}
-#| echo: FALSE
-#| label: tbl-a-fe
-#| tbl-cap: "Effects of the CBHP policy on personal exposure ($\\mu g / m^{3}$) with variations in fixed effects for treatment group and time."
-#| tbl-pos: H
-
-
-pe_etwfe_me <- read_rds(here("outputs/models", 
-  "pe_etwfe_me.rds"))
-pe_etwfe_ny_me <- read_rds(here("outputs/models", 
-  "pe_etwfe_ny_me.rds"))
-pe_etwfe_ng_me <- read_rds(here("outputs/models", 
-  "pe_etwfe_ng_me.rds"))
-pe_etwfe_nfe_me <- read_rds(here("outputs/models", 
-  "pe_etwfe_nfe_me.rds"))
-
-f <- function(x) format(round(x, 0), big.mark=",")
-gm <- list(
-  list("raw" = "nobs", "clean" = "Observations", "fmt" = f),
-  list("raw" = "FE..year", "clean" = "Year fixed effects", "fmt" = f),
-  list("raw" = "FE..cohort_year", "clean" = "Cohort fixed effects", "fmt" = f))
-
-temp_table <- modelsummary(list("Adjusted DiD" = pe_etwfe_me, 
-  "No time FE" = pe_etwfe_ny_me, 
-  "No group FE" = pe_etwfe_ng_me, 
-  "No FE" = pe_etwfe_nfe_me), 
-  coef_rename = c("treat" = "ATT"), 
-  statistic = "conf.int", fmt = 2, 
-  gof_omit = 'DF|Deviance|R2|AIC|BIC|RMSE',
-  gof_map = gm,
-  output = "tinytable")
-
-tt(temp_table@data,
-   notes = list("Note: All models adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Standard errors clustered by village.")) %>%
-  style_tt(i=0, bold = TRUE) %>%
-  style_tt(j = 2:5, align = "c") %>%
-  format_tt(escape = TRUE)
-
+```{r make_table1, message=FALSE, cache=TRUE, echo=FALSE, eval=T}
+# select variables for table
+d <- read_csv(here("data-clean", 
+  "BHET_master_data_05Mar2024.csv"),
+  col_select = c("hh_id", "ptc_id", "gender_health",
+    "ban_status_no", "age_health", "education_health",
+    "smoking", "freq_drink", "sys_brachial", 
+    "dia_brachial", "waist_circ", "height",
+    "weight", "temp", "wave", "PM25conc_exposureugm3",
+    "freq_cough", "freq_phlegm", "freq_wheezing", 
+    "freq_breath", "freq_no_chest"))
+dt <- d %>%
+  # restrict to baseline
+  filter(wave==1) %>%
+  # select variables for inclusion
+  # select(ban_status_no, age_health, )
+  mutate(ever_trt = ifelse(ban_status_no==0, 1 ,0),
+    et = recode_factor(ever_trt, `0` = "Never treated", 
+      `1` = "Ever treated"),
+    `Age (years)` = age_health,
+    `Female (%)` = ifelse(gender_health==2, 100, 0),
+    `No education (%)` = ifelse(education_health==4, 100, 0),
+    `Primary education (%)` = ifelse(education_health==1, 100, 0),
+    `Secondary+ education (%)` = ifelse(
+      education_health %in% c(2,3), 100, 0),
+    `Never smoker (%)` = ifelse(smoking==3, 100, 0),
+    `Former smoker (%)` = ifelse(smoking==2, 100, 0),
+    `Current smoker (%)` = ifelse(smoking==1, 100, 0),
+    `Never drinker (%)` = ifelse(freq_drink==1, 100, 0),
+    `Occasional drinker (%)` = ifelse(freq_drink %in% 
+      c(2:8), 100, 0),
+    `Daily drinker (%)` = ifelse(freq_drink==9, 100, 0),
+    `Systolic (mmHg)` = sys_brachial,
+    `Diastolic (mmHg)` = dia_brachial,
+    `Waist circumference (cm)` = waist_circ,
+    `Body mass index (kg/m2)` = weight / (height/100)^2,
+    `Frequency of coughing (%)` = 
+      if_else(freq_cough < 3, 100, 0),
+    `Frequency of phlegm (%)` = 
+      if_else(freq_phlegm < 3, 100, 0),
+    `Frequency of wheezing (%)` = 
+      if_else(freq_wheezing < 3, 100, 0),
+    `Shortness of breath (%)` = 
+      if_else(freq_breath < 3, 100, 0),
+    `Chest trouble (%)` = 
+      if_else(freq_no_chest < 3, 100, 0),
+    `Any respiratory problem (%)` = if_else(
+      freq_cough < 3 |
+      freq_phlegm < 3 |
+      freq_wheezing < 3 |
+      freq_breath < 3 |
+      freq_no_chest < 3, 100, 0),
+    `Temperature (°C)` = temp,
+    `Personal PM2.5 (ug/m3)` = PM25conc_exposureugm3) %>%
+  select(et, `Age (years)`, `Female (%)`, `No education (%)`, 
+    `Primary education (%)`, `Secondary+ education (%)`, 
+    `Never smoker (%)`, `Former smoker (%)`, 
+    `Current smoker (%)`, `Never drinker (%)`, 
+    `Occasional drinker (%)`, `Daily drinker (%)`,
+    `Systolic (mmHg)`, `Diastolic (mmHg)`,
+    `Waist circumference (cm)`,
+    `Body mass index (kg/m2)`, 
+    `Frequency of coughing (%)`,
+    `Frequency of wheezing (%)`,
+    `Shortness of breath (%)`,
+    `Chest trouble (%)`,
+    `Any respiratory problem (%)`,
+    `Temperature (°C)`,
+    `Personal PM2.5 (ug/m3)`)
+# caption <- '\\label{#tbl-table1}Descriptive statistics, by treatment status'
+reference <- ''
+# add empty rows for categorical variables
+# grouped categories
+nrn <- c("Demographics:", "Health measures:",
+  "Environmental measures:")
+# empty data frame
+nr <- data.frame(matrix(ncol = 7, nrow = length(nrn)))
+nr$X1 <- nrn
+nr[is.na(nr)] <- " "
+# placement in table
+attr(nr, 'position') <- c(1, 7, 23)
+options(modelsummary_format_numeric_latex = "plain")
 ```
+
+```{r, message=FALSE, warning=F}
+#| echo: FALSE
+#| tbl-cap: Arithmetic and geometric means for air pollutant concentrations (micrograms per cubic meter) by wave.
+#| label: tbl-pm-season
+#| eval: TRUE
+
+ap_season <- read_csv(here("data-clean", 
+  "ap-conc-season.csv"))
+
+tap <- ap_season %>%
+  select(-time, -substance) %>%
+  pivot_longer(
+    cols = Mean_S1:GM_S4,
+    names_to = c("avg", ".value"),
+    names_pattern = "(.*)_S(.)") %>%
+  pivot_wider(
+    names_from = metric,
+    values_from = c(`1`, `2`, `3`, `4`)
+  ) %>%
+  select(-category)
+
+colnames(tap) <- c("", "", "",  
+                         "Est.", "CI", "Est.", "CI", "Est.", "CI", 
+                         "Est.", "CI")
+tt(tap, 
+  width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
+  notes = "Note: Est. = Estimate, CI = 95 percent confidence interval, GM = Geometric Mean") %>%
+  format_tt(replace = "") %>%
+  group_tt(
+    j = list("Wave 1" = 4:5, "Wave 2" = 6:7,
+      "Wave 3" = 8:9, "Wave 4" = 10:11),
+    i = list("Personal measurements" = 1, 
+             "Indoor measurements" = 5,
+             "Outdoor measurements" = 11)) %>%
+  style_tt(i = c(1, 6, 13), align = "l", bold=T) %>%
+  style_tt(
+    i = c(2, 4, 7, 9, 11, 14, 16, 18), j = 2, 
+    rowspan = 2, alignv = "t") %>%
+  style_tt(
+    i = c(2, 9, 16), j = 1, rowspan = 4, alignv = "t") %>%
+  style_tt(
+    i = c(7, 14), j = 1, rowspan = 2, alignv = "t") %>%
+  style_tt(j=1:11, fontsize = 0.9) %>%
+  style_tt(i = 0, align = "c") %>%
+  # style_tt(tabularray_inner = "colsep={.1em}") %>%
+  theme_tt("resize", width = 0.9)
+  
+```
+

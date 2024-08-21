@@ -225,7 +225,7 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-08-05}
+\date{2024-08-20}
 
 \begin{document}
 \maketitle
@@ -267,38 +267,101 @@ outdoor air pollution, as well as heating behaviors and health outcomes.
 
 \newpage
 
-What about this table? (Table~\ref{tbl-a-fe})
+\subsection{Description of study
+sample}\label{description-of-study-sample}
 
-\begin{table}[H]
+\begin{table}
 
-\caption{\label{tbl-a-fe}Effects of the CBHP policy on personal exposure
-(\(\mu g / m^{3}\)) with variations in fixed effects for treatment group
-and time.}
+\caption{\label{tbl-pm-season}Arithmetic and geometric means for air
+pollutant concentrations (micrograms per cubic meter) by wave.}
 
 \centering{
 
 \centering
+\resizebox{\ifdim\width>\linewidth 0.9\linewidth\else\width\fi}{!}{
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: All models adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Standard errors clustered by village.},
+note{}={Note: Est. = Estimate, CI = 95 percent confidence interval, GM = Geometric Mean},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
-colspec={Q[]Q[]Q[]Q[]Q[]},
-row{1}={,cmd=\bfseries,},
-column{2}={halign=c,},
-column{3}={halign=c,},
-column{4}={halign=c,},
-column{5}={halign=c,},
+width={1\linewidth},
+colspec={X[0.2]X[0.171428571428571]X[0.0571428571428571]X[0.0285714285714286]X[0.114285714285714]X[0.0285714285714286]X[0.114285714285714]X[0.0285714285714286]X[0.114285714285714]X[0.0285714285714286]X[0.114285714285714]},
+cell{1}{4}={c=2,}{halign=c,},
+cell{1}{6}={c=2,}{halign=c,},
+cell{1}{8}={c=2,}{halign=c,},
+cell{1}{10}={c=2,}{halign=c,},
+cell{3}{1}={c=11}{},cell{8}{1}={c=11}{},cell{15}{1}={c=11}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+cell{10}{1}={preto={\hspace{1em}}},
+cell{11}{1}={preto={\hspace{1em}}},
+cell{12}{1}={preto={\hspace{1em}}},
+cell{13}{1}={preto={\hspace{1em}}},
+cell{14}{1}={preto={\hspace{1em}}},
+cell{16}{1}={preto={\hspace{1em}}},
+cell{17}{1}={preto={\hspace{1em}}},
+cell{18}{1}={preto={\hspace{1em}}},
+cell{19}{1}={preto={\hspace{1em}}},
+cell{20}{1}={preto={\hspace{1em}}},
+cell{21}{1}={preto={\hspace{1em}}},
+cell{22}{1}={preto={\hspace{1em}}},
+row{3}={halign=l,cmd=\bfseries,},
+row{8}={halign=l,cmd=\bfseries,},
+row{15}={halign=l,cmd=\bfseries,},
+cell{4}{2}={r=2,}{valign=h,},
+cell{6}{2}={r=2,}{valign=h,},
+cell{9}{2}={r=2,}{valign=h,},
+cell{11}{2}={r=2,}{valign=h,},
+cell{13}{2}={r=2,}{valign=h,},
+cell{16}{2}={r=2,}{valign=h,},
+cell{18}{2}={r=2,}{valign=h,},
+cell{20}{2}={r=2,}{valign=h,},
+cell{4}{1}={r=4,}{valign=h,},
+cell{11}{1}={r=4,}{valign=h,},
+cell{18}{1}={r=4,}{valign=h,},
+cell{9}{1}={r=2,}{valign=h,},
+cell{16}{1}={r=2,}{valign=h,},
+column{1}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{2}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{3}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{4}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{5}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{6}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{7}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{8}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{9}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{10}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+column{11}={font=\fontsize{0.9em}{1.2em}\selectfont,},
+row{2}={halign=c,},
 }                     %% tabularray inner close
 \toprule
-& Adjusted DiD & No time FE & No group FE & No FE \\ \midrule %% TinyTableHeader
-ATT & 1.95 & -31.43 & -5.91 & -24.13 \\
-& [-23.34, 27.23] & [-49.42, -13.44] & [-24.36, 12.54] & [-41.42, -6.83] \\
-Observations & 1,281 & 1,281 & 1,281 & 1,281 \\
-Year fixed effects & X &  & X &  \\
-Cohort fixed effects & X & X &  &  \\
+&  &  & Wave 1 &  & Wave 2 &  & Wave 3 &  & Wave 4 &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}\cmidrule[lr]{10-11}
+&  &  & Est. & CI & Est. & CI & Est. & CI & Est. & CI \\ \midrule %% TinyTableHeader
+Personal measurements &&&&&&&&&& \\
+Filter-derived & 24h PM2.5 & Mean & 117 & [105, 129] & 97 & [87, 107] &  &  & 84 & [72, 97] \\
+Filter-derived & 24h PM2.5 & GM & 72 & [65, 80] & 59 & [53, 65] &  &  & 47 & [42, 52] \\
+Filter-derived & 24h BC & Mean & 4 & [3.5, 4.4] & 3.5 & [2.7, 4.2] &  &  & 3.7 & [2.9, 4.5] \\
+Filter-derived & 24h BC & GM & 2.6 & [2.4, 2.8] & 1.9 & [1.7, 2.1] &  &  & 1.7 & [1.5, 1.9] \\
+Indoor measurements &&&&&&&&&& \\
+Sensor-derived & Seasonal PM2.5 & Mean &  &  & 94 & [84, 104] & 84 & [75, 94] & 67 & [60, 75] \\
+Sensor-derived & Seasonal PM2.5 & GM &  &  & 71 & [65, 78] & 63 & [57, 70] & 47 & [42, 52] \\
+Filter-derived & 24h PM2.5 & Mean &  &  & 69 & [59, 79] &  &  & 59 & [49, 69] \\
+Filter-derived & 24h PM2.5 & GM &  &  & 45 & [39, 53] &  &  & 33 & [27, 40] \\
+Filter-derived & 24h BC & Mean &  &  & 2.3 & [1.8, 2.8] &  &  & 2.8 & [2.1, 3.4] \\
+Filter-derived & 24h BC & GM &  &  & 1.6 & [1.3, 2.0] &  &  & 1.6 & [1.3, 1.9] \\
+Outdoor measurements &&&&&&&&&& \\
+Sensor-derived & Seasonal PM2.5 & Mean & 47 & [45, 48] & 55 & [54, 56] & 33 & [32, 34] & 33 & [32, 34] \\
+Sensor-derived & Seasonal PM2.5 & GM & 36 & [35, 37] & 40 & [39, 41] & 23 & [22, 23] & 22 & [22, 23] \\
+Filter-derived & Seasonal PM2.5 & Mean & 38 & [34, 42] & 38 & [34, 41] & 25 & [23, 28] & 26 & [24, 28] \\
+Filter-derived & Seasonal PM2.5 & GM & 33 & [29, 36] & 30 & [28, 32] & 21 & [19, 23] & 22 & [21, 24] \\
+Filter-derived & Seasonal BC & Mean & 1.5 & [1.3, 1.6] & 1.4 & [1.3, 1.5] &  &  & 1.2 & [1.1, 1.2] \\
+Filter-derived & Seasonal BC & GM & 1.3 & [1.1, 1.4] & 1.1 & [1.0, 1.2] &  &  & 1 & [0.9, 1.1] \\
 \bottomrule
 \end{talltblr}
+}
 
 }
 

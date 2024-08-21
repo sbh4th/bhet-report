@@ -176,29 +176,33 @@ write_rds(m_is, file = here("outputs/models",
 
 # tables of results by outcome
 ap_table_p <- bind_rows(m_ppm$me_1, m_ppm$me_2) %>% 
-  mutate(category = "Personal", outcome = "PM2.5")
+  mutate(category = "Personal", outcome = "PM2.5",
+         nobs = m_ppm$e1$nobs)
 
 ap_table_bc <- bind_rows(m_pbc$me_1, m_pbc$me_2) %>% 
   mutate(category = "Personal", 
-         outcome = "Black carbon")
+         outcome = "Black carbon",
+         nobs = m_pbc$e1$nobs)
 
 ap_table_i24 <- bind_rows(m_i24$me_1, m_i24$me_2) %>% 
   mutate(category = "Indoor", 
-         outcome = "Daily")
+         outcome = "Daily",
+         nobs = m_i24$e1$nobs)
 
 ap_table_is <- bind_rows(m_is$me_1, m_is$me_2) %>% 
   mutate(category = "Indoor", 
-         outcome = "Seasonal")
+         outcome = "Seasonal",
+         nobs = m_i24$e1$nobs)
 
 # put all subtables together
 ap_table1 <- bind_rows(ap_table_p, ap_table_bc,
   ap_table_i24, ap_table_is) %>%
   mutate(model = rep(c(1,2),times=4)) %>%
-  select(model, estimate, conf.low, 
+  select(model, nobs, estimate, conf.low, 
     conf.high, category, outcome) %>%
   relocate(category, outcome) %>%
-  mutate(ci = paste("(", round(conf.low, 2), ", ",
-    round(conf.high, 2), ")", sep="")) %>%
+  mutate(ci = paste("(", sprintf("%.2f", conf.low), ", ",
+    sprintf("%.2f", conf.high), ")", sep="")) %>%
   select(-conf.low, -conf.high) %>%
   pivot_wider(names_from = model, values_from = 
     c(estimate, ci), names_vary = "slowest")
@@ -221,7 +225,7 @@ ap_table2 <- read_csv(here("data-clean",
   rename("outcome" = `pollutant`) %>%
   mutate(model = rep(c(1,2), times = 2),
     ci = paste("(", `CI_low`, ", ",
-    `CI_upper`, ")", sep="")) %>%
+    `CI_upper`, ")", sep=""), nobs = NA) %>%
   select(-Effect, -CI_low, -CI_upper) %>%
   relocate(category, outcome) %>%
   pivot_wider(names_from = model, values_from = 
@@ -233,16 +237,58 @@ ap_table <- bind_rows(ap_table1, ap_table2)
 write_rds(ap_table, file = here("outputs", 
   "ap-etwfe-table.rds"))
 
-# html table for design
-# kable(ap_table, digits = 2,
-#   col.names = c(" ", " ", "Marginal effect", "(95% CI)", 
-#    "Marginal effect", "(95% CI)"), #"latex", booktabs = T,
-#   linesep = "") %>%
-#   kable_styling(full_width = F) %>%
-#   collapse_rows(columns = 1:2, valign = "top") %>% 
-#   pack_rows("Air pollution", 1, 4) %>%
-#   add_header_above(c(" " = 2, 
-#                     "DiD" = 2, "Adjusted DiD" = 2))
+
+
+ap_table <- read_rds(here("outputs", 
+  "ap-etwfe-table.rds")) 
+
+# temperature results
+temp_table <- tibble(
+  category = "Point", outcome = "Mean", nobs = NA, estimate_1 = 1.96,
+  ci_1 = "(0.96, 2.96)", estimate_2 = NA, 
+  ci_2 = ""
+)
+
+stemp_table <- read_xlsx(here("data-clean",
+  "overall_temp_table.xlsx")) %>%
+  rename(`estimate_1` = att,
+         `ci_1` = ci) %>%
+  mutate(category = rep("Seasonal", times = 6),
+    outcome = c("Mean (all)", "Mean (daytime)", 
+      "Mean (heating season)", "Mean (daytime heating season)",
+      "Min. (all)", "Min. (heating season)"), nobs = NA,
+    estimate_2 = NA, 
+    ci_2 = "") %>%
+  select(-model) %>%
+  relocate(category, outcome)
+
+# join tables
+m_table <- bind_rows(ap_table, temp_table, 
+  stemp_table)
+
+colnames(m_table) <- c(" ", " ", "Obs", "ATT", "(95% CI)", 
+  "ATT", "(95% CI)")
+
+tt(m_table,
+   digits = 2,
+  #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
+  notes = list("Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.", 
+     a = list(i=0, j=6,
+     text = "ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted."))) %>%
+  group_tt(
+    j = list("DiD" = 4:5, 
+             "Adjusted DiD" = 6:7),
+    i = list("Air pollution" = 1, 
+             "Indoor temperature" = 7)) %>%
+  style_tt(i = c(1, 8), align = "l", bold=T) %>%
+  style_tt(
+    i = c(2, 4, 6), j = 1, 
+    rowspan = 2, alignv = "t") %>%
+  style_tt(
+    i = 10, j = 1, rowspan = 6, alignv = "t") %>%
+  style_tt(j = 1:7, align = "llccccc") %>%
+  format_tt(escape = TRUE) %>%
+  format_tt(j=c(4,6), sprintf = "%.2f") 
 
 
 ## 4 Table of heterogeneous treatment effects ----
@@ -458,111 +504,5 @@ write_rds(pe_etwfe_nfe_me, file = here("outputs/models",
   "pe_etwfe_nfe_me.rds"))
 
 
-## 7 Pre-trends for AP data
-# set theme for pre-trends
-theme_pt <- function() {
-  theme_classic() + 
-    theme(axis.title = element_text(size=18),
-      axis.text = element_text(size = 14),
-      legend.title = element_text(size = 14),
-      legend.text = element_text(size = 14),
-      plot.subtitle = element_text(size = 12))
-}
-
-# Personal exposure
-# limit to pre-intervention years/cohort
-d_p_r <- d_p %>% filter(year < 2021) %>%
-  mutate(et = case_when(cohort_year_2021==1 ~ "Yes",
-                        cohort_year_2021==0 ~ "No"))
-
-pt_p <- glm(PM25conc_exposureugm3 ~ year * et,
-            data = d_p_r)
-
-# Time trends by treatment status
-avg_comparisons(pt_p, 
-  var = "year",
-  by = "cohort_year_2021",
-  vcov = ~ v_id)
-
-# Difference in time trends by treatment
-pt_pt <- avg_comparisons(pt_p, 
-  var = "year",
-  by = "cohort_year_2021",
-  hypothesis = "b2 - b1 = 0",
-  vcov = ~ v_id)
-
-# Gather estimates for difference in pre-trends
-pt_text <- "Difference in trend (SE) for treated vs. untreated villages:" 
-pt_p_stats <- paste(sprintf("%.1f", pt_pt$estimate),
-  " (", sprintf("%.1f", pt_pt$std.error), ")", 
-  ", 95% CI: ", sprintf("%.1f", pt_pt$conf.low),
-  ", ", sprintf("%.1f", pt_pt$conf.high), sep="")
-
-pt_p_test <- paste(pt_text, pt_p_stats, sep = "\n")
-
-# Plot of trends and estimates
-pt_pe_plot <- plot_predictions(pt_p, condition = c("year",
-  "et")) + scale_y_continuous(limits = c(0, 150)) +
-  scale_x_continuous(breaks = c(2018, 2019)) +
-  labs(subtitle = pt_p_test,
-  y = expression("Personal PM"["2.5"] ~ "(µg/" ~ m^3~")"), 
-    x = "") +
-  scale_color_manual(name = "Treated in 2021?",
-    labels = c("No", "Yes"),
-    values = c("#e41a1c", "#377eb8")) +
-  scale_fill_manual(name = "Treated in 2021?",
-    labels = c("No", "Yes"),
-    values = c("#e41a1c", "#377eb8")) + theme_pt()
-
-# Personal black carbon
-d_bc_r <- d_bc %>% filter(year < 2021) %>%
-  mutate(et = case_when(cohort_year_2021==1 ~ "Yes",
-                        cohort_year_2021==0 ~ "No"))
-pt_bc <- glm(bc_exp_conc ~ year * et,
-            data = d_bc_r)
-
-# Time trends by treatment status
-avg_comparisons(pt_bc, 
-  var = "year",
-  by = "et",
-  vcov = ~ v_id)
-
-# Difference in time trends by treatment
-pt_bct <- avg_comparisons(pt_bc, 
-  var = "year",
-  by = "cohort_year_2021",
-  hypothesis = "b2 - b1 = 0",
-  vcov = ~ v_id)
-
-# Gather estimates for difference in pre-trends
-pt_bc_stats <- paste(sprintf("%.1f", pt_bct$estimate),
-  " (", sprintf("%.1f", pt_bct$std.error), ")", 
-  ", 95% CI: ", sprintf("%.1f", pt_bct$conf.low),
-  ", ", sprintf("%.1f", pt_bct$conf.high), sep="")
-
-pt_bc_test <- paste(pt_text, pt_bc_stats, sep = "\n")
-
-
-# Plot of trends and estimates
-pt_bc_plot <- plot_predictions(pt_bc, 
-  condition = c("year", "et")) + 
-  scale_y_continuous(limits = c(-0.5, 5)) +
-  scale_x_continuous(breaks = c(2018, 2019)) +
-  labs(subtitle = pt_bc_test,
-       y = expression("Black carbon" ~ "(µg/" ~ m^3~")"), x = "") +
-  scale_color_manual(name = "Treated in 2021?",
-                     labels = c("No", "Yes"),
-                     values = c("#e41a1c", "#377eb8")) +
-  scale_fill_manual(name = "Treated in 2021?",
-                    labels = c("No", "Yes"),
-                    values = c("#e41a1c", "#377eb8")) + 
-  theme_pt()
-
-
-# add personal plots together
-pt_plots <- pt_pe_plot / pt_bc_plot
-
-ggsave(here("images", "pe-bc-pretrends.png"), 
-       plot=pt_plots, width=6.5, height=9)
 
 

@@ -18,17 +18,17 @@ library(modeldb)
 # bring in air pollution data
 
 # read in data for Aim 1
-aim_1 <- osf_retrieve_node("qsmbr")
-aim_1 %>%
-  osf_ls_files("Air pollution",
-    pattern = "BHET_master_air_pollution.csv") %>%
-  osf_download(path = here("data-clean"),
-               conflicts = "overwrite")
+# aim_1 <- osf_retrieve_node("qsmbr")
+# aim_1 %>%
+#   osf_ls_files("Air pollution",
+#     pattern = "BHET_master_air_pollution.csv") %>%
+#   osf_download(path = here("data-clean"),
+#                conflicts = "overwrite")
 
 # read in air pollution data from OSF
 # restrict to specific variables
 ap_data <- read_csv(here("data-clean", 
-  "BHET_master_air_pollution.csv"),
+  "BHET_master_data_22Jul2024.csv"),
   col_select = c(ptc_id, hh_id, ID_VILLAGE, wave, 
     PM25conc_exposureugm3, PM25_exp_remove, 
     bc_exp_conc, bc_exp_remove,
@@ -38,7 +38,8 @@ ap_data <- read_csv(here("data-clean",
     pm2.5_indoor_seasonal_hs, coal_ban_time,
     N_percent_indoor_seasonal_hs, year,
     ban_status_composite, ptc_smoking, hh_smoking, 
-    outdoor_temp_24h, outdoor_dew_24h, hh_num)) %>%
+    outdoor_temp_24h, outdoor_dew_24h, hh_num)) 
+%>%
   
   # create year and cohort_year variables
   mutate(year = if_else(wave=="S1", 2018, 

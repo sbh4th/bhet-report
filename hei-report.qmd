@@ -45,6 +45,7 @@ library(kableExtra)
 library(modelsummary)
 library(readxl)
 library(marginaleffects)
+library(tinytable)
 ```
 
 ```{r master_data, include = FALSE, cache = TRUE, echo=FALSE}
@@ -163,7 +164,11 @@ knitr::include_graphics(here("images",
 
 In the second, third, and fourth data collection waves we randomly selected six households from the 20 recruited in each village to measure indoor concentrations of PM~2.5~. In w4, we aimed to monitor indoor PM~2.5~ in the same households where we measured indoor PM~2.5~ in w2. If a household dropped out of the project or declined indoor PM~2.5~ monitoring, we then recruited another household already enrolled in this study to measure indoor PM~2.5~. In total, indoor measurements were conducted in 300 households in both w2 and w4 and 246 households in w3 (Table 1).
 
-```{r tab-pm-sample, echo=F, message=F, warning=F, tab.cap="Household recruitment for overall and indoor air quality measurements."}
+```{r, message=F, warning=F}
+#| echo: FALSE
+#| label: tbl-pm-sample
+#| tbl-cap: "Household recruitment for overall and indoor air quality measurements."
+#| eval: TRUE
 
 options(knitr.kable.NA = "\\")
 tx <- tibble(
@@ -183,13 +188,16 @@ tx2 <- tx %>% pivot_wider(names_from = g,
   mutate(s3_2 = c(0,0,246,246)) %>%
   relocate(p,s1_1,s2_1,s4_1,s1_2,s2_2,s3_2,s4_2)
 
-kable(tx2, 
-  col.names = c("Sample", "Wave 1", "Wave 2", "Wave 4", 
-    "Wave 1", "Wave 2", "Wave 3", "Wave 4")) %>%
-  # "latex", booktabs = T) %>%
-  kable_styling() %>%
-  add_header_above(c(" " = 1, 
-                     "Overall" = 3, "Indoor" = 4))
+colnames(tx2) <- c("Sample", "Wave 1", "Wave 2", "Wave 4", 
+    "Wave 1", "Wave 2", "Wave 3", "Wave 4")
+
+tt(tx2) |>
+ format_tt(replace = "-") |>
+ group_tt(
+  j = list(
+     " " = 1,
+     "Overall" = 2:4,
+     "Indoor" = 5:8))
 ```
 
 Time-resolved indoor PM~2.5~ was measured using the same commercially available sensor (PMS7003 Plantower, Zefan, Inc.) used for outdoor sensor-based PM~2.5~ and recorded every 1 min. The sensor was placed on a table in a room where participants reported spending most of their time when awake. Indoor PM~2.5~ sensors were deployed between late November and mid January within field waves, depending on the village and household visit schedule. Measurement continued from the time of deployment until sensors were recollected from homes in late April to capture the full heating season.
@@ -275,32 +283,12 @@ Body weight, height, and waist circumference were measured at the clinic visit i
 
 To understand how Beijing’s policy works we used a difference-in-differences (DiD) design [@callaway2020], leveraging the staggered rollout of the policy across multiple villages to estimate its impact on health outcomes and understand the mechanisms through which it works. Simple comparisons of treated and untreated (i.e., control) villages after the CBHP policy has been implemented are likely to be biased by unmeasured village-level characteristics (e.g., migration, average winter temperature, wealth) that are associated with health outcomes. Similarly, comparisons of only treated villages before and after exposure to the program are susceptible to bias by other factors associated with changes in outcomes over time (i.e., secular trends, impacts of the COVID-19 pandemic). By comparing the *changes* in outcomes among treated villages to the *changes* in outcomes among untreated villages, the DiD approach controls for any unmeasured time-invariant characteristics of villages as well as for any general secular trends affecting outcomes in all villages that are unrelated to the policy.
 
-```{r didfig, engine='tikz', echo=F, out.width="50%"}
+
+```{r didfig, echo=F, out.width="75%", eval=T}
 #| label: fig-didfig
 #| fig-cap: 'Stylized example of difference-in-differences'
 
-\begin{tikzpicture}
-    \draw[very thin,color=gray] (0,0) (6.9,4.9);
-    \draw[->] (0,0) -- (6.2,0) node[right] {};
-    \draw[->] (0,0) -- (0,4.2) node[above] {$outcome$};
-    \node at (1,-0.2) {Time 1};
-    \node at (5,-0.2) {Time 2};
-    \node at (3,-0.2) [color=gray] {Intervention};
-    \draw[-, dashed, color=gray] (3,0) -- (3,4);
-    \draw[-, thick, color=blue] (1,1) -- (5,2.5);
-    \filldraw[color=blue] (1,1) circle(0.8mm);
-    \filldraw[color=blue] (5,2.5) circle(0.8mm);
-    \node at(4.1,1.5) [color=blue] {\small{Control}};
-    \node at(4.1,1.1) [color=blue] {\small{group}};
-    \draw[-, thick, color=red] (1,2.5) -- (3,3.25);
-    \draw[-, thick, dashed, color=red!50] (3,3.25) -- (5,4);
-    \draw[-, thick, color=red] (3,3.25) -- (5,3.4);
-    \filldraw[color=red] (1,2.5) circle(0.8mm);
-    \filldraw[color=red!50] (5,4) circle(0.8mm);
-    \filldraw[color=red] (3,3.25) circle(0.8mm);
-    \filldraw[color=red] (5,3.4) circle(0.8mm);
-    \node at(1.5,3.25) [color=red] {\small{Treated group}};
-\end{tikzpicture}
+knitr::include_graphics(here("images", "ddfig.png"))
 ```
 
 The DiD design compares outcomes before and after an intervention in a treated group relative to the same outcomes measured in a control group. The control group trend provides the crucial "counterfactual" estimate of what would have happened in the treated group had it not been treated. By comparing each group to itself, this approach helps to control for both measured and unmeasured fixed differences between the treated and control groups. By measuring changes over time in outcomes in the control group unaffected by the treatment, this approach also controls for any unmeasured factors affecting outcome trends in both treated and control groups. This is important since there are often many potential factors affecting outcome trends that cannot be disentangled from the policy if one only studies the treated group (as in a traditional pre-post design).
@@ -313,26 +301,14 @@ When multiple groups are treated at different time periods, the most common appr
 
 To estimate how much of the CBHP intervention may work through different mechanisms, we used causal mediation analysis. Causal approaches to mediation attempt to discern between, and clarify the necessary assumptions for identifying, different kinds of mediated effects. Taking as an example the directed acyclic graph (DAG) in @fig-dag1, with $T$ as the policy, $X$ as a set of pre-treatment covariates, $M_{1}$ as PM~2.5~, $M_{2}$ as indoor temperature, and $Y$ as systolic blood pressure, we can define the controlled direct effect ($CDE$) as the effect of the CBHP policy on systolic blood pressure if we fix the values of PM~2.5~ and indoor temperature to a fixed reference level for the entire population. For example, we can estimate the impact of the policy on health outcomes while holding PM~2.5~ and indoor temperature at uniform levels of average background exposure, or some other hypothetical level.
 
-```{r dag1, engine='tikz', echo=F, out.width="60%"}
+
+```{r dag1, echo=F, out.width="60%", eval=T}
 #| label: fig-dag1
 #| fig-cap: 'Hypothetical Directed Acyclic Graph showing direct and indirect effects with outcome ($Y$), pre-treatment covariates ($X$), policy ($T$), multiple mediators ($M_{1},M_{2}$), as well as covariates for the mediators ($W$).'
 
-\begin{tikzpicture}[shorten > = 1pt, line width=0.5pt, font=\scriptsize]
-\tikzstyle{every node} = [rectangle, fill=white, draw=none]
-\node (x) at (0,0) [align=center] {$X$};
-\node (t) at  (1.5,0) [align=center] {Policy\\($T$)};
-\node (m1) at  (3.5,1) [align=center] {PM\textsubscript{2.5}\\($M_{1}$)};
-\node (m2) at  (3.5,-1) [align=center] {Indoor\\Temp\\($M_{2}$)};
-\node (y) at  (5.5,0) [align=center] {SBP\\($Y$)};
-\node (w) at (2,-1.5) [align=center] {$W$};
-\foreach \from/\to in {x/t, t/y, t/m1, t/m2, m1/y, m2/y, w/m1, w/m2}
-  \draw [->] (\from) -- (\to);
-\draw [->] (x) to [bend left=45] (y.north);
-\draw [->] (x) to [bend left=20] (m1);
-\draw [->] (x) to [bend right=25] (m2);
-\draw [->] (w) to [bend right=45] (y);
-\end{tikzpicture}
+knitr::include_graphics(here("images", "dag1.png"))
 ```
+
 
 Although other mediated effects such as “natural” direct and indirect effects are theoretically estimable [@vanderweele2015], they involve challenging "cross-world" assumptions that are difficult to anchor in policy [@naimi2014]. Other approaches to mechanisms have focused on principal stratification [e.g., @zigler2016], although conceptual difficulties with identifying the (unverifiable) principal strata make it challenging for questions of mediation. Because controlled direct effects are considered more directly policy relevant for public health, we focused on estimating these mediated quantities.
 
@@ -379,16 +355,20 @@ We retained all 50 study villages during this four-year longitudinal assessment 
 
 By w2, w3, and w4 there were a cumulative total of 10, 17, and 20 (out of 50 total) study villages treated by the CBHP policy, respectively. All of the treated villages selected to install electric-powered air-source heat pumps with 200 RMB per meter square (up to 24,000 RMB) in subsidies and were also provided with 80% night-time electricity subsidies up to 10,000kWh per heating season. To limit coal use, villages enrolled in the policy were no longer allowed to place orders for subsidized coal with the district-level governments that manage the procurement and distribution of coal for residential heating in Beijing. In addition, village committee leaders in treated villages reported feeling accountable to the Environmental Protection Department for limited coal-related air pollution, and were motivated to encourage residents to not burn coal. Some villages were equipped with government air pollution monitors and the Environmental Protection Department conducted village inspections and issued warnings about coal burning. Households burning coal in treated villages were at risk of losing their electricity subsidy. 
 
-Appendix @fig-flowchart shows the participation of villages, households, and participants across the four waves of data collection. We conducted measurements in over 1000 participants in each of the three measurement waves that included individual-level measurements. In total, we enrolled 1432 participants into the study, of which 630 (43%) participated in all three waves, 443 (31%) participated in two waves and 365 (25%) participated in a single wave. We did not observe any notable differences in demographic characteristics or health behaviors between participants who contributed to a different number of waves (Table 2) or between participants in each of the three waves with individual measurements (Table 3). 
+Appendix @fig-flowchart shows the participation of villages, households, and participants across the four waves of data collection. We conducted measurements in over 1000 participants in each of the three measurement waves that included individual-level measurements. In total, we enrolled 1432 participants into the study, of which 630 (43%) participated in all three waves, 443 (31%) participated in two waves and 365 (25%) participated in a single wave. We did not observe any notable differences in demographic characteristics or health behaviors between participants who contributed to a different number of waves (@tbl-each-campaign) or between participants in each of the three waves with individual measurements (@tbl-diff-campaign). 
 
-```{r tab-each-campaigns, echo=F, eval=T, tab.cap="Demographic and health characteristics of participants in each study wave."}
+```{r, warning=F, message=F}
+#| echo: FALSE
+#| tbl-cap: Demographic and health characteristics of participants in each study wave.
+#| label: tbl-each-campaign
+#| eval: TRUE
 
 ctab1 <- tibble(
-  `Characteristic` = c("Female, n (\\%)", 
-    "Current smoker, n (\\%)",
-    "Any smoke exposure, n (\\%)", 
+  `Characteristic` = c("Female, n (%)", 
+    "Current smoker, n (%)",
+    "Any smoke exposure, n (%)", 
     "Age in years, Mean (SD)",
-    "BMI in kg/m\\textsuperscript{2}, Mean (SD)", 
+    "BMI in kg/m2, Mean (SD)", 
     "Waist circumference in cm, Mean (SD)"),
   `Wave 1 (2018-19) N=1003` = c("580 (57.8)",
     "257 (25.6)", "788 (78.6)", "60.7 (9.2)",
@@ -401,22 +381,38 @@ ctab1 <- tibble(
     "26.1 (4)", "91.4 (10.7)")
 )
 
-kable(ctab1, # "latex", booktabs = T, escape = F,
-  linesep = "", align = 'lccc') %>%
-  column_spec(2:4, width = "2.5cm") %>%
-  row_spec(0, bold = T) %>%
-  kable_styling(full_width = F)
+colnames(ctab1) <- c("Characteristic", 
+  "Wave 1 (2018-19) N=1003", "Wave 2 (2019-20) N=1110",
+  "Wave 4 (2021-22) N=1028", "Statistic", "p-value")
+
+tt(ctab1, 
+  width = c(.4, .2, .2, .2)) %>%
+  style_tt(i = 0, bold = TRUE) %>%
+  format_tt(escape = TRUE) %>%
+  style_tt(j = 1:4, align = "llll")
+  
+
+# kable(ctab1, # "latex", booktabs = T, escape = F,
+#   linesep = "", align = 'lccc') %>%
+#   column_spec(2:4, width = "2.5cm") %>%
+#   row_spec(0, bold = T) %>%
+#   kable_styling(full_width = F)
 ```
 
 
-```{r tab-diff-campaign, echo=F, eval=T, tab.cap="Demographic and health characteristics of participants in each study wave."}
+
+```{r, warning=F, message=F}
+#| echo: FALSE
+#| tbl-cap: "Demographic and health characteristics of participants who contributed to different numbers of study waves."
+#| label: tbl-diff-campaign
+#| eval: TRUE
 
 ctab2 <- tibble(
-  `Characteristic` = c("Female, n (\\%)", 
-    "Current smoker, n (\\%)",
-    "Any smoke exposure, n (\\%)", 
+  `Characteristic` = c("Female, n (%)", 
+    "Current smoker, n (%)",
+    "Any smoke exposure, n (%)", 
     "Age in years, Mean (SD)",
-    "BMI in kg/m\\textsuperscript{2}, Mean (SD)", 
+    "BMI in kg/m2, Mean (SD)", 
     "Waist circumference in cm, Mean (SD)"),
   `1 Wave N=365` = c("211 (57.8)", 
     "110 (30.1)", "288 (78.9)", "59.9 (9.2)",
@@ -429,11 +425,17 @@ ctab2 <- tibble(
     "26.1 (3.7)", "86.9 (10.4)")
 )
 
-kable(ctab2, # "latex", booktabs = T, escape = F,
-  linesep = "", align = 'lccc') %>%
-  column_spec(2:4, width = "2.5cm") %>%
-  row_spec(0, bold = T) %>%
-  kable_styling(full_width = F)
+tt(ctab2, 
+  width = c(.4, .2, .2, .2)) %>%
+  style_tt(i = 0, bold = TRUE) %>%
+  format_tt(escape = TRUE) %>%
+  style_tt(j = 1:4, align = "llll")
+
+# kable(ctab2, # "latex", booktabs = T, escape = F,
+#   linesep = "", align = 'lccc') %>%
+#   column_spec(2:4, width = "2.5cm") %>%
+#   row_spec(0, bold = T) %>%
+#   kable_styling(full_width = F)
 ```
 
 ## Description of study sample
@@ -522,15 +524,27 @@ attr(nr, 'position') <- c(1, 7, 23)
 options(modelsummary_format_numeric_latex = "plain")
 ```
 
-```{r table1, cache=TRUE, message=FALSE, echo=FALSE, eval=T}
+```{r, message=FALSE}
+#| echo: FALSE
+#| tbl-cap: Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status.
+#| label: tbl-desc
+#| eval: TRUE
+
 
 t1 <- datasummary_balance(~et, data = dt, 
   add_rows = nr, align = "rrrrrrr",
-  notes = reference, output = 'kableExtra',
-  title = "Descriptive statistics for selected demographic, health, and environmental measures at baseline, by treatment status.")
-t1 %>%
-  kable_styling(font_size = 9) %>%
-  row_spec(c(1,7,23), bold = T)
+  notes = reference) %>%
+  style_tt(j = 1:7, fontsize = 0.75) %>%
+  style_tt(i = c(1,7,23), bold=TRUE)
+t1
+
+# t1 <- datasummary_balance(~et, data = dt, 
+#   add_rows = nr, align = "rrrrrrr",
+#   notes = reference, output = 'kableExtra',
+#   title = "Descriptive statistics for selected demographic, health, and environmental # measures at baseline, by treatment status.")
+# t1 %>%
+#   kable_styling(font_size = 9) %>%
+#   row_spec(c(1,7,23), bold = T)
 ```
 
 Table 4 shows the distribution of selected demographic, health, and environmental characteristics from the baseline survey, prior to any villages being enrolled in the CBHP policy. We provide means and standard deviations separately for villages that eventually enter into the policy with those that never do so. As noted above, although our DiD identification strategy allows for fixed differences between treated and untreated villages, overall the differences at baseline are generally small and the groups seem well balanced on most measures, with the exception of personal exposure to PM~2.5~, which was lower in villages that were eventually treated.

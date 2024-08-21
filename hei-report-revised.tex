@@ -225,7 +225,7 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-08-16}
+\date{2024-08-20}
 
 \begin{document}
 \maketitle
@@ -607,13 +607,13 @@ w1 and w2. In w3, which was during the height of the COVID-19 pandemic,
 we limited household measurements to indoor air quality and sensor-based
 measurement of indoor temperature and stove use in 41 villages,
 including all 17 treated villages and 24 untreated villages, prior to
-COVID-19-related travel restrictions that halted field data collection.
-In w4, which also occurred during the COVID-19 pandemic, we returned to
-conducting individual-level assessments. However, unlike in w1 and w2,
-anthropometric measurements and airway inflammation were assessed in
-participant homes rather than clinics to avoid group contact, and blood
-samples were not collected. Outdoor (community) air pollution was
-measured throughout the study period.
+Beijing-wide COVID-19-related travel restrictions that halted field data
+collection. In w4, which also occurred during the COVID-19 pandemic, we
+returned to conducting individual-level assessments. However, unlike in
+w1 and w2, anthropometric measurements and airway inflammation were
+assessed in participant homes rather than clinics to avoid group
+contact, and blood samples were not collected. Outdoor (community) air
+pollution was measured throughout the study period.
 
 \subsubsection{Air Pollution}\label{air-pollution}
 
@@ -1626,35 +1626,27 @@ treatment status.}
 \centering{
 
 \centering
-\begin{talltblr}[         %% tabularray outer open
-entry=none,label=none,
-note{}={},
+\resizebox{\ifdim\width>\linewidth 0.95\linewidth\else\width\fi}{!}{
+\begin{tblr}[         %% tabularray outer open
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
 cell{1}{2}={c=2,}{halign=c,},
 cell{1}{4}={c=2,}{halign=c,},
-column{1}={halign=r,},
-column{2}={halign=r,},
-column{3}={halign=r,},
-column{4}={halign=r,},
-column{5}={halign=r,},
-column{6}={halign=r,},
-column{7}={halign=r,},
-row{1}={halign=c,},
-column{1}={font=\fontsize{0.75em}{1.05em}\selectfont,},
-column{2}={font=\fontsize{0.75em}{1.05em}\selectfont,},
-column{3}={font=\fontsize{0.75em}{1.05em}\selectfont,},
-column{4}={font=\fontsize{0.75em}{1.05em}\selectfont,},
-column{5}={font=\fontsize{0.75em}{1.05em}\selectfont,},
-column{6}={font=\fontsize{0.75em}{1.05em}\selectfont,},
-column{7}={font=\fontsize{0.75em}{1.05em}\selectfont,},
+column{1}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=l,},
+column{2}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
+column{3}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
+column{4}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
+column{5}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
+column{6}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
+column{7}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
 row{3}={,cmd=\bfseries,},
 row{9}={,cmd=\bfseries,},
 row{25}={,cmd=\bfseries,},
+rowsep={.1em},
 }                     %% tabularray inner close
 \toprule
-& Never treated (N=603) &  & Ever treated (N=400) &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}
+& Never enrolled (N=603) &  & Ever enrolled (N=400) &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}
 & Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error \\ \midrule %% TinyTableHeader
 Demographics:                 &              &              &              &              &              &             \\
 Age (years)                   & \num{59.9}  & \num{9.4}   & \num{60.4}  & \num{9.2}   & \num{0.5}   & \num{0.6}  \\
@@ -1682,7 +1674,8 @@ Environmental measures:       &              &              &              &    
 Temperature (°C)              & \num{13.8}  & \num{3.6}   & \num{13.5}  & \num{3.3}   & \num{-0.3}  & \num{0.2}  \\
 Personal PM2.5 (ug/m3)        & \num{150.2} & \num{300.3} & \num{103.8} & \num{107.3} & \num{-46.3} & \num{19.1} \\
 \bottomrule
-\end{talltblr}
+\end{tblr}
+}
 
 }
 
@@ -1927,14 +1920,14 @@ Mar.~15th.}
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.},
-note{a}={ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted.},
+note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences.},
+note{a}={Extended two-way fixed effects models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
-colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
-cell{1}{3}={c=2,}{halign=c,},
-cell{1}{5}={c=2,}{halign=c,},
-cell{3}{1}={c=6}{},cell{10}{1}={c=6}{},
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{4}={c=2,}{halign=c,},
+cell{1}{6}={c=2,}{halign=c,},
+cell{3}{1}={c=7}{},cell{10}{1}={c=7}{},
 cell{4}{1}={preto={\hspace{1em}}},
 cell{5}{1}={preto={\hspace{1em}}},
 cell{6}{1}={preto={\hspace{1em}}},
@@ -1961,25 +1954,26 @@ column{3}={halign=c,},
 column{4}={halign=c,},
 column{5}={halign=c,},
 column{6}={halign=c,},
+column{7}={halign=c,},
 }                     %% tabularray inner close
 \toprule
-&  & DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
-&  & ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
-Air pollution &&&&& \\
-Personal & PM2.5 & -2.09 & (-29.38, 25.2) & 1.95 & (-23.34, 27.23) \\
-Personal & Black carbon & -0.46 & (-1.73, 0.81) & -0.43 & (-1.67, 0.81) \\
-Indoor & Daily & -19.10 & (-60.56, 22.35) & -14.20 & (-53.94, 25.54) \\
-Indoor & Seasonal & -35.11 & (-59.36, -10.85) & -36.19 & (-60.74, -11.65) \\
-Outdoor & Daily & -0.11 & (-5.86, 5.64) & -1.73 & (-9.26, 5.81) \\
-Outdoor & Seasonal & 3.14 & (-3.1, 9.38) & 0.36 & (-6.27, 6.99) \\
-Indoor temperature &&&&& \\
-Point & Mean & 1.96 & (0.96, 2.96) & 1.96 & (0.96, 2.96) \\
-Seasonal & Mean (all) & 0.64 & (0.00, 1.29) & 0.64 & (0.00, 1.29) \\
-Seasonal & Mean (daytime) & 0.82 & (-0.08, 1.72) & 0.82 & (-0.08, 1.72) \\
-Seasonal & Mean (heating season) & 1.80 & (0.96, 2.64) & 1.80 & (0.96, 2.64) \\
-Seasonal & Mean (daytime heating season) & 1.85 & (0.97, 2.73) & 1.85 & (0.97, 2.73) \\
-Seasonal & Min. (all) & 3.83 & (2.26, 5.39) & 3.83 & (2.26, 5.39) \\
-Seasonal & Min. (heating season) & 3.72 & (2.19, 5.25) & 3.72 & (2.19, 5.25) \\
+&  &  & DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
+&  & Obs & ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
+Air pollution &&&&&& \\
+Personal & PM2.5 & 1281 & -2.09 & (-29.38, 25.20) & 1.95 & (-23.34, 27.23) \\
+Personal & Black carbon & 1263 & -0.46 & (-1.73, 0.81) & -0.43 & (-1.67, 0.81) \\
+Indoor & Daily &  411 & -19.10 & (-60.56, 22.35) & -14.20 & (-53.94, 25.54) \\
+Indoor & Seasonal &  411 & -35.11 & (-59.36, -10.85) & -36.19 & (-60.74, -11.65) \\
+Outdoor & Daily &  & -0.11 & (-5.86, 5.64) & -1.73 & (-9.26, 5.81) \\
+Outdoor & Seasonal &  & 3.14 & (-3.1, 9.38) & 0.36 & (-6.27, 6.99) \\
+Indoor temperature &&&&&& \\
+Point & Mean &  & 1.96 & (0.96, 2.96) &  &  \\
+Seasonal & Mean (all) &  & 0.64 & (0.00, 1.29) &  &  \\
+Seasonal & Mean (daytime) &  & 0.82 & (-0.08, 1.72) &  &  \\
+Seasonal & Mean (heating season) &  & 1.80 & (0.96, 2.64) &  &  \\
+Seasonal & Mean (daytime heating season) &  & 1.85 & (0.97, 2.73) &  &  \\
+Seasonal & Min. (all) &  & 3.83 & (2.26, 5.39) &  &  \\
+Seasonal & Min. (heating season) &  & 3.72 & (2.19, 5.25) &  &  \\
 \bottomrule
 \end{talltblr}
 
@@ -2017,7 +2011,7 @@ markers}
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
 note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects, pp = percentage points, ppb = parts per billion.},
-note{a}={ETWFE models for blood pressure models adjusted for \#age, sex, waist circumference, smoking, alcohol consumption, and \#use of blood pressure medication.},
+note{a}={ETWFE models for blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Self-reported respiratory outcomes adjusted for age, gender, and smoking. Measured respiratory outcome (FeNO) adjusted age, gender, body mass index, frequency of drinking, tobacco smoking, and frequency of exercise, occupation, time of measurement. Inflammatory marker outcome models adjusted for age, waist circumference, occupation, wealth index quantile, frequency of drinking, tobacco smoking, and frequency of farming.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
@@ -2957,7 +2951,7 @@ exposure to PM\textsubscript{2.5} and black carbon
 (Figure~\ref{fig-afig-pt6}). We found little strong evidence for
 systematic differences in pre-trends for any outcome, but some estimates
 were imprecise and tests for pre-trends are generally considered to have
-low power (Roth (2022)). We also adjusted for relevant time-varying
+low power (Roth 2022). We also adjusted for relevant time-varying
 confounders in estimating total effects and in mediation analyses, which
 aims to improve the credibility of parallel trends assumption.
 
@@ -2971,13 +2965,16 @@ surveyed village leaders about other rural development or health
 policies and programs in their villages throughout our four-year study
 period and did not identify any co-implemented programs that would
 differentially impact villages by treatment status and affect outcomes
-or mediators. Finally, our mediation analysis assumes no residual
-time-varying confounding between our mediators (air pollution and
-temperature) and our health outcomes. Although we measured and evaluated
-a large number of time-varying risk factors for BP, we cannot entirely
-eliminate the possibility of potential residual confounding which could
-over-or under-estimate the mediating effects of indoor environmental
-factors.
+or mediators. Though \comment{EC 1} a number of citywide and
+district-level COVID-19-related preventative measures were implemented
+during the pandemic (e.g., lockdowns, travel restrictions), our study
+villages were not differentially exposed to any such measures. Finally,
+our mediation analysis assumes no residual time-varying confounding
+between our mediators (air pollution and temperature) and our health
+outcomes. Although we measured and evaluated a large number of
+time-varying risk factors for BP, we cannot entirely eliminate the
+possibility of potential residual confounding which could over-or
+under-estimate the mediating effects of indoor environmental factors.
 
 Strengths of this comprehensive, field-based assessment of the CBHP
 policy include our quasi-experimental design to evaluate a real-world

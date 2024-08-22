@@ -493,7 +493,21 @@ d <- read_csv(here("data-clean",
     "weight", "temp", "wave", "PM25conc_exposureugm3",
     "freq_cough", "freq_phlegm", "freq_wheezing", 
     "freq_breath", "freq_no_chest"))
+
+# data for wealth index
+dwi <- read_csv(here("data-clean", 
+  "BHET_PCA_11Oct2023.csv"))
+
+# create quantiles of wealth by wave
+dwi <- dwi %>%
+  group_by(wave) %>%
+  mutate(wq = as.integer(cut(wealth_index, 
+    quantile(wealth_index, probs = c(0, 0.25, 0.5, 0.75, 1), na.rm = T), 
+    labels = c(1:4), include.lowest = T))) %>%
+  ungroup()
+
 dt <- d %>%
+  left_join(dwi, by = c("hh_id", "ptc_id", "wave")) %>%
   # restrict to baseline
   filter(wave==1) %>%
   # select variables for inclusion
@@ -507,6 +521,10 @@ dt <- d %>%
     `Primary education (%)` = ifelse(education_health==1, 100, 0),
     `Secondary+ education (%)` = ifelse(
       education_health %in% c(2,3), 100, 0),
+    `Wealth index (bottom 25%)` = ifelse(wq==1, 100, 0),
+    `Wealth index (25-50%)` = ifelse(wq==2, 100, 0),
+    `Wealth index (50-75%)` = ifelse(wq==3, 100, 0),
+    `Wealth index (top 25%)` = ifelse(wq==4, 100, 0),
     `Never smoker (%)` = ifelse(smoking==3, 100, 0),
     `Former smoker (%)` = ifelse(smoking==2, 100, 0),
     `Current smoker (%)` = ifelse(smoking==1, 100, 0),
@@ -537,7 +555,9 @@ dt <- d %>%
     `Temperature (°C)` = temp,
     `Personal PM2.5 (ug/m3)` = PM25conc_exposureugm3) %>%
   select(et, `Age (years)`, `Female (%)`, `No education (%)`, 
-    `Primary education (%)`, `Secondary+ education (%)`, 
+    `Primary education (%)`, `Secondary+ education (%)`,
+    `Wealth index (bottom 25%)`, `Wealth index (25-50%)`,
+    `Wealth index (50-75%)`, `Wealth index (top 25%)`,
     `Never smoker (%)`, `Former smoker (%)`, 
     `Current smoker (%)`, `Never drinker (%)`, 
     `Occasional drinker (%)`, `Daily drinker (%)`,
@@ -562,7 +582,7 @@ nr <- data.frame(matrix(ncol = 7, nrow = length(nrn)))
 nr$X1 <- nrn
 nr[is.na(nr)] <- " "
 # placement in table
-attr(nr, 'position') <- c(1, 7, 23)
+attr(nr, 'position') <- c(1, 11, 27)
 options(modelsummary_format_numeric_latex = "plain")
 ```
 
@@ -577,7 +597,7 @@ t1 <- datasummary_balance(~et, data = dt,
 
 t1f <- tt(t1@table_dataframe) %>%
   style_tt(j = 1:7, fontsize = 0.9, align = "lrrrrrr") %>%
-  style_tt(i = c(1,7,23), bold=TRUE) %>%
+  style_tt(i = c(1,11,27), bold=TRUE) %>%
   group_tt(j = list(`Never enrolled (N=603)` = 2:3, 
     `Ever enrolled (N=400)` = 4:5)) %>%
   style_tt(tabularray_inner = "rowsep={.1em}") %>%

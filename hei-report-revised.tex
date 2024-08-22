@@ -225,7 +225,7 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-08-20}
+\date{2024-08-22}
 
 \begin{document}
 \maketitle
@@ -1342,30 +1342,30 @@ the CBHP policy. The mean outcome (replaced by a suitable link function
 \(g(\cdot)\) for binary or count outcomes) was defined using a set of
 linear predictors:
 
-\begin{equation}\phantomsection\label{eq-etwfe}{Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) + \varepsilon_{ijt}}\end{equation}
+\begin{equation}\phantomsection\label{eq-etwfe}{Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rs} (d_{r} \times fs_{t}) + \varepsilon_{ijt}}\end{equation}
 
 where \(Y_{ijt}\) is the outcome for individual \(i\) in village \(j\)
 at time \(t\), \(d_{r}\) represent treatment cohort dummies, i.e., fixed
-effects for cohorts of villages that were first exposed to the policy at
-the same time \(q\) (e.g., in 2019, 2020, or 2021), \(fs_{t}\) are time
-fixed effects corresponding to different winter data collection waves
-(2018-19, 2019-20, or 2021-22), and \(\tau_{rt}\) are the cohort-time
-\(ATT\)s in the context of a linear model. For binary or count outcomes
-the cohort-time \(ATT\)s are derived by estimating marginal effects from
-non-linear models (Arel-Bundock 2024). For all models we cluster
-standard errors at the village level, consistent with the unit of
-treatment assignment (Cameron and Miller 2015). The ETWFE and other
-approaches that allow for several (potentially heterogeneous) treatment
-effects may also be averaged to provide a weighted summary \(ATT\).
-Several potential possibilities are feasible, including weighting by
-treatment cohorts or time since policy adoption (Goin and Riddell 2023).
-We generally focus on two types of \(ATT\)s for this report: simple
-averages across all treatment cohorts and the full set of cohort-time
-\(ATT\)s to evaluate heterogeneous treatment effects. Although we
-primarily focus on reporting the simple average \(ATT\) for most
-outcomes, we also used omnibus joint \emph{F}-tests to assess whether
-there was sufficient evidence to reject the assumption of homogeneity
-across the \(ATT\)s.
+effects for each cohort of villages \(r\) that were first exposed to the
+policy at the same time \(q\) (e.g., in 2019, 2020, or 2021), \(fs_{t}\)
+are fixed effects for each time period \(s\) corresponding to different
+winter data collection waves (2018-19, 2019-20, or 2021-22), and
+\(\tau_{rs}\) are the cohort-time \(ATT\)s in the context of a linear
+model. For binary or count outcomes the cohort-time \(ATT\)s are derived
+by estimating marginal effects from non-linear models (Arel-Bundock
+2024). For all models we cluster standard errors at the village level,
+consistent with the unit of treatment assignment (Cameron and Miller
+2015). The ETWFE and other approaches that allow for several
+(potentially heterogeneous) treatment effects may also be averaged to
+provide a weighted summary \(ATT\). Several potential possibilities are
+feasible, including weighting by treatment cohorts or time since policy
+adoption (Goin and Riddell 2023). We generally focus on two types of
+\(ATT\)s for this report: simple averages across all treatment cohorts
+and the full set of cohort-time \(ATT\)s to evaluate heterogeneous
+treatment effects. Although we primarily focus on reporting the simple
+average \(ATT\) for most outcomes, we also used omnibus joint
+\emph{F}-tests to assess whether there was sufficient evidence to reject
+the assumption of homogeneity across the \(ATT\)s.
 
 \subsection{Mediation Analysis}\label{mediation-analysis}
 
@@ -1378,7 +1378,7 @@ Equation~\ref{eq-etwfe} as follows:
 
 \begin{equation}\phantomsection\label{eq-etwfem}{
 \begin{aligned}
-Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) \\ + \delta M_{it} + \sum_{r=q}^{T} \sum_{s=r}^{T} \eta_{rt} (d_{r} \times fs_{t} \times M_{it}) + \zeta \mathbf{W} + \varepsilon_{ijt}
+Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rs} (d_{r} \times fs_{t}) \\ + \delta M_{it} + \sum_{r=q}^{T} \sum_{s=r}^{T} \eta_{rs} (d_{r} \times fs_{t} \times M_{it}) + \zeta \mathbf{W} + \varepsilon_{ijt}
 \end{aligned}
 }\end{equation}
 
@@ -1398,8 +1398,8 @@ the extent to which the policy's impact is mediated by
 PM\textsubscript{2.5}. Based on the setup in Equation~\ref{eq-etwfem}
 the \(CDE\) is estimated as: \(\delta + \eta_{rt}MT\). In the absence of
 interaction between the exposure and the mediator (i.e.,
-\(\eta_{rt}=0\)) the \(CDE\) will simply be the estimated treatment
-effects \(\sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt}\), i.e., the effect of
+\(\eta_{rs}=0\)) the \(CDE\) will simply be the estimated treatment
+effects \(\sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rs}\), i.e., the effect of
 the policy holding \(M\) constant. For a valid estimate of the \(CDE\)
 we must account for confounding of the mediator-outcome effect,
 represented by \(W\) in the equation above. The inclusion of baseline
@@ -1424,8 +1424,9 @@ all treatment cohorts (including the untreated) similarly over the study
 period (e.g., background improvements in ambient air quality or
 household transition to more efficient heating). The latter are
 particularly helpful in the context of the documented declines in
-PM\textsubscript{2.5} in China attributable to sources other than the
-CBHP policy (Van Donkelaar et al. 2021; Zhang et al. 2019)
+ambient PM\textsubscript{2.5} in the Beijing region attributable to
+sources other than the CBHP policy (Van Donkelaar et al. 2021; Zhang et
+al. 2019)
 
 For models estimating the effect of the policy on health outcomes, we
 used DAGs (Pearl 2000) to identify potential time-varying causes of both
@@ -1438,30 +1439,33 @@ our team's substantive knowledge about the CBHP policy. In the
 multivariable models, we also adjusted for strong predictors of the
 outcome that were not affected by treatment, and thus not confounders,
 to improve model precision. The covariates included in each of the
-models are provided in the tables.
+models for blood pressure and respiratory health outcomes are provided
+in the tables.
 
-For air pollution outcomes, we considered the following covariates:
-village population and total number of households in the village;
-temperature, relative humidity, wind direction, wind speed, boundary
-layer height; home area and home area heated; home insulation; smoking
-status of participant and whether or not they lived with a smoker;
-whether or not the household reported using wood (i.e., biomass) for
-household energy activities, and if so, self-reported quantity of wood.
-Potential non-linearity between continuous covariates and our study
-outcomes were evaluated using natural cubic splines with different
-degrees of freedom. Ultimately, the following covariates were included
-in the final DiD models for outdoor, indoor, and personal exposures to
-air pollution, based on whether measurable changes in the covariate over
-time were observed. For the final adjusted DiD model for personal
-exposure source contributions due to mixed combustion of solid fuels
-(hereafter `mixed combustion'), we adjusted for: temperature
-(represented by a spline with 2 degrees of freedom); participant smoking
-status; and whether or not the household reported using biomass fuel.
-For the final adjusted DiD model for outdoor (community) `mixed
-combustion' source contributions, the following covariates were
-included: total number of households in the village; village population;
-and ambient relative humidity (represented by a spline with 2 degrees of
-freedom).
+For air pollution outcomes, the evidence on predictors of personal
+exposures and indoor air pollution in rural China is inconsistent. We
+considered the following covariates that could potentially be
+determinants of air pollution in our study setting: village population
+and total number of households in the village; temperature, relative
+humidity, wind direction, wind speed, boundary layer height; home area
+and home area heated; home insulation; smoking status of participant and
+whether or not they lived with a smoker; whether or not the household
+reported using wood (i.e., biomass) for household energy activities, and
+if so, self-reported quantity of wood. Potential non-linearity between
+continuous covariates and our study outcomes were evaluated using
+natural cubic splines with different degrees of freedom. Ultimately, the
+following covariates were included in the final DiD models for outdoor,
+indoor, and personal exposures to air pollution, based on whether
+measurable changes in the covariate were observed over time. For the
+final adjusted DiD model for personal exposure source contributions due
+to mixed combustion of solid fuels (hereafter `mixed combustion'), we
+adjusted for: temperature (represented by a spline with 2 degrees of
+freedom); participant smoking status; and whether or not the household
+reported using biomass fuel. For the final adjusted DiD model for
+outdoor (community) `mixed combustion' source contributions, the
+following covariates were included: total number of households in the
+village; village population; and ambient relative humidity (represented
+by a spline with 2 degrees of freedom).
 
 \subsection{\texorpdfstring{Multiple imputation for covariates and
 indoor PM\textsubscript{2.5} in analyses with BP
@@ -1641,38 +1645,42 @@ column{5}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
 column{6}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
 column{7}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
 row{3}={,cmd=\bfseries,},
-row{9}={,cmd=\bfseries,},
-row{25}={,cmd=\bfseries,},
+row{13}={,cmd=\bfseries,},
+row{29}={,cmd=\bfseries,},
 rowsep={.1em},
 }                     %% tabularray inner close
 \toprule
 & Never enrolled (N=603) &  & Ever enrolled (N=400) &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}
 & Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error \\ \midrule %% TinyTableHeader
-Demographics:                 &              &              &              &              &              &             \\
-Age (years)                   & \num{59.9}  & \num{9.4}   & \num{60.4}  & \num{9.2}   & \num{0.5}   & \num{0.6}  \\
-Female (\%)                  & \num{59.5}  & \num{49.1}  & \num{59.1}  & \num{49.2}  & \num{-0.4}  & \num{3.2}  \\
-No education (\%)            & \num{11.5}  & \num{31.9}  & \num{12.3}  & \num{32.9}  & \num{0.9}   & \num{2.1}  \\
-Primary education (\%)       & \num{75.5}  & \num{43.0}  & \num{77.6}  & \num{41.7}  & \num{2.1}   & \num{2.8}  \\
-Secondary+ education (\%)    & \num{12.6}  & \num{33.2}  & \num{9.8}   & \num{29.7}  & \num{-2.9}  & \num{2.0}  \\
-Health measures:              &              &              &              &              &              &             \\
-Never smoker (\%)            & \num{61.9}  & \num{48.6}  & \num{59.5}  & \num{49.1}  & \num{-2.4}  & \num{3.2}  \\
-Former smoker (\%)           & \num{11.9}  & \num{32.4}  & \num{15.1}  & \num{35.8}  & \num{3.2}   & \num{2.2}  \\
-Current smoker (\%)          & \num{26.2}  & \num{44.0}  & \num{25.4}  & \num{43.6}  & \num{-0.8}  & \num{2.8}  \\
-Never drinker (\%)           & \num{55.9}  & \num{49.7}  & \num{52.5}  & \num{50.0}  & \num{-3.4}  & \num{3.2}  \\
-Occasional drinker (\%)      & \num{26.0}  & \num{43.9}  & \num{25.5}  & \num{43.6}  & \num{-0.5}  & \num{2.8}  \\
-Daily drinker (\%)           & \num{17.8}  & \num{38.3}  & \num{21.9}  & \num{41.4}  & \num{4.1}   & \num{2.6}  \\
-Systolic (mmHg)               & \num{131.4} & \num{16.8}  & \num{128.7} & \num{14.3}  & \num{-2.7}  & \num{1.0}  \\
-Diastolic (mmHg)              & \num{82.7}  & \num{11.6}  & \num{82.1}  & \num{11.3}  & \num{-0.6}  & \num{0.8}  \\
-Waist circumference (cm)      & \num{87.7}  & \num{10.5}  & \num{85.4}  & \num{9.5}   & \num{-2.3}  & \num{0.8}  \\
-Body mass index (kg/m2)       & \num{26.3}  & \num{3.7}   & \num{25.8}  & \num{3.6}   & \num{-0.5}  & \num{0.3}  \\
-Frequency of coughing (\%)   & \num{18.7}  & \num{39.0}  & \num{19.7}  & \num{39.8}  & \num{1.0}   & \num{2.6}  \\
-Frequency of wheezing (\%)   & \num{6.2}   & \num{24.2}  & \num{6.6}   & \num{24.8}  & \num{0.3}   & \num{1.6}  \\
-Shortness of breath (\%)     & \num{29.2}  & \num{45.5}  & \num{34.3}  & \num{47.5}  & \num{5.1}   & \num{3.0}  \\
-Chest trouble (\%)           & \num{11.6}  & \num{32.0}  & \num{14.1}  & \num{34.9}  & \num{2.5}   & \num{2.2}  \\
-Any respiratory problem (\%) & \num{50.6}  & \num{50.0}  & \num{54.3}  & \num{49.9}  & \num{3.7}   & \num{3.2}  \\
-Environmental measures:       &              &              &              &              &              &             \\
-Temperature (°C)              & \num{13.8}  & \num{3.6}   & \num{13.5}  & \num{3.3}   & \num{-0.3}  & \num{0.2}  \\
-Personal PM2.5 (ug/m3)        & \num{150.2} & \num{300.3} & \num{103.8} & \num{107.3} & \num{-46.3} & \num{19.1} \\
+Demographics:                 &       &       &       &       &       &      \\
+Age (years)                   & 59.9  & 9.4   & 60.4  & 9.2   & 0.5   & 0.6  \\
+Female (\%)                  & 59.5  & 49.1  & 59.1  & 49.2  & -0.4  & 3.2  \\
+No education (\%)            & 11.5  & 31.9  & 12.3  & 32.9  & 0.9   & 2.1  \\
+Primary education (\%)       & 75.5  & 43.0  & 77.6  & 41.7  & 2.1   & 2.8  \\
+Secondary+ education (\%)    & 12.6  & 33.2  & 9.8   & 29.7  & -2.9  & 2.0  \\
+Wealth index (bottom 25\%)   & 26.9  & 44.4  & 22.3  & 41.7  & -4.6  & 2.8  \\
+Wealth index (25-50\%)       & 23.6  & 42.5  & 27.0  & 44.5  & 3.4   & 2.9  \\
+Wealth index (50-75\%)       & 24.7  & 43.1  & 25.5  & 43.6  & 0.8   & 2.9  \\
+Wealth index (top 25\%)      & 24.8  & 43.2  & 25.2  & 43.5  & 0.4   & 2.9  \\
+Health measures:              &       &       &       &       &       &      \\
+Never smoker (\%)            & 61.9  & 48.6  & 59.5  & 49.1  & -2.4  & 3.2  \\
+Former smoker (\%)           & 11.9  & 32.4  & 15.1  & 35.8  & 3.2   & 2.2  \\
+Current smoker (\%)          & 26.2  & 44.0  & 25.4  & 43.6  & -0.8  & 2.8  \\
+Never drinker (\%)           & 55.9  & 49.7  & 52.5  & 50.0  & -3.4  & 3.2  \\
+Occasional drinker (\%)      & 26.0  & 43.9  & 25.5  & 43.6  & -0.5  & 2.8  \\
+Daily drinker (\%)           & 17.8  & 38.3  & 21.9  & 41.4  & 4.1   & 2.6  \\
+Systolic (mmHg)               & 131.4 & 16.8  & 128.7 & 14.3  & -2.7  & 1.0  \\
+Diastolic (mmHg)              & 82.7  & 11.6  & 82.1  & 11.3  & -0.6  & 0.8  \\
+Waist circumference (cm)      & 87.7  & 10.5  & 85.4  & 9.5   & -2.3  & 0.8  \\
+Body mass index (kg/m2)       & 26.3  & 3.7   & 25.8  & 3.6   & -0.5  & 0.3  \\
+Frequency of coughing (\%)   & 18.7  & 39.0  & 19.7  & 39.8  & 1.0   & 2.6  \\
+Frequency of wheezing (\%)   & 6.2   & 24.2  & 6.6   & 24.8  & 0.3   & 1.6  \\
+Shortness of breath (\%)     & 29.2  & 45.5  & 34.3  & 47.5  & 5.1   & 3.0  \\
+Chest trouble (\%)           & 11.6  & 32.0  & 14.1  & 34.9  & 2.5   & 2.2  \\
+Any respiratory problem (\%) & 50.6  & 50.0  & 54.3  & 49.9  & 3.7   & 3.2  \\
+Environmental measures:       &       &       &       &       &       &      \\
+Temperature (°C)              & 13.8  & 3.6   & 13.5  & 3.3   & -0.3  & 0.2  \\
+Personal PM2.5 (ug/m3)        & 150.2 & 300.3 & 103.8 & 107.3 & -46.3 & 19.1 \\
 \bottomrule
 \end{tblr}
 }
@@ -1885,8 +1893,9 @@ from 30\% in w1 to 7\% in w4.
 \subsection{Aim 1: Policy impacts and potential
 mediation}\label{aim-1-policy-impacts-and-potential-mediation}
 
-\subsubsection{Impact of the CBHP policy on potential
-mediators}\label{impact-of-the-cbhp-policy-on-potential-mediators}
+\subsubsection{Impact of policy on potential mediators (air pollution
+and indoor
+temperature)}\label{impact-of-policy-on-potential-mediators-air-pollution-and-indoor-temperature}
 
 The average marginal effect (\(ATT\)) from the basic ETWFE model
 (Table~\ref{tbl-did-med}) shows that exposure to the CBHP policy reduced
@@ -2260,7 +2269,7 @@ column{9}={font=\fontsize{0.8em}{1.1em}\selectfont,},
 }                     %% tabularray inner close
 \toprule
 & Adjusted Total Effect &  & CDE Mediated By: &  &  &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-9}
-&  &  & Indoor PM &  & Indoor Temp &  & PM + Temp &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}
+&  &  & Personal PM &  & Indoor Temp &  & PM + Temp &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}
 & ATT\textsuperscript{a} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) \\ \midrule %% TinyTableHeader
 Any symptom & -12.2 & (-19.46, -5.00) & -12.2 & (-19.46, -5.04) & -15.1 & (-23.57, -6.69) & -14.9 & (-23.45, -6.26) \\
 Coughing & -11.7 & (-19.49, -3.91) & -11.6 & (-19.28, -3.93) & -14.9 & (-22.85, -6.93) & -15.9 & (-23.78, -8.09) \\
@@ -3008,14 +3017,18 @@ that enrolled \textasciitilde3000 pregnant women (Ye et al. 2022).
 
 This study also has several limitations to consider when interpreting
 our results. First, the COVID-19 pandemic began in the middle of our
-study and roughly half of our treated villages entered into the policy
-during the pandemic, which likely had some influence on the roll-out of
-the policy in those villages. We observed the largest benefits in BP and
-several respiratory outcomes in villages treated before the pandemic.
-However, we cannot differentiate between treatment cohort effects
-attributable treatment during the COVID-19 pandemic versus other factors
-that different between treatment cohorts (i.e., geographic location,
-access to biomass, fuel prices).
+study. Although there were no recorded covid infections in our study
+villages during the study period, Beijing's city-wide preventative
+measures impacted all study villages at the same time (e.g., travel
+restrictions, closure of public spaces, lockdowns, and quarantines).
+Roughly half of our treated villages entered into the policy during the
+pandemic, which likely had some influence on its roll out. We observed
+the largest benefits in BP and several respiratory outcomes in villages
+treated before the pandemic compared with those treated after it
+started. However, we cannot differentiate between treatment cohort
+effects attributable treatment during the COVID-19 pandemic versus other
+factors that different between treatment cohorts (i.e., geographic
+location, access to biomass, fuel prices).
 
 Second, the CBHP policy roll-out began in 2016 but we did not begin
 enrolling villages into our study until 2018. Thus, many of our study

@@ -28,16 +28,16 @@ library(modeldb)
 # read in air pollution data from OSF
 # restrict to specific variables
 ap_data <- read_csv(here("data-clean", 
-  "BHET_master_data_22Jul2024.csv"),
+  "BHET_master_data_22Jul2024.csv"), # BHET_master_data_22Jul2024.csv
   col_select = c(ptc_id, hh_id, ID_VILLAGE, wave, 
     PM25conc_exposureugm3, PM25_exp_remove, 
-    bc_exp_conc, bc_exp_remove,
-    usable_indoor_filter, bc_indoor_remove,
+    BCconc_exposureugm3, BC_exp_remove,
+    usable_indoor_filter, BC_indoor_remove,
     indoor_filter_type, indoor_filter_id, 
-    house_area, pm2.5_indoor_sensor_24h,
-    pm2.5_indoor_seasonal_hs, coal_ban_time,
-    N_percent_indoor_seasonal_hs, year,
-    ban_status_composite, ptc_smoking, hh_smoking, 
+    house_area, PM25_indoor_24h_sensor,
+    PM25_indoor_seasonal_hs,
+    n_percent_indoor_seasonal_hs,
+    ban_status_composite, smoking, lived_with_smoker, 
     outdoor_temp_24h, outdoor_dew_24h, hh_num)) 
 %>%
   

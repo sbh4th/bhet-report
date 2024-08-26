@@ -272,67 +272,86 @@ sample}\label{description-of-study-sample}
 
 \begin{table}
 
-\caption{\label{tbl-desc}Descriptive statistics for selected
-demographic, health, and environmental measures at baseline, by
-treatment status.}
+\caption{\label{tbl-did-health}Overall impacts of the `coal-to-clean
+energy' policy on blood pressure, respiratory outcomes, and inflammatory
+markers}
 
 \centering{
 
 \centering
-\resizebox{\ifdim\width>\linewidth 0.95\linewidth\else\width\fi}{!}{
-\begin{tblr}[         %% tabularray outer open
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects, Obs = observations, pp = percentage points, ppb = parts per billion.},
+note{a}={ETWFE models for blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Self-reported respiratory outcomes adjusted for age, gender, and smoking. Measured respiratory outcome (FeNO) adjusted age, gender, body mass index, frequency of drinking, tobacco smoking, and frequency of exercise, occupation, time of measurement. Inflammatory marker outcome models adjusted for age, waist circumference, occupation, wealth index quantile, frequency of drinking, tobacco smoking, and frequency of farming.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
-cell{1}{2}={c=2,}{halign=c,},
 cell{1}{4}={c=2,}{halign=c,},
-column{1}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=l,},
-column{2}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
-column{3}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
-column{4}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
-column{5}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
-column{6}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
-column{7}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
-row{3}={,cmd=\bfseries,},
-row{13}={,cmd=\bfseries,},
-row{29}={,cmd=\bfseries,},
-rowsep={.1em},
+cell{1}{6}={c=2,}{halign=c,},
+cell{3}{1}={c=7}{},cell{12}{1}={c=7}{},cell{20}{1}={c=7}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+cell{10}{1}={preto={\hspace{1em}}},
+cell{11}{1}={preto={\hspace{1em}}},
+cell{13}{1}={preto={\hspace{1em}}},
+cell{14}{1}={preto={\hspace{1em}}},
+cell{15}{1}={preto={\hspace{1em}}},
+cell{16}{1}={preto={\hspace{1em}}},
+cell{17}{1}={preto={\hspace{1em}}},
+cell{18}{1}={preto={\hspace{1em}}},
+cell{19}{1}={preto={\hspace{1em}}},
+cell{21}{1}={preto={\hspace{1em}}},
+cell{22}{1}={preto={\hspace{1em}}},
+cell{23}{1}={preto={\hspace{1em}}},
+cell{24}{1}={preto={\hspace{1em}}},
+cell{25}{1}={preto={\hspace{1em}}},
+row{3}={halign=l,cmd=\bfseries,},
+row{12}={halign=l,cmd=\bfseries,},
+row{20}={halign=l,cmd=\bfseries,},
+cell{4}{1}={r=2,}{valign=h,},
+cell{6}{1}={r=2,}{valign=h,},
+cell{8}{1}={r=2,}{valign=h,},
+cell{10}{1}={r=2,}{valign=h,},
+cell{13}{1}={r=6,}{valign=h,},
+column{1}={halign=l,},
+column{2}={halign=l,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+column{7}={halign=c,},
 }                     %% tabularray inner close
 \toprule
-& Never enrolled (N=603) &  & Ever enrolled (N=400) &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}
-& Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error \\ \midrule %% TinyTableHeader
-Demographics:                 &       &       &       &       &       &      \\
-Age (years)                   & 59.9  & 9.4   & 60.4  & 9.2   & 0.5   & 0.6  \\
-Female (\%)                  & 59.5  & 49.1  & 59.1  & 49.2  & -0.4  & 3.2  \\
-No education (\%)            & 11.5  & 31.9  & 12.3  & 32.9  & 0.9   & 2.1  \\
-Primary education (\%)       & 75.5  & 43.0  & 77.6  & 41.7  & 2.1   & 2.8  \\
-Secondary+ education (\%)    & 12.6  & 33.2  & 9.8   & 29.7  & -2.9  & 2.0  \\
-Wealth index (bottom 25\%)   & 26.9  & 44.4  & 22.3  & 41.7  & -4.6  & 2.8  \\
-Wealth index (25-50\%)       & 23.6  & 42.5  & 27.0  & 44.5  & 3.4   & 2.9  \\
-Wealth index (50-75\%)       & 24.7  & 43.1  & 25.5  & 43.6  & 0.8   & 2.9  \\
-Wealth index (top 25\%)      & 24.8  & 43.2  & 25.2  & 43.5  & 0.4   & 2.9  \\
-Health measures:              &       &       &       &       &       &      \\
-Never smoker (\%)            & 61.9  & 48.6  & 59.5  & 49.1  & -2.4  & 3.2  \\
-Former smoker (\%)           & 11.9  & 32.4  & 15.1  & 35.8  & 3.2   & 2.2  \\
-Current smoker (\%)          & 26.2  & 44.0  & 25.4  & 43.6  & -0.8  & 2.8  \\
-Never drinker (\%)           & 55.9  & 49.7  & 52.5  & 50.0  & -3.4  & 3.2  \\
-Occasional drinker (\%)      & 26.0  & 43.9  & 25.5  & 43.6  & -0.5  & 2.8  \\
-Daily drinker (\%)           & 17.8  & 38.3  & 21.9  & 41.4  & 4.1   & 2.6  \\
-Systolic (mmHg)               & 131.4 & 16.8  & 128.7 & 14.3  & -2.7  & 1.0  \\
-Diastolic (mmHg)              & 82.7  & 11.6  & 82.1  & 11.3  & -0.6  & 0.8  \\
-Waist circumference (cm)      & 87.7  & 10.5  & 85.4  & 9.5   & -2.3  & 0.8  \\
-Body mass index (kg/m2)       & 26.3  & 3.7   & 25.8  & 3.6   & -0.5  & 0.3  \\
-Frequency of coughing (\%)   & 18.7  & 39.0  & 19.7  & 39.8  & 1.0   & 2.6  \\
-Frequency of wheezing (\%)   & 6.2   & 24.2  & 6.6   & 24.8  & 0.3   & 1.6  \\
-Shortness of breath (\%)     & 29.2  & 45.5  & 34.3  & 47.5  & 5.1   & 3.0  \\
-Chest trouble (\%)           & 11.6  & 32.0  & 14.1  & 34.9  & 2.5   & 2.2  \\
-Any respiratory problem (\%) & 50.6  & 50.0  & 54.3  & 49.9  & 3.7   & 3.2  \\
-Environmental measures:       &       &       &       &       &       &      \\
-Temperature (°C)              & 13.8  & 3.6   & 13.5  & 3.3   & -0.3  & 0.2  \\
-Personal PM2.5 (ug/m3)        & 150.2 & 300.3 & 103.8 & 107.3 & -46.3 & 19.1 \\
+&  &  & DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
+&  & Obs & ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
+Blood pressure (mmHg) &&&&&& \\
+Systolic BP & Brachial &    1 & -0.79 & (-2.63, 1.04) & -1.40 & (-3.31, 0.51) \\
+Systolic BP & Central &    2 & -1.04 & (-2.82, 0.73) & -1.56 & (-3.40, 0.28) \\
+Diastolic BP & Brachial &    3 & -1.29 & (-2.62, 0.04) & -1.60 & (-2.96, -0.25) \\
+Diastolic BP & Central &    4 & -1.35 & (-2.66, 0.04) & -1.66 & (-2.97, -0.34) \\
+Pulse Pressure & Brachial &    5 & 0.50 & (-0.71, 1.70) & 0.21 & (-1.00, 1.41) \\
+Pulse Pressure & Central &    6 & 0.31 & (-0.85, 1.46) & 0.10 & (-1.01, 1.20) \\
+BP Amplification x10 & Pulse pressure &    7 & 0.10 & (-0.12, 1.40) & 0.00 & (-1.20, 1.20) \\
+BP Amplification x10 & Systolic BP &    8 & 0.20 & (-0.20, 0.50) & 0.10 & (-0.20, 0.40) \\
+Respiratory outcomes &&&&&& \\
+Self-reported (pp) & Any symptom & 3081 & -7.65 & (-12.76, -2.55) & -8.12 & (-13.32, -2.92) \\
+Self-reported (pp) & Coughing & 3081 & -2.49 & (-7.08, 2.10) & -2.98 & (-7.48, 1.52) \\
+Self-reported (pp) & Phlegm & 3081 & -1.34 & (-5.48, 2.80) & -2.14 & (-6.25, 1.97) \\
+Self-reported (pp) & Wheezing attacks & 3081 & 0.81 & (-2.17, 3.79) & 0.83 & (-2.14, 3.80) \\
+Self-reported (pp) & Trouble breathing & 3081 & -4.26 & (-9.76, 1.24) & -3.80 & (-9.42, 1.82) \\
+Self-reported (pp) & Chest trouble & 3081 & -4.18 & (-8.84, 0.48) & -3.94 & (-8.61, 0.74) \\
+Measured & FeNO (ppb) &  & 0.17 & (-2.24, 2.58) & 0.55 & (-2.13, 3.13) \\
+Inflammatory markers (\%) &&&&&& \\
+& IL6 &    1 & 6.80 & (-12.2, 30.0) & 5.90 & (-13.80, 30.20) \\
+& TNF-alpha &    2 & 24.30 & (-1.3, 56.4) & 24.70 & (-0.90, 54.20) \\
+& CRP &    3 & 2.70 & (-19.8, 31.6) & 3.80 & (-19.40, 33.60) \\
+& MDA &    4 & 7.60 & (-8.7, 26.9) & 6.50 & (-9.70, 25.5) \\
 \bottomrule
-\end{tblr}
-}
+\end{talltblr}
 
 }
 

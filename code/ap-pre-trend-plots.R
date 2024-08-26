@@ -1,9 +1,9 @@
 #  program:  pre-trend-plots.R
 #  task:     estimate and test for pre-trends
 #  input:    various .rds files
-#  output:   various figures
+#  output:   various figures for pre-trends
 #  project:  BHET
-#  author:   sam harper \ 2024-08-15
+#  author:   sam harper \ 2024-08-22
 
 
 ## 0 Load needed packages ----
@@ -41,93 +41,104 @@ d_bc <- read_rds(here("data-clean",
 ### Personal exposure
 
 # Limit to pre-intervention years/cohort
-d_p_r <- d_p %>% filter(year < 2021) %>%
-  mutate(et = case_when(cohort_year_2021==1 ~ "Yes",
-                        cohort_year_2021==0 ~ "No"))
+d_p_r <- d_p %>% 
+  filter(year < 2021 & cohort_year_2019==0) %>%
+  mutate(tc = factor(ban_status_composite, 
+    labels = c("Never", "2020", "2021")))
+
 # estimate model
-pt_p <- glm(PM25conc_exposureugm3 ~ year * et,
+pt_p <- glm(PM25conc_exposureugm3 ~ year * tc,
             data = d_p_r)
 
 # Time trends by treatment status
 avg_comparisons(pt_p, 
   var = "year",
-  by = "cohort_year_2021",
+  by = "tc",
   vcov = ~ v_id)
 
 # Difference in time trends by treatment
 pt_pt <- avg_comparisons(pt_p, 
   var = "year",
-  by = "cohort_year_2021",
-  hypothesis = "b2 - b1 = 0",
+  by = "tc",
+  hypothesis = c("b2 - b1 = 0", "b3 - b1 = 0"),
   vcov = ~ v_id)
 
-# Gather estimates for difference in pre-trends
-pt_text <- 
-  "Difference in trend (SE) for treated vs. untreated villages:" 
+pt_pjt <- hypotheses(pt_pt, joint = TRUE)
 
-pt_p_stats <- paste(sprintf("%.1f", pt_pt$estimate),
-  " (", sprintf("%.1f", pt_pt$std.error), ")", 
-  ", 95% CI: ", sprintf("%.1f", pt_pt$conf.low),
-  ", ", sprintf("%.1f", pt_pt$conf.high), sep="")
+# Gather estimates for difference in pre-trends
+pt_text <- "Joint F-test of equal trends by cohort:"
+
+pt_p_stats <- paste("F(", pt_pjt$df1, ", ", 
+    pt_pjt$df2, ") = ", 
+    sprintf('%.2f', pt_pjt$statistic) , ", p = ",
+    sprintf('%.3f', pt_pjt$p.value), sep="")
 
 pt_p_test <- paste(pt_text, pt_p_stats, sep = "\n")
 
 # Plot of trends and estimates
 pt_pe_plot <- plot_predictions(pt_p, condition = c("year",
-  "et")) + scale_y_continuous(limits = c(0, 150)) +
+  "tc")) + scale_y_continuous(limits = c(0, 150)) +
   scale_x_continuous(breaks = c(2018, 2019)) +
   labs(subtitle = pt_p_test,
   y = expression("Personal PM"["2.5"] ~ "(µg/" ~ m^3~")"), 
     x = "") +
-  scale_color_manual(name = "Treated in 2021?",
-    labels = c("No", "Yes"),
-    values = c("#e41a1c", "#377eb8")) +
-  scale_fill_manual(name = "Treated in 2021?",
-    labels = c("No", "Yes"),
-    values = c("#e41a1c", "#377eb8")) + theme_pt()
+  scale_color_manual(name = "Treatment\ncohort",
+    labels = c("Never", "2020", "2021"),
+    values = c("#e41a1c", "#377eb8", "#4daf4a")) +
+  scale_fill_manual(name = "Treatment\ncohort",
+    labels = c("Never", "2020", "2021"),
+    values = c("#e41a1c", "#377eb8", "#4daf4a")) + 
+  theme_pt()
 
 # Personal black carbon
-d_bc_r <- d_bc %>% filter(year < 2021) %>%
-  mutate(et = case_when(cohort_year_2021==1 ~ "Yes",
-                        cohort_year_2021==0 ~ "No"))
-pt_bc <- glm(bc_exp_conc ~ year * et,
+d_bc_r <- d_bc %>% 
+  filter(year < 2021 & cohort_year_2019==0) %>%
+  mutate(tc = factor(ban_status_composite, 
+    labels = c("Never", "2020", "2021")))
+
+pt_bc <- glm(bc_exp_conc ~ year * tc,
             data = d_bc_r)
 
 # Time trends by treatment status
 avg_comparisons(pt_bc, 
   var = "year",
-  by = "et",
+  by = "tc",
   vcov = ~ v_id)
 
 # Difference in time trends by treatment
 pt_bct <- avg_comparisons(pt_bc, 
   var = "year",
-  by = "cohort_year_2021",
-  hypothesis = "b2 - b1 = 0",
+  by = "tc",
+  hypothesis = c("b2 - b1 = 0", "b3 - b1 = 0"),
   vcov = ~ v_id)
 
+pt_bcjt <- hypotheses(pt_bct, joint = TRUE)
+
 # Gather estimates for difference in pre-trends
-pt_bc_stats <- paste(sprintf("%.1f", pt_bct$estimate),
-  " (", sprintf("%.1f", pt_bct$std.error), ")", 
-  ", 95% CI: ", sprintf("%.1f", pt_bct$conf.low),
-  ", ", sprintf("%.1f", pt_bct$conf.high), sep="")
+pt_text <- "Joint F-test of equal trends by cohort:"
+
+# Gather estimates for difference in pre-trends
+pt_bc_stats <- paste("F(", pt_bcjt$df1, ", ", 
+    pt_bcjt$df2, ") = ", 
+    sprintf('%.2f', pt_bcjt$statistic) , ", p = ",
+    sprintf('%.3f', pt_bcjt$p.value), sep="")
 
 pt_bc_test <- paste(pt_text, pt_bc_stats, sep = "\n")
 
 
 # Plot of trends and estimates
 pt_bc_plot <- plot_predictions(pt_bc, 
-  condition = c("year", "et")) + 
-  scale_y_continuous(limits = c(-0.5, 5)) +
+  condition = c("year", "tc")) + 
+  scale_y_continuous(limits = c(-0.5, 5.2)) +
   scale_x_continuous(breaks = c(2018, 2019)) +
   labs(subtitle = pt_bc_test,
        y = expression("Black carbon" ~ "(µg/" ~ m^3~")"), x = "") +
-  scale_color_manual(name = "Treated in 2021?",
-                     labels = c("No", "Yes"),
-                     values = c("#e41a1c", "#377eb8")) +
-  scale_fill_manual(name = "Treated in 2021?",
-                    labels = c("No", "Yes"),
-                    values = c("#e41a1c", "#377eb8")) + 
+  scale_color_manual(name = "Treatment\ncohort",
+    labels = c("Never", "2020", "2021"),
+    values = c("#e41a1c", "#377eb8", "#4daf4a")) +
+  scale_fill_manual(name = "Treatment\ncohort",
+    labels = c("Never", "2020", "2021"),
+    values = c("#e41a1c", "#377eb8", "#4daf4a")) + 
   theme_pt()
 
 

@@ -225,7 +225,7 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-08-22}
+\date{2024-09-06}
 
 \begin{document}
 \maketitle
@@ -1674,11 +1674,12 @@ Diastolic (mmHg)              & \num{82.7}  & \num{11.6}  & \num{82.1}  & \num{1
 Waist circumference (cm)      & \num{87.7}  & \num{10.5}  & \num{85.4}  & \num{9.5}   & \num{-2.3}  & \num{0.8}  \\
 Body mass index (kg/m2)       & \num{26.3}  & \num{3.7}   & \num{25.8}  & \num{3.6}   & \num{-0.5}  & \num{0.3}  \\
 Frequency of coughing (\%)   & \num{18.7}  & \num{39.0}  & \num{19.7}  & \num{39.8}  & \num{1.0}   & \num{2.6}  \\
+Frequency of phlegm (\%)     & \num{27.6}  & \num{44.7}  & \num{23.7}  & \num{42.6}  & \num{-3.8}  & \num{2.8}  \\
 Frequency of wheezing (\%)   & \num{6.2}   & \num{24.2}  & \num{6.6}   & \num{24.8}  & \num{0.3}   & \num{1.6}  \\
 Shortness of breath (\%)     & \num{29.2}  & \num{45.5}  & \num{34.3}  & \num{47.5}  & \num{5.1}   & \num{3.0}  \\
 Chest trouble (\%)           & \num{11.6}  & \num{32.0}  & \num{14.1}  & \num{34.9}  & \num{2.5}   & \num{2.2}  \\
-Any respiratory problem (\%) & \num{50.6}  & \num{50.0}  & \num{54.3}  & \num{49.9}  & \num{3.7}   & \num{3.2}  \\
 Environmental measures:       &              &              &              &              &              &             \\
+Any respiratory problem (\%) & \num{50.6}  & \num{50.0}  & \num{54.3}  & \num{49.9}  & \num{3.7}   & \num{3.2}  \\
 Temperature (°C)              & \num{13.8}  & \num{3.6}   & \num{13.5}  & \num{3.3}   & \num{-0.3}  & \num{0.2}  \\
 Personal PM2.5 (ug/m3)        & \num{150.2} & \num{300.3} & \num{103.8} & \num{107.3} & \num{-46.3} & \num{19.1} \\
 \bottomrule
@@ -2019,14 +2020,14 @@ markers}
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects, pp = percentage points, ppb = parts per billion.},
-note{a}={ETWFE models for blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Self-reported respiratory outcomes adjusted for age, gender, and smoking. Measured respiratory outcome (FeNO) adjusted age, gender, body mass index, frequency of drinking, tobacco smoking, and frequency of exercise, occupation, time of measurement. Inflammatory marker outcome models adjusted for age, waist circumference, occupation, wealth index quantile, frequency of drinking, tobacco smoking, and frequency of farming.},
+note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects, Obs = observations, pp = percentage points, ppb = parts per billion.},
+note{a}={ETWFE models for blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Self-reported respiratory outcomes adjusted for age, gender, and smoking. Measured respiratory outcome (FeNO) adjusted age, gender, body mass index, frequency of drinking, smoking, and frequency of exercise, occupation, time of measurement. Inflammatory marker outcome models adjusted for age, waist circumference, occupation, wealth index quantile, frequency of drinking, tobacco smoking, and frequency of farming.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
-colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
-cell{1}{3}={c=2,}{halign=c,},
-cell{1}{5}={c=2,}{halign=c,},
-cell{3}{1}={c=6}{},cell{12}{1}={c=6}{},cell{20}{1}={c=6}{},
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{4}={c=2,}{halign=c,},
+cell{1}{6}={c=2,}{halign=c,},
+cell{3}{1}={c=7}{},cell{12}{1}={c=7}{},cell{20}{1}={c=7}{},
 cell{4}{1}={preto={\hspace{1em}}},
 cell{5}{1}={preto={\hspace{1em}}},
 cell{6}{1}={preto={\hspace{1em}}},
@@ -2055,38 +2056,40 @@ cell{6}{1}={r=2,}{valign=h,},
 cell{8}{1}={r=2,}{valign=h,},
 cell{10}{1}={r=2,}{valign=h,},
 cell{13}{1}={r=6,}{valign=h,},
+cell{21}{1}={r=4,}{valign=h,},
 column{1}={halign=l,},
 column{2}={halign=l,},
 column{3}={halign=c,},
 column{4}={halign=c,},
 column{5}={halign=c,},
 column{6}={halign=c,},
+column{7}={halign=c,},
 }                     %% tabularray inner close
 \toprule
-&  & DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
-&  & ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
-Blood pressure (mmHg) &&&&& \\
-Systolic BP & Brachial & -0.79 & (-2.63, 1.04) & -1.40 & (-3.31, 0.51) \\
-Systolic BP & Central & -1.04 & (-2.82, 0.73) & -1.56 & (-3.40, 0.28) \\
-Diastolic BP & Brachial & -1.29 & (-2.62, 0.04) & -1.60 & (-2.96, -0.25) \\
-Diastolic BP & Central & -1.35 & (-2.66, 0.04) & -1.66 & (-2.97, -0.34) \\
-Pulse Pressure & Brachial & 0.50 & (-0.71, 1.70) & 0.21 & (-1.00, 1.41) \\
-Pulse Pressure & Central & 0.31 & (-0.85, 1.46) & 0.10 & (-1.01, 1.20) \\
-BP Amplification x10 & Pulse pressure & 0.10 & (-0.12, 1.40) & 0.00 & (-1.20, 1.20) \\
-BP Amplification x10 & Systolic BP & 0.20 & (-0.20, 0.50) & 0.10 & (-0.20, 0.40) \\
-Respiratory outcomes &&&&& \\
-Self-reported (pp) & Any symptom & -7.38 & (-13.98, -0.77) & -7.86 & (-14.63, -1.09) \\
-Self-reported (pp) & Coughing & -1.59 & (-6.41, 3.23) & -1.98 & (-6.8, 2.84) \\
-Self-reported (pp) & Phlegm & -1.22 & (-5.58, 3.15) & -1.82 & (-6.34, 2.69) \\
-Self-reported (pp) & Wheezing attacks & -0.22 & (-3.97, 3.52) & -0.14 & (-3.85, 3.57) \\
-Self-reported (pp) & Trouble breathing & -4.98 & (-11.81, 1.84) & -4.62 & (-11.59, 2.35) \\
-Self-reported (pp) & Chest trouble & -6.63 & (-12.51, -0.76) & -6.36 & (-12.14, -0.59) \\
-Measured & FeNO (ppb) & 0.17 & (-2.24, 2.58) & 0.55 & (-2.13, 3.13) \\
-Inflammatory markers (\%) &&&&& \\
-& IL6 & 6.80 & (-12.2, 30.0) & 5.90 & (-13.80, 30.20) \\
-& TNF-alpha & 24.30 & (-1.3, 56.4) & 24.70 & (-0.90, 54.20) \\
-& CRP & 2.70 & (-19.8, 31.6) & 3.80 & (-19.40, 33.60) \\
-& MDA & 7.60 & (-8.7, 26.9) & 6.50 & (-9.70, 25.5) \\
+&  &  & DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
+&  & Obs & ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
+Blood pressure &&&&&& \\
+Systolic BP (mmHg) & Brachial &    1 & -0.79 & (-2.63, 1.04) & -1.40 & (-3.31, 0.51) \\
+Systolic BP (mmHg) & Central &    2 & -1.04 & (-2.82, 0.73) & -1.56 & (-3.40, 0.28) \\
+Diastolic BP (mmHg) & Brachial &    3 & -1.29 & (-2.62, 0.04) & -1.60 & (-2.96, -0.25) \\
+Diastolic BP (mmHg) & Central &    4 & -1.35 & (-2.66, 0.04) & -1.66 & (-2.97, -0.34) \\
+Pulse Pressure & Brachial &    5 & 0.50 & (-0.71, 1.70) & 0.21 & (-1.00, 1.41) \\
+Pulse Pressure & Central &    6 & 0.31 & (-0.85, 1.46) & 0.10 & (-1.01, 1.20) \\
+BP Amplification x10 & Pulse pressure &    7 & 0.10 & (-0.12, 1.40) & 0.00 & (-1.20, 1.20) \\
+BP Amplification x10 & Systolic BP &    8 & 0.20 & (-0.20, 0.50) & 0.10 & (-0.20, 0.40) \\
+Respiratory outcomes &&&&&& \\
+Self-reported (pp) & Any symptom & 3081 & -7.65 & (-12.76, -2.55) & -8.12 & (-13.32, -2.92) \\
+Self-reported (pp) & Coughing & 3081 & -2.49 & (-7.08, 2.10) & -2.98 & (-7.48, 1.52) \\
+Self-reported (pp) & Phlegm & 3081 & -1.34 & (-5.48, 2.80) & -2.14 & (-6.25, 1.97) \\
+Self-reported (pp) & Wheezing attacks & 3081 & 0.81 & (-2.17, 3.79) & 0.83 & (-2.14, 3.80) \\
+Self-reported (pp) & Trouble breathing & 3081 & -4.26 & (-9.76, 1.24) & -3.80 & (-9.42, 1.82) \\
+Self-reported (pp) & Chest trouble & 3081 & -4.18 & (-8.84, 0.48) & -3.94 & (-8.61, 0.74) \\
+Measured & FeNO (ppb) &  & 0.17 & (-2.24, 2.58) & 0.55 & (-2.13, 3.13) \\
+Inflammatory markers &&&&&& \\
+Measured (\%) & IL6 &    1 & 6.80 & (-12.2, 30.0) & 5.90 & (-13.80, 30.20) \\
+Measured (\%) & TNF-alpha &    2 & 24.30 & (-1.3, 56.4) & 24.70 & (-0.90, 54.20) \\
+Measured (\%) & CRP &    3 & 2.70 & (-19.8, 31.6) & 3.80 & (-19.40, 33.60) \\
+Measured (\%) & MDA &    4 & 7.60 & (-8.7, 26.9) & 6.50 & (-9.70, 25.5) \\
 \bottomrule
 \end{talltblr}
 
@@ -3385,6 +3388,12 @@ Guidance} for {Industry}.
 \bibitem[\citeproctext]{ref-gbdmaps2016}
 GBD MAPS Working Group. 2016. Burden of disease attributable to
 coal-burning and other air pollution sources in {China}.
+
+\bibitem[\citeproctext]{ref-gelman2014}
+Gelman A, Carlin J. 2014. Beyond {Power Calculations}: {Assessing Type
+S} ({Sign}) and {Type M} ({Magnitude}) {Errors}. Perspectives on
+Psychological Science 9:641--651;
+doi:\href{https://doi.org/10.1177/1745691614551642}{10.1177/1745691614551642}.
 
 \bibitem[\citeproctext]{ref-goin2023}
 Goin DE, Riddell CA. 2023. Comparing {Two-way Fixed Effects} and {New
@@ -5041,6 +5050,130 @@ Cohort fixed effects & X & X &  &  \\
 }
 
 \end{table}%
+
+\newpage
+
+\subsection{Retrospective design
+analysis}\label{retrospective-design-analysis}
+
+\subsubsection{All outcomes}\label{all-outcomes}
+
+Table~\ref{tbl-rd} shows the results of a design-based analysis (Gelman
+and Carlin 2014) for different hypothetical effect sizes, conditional on
+our design and sample size.
+
+\begin{table}[H]
+
+\caption{\label{tbl-rd}Design-based analysis for various hypothetical
+effect sizes.}
+
+\centering{
+
+\centering
+\resizebox{\ifdim\width>\linewidth 0.9\linewidth\else\width\fi}{!}{
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: BP = Blood Pressure, pp = percentage points, ppb = parts per billion, SE = Standard Error},
+note{a}={Assuming the true effect size and our study design and sample size, the probability that an observed estimate will have the wrong sign.},
+note{b}={Assuming the true effect size and our study design and sample size, the ratio by which an observed estimate will exaggerate the true effect.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=4,}{halign=c,},
+cell{3}{1}={c=8}{},cell{12}{1}={c=8}{},cell{20}{1}={c=8}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+cell{10}{1}={preto={\hspace{1em}}},
+cell{11}{1}={preto={\hspace{1em}}},
+cell{13}{1}={preto={\hspace{1em}}},
+cell{14}{1}={preto={\hspace{1em}}},
+cell{15}{1}={preto={\hspace{1em}}},
+cell{16}{1}={preto={\hspace{1em}}},
+cell{17}{1}={preto={\hspace{1em}}},
+cell{18}{1}={preto={\hspace{1em}}},
+cell{19}{1}={preto={\hspace{1em}}},
+cell{21}{1}={preto={\hspace{1em}}},
+cell{22}{1}={preto={\hspace{1em}}},
+cell{23}{1}={preto={\hspace{1em}}},
+cell{24}{1}={preto={\hspace{1em}}},
+cell{25}{1}={preto={\hspace{1em}}},
+row{3}={halign=l,cmd=\bfseries,},
+row{12}={halign=l,cmd=\bfseries,},
+row{20}={halign=l,cmd=\bfseries,},
+cell{4}{1}={r=2,}{valign=h,},
+cell{6}{1}={r=2,}{valign=h,},
+cell{8}{1}={r=2,}{valign=h,},
+cell{10}{1}={r=2,}{valign=h,},
+cell{13}{1}={r=6,}{valign=h,},
+cell{21}{1}={r=4,}{valign=h,},
+column{1}={halign=l,},
+column{2}={halign=l,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+column{7}={halign=c,},
+}                     %% tabularray inner close
+\toprule
+&  & Observed Results &  & Hypothetical Design Analysis &  &  &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-8}
+&  & Estimate & SE & Effect & Power (\%) & S-bias\textsuperscript{a} & M-bias\textsuperscript{b} \\ \midrule %% TinyTableHeader
+Blood pressure (mmHg) &&&&&&& \\
+Systolic BP (mmHg) & Brachial & -1.4 & 1.0 & -1.5 & 33.7 & 0.09 & 0.7 \\
+Systolic BP (mmHg) & Central & -1.6 & 0.9 & -1.5 & 35.9 & 0.08 & 0.7 \\
+Diastolic BP (mmHg) & Brachial & -1.6 & 0.7 & -1.0 & 30.4 & 0.00 & 1.8 \\
+Diastolic BP (mmHg) & Central & -1.7 & 0.7 & -1.0 & 32.0 & 0.00 & 1.8 \\
+Pulse Pressure & Brachial & 0.2 & 0.6 & 0.5 & 12.9 & 0.23 & 1.0 \\
+Pulse Pressure & Central & 0.1 & 0.6 & 0.5 & 14.4 & 0.22 & 1.0 \\
+BP Amplification x10 & Pulse pressure & 0.0 & 0.6 & 0.1 & 5.3 & 0.44 & 4.5 \\
+BP Amplification x10 & Systolic BP & 0.1 & 0.2 & 0.1 & 10.0 & 0.29 & 1.2 \\
+Respiratory outcomes &&&&&&& \\
+Self-reported (pp) & Any symptom & -8.1 & 2.7 & -5.0 & 47.0 & 0.00 & 1.4 \\
+Self-reported (pp) & Coughing & -3.0 & 2.3 & -2.0 & 14.0 & 0.22 & 1.0 \\
+Self-reported (pp) & Phlegm & -2.1 & 2.1 & -3.0 & 29.9 & 0.10 & 0.7 \\
+Self-reported (pp) & Wheezing attacks & 0.8 & 1.5 & -1.0 & 10.1 & 0.28 & 1.2 \\
+Self-reported (pp) & Trouble breathing & -3.8 & 2.9 & -3.0 & 18.2 & 0.18 & 0.9 \\
+Self-reported (pp) & Chest trouble & -3.9 & 2.4 & -1.0 & 7.0 & 0.36 & 1.8 \\
+Measured & FeNO (ppb) & 0.6 & 1.3 & -0.5 & 6.6 & 0.37 & 2.0 \\
+Inflammatory markers (\%) &&&&&&& \\
+Measured (\%) & IL6 & 5.9 & 11.2 & -2.0 & 5.4 & 0.43 & 4.1 \\
+Measured (\%) & TNF-alpha & 24.7 & 14.1 & -2.0 & 5.2 & 0.45 & 5.0 \\
+Measured (\%) & CRP & 3.8 & 13.5 & -2.0 & 5.3 & 0.45 & 4.9 \\
+Measured (\%) & MDA & 6.5 & 9.0 & -2.0 & 5.6 & 0.41 & 3.3 \\
+\bottomrule
+\end{talltblr}
+}
+
+}
+
+\end{table}%
+
+\newpage
+
+\subsubsection{Blood pressure}\label{blood-pressure-2}
+
+Figure~\ref{fig-rd-bp} show the range of estimates for power, sign-bias,
+and effect exaggeration for several hypothetical effect sizes for the
+impact of the program on blood pressure, conditional on our study design
+and sample size (standard error of 1 mmHg).
+
+\begin{figure}[H]
+
+\caption{\label{fig-rd-bp}Power, sign-bias, and exaggeration ratios for
+various hypothetical effects of the policy on blood pressure, given our
+study design.}
+
+\centering{
+
+\includegraphics[width=0.8\textwidth,height=\textheight]{images/rd-plot.png}
+
+}
+
+\end{figure}%
 
 \newpage
 

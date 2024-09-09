@@ -565,6 +565,7 @@ dt <- d %>%
     `Waist circumference (cm)`,
     `Body mass index (kg/m2)`, 
     `Frequency of coughing (%)`,
+    `Frequency of phlegm (%)`,
     `Frequency of wheezing (%)`,
     `Shortness of breath (%)`,
     `Chest trouble (%)`,
@@ -755,7 +756,7 @@ With respect to the other potential mediator of temperature, @tbl-did-med shows 
 
 # bp results from Talia
 bp_policy_t <- tibble(
-  category = rep(c("Systolic BP", "Diastolic BP", 
+  category = rep(c("Systolic BP (mmHg)", "Diastolic BP (mmHg)", 
     "Pulse Pressure", "BP Amplification x10"), each=2),
   outcome = c("Brachial","Central","Brachial",
     "Central", "Brachial","Central", "Pulse pressure",
@@ -785,7 +786,7 @@ feno_table <- tibble(
 )
 
 inf_table <- tibble(
-  category = " ", 
+  category = "Measured (%)", 
   outcome = c("IL6", "TNF-alpha",	"CRP",	"MDA"),
   nobs = c(1:4),
   estimate_1 = c(6.8, 24.3, 2.7, 7.6),
@@ -800,25 +801,29 @@ inf_table <- tibble(
 op_table <- bind_rows(bp_policy_t, r_table, 
  feno_table, inf_table)
 
-colnames(op_table) <- c(" ", " ", "Obs", "ATT", "(95% CI)", 
-  "ATT", "(95% CI)")
+# write table to outputs file
+write_rds(op_table, here("outputs", "op-table.rds"))
+
+colnames(op_table) <- c(" ", " ", "Obs", "ATT", "(95% CI)", "ATT", "(95% CI)")
 
 tt(op_table,
    digits = 2,
    #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
-   notes = list("Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects, Obs = observations, pp = percentage points, ppb = parts per billion.", a = list(i=0, j=6, text = "ETWFE models for blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Self-reported respiratory outcomes adjusted for age, gender, and smoking. Measured respiratory outcome (FeNO) adjusted age, gender, body mass index, frequency of drinking, tobacco smoking, and frequency of exercise, occupation, time of measurement. Inflammatory marker outcome models adjusted for age, waist circumference, occupation, wealth index quantile, frequency of drinking, tobacco smoking, and frequency of farming." ))) %>%
+   notes = list("Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects, Obs = observations, pp = percentage points, ppb = parts per billion.", a = list(i=0, j=6, text = "ETWFE models for blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Self-reported respiratory outcomes adjusted for age, gender, and smoking. Measured respiratory outcome (FeNO) adjusted age, gender, body mass index, frequency of drinking, smoking, and frequency of exercise, occupation, time of measurement. Inflammatory marker outcome models adjusted for age, waist circumference, occupation, wealth index quantile, frequency of drinking, tobacco smoking, and frequency of farming." ))) %>%
   group_tt(
     j = list("DiD" = 4:5, 
              "Adjusted DiD" = 6:7),
-    i = list("Blood pressure (mmHg)" = 1, 
+    i = list("Blood pressure" = 1, 
              "Respiratory outcomes" = 9,
-             "Inflammatory markers (%)" = 16)) %>%
+             "Inflammatory markers" = 16)) %>%
   style_tt(i = c(1, 10, 18), align = "l", bold=T) %>%
   style_tt(
     i = c(2, 4, 6, 8), j = 1, 
     rowspan = 2, alignv = "t") %>%
   style_tt(
     i = 11, j = 1, rowspan = 6, alignv = "t") %>%
+  style_tt(
+    i = 19, j = 1, rowspan = 4, alignv = "t") %>%
   style_tt(j = 1:7, align = "llccccc") %>%
   format_tt(escape = TRUE) %>%
   format_tt(j=c(4,6), sprintf = "%.2f") 
@@ -2157,6 +2162,71 @@ tt(temp_table@data,
   format_tt(escape = TRUE)
 
 ```
+
+\newpage
+
+## Retrospective design analysis
+### All outcomes
+@tbl-rd shows the results of a design-based analysis [@gelman2014] for different hypothetical effect sizes, conditional on our design and sample size.
+
+```{r, message=FALSE}
+#| echo: FALSE
+#| label: tbl-rd
+#| tbl-cap: Design-based analysis for various hypothetical effect sizes.
+#| tbl-pos: H
+
+library(retrodesign)
+
+# load results from design analysis
+rp_table <- readRDS(here("outputs", 
+  "bhet-retro.rds")) |>
+  select(-significant) |>
+  relocate(mp, .after = es)
+
+colnames(rp_table) <- c(" ", " ", "Estimate", "SE", 
+  "Effect", "Power (%)", "S-bias", "M-bias")
+
+tt(rp_table,
+   notes = list("Note: BP = Blood Pressure, pp = percentage points, ppb = parts per billion, SE = Standard Error", 
+  a = list(i=0, j=7, text = "Assuming the true effect size and our study design and sample size, the probability that an observed estimate will have the wrong sign."), 
+  b = list(i=0, j=8, text = "Assuming the true effect size and our study design and sample size, the ratio by which an observed estimate will exaggerate the true effect.")
+  )) %>%
+  group_tt(
+    j = list("Observed Results" = 3:4, 
+             "Hypothetical Design Analysis" = 5:8),
+    i = list("Blood pressure (mmHg)" = 1, 
+             "Respiratory outcomes" = 9,
+             "Inflammatory markers (%)" = 16)) %>%
+  style_tt(i = c(1, 10, 18), align = "l", bold=T) %>%
+  style_tt(
+    i = c(2, 4, 6, 8), j = 1, 
+    rowspan = 2, alignv = "t") %>%
+  style_tt(
+    i = 11, j = 1, rowspan = 6, alignv = "t") %>%
+  style_tt(
+    i = 19, j = 1, rowspan = 4, alignv = "t") %>%
+  style_tt(j = 1:7, align = "llccccc") %>%
+  format_tt(escape = TRUE) %>%
+  format_tt(j=c(3,4,5,6,8), sprintf = "%0.1f") %>%
+  format_tt(j = 7, sprintf = "%0.2f") %>%
+  theme_tt("resize", width = 0.9)
+```
+
+\newpage
+### Blood pressure
+
+@fig-rd-bp show the range of estimates for power, sign-bias, and effect exaggeration for several hypothetical effect sizes for the impact of the program on blood pressure, conditional on our study design and sample size (standard error of 1 mmHg).
+
+```{r, out.width = "80%"}
+#| echo: FALSE
+#| fig-cap-location: top
+#| label: fig-rd-bp
+#| fig-cap: Power, sign-bias, and exaggeration ratios for various hypothetical effects of the policy on blood pressure, given our study design.
+
+knitr::include_graphics(here("images", 
+  "rd-plot.png"))
+```
+
 
 \newpage
 

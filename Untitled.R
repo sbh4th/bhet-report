@@ -1,110 +1,144 @@
 library(here)
-library(osfr)
 library(tidyverse)
-library(kableExtra)
-library(modelsummary)
-library(readxl)
-library(marginaleffects)
-library(tinytable)
-library(tidymodels)
+library(osfr)
+library()
 
-options(knitr.kable.NA = "\\")
-tx <- tibble(
-  p = factor(rep(c("New recruitment",
-                   "Wave 1 households", "Wave 2 households",
-                   "Total recruitment"),2), levels = c("New recruitment",
-                                                       "Wave 1 households", "Wave 2 households",
-                                                       "Total recruitment")),
-  g = c(1,1,1,1,2,2,2,2),
-  s1 = c(977,NA,NA,977, 0,NA,NA,0),
-  s2 = c(196,866,NA, 1062, 300, 0,NA, 300),
-  s4 = c(68, 780, 162, 1010, 52, 0, 248, 300)
-)
+d <- read_csv(here("data-clean", 
+  "BHET_master_data_22Jul2024.csv"),
+  col_select = c("hh_id", "ptc_id", "gender_health",
+    "ban_status_no", "age_health", "education_health",
+    "smoking", "freq_drink", "sys_brachial", 
+    "dia_brachial", "waist_circ", "height",
+    "weight", "temp", "wave", "PM25conc_exposureugm3",
+    "freq_cough", "freq_phlegm", "freq_wheezing", 
+    "freq_breath", "freq_no_chest"))
 
-tx2 <- tx %>% pivot_wider(names_from = g,
-                          values_from = c(s1, s2, s4), 
-                          names_vary = "slowest") %>%
-  mutate(s3_2 = c(0,0,246,246)) %>%
-  relocate(p,s1_1,s2_1,s4_1,s1_2,s2_2,s3_2,s4_2)
+## Add wealth index data ====
+## retrieve processed data node
+bhet_processed <- osf_retrieve_node("b4wze")
+ 
+## download from OSF
+wealth_dl <- osf_ls_files(bhet_processed) %>%
+  filter(name == "Wealth Index") %>%
+  osf_ls_files() %>%
+  filter(name == "BHET_PCA_11Oct2023.csv") %>%
+  osf_download(path = "data-clean",
+               conflicts = "overwrite")
+ 
+## read in file
+dwi <- read_csv(here("data-clean", "BHET_PCA_11Oct2023.csv")) 
 
-kable(tx2, 
-      col.names = c("Sample", "Wave 1", "Wave 2", "Wave 4", 
-                    "Wave 1", "Wave 2", "Wave 3", "Wave 4"),
-      "latex", booktabs = T) %>%
-  kable_styling() %>%
-  add_header_above(c(" " = 1, 
-                     "Overall" = 3, "Indoor" = 4))
+dwi <- dwi %>%
+  # create quantiles of wealth by wave
+  group_by(wave) %>%
+  mutate(quintile = as.integer(cut(wealth_index, 
+    quantile(wealth_index, probs = c(0, 0.25, 0.5, 0.75, 1), na.rm = T), 
+    labels = c(1:4), include.lowest = T))) %>%
+  ungroup()
 
-dst <- read_csv(here("data-clean", 
+d <- read_csv(here("data-clean", 
   "BHET_master_data_05Mar2024.csv"),
-  col_select = c("wave", "gender_health", "age_health",
-      "smoking", "waist_circ", "height", "ptc_id",
-      "weight", "lived_with_smoker", "ID_VILLAGE")) %>%
-  filter(wave != 3) %>%
-  add_count(ptc_id) %>%
-  mutate(wave = as.factor(n),
-    bmi = (weight / (height/100)^2),
-    female = if_else(gender_health == 2 & !is.na(gender_health),
-      1, 0),
-    csmoke = if_else(smoking==1 & !is.na(smoking), 1, 0),
-    asmoke = if_else(smoking < 3, 1, 
-      if_else(smoking==3 & lived_with_smoker %in% 
-      c(2,3), 1, 0))) %>%
-  mutate(across(c(female, csmoke, asmoke), as.integer))
+  col_select = c("hh_id", "ptc_id", "gender_health",
+    "ban_status_no", "age_health", "education_health",
+    "smoking", "freq_drink", "sys_brachial", 
+    "dia_brachial", "waist_circ", "height",
+    "weight", "temp", "wave", "PM25conc_exposureugm3",
+    "freq_cough", "freq_phlegm", "freq_wheezing", 
+    "freq_breath", "freq_no_chest", "ID_VILLAGE",
+    "ban_status_composite"))
+
+dwi <- read_csv(here("data-clean", "BHET_PCA_11Oct2023.csv")) 
+
+# create quantiles of wealth by wave
+dwi <- dwi %>%
+  group_by(wave) %>%
+  mutate(wq = as.integer(cut(wealth_index, 
+    quantile(wealth_index, probs = c(0, 0.25, 0.5, 0.75, 1), na.rm = T), 
+    labels = c(1:4), include.lowest = F))) %>%
+  ungroup()
+
+dwi %>%
+  group_by(wq) %>% tally()
+
+dt <- d %>%
+  left_join(dwi, by = c("hh_id", "ptc_id", "wave")) %>%
+  # restrict to baseline
+  # filter(wave==1) %>%
+  # select variables for inclusion
+  # select(ban_status_no, age_health, )
+  mutate(ever_trt = ifelse(ban_status_no==0, 1 ,0),
+    et = recode_factor(ever_trt, `0` = "Never treated", 
+      `1` = "Ever treated"),
+    post = wave > 1, 1, 0,
+    cohort_year = if_else(
+      ban_status_composite==1, 2019, 
+      if_else(ban_status_composite==2, 2020, 
+              if_else(ban_status_composite==3, 2021, 2022))))
+,
+    `Age (years)` = age_health,
+    `Female (%)` = ifelse(gender_health==2, 100, 0),
+    `No education (%)` = ifelse(education_health==4, 100, 0),
+    `Primary education (%)` = ifelse(education_health==1, 100, 0),
+    `Secondary+ education (%)` = ifelse(
+      education_health %in% c(2,3), 100, 0),
+    `Wealth index (bottom 25%)` = ifelse(wq==1, 100, 0),
+    `Wealth index (25-50%)` = ifelse(wq==2, 100, 0),
+    `Wealth index (50-75%)` = ifelse(wq==3, 100, 0),
+    `Wealth index (top 25%)` = ifelse(wq==4, 100, 0)
+ 
+## add to master
+master2 <- master1 %>%
+  left_join(master_WI, by = c("hh_id", "ptc_id", "wave"))
 
 
-infer::chisq_test(dst, nwaves ~ female)
 
-ds %>%
-  infer::specify(bmi ~ wave) %>%
-  fit() %>%
-  get_p_value(direction = "two-sided")
+rp_table <- bind_rows(bp_policy_t, r_table, 
+  feno_table, inf_table) %>% 
+  select(-nobs, -estimate_1, -ci_1) %>% 
+  mutate(
+    ll = as.numeric(sub(
+      ".*,\\s*(-?\\d+\\.\\d+)\\)", "\\1", ci_2)),
+    ul = as.numeric(sub(
+      "\\((-?\\d+\\.\\d+),.*", "\\1", ci_2)), 
+    se = abs(ll - ul) / (2 * 1.96)) %>%
+  select(category, outcome, estimate_2, se) %>%
+  mutate(es = c(3, 3, 2, 2, 0.5, 0.5, 
+    0.1, 0.1, 5, 2, 3, 1, 3, 1, 2,
+    2, 2, 2, 2))
 
+# Apply the function row-wise and collect results
+rp_table2 <- rp_table %>%
+  rowwise() %>%
+  mutate(results = list(retro_design_closed_form(
+    es, se))) %>%
+  unnest_wider(results) 
+%>%
+  mutate(op = 100 * power)
 
-kable(otm, digits = 2, longtable = T,
-      col.names = c("", "ATT", "(95%CI)",
-                    "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
-      align = 'lcccccc') %>%
-  kable_styling(font_size = 10,
-                latex_options = "HOLD_position") %>%
-  add_header_above(c(" " = 3, 
-                     "Indoor PM" = 2, "Indoor Temp" = 2, "PM + Temp" = 2)) %>%
-  add_header_above(c(" " = 1, 
-                     "Adjusted Total Effect\\\\textsuperscript{a}" = 2,
-                     "CDE Mediated By:\\\\textsuperscript{b}" = 6),
-                   escape = F) %>%
-  footnote(
-    general = "\\\\small{}",
-    alphabet = c("\\\\small{Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.}", "\\\\small{Mediators were set to the mean value for untreated participants at baseline.}"), 
-    general_title = "", threeparttable = T, escape = F)
+colnames(rp_table2) <- c(" ", " ", "Estimate", "SE", 
+  "Effect", "Power", "S-bias", "M-bias")
 
-colnames(otm) <- c("", "ATT", "(95%CI)", "ATT", 
-  "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)")
-
-tt(otm,
+tt(rp_table2,
    digits = 2,
    #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
-   notes = list("Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.", a = list(i=0, j=2, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), b = list(i=0, j=c(4,6,8), text = "Mediators were set to the mean value for untreated participants at baseline."))) %>%
+   notes = list("Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects, Obs = observations, pp = percentage points, ppb = parts per billion.", a = list(i=0, j=6, text = "ETWFE models for blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Self-reported respiratory outcomes adjusted for age, gender, and smoking. Measured respiratory outcome (FeNO) adjusted age, gender, body mass index, frequency of drinking, smoking, and frequency of exercise, occupation, time of measurement. Inflammatory marker outcome models adjusted for age, waist circumference, occupation, wealth index quantile, frequency of drinking, tobacco smoking, and frequency of farming." ))) %>%
   group_tt(
-    j = list("Indoor PM" = 4:5,
-             "Indoor Temp" = 6:7,
-             "PM + Temp" = 8:9)) %>%
-  group_tt(
-    j = list("Adjusted Total Effect\\\\textsuperscript{a}" = 2:3,
-             "CDE Mediated By:" = 4:9)) %>%
-  style_tt(j = 1:9, align = "lcccccccc") %>%
-  format_tt(escape = TRUE) 
-%>%
-
+    j = list("Observed" = 3:4, 
+             "Design results" = 6:8),
+    i = list("Blood pressure (mmHg)" = 1, 
+             "Respiratory outcomes" = 9,
+             "Inflammatory markers (%)" = 16)) %>%
   style_tt(i = c(1, 10, 18), align = "l", bold=T) %>%
   style_tt(
     i = c(2, 4, 6, 8), j = 1, 
     rowspan = 2, alignv = "t") %>%
   style_tt(
     i = 11, j = 1, rowspan = 6, alignv = "t") %>%
-  style_tt(j = 1:6, align = "llcccc") %>%
+  style_tt(j = 1:7, align = "llccccc") %>%
   format_tt(escape = TRUE) %>%
-  format_tt(j=c(3,5), sprintf = "%.2f") 
+  format_tt(j=c(3,5,8), sprintf = "%.1f") %>%
+  format_tt(j = 6, sprintf = "%0.1f%%")
 
+e_out <- rp_table$e
 
-
+estimate_rp(c(""))

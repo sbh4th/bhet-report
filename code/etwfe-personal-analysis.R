@@ -148,13 +148,13 @@ bp_etwfe <-
         treat:cohort_year_2020:year_2021 +
         treat:cohort_year_2021:year_2021 +
         cohort_year_2019 + cohort_year_2020 +
-        cohort_year_2021 + year_2019 + year_2021,,
+        cohort_year_2021 + year_2019 + year_2021,
       prior = c(prior(skew_normal(100, 150, 20), class = Intercept),
                 prior(normal(0, 10), class = b),
                 prior(exponential(1), class = sd)),        
       iter = 2000, warmup = 1000, chains = 4, cores = 4,
       sample_prior = "yes",
-      seed = 3740,
+      seed = 2084,
       file = "code/fits/personal-pm-etwfe")
 
 ## check the chains
@@ -241,14 +241,14 @@ bp_etwfe_a <-
         treat:cohort_year_2021:year_2021 +
         cohort_year_2019 + cohort_year_2020 +
         cohort_year_2021 + year_2019 + year_2021 +
-        hh_num + smoker + lwsmoker +
+        hh_num + ptc_smoking +
         outdoor_temp_24h + outdoor_dew_24h,
       prior = c(prior(skew_normal(100, 150, 20), class = Intercept),
                 prior(normal(0, 10), class = b),
                 prior(exponential(1), class = sd)),        
       iter = 2000, warmup = 1000, chains = 4, cores = 4,
       sample_prior = "yes",
-      seed = 1389,
+      seed = 49,
       file = "code/fits/personal-pm-etwfe-a")
 
 ## load brms model
@@ -274,13 +274,151 @@ att_did_a <- att_table(preds = bme_pred_a,
   meffs = bme_avg_a)
 
 modelsummary(list("ETWFE" = att_did,
-  "Adj. ETWFE" = att_did_a), fmt=1,
+  "Adj. ETWFE" = att_did_a,
+  "ETWFE M" = att_did_m), fmt=1,
   statistic = "conf.int",
   )
 
 
+## ETWFE models, 
+bp_etwfe_m <-
+  brm(data = d_personal, 
+      family = skew_normal(),
+      pe | mi() ~ 1 + (1 | v_id) +
+        treat:cohort_year_2019:year_2019 + 
+        treat:cohort_year_2019:year_2021 +
+        treat:cohort_year_2020:year_2021 +
+        treat:cohort_year_2021:year_2021 +
+        cohort_year_2019 + cohort_year_2020 +
+        cohort_year_2021 + year_2019 + year_2021,
+      prior = c(prior(skew_normal(100, 150, 20), class = Intercept),
+                prior(normal(0, 10), class = b),
+                prior(exponential(1), class = sd)),        
+      iter = 2000, warmup = 1000, chains = 4, cores = 4,
+      sample_prior = "yes",
+      seed = 498)
 
 
+
+bme_pred_m <- predictions(
+  bp_etwfe_m, 
+  newdata   = subset(d_personal, treat==1),
+  variables = "treat", 
+  by        = "treat"
+  )
+
+bme_avg_m <- slopes(
+  bp_etwfe_m, 
+  newdata   = subset(d_personal, treat==1),
+  variables = "treat", 
+  by        = "treat"
+  ) 
+
+att_did_m <- att_table(preds = bme_pred_m, 
+  meffs = bme_avg_m)
+
+bp_etwfe_default <-
+  brm(data = d_personal, 
+      family = skew_normal(),
+      pe ~ 1 + (1 | v_id) +
+        treat:cohort_year_2019:year_2019 + 
+        treat:cohort_year_2019:year_2021 +
+        treat:cohort_year_2020:year_2021 +
+        treat:cohort_year_2021:year_2021 +
+        cohort_year_2019 + cohort_year_2020 +
+        cohort_year_2021 + year_2019 + year_2021,        
+      iter = 2000, warmup = 1000, chains = 4, cores = 4,
+      sample_prior = "yes",
+      seed = 982)
+
+bme_pred_d <- predictions(
+  bp_etwfe_default, 
+  newdata   = subset(d_personal, treat==1),
+  variables = "treat", 
+  by        = "treat"
+  )
+
+bme_avg_d <- slopes(
+  bp_etwfe_default, 
+  newdata   = subset(d_personal, treat==1),
+  variables = "treat", 
+  by        = "treat"
+  ) 
+
+att_did_d <- att_table(preds = bme_pred_d, 
+  meffs = bme_avg_d)
+
+
+# with gaussian
+bp_etwfe_g <-
+  brm(data = d_personal, 
+      family = gaussian(),
+      pe ~ 1 + (1 | v_id) +
+        treat:cohort_year_2019:year_2019 + 
+        treat:cohort_year_2019:year_2021 +
+        treat:cohort_year_2020:year_2021 +
+        treat:cohort_year_2021:year_2021 +
+        cohort_year_2019 + cohort_year_2020 +
+        cohort_year_2021 + year_2019 + year_2021,        
+      iter = 2000, warmup = 1000, chains = 4, cores = 4,
+      sample_prior = "yes",
+      seed = 49679)
+
+bme_pred_g <- predictions(
+  bp_etwfe_g, 
+  newdata   = subset(d_personal, treat==1),
+  variables = "treat", 
+  by        = "treat"
+  )
+
+bme_avg_g <- slopes(
+  bp_etwfe_g, 
+  newdata   = subset(d_personal, treat==1),
+  variables = "treat", 
+  by        = "treat"
+  )
+
+att_did_g <- att_table(preds = bme_pred_g, 
+  meffs = bme_avg_g)
+
+
+bme_pred_ols <- predictions(
+  pe_ols, 
+  newdata   = subset(d_personal, treat==1),
+  variables = "treat", 
+  by        = "treat"
+  )
+
+bme_avg_ols <- slopes(
+  pe_ols, 
+  newdata   = subset(d_personal, treat==1),
+  variables = "treat", 
+  by        = "treat"
+  ) 
+
+att_did_ols <- att_table(preds = bme_pred_ols, 
+  meffs = bme_avg_ols)
+
+
+
+## BC
+bc_etwfe <-
+  brm(data = d_p, 
+      family = skew_normal(),
+      bc ~ 1 + (1 | v_id) +
+        treat:cohort_year_2019:year_2019 + 
+        treat:cohort_year_2019:year_2021 +
+        treat:cohort_year_2020:year_2021 +
+        treat:cohort_year_2021:year_2021 +
+        cohort_year_2019 + cohort_year_2020 +
+        cohort_year_2021 + year_2019 + year_2021,,
+      prior = c(prior(skew_normal(100, 150, 20), class = Intercept),
+                prior(normal(0, 10), class = b),
+                prior(exponential(1), class = sd)),        
+      iter = 2000, warmup = 1000, chains = 4, cores = 4,
+      sample_prior = "yes",
+      seed = 2084,
+      file = "code/fits/personal-pm-etwfe")
 
 
 estimate_etwfe <- function(
@@ -541,25 +679,6 @@ aph_table_i <- bind_rows(ap_table_i24h, ap_table_ish) %>%
 write_rds(aph_table_i, file = here("outputs", 
   "ap-het-table-indoor.rds"))
 
-# html table for design
-# kable(aph_table, digits = 2,
-#   col.names = c("Cohort", "Year", "ATT", "(95% CI)", 
-#    "ATT", "(95% CI)"), #"latex", booktabs = T,
-#   linesep = "") %>%
-#   kable_styling(full_width = F) %>%
-#   # collapse_rows(columns = 1:2, valign = "top") %>% 
-#   add_header_above(c(" " = 2, 
-#                     "PM2.5" = 2, "Black carbon" = 2)) %>%
-#   footnote(symbol=c(paste("Joint test that all ATTs are equal: ", 
-#     "F(", m_ppm$ht1$df1, ", ", m_ppm$ht1$df2, ")= " , 
-#     round(m_ppm$ht1$statistic, digits=3), ", p= ", 
-#     round(m_ppm$ht1$p.value, digits=3)), 
-#     paste("Joint test that all ATTs are equal: ", 
-#           "F(", m_pbc$ht1$df1, ", ", m_pbc$ht1$df2, ")= " ,
-#           round(m_pbc$ht1$statistic, digits=3), ", p= ", 
-#           round(m_pbc$ht1$p.value, digits=3))), 
-#     footnote_as_chunk = T) 
-
 
 ## 5 Impact of S3 air pollution data ----
 
@@ -718,6 +837,158 @@ pe_etwfe_nfe_me <- slopes(pe_etwfe_nfe,
 # put the results together in a table
 write_rds(pe_etwfe_nfe_me, file = here("outputs/models", 
   "pe_etwfe_nfe_me.rds"))
+
+
+
+## distribution tests
+
+d_personal_pred <- d_personal %>% 
+  filter(row_number() 
+  %in% obs(pe_gamma_feglm)) %>%
+  # add predicted E(y)
+  add_predictions(pe_gamma_feglm,
+    var = "pred_link", type = "link") %>%
+  # add predicted E(y) on the response scale
+  add_predictions(pe_gamma_feglm,
+    var = "pred_response", type = "response") %>%
+  add_residuals(pe_gamma_feglm) %>%
+  mutate(
+    resid_response = (pe - pred_response)^2,
+    log_resid_response = log(resid_response),
+    log_pred_response = log(pred_response),
+    log_scale_resid = log(pe) - pred_link)
+
+d_personal_park <- feglm(
+  resid_response ~ pred_link,
+  family=Gamma(link = "log"), 
+  data = d_personal_pred, cluster = ~v_id)
+
+avg_comparisons(d_personal_park, 
+  var = "pred_link", type = "link", 
+  hypothesis = c("b1 - 0 = 0",
+                 "b1 - 1 = 0", 
+                 "b1 - 2 = 0",
+                 "b1 - 3 = 0"))
+
+
+# OLS full model
+pe_adj_ols <- feols(
+  pe ~ treat:cohort_year_2019:year_2019 + 
+    treat:cohort_year_2019:year_2021 +
+    treat:cohort_year_2020:year_2021 +
+    treat:cohort_year_2021:year_2021 +
+    cohort_year_2019 + cohort_year_2020 +
+    cohort_year_2021 + year_2019 + year_2021 +
+    hh_num + ets_2 + ets_3 + ets_4 +
+    outdoor_temp_24h + outdoor_dew_24h,
+    data = d_personal, cluster = ~v_id)
+
+d_personal_pred <- d_personal %>% 
+  filter(row_number() 
+  %in% obs(pe_adj_ols)) %>%
+  # add predicted E(y)
+  add_predictions(pe_adj_ols) %>%
+  add_residuals(pe_adj_ols)
+
+d_personal_pred %>%
+  ggplot(aes(x = pred, y = resid)) +
+  geom_point(shape = 1) + theme_classic() +
+  geom_smooth(method = 'loess', se = T)
+
+# logged outcome model
+# OLS full model
+pe_adj_ols_logy <- feols(
+  logpe ~ treat:cohort_year_2019:year_2019 + 
+    treat:cohort_year_2019:year_2021 +
+    treat:cohort_year_2020:year_2021 +
+    treat:cohort_year_2021:year_2021 +
+    cohort_year_2019 + cohort_year_2020 +
+    cohort_year_2021 + year_2019 + year_2021 +
+    hh_num + ets_2 + ets_3 + ets_4 +
+    outdoor_temp_24h + outdoor_dew_24h,
+    data = d_personal, cluster = ~v_id)
+
+d_personal_pred <- d_personal %>% 
+  filter(row_number() 
+  %in% obs(pe_adj_ols_logy)) %>%
+  add_predictions(pe_adj_ols_logy) %>%
+  add_residuals(pe_adj_ols_logy)
+
+d_personal_pred %>%
+  ggplot(aes(x = pred, y = resid)) +
+  geom_point(shape = 1) + theme_classic() +
+  geom_smooth(method = 'loess', se = T)
+
+
+pe_adj_logn <- feglm(
+  pe ~ treat:cohort_year_2019:year_2019 + 
+    treat:cohort_year_2019:year_2021 +
+    treat:cohort_year_2020:year_2021 +
+    treat:cohort_year_2021:year_2021 +
+    cohort_year_2019 + cohort_year_2020 +
+    cohort_year_2021 + year_2019 + year_2021 +
+    hh_num + ets_2 + ets_3 + ets_4 +
+    outdoor_temp_24h + outdoor_dew_24h,
+    data = d_personal, cluster = ~v_id,
+    family = gaussian(link = "log"))
+
+d_personal_pred <- d_personal %>% 
+  filter(row_number() 
+  %in% obs(pe_adj_logn)) %>%
+  add_predictions(pe_adj_logn) %>%
+  add_residuals(pe_adj_logn)
+
+d_personal_pred %>%
+  ggplot(aes(x = pred, y = resid)) +
+  geom_point(shape = 1) + theme_classic() +
+  geom_smooth(method = 'loess', se = T)
+
+
+pe_adj_gamma <- feglm(
+  pe ~ treat:cohort_year_2019:year_2019 + 
+    treat:cohort_year_2019:year_2021 +
+    treat:cohort_year_2020:year_2021 +
+    treat:cohort_year_2021:year_2021 +
+    cohort_year_2019 + cohort_year_2020 +
+    cohort_year_2021 + year_2019 + year_2021 +
+    hh_num + ets_2 + ets_3 + ets_4 +
+    outdoor_temp_24h + outdoor_dew_24h,
+    data = d_personal, cluster = ~v_id,
+    family = Gamma(link = "log"))
+
+d_personal_pred <- d_personal %>% 
+  filter(row_number() 
+  %in% obs(pe_adj_gamma)) %>%
+  add_predictions(pe_adj_gamma) %>%
+  add_residuals(pe_adj_gamma)
+
+d_personal_pred %>%
+  ggplot(aes(x = pred, y = resid)) +
+  geom_point(shape = 1) + theme_classic() +
+  geom_smooth(method = 'loess', se = T)
+
+pe_adj_gamma <- feglm(
+  pe ~ treat:cohort_year_2019:year_2019 + 
+    treat:cohort_year_2019:year_2021 +
+    treat:cohort_year_2020:year_2021 +
+    treat:cohort_year_2021:year_2021 +
+    cohort_year_2019 + cohort_year_2020 +
+    cohort_year_2021 + year_2019 + year_2021 +
+    hh_num + ets_2 + ets_3 + ets_4 +
+    outdoor_temp_24h + outdoor_dew_24h,
+    data = d_personal, cluster = ~v_id,
+    family = Gamma(link = "log"))
+
+d_personal_pred <- d_personal %>% 
+  filter(row_number() 
+  %in% obs(pe_adj_gamma)) %>%
+  add_predictions(pe_adj_gamma) %>%
+  add_residuals(pe_adj_gamma)
+
+d_personal_pred %>%
+  ggplot(aes(x = pred, y = resid)) +
+  geom_point(shape = 1) + theme_classic() +
+  geom_smooth(method = 'loess', se = T)
 
 
 

@@ -137,4 +137,4 @@ rp_plot <- p_plot / (s_plot + m_plot)
 
 # save to images folder
 ggsave(here("images", "rd-plot.png"), 
-  plot=rp_plot, width=8.5, height=11)
+  plot=rp_plot, width=8, height=8)

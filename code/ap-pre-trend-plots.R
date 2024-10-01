@@ -41,14 +41,14 @@ d_bc <- read_rds(here("data-clean",
 ### Personal exposure
 
 # Limit to pre-intervention years/cohort
-d_p_r <- d_p %>% 
+d_p_r <- d_personal %>% 
   filter(year < 2021 & cohort_year_2019==0) %>%
   mutate(tc = factor(ban_status_composite, 
     labels = c("Never", "2020", "2021")))
 
 # estimate model
-pt_p <- glm(PM25conc_exposureugm3 ~ year * tc,
-            data = d_p_r)
+pt_p <- glm(pe ~ year * tc,
+  data = d_p_r, family = gaussian(link = "log"))
 
 # Time trends by treatment status
 avg_comparisons(pt_p, 

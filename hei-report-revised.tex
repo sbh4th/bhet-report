@@ -225,7 +225,7 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-09-06}
+\date{2024-09-30}
 
 \begin{document}
 \maketitle
@@ -1569,8 +1569,8 @@ Characteristic & Wave 1 (2018-19) N=1003 & Wave 2 (2019-20) N=1110 & Wave 4 (202
 Female, n (\%) & 580 (57.8) & 653 (58.8) & 612 (59.5) & 0.616 & 0.735 \\
 Current smoker, n (\%) & 257 (25.6) & 295 (26.6) & 265 (25.8) & 0.292 & 0.864 \\
 Any smoke exposure, n (\%) & 795 (79.3) & 898 (80.9) & 857 (83.4) & 5.616 & 0.060 \\
-Age in years, Mean (SD) & 26.1 (3.7) & 25.7 (3.5) & 26.1 (4.0) & 3.273 & 0.076 \\
-BMI (kg/m2), Mean (SD) & 60.1 (9.3) & 61.1 (9.1) & 63.3 (9.0) & 31.980 & 0.000 \\
+Age in years, Mean (SD) & 60.1 (9.3) & 61.1 (9.1) & 63.3 (9.0) & 31.980 & 0.000 \\
+BMI (kg/m2), Mean (SD) & 26.1 (3.7) & 25.7 (3.5) & 26.1 (4.0) & 3.273 & 0.076 \\
 Waist circumference (cm), Mean (SD) & 86.8 (10.2) & 87.4 (9.4) & 91.4 (10.7) & 54.035 & 0.000 \\
 \bottomrule
 \end{talltblr}
@@ -1901,16 +1901,17 @@ temperature)}\label{impact-of-policy-on-potential-mediators-air-pollution-and-in
 The average marginal effect (\(ATT\)) from the basic ETWFE model
 (Table~\ref{tbl-did-med}) shows that exposure to the CBHP policy reduced
 24h indoor PM\textsubscript{2.5} by -19 µg/m\textsuperscript{3} (95\%CI:
--61, 22). After adjusting outdoor temperature, dewpoint, household
+-56, 18). After adjusting outdoor temperature, dewpoint, household
 smoking status, and the number of residents in each household, the
-\(ATT\) decreased to -14 µg/m\textsuperscript{3} (95\%CI: -54, 26). The
+\(ATT\) was -20 µg/m\textsuperscript{3} (95\%CI: -46, 6). The basic DiD
 impact was stronger on seasonal indoor PM\textsubscript{2.5}, with an
-average \(ATT\) of -36 µg/m\textsuperscript{3} (95\%CI: -61, -12) that
-was robust to covariate adjustment. This finding likely reflects the
-direct benefit of the policy in replacing coal stoves and air quality
-improvement. We found little evidence of heterogeneity in \(ATT\)s
-across cohort and time (all p-values \textgreater{} 0.385 for tests of
-heterogeneity, see Appendix Table~\ref{tbl-a-het-indoor}).
+average \(ATT\) of -31 µg/m\textsuperscript{3} (95\%CI: -53, -9). After
+adjustment the average \(ATT\) on seasonal indoor PM\textsubscript{2.5}
+was -20 µg/m\textsuperscript{3} (95\%CI: -38, -3). This finding likely
+reflects the direct benefit of the policy in replacing coal stoves and
+air quality improvement. We found little evidence of heterogeneity in
+\(ATT\)s across cohort and time (all p-values \textgreater{} 0.4 for
+tests of heterogeneity, see Appendix Table~\ref{tbl-a-het-indoor}).
 
 \begin{table}
 
@@ -1931,7 +1932,7 @@ Mar.~15th.}
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
 note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences.},
-note{a}={Extended two-way fixed effects models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted.},
+note{a}={Extended two-way fixed effects models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor dewpoint. Temperature models not additionally adjusted.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
@@ -1969,21 +1970,21 @@ column{7}={halign=c,},
 \toprule
 &  &  & DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
 &  & Obs & ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
-Air pollution &&&&&& \\
-Personal & PM2.5 & 1281 & -2.09 & (-29.38, 25.20) & 1.95 & (-23.34, 27.23) \\
-Personal & Black carbon & 1263 & -0.46 & (-1.73, 0.81) & -0.43 & (-1.67, 0.81) \\
-Indoor & Daily &  411 & -19.10 & (-60.56, 22.35) & -14.20 & (-53.94, 25.54) \\
-Indoor & Seasonal &  411 & -35.11 & (-59.36, -10.85) & -36.19 & (-60.74, -11.65) \\
-Outdoor & Daily &  & -0.11 & (-5.86, 5.64) & -1.73 & (-9.26, 5.81) \\
-Outdoor & Seasonal &  & 3.14 & (-3.1, 9.38) & 0.36 & (-6.27, 6.99) \\
-Indoor temperature &&&&&& \\
-Point & Mean &  & 1.96 & (0.96, 2.96) &  &  \\
-Seasonal & Mean (all) &  & 0.64 & (0.00, 1.29) &  &  \\
-Seasonal & Mean (daytime) &  & 0.82 & (-0.08, 1.72) &  &  \\
-Seasonal & Mean (heating season) &  & 1.80 & (0.96, 2.64) &  &  \\
-Seasonal & Mean (daytime heating season) &  & 1.85 & (0.97, 2.73) &  &  \\
-Seasonal & Min. (all) &  & 3.83 & (2.26, 5.39) &  &  \\
-Seasonal & Min. (heating season) &  & 3.72 & (2.19, 5.25) &  &  \\
+Air pollution (µg/m3) &&&&&& \\
+Personal & PM2.5 & 1263 & -2.9 & (-25.8, 19.9) & 0.5 & (-19.1, 20.2) \\
+Personal & Black carbon & 1142 & -0.6 & (-1.7, 0.6) & -0.4 & (-1.5, 0.7) \\
+Indoor & Daily PM2.5 &  399 & -18.9 & (-56.1, 18.4) & -20.0 & (-45.6, 5.5) \\
+Indoor & Seasonal PM2.5 &  366 & -30.9 & (-53.2, -8.7) & -20.3 & (-37.5, -3.0) \\
+Outdoor & Daily PM2.5 &  & -0.1 & (-5.86, 5.64) & -1.7 & (-9.26, 5.81) \\
+Outdoor & Seasonal PM2.5 &  & 3.1 & (-3.1, 9.38) & 0.4 & (-6.27, 6.99) \\
+Indoor temperature (°C) &&&&&& \\
+Point & Mean &  & 2.0 & (1.0, 3.0) &  &  \\
+Seasonal & Mean (all) &  & 0.6 & (0.0, 1.3) &  &  \\
+Seasonal & Mean (daytime) &  & 0.8 & (-0.1, 1.7) &  &  \\
+Seasonal & Mean (heating season) &  & 1.8 & (1.0, 2.6) &  &  \\
+Seasonal & Mean (daytime heating season) &  & 1.9 & (1.0, 2.7) &  &  \\
+Seasonal & Min. (all) &  & 3.8 & (2.3, 5.4) &  &  \\
+Seasonal & Min. (heating season) &  & 3.7 & (2.2, 5.3) &  &  \\
 \bottomrule
 \end{talltblr}
 
@@ -2955,17 +2956,19 @@ verified (similar to the assumption of no unmeasured confounding).
 However,\comment{EC 4a} given that we had two pre-intervention periods
 prior to the 2021 cohort being treated, we assessed the similarity of
 pre-intervention trends between w1 and w2 for the never treated group
-and the group eventually treated in 2021. Estimates and 95\% CIs for the
-difference in pre-trends are given in the Appendix for BP outcomes
-(Figure~\ref{fig-afig-pt3} and Figure~\ref{fig-afig-pt4}), personal
-exposure to PM\textsubscript{2.5} and black carbon
-(Figure~\ref{fig-afig-pt5}), and self-reported respiratory outcomes
-(Figure~\ref{fig-afig-pt6}). We found little strong evidence for
-systematic differences in pre-trends for any outcome, but some estimates
-were imprecise and tests for pre-trends are generally considered to have
-low power (Roth 2022). We also adjusted for relevant time-varying
-confounders in estimating total effects and in mediation analyses, which
-aims to improve the credibility of parallel trends assumption.
+and the groups eventually treated in 2020 and 2021. Estimates and 95\%
+CIs for the difference in pre-trends are given in the Appendix for BP
+outcomes (\textbf{?@fig-afig-pt-bp}), personal exposure to
+PM\textsubscript{2.5} and black carbon (\textbf{?@fig-afig-pt-pebc}),
+and self-reported respiratory outcomes (Figure~\ref{fig-afig-pt-resp}).
+Pre-trends in BP were nearly identical for all groups (all
+\emph{p}-values for differences were \textgreater{} 0.7). We found
+little strong evidence for systematic differences in pre-trends for any
+outcome, but some estimates were imprecise and tests for pre-trends are
+generally considered to have low power (Roth 2022). We also adjusted for
+relevant time-varying confounders in estimating total effects and in
+mediation analyses, which aims to improve the credibility of parallel
+trends assumption.
 
 We also note that, in general, the addition of covariates to our
 ``basic'' ETWFE models did not appreciably change our estimates.
@@ -3092,6 +3095,77 @@ that is less likely to be biased by participant or staff awareness of
 treatment status because our staff consistently followed strict quality
 control guidelines for measurement across all study villages and homes,
 regardless of treatment status.
+
+Finally, some remarks concerning power and uncertainty. We do not
+distinguish our results based on traditional notions of ``statistical
+significance'' (Wasserstein et al. 2019), but given the large number of
+outcomes and wide range of reported estimates and uncertainties,
+questions about the power of our design are relevant. However, using
+observed effect sizes to ask questions about power (sometimes called
+`post-hoc power calculations') is illogical given the direct
+relationship between power and observed p-values or confidence limits
+(Hoenig and Heisey 2001). Instead we aim to put our results in context
+using a retrospective design analysis (Gelman and Carlin (2014)).
+Retrospective design analyses use plausible values for hypothetical
+effect sizes to ask about the strength of evidence a replicated study
+with our design and level of precision would be likely to provide. The
+main quantities for a design analysis include the probability that the
+replicated estimate would be ``statistically significant'' (power), the
+probability that the replicated estimate would have the wrong sign
+(``S-bias''), and the ratio of the replicated estimate divided by the
+true effect size (the ``exaggeration ratio'' or ``M-bias''). We report
+these values for a range of conservative, but plausible effect sizes
+below.
+
+For blood pressure we used a value of a 1.5 mmHg decrease in systolic or
+a 1 mmHg decrease in diastolic {[}maybe cite Jill's 2022 paper in Am J
+Hypertension?{]}. \emph{Not sure exactly what makes sense for PP or BP
+Amp}. For self-reported respiratory outcomes we assumed hypothetical
+effects on the order of a 10\% decline for each outcome (translated into
+absolute percentage point declines), and for inflammatory markers we
+hypothesized a true effect of a decline of roughly 2 percentage points.
+
+The full results for all health outcomes are shown in the Supplement
+(Table~\ref{tbl-rd}). As an example, consider our estimate of the 8.1
+percentage point decrease in any respiratory symptom (95\% CI 2.9,
+13.3). Assuming that the true effect of the policy was a reduction of 5
+percentage points, a replicated estimate with our design features and
+precision would have virtually no chance of reporting the wrong sign
+(S-bias = 0), and in expectation the estimated effect will be only 1.4
+times too high. Similarly, if the true effect of the policy on brachial
+systolic BP was a small reduction of 1.5 mmHg, a replication of our
+study design would have roughly 34\% power, a 9\% chance of having the
+wrong sign, and an average exaggeration ratio of just 0.7, meaning it
+would be unlikely to exaggerate the true effect.
+
+The greater precision for blood pressure and respiratory outcomes lends
+greater confidence to these estimated impacts. On the other hand, our
+estimates of the impact on inflammatory markers contain substantial
+uncertainty (large SEs). For example, our adjusted ATT for the effect of
+the policy on TNF-alpha was an implausibly large increase of 24.3\% (p =
+0.08). Table~\ref{tbl-rd} shows that if the true effect on TNF-alpha is
+a modest 2\% decline, a replication using our design and level of
+precision will have a 45\% chance of having the wrong sign, and the
+estimated effect will on average be nearly 5 times too high. Because we
+chose generally conservative values for hypothetical effects, design
+analyses with larger hypothetical true effects would tend to show
+greater power, lower likelihood of reporting the wrong sign, and less
+exaggerated effects.
+
+Because of the inherent uncertainty surrounding hypothesized ``true''
+effects, it often makes sense to conduct retrospective design analyses
+for a range of effect sizes. We show estimates for BP reductions of 0 to
+4 mmHg in \textbf{?@fig-rd}. The HEI-funded objectives of this study
+were designed based on pre-study power calculations for blood pressure
+reductions of roughly 0.25 standard deviations (roughly 4mmHg for older
+rural population with an average SD of 16 mmHg). \textbf{?@fig-rd} shows
+that if the true effect of the policy were similar to our pre-study
+estimates of 0.25 SD difference in systolic BP, a study with our level
+of precision would have \textgreater90\% power, virtually no chance of
+reporting an estimate with the wrong sign, and an average exaggeration
+ratio of just 1.04. This suggests that our design was well-powered to
+detect clinically meaningful effects {[}cite? maybe
+10.1016/S0140-6736(21)00590-0{]} on blood pressure.
 
 \section{Implications of Findings}\label{implications-of-findings}
 
@@ -3413,6 +3487,12 @@ and under-5 {Lower Respiratory Infection Mortality}: {An Ecological
 Analysis} in {Ecuador}, 1990--2019. Environmental Health Perspectives
 131:037017;
 doi:\href{https://doi.org/10.1289/EHP11016}{10.1289/EHP11016}.
+
+\bibitem[\citeproctext]{ref-hoenig2001}
+Hoenig JM, Heisey DM. 2001. The {Abuse} of {Power}: {The Pervasive
+Fallacy} of {Power Calculations} for {Data Analysis}. The American
+Statistician 55:19--24;
+doi:\href{https://doi.org/10.1198/000313001300339897}{10.1198/000313001300339897}.
 
 \bibitem[\citeproctext]{ref-huang2012}
 Huang W, Wang G, Lu S-E, Kipen H, Wang Y, Hu M, et al. 2012.
@@ -3808,6 +3888,10 @@ inflammation-related diseases in rural areas in {China}. Environmental
 Pollution 261:114128;
 doi:\href{https://doi.org/10.1016/j.envpol.2020.114128}{10.1016/j.envpol.2020.114128}.
 
+\bibitem[\citeproctext]{ref-wasserstein2019}
+Wasserstein RL, Schirm AL, Lazar NA. 2019. Moving to a {World Beyond}
+{``p {\(<\)} 0.05.''} The American Statistician.
+
 \bibitem[\citeproctext]{ref-wen2023}
 Wen H, Nie P, Liu M, Peng R, Guo T, Wang C, et al. 2023. Multi-health
 effects of clean residential heating: {Evidences} from rural {China}'s
@@ -4003,7 +4087,7 @@ line).}
 
 \centering{
 
-\includegraphics[width=10.13in,height=\textheight]{images/Participation-flowchart-Apr12.png}
+\includegraphics[width=0.8\textwidth,height=\textheight]{images/Participation-flowchart-Apr12.png}
 
 }
 
@@ -4091,7 +4175,7 @@ effects}\label{heterogeneity-in-treament-effects}
 Table Table~\ref{tbl-a-het-personal} shows limited evidence that the
 \(ATT\)s across cohorts and time demonstrate meaningful heterogeneity.
 
-\begin{table}
+\begin{table}[H]
 
 \caption{\label{tbl-a-het-personal}Heterogenous treatment effects:
 Personal exposures}
@@ -4102,8 +4186,8 @@ Personal exposures}
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
 note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval},
-note{a}={Joint test that all cohort-time ATTs are equal: F(3, 1271)= 0.431, p= 0.731},
-note{b}={Joint test that all cohort-time ATTs are equal: F(3, 1253)= 0.613, p= 0.607},
+note{a}={Joint test that all cohort-time ATTs are equal: F(3, 1253)= 0.486, p= 0.692},
+note{b}={Joint test that all cohort-time ATTs are equal: F(3, 1132)= 0.987, p= 0.398},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
@@ -4123,12 +4207,12 @@ row{5}={,cmd=\bfseries,},
 &  & PM2.5 &  & Black carbon &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
 Cohort & Time & ATT\textsuperscript{a} & (95\% CI) & ATT\textsuperscript{b} & (95\% CI) \\ \midrule %% TinyTableHeader
 Average ATT &&&&& \\
-All & All &   1.95 & (-23.34, 27.23) & -0.43 & (-1.67, 0.81) \\
+All & All &   0.55 & (-19.1, 20.2) & -0.42 & (-1.5, 0.7) \\
 Cohort-Time ATTs &&&&& \\
-2019 & 2019 &  -0.05 & (-28.97, 28.87) & -0.69 & (-1.84, 0.45) \\
-2019 & 2021 &  -4.31 & (-41.92, 33.3) & -0.25 & (-2.11, 1.62) \\
-2020 & 2021 &  23.61 & (-19.88, 67.11) & -0.27 & (-2.04, 1.5) \\
-2021 & 2021 & -19.06 & (-43.19, 5.07) & -0.56 & (-2.46, 1.34) \\
+2019 & 2019 &   7.59 & (-24.6, 39.7) & -0.84 & (-1.9, 0.2) \\
+2019 & 2021 & -12.25 & (-35.7, 11.2) & -0.37 & (-2, 1.2) \\
+2020 & 2021 &  15.96 & (-34.2, 66.2) & -0.16 & (-1.8, 1.5) \\
+2021 & 2021 & -13.19 & (-35.9, 9.5) &  0.18 & (-1.3, 1.6) \\
 \bottomrule
 \end{talltblr}
 
@@ -4153,8 +4237,8 @@ Indoor PM\textsubscript{2.5}.}
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
 note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval},
-note{a}={Joint test that all ATTs are equal: F(1, 405)= 0.064, p= 0.8},
-note{b}={Joint test that all ATTs are equal: F(1, 368)= 0.756, p= 0.385},
+note{a}={Joint test that all ATTs are equal: F(1, 393)= 0.057, p= 0.811},
+note{b}={Joint test that all ATTs are equal: F(1, 360)= 0.675, p= 0.412},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
@@ -4172,10 +4256,10 @@ row{5}={,cmd=\bfseries,},
 &  & Daily &  & Seasonal &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
 Cohort & Time & ATT\textsuperscript{a} & (95\% CI) & ATT\textsuperscript{b} & (95\% CI) \\ \midrule %% TinyTableHeader
 Average ATT &&&&& \\
-All & All & -14.20 & (-53.94, 25.54) & -36.19 & (-60.74, -11.65) \\
+All & All & -20.03 & (-45.55, 5.49) & -20.27 & (-37.55, -3) \\
 Cohort-Time ATTs &&&&& \\
-2020 & 2021 & -4.71 & (-56.93, 47.5) & -25.44 & (-58.02, 7.13) \\
-2021 & 2021 & -37.24 & (-74.15, -0.33) & -59.23 & (-79.61, -38.85) \\
+2020 & 2021 & -13.28 & (-45.88, 19.31) & -17.57 & (-39.56, 4.42) \\
+2021 & 2021 & -35.94 & (-58.87, -13.02) & -25.88 & (-42.75, -9.01) \\
 \bottomrule
 \end{talltblr}
 
@@ -4894,10 +4978,10 @@ note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence int
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 width={1\linewidth},
-colspec={X[0.119047619047619]X[0.119047619047619]X[0.142857142857143]X[0.238095238095238]X[0.142857142857143]X[0.238095238095238]},
-cell{1}{3}={c=2,}{halign=c,},
-cell{1}{5}={c=2,}{halign=c,},
-cell{3}{1}={c=6}{},cell{5}{1}={c=6}{},
+colspec={X[0.166666666666667]X[0.166666666666667]X[0.0833333333333333]X[0.0833333333333333]X[0.166666666666667]X[0.0833333333333333]X[0.0833333333333333]X[0.166666666666667]},
+cell{1}{3}={c=3,}{halign=c,},
+cell{1}{6}={c=3,}{halign=c,},
+cell{3}{1}={c=8}{},cell{5}{1}={c=8}{},
 cell{4}{1}={preto={\hspace{1em}}},
 cell{6}{1}={preto={\hspace{1em}}},
 cell{7}{1}={preto={\hspace{1em}}},
@@ -4907,14 +4991,14 @@ row{3}={,cmd=\bfseries,},
 row{5}={,cmd=\bfseries,},
 }                     %% tabularray inner close
 \toprule
-&  & With Season 3 data &  & Without Season 3 data &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
-Cohort & Time & ATT & (95\% CI) & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
-Average ATT &&&&& \\
-All & All & -37.49 & (-60.11, -14.88) & -35.11 & (-59.36, -10.85) \\
-Cohort-Time ATTs &&&&& \\
-2020 & 2020 & -36.94 & (-61.39, -12.49) &  &  \\
-2020 & 2021 & -33.51 & (-66.84, -0.18) & -30.22 & (-63.77, 3.32) \\
-2021 & 2021 & -46.82 & (-58.57, -35.07) & -44.88 & (-60.41, -29.34) \\
+&  & With Season 3 data &  &  & Without Season 3 data &  &  \\ \cmidrule[lr]{3-5}\cmidrule[lr]{6-8}
+Cohort & Time & Obs & ATT & (95\% CI) & Obs & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT (µg/m3) &&&&&&& \\
+All & All & 545 & -36.2 & (-59.1, -13.3) & 388 & -32.5 & (-57.5, -7.5) \\
+Cohort-Time ATTs (µg/m3) &&&&&&& \\
+2020 & 2020 & 545 & -36.1 & (-60.8, -11.4) &  &  &  \\
+2020 & 2021 & 545 & -32.2 & (-66.0, 1.5) & 388 & -28.9 & (-63.0, 5.2) \\
+2021 & 2021 & 545 & -44.1 & (-56.3, -32.0) & 388 & -39.7 & (-58.3, -21.1) \\
 \bottomrule
 \end{talltblr}
 
@@ -4948,27 +5032,13 @@ are included vs.~excluded.}
 
 \begin{figure}[H]
 
-\caption{\label{fig-afig-pt3}Comparison of pre-interventions trends in
+\caption{\label{fig-afig-pt-bc}Comparison of pre-interventions trends in
 blood pressure between waves 1 and 2 for never treated and villages
-later treated in wave 3}
+treated later.}
 
 \centering{
 
-\includegraphics[width=0.8\textwidth,height=\textheight]{images/never_Y3.png}
-
-}
-
-\end{figure}%
-
-\begin{figure}[H]
-
-\caption{\label{fig-afig-pt4}Comparison of pre-intervention trends in
-blood pressure between waves 1 and 2 for never treated and villages
-later treated in wave 4.}
-
-\centering{
-
-\includegraphics[width=0.7\textwidth,height=\textheight]{images/never_Y4.png}
+\includegraphics[width=13in,height=\textheight]{images/BP-pretrends_FT20orFT21.png}
 
 }
 
@@ -4979,13 +5049,13 @@ carbon}\label{personal-exposure-and-black-carbon}
 
 \begin{figure}[H]
 
-\caption{\label{fig-afig-pt5}Comparison of pre-intervention trends in
-personal exposure and black carbon between waves 1 and 2 for never
-treated and villages later treated in wave 4.}
+\caption{\label{fig-afig-pt-pe-bc}Comparison of pre-intervention trends
+in personal exposure and black carbon between waves 1 and 2 for never
+treated and villages treated later.}
 
 \centering{
 
-\includegraphics[width=0.9\textwidth,height=\textheight]{images/pe-bc-pretrends.png}
+\includegraphics[width=0.8\textwidth,height=\textheight]{images/pe-bc-pretrends.png}
 
 }
 
@@ -4996,9 +5066,9 @@ outcomes}\label{self-reported-respiratory-outcomes}
 
 \begin{figure}[H]
 
-\caption{\label{fig-afig-pt6}Comparison of pre-intervention trends in
-self-reported respiratory outcomes between waves 1 and 2 for never
-treated and villages later treated in wave 4.}
+\caption{\label{fig-afig-pt-resp}Comparison of pre-intervention trends
+in self-reported respiratory outcomes between waves 1 and 2 for never
+treated and villages treated later.}
 
 \centering{
 
@@ -5074,8 +5144,8 @@ effect sizes.}
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
 note{}={Note: BP = Blood Pressure, pp = percentage points, ppb = parts per billion, SE = Standard Error},
-note{a}={Assuming the true effect size and our study design and sample size, the probability that an observed estimate will have the wrong sign.},
-note{b}={Assuming the true effect size and our study design and sample size, the ratio by which an observed estimate will exaggerate the true effect.},
+note{a}={Assuming the true effect size and our study design and precision, the probability that an observed estimate will have the wrong sign.},
+note{b}={Assuming the true effect size and our study design and precision, the ratio by which an observed estimate will exaggerate the true effect.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},

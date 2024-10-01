@@ -28,7 +28,7 @@ library(modeldb)
 # read in air pollution data from OSF
 # restrict to specific variables
 ap_data <- read_csv(here("data-clean", 
-  "BHET_master_data_22Jul2024.csv"), # BHET_master_data_22Jul2024.csv
+  "BHET_master_data_22Jul2024.csv"),
   col_select = c(ptc_id, hh_id, ID_VILLAGE, wave, 
     PM25conc_exposureugm3, PM25_exp_remove, 
     BCconc_exposureugm3, BC_exp_remove,
@@ -38,21 +38,38 @@ ap_data <- read_csv(here("data-clean",
     PM25_indoor_seasonal_hs,
     n_percent_indoor_seasonal_hs,
     ban_status_composite, smoking, lived_with_smoker, 
-    outdoor_temp_24h, outdoor_dew_24h, hh_num)) 
-%>%
+    hh_num, gender_health, age_health)) %>%
   
   # create year and cohort_year variables
-  mutate(year = if_else(wave=="S1", 2018, 
-      if_else(wave=="S2", 2019,
-        if_else(wave=="S4", 2021, 0))),
+  mutate(year = if_else(wave==1, 2018, 
+      if_else(wave==2, 2019,
+      if_else(wave==3, 2020,
+      if_else(wave==4, 2021, 0)))),
     cohort_year = if_else(
       ban_status_composite==1, 2019, 
       if_else(ban_status_composite==2, 2020, 
               if_else(ban_status_composite==3, 2021, 2022))),
     treat = ifelse(year >= cohort_year, 1, 0),
+    # relabel last cohort year 
     cohort_year = ifelse(cohort_year == 2022,-Inf, 
-                         cohort_year)) %>%
-  # relabel last cohort year 
+                         cohort_year),
+    male = if_else(gender_health == 1, 1, 0),
+    # tobacco exposures
+    ets = case_when(
+      smoking == 1 ~ "Current smoker",
+      smoking == 2 ~ "Former smoker",
+      smoking == 3 & lived_with_smoker %in% c(2,3) ~ 
+        "Never smoker lived with smoker",
+      smoking == 3 & lived_with_smoker == 1 ~ 
+        "No smoking exposure"),
+    # add dummies for smoking
+    ets_former = if_else(
+      ets=="Former smoker", 1, 0),
+    ets_lived = if_else(
+      ets=="Never smoker lived with smoker", 1, 0),
+    ets_none = if_else(
+      ets=="No smoking exposure", 1, 0)) %>%
+  
   # treatment cohort dummies
   add_dummy_variables(cohort_year, 
     values=c(-Inf,2019,2020,2021), 
@@ -65,42 +82,75 @@ ap_data <- read_csv(here("data-clean",
   mutate(v_id = cur_group_id()) %>%
   ungroup()
 
+# import wealth index
+dwi <- read_csv(here("data-clean", 
+  "BHET_PCA_11Oct2023.csv"))
+
+dwi <- dwi %>%
+  group_by(wave) %>%
+  mutate(wq = as.integer(cut(wealth_index, 
+    quantile(wealth_index, 
+      probs = c(0, 0.25, 0.5, 0.75, 1), na.rm = T), 
+    labels = c(1:4), include.lowest = T))) %>%
+  ungroup() %>%
+  add_dummy_variables(wq, 
+    values=c(1:4), remove_original = F) 
+
+# add wealth index to main dataset
+ap_data <- ap_data %>% 
+  left_join(dwi, by = c("hh_id", "ptc_id", "wave"))
+
+# bring in meteorological covariates
+meteo_data <- read_csv(here("data-clean", 
+  "met-data.csv")) 
 
 ## 2 create datasets for each outcome ----
 
 # personal exposure for PM2.5
 d_personal <- ap_data %>%
-  filter(PM25_exp_remove == 1) %>%
-  # smoking variable for consistency across outcomes
-  mutate(smoking = ptc_smoking) %>%
-  # drop households with duplicate values
-  distinct(hh_id, wave, PM25conc_exposureugm3, 
-           .keep_all= TRUE)
+  inner_join(meteo_data, 
+    by = c("ptc_id", "hh_id", "wave")) %>%
+  # rename outcomes
+  mutate(pe = case_when(
+    PM25conc_exposureugm3 <= 0 ~ NA,
+    PM25_exp_remove == 1 ~ PM25conc_exposureugm3,
+    PM25_exp_remove == 0 ~ NA,
+    PM25_exp_remove == -1 ~ NA),
+    bc = case_when(
+      BCconc_exposureugm3 <= 0 ~ NA,
+      BC_exp_remove == 1 ~ BCconc_exposureugm3,
+      BC_exp_remove == 0 ~ NA,
+      BC_exp_remove == 2 ~ NA)) %>%
+  # rename meteorological variables
+  # for consistency across analyses
+  rename(out_temp = out_temp_24h,
+         out_dew = out_dew_24h,
+         out_rh = rh_24h) %>%
+  # drop seasonal meteo data
+  select(-out_temp_season,
+         -out_dew_season,
+         -rh_season)
 
 # write to data-clean folder
 write_rds(d_personal, file = here("data-clean",
  "ap-data-personal.rds"))
 
-# personal exposure for black carbon
-d_bc <- ap_data %>%
-  # smoking variable for consistency across outcomes
-  mutate(smoking = ptc_smoking) %>%
-  filter(bc_exp_remove == 1)
-
-# write to data-clean folder
-write_rds(d_bc, file = here("data-clean",
- "ap-data-bc.rds"))
-
 # indoor exposure (daily)
 d_ind_24h <- ap_data %>% 
+  # add meterological data
+  inner_join(meteo_data, 
+    by = c("ptc_id", "hh_id", "wave")) %>%
   # keep usable values of indoor PM
-  filter(!is.na(pm2.5_indoor_sensor_24h)) %>%
-  # recode smoking variable to reflect household status
-  mutate(smoking = if_else(hh_smoking=="Smoking", 
-                      "Smoker", "Non-smoker")) %>%
-  # drop households with duplicate values
-  distinct(hh_id, wave, pm2.5_indoor_sensor_24h, 
-           .keep_all= TRUE)
+  filter(!is.na(PM25_indoor_24h_sensor)) %>%
+  # rename outcome and meteo vars
+  rename(i24 = PM25_indoor_24h_sensor,
+         out_temp = out_temp_24h,
+         out_dew = out_dew_24h,
+         out_rh = rh_24h) %>%
+  # drop 24h meteo data
+  select(-out_temp_season,
+         -out_dew_season,
+         -rh_season)
 
 # write to data-clean folder
 write_rds(d_ind_24h, file = here("data-clean",
@@ -108,12 +158,20 @@ write_rds(d_ind_24h, file = here("data-clean",
 
 # indoor exposure (seasonal)
 d_ind_seasonal <- ap_data %>% 
-  filter(N_percent_indoor_seasonal_hs >= 0.2) %>%
-  # recode smoking variable to reflect household status
-  mutate(smoking = if_else(hh_smoking=="Smoking", 
-                      "Smoker", "Non-smoker")) %>%
-  distinct(hh_id, wave, pm2.5_indoor_seasonal_hs, 
-           .keep_all= TRUE)
+    # add meterological data
+  inner_join(meteo_data, 
+    by = c("ptc_id", "hh_id", "wave")) %>%
+  # keep usable values of indoor PM
+  filter(n_percent_indoor_seasonal_hs >= 0.2) %>%
+  # name outcome and meteo vars
+  rename(is = PM25_indoor_seasonal_hs,
+         out_temp = out_temp_season,
+         out_dew = out_dew_season,
+         out_rh = rh_season) %>%
+  # drop 24h meteo data
+  select(-out_temp_24h,
+         -out_dew_24h,
+         -rh_24h)
 
 # write to data-clean folder
 write_rds(d_ind_seasonal, file = here("data-clean",
@@ -132,25 +190,31 @@ d_ind_s3 <- read_csv(here("data-clean",
   "indoor_pm_S3.csv")) %>%
   select(hh_id, wave, ID_VILLAGE, 
     coal_ban_time, pm2.5_indoor_seasonal_hs, 
-    N_percent_indoor_seasonal_hs)
+    N_percent_indoor_seasonal_hs) %>%
+  mutate(wave = 3,
+    ban_status_composite = case_when(
+      coal_ban_time == "2019" ~ 1, 
+      coal_ban_time == "2020" ~ 2, 
+      coal_ban_time == "2021" ~ 3, 
+      coal_ban_time == "Not Yet" ~ 0)) %>%
+  rename(n_percent_indoor_seasonal_hs = 
+           N_percent_indoor_seasonal_hs,
+         is = pm2.5_indoor_seasonal_hs) %>%
+  select(hh_id, wave, ID_VILLAGE, 
+    ban_status_composite, is, 
+    n_percent_indoor_seasonal_hs)
 
 # add to indoor seasonal
 d_is_s3_add <- d_ind_seasonal %>%
   select(hh_id, wave, ID_VILLAGE,
-    coal_ban_time,
-    pm2.5_indoor_seasonal_hs, 
-    N_percent_indoor_seasonal_hs) %>%
+    ban_status_composite,
+    is, 
+    n_percent_indoor_seasonal_hs) %>%
   bind_rows(d_ind_s3) %>%
-  filter(N_percent_indoor_seasonal_hs >= 0.2) %>%
-  mutate(year = if_else(wave=="S1", 2018, 
-      if_else(wave=="S2", 2019,
-      if_else(wave=="S3", 2020,
-      if_else(wave=="S4", 2021, 0)))),
-    ban_status_composite = case_when(
-      coal_ban_time == 2019 ~ 1, 
-      coal_ban_time == 2020 ~ 2, 
-      coal_ban_time == 2021 ~ 3, 
-      coal_ban_time == "Not Yet" ~ 0),
+  filter(n_percent_indoor_seasonal_hs >= 0.2) %>%
+  mutate(year = if_else(wave==2, 2019, 
+      if_else(wave== 3, 2020,
+      if_else(wave== 4, 2021, 0))),
     cohort_year = if_else(
       ban_status_composite==1, 2019, 
       if_else(ban_status_composite==2, 2020, 

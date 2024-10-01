@@ -225,7 +225,7 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-09-06}
+\date{2024-09-27}
 
 \begin{document}
 \maketitle
@@ -270,121 +270,50 @@ outdoor air pollution, as well as heating behaviors and health outcomes.
 \subsection{Description of study
 sample}\label{description-of-study-sample}
 
-\begin{table}
+\begin{table}[H]
 
-\caption{\label{tbl-did-health}Overall impacts of the `coal-to-clean
-energy' policy on blood pressure, respiratory outcomes, and inflammatory
-markers}
+\caption{\label{tbl-a-ind-s3}Effects of the CBHP policy on indoor
+seasonal PM\textsubscript{2.5} based on whether Season 3 data are
+included vs.~excluded.}
 
 \centering{
 
 \centering
-\resizebox{\ifdim\width>\linewidth 0.9\linewidth\else\width\fi}{!}{
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: BP = Blood Pressure, pp = percentage points, ppb = parts per billion, SE = Standard Error},
-note{a}={Assuming the true effect size and our study design and sample size, the probability that an observed estimate will have the wrong sign.},
-note{b}={Assuming the true effect size and our study design and sample size, the ratio by which an observed estimate will exaggerate the true effect.},
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
-colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
-cell{1}{3}={c=2,}{halign=c,},
-cell{1}{5}={c=4,}{halign=c,},
-cell{3}{1}={c=8}{},cell{12}{1}={c=8}{},cell{20}{1}={c=8}{},
+width={1\linewidth},
+colspec={X[0.166666666666667]X[0.166666666666667]X[0.0833333333333333]X[0.0833333333333333]X[0.166666666666667]X[0.0833333333333333]X[0.0833333333333333]X[0.166666666666667]},
+cell{1}{3}={c=3,}{halign=c,},
+cell{1}{6}={c=3,}{halign=c,},
+cell{3}{1}={c=8}{},cell{5}{1}={c=8}{},
 cell{4}{1}={preto={\hspace{1em}}},
-cell{5}{1}={preto={\hspace{1em}}},
 cell{6}{1}={preto={\hspace{1em}}},
 cell{7}{1}={preto={\hspace{1em}}},
 cell{8}{1}={preto={\hspace{1em}}},
 cell{9}{1}={preto={\hspace{1em}}},
-cell{10}{1}={preto={\hspace{1em}}},
-cell{11}{1}={preto={\hspace{1em}}},
-cell{13}{1}={preto={\hspace{1em}}},
-cell{14}{1}={preto={\hspace{1em}}},
-cell{15}{1}={preto={\hspace{1em}}},
-cell{16}{1}={preto={\hspace{1em}}},
-cell{17}{1}={preto={\hspace{1em}}},
-cell{18}{1}={preto={\hspace{1em}}},
-cell{19}{1}={preto={\hspace{1em}}},
-cell{21}{1}={preto={\hspace{1em}}},
-cell{22}{1}={preto={\hspace{1em}}},
-cell{23}{1}={preto={\hspace{1em}}},
-cell{24}{1}={preto={\hspace{1em}}},
-cell{25}{1}={preto={\hspace{1em}}},
-row{3}={halign=l,cmd=\bfseries,},
-row{12}={halign=l,cmd=\bfseries,},
-row{20}={halign=l,cmd=\bfseries,},
-cell{4}{1}={r=2,}{valign=h,},
-cell{6}{1}={r=2,}{valign=h,},
-cell{8}{1}={r=2,}{valign=h,},
-cell{10}{1}={r=2,}{valign=h,},
-cell{13}{1}={r=6,}{valign=h,},
-cell{21}{1}={r=4,}{valign=h,},
-column{1}={halign=l,},
-column{2}={halign=l,},
-column{3}={halign=c,},
-column{4}={halign=c,},
-column{5}={halign=c,},
-column{6}={halign=c,},
-column{7}={halign=c,},
+row{3}={,cmd=\bfseries,},
+row{5}={,cmd=\bfseries,},
 }                     %% tabularray inner close
 \toprule
-&  & Observed Results &  & Hypothetical Design Analysis &  &  &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-8}
-&  & Estimate & SE & Effect & Power (\%) & S-bias\textsuperscript{a} & M-bias\textsuperscript{b} \\ \midrule %% TinyTableHeader
-Blood pressure (mmHg) &&&&&&& \\
-Systolic BP (mmHg) & Brachial & -1.4 & 1.0 & -1.5 & 33.7 & 0.09 & 0.7 \\
-Systolic BP (mmHg) & Central & -1.6 & 0.9 & -1.5 & 35.9 & 0.08 & 0.7 \\
-Diastolic BP (mmHg) & Brachial & -1.6 & 0.7 & -1.0 & 30.4 & 0.00 & 1.8 \\
-Diastolic BP (mmHg) & Central & -1.7 & 0.7 & -1.0 & 32.0 & 0.00 & 1.8 \\
-Pulse Pressure & Brachial & 0.2 & 0.6 & 0.5 & 12.9 & 0.23 & 1.0 \\
-Pulse Pressure & Central & 0.1 & 0.6 & 0.5 & 14.4 & 0.22 & 1.0 \\
-BP Amplification x10 & Pulse pressure & 0.0 & 0.6 & 0.1 & 5.3 & 0.44 & 4.5 \\
-BP Amplification x10 & Systolic BP & 0.1 & 0.2 & 0.1 & 10.0 & 0.29 & 1.2 \\
-Respiratory outcomes &&&&&&& \\
-Self-reported (pp) & Any symptom & -8.1 & 2.7 & -5.0 & 47.0 & 0.00 & 1.4 \\
-Self-reported (pp) & Coughing & -3.0 & 2.3 & -2.0 & 14.0 & 0.22 & 1.0 \\
-Self-reported (pp) & Phlegm & -2.1 & 2.1 & -3.0 & 29.9 & 0.10 & 0.7 \\
-Self-reported (pp) & Wheezing attacks & 0.8 & 1.5 & -1.0 & 10.1 & 0.28 & 1.2 \\
-Self-reported (pp) & Trouble breathing & -3.8 & 2.9 & -3.0 & 18.2 & 0.18 & 0.9 \\
-Self-reported (pp) & Chest trouble & -3.9 & 2.4 & -1.0 & 7.0 & 0.36 & 1.8 \\
-Measured & FeNO (ppb) & 0.6 & 1.3 & -0.5 & 6.6 & 0.37 & 2.0 \\
-Inflammatory markers (\%) &&&&&&& \\
-Measured (\%) & IL6 & 5.9 & 11.2 & -2.0 & 5.4 & 0.43 & 4.1 \\
-Measured (\%) & TNF-alpha & 24.7 & 14.1 & -2.0 & 5.2 & 0.45 & 5.0 \\
-Measured (\%) & CRP & 3.8 & 13.5 & -2.0 & 5.3 & 0.45 & 4.9 \\
-Measured (\%) & MDA & 6.5 & 9.0 & -2.0 & 5.6 & 0.41 & 3.3 \\
+&  & With Season 3 data &  &  & Without Season 3 data &  &  \\ \cmidrule[lr]{3-5}\cmidrule[lr]{6-8}
+Cohort & Time & Obs & ATT & (95\% CI) & Obs & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+Average ATT (µg/m3) &&&&&&& \\
+All & All & 545 & -36.2 & (-59.1, -13.3) & 388 & -32.5 & (-57.5, -7.5) \\
+Cohort-Time ATTs (µg/m3) &&&&&&& \\
+2020 & 2020 & 545 & -36.1 & (-60.8, -11.4) &  &  &  \\
+2020 & 2021 & 545 & -32.2 & (-66.0, 1.5) & 388 & -28.9 & (-63.0, 5.2) \\
+2021 & 2021 & 545 & -44.1 & (-56.3, -32.0) & 388 & -39.7 & (-58.3, -21.1) \\
 \bottomrule
 \end{talltblr}
-}
 
 }
 
 \end{table}%
 
 \newpage
-
-\newpage
-
-\subsubsection{Blood pressure}\label{blood-pressure}
-
-Figure~\ref{fig-rd-bp} show the range of estimates for power, sign-bias,
-and effect exaggeration for several hypothetical effect sizes for the
-impact of the program on blood pressure, conditional on our study design
-and sample size (standard error of 1 mmHg).
-
-\begin{figure}[H]
-
-\caption{\label{fig-rd-bp}Power, sign-bias, and exaggeration ratios for
-various hypothetical effects of the policy on blood pressure, given our
-study design.}
-
-\centering{
-
-\includegraphics[width=0.8\textwidth,height=\textheight]{images/rd-plot.png}
-
-}
-
-\end{figure}%
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{1}

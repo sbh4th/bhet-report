@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.3)  19 AUG 2024 14:26
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.9.5)  9 SEP 2024 11:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -6,7 +6,7 @@ entering extended mode
 **test-diff.tex
 (./test-diff.tex
 LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2024-07-20>
+L3 programming layer <2024-08-16>
 (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrartcl.cls
 Document Class: scrartcl 2023/07/07 v3.41 KOMA-Script document class (article)
 (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrkbase.sty
@@ -194,7 +194,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 )) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-07-20 L3 programming layer (loader) 
+Package: expl3 2024-08-16 L3 programming layer (loader) 
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
 \g__graphics_track_int=\count277
@@ -206,9 +206,9 @@ Package: unicode-math 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLaTeX
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math-xetex.sty
 Package: unicode-math-xetex 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLaTeX
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2024-05-08 L3 Experimental document command parser
+Package: xparse 2024-08-16 L3 Experimental document command parser
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
-Package: l3keys2e 2024-05-08 LaTeX2e option processing using LaTeX3 keys
+Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.sty
 Package: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
@@ -604,7 +604,7 @@ Package: tabularray 2024-02-16 v2024A Typeset tabulars and arrays with LaTeX3
 \l__tblr_cell_ht_dim=\dimen299
 \l__tblr_diag_box=\box101
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/siunitx/siunitx.sty
-Package: siunitx 2024-08-01 v3.3.20 A comprehensive (SI) units package
+Package: siunitx 2024-08-20 v3.3.21 A comprehensive (SI) units package
 \l__siunitx_number_uncert_offset_int=\count347
 \l__siunitx_number_exponent_fixed_int=\count348
 \l__siunitx_number_min_decimal_int=\count349
@@ -1046,49 +1046,49 @@ Package: listings 2024/05/25 1.10b (Carsten Heinz)
  (./test-diff.aux)
 \openout1 = `test-diff.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 313.
-LaTeX Font Info:    ... okay on input line 313.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 313.
-LaTeX Font Info:    ... okay on input line 313.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 313.
-LaTeX Font Info:    ... okay on input line 313.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 313.
-LaTeX Font Info:    ... okay on input line 313.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 313.
-LaTeX Font Info:    ... okay on input line 313.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 313.
-LaTeX Font Info:    ... okay on input line 313.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 313.
-LaTeX Font Info:    ... okay on input line 313.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 313.
-LaTeX Font Info:    ... okay on input line 313.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 313.
-LaTeX Font Info:    ... okay on input line 313.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 313.
-LaTeX Font Info:    ... okay on input line 313.
-Package scrbase Info: activating english \abstractname on input line 313.
-Package scrbase Info: activating english \partname on input line 313.
-Package scrbase Info: activating english \figurename on input line 313.
-Package scrbase Info: activating english \tablename on input line 313.
-Package scrbase Info: activating english \contentsname on input line 313.
-Package scrbase Info: activating english \listfigurename on input line 313.
-Package scrbase Info: activating english \listtablename on input line 313.
-Package scrbase Info: activating english \refname on input line 313.
-Package scrbase Info: activating english \indexname on input line 313.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 320.
+LaTeX Font Info:    ... okay on input line 320.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 320.
+LaTeX Font Info:    ... okay on input line 320.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 320.
+LaTeX Font Info:    ... okay on input line 320.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 320.
+LaTeX Font Info:    ... okay on input line 320.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 320.
+LaTeX Font Info:    ... okay on input line 320.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 320.
+LaTeX Font Info:    ... okay on input line 320.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 320.
+LaTeX Font Info:    ... okay on input line 320.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 320.
+LaTeX Font Info:    ... okay on input line 320.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 320.
+LaTeX Font Info:    ... okay on input line 320.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 320.
+LaTeX Font Info:    ... okay on input line 320.
+Package scrbase Info: activating english \abstractname on input line 320.
+Package scrbase Info: activating english \partname on input line 320.
+Package scrbase Info: activating english \figurename on input line 320.
+Package scrbase Info: activating english \tablename on input line 320.
+Package scrbase Info: activating english \contentsname on input line 320.
+Package scrbase Info: activating english \listfigurename on input line 320.
+Package scrbase Info: activating english \listtablename on input line 320.
+Package scrbase Info: activating english \refname on input line 320.
+Package scrbase Info: activating english \indexname on input line 320.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 313.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 320.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 313.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 320.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 313.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 320.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 313.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 320.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 313.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 320.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 313.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 320.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 313.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 320.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999967668407183.
@@ -1116,7 +1116,7 @@ Package fontspec Info:
 (fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 313.
+(Font)              scaled to size 10.95pt on input line 320.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999967668407183.
@@ -1152,15 +1152,15 @@ Package fontspec Info:
 (fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.95pt on input line 313.
+(Font)              scaled to size 10.95pt on input line 320.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 313.
+(Font)              `operators' in the math version `normal' on input line 320.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 313.
+(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 320.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 313.
+(Font)              `operators' in the math version `bold' on input line 320.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 313.
+(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 320.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999967668407183.
@@ -1226,13 +1226,13 @@ Package fontspec Info:
 (fontspec)             <->s*[1.000096766517402]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 313.
+(Font)              `symbols' in the math version `normal' on input line 320.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 313.
+(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 320.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 313.
+(Font)              `symbols' in the math version `bold' on input line 320.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 313.
+(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 320.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 0.9999967668407183.
@@ -1292,19 +1292,19 @@ Package fontspec Info:
 (fontspec)             <->s*[0.9998967671640342]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 313.
+(Font)              `largesymbols' in the math version `normal' on input line 320.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 313.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 320.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 313.
+(Font)              `largesymbols' in the math version `bold' on input line 320.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 313.
-LaTeX Info: Redefining \microtypecontext on input line 313.
-Package microtype Info: Applying patch `item' on input line 313.
-Package microtype Info: Applying patch `toc' on input line 313.
-Package microtype Info: Applying patch `eqnum' on input line 313.
-Package microtype Info: Applying patch `footnote' on input line 313.
-Package microtype Info: Applying patch `verbatim' on input line 313.
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 320.
+LaTeX Info: Redefining \microtypecontext on input line 320.
+Package microtype Info: Applying patch `item' on input line 320.
+Package microtype Info: Applying patch `toc' on input line 320.
+Package microtype Info: Applying patch `eqnum' on input line 320.
+Package microtype Info: Applying patch `footnote' on input line 320.
+Package microtype Info: Applying patch `verbatim' on input line 320.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
@@ -1351,56 +1351,56 @@ File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Mode
 Package: ninecolors 2022-02-13 v2022D Select colors with proper color contrast
 )
 
-Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package. on input line 313.
+Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package. on input line 320.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 313.
+Package hyperref Info: Link coloring ON on input line 320.
 \c@lstlisting=\count422
 Package tocbasic Info: omitting babel extension for `lol'
-(tocbasic)             because of missing \bbl@set@language on input line 313.
+(tocbasic)             because of missing \bbl@set@language on input line 320.
 \scr@dte@lstlisting@maxnumwidth=\skip90
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 315.
+(Font)              scaled to size 14.4pt on input line 322.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 315.
+(Font)              scaled to size 10.0pt on input line 322.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 315.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 315.
+(Font)              scaled to size 7.0pt on input line 322.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 322.
 (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.4013pt on input line 315.
+(Font)              scaled to size 14.4013pt on input line 322.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 315.
+(Font)              scaled to size 10.00092pt on input line 322.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 315.
+(Font)              scaled to size 7.00064pt on input line 322.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 315.
+(Font)              scaled to size 14.39845pt on input line 322.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 315.
+(Font)              scaled to size 9.99893pt on input line 322.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 315.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 315.
+(Font)              scaled to size 6.99925pt on input line 322.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 322.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 315.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 322.
  (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/Users/samharper/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-Package tocbasic Info: character protrusion at toc deactivated on input line 320.
+Package tocbasic Info: character protrusion at toc deactivated on input line 327.
  (./test-diff.toc
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
 (Font)              scaled to size 7.665pt on input line 3.
@@ -1440,7 +1440,7 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 [6]
 
 [7]
-Package hyperref Info: bookmark level for unknown comment defaults to 0 on input line 632.
+Package hyperref Info: bookmark level for unknown comment defaults to 0 on input line 639.
 
 
 [8]
@@ -1510,105 +1510,102 @@ File: images/dag1.png Graphic file (type bmp)
 
 [25]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 1563.
+(Font)              scaled to size 12.0pt on input line 1582.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 1563.
+(Font)              scaled to size 8.0pt on input line 1582.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 1563.
+(Font)              scaled to size 6.0pt on input line 1582.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.0011pt on input line 1563.
+(Font)              scaled to size 12.0011pt on input line 1582.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00073pt on input line 1563.
+(Font)              scaled to size 8.00073pt on input line 1582.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 1563.
+(Font)              scaled to size 6.00055pt on input line 1582.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 1563.
+(Font)              scaled to size 11.99872pt on input line 1582.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 1563.
+(Font)              scaled to size 7.99915pt on input line 1582.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 1563.
+(Font)              scaled to size 5.99936pt on input line 1582.
 
 
 [26]
-> Step: init table outer spec.
-> Step: parse table options.
-> Step: split table.
-> Step: init table inner spec.
-> Step: parse table inner spec.
-> Step: execute table commands.
-> Step: calculate cell and line sizes.
-
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 1698--1698
-[]\TU/lmss/m/n/10.95 Statistic$[]$ 
- []
-
-
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 1698--1698
-[]\TU/lmss/m/n/10.95 Statistic$[]$ 
- []
-
-> Step: build the whole table.
-
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 1698--1698
-[]\TU/lmss/m/n/10.95 Statistic$[]$ 
- []
-
-> Step: init table outer spec.
-> Step: parse table options.
-> Step: split table.
-> Step: init table inner spec.
-> Step: parse table inner spec.
-> Step: execute table commands.
-> Step: calculate cell and line sizes.
-
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 1767--1767
-[]\TU/lmss/m/n/10.95 Statistic$[]$ 
- []
-
-
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 1767--1767
-[]\TU/lmss/m/n/10.95 Statistic$[]$ 
- []
-
-> Step: build the whole table.
-
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 1767--1767
-[]\TU/lmss/m/n/10.95 Statistic$[]$ 
- []
-
-> Step: init table outer spec.
-> Step: parse table options.
-> Step: split table.
-> Step: init table inner spec.
-> Step: parse table inner spec.
-> Step: execute table commands.
-> Step: calculate cell and line sizes.
-LaTeX Font Info:    Calculating math sizes for size <8.2125> on input line 2096.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.2125pt on input line 2096.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.74872pt on input line 2096.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 4.10625pt on input line 2096.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.21324pt on input line 2096.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.74924pt on input line 2096.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 4.10661pt on input line 2096.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.21161pt on input line 2096.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.7481pt on input line 2096.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.1058pt on input line 2096.
-> Step: build the whole table.
-
-LaTeX Warning: Float too large for page by 141.17987pt on input line 2100.
-
-
 
 [27]
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 1717--1717
+[]\TU/lmss/m/n/10.95 Statistic$[]$ 
+ []
+
+
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 1717--1717
+[]\TU/lmss/m/n/10.95 Statistic$[]$ 
+ []
+
+> Step: build the whole table.
+
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 1717--1717
+[]\TU/lmss/m/n/10.95 Statistic$[]$ 
+ []
+
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 1786--1786
+[]\TU/lmss/m/n/10.95 Statistic$[]$ 
+ []
+
+
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 1786--1786
+[]\TU/lmss/m/n/10.95 Statistic$[]$ 
+ []
+
+> Step: build the whole table.
+
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 1786--1786
+[]\TU/lmss/m/n/10.95 Statistic$[]$ 
+ []
+
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+LaTeX Font Info:    Calculating math sizes for size <9.85492> on input line 1924.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 9.85492pt on input line 1924.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 6.8984pt on input line 1924.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 4.92746pt on input line 1924.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 9.85582pt on input line 1924.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 6.89903pt on input line 1924.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 4.9279pt on input line 1924.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 9.85387pt on input line 1924.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.89766pt on input line 1924.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.92693pt on input line 1924.
+> Step: build the whole table.
+
 
 [28]
 > Step: init table outer spec.
@@ -1619,463 +1616,463 @@ LaTeX Warning: Float too large for page by 141.17987pt on input line 2100.
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2233--2233
+Underfull \hbox (badness 10000) in paragraph at lines 2062--2062
 [] \TU/lmss/m/n/8.76003 Sensor-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2233--2233
+Underfull \hbox (badness 10000) in paragraph at lines 2062--2062
 [] \TU/lmss/m/n/8.76003 Sensor-
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2062--2062
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2062--2062
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2062--2062
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2062--2062
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (3.86003pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (3.86003pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 117 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 3.5 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 3.7 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 2.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.9 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.7 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2233--2233
+Underfull \hbox (badness 10000) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 2.3 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 2.8 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2233--2233
+Underfull \hbox (badness 10000) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2233--2233
+Underfull \hbox (badness 10000) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.5 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.4 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.2 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.3 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.1 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2062--2062
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2062--2062
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2062--2062
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2062--2062
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (3.86003pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (3.86003pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 117 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 3.5 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 3.7 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 2.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.9 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.7 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2233--2233
+Underfull \hbox (badness 10000) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 2.3 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 2.8 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2233--2233
+Underfull \hbox (badness 10000) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2233--2233
+Underfull \hbox (badness 10000) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.5 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.4 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.2 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.3 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.1 
  []
 
 > Step: build the whole table.
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2062--2062
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2062--2062
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2062--2062
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2062--2062
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (3.86003pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (3.86003pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 117 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 3.5 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 3.7 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 2.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.9 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.7 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2233--2233
+Underfull \hbox (badness 10000) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 2.3 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 2.8 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2233--2233
+Underfull \hbox (badness 10000) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2233--2233
+Underfull \hbox (badness 10000) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.5 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.4 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.2 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.3 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2233--2233
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2062--2062
 []\TU/lmss/m/n/8.76003 1.1 
  []
 
@@ -2091,6 +2088,70 @@ File: images/sanky.jpg Graphic file (type bmp)
 
 
 [32]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<let>-command' on input line 2137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\includegraphics' on input line 2137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\DIFdelincludegraphics' on input line 2137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 2137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\sout@orig' on input line 2137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<let>-command' on input line 2137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\includegraphics' on input line 2137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\DIFOincludegraphics' on input line 2137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<let>-command' on input line 2137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\includegraphics' on input line 2137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\DIFaddincludegraphics' on input line 2137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 2137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 2137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<let>-command' on input line 2137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\includegraphics' on input line 2137.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\DIFOincludegraphics' on input line 2137.
+
 > Step: init table outer spec.
 > Step: parse table options.
 > Step: split table.
@@ -2099,12 +2160,11 @@ File: images/sanky.jpg Graphic file (type bmp)
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-
 Package tabularray Warning: Table width is too small, need 32.2611pt more!
 
 > Step: build the whole table.
 
-Overfull \hbox (32.2611pt too wide) in paragraph at lines 2396--2397
+Overfull \hbox (32.2611pt too wide) in paragraph at lines 2229--2230
  [][] 
  []
 
@@ -2115,9 +2175,17 @@ Overfull \hbox (32.2611pt too wide) in paragraph at lines 2396--2397
 > Step: parse table inner spec.
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
+
+Package tabularray Warning: Table width is too small, need 14.46367pt more!
+
 > Step: build the whole table.
 
-LaTeX Warning: Float too large for page by 30.52672pt on input line 2504.
+Overfull \hbox (14.46367pt too wide) in paragraph at lines 2335--2336
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 16.92671pt on input line 2339.
 
 
 
@@ -2133,35 +2201,19 @@ LaTeX Warning: Float too large for page by 30.52672pt on input line 2504.
 > Step: parse table inner spec.
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
-LaTeX Font Info:    Calculating math sizes for size <9.85492> on input line 2618.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 9.85492pt on input line 2618.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.8984pt on input line 2618.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 4.92746pt on input line 2618.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 9.85582pt on input line 2618.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.89903pt on input line 2618.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 4.9279pt on input line 2618.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.85387pt on input line 2618.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.89766pt on input line 2618.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.92693pt on input line 2618.
 
 
 Package tabularray Warning: Table width is too small, need 3.32875pt more!
 
 > Step: build the whole table.
 
-Overfull \hbox (3.32875pt too wide) in paragraph at lines 2618--2619
+Overfull \hbox (3.32875pt too wide) in paragraph at lines 2453--2454
  [][] 
  []
 
+
+
+[36]
 > Step: init table outer spec.
 > Step: parse table options.
 > Step: split table.
@@ -2169,37 +2221,36 @@ Overfull \hbox (3.32875pt too wide) in paragraph at lines 2618--2619
 > Step: parse table inner spec.
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
-LaTeX Font Info:    Calculating math sizes for size <8.76003> on input line 2690.
+LaTeX Font Info:    Calculating math sizes for size <8.76003> on input line 2525.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.76003pt on input line 2690.
+(Font)              scaled to size 8.76003pt on input line 2525.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.13199pt on input line 2690.
+(Font)              scaled to size 6.13199pt on input line 2525.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 4.38pt on input line 2690.
+(Font)              scaled to size 4.38pt on input line 2525.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.76082pt on input line 2690.
+(Font)              scaled to size 8.76082pt on input line 2525.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.13254pt on input line 2690.
+(Font)              scaled to size 6.13254pt on input line 2525.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 4.3804pt on input line 2690.
+(Font)              scaled to size 4.3804pt on input line 2525.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.75908pt on input line 2690.
+(Font)              scaled to size 8.75908pt on input line 2525.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.13133pt on input line 2690.
+(Font)              scaled to size 6.13133pt on input line 2525.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.37953pt on input line 2690.
+(Font)              scaled to size 4.37953pt on input line 2525.
+
 
 Package tabularray Warning: Table width is too small, need 10.39012pt more!
 
 > Step: build the whole table.
 
-Overfull \hbox (10.39012pt too wide) in paragraph at lines 2690--2691
+Overfull \hbox (10.39012pt too wide) in paragraph at lines 2525--2526
  [][] 
  []
 
 
-
-[36]
 
 [37]
 
@@ -2212,28 +2263,28 @@ Overfull \hbox (10.39012pt too wide) in paragraph at lines 2690--2691
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Overfull \hbox (1.1958pt too wide) in paragraph at lines 2832--2832
+Overfull \hbox (1.1958pt too wide) in paragraph at lines 2667--2667
 []\TU/lmss/m/n/10.95 BS_mapping  
  []
 
 
-Overfull \hbox (1.1958pt too wide) in paragraph at lines 2832--2832
+Overfull \hbox (1.1958pt too wide) in paragraph at lines 2667--2667
 []\TU/lmss/m/n/10.95 BS_mapping  
  []
 
 > Step: build the whole table.
 
-Overfull \hbox (1.1958pt too wide) in paragraph at lines 2832--2832
+Overfull \hbox (1.1958pt too wide) in paragraph at lines 2667--2667
 []\TU/lmss/m/n/10.95 BS_mapping  
  []
 
-File: images/source-figure.png Graphic file (type bmp)
-<images/source-figure.png>
 
 
 [39]
 
 [40]
+File: images/source-figure.png Graphic file (type bmp)
+<images/source-figure.png>
 File: images/source-season2.png Graphic file (type bmp)
 <images/source-season2.png>
 
@@ -2286,7 +2337,7 @@ Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=t
 [52]
 
 [53]
-Overfull \hbox (21.6371pt too wide) in paragraph at lines 3604--3608
+Overfull \hbox (21.6371pt too wide) in paragraph at lines 3447--3451
 \TU/lmr/m/n/10.95 differences estimates? Journal of Financial Economics 144:370–395; doi:[][]10.1016/j.jfineco.2022.01.004[][]. 
  []
 
@@ -2328,33 +2379,38 @@ Missing character: There is no 究 (U+7A76) in font [lmroman10-regular]:mapping=
 Missing character: There is no 报 (U+62A5) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 告 (U+544A) in font [lmroman10-regular]:mapping=tex-text;!
 
-Underfull \hbox (badness 1694) in paragraph at lines 3765--3770
+Underfull \hbox (badness 1694) in paragraph at lines 3608--3613
 \TU/lmr/m/n/10.95 Related Human Activity Patterns Survey (CEERHAPS). Applied Energy 136:692–703;
  []
 
 
 
 [56]
-Underfull \hbox (badness 1072) in paragraph at lines 3821--3826
+Overfull \hbox (25.65575pt too wide) in paragraph at lines 3638--3643
+[]|   [][][]|   [][][]|   []   [][]|   [][][]|   []   |   []   |   []   |   []   |   []   |   []   |   [][][][][]|   [][][][][]|   []
+ []
+
+
+Underfull \hbox (badness 1072) in paragraph at lines 3671--3676
 \TU/lmr/m/n/10.95 Network Randomized Controlled Trial. Environmental Health Perspectives 130:097005;
- []
-
-
-Underfull \hbox (badness 1648) in paragraph at lines 3861--3866
-\TU/lmr/m/n/10.95 color space sensing system to quantify elemental and organic carbon in atmospheric
- []
-
-
-Underfull \hbox (badness 1147) in paragraph at lines 3861--3866
-\TU/lmr/m/n/10.95 particulate matter on Teflon and quartz filters. Atmospheric Environment 149:84–94;
  []
 
 
 
 [57]
+Underfull \hbox (badness 1648) in paragraph at lines 3711--3716
+\TU/lmr/m/n/10.95 color space sensing system to quantify elemental and organic carbon in atmospheric
+ []
+
+
+Underfull \hbox (badness 1147) in paragraph at lines 3711--3716
+\TU/lmr/m/n/10.95 particulate matter on Teflon and quartz filters. Atmospheric Environment 149:84–94;
+ []
+
+
 
 [58]
-Underfull \hbox (badness 2181) in paragraph at lines 3929--3933
+Underfull \hbox (badness 2181) in paragraph at lines 3779--3783
 \TU/lmr/m/n/10.95 elderly in the cold region of China. Indoor and Built Environment 31:2482–2498;
  []
 
@@ -2363,21 +2419,21 @@ Underfull \hbox (badness 2181) in paragraph at lines 3929--3933
 [59]
 
 [60]
-Overfull \hbox (23.37817pt too wide) in paragraph at lines 4086--4090
+Overfull \hbox (23.37817pt too wide) in paragraph at lines 3936--3940
 \TU/lmr/m/n/10.95 Stove Use Monitors (SUMs). Biomass and Bioenergy 57:136–148; doi:[][]10.1016/j.biombioe.2013.07.002[][]. 
  []
 
 
 
 [61]
-Underfull \hbox (badness 1472) in paragraph at lines 4146--4151
+Underfull \hbox (badness 1472) in paragraph at lines 3996--4001
 \TU/lmr/m/n/10.95 tertime longitudinal study of Chinese adults. Journal of Hypertension 40:1950–1959;
  []
 
 
 
 [62]
-Overfull \hbox (34.4255pt too wide) in paragraph at lines 4233--4237
+Overfull \hbox (34.4255pt too wide) in paragraph at lines 4083--4087
 \TU/lmr/m/n/10.95 China Prospective (ICP) study. Wellcome Open Research 4:154; doi:[][]10.12688/wellcomeopenres.15470.2[][]. 
  []
 
@@ -2404,7 +2460,7 @@ Missing character: There is no 力 (U+529B) in font [lmroman10-regular]:mapping=
 [63]
 
 [64]
-Underfull \hbox (badness 1648) in paragraph at lines 4329--4329
+Underfull \hbox (badness 1648) in paragraph at lines 4179--4179
 [][][]|[]\TU/lmss/m/n/10.95 Boxplots for markers of systemic inflammation including C-reactive protein (CRP),
  []
 
@@ -2416,21 +2472,21 @@ File: images/biomarker-boxplot-log.jpg Graphic file (type bmp)
 File: images/MI_BMI_density.png Graphic file (type bmp)
 <images/MI_BMI_density.png>
 
-Overfull \hbox (133.27782pt too wide) in paragraph at lines 4369--4370
+Overfull \hbox (133.27782pt too wide) in paragraph at lines 4219--4220
  [][][] 
  []
 
 File: images/MI_waist_circ_density.png Graphic file (type bmp)
 <images/MI_waist_circ_density.png>
 
-Overfull \hbox (133.27782pt too wide) in paragraph at lines 4390--4391
+Overfull \hbox (133.27782pt too wide) in paragraph at lines 4240--4241
  [][][] 
  []
 
 File: images/MI_indoorPM_density.png Graphic file (type bmp)
 <images/MI_indoorPM_density.png>
 
-Overfull \hbox (133.27782pt too wide) in paragraph at lines 4411--4412
+Overfull \hbox (133.27782pt too wide) in paragraph at lines 4261--4262
  [][][] 
  []
 
@@ -2442,7 +2498,7 @@ Overfull \hbox (133.27782pt too wide) in paragraph at lines 4411--4412
 File: images/Participation-flowchart-Apr12.png Graphic file (type bmp)
 <images/Participation-flowchart-Apr12.png>
 
-Overfull \hbox (269.15215pt too wide) in paragraph at lines 4438--4439
+Overfull \hbox (269.15215pt too wide) in paragraph at lines 4288--4289
  [][][] 
  []
 
@@ -2489,23 +2545,23 @@ File: images/coal-plot.png Graphic file (type bmp)
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Underfull \hbox (badness 10000) in paragraph at lines 4715--4715
+Underfull \hbox (badness 10000) in paragraph at lines 4565--4565
 []\TU/lmss/m/n/8.76003 p-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4715--4715
+Underfull \hbox (badness 10000) in paragraph at lines 4565--4565
 []\TU/lmss/m/n/8.76003 p-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4715--4715
+Underfull \hbox (badness 10000) in paragraph at lines 4565--4565
 []\TU/lmss/m/n/8.76003 p-
  []
 
 > Step: build the whole table.
 
-LaTeX Warning: Float too large for page by 13.73756pt on input line 4719.
+LaTeX Warning: Float too large for page by 13.73756pt on input line 4569.
 
 
 
@@ -2639,89 +2695,84 @@ File: images/did-outdoor-w3.png Graphic file (type bmp)
 [83]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 5388.
+(hyperref)                removing `\<let>-command' on input line 5238.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 5388.
+(hyperref)                removing `\includegraphics' on input line 5238.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFdelincludegraphics' on input line 5388.
+(hyperref)                removing `\DIFdelincludegraphics' on input line 5238.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 5388.
+(hyperref)                removing `\@ifnextchar' on input line 5238.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sout' on input line 5388.
+(hyperref)                removing `\sout@orig' on input line 5238.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 5388.
+(hyperref)                removing `\<let>-command' on input line 5238.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 5388.
+(hyperref)                removing `\includegraphics' on input line 5238.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFOincludegraphics' on input line 5388.
+(hyperref)                removing `\DIFOincludegraphics' on input line 5238.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 5393.
+(hyperref)                removing `\@ifnextchar' on input line 5243.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 5393.
+(hyperref)                removing `\uwave' on input line 5243.
 
-File: images/never_Y3.png Graphic file (type bmp)
-<images/never_Y3.png>
-File: images/never_Y4.png Graphic file (type bmp)
-<images/never_Y4.png>
-
-
-[84]
+File: images/BP-pretrends_FT20orFT21.png Graphic file (type bmp)
+<images/BP-pretrends_FT20orFT21.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 5426.
+(hyperref)                removing `\@ifnextchar' on input line 5269.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 5426.
+(hyperref)                removing `\uwave' on input line 5269.
 
 File: images/pe-bc-pretrends.png Graphic file (type bmp)
 <images/pe-bc-pretrends.png>
 
 
+[84]
+
 [85]
+Overfull \vbox (91.22412pt too high) has occurred while \output is active []
+
+
 
 [86]
-Overfull \vbox (77.62411pt too high) has occurred while \output is active []
-
-
-
-[87]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 5444.
+(hyperref)                removing `\@ifnextchar' on input line 5298.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 5444.
+(hyperref)                removing `\uwave' on input line 5298.
 
 File: images/resp-pretrends.png Graphic file (type bmp)
 <images/resp-pretrends.png>
 
 
-[88]
+[87]
 Overfull \vbox (68.22649pt too high) has occurred while \output is active []
 
 
 
-[89]
+[88]
 > Step: init table outer spec.
 > Step: parse table options.
 > Step: split table.
@@ -2732,7 +2783,56 @@ Overfull \vbox (68.22649pt too high) has occurred while \output is active []
 > Step: build the whole table.
 
 
+[89]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 5363.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 5363.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 5365.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 5365.
+
+
+LaTeX Warning: Reference `tbl-rd' on page 90 undefined on input line 5370.
+
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+
+Package tabularray Warning: Table width is too small, need 20.86781pt more!
+
+> Step: build the whole table.
+
+
 [90]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 5464.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 5464.
+
+
+LaTeX Warning: Reference `fig-rd-bp' on page 91 undefined on input line 5470.
+
+File: images/rd-plot.png Graphic file (type bmp)
+<images/rd-plot.png>
+
+
+[91]
 \Changes@OutFile=\write5
 \openout5 = `test-diff.soc'.
 
@@ -2741,23 +2841,26 @@ Overfull \vbox (68.22649pt too high) has occurred while \output is active []
 
 
 
-[91] (./test-diff.aux)
+[92] (./test-diff.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2024-07-20>
+L3 programming layer <2024-08-16>
  ***********
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 44699 strings out of 476173
- 953987 string characters out of 5784000
- 2072609 words of memory out of 5000000
- 66562 multiletter control sequences out of 15000+600000
- 639668 words of font info for 268 fonts, out of 8000000 for 9000
+ 44707 strings out of 476173
+ 954028 string characters out of 5784000
+ 2054609 words of memory out of 5000000
+ 66583 multiletter control sequences out of 15000+600000
+ 641691 words of font info for 249 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 118i,12n,123p,10904b,1467s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 118i,13n,123p,10904b,1467s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on test-diff.pdf (91 pages).
+Output written on test-diff.pdf (92 pages).

@@ -52,6 +52,7 @@ library(readxl)
 library(marginaleffects)
 library(tinytable)
 library(tidymodels)
+library(reporter)
 ```
 
 ```{r master_data, include = FALSE, cache = TRUE, echo=FALSE}
@@ -76,66 +77,33 @@ China is deploying an ambitious policy to transition up to 70% of households in 
 
 ## Description of study sample
 
-```{r, message=FALSE}
+```{r}
 #| echo: FALSE
-#| label: tbl-did-health
-#| tbl-cap: "Overall impacts of the ‘coal-to-clean energy’ policy on blood pressure, respiratory outcomes, and inflammatory markers"
-#| eval: TRUE
+#| label: tbl-a-ind-s3
+#| tbl-cap: Effects of the CBHP policy on indoor seasonal PM~2.5~ based on whether Season 3 data are included vs. excluded.
+#| tbl-pos: H
 
-library(retrodesign)
+a_is3_table <- read_rds(here("outputs", 
+  "ap-is3_table.rds")) %>%
+   mutate(estimate_woS3 = na_if(estimate_woS3, 0),
+          ci_woS3 = na_if(ci_woS3, "(NA, NA)"))
 
-# load results from design analysis
-rp_table <- readRDS(here("outputs", 
-  "bhet-retro.rds")) |>
-  select(-significant) |>
-  relocate(mp, .after = es)
+colnames(a_is3_table) <- c("Cohort", "Time", 
+  "Obs", "ATT", "(95% CI)", "Obs", "ATT", "(95% CI)")
 
-colnames(rp_table) <- c(" ", " ", "Estimate", "SE", 
-  "Effect", "Power (%)", "S-bias", "M-bias")
-
-tt(rp_table,
-   notes = list("Note: BP = Blood Pressure, pp = percentage points, ppb = parts per billion, SE = Standard Error", 
-  a = list(i=0, j=7, text = "Assuming the true effect size and our study design and sample size, the probability that an observed estimate will have the wrong sign."), 
-  b = list(i=0, j=8, text = "Assuming the true effect size and our study design and sample size, the ratio by which an observed estimate will exaggerate the true effect.")
-  )) %>%
-  group_tt(
-    j = list("Observed Results" = 3:4, 
-             "Hypothetical Design Analysis" = 5:8),
-    i = list("Blood pressure (mmHg)" = 1, 
-             "Respiratory outcomes" = 9,
-             "Inflammatory markers (%)" = 16)) %>%
-  style_tt(i = c(1, 10, 18), align = "l", bold=T) %>%
-  style_tt(
-    i = c(2, 4, 6, 8), j = 1, 
-    rowspan = 2, alignv = "t") %>%
-  style_tt(
-    i = 11, j = 1, rowspan = 6, alignv = "t") %>%
-  style_tt(
-    i = 19, j = 1, rowspan = 4, alignv = "t") %>%
-  style_tt(j = 1:7, align = "llccccc") %>%
-  format_tt(escape = TRUE) %>%
-  format_tt(j=c(3,4,5,6,8), sprintf = "%0.1f") %>%
-  format_tt(j = 7, sprintf = "%0.2f") %>%
-  theme_tt("resize", width = 0.9)
+tt(a_is3_table,
+   digits = 2, width = c(1,1,.5,.5, 1,.5,.5, 1),
+   notes = "Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval.") %>%
+  group_tt(j = list(
+    "With Season 3 data" = 3:5,
+    "Without Season 3 data" = 6:8),
+    i = list(
+    "Average ATT (µg/m3)" = 1,
+    "Cohort-Time ATTs (µg/m3)" = 2)) %>%
+  style_tt(i = c(1,3), bold = TRUE) %>%
+  format_tt(j=c(4,7), sprintf = "%.1f") %>%
+  format_tt(escape = TRUE)
+ 
 ```
 
 \newpage
-
-\newpage
-### Blood pressure
-
-@fig-rd-bp show the range of estimates for power, sign-bias, and effect exaggeration for several hypothetical effect sizes for the impact of the program on blood pressure, conditional on our study design and sample size (standard error of 1 mmHg).
-
-```{r, out.width = "80%"}
-#| echo: FALSE
-#| fig-cap-location: top
-#| label: fig-rd-bp
-#| fig-cap: Power, sign-bias, and exaggeration ratios for various hypothetical effects of the policy on blood pressure, given our study design.
-#| fig-pos: H
-
-knitr::include_graphics(here("images", 
-  "rd-plot.png"))
-```
-
-
-

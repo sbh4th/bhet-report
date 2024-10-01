@@ -1,0 +1,307 @@
+---
+title: "Personal Models"
+format: html
+author: Sam Harper
+date: "2024-09-23"
+bibliography: '../hei-report.bib'
+csl: '../environmental-health-perspectives.csl'
+---
+
+## Objective
+
+The purpose of this document is to evaluate potential functional forms for the relationships between the personal exposure (personal PM~2.5~ and BC) and indoor (daily and seasonal) variables and the policy. These variables show skewed distributions, which can make running basic OLS models inefficient. Since we are typically interested in the effect of the policy on the absolute scale (the arithmetic mean), taking the log of the outcome variable and estimating the DiD models is problematic since this shifts to the relative scale (or geometric mean). Instead, we can use a GLM model with a non-linear link function to correctly model the mean and variance, but there are several to choose from (e.g., lognormal, gamma). Here we follow the work of Manning and Mulhally [-@manning2001] in applying a modified version of the 'Park test' [@park1966] to inform our decision. The basic idea of the Park test is to evaluate the relationship between the variance and the residuals of the GLM model because the link function in GLM modeling specifies a mean and variance function for the observed raw-scale variable $y$, conditional on $x$.  Here is the relevant part of Manning and Mulhally's paper:
+
+> This moment structure (with a consistent initial estimate of $\beta$) is similar to one of the early tests for heteroscedasticity. In the original Park test (Park, 1966), the log of the estimated residual squared (on the scale of the analysis) is regressed on some factor $z$ thought to cause heteroscedasticity in the error on the scale of the analysis. Here, we propose to use the residuals and predictions on the raw (untransformed) scale for $y$ to estimate and test a very specific form of heteroscedasticity — one where the raw-scale variance is a power function of the raw-scale mean function is a power function of the raw-scale mean function. The OLS version of 
+Eq. (17) is
+$$ln(y_{i} - \hat{y_{i}})^2 = \lambda_{0} + \lambda_{1} ln(\hat{y}) + v_{i} $$
+where $\hat{y_{i}}=exp(x_{i}\beta)$ is from one of the GLM specifications...The estimate of the coefficient $\lambda_{1}$ on the log of the raw-scale prediction will tell us which GLM model to employ if the GLM option is chosen.
+
+## Data
+
+The data with personal exposures and all of the covariates are loaded below, and we fit the full ETWFE model to the data before obtaining the residuals that form the basis for the Park test. 
+
+```{r, message=FALSE, warning=FALSE}
+# necessary packages
+library(here)
+library(tidyverse)
+library(fixest)
+library(splines)
+library(modelsummary)
+library(modelr)
+library(marginaleffects)
+library(tinytable)
+
+# load data
+pd <- readRDS(here("data-clean", 
+  "ap-data-personal.rds"))
+
+pd %>% 
+  select(pe, bc, hh_num, ets_former, ets_lived, 
+    ets_none, out_temp, out_dew) %>% datasummary_skim()
+```
+
+## Models
+
+### Personal PM~2.5~
+
+Now fit the full model using a Gamma distribution with a log link (see @manning2001 for details). 
+```{r}
+pe_full_gamma <- feglm(
+  pe ~ treat:cohort_year_2019:year_2019 + 
+    treat:cohort_year_2019:year_2021 +
+    treat:cohort_year_2020:year_2021 +
+    treat:cohort_year_2021:year_2021 +
+    cohort_year_2019 + cohort_year_2020 +
+    cohort_year_2021 + year_2019 + year_2021 +
+    hh_num + ets_former + ets_lived + 
+    ets_none + ns(out_temp, df=2) + 
+    ns(out_dew, df=2),
+    data = pd, cluster = ~v_id,
+    family = Gamma(link = "log"))
+
+modelsummary(list("PM<sub>2.5</sub> Gamma" = pe_full_gamma), 
+  statistic = c("SE" = "std.error", 
+  "95% CI" = "{conf.low}, {conf.high}"), 
+   shape = term ~ model + statistic, 
+   gof_omit = 'DF|Deviance|R2|AIC|BIC|RMSE')
+```
+
+Now we undertake the Park test. First, let's get the predictions from the above model on both the response (absolute) scale and on the link (log) scale, and calculate the squared residuals on the absolute scale.
+
+```{r}
+pe_pred <- pd %>% 
+  filter(row_number() 
+  %in% obs(pe_full_gamma)) %>%
+  # add predicted E(y)
+  add_predictions(pe_full_gamma,
+    var = "pred_link", type = "link") %>%
+  # add predicted E(y) on the response scale
+  add_predictions(pe_full_gamma,
+    var = "pred_response", type = "response") %>%
+  mutate(
+    resid_response = (pe - pred_response)^2)
+```
+
+Now we regress the squared residuals on the predicted values of the response variable (making sure to use clustered standard errors).  
+
+```{r}
+pe_park <- feglm(
+  resid_response ~ pred_link,
+  family=Gamma(link = "log"), 
+  data = pe_pred, cluster = ~v_id)
+
+modelsummary(list("PM<sub>2.5</sub>" = pe_park),
+  statistic = c("SE" = "std.error", 
+  "95% CI" = "{conf.low}, {conf.high}"), 
+  shape = term ~ model + statistic,
+  gof_omit = 'DF|Deviance|R2|AIC|BIC|RMSE')
+```
+  
+Finally, we test the value of $x\beta$ against several alternatives that help to guide our choice of model. As Manning and Mulhally note, if the raw-scale variance (`resid_response`) does not depend on the raw-scale prediction `pred-link` ($\beta=0$), then consider the lognormal distribution; if the raw-scale variance is proportional to the raw-scale prediction ($\beta=1$), consider the Poisson-like model; if the raw-scale variance is quadratic in the raw-scale prediction ($\beta=2$), then consider the gamma model, and if the raw-scale variance is cubic in the raw-scale prediction ($\beta=3$), then consider the inverse Gaussian (Wald) model. 
+ 
+```{r}
+pe_tests <- avg_comparisons(pe_park, 
+  var = "pred_link", type = "link", 
+  hypothesis = c("b1 - 0 = 0",
+                 "b1 - 1 = 0", 
+                 "b1 - 2 = 0",
+                 "b1 - 3 = 0"))
+
+pe_results <- pe_tests %>% 
+  select(term, estimate, std.error, 
+    statistic, p.value) %>%
+  mutate(family = c("Lognormal", "Poisson-like", 
+    "Gamma", "Inverse Gaussian")) %>%
+  relocate(family)
+
+tt(pe_results, digits = 3) %>%
+  format_tt(j=6, sprintf = "%.4f")
+```
+
+On the basis of these tests, it seems like the Poisson-like model generates the smallest test statistic (and the largest p-value), but the Gamma model also seems to fit the data relatively well. 
+
+### Personal BC
+
+For personal BC we follow the same procedure as above, using the full model with covariates.  
+
+```{r}
+bc_full_gamma <- feglm(
+  pe ~ treat:cohort_year_2019:year_2019 + 
+    treat:cohort_year_2019:year_2021 +
+    treat:cohort_year_2020:year_2021 +
+    treat:cohort_year_2021:year_2021 +
+    cohort_year_2019 + cohort_year_2020 +
+    cohort_year_2021 + year_2019 + year_2021 +
+    hh_num + ets_former + ets_lived + 
+    ets_none + ns(out_temp, df=2) + 
+    ns(out_dew, df=2),
+    data = pd, cluster = ~v_id,
+    family = Gamma(link = "log"))
+
+bc_pred <- pd %>% 
+  filter(row_number() 
+  %in% obs(bc_full_gamma)) %>%
+  # add predicted E(y)
+  add_predictions(bc_full_gamma,
+    var = "pred_link", type = "link") %>%
+  # add predicted E(y) on the response scale
+  add_predictions(bc_full_gamma,
+    var = "pred_response", type = "response") %>%
+  mutate(
+    resid_response = (bc - pred_response)^2)
+
+bc_park <- feglm(
+  resid_response ~ pred_link,
+  family=Gamma(link = "log"), 
+  data = bc_pred, cluster = ~v_id)
+
+modelsummary(list("Black carbon" = bc_park), 
+  statistic = c("SE" = "std.error", 
+  "95% CI" = "{conf.low}, {conf.high}"), 
+   shape = term ~ model + statistic,
+   gof_omit = 'DF|Deviance|R2|AIC|BIC|RMSE')
+
+bc_tests <- avg_comparisons(bc_park, 
+  var = "pred_link", type = "link", 
+  hypothesis = c("b1 - 0 = 0",
+                 "b1 - 1 = 0", 
+                 "b1 - 2 = 0",
+                 "b1 - 3 = 0"))
+
+bc_results <- bc_tests %>% 
+  select(term, estimate, std.error, 
+    statistic, p.value) %>%
+  mutate(family = c("Lognormal", "Poisson-like", 
+    "Gamma", "Inverse Gaussian")) %>%
+  relocate(family)
+tt(bc_results, digits = 3) %>%
+  format_tt(j=6, sprintf = "%.4f")
+```
+
+For BC it appears that the Gamma family is the best fit. Given the simliarity between the Gamma and Poisson-like models for PM~2.5~, using a Gamma model for both seems like a reasonable choice. 
+
+### Indoor 24h PM~2.5~
+Now for 24h indoor PM~2.5~ we follow the same procedure as above. However, since there is no Wave 1 data for indoor, we need to exclude the cohort of villages that were treated in 2019, since their values of indoor PM~2.5~ may already have been affected by the policy. Thus we can only estimate the ATTs for the 2020 and 2021 cohorts in 2021.
+
+
+```{r}
+idd <- readRDS(here("data-clean",
+ "ap-data-i24h.rds")) %>%
+  filter(cohort_year_2019 != 1)
+
+i24_full_gamma <- feglm(
+  i24  ~ 
+    treat:cohort_year_2020:year_2021 +
+    treat:cohort_year_2021:year_2021 +
+    cohort_year_2020 + cohort_year_2021 + 
+    year_2021 + hh_num + ets_former + ets_lived + 
+    ets_none + ns(out_temp, df=2) + 
+    ns(out_dew, df=2),
+    data = idd, cluster = ~v_id,
+    family = Gamma(link = "log"))
+
+i24_pred <- idd %>% 
+  filter(row_number() 
+  %in% obs(i24_full_gamma)) %>%
+  # add predicted E(y)
+  add_predictions(i24_full_gamma,
+    var = "pred_link", type = "link") %>%
+  # add predicted E(y) on the response scale
+  add_predictions(i24_full_gamma,
+    var = "pred_response", type = "response") %>%
+  mutate(
+    resid_response = (i24 - pred_response)^2)
+
+i24_park <- feglm(
+  resid_response ~ pred_link,
+  family=Gamma(link = "log"), 
+  data = i24_pred, cluster = ~v_id)
+
+modelsummary(list(
+  "Indoor 24h PM<sub>2.5</sub>" = i24_park),
+  statistic = c("SE" = "std.error", 
+  "95% CI" = "{conf.low}, {conf.high}"), 
+   shape = term ~ model + statistic,
+   gof_omit = 'DF|Deviance|R2|AIC|BIC|RMSE')
+
+i24_tests <- avg_comparisons(i24_park, 
+  var = "pred_link", type = "link", 
+  hypothesis = c("b1 - 0 = 0",
+                 "b1 - 1 = 0", 
+                 "b1 - 2 = 0",
+                 "b1 - 3 = 0"))
+
+i24_results <- i24_tests %>% 
+  select(term, estimate, std.error, 
+    statistic, p.value) %>%
+  mutate(family = c("Lognormal", "Poisson-like", 
+    "Gamma", "Inverse Gaussian")) %>%
+  relocate(family)
+tt(i24_results, digits = 3) %>%
+  format_tt(j=6, sprintf = "%.4f")
+```
+The best fit is provided by the Gamma family. 
+
+### Indoor seasonal PM~2.5~
+Now for seasonal indoor PM~2.5~ we follow the same procedure as above. Again here there is no Wave 1 data for indoor, so we exclude the cohort of villages that were treated in 2019, since their values of indoor PM~2.5~ may already have been affected by the policy. Thus we can only estimate the ATTs for the 2020 and 2021 cohorts in 2021.
+
+
+```{r}
+# filter for useable values of indoor seasonal
+isd <- readRDS(here("data-clean",
+ "ap-data-iseason.rds")) %>%
+  filter(cohort_year_2019 != 1)
+
+is_full_gamma <- feglm(
+  is  ~ 
+    treat:cohort_year_2020:year_2021 +
+    treat:cohort_year_2021:year_2021 +
+    cohort_year_2020 + cohort_year_2021 + 
+    year_2021 + hh_num + ets_former + ets_lived + 
+    ets_none + ns(out_temp, df=2) + 
+    ns(out_dew, df=2),
+    data = isd, cluster = ~v_id,
+    family = Gamma(link = "log"))
+
+is_pred <- isd %>% 
+  filter(row_number() 
+  %in% obs(is_full_gamma)) %>%
+  # add predicted E(y)
+  add_predictions(is_full_gamma,
+    var = "pred_link", type = "link") %>%
+  # add predicted E(y) on the response scale
+  add_predictions(is_full_gamma,
+    var = "pred_response", type = "response") %>%
+  mutate(
+    resid_response = (is - pred_response)^2)
+
+is_park <- feglm(
+  resid_response ~ pred_link,
+  family=Gamma(link = "log"), 
+  data = is_pred, cluster = ~v_id)
+
+modelsummary(list(
+  "Indoor Seasonal PM<sub>2.5</sub>" = is_park),
+  statistic = c("SE" = "std.error", 
+  "95% CI" = "{conf.low}, {conf.high}"), 
+   shape = term ~ model + statistic,
+   gof_omit = 'DF|Deviance|R2|AIC|BIC|RMSE')
+
+is_tests <- avg_comparisons(is_park, 
+  var = "pred_link", type = "link", 
+  hypothesis = c("b1 - 0 = 0",
+                 "b1 - 1 = 0", 
+                 "b1 - 2 = 0",
+                 "b1 - 3 = 0"))
+
+is_results <- is_tests %>% 
+  select(term, estimate, std.error, 
+    statistic, p.value) %>%
+  mutate(family = c("Lognormal", "Poisson-like", 
+    "Gamma", "Inverse Gaussian")) %>%
+  relocate(family)
+tt(is_results, digits = 3) %>%
+  format_tt(j=6, sprintf = "%.4f")
+```
+Again, seems like Gamma provides the best overall fit. Overall, although technically for personal exposure the Poisson-like family provides the best fit, it seems reasonable for consistency to use the Gamma family across all 4 outcomes. 
+

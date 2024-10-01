@@ -1,9 +1,9 @@
 #  program:  etwfe-te-ap-analysis.R
-#  task:     estimate ETWFE modesls for air pollution
+#  task:     estimate ETWFE models for air pollution
 #  input:    various .rds files
 #  output:   various tables
 #  project:  BHET
-#  author:   sam harper \ 2024-04-15
+#  author:   sam harper \ 2024-09-24
 
 
 ## 0 Load needed packages ----
@@ -11,29 +11,43 @@ library(here)
 library(tidyverse)
 library(osfr)
 library(fixest)
+library(splines)
 library(marginaleffects)
 library(modelsummary)
-library(kableExtra)
-library(patchwork)
+library(tinytable)
+library(readxl)
 
 
 ## 1 read in clean air pollution datasets ----
 
-# personal PM2.5
+# personal PM2.5 and black carbon
 d_p <- read_rds(here("data-clean",
-  "ap-data-personal.rds"))
+  "ap-data-personal.rds")) %>%
+  # limit to complete cases
+  drop_na(pe, hh_num, ets, wq, out_temp, out_dew)
 
-# personal black carbon
 d_bc <- read_rds(here("data-clean",
-  "ap-data-bc.rds"))
+  "ap-data-personal.rds")) %>%
+  # limit to complete cases
+  drop_na(bc, hh_num, ets, wq, out_temp, out_dew)
 
 # indoor daily
 d_i24 <- read_rds(here("data-clean",
-  "ap-data-i24h.rds"))
+  "ap-data-i24h.rds")) %>%
+  # limit to complete cases
+  drop_na(i24, hh_num, ets, wq, out_temp, out_dew) %>%
+  # restrict to cohorts treated after 2019
+  # since no data in 2018
+  filter(cohort_year_2019!=1)
 
 # indoor seasonal
 d_is <- read_rds(here("data-clean",
-  "ap-data-iseason.rds"))
+  "ap-data-iseason.rds")) %>%
+  # limit to complete cases
+  drop_na(is, hh_num, ets, wq, out_temp, out_dew, out_rh) %>%
+  # restrict to cohorts treated after 2019
+  # since no data in 2018
+  filter(cohort_year_2019!=1)
 
 
 ## 2 define a function to estimate the and adjusted 
@@ -47,9 +61,11 @@ estimate_etwfe <- function(
   fml1 <- as.formula(paste(lhs, "~", 
     paste(rhs1, collapse = " + ")))
   
-  # Fit model for the first set of predictors
-  etwfe1 <- fixest::feols(fml = fml1, 
-    data = data, cluster = ~v_id)
+  # Fit gamma model for the first set of predictors
+  # (see personal-models.qmd for details)
+  etwfe1 <- fixest::feglm(fml = fml1, 
+    data = data, cluster = ~v_id,
+    family = Gamma(link = "log"))
   
   # get marginal effects
   me_etwfe1 <- marginaleffects::slopes(
@@ -83,8 +99,9 @@ estimate_etwfe <- function(
     paste(rhs2, collapse = " + ")))  
   
   # Fit model for adjusted ETWFE
-  etwfe2 <- fixest::feols(fml = fml2, 
-    data = data, cluster = ~v_id)
+  etwfe2 <- fixest::feglm(fml = fml2, 
+    data = data, cluster = ~v_id,
+    family = Gamma(link = "log"))
   
   # get marginal effects
     me_etwfe2 <- marginaleffects::slopes(
@@ -121,42 +138,55 @@ estimate_etwfe <- function(
 }
 
 # covariates for basic ETWFE specification
+# personal PM and BC
 rhs_did <- c("treat:cohort_year_2019:year_2019",
   "treat:cohort_year_2019:year_2021", 
   "treat:cohort_year_2020:year_2021",
   "treat:cohort_year_2021:year_2021",
-  "cohort_year_2020", "cohort_year_2021",
-  "year_2021", "year_2019", "cohort_year_2019")
+  "cohort_year_2019", "cohort_year_2020", 
+  "cohort_year_2021", "year_2019",
+  "year_2021")
+
+# indoor daily and seasonal
+# drop 2019 cohort and year dummies
+rhs_didi <- c("treat:cohort_year_2020:year_2021",
+  "treat:cohort_year_2021:year_2021", 
+  "cohort_year_2020", "cohort_year_2021", 
+  "year_2021")
 
 # ETWFE plus covariates
-rhs_dida <- c(rhs_did, "hh_num", "factor(smoking)", 
-  "outdoor_temp_24h", "outdoor_dew_24h")
+rhs_dida <- c(rhs_did, "hh_num", "ets_former",
+  "ets_lived", "ets_none", 
+  "ns(out_temp, df=2)", 
+  "ns(out_dew, df=2)")
+
+# ETWFE plus covariates
+rhs_didia <- c(rhs_didi, "hh_num", "ets_former",
+  "ets_lived", "ets_none",
+  "ns(out_temp, df=2)", 
+  "ns(out_dew, df=2)")
 
 
 ## 3 Estimate models for all AP outcomes ----
 # personal PM
-m_ppm <- estimate_etwfe(lhs="PM25conc_exposureugm3", 
+m_ppm <- estimate_etwfe(lhs="pe", 
   rhs1=rhs_did, rhs2=rhs_dida, 
   data=d_p)
 
 # ETWFE and adjusted ETWFE models for black carbon
-m_pbc <- estimate_etwfe(lhs="bc_exp_conc", 
+m_pbc <- estimate_etwfe(lhs="bc", 
   rhs1=rhs_did, rhs2=rhs_dida, 
   data=d_bc)
 
 # ETWFE and adjusted ETWFE models for indoor daily
-m_i24 <- estimate_etwfe(lhs="pm2.5_indoor_sensor_24h", 
-  rhs1=rhs_did, rhs2=rhs_dida, 
-  # restrict to cohorts treated after 2019
-  # in the absence of data in season 1
-  data=subset(d_i24, cohort_year_2019!=1))
+m_i24 <- estimate_etwfe(lhs="i24", 
+  rhs1=rhs_didi, rhs2=rhs_didia, 
+  data=d_i24)
 
 # ETWFE and adjusted ETWFE models for indoor seasonal
-m_is <- estimate_etwfe(lhs="pm2.5_indoor_seasonal_hs", 
-  rhs1=rhs_did, rhs2=rhs_dida, 
-  # restrict to cohorts treated after 2019
-  # in the absence of data in season 1
-  data=subset(d_is, cohort_year_2019!=1))
+m_is <- estimate_etwfe(lhs="is", 
+  rhs1=rhs_didi, rhs2=rhs_didia, 
+  data=d_is)
 
 # write model results to output folder
 write_rds(m_ppm, file = here("outputs/models",
@@ -176,7 +206,8 @@ write_rds(m_is, file = here("outputs/models",
 
 # tables of results by outcome
 ap_table_p <- bind_rows(m_ppm$me_1, m_ppm$me_2) %>% 
-  mutate(category = "Personal", outcome = "PM2.5",
+  mutate(category = "Personal", 
+         outcome = "PM2.5",
          nobs = m_ppm$e1$nobs)
 
 ap_table_bc <- bind_rows(m_pbc$me_1, m_pbc$me_2) %>% 
@@ -186,13 +217,13 @@ ap_table_bc <- bind_rows(m_pbc$me_1, m_pbc$me_2) %>%
 
 ap_table_i24 <- bind_rows(m_i24$me_1, m_i24$me_2) %>% 
   mutate(category = "Indoor", 
-         outcome = "Daily",
+         outcome = "Daily PM2.5",
          nobs = m_i24$e1$nobs)
 
 ap_table_is <- bind_rows(m_is$me_1, m_is$me_2) %>% 
   mutate(category = "Indoor", 
-         outcome = "Seasonal",
-         nobs = m_i24$e1$nobs)
+         outcome = "Seasonal PM2.5",
+         nobs = m_is$e1$nobs)
 
 # put all subtables together
 ap_table1 <- bind_rows(ap_table_p, ap_table_bc,
@@ -201,8 +232,8 @@ ap_table1 <- bind_rows(ap_table_p, ap_table_bc,
   select(model, nobs, estimate, conf.low, 
     conf.high, category, outcome) %>%
   relocate(category, outcome) %>%
-  mutate(ci = paste("(", sprintf("%.2f", conf.low), ", ",
-    sprintf("%.2f", conf.high), ")", sep="")) %>%
+  mutate(ci = paste("(", sprintf("%.1f", conf.low), ", ",
+    sprintf("%.1f", conf.high), ")", sep="")) %>%
   select(-conf.low, -conf.high) %>%
   pivot_wider(names_from = model, values_from = 
     c(estimate, ci), names_vary = "slowest")
@@ -220,6 +251,10 @@ ap_table2 <- read_csv(here("data-clean",
   "DID_air_pollution.csv")) %>%
   filter(`Category` == "Outdoor" & `Effect` !=
            "DiD with S3") %>%
+  mutate(Pollutant = c("Daily PM2.5",
+    "Daily PM2.5", 
+    "Seasonal PM2.5",
+    "Seasonal PM2.5")) %>%
   rename_at(c("Category", "Pollutant", "Estimate"), 
     .funs = tolower) %>%
   rename("outcome" = `pollutant`) %>%
@@ -236,8 +271,6 @@ ap_table <- bind_rows(ap_table1, ap_table2)
 # write table to output folder
 write_rds(ap_table, file = here("outputs", 
   "ap-etwfe-table.rds"))
-
-
 
 ap_table <- read_rds(here("outputs", 
   "ap-etwfe-table.rds")) 
@@ -288,7 +321,7 @@ tt(m_table,
     i = 10, j = 1, rowspan = 6, alignv = "t") %>%
   style_tt(j = 1:7, align = "llccccc") %>%
   format_tt(escape = TRUE) %>%
-  format_tt(j=c(4,6), sprintf = "%.2f") 
+  format_tt(j=c(4,6), sprintf = "%.1f") 
 
 
 ## 4 Table of heterogeneous treatment effects ----
@@ -309,8 +342,8 @@ aph_table <- bind_rows(ap_table_ph, ap_table_bch) %>%
          `2021` = "2021",
          .missing = "All")) %>%
   relocate(outcome, cohort_year, year) %>%
-  mutate(ci = paste("(", round(conf.low, 2), ", ",
-    round(conf.high, 2), ")", sep="")) %>%
+  mutate(ci = paste("(", round(conf.low, 1), ", ",
+    round(conf.high, 1), ")", sep="")) %>%
   select(-conf.low, -conf.high) %>%
   pivot_wider(names_from = outcome, values_from = 
     c(estimate, ci), names_vary = "slowest")
@@ -321,10 +354,10 @@ write_rds(aph_table, file = here("outputs",
 
 # tables of results by outcome for indoor
 ap_table_i24h <- bind_rows(m_i24$me_2, m_i24$meh_2) %>% 
-  mutate(outcome = "Daily")
+  mutate(outcome = "Daily PM2.5")
 
 ap_table_ish <- bind_rows(m_is$me_2, m_is$meh_2) %>% 
-  mutate(outcome = "Seasonal")
+  mutate(outcome = "Seasonal PM2.5")
 
 aph_table_i <- bind_rows(ap_table_i24h, ap_table_ish) %>%
   select(outcome, estimate, conf.low, conf.high, 
@@ -349,78 +382,78 @@ write_rds(aph_table_i, file = here("outputs",
 
 # read in indoor seasonal data plus season 3
 d_is3 <- read_rds(here("data-clean",
-  "ap-data-iseason-s3.rds"))
+  "ap-data-iseason-s3.rds")) %>%
+  # restrict to cohorts treated after 2019
+  # since no data in 2018
+  filter(cohort_year_2019!=1)
 
 # ETWFE model estimates including Season 3
-m_is_s3 <- fixest::feols(
-  pm2.5_indoor_seasonal_hs ~ treat:cohort_year_2020:year_2020 + 
+m_is_s3 <- fixest::feglm(
+  is ~ treat:cohort_year_2020:year_2020 + 
     treat:cohort_year_2020:year_2021 +
     treat:cohort_year_2021:year_2021 + cohort_year_2020 + 
     cohort_year_2021 + year_2021, 
-  cluster = ~v_id, data=subset(d_is3, 
-    cohort_year_2019!=1))
+  cluster = ~v_id, data=d_is3)
 
 # overall marginal effect
 m_is_s3_me <- slopes(
   m_is_s3,
-  newdata = subset(d_is3, 
-    cohort_year_2019!=1 & treat==1),
+  newdata = subset(d_is3, treat==1),
   variables = "treat", by = "treat")
 
 # heterogeneous ATTs
 m_is_s3_meh <- slopes(
   m_is_s3,
-  newdata = subset(d_is3, 
-    cohort_year_2019!=1 & treat==1),
+  newdata = subset(d_is3, treat==1),
   variables = "treat",
   by = c("cohort_year", "year"))
   
 
 # estimates without Season 3
 m_is_nos3 <- fixest::feols(
-  pm2.5_indoor_seasonal_hs ~ treat:cohort_year_2020:year_2020 + 
+  is ~ treat:cohort_year_2020:year_2020 + 
     treat:cohort_year_2020:year_2021 +
     treat:cohort_year_2021:year_2021 + cohort_year_2020 + 
     cohort_year_2021 + year_2021, 
   cluster = ~v_id, data=subset(d_is3, 
-    cohort_year_2019!=1 & wave!="S3"))
+    wave != 3))
 
 # overall marginal effect
 m_is_nos3_me <- slopes(
   m_is_nos3,
-  newdata = subset(d_is3, 
-    cohort_year_2019!=1 & wave!="S3" & treat==1),
+  newdata = subset(d_is3, wave != 3 & treat==1),
   variables = "treat", by = "treat")
 
 # heterogeneous ATTs
 m_is_nos3_meh <- slopes(
   m_is_nos3,
-  newdata = subset(d_is3, 
-    cohort_year_2019!=1 & treat==1),
+  newdata = subset(d_is3, wave != 3 & treat==1),
   variables = "treat",
   by = c("cohort_year", "year"))
 
 # Put together the table
 ap_ind_s3 <- bind_rows(m_is_s3_me , m_is_s3_meh) %>% 
-  mutate(outcome = "wS3")
+  mutate(outcome = "wS3",
+         nobs = m_is_s3$nobs)
 
 ap_ind_nos3 <- bind_rows(m_is_nos3_me, m_is_nos3_meh) %>% 
-  mutate(outcome = "woS3")
+  mutate(outcome = "woS3",
+         nobs = m_is_nos3$nobs)
 
 ap_is3_table <- bind_rows(ap_ind_s3, ap_ind_nos3) %>%
-  select(outcome, estimate, conf.low, conf.high, 
+  select(outcome, nobs, estimate, conf.low, conf.high, 
          cohort_year, year) %>%
   mutate_at(vars(c(cohort_year,year)), ~ recode(., 
          `2019` = "2019",
          `2020` = "2020",
          `2021` = "2021",
          .missing = "All")) %>%
-  relocate(outcome, cohort_year, year) %>%
-  mutate(ci = paste("(", round(conf.low, 2), ", ",
-    round(conf.high, 2), ")", sep="")) %>%
+  relocate(outcome, cohort_year, year, nobs) %>%
+  mutate(ci = paste("(", sprintf("%.1f", conf.low), ", ",
+    sprintf("%.1f", conf.high), ")", sep="")) %>%
   select(-conf.low, -conf.high) %>%
   pivot_wider(names_from = outcome, values_from = 
-    c(estimate, ci), names_vary = "slowest")
+    c(nobs, estimate, ci), names_vary = "slowest")
 
 # write table to data
 write_rds(ap_is3_table, file = here("outputs", 
@@ -503,6 +536,7 @@ pe_etwfe_nfe_me <- slopes(pe_etwfe_nfe,
 write_rds(pe_etwfe_nfe_me, file = here("outputs/models", 
   "pe_etwfe_nfe_me.rds"))
 
-
-
+testdata <- d_is %>% 
+  filter(row_number() 
+  %in% obs(m_is$e2))
 

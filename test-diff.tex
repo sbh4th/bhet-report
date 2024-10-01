@@ -1,7 +1,7 @@
 % Options for packages loaded elsewhere
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL hei-report.tex           Mon Aug 19 16:11:39 2024
-%DIF ADD hei-report-revised.tex   Mon Aug 19 12:11:09 2024
+%DIF ADD hei-report-revised.tex   Mon Sep  9 10:55:36 2024
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
@@ -230,13 +230,13 @@
 \title{How Do Household Energy Transitions Work?}
 \author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
 of the Beijing Household Energy Transitions Team}
-\date{2024-08-19}
+\date{\DIFdelbegin \DIFdel{2024-08-19}\DIFdelend \DIFaddbegin \DIFadd{2024-09-09}\DIFaddend }
 %DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
 %DIF UNDERLINE PREAMBLE %DIF PREAMBLE
 \RequirePackage[normalem]{ulem} %DIF PREAMBLE
 \RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
 \providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
-\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}} %DIF PREAMBLE
 %DIF SAFE PREAMBLE %DIF PREAMBLE
 \providecommand{\DIFaddbegin}{} %DIF PREAMBLE
 \providecommand{\DIFaddend}{} %DIF PREAMBLE
@@ -292,6 +292,11 @@ of the Beijing Household Energy Transitions Team}
 \DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
 \DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
 \DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+%DIF AMSMATHULEM PREAMBLE %DIF PREAMBLE
+\makeatletter %DIF PREAMBLE
+\let\sout@orig\sout %DIF PREAMBLE
+\renewcommand{\sout}[1]{\ifmmode\text{\sout@orig{\ensuremath{#1}}}\else\sout@orig{#1}\fi} %DIF PREAMBLE
+\makeatother %DIF PREAMBLE
 %DIF COLORLISTINGS PREAMBLE %DIF PREAMBLE
 \RequirePackage{listings} %DIF PREAMBLE
 \RequirePackage{color} %DIF PREAMBLE
@@ -308,6 +313,8 @@ of the Beijing Household Energy Transitions Team}
 } %DIF PREAMBLE
 \lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
 \lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+\lstset{extendedchars=\true,inputencoding=utf8}
+
 %DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}
@@ -702,13 +709,13 @@ w1 and w2. In w3, which was during the height of the COVID-19 pandemic,
 we limited household measurements to indoor air quality and sensor-based
 measurement of indoor temperature and stove use in 41 villages,
 including all 17 treated villages and 24 untreated villages, prior to
-COVID-19-related travel restrictions that halted field data collection.
-In w4, which also occurred during the COVID-19 pandemic, we returned to
-conducting individual-level assessments. However, unlike in w1 and w2,
-anthropometric measurements and airway inflammation were assessed in
-participant homes rather than clinics to avoid group contact, and blood
-samples were not collected. Outdoor (community) air pollution was
-measured throughout the study period.
+\DIFaddbegin \DIFadd{Beijing-wide }\DIFaddend COVID-19-related travel restrictions that halted field data
+collection. In w4, which also occurred during the COVID-19 pandemic, we
+returned to conducting individual-level assessments. However, unlike in
+w1 and w2, anthropometric measurements and airway inflammation were
+assessed in participant homes rather than clinics to avoid group
+contact, and blood samples were not collected. Outdoor (community) air
+pollution was measured throughout the study period.
 
 \subsubsection{Air Pollution}\label{air-pollution}
 
@@ -1437,30 +1444,32 @@ the CBHP policy. The mean outcome (replaced by a suitable link function
 \(g(\cdot)\) for binary or count outcomes) was defined using a set of
 linear predictors:
 
-\begin{equation}\phantomsection\label{eq-etwfe}{Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) + \varepsilon_{ijt}}\end{equation}
+\begin{equation}\phantomsection\DIFdelbegin %DIFDELCMD < \label{eq-etwfe}{Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) + \varepsilon_{ijt}}%%%
+\DIFdelend \DIFaddbegin \label{eq-etwfe}{Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rs} (d_{r} \times fs_{t}) + \varepsilon_{ijt}}\DIFaddend \end{equation}
 
 where \(Y_{ijt}\) is the outcome for individual \(i\) in village \(j\)
 at time \(t\), \(d_{r}\) represent treatment cohort dummies, i.e., fixed
-effects for cohorts of villages that were first exposed to the policy at
-the same time \(q\) (e.g., in 2019, 2020, or 2021), \(fs_{t}\) are time
-fixed effects corresponding to different winter data collection waves
-(2018-19, 2019-20, or 2021-22), and \(\tau_{rt}\) are the cohort-time
-\(ATT\)s in the context of a linear model. For binary or count outcomes
-the cohort-time \(ATT\)s are derived by estimating marginal effects from
-non-linear models (Arel-Bundock 2024). For all models we cluster
-standard errors at the village level, consistent with the unit of
-treatment assignment (Cameron and Miller 2015). The ETWFE and other
-approaches that allow for several (potentially heterogeneous) treatment
-effects may also be averaged to provide a weighted summary \(ATT\).
-Several potential possibilities are feasible, including weighting by
-treatment cohorts or time since policy adoption (Goin and Riddell 2023).
-We generally focus on two types of \(ATT\)s for this report: simple
-averages across all treatment cohorts and the full set of cohort-time
-\(ATT\)s to evaluate heterogeneous treatment effects. Although we
-primarily focus on reporting the simple average \(ATT\) for most
-outcomes, we also used omnibus joint \emph{F}-tests to assess whether
-there was sufficient evidence to reject the assumption of homogeneity
-across the \(ATT\)s.
+effects for \DIFdelbegin \DIFdel{cohorts of villages }\DIFdelend \DIFaddbegin \DIFadd{each cohort of villages \(r\) }\DIFaddend that were first exposed to the
+policy at the same time \(q\) (e.g., in 2019, 2020, or 2021), \(fs_{t}\)
+are \DIFdelbegin \DIFdel{time
+fixed effects }\DIFdelend \DIFaddbegin \DIFadd{fixed effects for each time period \(s\) }\DIFaddend corresponding to different
+winter data collection waves (2018-19, 2019-20, or 2021-22), and
+\DIFdelbegin \DIFdel{\(\tau_{rt}\) }\DIFdelend \DIFaddbegin \DIFadd{\(\tau_{rs}\) }\DIFaddend are the cohort-time \(ATT\)s in the context of a linear
+model. For binary or count outcomes the cohort-time \(ATT\)s are derived
+by estimating marginal effects from non-linear models (Arel-Bundock
+2024). For all models we cluster standard errors at the village level,
+consistent with the unit of treatment assignment (Cameron and Miller
+2015). The ETWFE and other approaches that allow for several
+(potentially heterogeneous) treatment effects may also be averaged to
+provide a weighted summary \(ATT\). Several potential possibilities are
+feasible, including weighting by treatment cohorts or time since policy
+adoption (Goin and Riddell 2023). We generally focus on two types of
+\(ATT\)s for this report: simple averages across all treatment cohorts
+and the full set of cohort-time \(ATT\)s to evaluate heterogeneous
+treatment effects. Although we primarily focus on reporting the simple
+average \(ATT\) for most outcomes, we also used omnibus joint
+\emph{F}-tests to assess whether there was sufficient evidence to reject
+the assumption of homogeneity across the \(ATT\)s.
 
 \subsection{Mediation Analysis}\label{mediation-analysis}
 
@@ -1471,11 +1480,16 @@ exposure-mediator interaction and potentially allow for adjustment for
 confounders \(W\) of the mediator-outcome effect, we can extend equation
 Equation~\ref{eq-etwfe} as follows:
 
-\begin{equation}\phantomsection\label{eq-etwfem}{
+\begin{equation}\phantomsection\DIFdelbegin %DIFDELCMD < \label{eq-etwfem}{
+%DIFDELCMD < \begin{aligned}
+%DIFDELCMD < Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) \\ + \delta M_{it} + \sum_{r=q}^{T} \sum_{s=r}^{T} \eta_{rt} (d_{r} \times fs_{t} \times M_{it}) + \zeta \mathbf{W} + \varepsilon_{ijt}
+%DIFDELCMD < \end{aligned}
+%DIFDELCMD < }%%%
+\DIFdelend \DIFaddbegin \label{eq-etwfem}{
 \begin{aligned}
-Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt} (d_{r} \times fs_{t}) \\ + \delta M_{it} + \sum_{r=q}^{T} \sum_{s=r}^{T} \eta_{rt} (d_{r} \times fs_{t} \times M_{it}) + \zeta \mathbf{W} + \varepsilon_{ijt}
+Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rs} (d_{r} \times fs_{t}) \\ + \delta M_{it} + \sum_{r=q}^{T} \sum_{s=r}^{T} \eta_{rs} (d_{r} \times fs_{t} \times M_{it}) + \zeta \mathbf{W} + \varepsilon_{ijt}
 \end{aligned}
-}\end{equation}
+}\DIFaddend \end{equation}
 
 where now \(\delta\) is the conditional effect of the mediator \(M\) at
 the reference level of the treatment (again, represented via the series
@@ -1493,8 +1507,8 @@ the extent to which the policy's impact is mediated by
 PM\textsubscript{2.5}. Based on the setup in Equation~\ref{eq-etwfem}
 the \(CDE\) is estimated as: \(\delta + \eta_{rt}MT\). In the absence of
 interaction between the exposure and the mediator (i.e.,
-\(\eta_{rt}=0\)) the \(CDE\) will simply be the estimated treatment
-effects \(\sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt}\), i.e., the effect of
+\DIFdelbegin \DIFdel{\(\eta_{rt}=0\)}\DIFdelend \DIFaddbegin \DIFadd{\(\eta_{rs}=0\)}\DIFaddend ) the \(CDE\) will simply be the estimated treatment
+effects \DIFdelbegin \DIFdel{\(\sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rt}\)}\DIFdelend \DIFaddbegin \DIFadd{\(\sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rs}\)}\DIFaddend , i.e., the effect of
 the policy holding \(M\) constant. For a valid estimate of the \(CDE\)
 we must account for confounding of the mediator-outcome effect,
 represented by \(W\) in the equation above. The inclusion of baseline
@@ -1519,8 +1533,9 @@ all treatment cohorts (including the untreated) similarly over the study
 period (e.g., background improvements in ambient air quality or
 household transition to more efficient heating). The latter are
 particularly helpful in the context of the documented declines in
-PM\textsubscript{2.5} in China attributable to sources other than the
-CBHP policy (Van Donkelaar et al. 2021; Zhang et al. 2019)
+\DIFaddbegin \DIFadd{ambient }\DIFaddend PM\textsubscript{2.5} in \DIFdelbegin \DIFdel{China }\DIFdelend \DIFaddbegin \DIFadd{the Beijing region }\DIFaddend attributable to
+sources other than the CBHP policy (Van Donkelaar et al. 2021; Zhang et
+al. 2019)
 
 For models estimating the effect of the policy on health outcomes, we
 used DAGs (Pearl 2000) to identify potential time-varying causes of both
@@ -1533,30 +1548,34 @@ our team's substantive knowledge about the CBHP policy. In the
 multivariable models, we also adjusted for strong predictors of the
 outcome that were not affected by treatment, and thus not confounders,
 to improve model precision. The covariates included in each of the
-models are provided in the tables.
+models \DIFaddbegin \DIFadd{for blood pressure and respiratory health outcomes }\DIFaddend are provided
+in the tables.
 
-For air pollution outcomes, we considered the following covariates:
-village population and total number of households in the village;
-temperature, relative humidity, wind direction, wind speed, boundary
-layer height; home area and home area heated; home insulation; smoking
-status of participant and whether or not they lived with a smoker;
-whether or not the household reported using wood (i.e., biomass) for
-household energy activities, and if so, self-reported quantity of wood.
-Potential non-linearity between continuous covariates and our study
-outcomes were evaluated using natural cubic splines with different
-degrees of freedom. Ultimately, the following covariates were included
-in the final DiD models for outdoor, indoor, and personal exposures to
-air pollution, based on whether measurable changes in the covariate over
-time were observed. For the final adjusted DiD model for personal
-exposure source contributions due to mixed combustion of solid fuels
-(hereafter `mixed combustion'), we adjusted for: temperature
-(represented by a spline with 2 degrees of freedom); participant smoking
-status; and whether or not the household reported using biomass fuel.
-For the final adjusted DiD model for outdoor (community) `mixed
-combustion' source contributions, the following covariates were
-included: total number of households in the village; village population;
-and ambient relative humidity (represented by a spline with 2 degrees of
-freedom).
+For air pollution outcomes, \DIFdelbegin \DIFdel{we }\DIFdelend \DIFaddbegin \DIFadd{the evidence on predictors of personal
+exposures and indoor air pollution in rural China is inconsistent. We
+}\DIFaddend considered the following covariates \DIFaddbegin \DIFadd{that could potentially be
+determinants of air pollution in our study setting}\DIFaddend : village population
+and total number of households in the village; temperature, relative
+humidity, wind direction, wind speed, boundary layer height; home area
+and home area heated; home insulation; smoking status of participant and
+whether or not they lived with a smoker; whether or not the household
+reported using wood (i.e., biomass) for household energy activities, and
+if so, self-reported quantity of wood. Potential non-linearity between
+continuous covariates and our study outcomes were evaluated using
+natural cubic splines with different degrees of freedom. Ultimately, the
+following covariates were included in the final DiD models for outdoor,
+indoor, and personal exposures to air pollution, based on whether
+measurable changes in the covariate \DIFdelbegin \DIFdel{over
+time were observed }\DIFdelend \DIFaddbegin \DIFadd{were observed over time}\DIFaddend . For the
+final adjusted DiD model for personal exposure source contributions due
+to mixed combustion of solid fuels (hereafter `mixed combustion'), we
+adjusted for: temperature (represented by a spline with 2 degrees of
+freedom); participant smoking status; and whether or not the household
+reported using biomass fuel. For the final adjusted DiD model for
+outdoor (community) `mixed combustion' source contributions, the
+following covariates were included: total number of households in the
+village; village population; and ambient relative humidity (represented
+by a spline with 2 degrees of freedom).
 
 \subsection{\texorpdfstring{Multiple imputation for covariates and
 indoor PM\textsubscript{2.5} in analyses with BP
@@ -1780,38 +1799,95 @@ sample}\label{description-of-study-sample}
 demographic, health, and environmental measures at baseline, by
 treatment status.}
 
-\centering{
+\DIFdelbeginFL %DIFDELCMD < \centering{
+%DIFDELCMD < 
+
+%DIFDELCMD < \centering
+%DIFDELCMD < \begin{talltblr}[         %% tabularray outer open
+%DIFDELCMD < entry=none,label=none,
+%DIFDELCMD < note{}={},
+%DIFDELCMD < ]                     %% tabularray outer close
+%DIFDELCMD < {                     %% tabularray inner open
+%DIFDELCMD < colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+%DIFDELCMD < cell{1}{2}={c=2,}{halign=c,},
+%DIFDELCMD < cell{1}{4}={c=2,}{halign=c,},
+%DIFDELCMD < column{1}={halign=r,},
+%DIFDELCMD < column{2}={halign=r,},
+%DIFDELCMD < column{3}={halign=r,},
+%DIFDELCMD < column{4}={halign=r,},
+%DIFDELCMD < column{5}={halign=r,},
+%DIFDELCMD < column{6}={halign=r,},
+%DIFDELCMD < column{7}={halign=r,},
+%DIFDELCMD < row{1}={halign=c,},
+%DIFDELCMD < column{1}={font=\fontsize{0.75em}{1.05em}\selectfont,},
+%DIFDELCMD < column{2}={font=\fontsize{0.75em}{1.05em}\selectfont,},
+%DIFDELCMD < column{3}={font=\fontsize{0.75em}{1.05em}\selectfont,},
+%DIFDELCMD < column{4}={font=\fontsize{0.75em}{1.05em}\selectfont,},
+%DIFDELCMD < column{5}={font=\fontsize{0.75em}{1.05em}\selectfont,},
+%DIFDELCMD < column{6}={font=\fontsize{0.75em}{1.05em}\selectfont,},
+%DIFDELCMD < column{7}={font=\fontsize{0.75em}{1.05em}\selectfont,},
+%DIFDELCMD < row{3}={,cmd=\bfseries,},
+%DIFDELCMD < row{9}={,cmd=\bfseries,},
+%DIFDELCMD < row{25}={,cmd=\bfseries,},
+%DIFDELCMD < }                     %% tabularray inner close
+%DIFDELCMD < \toprule
+%DIFDELCMD < & Never treated (N=603) &  & Ever treated (N=400) &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}
+%DIFDELCMD < & Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error \\ \midrule %% TinyTableHeader
+%DIFDELCMD < Demographics:                 &              &              &              &              &              &             \\
+%DIFDELCMD < Age (years)                   & \num{59.9}  & \num{9.4}   & \num{60.4}  & \num{9.2}   & \num{0.5}   & \num{0.6}  \\
+%DIFDELCMD < Female (\%)                  & \num{59.5}  & \num{49.1}  & \num{59.1}  & \num{49.2}  & \num{-0.4}  & \num{3.2}  \\
+%DIFDELCMD < No education (\%)            & \num{11.5}  & \num{31.9}  & \num{12.3}  & \num{32.9}  & \num{0.9}   & \num{2.1}  \\
+%DIFDELCMD < Primary education (\%)       & \num{75.5}  & \num{43.0}  & \num{77.6}  & \num{41.7}  & \num{2.1}   & \num{2.8}  \\
+%DIFDELCMD < Secondary+ education (\%)    & \num{12.6}  & \num{33.2}  & \num{9.8}   & \num{29.7}  & \num{-2.9}  & \num{2.0}  \\
+%DIFDELCMD < Health measures:              &              &              &              &              &              &             \\
+%DIFDELCMD < Never smoker (\%)            & \num{61.9}  & \num{48.6}  & \num{59.5}  & \num{49.1}  & \num{-2.4}  & \num{3.2}  \\
+%DIFDELCMD < Former smoker (\%)           & \num{11.9}  & \num{32.4}  & \num{15.1}  & \num{35.8}  & \num{3.2}   & \num{2.2}  \\
+%DIFDELCMD < Current smoker (\%)          & \num{26.2}  & \num{44.0}  & \num{25.4}  & \num{43.6}  & \num{-0.8}  & \num{2.8}  \\
+%DIFDELCMD < Never drinker (\%)           & \num{55.9}  & \num{49.7}  & \num{52.5}  & \num{50.0}  & \num{-3.4}  & \num{3.2}  \\
+%DIFDELCMD < Occasional drinker (\%)      & \num{26.0}  & \num{43.9}  & \num{25.5}  & \num{43.6}  & \num{-0.5}  & \num{2.8}  \\
+%DIFDELCMD < Daily drinker (\%)           & \num{17.8}  & \num{38.3}  & \num{21.9}  & \num{41.4}  & \num{4.1}   & \num{2.6}  \\
+%DIFDELCMD < Systolic (mmHg)               & \num{131.4} & \num{16.8}  & \num{128.7} & \num{14.3}  & \num{-2.7}  & \num{1.0}  \\
+%DIFDELCMD < Diastolic (mmHg)              & \num{82.7}  & \num{11.6}  & \num{82.1}  & \num{11.3}  & \num{-0.6}  & \num{0.8}  \\
+%DIFDELCMD < Waist circumference (cm)      & \num{87.7}  & \num{10.5}  & \num{85.4}  & \num{9.5}   & \num{-2.3}  & \num{0.8}  \\
+%DIFDELCMD < Body mass index (kg/m2)       & \num{26.3}  & \num{3.7}   & \num{25.8}  & \num{3.6}   & \num{-0.5}  & \num{0.3}  \\
+%DIFDELCMD < Frequency of coughing (\%)   & \num{18.7}  & \num{39.0}  & \num{19.7}  & \num{39.8}  & \num{1.0}   & \num{2.6}  \\
+%DIFDELCMD < Frequency of wheezing (\%)   & \num{6.2}   & \num{24.2}  & \num{6.6}   & \num{24.8}  & \num{0.3}   & \num{1.6}  \\
+%DIFDELCMD < Shortness of breath (\%)     & \num{29.2}  & \num{45.5}  & \num{34.3}  & \num{47.5}  & \num{5.1}   & \num{3.0}  \\
+%DIFDELCMD < Chest trouble (\%)           & \num{11.6}  & \num{32.0}  & \num{14.1}  & \num{34.9}  & \num{2.5}   & \num{2.2}  \\
+%DIFDELCMD < Any respiratory problem (\%) & \num{50.6}  & \num{50.0}  & \num{54.3}  & \num{49.9}  & \num{3.7}   & \num{3.2}  \\
+%DIFDELCMD < Environmental measures:       &              &              &              &              &              &             \\
+%DIFDELCMD < Temperature (°C)              & \num{13.8}  & \num{3.6}   & \num{13.5}  & \num{3.3}   & \num{-0.3}  & \num{0.2}  \\
+%DIFDELCMD < Personal PM2.5 (ug/m3)        & \num{150.2} & \num{300.3} & \num{103.8} & \num{107.3} & \num{-46.3} & \num{19.1} \\
+%DIFDELCMD < \bottomrule
+%DIFDELCMD < \end{talltblr}
+%DIFDELCMD < 
+
+%DIFDELCMD < }
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \centering{
 
 \centering
-\begin{talltblr}[         %% tabularray outer open
-entry=none,label=none,
-note{}={},
+\resizebox{\ifdim\width>\linewidth 0.95\linewidth\else\width\fi}{!}{
+\begin{tblr}[         %% tabularray outer open
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
 cell{1}{2}={c=2,}{halign=c,},
 cell{1}{4}={c=2,}{halign=c,},
-column{1}={halign=r,},
-column{2}={halign=r,},
-column{3}={halign=r,},
-column{4}={halign=r,},
-column{5}={halign=r,},
-column{6}={halign=r,},
-column{7}={halign=r,},
-row{1}={halign=c,},
-column{1}={font=\fontsize{0.75em}{1.05em}\selectfont,},
-column{2}={font=\fontsize{0.75em}{1.05em}\selectfont,},
-column{3}={font=\fontsize{0.75em}{1.05em}\selectfont,},
-column{4}={font=\fontsize{0.75em}{1.05em}\selectfont,},
-column{5}={font=\fontsize{0.75em}{1.05em}\selectfont,},
-column{6}={font=\fontsize{0.75em}{1.05em}\selectfont,},
-column{7}={font=\fontsize{0.75em}{1.05em}\selectfont,},
+column{1}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=l,},
+column{2}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
+column{3}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
+column{4}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
+column{5}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
+column{6}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
+column{7}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
 row{3}={,cmd=\bfseries,},
-row{9}={,cmd=\bfseries,},
-row{25}={,cmd=\bfseries,},
+row{13}={,cmd=\bfseries,},
+row{29}={,cmd=\bfseries,},
+rowsep={.1em},
 }                     %% tabularray inner close
 \toprule
-& Never treated (N=603) &  & Ever treated (N=400) &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}
+& Never enrolled (N=603) &  & Ever enrolled (N=400) &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}
 & Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error \\ \midrule %% TinyTableHeader
 Demographics:                 &              &              &              &              &              &             \\
 Age (years)                   & \num{59.9}  & \num{9.4}   & \num{60.4}  & \num{9.2}   & \num{0.5}   & \num{0.6}  \\
@@ -1819,6 +1895,10 @@ Female (\%)                  & \num{59.5}  & \num{49.1}  & \num{59.1}  & \num{49
 No education (\%)            & \num{11.5}  & \num{31.9}  & \num{12.3}  & \num{32.9}  & \num{0.9}   & \num{2.1}  \\
 Primary education (\%)       & \num{75.5}  & \num{43.0}  & \num{77.6}  & \num{41.7}  & \num{2.1}   & \num{2.8}  \\
 Secondary+ education (\%)    & \num{12.6}  & \num{33.2}  & \num{9.8}   & \num{29.7}  & \num{-2.9}  & \num{2.0}  \\
+Wealth index (bottom 25\%)   & \num{26.9}  & \num{44.4}  & \num{22.3}  & \num{41.7}  & \num{-4.6}  & \num{2.8}  \\
+Wealth index (25-50\%)       & \num{23.6}  & \num{42.5}  & \num{27.0}  & \num{44.5}  & \num{3.4}   & \num{2.9}  \\
+Wealth index (50-75\%)       & \num{24.7}  & \num{43.1}  & \num{25.5}  & \num{43.6}  & \num{0.8}   & \num{2.9}  \\
+Wealth index (top 25\%)      & \num{24.8}  & \num{43.2}  & \num{25.2}  & \num{43.5}  & \num{0.4}   & \num{2.9}  \\
 Health measures:              &              &              &              &              &              &             \\
 Never smoker (\%)            & \num{61.9}  & \num{48.6}  & \num{59.5}  & \num{49.1}  & \num{-2.4}  & \num{3.2}  \\
 Former smoker (\%)           & \num{11.9}  & \num{32.4}  & \num{15.1}  & \num{35.8}  & \num{3.2}   & \num{2.2}  \\
@@ -1831,17 +1911,20 @@ Diastolic (mmHg)              & \num{82.7}  & \num{11.6}  & \num{82.1}  & \num{1
 Waist circumference (cm)      & \num{87.7}  & \num{10.5}  & \num{85.4}  & \num{9.5}   & \num{-2.3}  & \num{0.8}  \\
 Body mass index (kg/m2)       & \num{26.3}  & \num{3.7}   & \num{25.8}  & \num{3.6}   & \num{-0.5}  & \num{0.3}  \\
 Frequency of coughing (\%)   & \num{18.7}  & \num{39.0}  & \num{19.7}  & \num{39.8}  & \num{1.0}   & \num{2.6}  \\
+Frequency of phlegm (\%)     & \num{27.6}  & \num{44.7}  & \num{23.7}  & \num{42.6}  & \num{-3.8}  & \num{2.8}  \\
 Frequency of wheezing (\%)   & \num{6.2}   & \num{24.2}  & \num{6.6}   & \num{24.8}  & \num{0.3}   & \num{1.6}  \\
 Shortness of breath (\%)     & \num{29.2}  & \num{45.5}  & \num{34.3}  & \num{47.5}  & \num{5.1}   & \num{3.0}  \\
 Chest trouble (\%)           & \num{11.6}  & \num{32.0}  & \num{14.1}  & \num{34.9}  & \num{2.5}   & \num{2.2}  \\
-Any respiratory problem (\%) & \num{50.6}  & \num{50.0}  & \num{54.3}  & \num{49.9}  & \num{3.7}   & \num{3.2}  \\
 Environmental measures:       &              &              &              &              &              &             \\
+Any respiratory problem (\%) & \num{50.6}  & \num{50.0}  & \num{54.3}  & \num{49.9}  & \num{3.7}   & \num{3.2}  \\
 Temperature (°C)              & \num{13.8}  & \num{3.6}   & \num{13.5}  & \num{3.3}   & \num{-0.3}  & \num{0.2}  \\
 Personal PM2.5 (ug/m3)        & \num{150.2} & \num{300.3} & \num{103.8} & \num{107.3} & \num{-46.3} & \num{19.1} \\
 \bottomrule
-\end{talltblr}
+\end{tblr}
+}
 
 }
+\DIFaddendFL 
 
 \end{table}%
 
@@ -2049,8 +2132,12 @@ from 30\% in w1 to 7\% in w4.
 \subsection{Aim 1: Policy impacts and potential
 mediation}\label{aim-1-policy-impacts-and-potential-mediation}
 
-\subsubsection{Impact of the CBHP policy on potential
-mediators}\label{impact-of-the-cbhp-policy-on-potential-mediators}
+\subsubsection{Impact of \DIFdelbegin \DIFdel{the CBHP }\DIFdelend policy on potential mediators \DIFaddbegin \DIFadd{(air pollution
+and indoor
+temperature)}\DIFaddend }\DIFdelbegin %DIFDELCMD < \label{impact-of-the-cbhp-policy-on-potential-mediators}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \label{impact-of-policy-on-potential-mediators-air-pollution-and-indoor-temperature}
+\DIFaddend 
 
 The average marginal effect (\(ATT\)) from the basic ETWFE model
 (Table~\ref{tbl-did-med}) shows that exposure to the CBHP policy reduced
@@ -2174,14 +2261,14 @@ markers}}
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects, pp = percentage points, ppb = parts per billion.},
-note{a}={ETWFE models for blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Self-reported respiratory outcomes adjusted for age, gender, and smoking. Measured respiratory outcome (FeNO) adjusted age, gender, body mass index, frequency of drinking, tobacco smoking, and frequency of exercise, occupation, time of measurement. Inflammatory marker outcome models adjusted for age, waist circumference, occupation, wealth index quantile, frequency of drinking, tobacco smoking, and frequency of farming.},
+note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects, Obs = observations, pp = percentage points, ppb = parts per billion.},
+note{a}={ETWFE models for blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Self-reported respiratory outcomes adjusted for age, gender, and smoking. Measured respiratory outcome (FeNO) adjusted age, gender, body mass index, frequency of drinking, smoking, and frequency of exercise, occupation, time of measurement. Inflammatory marker outcome models adjusted for age, waist circumference, occupation, wealth index quantile, frequency of drinking, tobacco smoking, and frequency of farming.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
-colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
-cell{1}{3}={c=2,}{halign=c,},
-cell{1}{5}={c=2,}{halign=c,},
-cell{3}{1}={c=6}{},cell{12}{1}={c=6}{},cell{20}{1}={c=6}{},
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{4}={c=2,}{halign=c,},
+cell{1}{6}={c=2,}{halign=c,},
+cell{3}{1}={c=7}{},cell{12}{1}={c=7}{},cell{20}{1}={c=7}{},
 cell{4}{1}={preto={\hspace{1em}}},
 cell{5}{1}={preto={\hspace{1em}}},
 cell{6}{1}={preto={\hspace{1em}}},
@@ -2210,38 +2297,40 @@ cell{6}{1}={r=2,}{valign=h,},
 cell{8}{1}={r=2,}{valign=h,},
 cell{10}{1}={r=2,}{valign=h,},
 cell{13}{1}={r=6,}{valign=h,},
+cell{21}{1}={r=4,}{valign=h,},
 column{1}={halign=l,},
 column{2}={halign=l,},
 column{3}={halign=c,},
 column{4}={halign=c,},
 column{5}={halign=c,},
 column{6}={halign=c,},
+column{7}={halign=c,},
 }                     %% tabularray inner close
 \toprule
-&  & DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
-&  & ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
-Blood pressure (mmHg) &&&&& \\
-Systolic BP & Brachial & -0.79 & (-2.63, 1.04) & -1.40 & (-3.31, 0.51) \\
-Systolic BP & Central & -1.04 & (-2.82, 0.73) & -1.56 & (-3.40, 0.28) \\
-Diastolic BP & Brachial & -1.29 & (-2.62, 0.04) & -1.60 & (-2.96, -0.25) \\
-Diastolic BP & Central & -1.35 & (-2.66, 0.04) & -1.66 & (-2.97, -0.34) \\
-Pulse Pressure & Brachial & 0.50 & (-0.71, 1.70) & 0.21 & (-1.00, 1.41) \\
-Pulse Pressure & Central & 0.31 & (-0.85, 1.46) & 0.10 & (-1.01, 1.20) \\
-BP Amplification x10 & Pulse pressure & 0.10 & (-0.12, 1.40) & 0.00 & (-1.20, 1.20) \\
-BP Amplification x10 & Systolic BP & 0.20 & (-0.20, 0.50) & 0.10 & (-0.20, 0.40) \\
-Respiratory outcomes &&&&& \\
-Self-reported (pp) & Any symptom & -7.38 & (-13.98, -0.77) & -7.86 & (-14.63, -1.09) \\
-Self-reported (pp) & Coughing & -1.59 & (-6.41, 3.23) & -1.98 & (-6.8, 2.84) \\
-Self-reported (pp) & Phlegm & -1.22 & (-5.58, 3.15) & -1.82 & (-6.34, 2.69) \\
-Self-reported (pp) & Wheezing attacks & -0.22 & (-3.97, 3.52) & -0.14 & (-3.85, 3.57) \\
-Self-reported (pp) & Trouble breathing & -4.98 & (-11.81, 1.84) & -4.62 & (-11.59, 2.35) \\
-Self-reported (pp) & Chest trouble & -6.63 & (-12.51, -0.76) & -6.36 & (-12.14, -0.59) \\
-Measured & FeNO (ppb) & 0.17 & (-2.24, 2.58) & 0.55 & (-2.13, 3.13) \\
-Inflammatory markers (\%) &&&&& \\
-& IL6 & 6.80 & (-12.2, 30.0) & 5.90 & (-13.80, 30.20) \\
-& TNF-alpha & 24.30 & (-1.3, 56.4) & 24.70 & (-0.90, 54.20) \\
-& CRP & 2.70 & (-19.8, 31.6) & 3.80 & (-19.40, 33.60) \\
-& MDA & 7.60 & (-8.7, 26.9) & 6.50 & (-9.70, 25.5) \\
+&  &  & DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
+&  & Obs & ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
+Blood pressure &&&&&& \\
+Systolic BP (mmHg) & Brachial &    1 & -0.79 & (-2.63, 1.04) & -1.40 & (-3.31, 0.51) \\
+Systolic BP (mmHg) & Central &    2 & -1.04 & (-2.82, 0.73) & -1.56 & (-3.40, 0.28) \\
+Diastolic BP (mmHg) & Brachial &    3 & -1.29 & (-2.62, 0.04) & -1.60 & (-2.96, -0.25) \\
+Diastolic BP (mmHg) & Central &    4 & -1.35 & (-2.66, 0.04) & -1.66 & (-2.97, -0.34) \\
+Pulse Pressure & Brachial &    5 & 0.50 & (-0.71, 1.70) & 0.21 & (-1.00, 1.41) \\
+Pulse Pressure & Central &    6 & 0.31 & (-0.85, 1.46) & 0.10 & (-1.01, 1.20) \\
+BP Amplification x10 & Pulse pressure &    7 & 0.10 & (-0.12, 1.40) & 0.00 & (-1.20, 1.20) \\
+BP Amplification x10 & Systolic BP &    8 & 0.20 & (-0.20, 0.50) & 0.10 & (-0.20, 0.40) \\
+Respiratory outcomes &&&&&& \\
+Self-reported (pp) & Any symptom & 3081 & -7.65 & (-12.76, -2.55) & -8.12 & (-13.32, -2.92) \\
+Self-reported (pp) & Coughing & 3081 & -2.49 & (-7.08, 2.10) & -2.98 & (-7.48, 1.52) \\
+Self-reported (pp) & Phlegm & 3081 & -1.34 & (-5.48, 2.80) & -2.14 & (-6.25, 1.97) \\
+Self-reported (pp) & Wheezing attacks & 3081 & 0.81 & (-2.17, 3.79) & 0.83 & (-2.14, 3.80) \\
+Self-reported (pp) & Trouble breathing & 3081 & -4.26 & (-9.76, 1.24) & -3.80 & (-9.42, 1.82) \\
+Self-reported (pp) & Chest trouble & 3081 & -4.18 & (-8.84, 0.48) & -3.94 & (-8.61, 0.74) \\
+Measured & FeNO (ppb) &  & 0.17 & (-2.24, 2.58) & 0.55 & (-2.13, 3.13) \\
+Inflammatory markers &&&&&& \\
+Measured (\%) & IL6 &    1 & 6.80 & (-12.2, 30.0) & 5.90 & (-13.80, 30.20) \\
+Measured (\%) & TNF-alpha &    2 & 24.30 & (-1.3, 56.4) & 24.70 & (-0.90, 54.20) \\
+Measured (\%) & CRP &    3 & 2.70 & (-19.8, 31.6) & 3.80 & (-19.40, 33.60) \\
+Measured (\%) & MDA &    4 & 7.60 & (-8.7, 26.9) & 6.50 & (-9.70, 25.5) \\
 \bottomrule
 \end{talltblr}
 
@@ -2424,7 +2513,7 @@ column{9}={font=\fontsize{0.8em}{1.1em}\selectfont,},
 }                     %% tabularray inner close
 \toprule
 & Adjusted Total Effect &  & CDE Mediated By: &  &  &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-9}
-&  &  & Indoor PM &  & Indoor Temp &  & PM + Temp &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}
+&  &  & Personal PM &  & Indoor Temp &  & PM + Temp &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}
 & ATT\textsuperscript{a} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) \\ \midrule %% TinyTableHeader
 Any symptom & -12.2 & (-19.46, -5.00) & -12.2 & (-19.46, -5.04) & -15.1 & (-23.57, -6.69) & -14.9 & (-23.45, -6.26) \\
 Coughing & -11.7 & (-19.49, -3.91) & -11.6 & (-19.28, -3.93) & -14.9 & (-22.85, -6.93) & -15.9 & (-23.78, -8.09) \\
@@ -3112,7 +3201,7 @@ prior to the 2021 cohort being treated, we assessed the similarity of
 pre-intervention trends between w1 and w2 for the never treated group
 and the group eventually treated in 2021. Estimates and 95\% CIs for the
 difference in pre-trends are given in the Appendix for BP outcomes
-(}\DIFaddend Figure~\ref{fig-afig-pt3} and Figure~\ref{fig-afig-pt4})\DIFdelbegin \DIFdel{. We }\DIFdelend \DIFaddbegin \DIFadd{, personal
+(}\DIFaddend Figure~\ref{fig-afig-pt3} and \DIFdelbegin \DIFdel{Figure~\ref{fig-afig-pt4}). We }\DIFdelend \DIFaddbegin \textbf{\DIFadd{?@fig-afig-pt4}}\DIFadd{), personal
 exposure to PM\textsubscript{2.5} and black carbon
 (Figure~\ref{fig-afig-pt5}), and self-reported respiratory outcomes
 (Figure~\ref{fig-afig-pt6}). We found little strong evidence for
@@ -3132,13 +3221,16 @@ surveyed village leaders about other rural development or health
 policies and programs in their villages throughout our four-year study
 period and did not identify any co-implemented programs that would
 differentially impact villages by treatment status and affect outcomes
-or mediators. Finally, our mediation analysis assumes no residual
-time-varying confounding between our mediators (air pollution and
-temperature) and our health outcomes. Although we measured and evaluated
-a large number of time-varying risk factors for BP, we cannot entirely
-eliminate the possibility of potential residual confounding which could
-over-or under-estimate the mediating effects of indoor environmental
-factors.
+or mediators. \DIFaddbegin \DIFadd{Though }\comment{EC 1} \DIFadd{a number of citywide and
+district-level COVID-19-related preventative measures were implemented
+during the pandemic (e.g., lockdowns, travel restrictions), our study
+villages were not differentially exposed to any such measures. }\DIFaddend Finally,
+our mediation analysis assumes no residual time-varying confounding
+between our mediators (air pollution and temperature) and our health
+outcomes. Although we measured and evaluated a large number of
+time-varying risk factors for BP, we cannot entirely eliminate the
+possibility of potential residual confounding which could over-or
+under-estimate the mediating effects of indoor environmental factors.
 
 Strengths of this comprehensive, field-based assessment of the CBHP
 policy include our quasi-experimental design to evaluate a real-world
@@ -3172,14 +3264,19 @@ that enrolled \textasciitilde3000 pregnant women (Ye et al. 2022).
 
 This study also has several limitations to consider when interpreting
 our results. First, the COVID-19 pandemic began in the middle of our
-study and roughly half of our treated villages entered into the policy
-during the pandemic, which likely had some influence on the roll-out of
-the policy in those villages. We observed the largest benefits in BP and
-several respiratory outcomes in villages treated before the pandemic.
-However, we cannot differentiate between treatment cohort effects
-attributable treatment during the COVID-19 pandemic versus other factors
-that different between treatment cohorts (i.e., geographic location,
-access to biomass, fuel prices).
+study\DIFdelbegin \DIFdel{and roughly }\DIFdelend \DIFaddbegin \DIFadd{. Although there were no recorded covid infections in our study
+villages during the study period, Beijing's city-wide preventative
+measures impacted all study villages at the same time (e.g., travel
+restrictions, closure of public spaces, lockdowns, and quarantines).
+Roughly }\DIFaddend half of our treated villages entered into the policy during the
+pandemic, which likely had some influence on \DIFdelbegin \DIFdel{the roll-out of
+the policy in those villages}\DIFdelend \DIFaddbegin \DIFadd{its roll out}\DIFaddend . We observed
+the largest benefits in BP and several respiratory outcomes in villages
+treated before the pandemic \DIFaddbegin \DIFadd{compared with those treated after it
+started}\DIFaddend . However, we cannot differentiate between treatment cohort
+effects attributable treatment during the COVID-19 pandemic versus other
+factors that different between treatment cohorts (i.e., geographic
+location, access to biomass, fuel prices).
 
 Second, the CBHP policy roll-out began in 2016 but we did not begin
 enrolling villages into our study until 2018. Thus, many of our study
@@ -3537,7 +3634,14 @@ Guidance} for {Industry}.
 GBD MAPS Working Group. 2016. Burden of disease attributable to
 coal-burning and other air pollution sources in {China}.
 
-\bibitem[\citeproctext]{ref-goin2023}
+\DIFaddbegin \bibitem[\citeproctext]{ref-gelman2014}
+\DIFadd{Gelman A, Carlin J. 2014. Beyond }{\DIFadd{Power Calculations}}\DIFadd{: }{\DIFadd{Assessing Type
+S}} \DIFadd{(}{\DIFadd{Sign}}\DIFadd{) and }{\DIFadd{Type M}} \DIFadd{(}{\DIFadd{Magnitude}}\DIFadd{) }{\DIFadd{Errors}}\DIFadd{. Perspectives on
+Psychological Science 9:641--651;
+doi:}\href{https://doi.org/10.1177/1745691614551642}{\DIFadd{10.1177/1745691614551642}}\DIFadd{.
+}
+
+\DIFaddend \bibitem[\citeproctext]{ref-goin2023}
 Goin DE, Riddell CA. 2023. Comparing {Two-way Fixed Effects} and {New
 Estimators} for {Difference-in-Differences}: {A Simulation Study} and
 {Empirical Example}. Epidemiology 34:535;
@@ -5142,58 +5246,63 @@ pressure}\DIFdelend }\DIFdelbegin %DIFDELCMD < \label{pre-trends-for-blood-press
 
 \caption{\label{fig-afig-pt3}Comparison of pre-interventions trends in
 blood pressure between waves 1 and 2 for never treated and villages
-later treated in wave 3}
+\DIFdelbeginFL \DIFdelFL{later }\DIFdelendFL treated \DIFdelbeginFL \DIFdelFL{in wave 3}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{later.}\DIFaddendFL }
 
-\centering{
+\DIFdelbeginFL %DIFDELCMD < \centering{
+%DIFDELCMD < 
 
-\includegraphics[width=0.8\textwidth,height=\textheight]{images/never_Y3.png}
+%DIFDELCMD < \includegraphics[width=0.8\textwidth,height=\textheight]{images/never_Y3.png}
+%DIFDELCMD < 
+
+%DIFDELCMD < }
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \centering{
+
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/BP-pretrends_FT20orFT21.png}
 
 }
+\DIFaddendFL 
 
 \end{figure}%
 
-\begin{figure}[H]
+\DIFaddbegin \subsubsection{\DIFadd{Personal exposure and black
+carbon}}\label{personal-exposure-and-black-carbon}
 
-\caption{\label{fig-afig-pt4}Comparison of \DIFdelbeginFL \DIFdelFL{pre-interventions }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{pre-intervention }\DIFaddendFL trends in
-blood pressure between waves 1 and 2 for never treated and villages
-later treated in wave \DIFdelbeginFL \DIFdelFL{4}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{4.}\DIFaddendFL }
+\DIFaddend \begin{figure}[H]
 
-\centering{
+\caption{\DIFdelbeginFL %DIFDELCMD < \label{fig-afig-pt4}%%%
+\DIFdelendFL \DIFaddbeginFL \label{fig-afig-pt5}\DIFaddendFL Comparison of \DIFdelbeginFL \DIFdelFL{pre-interventions }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{pre-intervention }\DIFaddendFL trends in
+\DIFdelbeginFL \DIFdelFL{blood pressure }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{personal exposure and black carbon }\DIFaddendFL between waves 1 and 2 for never
+treated and villages \DIFdelbeginFL \DIFdelFL{later }\DIFdelendFL treated \DIFdelbeginFL \DIFdelFL{in wave 4}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{later.}\DIFaddendFL }
 
-\includegraphics[width=0.7\textwidth,height=\textheight]{images/never_Y4.png}
+\DIFdelbeginFL %DIFDELCMD < \centering{
+%DIFDELCMD < 
+
+%DIFDELCMD < \includegraphics[width=0.7\textwidth,height=\textheight]{images/never_Y4.png}
+%DIFDELCMD < 
+
+%DIFDELCMD < }
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \centering{
+
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/pe-bc-pretrends.png}
 
 }
+\DIFaddendFL 
 
 \end{figure}%
 
 \DIFdelbegin %DIFDELCMD < \newpage
 %DIFDELCMD < %%%
-\DIFdelend \DIFaddbegin \subsubsection{\DIFadd{Personal exposure and black
-carbon}}\label{personal-exposure-and-black-carbon}
+\DIFdelend \DIFaddbegin \subsubsection{\DIFadd{Self-reported respiratory
+outcomes}}\label{self-reported-respiratory-outcomes}
 \DIFaddend 
 
 \DIFaddbegin \begin{figure}[H]
 
-\caption{\label{fig-afig-pt5}\DIFaddFL{Comparison of pre-intervention trends in
-personal exposure and black carbon between waves 1 and 2 for never
-treated and villages later treated in wave 4.}}
-
-\centering{
-
-\includegraphics[width=0.9\textwidth,height=\textheight]{images/pe-bc-pretrends.png}
-
-}
-
-\end{figure}%DIF > 
-
-\subsubsection{\DIFadd{Self-reported respiratory
-outcomes}}\label{self-reported-respiratory-outcomes}
-
-\begin{figure}[H]
-
 \caption{\label{fig-afig-pt6}\DIFaddFL{Comparison of pre-intervention trends in
 self-reported respiratory outcomes between waves 1 and 2 for never
-treated and villages later treated in wave 4.}}
+treated and villages treated later.}}
 
 \centering{
 
@@ -5247,6 +5356,132 @@ Cohort fixed effects & X & X &  &  \\
 }
 
 \end{table}%DIF > 
+
+\newpage
+
+\subsection{\DIFadd{Retrospective design
+analysis}}\label{retrospective-design-analysis}
+
+\subsubsection{\DIFadd{All outcomes}}\label{all-outcomes}
+
+\DIFadd{Table~\ref{tbl-rd} shows the results of a design-based analysis (Gelman
+and Carlin 2014) for different hypothetical effect sizes, conditional on
+our design and sample size.
+}
+
+\begin{table}[H]
+
+\caption{\label{tbl-rd}\DIFaddFL{Design-based analysis for various hypothetical
+effect sizes.}}
+
+\centering{
+
+\centering
+\resizebox{\ifdim\width>\linewidth 0.9\linewidth\else\width\fi}{!}{
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: BP = Blood Pressure, pp = percentage points, ppb = parts per billion, SE = Standard Error},
+note{a}={Assuming the true effect size and our study design and precision, the probability that an observed estimate will have the wrong sign.},
+note{b}={Assuming the true effect size and our study design and precision, the ratio by which an observed estimate will exaggerate the true effect.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=4,}{halign=c,},
+cell{3}{1}={c=8}{},cell{12}{1}={c=8}{},cell{20}{1}={c=8}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+cell{10}{1}={preto={\hspace{1em}}},
+cell{11}{1}={preto={\hspace{1em}}},
+cell{13}{1}={preto={\hspace{1em}}},
+cell{14}{1}={preto={\hspace{1em}}},
+cell{15}{1}={preto={\hspace{1em}}},
+cell{16}{1}={preto={\hspace{1em}}},
+cell{17}{1}={preto={\hspace{1em}}},
+cell{18}{1}={preto={\hspace{1em}}},
+cell{19}{1}={preto={\hspace{1em}}},
+cell{21}{1}={preto={\hspace{1em}}},
+cell{22}{1}={preto={\hspace{1em}}},
+cell{23}{1}={preto={\hspace{1em}}},
+cell{24}{1}={preto={\hspace{1em}}},
+cell{25}{1}={preto={\hspace{1em}}},
+row{3}={halign=l,cmd=\bfseries,},
+row{12}={halign=l,cmd=\bfseries,},
+row{20}={halign=l,cmd=\bfseries,},
+cell{4}{1}={r=2,}{valign=h,},
+cell{6}{1}={r=2,}{valign=h,},
+cell{8}{1}={r=2,}{valign=h,},
+cell{10}{1}={r=2,}{valign=h,},
+cell{13}{1}={r=6,}{valign=h,},
+cell{21}{1}={r=4,}{valign=h,},
+column{1}={halign=l,},
+column{2}={halign=l,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+column{7}={halign=c,},
+}                     %% tabularray inner close
+\toprule
+&  & Observed Results &  & Hypothetical Design Analysis &  &  &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-8}
+&  & Estimate & SE & Effect & Power (\%) & S-bias\textsuperscript{a} & M-bias\textsuperscript{b} \\ \midrule %% TinyTableHeader
+Blood pressure (mmHg) &&&&&&& \\
+Systolic BP (mmHg) & Brachial & -1.4 & 1.0 & -1.5 & 33.7 & 0.09 & 0.7 \\
+Systolic BP (mmHg) & Central & -1.6 & 0.9 & -1.5 & 35.9 & 0.08 & 0.7 \\
+Diastolic BP (mmHg) & Brachial & -1.6 & 0.7 & -1.0 & 30.4 & 0.00 & 1.8 \\
+Diastolic BP (mmHg) & Central & -1.7 & 0.7 & -1.0 & 32.0 & 0.00 & 1.8 \\
+Pulse Pressure & Brachial & 0.2 & 0.6 & 0.5 & 12.9 & 0.23 & 1.0 \\
+Pulse Pressure & Central & 0.1 & 0.6 & 0.5 & 14.4 & 0.22 & 1.0 \\
+BP Amplification x10 & Pulse pressure & 0.0 & 0.6 & 0.1 & 5.3 & 0.44 & 4.5 \\
+BP Amplification x10 & Systolic BP & 0.1 & 0.2 & 0.1 & 10.0 & 0.29 & 1.2 \\
+Respiratory outcomes &&&&&&& \\
+Self-reported (pp) & Any symptom & -8.1 & 2.7 & -5.0 & 47.0 & 0.00 & 1.4 \\
+Self-reported (pp) & Coughing & -3.0 & 2.3 & -2.0 & 14.0 & 0.22 & 1.0 \\
+Self-reported (pp) & Phlegm & -2.1 & 2.1 & -3.0 & 29.9 & 0.10 & 0.7 \\
+Self-reported (pp) & Wheezing attacks & 0.8 & 1.5 & -1.0 & 10.1 & 0.28 & 1.2 \\
+Self-reported (pp) & Trouble breathing & -3.8 & 2.9 & -3.0 & 18.2 & 0.18 & 0.9 \\
+Self-reported (pp) & Chest trouble & -3.9 & 2.4 & -1.0 & 7.0 & 0.36 & 1.8 \\
+Measured & FeNO (ppb) & 0.6 & 1.3 & -0.5 & 6.6 & 0.37 & 2.0 \\
+Inflammatory markers (\%) &&&&&&& \\
+Measured (\%) & IL6 & 5.9 & 11.2 & -2.0 & 5.4 & 0.43 & 4.1 \\
+Measured (\%) & TNF-alpha & 24.7 & 14.1 & -2.0 & 5.2 & 0.45 & 5.0 \\
+Measured (\%) & CRP & 3.8 & 13.5 & -2.0 & 5.3 & 0.45 & 4.9 \\
+Measured (\%) & MDA & 6.5 & 9.0 & -2.0 & 5.6 & 0.41 & 3.3 \\
+\bottomrule
+\end{talltblr}
+}
+
+}
+
+\end{table}%DIF > 
+
+\newpage
+
+\subsubsection{\DIFadd{Blood pressure}}\label{blood-pressure-2}
+
+\DIFadd{Figure~\ref{fig-rd-bp} show the range of estimates for power, sign-bias,
+and effect exaggeration for several hypothetical effect sizes for the
+impact of the program on blood pressure, conditional on our study design
+and sample size (standard error of 1 mmHg).
+}
+
+\begin{figure}[H]
+
+\caption{\label{fig-rd-bp}\DIFaddFL{Power, sign-bias, and exaggeration ratios for
+various hypothetical effects of the policy on blood pressure, given our
+study design.}}
+
+\centering{
+
+\includegraphics[width=0.8\textwidth,height=\textheight]{images/rd-plot.png}
+
+}
+
+\end{figure}%DIF > 
 \DIFaddend 
 
 \newpage

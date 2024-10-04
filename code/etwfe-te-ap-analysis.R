@@ -217,7 +217,7 @@ ap_table_bc <- bind_rows(m_pbc$me_1, m_pbc$me_2) %>%
 
 ap_table_i24 <- bind_rows(m_i24$me_1, m_i24$me_2) %>% 
   mutate(category = "Indoor", 
-         outcome = "Daily PM2.5",
+         outcome = "24-hr PM2.5",
          nobs = m_i24$e1$nobs)
 
 ap_table_is <- bind_rows(m_is$me_1, m_is$me_2) %>% 
@@ -251,8 +251,8 @@ ap_table2 <- read_csv(here("data-clean",
   "DID_air_pollution.csv")) %>%
   filter(`Category` == "Outdoor" & `Effect` !=
            "DiD with S3") %>%
-  mutate(Pollutant = c("Daily PM2.5",
-    "Daily PM2.5", 
+  mutate(Pollutant = c("24-hr PM2.5",
+    "24-hr PM2.5", 
     "Seasonal PM2.5",
     "Seasonal PM2.5")) %>%
   rename_at(c("Category", "Pollutant", "Estimate"), 
@@ -260,7 +260,8 @@ ap_table2 <- read_csv(here("data-clean",
   rename("outcome" = `pollutant`) %>%
   mutate(model = rep(c(1,2), times = 2),
     ci = paste("(", `CI_low`, ", ",
-    `CI_upper`, ")", sep=""), nobs = NA) %>%
+    `CI_upper`, ")", sep=""), 
+    nobs = c(11174, 11174, 139, 139)) %>%
   select(-Effect, -CI_low, -CI_upper) %>%
   relocate(category, outcome) %>%
   pivot_wider(names_from = model, values_from = 
@@ -276,28 +277,37 @@ ap_table <- read_rds(here("outputs",
   "ap-etwfe-table.rds")) 
 
 # temperature results
-temp_table <- tibble(
-  category = "Point", outcome = "Mean", nobs = NA, estimate_1 = 1.96,
-  ci_1 = "(0.96, 2.96)", estimate_2 = NA, 
-  ci_2 = ""
-)
-
-stemp_table <- read_xlsx(here("data-clean",
-  "overall_temp_table.xlsx")) %>%
-  rename(`estimate_1` = att,
-         `ci_1` = ci) %>%
-  mutate(category = rep("Seasonal", times = 6),
-    outcome = c("Mean (all)", "Mean (daytime)", 
+stemp_table <- read_xlsx(here("outputs",
+  "marginal_temp_results.xlsx")) %>%
+  mutate(
+    # Extract mean
+    estimate = as.double(str_extract(att, "^[^\\(]+")),                 # Extract lower bound
+    ci_lower = as.double(str_extract(att, "(?<=\\().+?(?=,)")),         # Extract upper bound
+    ci_upper = as.double(str_extract(att, "(?<=, ).+?(?=\\))")),
+    # rename model for reshape
+    model = case_when(
+      `Covariate adjustment` == "DiD" ~ 1,
+      `Covariate adjustment` != "DiD" ~ 2,),
+    nobs = as.integer(`N observations`)) %>%
+  mutate(ci = paste("(", sprintf("%.1f", ci_lower), ", ",
+      sprintf("%.1f", ci_upper), ")", sep="")) %>%
+  select(-`Covariate adjustment`, -att, -ci_lower,
+         -ci_upper, -`N observations`) %>%
+  # reshape to wide
+  pivot_wider(names_from = model, 
+    values_from = c(estimate, ci)) %>%
+  mutate(order = c(2:7, 1)) %>%
+  arrange(order) %>%
+  mutate(category = c("Point", rep("Seasonal", times = 6)),
+    outcome = c("Mean", "Mean (all)", "Mean (daytime)", 
       "Mean (heating season)", "Mean (daytime heating season)",
-      "Min. (all)", "Min. (heating season)"), nobs = NA,
-    estimate_2 = NA, 
-    ci_2 = "") %>%
-  select(-model) %>%
-  relocate(category, outcome)
+      "Min. (all)", "Min. (heating season)")) %>%
+  select(-`Outcome metric`, -order) %>%
+  relocate(category, outcome, nobs, estimate_1,
+           ci_1, estimate_2, ci_2)
 
 # join tables
-m_table <- bind_rows(ap_table, temp_table, 
-  stemp_table)
+m_table <- bind_rows(ap_table, stemp_table)
 
 colnames(m_table) <- c(" ", " ", "Obs", "ATT", "(95% CI)", 
   "ATT", "(95% CI)")
@@ -305,9 +315,11 @@ colnames(m_table) <- c(" ", " ", "Obs", "ATT", "(95% CI)",
 tt(m_table,
    digits = 2,
   #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
-  notes = list("Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.", 
+  notes = list("Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.",
      a = list(i=0, j=6,
-     text = "ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted."))) %>%
+     text = "ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models not additionally adjusted."),
+     b = list(i=3, j = 2, 
+     text = "The indoor 24-hr PM2.5 concentration was determined over the time period concurrent with when the personal PM2.5 concentration was determined."))) %>%
   group_tt(
     j = list("DiD" = 4:5, 
              "Adjusted DiD" = 6:7),
@@ -354,7 +366,7 @@ write_rds(aph_table, file = here("outputs",
 
 # tables of results by outcome for indoor
 ap_table_i24h <- bind_rows(m_i24$me_2, m_i24$meh_2) %>% 
-  mutate(outcome = "Daily PM2.5")
+  mutate(outcome = "24-hr PM2.5")
 
 ap_table_ish <- bind_rows(m_is$me_2, m_is$meh_2) %>% 
   mutate(outcome = "Seasonal PM2.5")
@@ -393,7 +405,8 @@ m_is_s3 <- fixest::feglm(
     treat:cohort_year_2020:year_2021 +
     treat:cohort_year_2021:year_2021 + cohort_year_2020 + 
     cohort_year_2021 + year_2021, 
-  cluster = ~v_id, data=d_is3)
+  cluster = ~v_id, data=d_is3, 
+  family = Gamma(link = "log"))
 
 # overall marginal effect
 m_is_s3_me <- slopes(
@@ -416,7 +429,7 @@ m_is_nos3 <- fixest::feols(
     treat:cohort_year_2021:year_2021 + cohort_year_2020 + 
     cohort_year_2021 + year_2021, 
   cluster = ~v_id, data=subset(d_is3, 
-    wave != 3))
+    wave != 3), family = Gamma(link = "log"))
 
 # overall marginal effect
 m_is_nos3_me <- slopes(
@@ -462,17 +475,19 @@ write_rds(ap_is3_table, file = here("outputs",
 
 ## 6 Impact of removing fixed effects ----
 
-# basic ETWFE model
+# adjusted ETWFE model
 
-pe_etwfe <- fixest::feols(
-  PM25conc_exposureugm3 ~ 
+pe_etwfe <- fixest::feglm(
+  pe ~ 
     treat:cohort_year_2019:year_2019 + 
     treat:cohort_year_2019:year_2021 + 
     treat:cohort_year_2020:year_2021 + 
     treat:cohort_year_2021:year_2021 +
-    hh_num + factor(smoking) + outdoor_temp_24h + 
-    outdoor_dew_24h | cohort_year + year, 
-  data = d_p, cluster = ~v_id)
+    hh_num + ets_former + ets_lived +
+    ets_none + ns(out_temp, df=2) + 
+    ns(out_dew, df=2) | cohort_year + year, 
+  data = d_p, cluster = ~v_id,
+  family = Gamma(link = "log"))
 
 pe_etwfe_me <- slopes(pe_etwfe, 
   newdata = subset(d_p, treat==1), 
@@ -482,15 +497,17 @@ write_rds(pe_etwfe_me, file = here("outputs/models",
   "pe_etwfe_me.rds"))
 
 # no year FE
-pe_etwfe_ny <- fixest::feols(
-  PM25conc_exposureugm3 ~ 
+pe_etwfe_ny <- fixest::feglm(
+  pe ~ 
     treat:cohort_year_2019:year_2019 + 
     treat:cohort_year_2019:year_2021 + 
     treat:cohort_year_2020:year_2021 + 
     treat:cohort_year_2021:year_2021 +
-    hh_num + factor(smoking) + outdoor_temp_24h + 
-    outdoor_dew_24h | cohort_year, 
-  data = d_p, cluster = ~v_id)
+    hh_num + ets_former + ets_lived +
+    ets_none + ns(out_temp, df=2) + 
+    ns(out_dew, df=2) | cohort_year, 
+  data = d_p, cluster = ~v_id,
+  family = Gamma(link = "log"))
 
 pe_etwfe_ny_me <- slopes(pe_etwfe_ny, 
   newdata = subset(d_p, treat==1), 
@@ -500,15 +517,17 @@ write_rds(pe_etwfe_ny_me, file = here("outputs/models",
   "pe_etwfe_ny_me.rds"))
 
 # no group FE
-pe_etwfe_ng <- fixest::feols(
-  PM25conc_exposureugm3 ~ 
+pe_etwfe_ng <- fixest::feglm(
+  pe ~ 
     treat:cohort_year_2019:year_2019 + 
     treat:cohort_year_2019:year_2021 + 
     treat:cohort_year_2020:year_2021 + 
     treat:cohort_year_2021:year_2021 +
-    hh_num + factor(smoking) + outdoor_temp_24h + 
-    outdoor_dew_24h | year, 
-  data = d_p, cluster = ~v_id)
+    hh_num + ets_former + ets_lived +
+    ets_none + ns(out_temp, df=2) + 
+    ns(out_dew, df=2) | year, 
+  data = d_p, cluster = ~v_id,
+  family = Gamma(link = "log"))
 
 pe_etwfe_ng_me <- slopes(pe_etwfe_ng, 
   newdata = subset(d_p, treat==1), 
@@ -518,15 +537,17 @@ write_rds(pe_etwfe_ng_me, file = here("outputs/models",
   "pe_etwfe_ng_me.rds"))
 
 # no group or year FE
-pe_etwfe_nfe <- fixest::feols(
-  PM25conc_exposureugm3 ~ 
+pe_etwfe_nfe <- fixest::feglm(
+  pe ~ 
     treat:cohort_year_2019:year_2019 + 
     treat:cohort_year_2019:year_2021 + 
     treat:cohort_year_2020:year_2021 + 
     treat:cohort_year_2021:year_2021 +
-    hh_num + factor(smoking) + outdoor_temp_24h + 
-    outdoor_dew_24h, 
-  data = d_p, cluster = ~v_id)
+    hh_num + ets_former + ets_lived +
+    ets_none + ns(out_temp, df=2) + 
+    ns(out_dew, df=2), 
+  data = d_p, cluster = ~v_id,
+  family = Gamma(link = "log"))
 
 pe_etwfe_nfe_me <- slopes(pe_etwfe_nfe, 
   newdata = subset(d_p, treat==1), 
@@ -535,8 +556,4 @@ pe_etwfe_nfe_me <- slopes(pe_etwfe_nfe,
 # put the results together in a table
 write_rds(pe_etwfe_nfe_me, file = here("outputs/models", 
   "pe_etwfe_nfe_me.rds"))
-
-testdata <- d_is %>% 
-  filter(row_number() 
-  %in% obs(m_is$e2))
 

@@ -213,7 +213,7 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={How Do Household Energy Transitions Work?},
-  pdfauthor={Jill Baumgartner (Co-PI); Sam Harper (Co-PI); On behalf of the Beijing Household Energy Transitions Team},
+  pdfauthor={Jill Baumgartner (Co-PI)1; Sam Harper (Co-PI)1; Chris Barrington-Leigh1; Collin Brehmer2; Ellison M. Carter2; Xiaoying Li2; Brian E. Robinson1; Guofeng Shen3; Talia J. Sternbach1; Shu Tao3; Kaibing Xue4; Wenlu Yuan1; Xiang Zhang1; Yuanxun Zhang4},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -222,10 +222,22 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{How Do Household Energy Transitions Work?}
-\author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
-of the Beijing Household Energy Transitions Team}
-\date{2024-09-27}
+\title{How Do Household Energy Transitions Work?\thanks{Affiliations
+{[}1{]} McGill Univeristy; {[}2{]} Colorado State University; {[}3{]}
+Peking University; {[}4{]} University of the Chinese Academy of
+Sciences}}
+\author{Jill Baumgartner (Co-PI)\textsuperscript{1} \and Sam Harper
+(Co-PI)\textsuperscript{1} \and Chris
+Barrington-Leigh\textsuperscript{1} \and Collin
+Brehmer\textsuperscript{2} \and Ellison M.
+Carter\textsuperscript{2} \and Xiaoying Li\textsuperscript{2} \and Brian
+E. Robinson\textsuperscript{1} \and Guofeng
+Shen\textsuperscript{3} \and Talia J.
+Sternbach\textsuperscript{1} \and Shu
+Tao\textsuperscript{3} \and Kaibing Xue\textsuperscript{4} \and Wenlu
+Yuan\textsuperscript{1} \and Xiang Zhang\textsuperscript{1} \and Yuanxun
+Zhang\textsuperscript{4}}
+\date{2024-10-04}
 
 \begin{document}
 \maketitle
@@ -265,47 +277,63 @@ outdoor air pollution, as well as heating behaviors and health outcomes.
 
 \subsection{Subheading}\label{subheading}
 
+\subsubsection{Sub-subheading}\label{sub-subheading}
+
 \newpage
 
 \subsection{Description of study
 sample}\label{description-of-study-sample}
 
-\begin{table}[H]
+\begin{table}
 
-\caption{\label{tbl-a-ind-s3}Effects of the CBHP policy on indoor
-seasonal PM\textsubscript{2.5} based on whether Season 3 data are
-included vs.~excluded.}
+\caption{\label{tbl-resp-med}Controlled direct effects for the CBHP
+policy on self-reported respiratory outcomes}
 
 \centering{
 
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval.},
+note{}={Note: Estimated for the subset of individuals with measured personal exposure (n=1270). ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect.},
+note{a}={Adjusted for age, gender, smoking, occupation, freqency of drinking, frequency of farming.},
+note{b}={Mediators were set to the mean value for untreated participants at baseline.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
-width={1\linewidth},
-colspec={X[0.166666666666667]X[0.166666666666667]X[0.0833333333333333]X[0.0833333333333333]X[0.166666666666667]X[0.0833333333333333]X[0.0833333333333333]X[0.166666666666667]},
-cell{1}{3}={c=3,}{halign=c,},
-cell{1}{6}={c=3,}{halign=c,},
-cell{3}{1}={c=8}{},cell{5}{1}={c=8}{},
-cell{4}{1}={preto={\hspace{1em}}},
-cell{6}{1}={preto={\hspace{1em}}},
-cell{7}{1}={preto={\hspace{1em}}},
-cell{8}{1}={preto={\hspace{1em}}},
-cell{9}{1}={preto={\hspace{1em}}},
-row{3}={,cmd=\bfseries,},
-row{5}={,cmd=\bfseries,},
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{2}{4}={c=2,}{halign=c,},
+cell{2}{6}={c=2,}{halign=c,},
+cell{2}{8}={c=2,}{halign=c,},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=6,}{halign=c,},
+column{1}={halign=l,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+column{7}={halign=c,},
+column{8}={halign=c,},
+column{9}={halign=c,},
+column{1}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{2}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{3}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{4}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{5}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{6}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{7}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{8}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{9}={font=\fontsize{0.8em}{1.1em}\selectfont,},
 }                     %% tabularray inner close
 \toprule
-&  & With Season 3 data &  &  & Without Season 3 data &  &  \\ \cmidrule[lr]{3-5}\cmidrule[lr]{6-8}
-Cohort & Time & Obs & ATT & (95\% CI) & Obs & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
-Average ATT (µg/m3) &&&&&&& \\
-All & All & 545 & -36.2 & (-59.1, -13.3) & 388 & -32.5 & (-57.5, -7.5) \\
-Cohort-Time ATTs (µg/m3) &&&&&&& \\
-2020 & 2020 & 545 & -36.1 & (-60.8, -11.4) &  &  &  \\
-2020 & 2021 & 545 & -32.2 & (-66.0, 1.5) & 388 & -28.9 & (-63.0, 5.2) \\
-2021 & 2021 & 545 & -44.1 & (-56.3, -32.0) & 388 & -39.7 & (-58.3, -21.1) \\
+& Adjusted Total Effect &  & CDE Mediated By: &  &  &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-9}
+&  &  & Personal PM &  & Indoor Temp &  & PM + Temp &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}
+& ATT\textsuperscript{a} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) \\ \midrule %% TinyTableHeader
+Any symptom & -12.8 & (-20.3, -5.3) & -12.5 & (-20.5, -4.5) & -15.1 & (-23.6, -6.5) & -14.8 & (-23.5, -6.1) \\
+Coughing & -11.7 & (-19.9, -3.5) & -13.1 & (-21.5, -4.7) & -15.1 & (-23.2, -6.9) & -16.0 & (-24.0, -8.0) \\
+Phlegm & -9.7 & (-16.3, -3.1) & -9.0 & (-15.8, -2.2) & -14.2 & (-21.3, -7.0) & -13.8 & (-21.0, -6.6) \\
+Wheezing attacks & -4.1 & (-11.0, 2.7) & -2.7 & (-8.6, 3.2) & -5.8 & (-12.8, 1.3) & -3.7 & (-9.8, 2.4) \\
+Trouble breathing & -9.0 & (-18.7, 0.8) & -8.9 & (-18.9, 1.0) & -12.5 & (-24.4, -0.5) & -12.2 & (-24.2, -0.2) \\
+Chest trouble & -5.0 & (-12.2, 2.1) & -5.0 & (-11.3, 1.3) & -2.8 & (-9.5, 4.0) & -3.0 & (-8.8, 2.8) \\
 \bottomrule
 \end{talltblr}
 
@@ -314,6 +342,12 @@ Cohort-Time ATTs (µg/m3) &&&&&&& \\
 \end{table}%
 
 \newpage
+
+\section*{Abbreviations and other
+terms}\label{abbreviations-and-other-terms}
+\addcontentsline{toc}{section}{Abbreviations and other terms}
+
+ATT
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{1}

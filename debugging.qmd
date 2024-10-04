@@ -1,20 +1,35 @@
 ---
 title: "How Do Household Energy Transitions Work?"
-author: 
-  - Jill Baumgartner (Co-PI)
-  - Sam Harper (Co-PI)
-  - On behalf of the Beijing Household Energy Transitions Team
+author:
+  - Jill Baumgartner (Co-PI)^1^
+  - Sam Harper (Co-PI)^1^
+  - Chris Barrington-Leigh^1^
+  - Collin Brehmer^2^
+  - Ellison M. Carter^2^
+  - Xiaoying Li^2^
+  - Brian E. Robinson^1^
+  - Guofeng Shen^3^
+  - Talia J. Sternbach^1^
+  - Shu Tao^3^
+  - Kaibing Xue^4^
+  - Wenlu Yuan^1^
+  - Xiang Zhang^1^
+  - Yuanxun Zhang^4^
+    
+thanks: Affiliations [1] McGill Univeristy; [2] Colorado State University; [3] Peking University; [4] University of the Chinese Academy of Sciences
 date: today
 
-format: 
-#  html:
-#    keep-md: true
-#    
+#format: 
+# html:
+#   keep-md: true
+
+# format:
 #  docx: 
 #    toc: true
 #    number-sections: true
 #    number-depth: 3
 
+format:
  pdf:
    toc: true
    keep-tex: true
@@ -72,38 +87,63 @@ bhet_master_data %>%
 China is deploying an ambitious policy to transition up to 70% of households in northern China from residential coal heating to electric or gas “clean” space heating, including a large-scale roll out across rural and peri-urban Beijing, referred to in this document as China’s Coal Ban and Heat Pump (CBHP) subsidy policy. To meet this target the Beijing municipal government announced a two-pronged program that designates coal-restricted areas and simultaneously offers subsidies to night-time electricity rates and for the purchase and installation of electric-powered heat pumps to replace traditional coal-heating stoves. The policy was piloted in 2015 and, starting in 2016, was rolled out on a village-by-village basis. The variability in when the policy was applied to each village allowed us to treat the roll-out of the program as a quasi-randomized intervention and evaluate its impacts on air quality and health. Household air pollution is a well-established risk factor for adverse health outcomes over the entire lifecourse, yet there is no consensus that clean energy interventions can improve these health outcomes based on evidence from randomized trials [@lai2024]. Households may be differentially affected by the CBHP due to factors such as financial constraints and user preferences, and there is uncertainty about whether and how the policy may affect indoor and outdoor air pollution, as well as heating behaviors and health outcomes.
 
 ## Subheading
+### Sub-subheading
+
 
 \newpage
 
 ## Description of study sample
 
-```{r}
+```{r, message=F, warning=F}
 #| echo: FALSE
-#| label: tbl-a-ind-s3
-#| tbl-cap: Effects of the CBHP policy on indoor seasonal PM~2.5~ based on whether Season 3 data are included vs. excluded.
-#| tbl-pos: H
+#| label: tbl-resp-med
+#| tbl-cap: "Controlled direct effects for the CBHP policy on self-reported respiratory outcomes"
+#| eval: TRUE
 
-a_is3_table <- read_rds(here("outputs", 
-  "ap-is3_table.rds")) %>%
-   mutate(estimate_woS3 = na_if(estimate_woS3, 0),
-          ci_woS3 = na_if(ci_woS3, "(NA, NA)"))
+cde_resp <- read_rds(here("outputs",
+  "resp-cdes.rds"))
 
-colnames(a_is3_table) <- c("Cohort", "Time", 
-  "Obs", "ATT", "(95% CI)", "Obs", "ATT", "(95% CI)")
+colnames(cde_resp) <- c("", "ATT", "(95%CI)", "ATT", 
+  "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)")
 
-tt(a_is3_table,
-   digits = 2, width = c(1,1,.5,.5, 1,.5,.5, 1),
-   notes = "Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval.") %>%
-  group_tt(j = list(
-    "With Season 3 data" = 3:5,
-    "Without Season 3 data" = 6:8),
-    i = list(
-    "Average ATT (µg/m3)" = 1,
-    "Cohort-Time ATTs (µg/m3)" = 2)) %>%
-  style_tt(i = c(1,3), bold = TRUE) %>%
-  format_tt(j=c(4,7), sprintf = "%.1f") %>%
-  format_tt(escape = TRUE)
- 
+tt(cde_resp,
+   digits = 1,
+   #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
+   notes = list("Note: Estimated for the subset of individuals with measured personal exposure (n=1270). ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect.", a = list(i=0, j=2, text = "Adjusted for age, gender, smoking, occupation, freqency of drinking, frequency of farming."), b = list(i=0, j=c(4,6,8), text = "Mediators were set to the mean value for untreated participants at baseline."))) %>%
+  group_tt(
+    j = list("Personal PM" = 4:5,
+             "Indoor Temp" = 6:7,
+             "PM + Temp" = 8:9)) %>%
+  group_tt(
+    j = list("Adjusted Total Effect" = 2:3,
+             "CDE Mediated By:" = 4:9)) %>%
+  style_tt(j = 1:9, align = "lcccccccc") %>%
+  style_tt(j=1:9, fontsize = 0.8) %>%
+  format_tt(escape = TRUE) %>%
+  format_tt(j=c(2,4,6,8), sprintf = "%.1f") 
+
+#kable(cde_resp, digits = 2,
+#  col.names = c("", "ATT", "(95%CI)",
+#  "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)"),
+#  align = 'lcccccc', longtable=T,
+#  linesep = "") %>%
+#  kable_styling(font_size = 9,
+#    latex_options = "HOLD_position") %>%
+#  add_header_above(c(" " = 3, 
+#  "Indoor PM" = 2, "Indoor Temp" = 2, "PM + Temp" = 2)) %>%
+#  add_header_above(c(" " = 1, 
+#    "Adjusted Total Effect\\\\textsuperscript{a}" = 2,
+#    "CDE Mediated By:\\\\textsuperscript{b}" = 6),
+#    escape = F) %>%
+#    footnote(
+#    general = "\\\\small{Note: Estimated for the subset of #individuals with measured personal exposure (n=1274). ATT = #Average Treatment Effect on the Treated, CDE = Controlled Direct #Effect.}",
+#    alphabet = c("\\\\small{Adjusted for age, sex, and smoking.}", #"\\\\small{Mediators were set to the mean value for untreated #participants at baseline.}"), 
+#    general_title = "", threeparttable = T, escape = F)
 ```
 
+
 \newpage
+
+# Abbreviations and other terms {.unnumbered}
+
+ATT

@@ -1,0 +1,9 @@
+﻿Diagnostic,3,4,5,6
+Qexp,10716,9980,9244,8508
+Qtrue,43280,34603,28467,21947
+Qrobust,41521,33209,26432,21347
+Qr/Qexp,3.87,3.33,2.86,2.51
+Q/Qexp >6,"ws-Ca, Cl",Cl,Pb,None
+DISP % dQ,<0.01%,<0.01%,<0.01%,<0.01%
+DISP Swaps,0,0,0,0
+Bootstrap mapping < 100%,None,sulfur secondary - 55%,None,"coal - 90%, EC + OC - 90%, chloride - 90%"

@@ -1,0 +1,245 @@
+---
+title: "Trt-outcome-missingness"
+format: pdf
+editor: visual
+---
+
+```{r setup, echo=F, message = F}
+## Load packages
+library(here); library(osfr); library(tidyverse); library(readr); library(readxl)
+library(modelsummary); library(marginaleffects); library(kableExtra); library(tinytable)
+library(pandoc); library(estimatr)
+```
+
+## Load data & select variables
+
+```{r, echo=F, message = F}
+d <- read_csv(here("data-clean", "BHET_master_data_29Aug2024.csv"),
+              col_select = c("hh_id", "ptc_id", "wave", "ban_status_composite", 
+                             "freq_cough", "freq_phlegm", "freq_wheezing", 
+                             "freq_breath", "freq_no_chest", "sys_brachial", 
+                             "sys_central", "dia_central", "dia_brachial",
+                             "FeNO", "indmonitor_id", "pairmonitor_id", 
+                             "PM25_indoor_seasonal_hs", "PM25conc_exposureugm3",
+                             "temp")) %>%
+  # remove wave 3 data
+  filter(wave != 3) %>%
+  
+  # clean FeNO variable
+  mutate(FeNO_num = ifelse(FeNO == "<5", "2.5", FeNO),
+         FeNO_num = ifelse(FeNO_num == ".", "", FeNO_num),
+         FeNO_num = as.numeric(FeNO_num))
+```
+
+## Format data for table 1
+
+```{r, echo=F, message = F}
+outcomes_by_trt_levels <- d %>%
+  
+  # create missingness indicators
+  mutate(PM25_indoor_seasonal_hs_m = 
+           case_when(wave == 1 ~ 3, # indoor PM wasn't measured in wave 1
+                     is.na(indmonitor_id) & is.na(PM25_indoor_seasonal_hs) ~ 3, # if no sensor ID AND no measurement THEN not sampled
+                     is.na(indmonitor_id) & !is.na(PM25_indoor_seasonal_hs) ~ 1, # if no sensor ID BUT measurement THEN valid response
+                     !is.na(indmonitor_id) & is.na(PM25_indoor_seasonal_hs) ~ 2, # if yes sensor ID BUT no measurement THEN missing
+                     !is.na(indmonitor_id) & !is.na(PM25_indoor_seasonal_hs) ~ 1, # if yes sensor ID AND measurement THEN valid response
+                     TRUE ~ NA),
+         
+         personal_pm25_m = 
+           case_when(is.na(pairmonitor_id) & is.na(PM25conc_exposureugm3) ~ 3, # if no monitor ID AND no measurement THEN not sampled
+                     is.na(pairmonitor_id) & !is.na(PM25conc_exposureugm3) ~ 1, # if no monitor ID BUT measurement THEN valid response
+                     !is.na(pairmonitor_id) & is.na(PM25conc_exposureugm3) ~ 2, # if yes monitor ID BUT no measurement THEN missing
+                     !is.na(pairmonitor_id) & !is.na(PM25conc_exposureugm3) ~ 1, # if yes monitor ID AND measurement THEN valid response
+                     TRUE ~ NA)) %>%
+  
+  # create indicator for any respiratory symptoms
+  mutate(resp = ifelse(!is.na(freq_cough)|!is.na(freq_phlegm)|
+                         !is.na(freq_wheezing)|!is.na(freq_breath)|
+                         !is.na(freq_no_chest), 1, NA)) %>%
+  
+  # set-up for missingness table
+  mutate(trt = recode_factor(ban_status_composite, 
+                             `0` = "Never enrolled", 
+                             `1` = "Enrolled 2019",
+                             `2` = "Enrolled 2020",
+                             `3` = "Enrolled 2021"),
+         
+         `Any symptoms` = recode_factor(ifelse(is.na(resp), 0, 1),
+                                                       `0` = "Missing",
+                                                       `1` = "Valid"),
+         
+         Cough = recode_factor(ifelse(is.na(freq_cough), 0, 1),
+                               `0` = "Missing",
+                               `1` = "Valid"),
+         
+         Phlegm = recode_factor(ifelse(is.na(freq_phlegm), 0, 1),
+                                `0` = "Missing",
+                                `1` = "Valid"),
+         
+         Wheezing = recode_factor(ifelse(is.na(freq_wheezing), 0, 1),
+                                  `0` = "Missing",
+                                  `1` = "Valid"),
+         
+         `Shortness of breath` = recode_factor(ifelse(is.na(freq_breath), 0, 1),
+                                             `0` = "Missing",
+                                             `1` = "Valid"),
+         
+         `Chest trouble` = recode_factor(ifelse(is.na(freq_no_chest), 0, 1),
+                                             `0` = "Missing",
+                                             `1` = "Valid"),
+         
+         `Brachial SBP` = recode_factor(ifelse(is.na(sys_brachial), 0, 1),
+                                        `0` = "Missing",
+                                        `1` = "Valid"),
+         
+         `Central SBP` = recode_factor(ifelse(is.na(sys_central), 0, 1),
+                                       `0` = "Missing",
+                                       `1` = "Valid"),
+         
+         `Brachial DBP` = recode_factor(ifelse(is.na(dia_brachial), 0, 1),
+                                        `0` = "Missing",
+                                        `1` = "Valid"),
+         
+         `Central DBP` = recode_factor(ifelse(is.na(dia_central), 0, 1),
+                                       `0` = "Missing",
+                                       `1` = "Valid"),
+         
+         FeNO = recode_factor(ifelse(is.na(FeNO_num), 0, 1),
+                                `0` = "Missing",
+                                `1` = "Valid"),
+         
+         `Personal PM` = case_when(personal_pm25_m == 1 ~ 'Valid',
+                                   personal_pm25_m == 2 ~ 'Missing',
+                                   personal_pm25_m == 3 ~ 'Not sampled',
+                                   TRUE ~ ""),
+         
+         `Indoor PM` = case_when(PM25_indoor_seasonal_hs_m == 1 ~ 'Valid',
+                                 PM25_indoor_seasonal_hs_m == 2 ~ 'Missing',
+                                 PM25_indoor_seasonal_hs_m == 3 ~ 'Not sampled',
+                                 TRUE ~ ""),
+         
+         `Indoor temperature` = recode_factor(ifelse(is.na(temp), 0, 1),
+                                              `0` = "Missing",
+                                              `1` = "Valid")) %>%
+  
+  select(trt, `Any symptoms`, Cough, Phlegm, Wheezing, 
+         `Shortness of breath`, `Chest trouble`, `Brachial SBP`, `Central SBP`,
+         `Brachial DBP`, `Central DBP`, FeNO, `Personal PM`, `Indoor PM`, 
+         `Indoor temperature`)
+```
+
+# Load biomarker missingness from Kaibing
+
+```{r, echo=F, message = F}
+d_b <- read_xlsx(here("data-clean", 
+                      "missing_outcomes_by_trt.xlsx")) %>% 
+  select(-c(1, ban_status_composite, n)) %>%
+  t() %>%
+  as.data.frame() %>%
+  select(-1) %>%
+  mutate(nt_n = str_split(V2, " ", simplify = T)[,1],
+         nt_p = str_split(V2, " ", simplify = T)[,2],
+         
+         t_2019_n = str_split(V3, " ", simplify = T)[,1],
+         t_2019_p = str_split(V3, " ", simplify = T)[,2],
+         
+         t_2020_n = str_split(V4, " ", simplify = T)[,1],
+         t_2020_p = str_split(V4, " ", simplify = T)[,2],
+         
+         t_2021_n = str_split(V5, " ", simplify = T)[,1],
+         t_2021_p = str_split(V5, " ", simplify = T)[,2],
+         
+         nt_p = str_remove(nt_p, fixed("(")),
+         nt_p = str_remove(nt_p, fixed(")")),
+         
+         t_2019_p = str_remove(t_2019_p, fixed("(")),
+         t_2019_p = str_remove(t_2019_p, fixed(")")),
+         
+         t_2020_p = str_remove(t_2020_p, fixed("(")),
+         t_2020_p = str_remove(t_2020_p, fixed(")")),
+         
+         t_2021_p = str_remove(t_2021_p, fixed("(")),
+         t_2021_p = str_remove(t_2021_p, fixed(")"))) %>%
+  
+  select(-contains("V"))
+```
+
+# Build table
+
+```{r, echo=F}
+## add empty rows for variable groups
+nrn <- c("Respiratory symptoms:", "Blood pressure:", 
+         "Biomarkers:", rownames(d_b), "Environmental outcomes:")
+
+## empty data frame
+nr <- data.frame(matrix(ncol = 10, nrow = length(nrn)))
+nr$X1 <- nrn
+
+nr[nr$X1 == c("IL6"), "X2"] <- "Missing"
+nr[4,3:10] <- d_b[1,]
+
+nr[nr$X1 == c("TNF"), "X2"] <- "Missing"
+nr[5,3:10] <- d_b[2,]
+
+nr[nr$X1 == c("CRP"), "X2"] <- "Missing"
+nr[6,3:10] <- d_b[3,]
+
+nr[nr$X1 == c("MDA"), "X2"] <- "Missing"
+nr[7,3:10] <- d_b[4,]
+
+nr[is.na(nr)] <- " "
+nr
+
+## placement in table
+attr(nr, 'position') <- c(1, 14, 23, 24, 25, 26, 27, 30)
+
+options(modelsummary_format_numeric_latex = "plain")
+
+tbl <- datasummary_balance(~trt,
+                           data = outcomes_by_trt_levels, 
+                           add_rows = nr, 
+                           align = "rrrrrrrrrr",
+                           #notes = reference, 
+                           output = 'kableExtra'
+                           )
+tbl %>%
+  kable_styling(font_size = 10) %>%
+  row_spec(c(1, 14, 23, 30), bold = T)
+
+```
+
+```{r message = FALSE, warning = F}
+
+tinyt <- datasummary_balance(~trt, 
+                             data = outcomes_by_trt_levels, 
+                             add_rows = nr, 
+                             align = "lccccccccc") %>%
+  style_tt(j = 1:10, fontsize = 0.75) %>%
+  style_tt(i = c(1, 14, 23, 30), bold = TRUE) %>%
+  theme_tt("multipage", rowhead = 2)
+
+tinyt
+```
+
+```{r}
+customt <- tt(tinyt@table_dataframe,
+   width = c(.2, .2, .1, .1, .1, .1, .1, .1, .1, .1)) %>%
+  style_tt(j = 1:10, fontsize = 0.75, align = "lccccccccc") %>%
+  style_tt(i = c(1, 14, 23, 30), 
+           bold=TRUE) %>%
+  group_tt(j = list(`Never enrolled (N=1880)` = 3:4, 
+                    `Enrolled 2019 (N=642)` = 5:6,
+                    `Enrolled 2020 (N=446)` = 7:8,
+                    `Enrolled 2021 (N=173)` = 9:10)) %>% 
+  theme_tt("multipage", rowhead=2)
+
+customt
+```
+
+```{r}
+customt %>% save_tt("trt-outcome-missingness.pdf", overwrite = TRUE)
+```
+
+```{r}
+customt %>% save_tt("trt-outcome-missingness.docx", overwrite = TRUE)
+```

@@ -150,7 +150,7 @@
 \newcommand{\tinytableTabularrayStrikeout}[1]{\sout{#1}}
 \usepackage{wrapfig}
 \usepackage{colortbl}
- \makeatletter
+\makeatletter
  \renewenvironment{table}%
    {\renewcommand\familydefault\sfdefault
     \@float{table}}
@@ -213,7 +213,7 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={How Do Household Energy Transitions Work?},
-  pdfauthor={Jill Baumgartner (Co-PI); Sam Harper (Co-PI); On behalf of the Beijing Household Energy Transitions Team},
+  pdfauthor={Jill Baumgartner (Co-PI)1; Sam Harper (Co-PI)1; Chris Barrington-Leigh1; Collin Brehmer2; Ellison M. Carter2; Xiaoying Li2; Brian E. Robinson1; Guofeng Shen3; Talia J. Sternbach1; Shu Tao3; Kaibing Xue4; Wenlu Yuan1; Xiang Zhang1; Yuanxun Zhang4},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -222,10 +222,22 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{How Do Household Energy Transitions Work?}
-\author{Jill Baumgartner (Co-PI) \and Sam Harper (Co-PI) \and On behalf
-of the Beijing Household Energy Transitions Team}
-\date{2024-09-30}
+\title{How Do Household Energy Transitions Work?\thanks{Affiliations
+{[}1{]} McGill Univeristy; {[}2{]} Colorado State University; {[}3{]}
+Peking University; {[}4{]} University of the Chinese Academy of
+Sciences}}
+\author{Jill Baumgartner (Co-PI)\textsuperscript{1} \and Sam Harper
+(Co-PI)\textsuperscript{1} \and Chris
+Barrington-Leigh\textsuperscript{1} \and Collin
+Brehmer\textsuperscript{2} \and Ellison M.
+Carter\textsuperscript{2} \and Xiaoying Li\textsuperscript{2} \and Brian
+E. Robinson\textsuperscript{1} \and Guofeng
+Shen\textsuperscript{3} \and Talia J.
+Sternbach\textsuperscript{1} \and Shu
+Tao\textsuperscript{3} \and Kaibing Xue\textsuperscript{4} \and Wenlu
+Yuan\textsuperscript{1} \and Xiang Zhang\textsuperscript{1} \and Yuanxun
+Zhang\textsuperscript{4}}
+\date{2024-10-04}
 
 \begin{document}
 \maketitle
@@ -242,7 +254,7 @@ of the Beijing Household Energy Transitions Team}
 \subsubsection*{Introduction}\label{introduction}
 
 Since 2015, thousands of villages across Beijing and northern China have
-been treated by a Coal Ban and Heat Pump (CBHP) subsidy policy that
+been treated by a Coal Ban and Heat Pump (CHP) subsidy policy that
 banned household coal burning and subsidized the cost of replacement
 with electric heaters and electricity. Whether this large-scale policy
 was successful in improving air quality and health remains an important
@@ -267,13 +279,12 @@ temperature and PM\textsubscript{2.5} were measured in waves 2, 3 and 4.
 The PM\textsubscript{2.5} filters were analyzed for mass and chemical
 composition, which were used for source apportionment. To estimate the
 impacts of the policy we used a difference-in-differences design that
-accommodated the staggered rollout of the CBHP policy. We used
-`extended' two-way fixed effects models and marginal effects to quantify
-the effect of the policy on air pollution and health. We further
-evaluated whether villages treated by the policy in different years
-respond differently to the policy, and if any of the observed health
-impacts of the policy were mediated through changes in air pollution or
-home (indoor) temperature.
+accommodated the staggered rollout of the CHP policy. We used `extended'
+two-way fixed effects models and marginal effects to quantify the effect
+of the policy on air pollution and health. We further evaluated whether
+villages treated by the policy in different years respond differently to
+the policy, and if any of the observed health impacts of the policy were
+mediated through changes in air pollution or home (indoor) temperature.
 
 \subsubsection*{Results}\label{results}
 
@@ -284,7 +295,7 @@ PM\textsubscript{2.5} (72 versus 36 µg/m\textsuperscript{3}), and the
 main source contributors were local and transported dust, regional and
 domestic coal and biomass burning, and aerosols that form through
 secondary formation. By waves 2, 3, and 4 there were a cumulative total
-of 10, 17, and 20 (out of 50 total) villages exposed to the CBHP policy.
+of 10, 17, and 20 (out of 50 total) villages exposed to the CHP policy.
 Uptake and adherence to the policy was high: among villages treated in
 wave 2, the proportion of households using heat pumps and coal heaters,
 respectively, changed from 3\% and 97\% in wave 1 to 94\% and 3\% in
@@ -312,7 +323,7 @@ biomarkers of inflammation and oxidative stress.
 
 In this comprehensive field-based assessment of a real-world household
 energy policy in Beijing, we observed high fidelity and compliance with
-the CBHP policy. Exposure to the policy reduced blood pressure and
+the CHP policy. Exposure to the policy reduced blood pressure and
 self-reported chronic respiratory symptoms, and the effects for blood
 pressure were mediated by reductions in indoor PM\textsubscript{2.5} and
 improvements in home temperature, providing empirical evidence that
@@ -322,11 +333,11 @@ clean energy policies can provide population health benefits.
 
 \section{Introduction}\label{introduction-1}
 
-China is deploying an ambitious policy to transition up to 70\% of
-households in northern China from residential coal heating to electric
-or gas ``clean'' space heating, including a large-scale roll out across
-rural and peri-urban Beijing, referred to in this document as China's
-Coal Ban and Heat Pump (CBHP) subsidy policy. To meet this target the
+China is deploying an ambitious clean energy policy to transition up to
+70\% of households in northern China from residential coal heating to
+electric or gas ``clean'' space heating, including a large-scale roll
+out across rural and peri-urban Beijing villages, referred to in this
+document as the Clean Heating Policy (CHP). To meet this target the
 Beijing municipal government announced a two-pronged program that
 designates coal-restricted areas and simultaneously offers subsidies to
 night-time electricity rates and for the purchase and installation of
@@ -339,46 +350,74 @@ quality and health. Household air pollution is a well-established risk
 factor for adverse health outcomes over the entire lifecourse, yet there
 is no consensus that clean energy interventions can improve these health
 outcomes based on evidence from randomized trials (Lai et al. 2024).
-Households may be differentially affected by the CBHP due to factors
-such as financial constraints and user preferences, and there is
-uncertainty about whether and how the policy may affect indoor and
-outdoor air pollution, as well as heating behaviors and health outcomes.
+Households may be differentially affected by the CHP due to factors such
+as financial constraints and user preferences, and there is uncertainty
+about whether and how the policy may affect indoor and outdoor air
+pollution, as well as heating behaviors and health outcomes.
 
 \section{Background}\label{background}
 
 \subsection{Context for the policy}\label{context-for-the-policy}
 
-Beijing has a temperate continental monsoon climate that is
-characterized by cold, dry winters and hot, humid summers. Access to
+The \comment{OC 4c} CHP builds on China's long history of launching
+ambitious, large-scale policies and programs to promote clean household
+energy transition and support rural energy infrastructure development
+(Zhang and Smith 2007). China was a relatively early initiator of rural
+electrification projects in the 1950s and achieved complete (100\%)
+electrification of households by 2016 (Yang 2021), which undoubtedly
+facilitated the current policy option to replace coal stoves with
+electric-powered heat pumps. Several decades later, China achieved what
+is likely still the largest improvement in household energy efficiency
+in history with regards to the population affected by a single program:
+the National Improved Stove Program (NISP) and its provincial- and
+county-level counterparts were initiated in the early 1980s and are
+credited with introducing 180 million improved cooking and heating
+stoves by the late 1990s. All NISP stoves had chimneys and some had
+manual or electric blowers to promote more efficient combustion (Zhang
+and Smith 2007), with the primary goal of increased biomass fuel
+efficiency to promote rural welfare and reduce pressure on local forests
+and a secondary goal of improving indoor air quality (Sinton et al.
+2004). Because NISP focused mainly on biomass cookstoves, it had limited
+impacts on the rapid increase in coal heating stove installation during
+that same period, most of which were implemented without chimneys and
+with rudimentary designs (Zhang and Smith 2007). Though NISP was a
+significant achievement in early clean energy transition, especially for
+biomass cookstoves, the rural energy demands and air pollution
+challenges of 21st century China required a renewed effort to promote
+transition to cleaner rural energy, particularly for rural heating where
+progress significantly lagged behind energy transition for cooking.
+
+Most of northern China has a temperate continental monsoon climate that
+is characterized by cold, dry winters and hot, humid summers. Access to
 central heating is limited to urban areas and thus most peri-urban and
 rural households have historically heated their homes using coal heaters
 and biomass \emph{kangs} (a traditional Chinese energy technology that
 integrates at least four different home functions including cooking, a
 bed for sleeping, space heating, and home ventilation). Household coal
 burning was a major contributor to indoor and outdoor air pollution in
-northern China, especially in winter. Prior to the CBHP policy, over 100
-million rural households consumed \textasciitilde200 million tons of
-coal to meet more than 80\% of northern China's residential space
-heating demand (Dispersed Coal Management Research Group 2023), which
-contributed to roughly 30\% of wintertime air pollution (GBD MAPS
-Working Group 2016). In 2013, coal combustion from industrial,
-electricity, and residential heating sources was the single largest
-estimated contributor to population exposure to PM\textsubscript{2.5} in
-China and responsible for an estimated 366,000 annual premature deaths
-(GBD MAPS Working Group 2016).
+northern China, especially in winter. Prior to the CHP, over 100 million
+rural households consumed \textasciitilde200 million tons of coal to
+meet more than 80\% of northern China's residential space heating demand
+(Dispersed Coal Management Research Group 2023), which contributed to
+roughly 30\% of wintertime air pollution (GBD MAPS Working Group 2016).
+In 2013, emissions inventories indicated that coal combustion from
+industrial, electricity, and residential heating sources was the single
+largest estimated contributor to population exposures to
+PM\textsubscript{2.5} in China and responsible for an estimated 366,000
+annual premature deaths (GBD MAPS Working Group 2016).
 
 Banning residential coal burning and providing homes with clean heating
-alternatives through the CBHP policy was considered a potentially
-important intervention to improve rural development, reduce local and
-regional PM\textsubscript{2.5}, and mitigate air pollution-related
-health impacts. A number of clean heating options, including electric
-heat pumps, gas heaters, and electric resistance heaters with thermal
-storage, were widely promoted by the Chinese government (Dispersed Coal
-Management Research Group 2023). By 2021, over 36 million households in
-northern China were treated by the CBHP policy and an estimated 21
-million additional households are expected to be treated by 2025.
-Whether this large-scale energy policy yielded air quality and health
-benefits remains a critical and unresolved question.
+alternatives through the CHP was considered a potentially important
+intervention to improve rural development, reduce local and regional
+fine particulate matter (PM\textsubscript{2.5}), and mitigate air
+pollution-related health impacts. A number of clean heating options,
+including electric heat pumps, gas heaters, and electric resistance
+heaters with thermal storage, were promoted by the Chinese government
+(Dispersed Coal Management Research Group 2023). By 2021, over 36
+million households in northern China were treated by the CHP policy and
+an estimated 21 million additional households are expected to be treated
+by 2025. Whether this large-scale energy policy yielded air quality and
+health benefits remains a critical and unresolved question.
 
 \subsection{Prior evidence on household energy interventions and air
 pollution}\label{prior-evidence-on-household-energy-interventions-and-air-pollution}
@@ -391,7 +430,7 @@ cleaner household stoves is expected to reduce air pollution, their
 real-world effectiveness in achieving health-relevant air pollution
 reductions is unclear (Quansah et al. 2017). In particular, the indoor
 and local air quality benefits of large-scale household energy programs
-like the CBHP subsidy policy have been rarely empirically investigated,
+like the CHP subsidy policy have been rarely empirically investigated,
 especially at a sub-city spatial resolution. In Ireland, county-level
 residential coal bans in the 1990s were associated with 40-70\%
 decreases in black smoke concentrations in ban-affected areas (Dockery
@@ -399,8 +438,8 @@ et al. 2013). In Australia, a wood-burning stove exchange lowered daily
 wintertime PM\textsubscript{10} from 44 to 27 µg/m\textsuperscript{3}
 (Johnston et al. 2013), and clean energy policies in New Zealand were
 associated with 11-36\% reductions in winter PM\textsubscript{10} (Scott
-and Scarrott 2011). The few evaluations of the CBHP policy reported
-small decreases in outdoor PM\textsubscript{2.5} (-7 to -2.4
+and Scarrott 2011). The few evaluations of the CHP policy reported small
+decreases in outdoor PM\textsubscript{2.5} (-7 to -2.4
 µg/m\textsuperscript{3}) in municipalities or prefectures treated by the
 policy compared with untreated neighboring regions (Niu et al. 2024;
 Song et al. 2023; Tan et al. 2023; Yu et al. 2021), and a recent
@@ -439,13 +478,13 @@ suggest a cardio-respiratory benefit of clean energy transition.
 Residential wood-burning bans were associated with reductions in
 cardiovascular hospitalizations (-7\%) in California (Yap and Garcia
 2015) and with reduced cardiovascular (-17.9\%) and respiratory
-(−22.8\%) mortality in Australia (Johnston et al. 2013), though neither
+(-22.8\%) mortality in Australia (Johnston et al. 2013), though neither
 study fully controlled for secular changes in health that were unrelated
 to the policy. Most relevant to our study are two quasi-experimental
 assessments of coal replacement policies. In Ireland, reductions in
 respiratory not but cardiovascular mortality were observed following a
 coal ban (Dockery et al. 2013). A multi-city study of Chinese adults in
-cities where the CBHP policy was piloted compared with adults in cities
+cities where the CHP policy was piloted compared with adults in cities
 not in the pilot observed small decreases in chronic lung diseases (-3.0
 to -1.1\%) but no change in physician-diagnosed cardiovascular diseases,
 potentially due to the short (one-year) post-policy evaluation period or
@@ -487,7 +526,7 @@ factors considered in health assessments of household energy
 interventions, and rarely in a comprehensive or formalized way
 (Rosenthal et al. 2018). Understanding such mechanisms can provide
 valuable insights into the success (or failure) of clean energy programs
-or policies like the CBHP in meeting their air quality and health
+or policies like the CHP in meeting their air quality and health
 targets, and may answer questions that can inform the design of more
 effective future energy interventions (Lai et al. 2024). For example, is
 there successful uptake of the intervention or policy? Does the policy
@@ -506,7 +545,7 @@ advance the following aims:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Estimate how much of the CBHP policy's overall effect on health,
+  Estimate how much of the CHP policy's overall effect on health,
   including respiratory symptoms and cardiovascular outcomes (blood
   pressure, blood inflammatory and oxidative stress markers), can be
   attributed to its impact on changes in PM\textsubscript{2.5};
@@ -544,9 +583,9 @@ Between December 2018 and January 2019 we recruited 50 villages across 4
 administrative districts (Fangshan, Huairou, Mentougou, and Miyun) in
 the Beijing municipality in northern China. The villages predominately
 used coal for heating at the time of enrollment and were eligible for
-but not currently participating in the CBHP policy. Roughly half of the
+but not currently participating in the CHP policy. Roughly half of the
 villages were expected to enter into the policy during our study
-\comment{EC 10c} (Figure~\ref{fig-cbhp-map}). We used local guides in
+\comment{EC 10c} (Figure~\ref{fig-chp-map}). We used local guides in
 each village to help determine a roster of households that were not
 vacant during the winter months, from which we randomly selected
 households to recruit for participation.
@@ -559,7 +598,7 @@ households to recruit for participation.
 
 }
 
-\caption{\label{fig-cbhp-map}Map of village implementation of CBHP
+\caption{\label{fig-chp-map}Map of village implementation of CBHP
 policy. Each circle represents one recruited village. The colors of the
 circles indicate the year the villages were exposed to the household
 energy transition policy.}
@@ -798,6 +837,99 @@ from their body and place within 2 meters while sleeping, sitting, or
 bathing. Field blanks for personal air pollution exposure measurements
 were collected at a rate of \textasciitilde10\% in each village.
 
+To summarize, for outdoor sampling, in Wave 1, we aimed to deploy one to
+three PM sensors to measure community PM in each village at distinct
+locations: one near the center of the village and the others at least
+500 meters away, and finally we set up one to three outdoor monitoring
+sites in 44 villages. Starting from Wave 2, two PM sensors were set up
+in each village. Sensors were positioned at least 1.5 meters above the
+ground and away from visible sources of PM. Filter-based
+PM\textsubscript{2.5} samples were collected weekly for chemical
+analysis and sensor calibration, with UPAS samplers rotated between
+sensor locations. Sampling took place over multiple waves. In total, we
+collected 126, 371, and 289 outdoor PM\textsubscript{2.5} samples in
+Waves 1, 2, and 4, respectively. We also collected quartz filters
+co-located with a subset of Teflon filter samples to quantify organic
+and elemental carbon fractions in selected waves (23 in Wave 2 and 11 in
+Wave 4).
+
+For personal air pollution sampling, we used Ultrasonic Personal Aerosol
+Samplers (UPAS) and Personal Exposure Monitors (PEM) to measure personal
+PM exposures over 24-hour periods. Sampling was conducted with
+participants carrying the monitors for personal exposure assessment,
+either wearing them in a waist pack or positioning them within 2 meters
+during sedentary activities. We collected 24-hour personal exposure
+samples during Waves 1, 2, and 4. Across these waves, participants
+contributed 494, 481, and 503 personal PM samples, respectively. Field
+blanks for both outdoor air and personal exposure measurements were
+collected at a rate of approximately 10\% in each village.
+
+When merging data sets (mass data, field sampling record, and master
+data set), several issues were found. First, there were duplicates in
+both the field sampling record and the master data set. Second, there
+were filters that recorded mass but contained no information in the
+field sampling record. Third, there were filters that recorded a
+measurement but had no mass. Lastly, there were discrepancies between
+the field sampling record and the master data set that included
+incorrect or missing filter id's in the master data set. The duplicates
+in the field sampling record and master data set were corrected using
+the opposite data set (master for field, field for master), field notes,
+or looking for reasonable changes in the `mass-no-information' filters
+(e.g., filter recorded as BHET3363 should be BHET3303 because the 6 and
+0 looked similar when inputting the data). The `mass-no-information'
+filters were resolved by comparing the list to the field notes or
+looking for potential cases where a filter could replace a duplicate.
+The `information-no-mass' filters were searched for in the freezers and
+submitted to be reweighed if found. Discrepancies with the master data
+set were resolved by comparing the data to the field sampling record and
+field notes.
+
+We used four main criteria that were used to exclude filters from
+additional chemical analysis. First, samples with a run time of less
+than 80\% were excluded, as this is a common cutoff for establishing
+whether a sample was considered to be representative enough of daily and
+nightly usual behavior. Second, samples with negative mass or extreme
+mass concentration values (mass concentration \textgreater{} 2000 ug/m3
+determined by distributions of the mass data) were excluded. Third,
+samples that were missing the information required to determine the
+sampling volume, and thus the PM2.5 concentration, were excluded.
+Finally, any filters that suffered damage in the field such as
+punctures, tears, or holes were excluded. Thus, the final count of PM2.5
+samples that met our criteria for inclusion in analysis is as follows in
+the table below:
+
+\begin{table}[H]
+
+\caption{\label{tbl-blanks}Count of total outdoor and personal exposure
+PM\textsubscript{2.5} samples (filters) collected over the course of the
+project and number included for analysis.}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{a}={Number of samples that met inclusion criteria for analysis (see text).},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=2,}{halign=c,},
+cell{1}{6}={c=2,}{halign=c,},
+}                     %% tabularray inner close
+\toprule
+& Wave 1 &  & Wave 2 &  & Wave 4 &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
+PM2.5 sample type & Total & Included\textsuperscript{a} & Total & Included\textsuperscript{a} & Total & Included\textsuperscript{a} \\ \midrule %% TinyTableHeader
+Outdoor  & 138 & 126 & 374 & 363 & 295 & 266 \\
+Personal & 494 & 448 & 498 & 410 & 499 & 410 \\
+Blank    &  52 &  52 &  56 &  56 & 101 &  95 \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\end{table}%
+
 \paragraph{\texorpdfstring{Gravimetric analyses of PTFE filter-based
 PM\textsubscript{2.5}
 samples}{Gravimetric analyses of PTFE filter-based PM2.5 samples}}\label{gravimetric-analyses-of-ptfe-filter-based-pm2.5-samples}
@@ -898,7 +1030,50 @@ methanesulfonic acid at a flow rate of 0.5 mL/min was used to measure
 cations (Ca2+, Mg2+, Na+, NH4+, K+), while a Dionex IonPac AS14A
 analytical (4 × 250 mm) column with an eluent of 1 mM sodium
 bicarbonate/8 mM sodium carbonate at a flow rate of 1 mL/min was used to
-measure anions (SO42−, NO3−, Cl−) (Sullivan et al., 2008).
+measure anions (SO42−, NO3−, Cl−) (Sullivan et al. 2008).
+
+\begin{itemize}
+\item
+  \emph{wi (Water Insoluble Species)}: `wi' \comment{EC 5a}refers to the
+  fraction of particulate matter (PM) that does not dissolve in water.
+  These species typically include elements such as potassium (K),
+  calcium (Ca), and magnesium (Mg), among others, that remain as
+  particulate matter after water extraction. In this study, due to
+  budget constraints, we did not analyze water-soluble organic carbon.
+  Instead, we determined the water insoluble fraction by subtracting the
+  amount of the elemental species measured using ion chromatography (IC)
+  from the total elemental amount determined by X-ray fluorescence
+  (XRF). For instance, the total amount of potassium (K) was measured
+  using XRF, and the water-soluble potassium fraction was quantified
+  using IC. The difference between these two values was taken as the
+  water insoluble fraction of potassium. This approach is consistent
+  with practices in air quality research that uses these analyses.
+\item
+  \emph{ws (Water Soluble Species)}: `ws' refers to the fraction of
+  particulate matter that dissolves in water, typically including major
+  ions such as sulfate, nitrate, ammonium, and certain soluble forms of
+  metals. The water soluble fraction was extracted from particulate
+  samples using deionized water, and the extract was analyzed using ion
+  chromatography (IC) to determine the concentrations of individual
+  water soluble ions, such as sulfate (SO₄²⁻), nitrate (NO₃⁻), and
+  soluble metal ions. This approach is well-documented in the scientific
+  literature and follows established protocols for the determination of
+  anions in PM.
+\item
+  \emph{ns-S (Non-Sulfate Sulfur)}: `ns-S' refers to the sulfur present
+  in particulate matter that is not in the form of sulfate -- i.e.,
+  non-sulfate (ns) sulfur (S). This includes species such as elemental
+  sulfur, organosulfur compounds, and other non-sulfate
+  sulfur-containing compounds. Total sulfur content in particulate
+  matter was determined using X-ray fluorescence (XRF), consistent with
+  the method we employed for this project (RTI International, 2009). The
+  sulfate (SO₄²⁻) content was quantified using ion chromatography. The
+  non-sulfate sulfur (ns-S) was then calculated by subtracting the
+  sulfate sulfur from the total sulfur determined using XRF analysis.
+  This approach is supported by studies such as those by Shakya and
+  Peltier (2015) and Secrest et al. (2016), which have utilized similar
+  methodologies to distinguish sulfur sources in PM studies.
+\end{itemize}
 
 Organic (OC) and elemental carbon (EC) on PTFE filters were measured
 using an optical color space sensing system. The CIE-Lab color space
@@ -962,12 +1137,13 @@ dividing by the sampled air volume.
 
 For statistical analysis, we estimated the effect of the policy on
 personal exposures to PM\textsubscript{2.5} and BC using the results
-from filter-based measurements collected over 24-h periods. We measured
-indoor and outdoor PM\textsubscript{2.5} for up to 6 months in our study
-households, and thus we calculated both the 24-h mean values (to
-coincide with the same 24-h period that personal exposure samples were
-collected) and the wintertime seasonal mean values (with winter `season'
-defined as January 15 to March 15) of PM\textsubscript{2.5}.
+from filter-based measurements collected over 24-h periods. We sampled
+indoor and outdoor PM2.5 for up to 6 months in our study households. We
+calculated the 24-h mean values (to coincide with the same 24-h period
+that personal exposure samples were collected). We also calculated a
+wintertime seasonal mean value, with winter `season' defined as January
+15 to March 15, of PM\textsubscript{2.5} data for \comment{EC 2}
+statistical analysis.
 
 \subsubsection{Outdoor and indoor (household) air
 temperature}\label{outdoor-and-indoor-household-air-temperature}
@@ -1106,11 +1282,11 @@ inflammation}\label{self-reported-respiratory-symptoms-and-airway-inflammation}
 During questionnaire assessment, participants were asked about chronic
 airway symptoms including cough, phlegm, wheeze, and tightness in the
 chest using questions validated for use in Mandarin-Chinese and
-developed from the standard St.~George's Respiratory Questionnaire. The
-Mandarin-Chinese questions were extensively piloted with rural and
-peri-urban Beijing residents to ensure that the health terminology and
-symptom time patterns were adequate and understandable to the local
-population.
+developed from the standard St.~George's Respiratory Questionnaire (Xu
+et al. 2009). The Mandarin-Chinese questions were extensively piloted
+with rural and peri-urban Beijing residents to ensure that the health
+terminology and symptom time patterns were adequate and understandable
+to the local population.
 
 In a \textasciitilde25\% random subsample of participants, we also
 measured the fractional concentration of exhaled nitric oxide (FeNO), a
@@ -1200,7 +1376,7 @@ difference-in-differences (DiD) design (Callaway 2020), leveraging the
 staggered rollout of the policy across multiple villages to estimate its
 impact on health outcomes and understand the mechanisms through which it
 works. Simple comparisons of treated and untreated (i.e., control)
-villages after the CBHP policy has been implemented are likely to be
+villages after the CHP policy has been implemented are likely to be
 biased by unmeasured village-level characteristics (e.g., migration,
 average winter temperature, wealth) that are associated with health
 outcomes. Similarly, comparisons of only treated villages before and
@@ -1282,7 +1458,7 @@ time and/or heterogeneous across treatment cohorts.
 \subsection{Measuring pathways and
 mechanisms}\label{measuring-pathways-and-mechanisms}
 
-To estimate how much of the CBHP intervention may work through different
+To estimate how much of the CHP intervention may work through different
 mechanisms, we used causal mediation analysis. Causal approaches to
 mediation attempt to discern between, and clarify the necessary
 assumptions for identifying, different kinds of mediated effects. Taking
@@ -1338,7 +1514,7 @@ To estimate the total effect of the policy we used a DiD analysis that
 accommodates staggered treatment rollout. To allow for heterogeneity in
 the context of staggered rollout we used `extended' two-way fixed
 effects (ETWFE) models (Wooldridge 2021) to estimate the total effect of
-the CBHP policy. The mean outcome (replaced by a suitable link function
+the CHP policy. The mean outcome (replaced by a suitable link function
 \(g(\cdot)\) for binary or count outcomes) was defined using a set of
 linear predictors:
 
@@ -1351,21 +1527,26 @@ policy at the same time \(q\) (e.g., in 2019, 2020, or 2021), \(fs_{t}\)
 are fixed effects for each time period \(s\) corresponding to different
 winter data collection waves (2018-19, 2019-20, or 2021-22), and
 \(\tau_{rs}\) are the cohort-time \(ATT\)s in the context of a linear
-model. For binary or count outcomes the cohort-time \(ATT\)s are derived
-by estimating marginal effects from non-linear models (Arel-Bundock
-2024). For all models we cluster standard errors at the village level,
-consistent with the unit of treatment assignment (Cameron and Miller
-2015). The ETWFE and other approaches that allow for several
-(potentially heterogeneous) treatment effects may also be averaged to
-provide a weighted summary \(ATT\). Several potential possibilities are
-feasible, including weighting by treatment cohorts or time since policy
-adoption (Goin and Riddell 2023). We generally focus on two types of
-\(ATT\)s for this report: simple averages across all treatment cohorts
-and the full set of cohort-time \(ATT\)s to evaluate heterogeneous
-treatment effects. Although we primarily focus on reporting the simple
-average \(ATT\) for most outcomes, we also used omnibus joint
-\emph{F}-tests to assess whether there was sufficient evidence to reject
-the assumption of homogeneity across the \(ATT\)s.
+model. For non-linear outcomes the cohort-time \(ATT\)s are derived by
+estimating marginal effects from non-linear models (Arel-Bundock 2024).
+For binary and count outcomes we used logit and Poisson models,
+respectively, and for skewed outcomes (e.g., black carbon,
+PM\textsubscript{2.5}) we used generalized linear models with a Gamma
+distribution and a log link, based on the specification tests
+recommended by Manning and Mullahy (2001). For all models we cluster
+standard errors at the village level, consistent with the unit of
+treatment assignment (Cameron and Miller 2015). The ETWFE and other
+approaches that allow for several (potentially heterogeneous) treatment
+effects may also be averaged to provide a weighted summary \(ATT\).
+Several potential possibilities are feasible, including weighting by
+treatment cohorts or time since policy adoption (Goin and Riddell 2023).
+We generally focus on two types of \(ATT\)s for this report: simple
+averages across all treatment cohorts and the full set of cohort-time
+\(ATT\)s to evaluate heterogeneous treatment effects. Although we
+primarily focus on reporting the simple average \(ATT\) for most
+outcomes, we also used omnibus joint \emph{F}-tests to assess whether
+there was sufficient evidence to reject the assumption of homogeneity
+across the \(ATT\)s.
 
 \subsection{Mediation Analysis}\label{mediation-analysis}
 
@@ -1384,10 +1565,10 @@ Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} 
 
 where now \(\delta\) is the conditional effect of the mediator \(M\) at
 the reference level of the treatment (again, represented via the series
-of group-time interaction terms), and the collection of \(\eta\) terms
-are coefficients for the product terms allowing for mediator-treatment
-interaction. Finally, \(\zeta\) is a vector of coefficients for the set
-of confounders contained within \(\mathbf{W}\).
+of group-time interaction terms), and the collection of \(\eta_{rs}\)
+terms are coefficients for the product terms allowing for
+mediator-treatment interaction. Finally, \(\zeta\) is a vector of
+coefficients for the set of confounders contained within \(\mathbf{W}\).
 
 As noted above, in the staggered DiD framework that allows for
 heterogeneity we do not have a single treatment effect but a collection
@@ -1408,7 +1589,7 @@ DiD strategy help to reduce the potential for unmeasured confounding of
 the mediator-outcome effect (Keele et al. 2015). Given the large number
 of outcomes of interest in this study, as well as the potential for
 heterogeneous treatment effects, we limited the mediation analysis to
-health outcomes for which we observed a total effect of the CBHP policy.
+health outcomes for which we observed a total effect of the CHP policy.
 
 \subsection{Identification of potential confounders and model
 covariates}\label{identification-of-potential-confounders-and-model-covariates}
@@ -1425,22 +1606,22 @@ period (e.g., background improvements in ambient air quality or
 household transition to more efficient heating). The latter are
 particularly helpful in the context of the documented declines in
 ambient PM\textsubscript{2.5} in the Beijing region attributable to
-sources other than the CBHP policy (Van Donkelaar et al. 2021; Zhang et
+sources other than the CHP policy (Van Donkelaar et al. 2021; Zhang et
 al. 2019)
 
-For models estimating the effect of the policy on health outcomes, we
-used DAGs (Pearl 2000) to identify potential time-varying causes of both
-treatment by the policy and our study outcome(s) that could differ
-between treatment groups, and adjusted for those potential confounders
-in the regression models. For the mediation analysis, we identified
-potential mediator-outcome confounders using the same approach. These
-variables were identified from the relevant peer-reviewed literature and
-our team's substantive knowledge about the CBHP policy. In the
-multivariable models, we also adjusted for strong predictors of the
-outcome that were not affected by treatment, and thus not confounders,
-to improve model precision. The covariates included in each of the
-models for blood pressure and respiratory health outcomes are provided
-in the tables.
+For models estimating the effect of the policy on indoor temperature and
+health outcomes, we used DAGs (Pearl 2000) to identify potential
+time-varying causes of both treatment by the policy and our study
+outcome(s) that could differ between treatment groups, and adjusted for
+those potential confounders in the regression models. For the mediation
+analysis, we identified potential mediator-outcome confounders using the
+same approach. These variables were identified from the relevant
+peer-reviewed literature and our team's substantive knowledge about the
+CHP policy. In the multivariable models, we also adjusted for strong
+predictors of the outcome that were not affected by treatment, and thus
+not confounders, to improve model precision. The covariates included in
+each of the models for blood pressure and respiratory health outcomes
+are provided in the tables.
 
 For air pollution outcomes, the evidence on predictors of personal
 exposures and indoor air pollution in rural China is inconsistent. We
@@ -1481,7 +1662,7 @@ since we only measured indoor PM\textsubscript{2.5} in a subsample of
 all participants in w1 with BP measures, as well as for a sub-sample of
 participants in w2 and w4. To prepare data for the BP outcomes analysis
 we used multiple imputation with chained equations (MICE) to impute
-missing covariate data and missing indoor PM\textsubscript{2.5} values
+missing indoor PM\textsubscript{2.5} and missing covariate data values
 for individuals who participated in the household visit but not the
 clinic visit. This allowed us to retain observations with BP
 measurements that would have otherwise been dropped in adjusted and
@@ -1491,8 +1672,16 @@ in \emph{R} (m = 30 imputation datasets, with 30 iterations each), and
 the difference-in-differences and mediation analyses were conducted for
 each of the 30 datasets. We then used Rubin's Rules to combine point
 estimates and standard errors while accounting for both within- and
-between-dataset variances (Rubin 1987). In Appendix
-Figure~\ref{fig-afig-mi} we show kernel density plots for the
+between-dataset variances (Rubin 1987).
+
+Appendix \comment{EC 2a, 2b} Table~\ref{tbl-a-mi} shows that overall
+most measures had no or \textless1\% missing data, with the exception of
+measured waist circumference, height and weight (all around 15\%
+missing). Appendix Table~\ref{tbl-a-mi-cohort} also shows the number and
+percent of missing observations by treatment enrollment cohort and
+outcome, and we found little evidence that the percent of missing
+observations differed substantially between treatment cohorts. In
+Appendix Figure~\ref{fig-afig-mi} we show kernel density plots for the
 distribution of imputed values for BMI, waist circumference, and indoor
 PM\textsubscript{2.5}, all of which closely approximated the observed
 values.
@@ -1500,29 +1689,29 @@ values.
 \section{Results}\label{results-1}
 
 We retained all 50 study villages during this four-year longitudinal
-assessment of village treatment by the CBHP policy, though we were only
+assessment of village treatment by the CHP policy, though we were only
 able to visit 41 villages in winter 2020-21 (w3) and were limited to
 village and household-level measurements of air quality, indoor
 temperature, and stove use in that wave due to restrictions during the
 COVID pandemic.
 
 By w2, w3, and w4 there were a cumulative total of 10, 17, and 20 (out
-of 50 total) study villages treated by the CBHP policy, respectively.
-All of the treated villages selected to install electric-powered
-air-source heat pumps with 200 RMB per meter square (up to 24,000 RMB)
-in subsidies and were also provided with 80\% night-time electricity
-subsidies up to 10,000kWh per heating season. To limit coal use,
-villages enrolled in the policy were no longer allowed to place orders
-for subsidized coal with the district-level governments that manage the
-procurement and distribution of coal for residential heating in Beijing.
-In addition, village committee leaders in treated villages reported
-feeling accountable to the Environmental Protection Department for
-limited coal-related air pollution, and were motivated to encourage
-residents to not burn coal. Some villages were equipped with government
-air pollution monitors and the Environmental Protection Department
-conducted village inspections and issued warnings about coal burning.
-Households burning coal in treated villages were at risk of losing their
-electricity subsidy.
+of 50 total) study villages treated by the CHP policy, respectively. All
+of the treated villages selected to install electric-powered air-source
+heat pumps with 200 RMB per meter square (up to 24,000 RMB) in subsidies
+and were also provided with 80\% night-time electricity subsidies up to
+10,000kWh per heating season. To limit coal use, villages enrolled in
+the policy were no longer allowed to place orders for subsidized coal
+with the district-level governments that manage the procurement and
+distribution of coal for residential heating in Beijing. In addition,
+village committee leaders in treated villages reported feeling
+accountable to the Environmental Protection Department for limited
+coal-related air pollution, and were motivated to encourage residents to
+not burn coal. Some villages were equipped with government air pollution
+monitors and the Environmental Protection Department conducted village
+inspections and issued warnings about coal burning. Households burning
+coal in treated villages were at risk of losing their electricity
+subsidy.
 
 Appendix Figure~\ref{fig-flowchart} shows the participation of villages,
 households, and participants across the four waves of data collection.
@@ -1646,7 +1835,7 @@ column{6}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
 column{7}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
 row{3}={,cmd=\bfseries,},
 row{13}={,cmd=\bfseries,},
-row{29}={,cmd=\bfseries,},
+row{30}={,cmd=\bfseries,},
 rowsep={.1em},
 }                     %% tabularray inner close
 \toprule
@@ -1654,7 +1843,7 @@ rowsep={.1em},
 & Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error \\ \midrule %% TinyTableHeader
 Demographics:                 &              &              &              &              &              &             \\
 Age (years)                   & \num{59.9}  & \num{9.4}   & \num{60.4}  & \num{9.2}   & \num{0.5}   & \num{0.6}  \\
-Female (\%)                  & \num{59.5}  & \num{49.1}  & \num{59.1}  & \num{49.2}  & \num{-0.4}  & \num{3.2}  \\
+Female (\%)                  & \num{59.5}  & \num{49.1}  & \num{60.0}  & \num{49.1}  & \num{0.5}   & \num{3.2}  \\
 No education (\%)            & \num{11.5}  & \num{31.9}  & \num{12.3}  & \num{32.9}  & \num{0.9}   & \num{2.1}  \\
 Primary education (\%)       & \num{75.5}  & \num{43.0}  & \num{77.6}  & \num{41.7}  & \num{2.1}   & \num{2.8}  \\
 Secondary+ education (\%)    & \num{12.6}  & \num{33.2}  & \num{9.8}   & \num{29.7}  & \num{-2.9}  & \num{2.0}  \\
@@ -1678,10 +1867,11 @@ Frequency of phlegm (\%)     & \num{27.6}  & \num{44.7}  & \num{23.7}  & \num{42
 Frequency of wheezing (\%)   & \num{6.2}   & \num{24.2}  & \num{6.6}   & \num{24.8}  & \num{0.3}   & \num{1.6}  \\
 Shortness of breath (\%)     & \num{29.2}  & \num{45.5}  & \num{34.3}  & \num{47.5}  & \num{5.1}   & \num{3.0}  \\
 Chest trouble (\%)           & \num{11.6}  & \num{32.0}  & \num{14.1}  & \num{34.9}  & \num{2.5}   & \num{2.2}  \\
-Environmental measures:       &              &              &              &              &              &             \\
 Any respiratory problem (\%) & \num{50.6}  & \num{50.0}  & \num{54.3}  & \num{49.9}  & \num{3.7}   & \num{3.2}  \\
+Environmental measures:       &              &              &              &              &              &             \\
 Temperature (°C)              & \num{13.8}  & \num{3.6}   & \num{13.5}  & \num{3.3}   & \num{-0.3}  & \num{0.2}  \\
-Personal PM2.5 (ug/m3)        & \num{150.2} & \num{300.3} & \num{103.8} & \num{107.3} & \num{-46.3} & \num{19.1} \\
+Personal PM2.5 (ug/m3)        & \num{127.3} & \num{145.6} & \num{102.1} & \num{105.2} & \num{-25.1} & \num{11.9} \\
+Black carbon (ug/m3)          & \num{4.4}   & \num{5.3}   & \num{3.3}   & \num{3.4}   & \num{-1.1}  & \num{0.4}  \\
 \bottomrule
 \end{tblr}
 }
@@ -1692,15 +1882,14 @@ Personal PM2.5 (ug/m3)        & \num{150.2} & \num{300.3} & \num{103.8} & \num{1
 
 Table~\ref{tbl-desc} shows the distribution of selected demographic,
 health, and environmental characteristics from the baseline survey,
-prior to any villages being enrolled in the CBHP policy. We provide
-means and standard deviations separately for villages that eventually
-enter into the policy with those that never do so. As noted above,
-although our DiD identification strategy allows for fixed differences
-between treated and untreated villages, overall the differences at
-baseline are generally small and the groups seem well balanced on most
-measures, with the exception of personal exposure to
-PM\textsubscript{2.5}, which was lower in villages that were eventually
-treated.
+prior to any villages being enrolled in the CHP policy. We provide means
+and standard deviations separately for villages that eventually enter
+into the policy with those that never do so. As noted above, although
+our DiD identification strategy allows for fixed differences between
+treated and untreated villages, overall the differences at baseline are
+generally small and the groups seem well balanced on most measures, with
+the exception of personal exposure to PM\textsubscript{2.5}, which was
+lower in villages that were eventually treated.
 
 \subsection{Summary of PM and BC
 measurements}\label{summary-of-pm-and-bc-measurements}
@@ -1868,15 +2057,27 @@ across study waves}
 \end{figure}%
 
 We also observed a substantial decline in the amount of self-reported
-coal used in villages treated by CBHP policy (Appendix
-Figure~\ref{fig-afig-coal}), though the reduction in coal use was
-smaller with each subsequent treatment cohort (Appendix
-Table~\ref{tbl-fuel-did}). Biomass (i.e., wood logs/twigs or charcoal),
-usually burned in kangs for both cooking and space heating, was not
-expressly targeted by the CBHP policy. We observed declines in
-self-reported biomass use in villages treated in 2019 and 2020, but
-there was a small increase in biomass consumption in the cohort treated
-last (2021).
+coal used in villages treated by the CHP (Figure~\ref{fig-coal}), though
+the reduction in coal use was smaller with each subsequent treatment
+cohort (Appendix Table~\ref{tbl-fuel-did}). Biomass (i.e., wood
+logs/twigs or charcoal), usually burned in kangs for both cooking and
+space heating, was not expressly targeted by the CHP policy. We observed
+declines in self-reported biomass use in villages treated in 2019 and
+2020, but there was a small increase in biomass consumption in the
+cohort treated last (2021).
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/coal-plot.png}
+
+}
+
+\caption{\label{fig-coal}Trends in self-reported coal and biomass, by
+treatment season.}
+
+\end{figure}%
 
 In never treated villages, we also observed a transition to clean energy
 over the four year study but it was much slower than in treated
@@ -1899,8 +2100,8 @@ and indoor
 temperature)}\label{impact-of-policy-on-potential-mediators-air-pollution-and-indoor-temperature}
 
 The average marginal effect (\(ATT\)) from the basic ETWFE model
-(Table~\ref{tbl-did-med}) shows that exposure to the CBHP policy reduced
-24h indoor PM\textsubscript{2.5} by -19 µg/m\textsuperscript{3} (95\%CI:
+(Table~\ref{tbl-did-med}) shows that exposure to the CHP reduced 24h
+indoor PM\textsubscript{2.5} by -19 µg/m\textsuperscript{3} (95\%CI:
 -56, 18). After adjusting outdoor temperature, dewpoint, household
 smoking status, and the number of residents in each household, the
 \(ATT\) was -20 µg/m\textsuperscript{3} (95\%CI: -46, 6). The basic DiD
@@ -1931,8 +2132,9 @@ Mar.~15th.}
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences.},
-note{a}={Extended two-way fixed effects models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor dewpoint. Temperature models not additionally adjusted.},
+note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.},
+note{a}={ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Temperature models adjusted for the number of rooms and wintertime occupants in the household, age of the primary respondent, and wealth index},
+note{b}={The indoor 24-hr PM2.5 concentration was determined over the time period concurrent with when the personal PM2.5 concentration was determined.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
@@ -1970,21 +2172,21 @@ column{7}={halign=c,},
 \toprule
 &  &  & DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
 &  & Obs & ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
-Air pollution (µg/m3) &&&&&& \\
-Personal & PM2.5 & 1263 & -2.9 & (-25.8, 19.9) & 0.5 & (-19.1, 20.2) \\
-Personal & Black carbon & 1142 & -0.6 & (-1.7, 0.6) & -0.4 & (-1.5, 0.7) \\
-Indoor & Daily PM2.5 &  399 & -18.9 & (-56.1, 18.4) & -20.0 & (-45.6, 5.5) \\
-Indoor & Seasonal PM2.5 &  366 & -30.9 & (-53.2, -8.7) & -20.3 & (-37.5, -3.0) \\
-Outdoor & Daily PM2.5 &  & -0.1 & (-5.86, 5.64) & -1.7 & (-9.26, 5.81) \\
-Outdoor & Seasonal PM2.5 &  & 3.1 & (-3.1, 9.38) & 0.4 & (-6.27, 6.99) \\
-Indoor temperature (°C) &&&&&& \\
-Point & Mean &  & 2.0 & (1.0, 3.0) &  &  \\
-Seasonal & Mean (all) &  & 0.6 & (0.0, 1.3) &  &  \\
-Seasonal & Mean (daytime) &  & 0.8 & (-0.1, 1.7) &  &  \\
-Seasonal & Mean (heating season) &  & 1.8 & (1.0, 2.6) &  &  \\
-Seasonal & Mean (daytime heating season) &  & 1.9 & (1.0, 2.7) &  &  \\
-Seasonal & Min. (all) &  & 3.8 & (2.3, 5.4) &  &  \\
-Seasonal & Min. (heating season) &  & 3.7 & (2.2, 5.3) &  &  \\
+Air pollution &&&&&& \\
+Personal & PM2.5 &  1263 & -2.9 & (-25.8, 19.9) & 0.5 & (-19.1, 20.2) \\
+Personal & Black carbon &  1142 & -0.6 & (-1.7, 0.6) & -0.4 & (-1.5, 0.7) \\
+Indoor & 24-hr PM2.5\textsuperscript{b} &   399 & -18.9 & (-56.1, 18.4) & -20.0 & (-45.6, 5.5) \\
+Indoor & Seasonal PM2.5 &   366 & -30.9 & (-53.2, -8.7) & -20.3 & (-37.5, -3.0) \\
+Outdoor & 24-hr PM2.5 & 11174 & -0.1 & (-5.86, 5.64) & -1.7 & (-9.26, 5.81) \\
+Outdoor & Seasonal PM2.5 &   139 & 3.1 & (-3.1, 9.38) & 0.4 & (-6.27, 6.99) \\
+Indoor temperature &&&&&& \\
+Point & Mean &  2999 & 1.9 & (0.9, 2.9) & 1.9 & (0.9, 2.9) \\
+Seasonal & Mean (all) &  1350 & 0.7 & (-0.1, 1.4) & 0.7 & (-0.1, 1.4) \\
+Seasonal & Mean (daytime) &  1346 & 0.8 & (0.0, 1.5) & 0.8 & (0.0, 1.5) \\
+Seasonal & Mean (heating season) &  1350 & 1.8 & (0.9, 2.7) & 1.8 & (0.9, 2.7) \\
+Seasonal & Mean (daytime heating season) &  1346 & 2.0 & (1.0, 2.9) & 1.9 & (1.0, 2.9) \\
+Seasonal & Min. (all) &  1350 & 4.2 & (2.3, 6.0) & 4.2 & (2.4, 6.1) \\
+Seasonal & Min. (heating season) &  1350 & 4.2 & (2.3, 6.0) & 4.2 & (2.4, 6.0) \\
 \bottomrule
 \end{talltblr}
 
@@ -1992,7 +2194,7 @@ Seasonal & Min. (heating season) &  & 3.7 & (2.2, 5.3) &  &  \\
 
 \end{table}%
 
-Overall we found little evidence of an impact of the CBHP policy on 24-h
+Overall we found little evidence of an impact of the CHP policy on 24-h
 and seasonal outdoor (community) PM\textsubscript{2.5} or personal
 exposures to PM\textsubscript{2.5} and BC. Treatment was associated with
 lower, but statistically imprecise, personal 24-h BC exposures. This
@@ -2001,14 +2203,17 @@ to reducing air pollutant emissions from solid fuel burning, as BC
 serves as a potential indicator of such combustion.
 
 With respect to the other potential mediator of temperature,
-Table~\ref{tbl-did-med} shows that exposure to the CBHP policy increased
-mean household point temperature by around 2°C (95\%CI: 1, 3), with
-similar impacts on mean seasonal temperatures during the heating season.
-The CBHP policy had considerably stronger impacts on average seasonal
-minimum temperatures, which increased by 3.8°C (95\%CI: 2.3, 5.4).
+Table~\ref{tbl-did-med} shows that exposure to the CHP increased mean
+household point temperature by around 2°C (95\%CI: 1, 3), with similar
+impacts on mean seasonal temperatures during the heating season. The CHP
+had considerably stronger impacts on average seasonal minimum
+temperatures, which increased by 4.2°C (95\%CI: 2.3, 6.0). Additionally
+adjusting models for the number of rooms and wintertime occupants in the
+household, age of the primary respondent, and wealth index had little
+impact on the average \(ATTs\)
 
-\subsubsection{Impact of the CBHP policy on health
-outcomes}\label{impact-of-the-cbhp-policy-on-health-outcomes}
+\subsubsection{Impact of the CHP policy on health
+outcomes}\label{impact-of-the-chp-policy-on-health-outcomes}
 
 \begin{table}
 
@@ -2022,7 +2227,7 @@ markers}
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
 note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects, Obs = observations, pp = percentage points, ppb = parts per billion.},
-note{a}={ETWFE models for blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Self-reported respiratory outcomes adjusted for age, gender, and smoking. Measured respiratory outcome (FeNO) adjusted age, gender, body mass index, frequency of drinking, smoking, and frequency of exercise, occupation, time of measurement. Inflammatory marker outcome models adjusted for age, waist circumference, occupation, wealth index quantile, frequency of drinking, tobacco smoking, and frequency of farming.},
+note{a}={ETWFE models for blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Self-reported respiratory outcomes adjusted for age, gender, smoking, occupation, freqency of drinking, frequency of farming. Measured respiratory outcome (FeNO) adjusted age, gender, body mass index, frequency of drinking, smoking, and frequency of exercise, occupation, time of measurement. Inflammatory marker outcome models adjusted for age, waist circumference, occupation, wealth index quantile, frequency of drinking, tobacco smoking, and frequency of farming.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
@@ -2070,27 +2275,27 @@ column{7}={halign=c,},
 &  &  & DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
 &  & Obs & ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
 Blood pressure &&&&&& \\
-Systolic BP (mmHg) & Brachial &    1 & -0.79 & (-2.63, 1.04) & -1.40 & (-3.31, 0.51) \\
-Systolic BP (mmHg) & Central &    2 & -1.04 & (-2.82, 0.73) & -1.56 & (-3.40, 0.28) \\
-Diastolic BP (mmHg) & Brachial &    3 & -1.29 & (-2.62, 0.04) & -1.60 & (-2.96, -0.25) \\
-Diastolic BP (mmHg) & Central &    4 & -1.35 & (-2.66, 0.04) & -1.66 & (-2.97, -0.34) \\
-Pulse Pressure & Brachial &    5 & 0.50 & (-0.71, 1.70) & 0.21 & (-1.00, 1.41) \\
-Pulse Pressure & Central &    6 & 0.31 & (-0.85, 1.46) & 0.10 & (-1.01, 1.20) \\
-BP Amplification x10 & Pulse pressure &    7 & 0.10 & (-0.12, 1.40) & 0.00 & (-1.20, 1.20) \\
-BP Amplification x10 & Systolic BP &    8 & 0.20 & (-0.20, 0.50) & 0.10 & (-0.20, 0.40) \\
+Systolic BP (mmHg) & Brachial & 3082 & -0.8 & (-2.6, 1.0) & -1.4 & (-3.3, 0.5) \\
+Systolic BP (mmHg) & Central & 3081 & -1.0 & (-2.8, 0.7) & -1.6 & (-3.4, 0.3) \\
+Diastolic BP (mmHg) & Brachial & 3082 & -1.3 & (-2.6, 0.0) & -1.6 & (-3.0, -0.2) \\
+Diastolic BP (mmHg) & Central & 3081 & -1.4 & (-2.7, -0.0) & -1.7 & (-3.0, -0.3) \\
+Pulse Pressure & Brachial & 3082 & 0.5 & (-0.7, 1.7) & 0.2 & (-1.0, 1.4) \\
+Pulse Pressure & Central & 3081 & 0.3 & (-0.8, 1.5) & 0.1 & (-1.0, 1.2) \\
+BP Amplification x10 & Pulse pressure & 3081 & 0.0 & (-0.0, 0.0) & -0.0 & (-0.0, 0.0) \\
+BP Amplification x10 & Systolic BP & 3081 & 0.0 & (-0.0, 0.0) & 0.0 & (-0.0, 0.0) \\
 Respiratory outcomes &&&&&& \\
-Self-reported (pp) & Any symptom & 3081 & -7.65 & (-12.76, -2.55) & -8.12 & (-13.32, -2.92) \\
-Self-reported (pp) & Coughing & 3081 & -2.49 & (-7.08, 2.10) & -2.98 & (-7.48, 1.52) \\
-Self-reported (pp) & Phlegm & 3081 & -1.34 & (-5.48, 2.80) & -2.14 & (-6.25, 1.97) \\
-Self-reported (pp) & Wheezing attacks & 3081 & 0.81 & (-2.17, 3.79) & 0.83 & (-2.14, 3.80) \\
-Self-reported (pp) & Trouble breathing & 3081 & -4.26 & (-9.76, 1.24) & -3.80 & (-9.42, 1.82) \\
-Self-reported (pp) & Chest trouble & 3081 & -4.18 & (-8.84, 0.48) & -3.94 & (-8.61, 0.74) \\
-Measured & FeNO (ppb) &  & 0.17 & (-2.24, 2.58) & 0.55 & (-2.13, 3.13) \\
+Self-reported (pp) & Any symptom & 3076 & -7.7 & (-12.8, -2.5) & -7.5 & (-12.7, -2.3) \\
+Self-reported (pp) & Coughing & 3076 & -2.6 & (-7.2, 2.0) & -2.7 & (-7.1, 1.7) \\
+Self-reported (pp) & Phlegm & 3076 & -1.3 & (-5.5, 2.9) & -1.6 & (-5.6, 2.4) \\
+Self-reported (pp) & Wheezing attacks & 3076 & 0.7 & (-2.3, 3.8) & 1.0 & (-1.9, 3.9) \\
+Self-reported (pp) & Trouble breathing & 3076 & -4.4 & (-9.9, 1.0) & -3.4 & (-9.2, 2.4) \\
+Self-reported (pp) & Chest trouble & 3076 & -4.2 & (-8.8, 0.5) & -3.4 & (-8.1, 1.3) \\
+Measured & FeNO (ppb) &  793 & 0.9 & (-1.6, 3.3) & 0.3 & (-2.2, 2.8) \\
 Inflammatory markers &&&&&& \\
-Measured (\%) & IL6 &    1 & 6.80 & (-12.2, 30.0) & 5.90 & (-13.80, 30.20) \\
-Measured (\%) & TNF-alpha &    2 & 24.30 & (-1.3, 56.4) & 24.70 & (-0.90, 54.20) \\
-Measured (\%) & CRP &    3 & 2.70 & (-19.8, 31.6) & 3.80 & (-19.40, 33.60) \\
-Measured (\%) & MDA &    4 & 7.60 & (-8.7, 26.9) & 6.50 & (-9.70, 25.5) \\
+Measured (\%) & IL6 &    1 & 6.8 & (-12.2, 30.0) & 5.9 & (-13.8, 30.2) \\
+Measured (\%) & TNF-alpha &    2 & 24.3 & (-1.3, 56.4) & 24.7 & (-0.9, 54.2) \\
+Measured (\%) & CRP &    3 & 2.7 & (-19.8, 31.6) & 3.8 & (-19.4, 33.6) \\
+Measured (\%) & MDA &    4 & 7.6 & (-8.7, 26.9) & 6.5 & (-9.7, 25.5) \\
 \bottomrule
 \end{talltblr}
 
@@ -2101,16 +2306,18 @@ Measured (\%) & MDA &    4 & 7.60 & (-8.7, 26.9) & 6.50 & (-9.70, 25.5) \\
 Table~\ref{tbl-did-health} shows the impacts of the policy on blood
 pressure in basic ETWFE models and models further adjusted for age, sex,
 waist circumference, smoking, alcohol consumption, and use of blood
-pressure medication. Overall exposure to the CBHP policy demonstrated
+pressure medication. Overall exposure to the CHP policy demonstrated
 reductions in blood pressure of approximately 1.5 mmHg for both systolic
 and diastolic BP, but we found little evidence of a meaningful impact on
 pulse pressure or BP amplification. The effects on brachial and central
-blood pressures were similar. However, the average effects in
+blood pressures were similar, and were consistent when restricted to
+only those participants enrolled in W1 (Appendix
+Table~\ref{tbl-a-bp-sample}). However, the average effects in
 Table~\ref{tbl-did-health} conceal a fair amount of heterogeneity in
 treatment effects for blood pressure across treatment cohorts and time.
 Appendix Table~\ref{tbl-bp-het} shows that treatment impacts were
 considerably stronger for the earlier compared to the later-treated
-cohorts. For example, the CBHP policy reduced central DBP in the year of
+cohorts. For example, the CHP policy reduced central DBP in the year of
 treatment by -2.7 mmHg (95\%CI: -4.6, -0.8) for the villages first
 treated in wave 2, but increased central DBP by 1.1 mmHg (95\%CI: -0.1,
 2.2) for the villages treated in wave 4 (\emph{p}-value for
@@ -2171,7 +2378,7 @@ on blood pressure.}
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.},
+note{}={Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, CI = Confidence Interval, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.},
 note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
 note{b}={Mediators were set to the mean value for untreated participants at baseline.},
 ]                     %% tabularray outer close
@@ -2241,8 +2448,8 @@ policy on self-reported respiratory outcomes}
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: Estimated for the subset of individuals with measured personal exposure (n=1274). ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect.},
-note{a}={Adjusted for age, sex, and smoking.},
+note{}={Note: Estimated for the subset of individuals with measured personal exposure (n=1270). ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, CI = Confidence Interval.},
+note{a}={Adjusted for age, gender, smoking, occupation, freqency of drinking, frequency of farming.},
 note{b}={Mediators were set to the mean value for untreated participants at baseline.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
@@ -2275,12 +2482,12 @@ column{9}={font=\fontsize{0.8em}{1.1em}\selectfont,},
 & Adjusted Total Effect &  & CDE Mediated By: &  &  &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-9}
 &  &  & Personal PM &  & Indoor Temp &  & PM + Temp &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}
 & ATT\textsuperscript{a} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) \\ \midrule %% TinyTableHeader
-Any symptom & -12.2 & (-19.46, -5.00) & -12.2 & (-19.46, -5.04) & -15.1 & (-23.57, -6.69) & -14.9 & (-23.45, -6.26) \\
-Coughing & -11.7 & (-19.49, -3.91) & -11.6 & (-19.28, -3.93) & -14.9 & (-22.85, -6.93) & -15.9 & (-23.78, -8.09) \\
-Phlegm & -9.8 & (-16.34, -3.26) & -9.9 & (-16.39, -3.33) & -14.0 & (-21.32, -6.69) & -13.6 & (-20.94, -6.32) \\
-Wheezing attacks & -4.7 & (-12.56, 3.12) & -4.7 & (-12.61, 3.19) & -6.4 & (-14.44, 1.66) & -4.4 & (-11.38, 2.53) \\
-Trouble breathing & -8.6 & (-18.56, 1.43) & -8.6 & (-18.49, 1.36) & -12.8 & (-24.81, -0.77) & -12.3 & (-24.45, -0.23) \\
-Chest trouble & -6.0 & (-13.36, 1.39) & -5.8 & (-12.87, 1.24) & -3.4 & (-10.45, 3.58) & -3.6 & (-9.65, 2.51) \\
+Any symptom & -12.8 & (-20.3, -5.3) & -12.5 & (-20.5, -4.5) & -15.1 & (-23.6, -6.5) & -14.8 & (-23.5, -6.1) \\
+Coughing & -11.7 & (-19.9, -3.5) & -13.1 & (-21.5, -4.7) & -15.1 & (-23.2, -6.9) & -16.0 & (-24.0, -8.0) \\
+Phlegm & -9.7 & (-16.3, -3.1) & -9.0 & (-15.8, -2.2) & -14.2 & (-21.3, -7.0) & -13.8 & (-21.0, -6.6) \\
+Wheezing attacks & -4.1 & (-11.0, 2.7) & -2.7 & (-8.6, 3.2) & -5.8 & (-12.8, 1.3) & -3.7 & (-9.8, 2.4) \\
+Trouble breathing & -9.0 & (-18.7, 0.8) & -8.9 & (-18.9, 1.0) & -12.5 & (-24.4, -0.5) & -12.2 & (-24.2, -0.2) \\
+Chest trouble & -5.0 & (-12.2, 2.1) & -5.0 & (-11.3, 1.3) & -2.8 & (-9.5, 4.0) & -3.0 & (-8.8, 2.8) \\
 \bottomrule
 \end{talltblr}
 
@@ -2431,31 +2638,80 @@ Sulfur secondary- 98.5\% \\
 \end{table}%
 
 The source profiles for the four-factor solution are presented in
-Figure~\ref{fig-source-figure}. The first source was identified as dust
-based on high percentages of crustal elements like wi-Ca, Si, and wi-Mg.
-The second source consisted of non-sulfate sulfur as well as secondary
-inorganic ions (ammonium, nitrate, and sulfate). Non-sulfate sulfur is a
-tracer for primary coal combustion, while secondary inorganic ions
-indicate a secondary source. Since industrial coal burning is a source
-of power generation in our study area, it is likely that the second
-source is a mixture of primary and secondary emissions that originate
-from coal and other sulfurous fuel combustion. Additionally, the mean
-source contribution of the second source is higher in outdoor than
-personal exposure measurements. Secondary formation occurs outdoors in
-the presence of sunlight, so higher outdoor concentrations compared to
-personal exposure further support our naming the second source `sulfur
-secondary'. The third source had high percentages of ws-Ca nd Al, which
-in our study region, has been found to be indicative of transported dust
-from dust storms that can occur in the spring. While our samples were
-collected during winter months only, it is possible that transported
-dust from previous years still remained. The fourth source was
-characterized by high percentages of tracers for both coal (OC, wi-K,
-chloride, Pb) and biomass combustion (EC, ws-K). Coal and biomass
-combustion are anticipated sources of PM pollution in our study setting,
-particularly from domestic cooking and heating activities, so this
-source is likely a mixture of PM emitted from these two household
-combustion sources. We extend the source profiles across the different
-treatment cohorts in Figure~\ref{fig-source-season}.
+Figure~\ref{fig-source-figure}. We sought to develop a defensible source
+analysis solution, which we found to have four factors and, then
+identified and named those sources. The pooled PMF analysis combined
+both outdoor and personal exposure samples, leading to a more robust
+factor solution due to the increased number of samples. This pooled
+analysis determined that the optimum solution was a 4-factor model,
+which identified the major sources as dust, transported dust, secondary
+sulfur, and a combustion mixture of coal and biomass burning, and
+possibly some tobacco smoking. The pooled approach was found to be
+stable, with high bootstrap (BS) mapping and no factor swaps during the
+displacement tests, indicating the reliability of the factor solutions.
+
+We also ran disaggregated analyses for personal and outdoor samples
+separately (details in the Appendix). We found some differences in the
+number of factors and source attributions, but the core findings
+remained largely consistent with the pooled results. For the personal
+exposure samples (Appendix Figure~\ref{fig-pmf-personal} and Appendix
+Table~\ref{tbl-pmf-personal}), the 3-factor solution identified dust,
+transported dust, and mixed combustion (a combination of biomass burning
+and secondary PM), while the 5-factor solution further split the mixed
+combustion factor into distinct coal combustion and sulfur secondary
+factors. Similarly, for the outdoor PM samples (Appendix
+Figure~\ref{fig-pmf-outdoor}, and Appendix Table~\ref{tbl-pmf-outdoor}),
+the 3-factor solution identified mixed combustion, secondary PM, and
+dust, while the 5-factor solution introduced transported dust and a
+refined characterization of secondary species contributions. Despite
+these differences in the disaggregated analysis, the primary sources of
+pollution--dust, secondary sulfur, and mixed combustion--were consistent
+across both the pooled and separate analyses, demonstrating that the
+main findings are robust.
+
+Although separating the samples for analysis provides additional
+granularity, it does not fundamentally change the identification of the
+key pollution sources that we observed in the pooled analysis. The dust,
+secondary sulfur, and mixed combustion factors, which are central to our
+findings, are present in both approaches, further confirming the
+robustness of the pooled results.
+
+We also evaluated PMF results disaggregated by day and by month (shown
+in Appendix X), where the results are further color-coded by district.
+Due to yearly field campaign schedules, where sampling was occurring by
+village and by district was correlated in time.
+
+We believe that the pooled analysis remains the most parsimonious and
+interpretable approach for explaining the major sources of PM2.5 in our
+study. The pooled results are both representative and stable, making
+them the most appropriate for addressing the study's primary research
+questions.
+
+The first source was identified as dust based on high percentages of
+crustal elements like wi-Ca, Si, and wi-Mg. The second source consisted
+of non-sulfate sulfur as well as secondary inorganic ions (ammonium,
+nitrate, and sulfate). Non-sulfate sulfur is a tracer for primary coal
+combustion, while secondary inorganic ions indicate a secondary source.
+Since industrial coal burning is a source of power generation in our
+study area, it is likely that the second source is a mixture of primary
+and secondary emissions that originate from coal and other sulfurous
+fuel combustion. Additionally, the mean source contribution of the
+second source is higher in outdoor than personal exposure measurements.
+Secondary formation occurs outdoors in the presence of sunlight, so
+higher outdoor concentrations compared to personal exposure further
+support our naming the second source `sulfur secondary'. The third
+source had high percentages of ws-Ca nd Al, which in our study region,
+has been found to be indicative of transported dust from dust storms
+that can occur in the spring. While our samples were collected during
+winter months only, it is possible that transported dust from previous
+years still remained. The fourth source was characterized by high
+percentages of tracers for both coal (OC, wi-K, chloride, Pb) and
+biomass combustion (EC, ws-K). Coal and biomass combustion are
+anticipated sources of PM pollution in our study setting, particularly
+from domestic cooking and heating activities, so this source is likely a
+mixture of PM emitted from these two household combustion sources. We
+extend the source profiles across the different treatment cohorts in
+Figure~\ref{fig-source-season}.
 
 \begin{figure}[H]
 
@@ -2958,8 +3214,8 @@ prior to the 2021 cohort being treated, we assessed the similarity of
 pre-intervention trends between w1 and w2 for the never treated group
 and the groups eventually treated in 2020 and 2021. Estimates and 95\%
 CIs for the difference in pre-trends are given in the Appendix for BP
-outcomes (\textbf{?@fig-afig-pt-bp}), personal exposure to
-PM\textsubscript{2.5} and black carbon (\textbf{?@fig-afig-pt-pebc}),
+outcomes (Figure~\ref{fig-afig-pt-bc}), personal exposure to
+PM\textsubscript{2.5} and black carbon (Figure~\ref{fig-afig-pt-pe-bc}),
 and self-reported respiratory outcomes (Figure~\ref{fig-afig-pt-resp}).
 Pre-trends in BP were nearly identical for all groups (all
 \emph{p}-values for differences were \textgreater{} 0.7). We found
@@ -3155,16 +3411,16 @@ exaggerated effects.
 Because of the inherent uncertainty surrounding hypothesized ``true''
 effects, it often makes sense to conduct retrospective design analyses
 for a range of effect sizes. We show estimates for BP reductions of 0 to
-4 mmHg in \textbf{?@fig-rd}. The HEI-funded objectives of this study
-were designed based on pre-study power calculations for blood pressure
-reductions of roughly 0.25 standard deviations (roughly 4mmHg for older
-rural population with an average SD of 16 mmHg). \textbf{?@fig-rd} shows
-that if the true effect of the policy were similar to our pre-study
-estimates of 0.25 SD difference in systolic BP, a study with our level
-of precision would have \textgreater90\% power, virtually no chance of
-reporting an estimate with the wrong sign, and an average exaggeration
-ratio of just 1.04. This suggests that our design was well-powered to
-detect clinically meaningful effects {[}cite? maybe
+4 mmHg in Figure~\ref{fig-rd-bp}. The HEI-funded objectives of this
+study were designed based on pre-study power calculations for blood
+pressure reductions of roughly 0.25 standard deviations (roughly 4mmHg
+for older rural population with an average SD of 16 mmHg).
+Figure~\ref{fig-rd-bp} shows that if the true effect of the policy were
+similar to our pre-study estimates of 0.25 SD difference in systolic BP,
+a study with our level of precision would have \textgreater90\% power,
+virtually no chance of reporting an estimate with the wrong sign, and an
+average exaggeration ratio of just 1.04. This suggests that our design
+was well-powered to detect clinically meaningful effects {[}cite? maybe
 10.1016/S0140-6736(21)00590-0{]} on blood pressure.
 
 \section{Implications of Findings}\label{implications-of-findings}
@@ -3184,7 +3440,10 @@ reduction. We also did not observe benefits of the policy on different
 measures of inflammation and oxidative stress in the sub-sample of
 participants with biomarker assessment, even though we observed
 respiratory symptoms and BP benefits of the policy in a sensitivity
-analysis limited to the same participants.
+analysis limited to the same participants. \comment{EC 9d} Still, our
+overall findings indicate that this ambitious policy achieved its goals
+in dramatically reducing residential coal burning and improving indoor
+environmental quality, which provided modest benefits to health.
 
 Our results showing an indoor air quality and cardio-respiratory health
 benefit of a real-world, large-scale clean energy policy are timely, as
@@ -3209,9 +3468,12 @@ are openly available on the Open Science Foundation (OSF)
 In addition to the HEI funding that supported this work, we also
 acknowledge support from the Canadian Institutes for Health Research
 (CIHR \#159477) and the Social Sciences and Humanities Research Council
-(SSHRC \#430-2017-00998 and \#435-2016-0531). None of these funders had
-any role in study design, data collection and analysis, decision to
-publish, or preparation of this report.
+(SSHRC \#430-2017-00998 and \#435-2016-0531). HEI funding
+\comment{EC 13} supported the addition of indoor temperature and indoor
+air quality measurements starting in wave 2 to wave 4 and also fully
+supported the data collection campaigns in waves 3 and 4. None of these
+funders had any role in study design, data collection and analysis,
+decision to publish, or preparation of this report.
 
 We would like to thank and acknowledge the over 1400 study participants
 and the over 50 field staff members who assisted with data collection
@@ -3219,11 +3481,10 @@ and laboratory analysis. This work would not have been possible without
 the dedicated efforts and contributions of investigators and trainees
 who contributed to the development of ideas, data collection, and
 results that are reported here and in publications resulting from this
-work. Here, we wish to acknowledge Koren Mann, Brian Robinson, Chris
-Barrington-Leigh, Arijit Nandi, Robert Platt, Talia Sternbach, Xiang
-Zhang, Wenlu Yuan, Collin Brehmer, Kennedy Hirst, Enkhuun Byambadorj,
-Kaibing Xue, Siobhan Carroll, and Martha Lee. We also acknowledge the
-efforts of project coordinators in Canada and China: Leona Siaw, Neha
+work. Here, we wish to acknowledge Koren Mann, Arijit Nandi, Robert
+Platt, Kennedy Hirst, Enkhuun Byambadorj, Kaibing Xue, and Martha Lee.
+We also acknowledge the efforts of project coordinators in Canada and
+China: Xinwei Liu, Jing Shang, Xiaoxia Hu, Jian Ma, Leona Siaw, Neha
 Ahmed, and Laojie Li.
 
 \section{References}\label{references}
@@ -3615,6 +3876,11 @@ pressure of elderly in the cold region of {China}. Indoor and Built
 Environment 31:2482--2498;
 doi:\href{https://doi.org/10.1177/1420326X221109510}{10.1177/1420326X221109510}.
 
+\bibitem[\citeproctext]{ref-manning2001}
+Manning WG, Mullahy J. 2001. Estimating log models: To transform or not
+to transform? Journal of Health Economics 20:461--494;
+doi:\href{https://doi.org/10.1016/S0167-6296(01)00086-8}{10.1016/S0167-6296(01)00086-8}.
+
 \bibitem[\citeproctext]{ref-mccracken2007}
 McCracken JP, Smith KR, Díaz A, Mittleman MA, Schwartz J. 2007. Chimney
 {Stove Intervention} to {Reduce Long-term Wood Smoke Exposure Lowers
@@ -3777,6 +4043,19 @@ measures on air quality and progress towards targets in {Christchurch}
 and {Timaru}, {New Zealand}. Atmospheric Environment 45:2972--2980;
 doi:\href{https://doi.org/10.1016/j.atmosenv.2010.09.008}{10.1016/j.atmosenv.2010.09.008}.
 
+\bibitem[\citeproctext]{ref-secrest2016}
+Secrest MH, Schauer JJ, Carter EM, Lai AM, Wang Y, Shan M, et al. 2016.
+The oxidative potential of {PM2}.5 exposures from indoor and outdoor
+sources in rural {China}. The Science of the Total Environment
+571:1477--1489;
+doi:\href{https://doi.org/10.1016/j.scitotenv.2016.06.231}{10.1016/j.scitotenv.2016.06.231}.
+
+\bibitem[\citeproctext]{ref-shakya2015}
+Shakya KM, Peltier RE. 2015. Non-sulfate sulfur in fine aerosols across
+the {United States}: {Insight} for organosulfate prevalence. Atmospheric
+environment (Oxford, England : 1994) 100:159--166;
+doi:\href{https://doi.org/10.1016/j.atmosenv.2014.10.058}{10.1016/j.atmosenv.2014.10.058}.
+
 \bibitem[\citeproctext]{ref-shang2020}
 Shang J, Zhang Y, Schauer JJ, Tian J, Hua J, Han T, et al. 2020.
 Associations between source-resolved {PM2}.5 and airway inflammation at
@@ -3831,6 +4110,14 @@ Effects of indoor and outdoor temperatures on blood pressure and central
 hemodynamics in a wintertime longitudinal study of {Chinese} adults.
 Journal of Hypertension 40:1950--1959;
 doi:\href{https://doi.org/10.1097/HJH.0000000000003198}{10.1097/HJH.0000000000003198}.
+
+\bibitem[\citeproctext]{ref-sullivan2008}
+Sullivan AP, Holden AS, Patterson LA, McMeeking GR, Kreidenweis SM, Malm
+WC, et al. 2008. A method for smoke marker measurements and its
+potential application for determining the contribution of biomass
+burning from wildfires and prescribed fires to ambient {PM2}.5 organic
+carbon. Journal of Geophysical Research: Atmospheres 113;
+doi:\href{https://doi.org/10.1029/2008JD010216}{10.1029/2008JD010216}.
 
 \bibitem[\citeproctext]{ref-sun2021}
 Sun L, Abraham S. 2021. Estimating dynamic treatment effects in event
@@ -3916,6 +4203,14 @@ of myocardial damage, inflammation and oxidative stress in healthy
 adults. Environmental Epidemiology 3:e078;
 doi:\href{https://doi.org/10.1097/EE9.0000000000000078}{10.1097/EE9.0000000000000078}.
 
+\bibitem[\citeproctext]{ref-xu2009}
+Xu W, Collet J-P, Shapiro S, Lin Y, Yang T, Wang C, et al. 2009.
+\href{https://www.ncbi.nlm.nih.gov/pubmed/19146745}{Validation and
+clinical interpretation of the {St George}'s {Respiratory Questionnaire}
+among {COPD} patients, {China}}. The International Journal of
+Tuberculosis and Lung Disease: The Official Journal of the International
+Union Against Tuberculosis and Lung Disease 13: 181--189.
+
 \bibitem[\citeproctext]{ref-yan2020}
 Yan L, Carter E, Fu Y, Guo D, Huang P, Xie G, et al. 2020. Study
 protocol: {The INTERMAP China Prospective} ({ICP}) study. Wellcome Open
@@ -3923,8 +4218,9 @@ Research 4:154;
 doi:\href{https://doi.org/10.12688/wellcomeopenres.15470.2}{10.12688/wellcomeopenres.15470.2}.
 
 \bibitem[\citeproctext]{ref-yangk2021}
-Yang K. 2021. Power industry provides inexhaustible power for national
-rejuvenation; 杨昆：电力工业为民族复兴提供不竭动力.
+Yang K. 2021. {电力工业为民族复兴提供不竭动力 (Power industry provides
+inexhaustible power for national rejuvenation)}. 中国能源新闻网 (China
+Energy News Network).
 
 \bibitem[\citeproctext]{ref-yap2015}
 Yap P-S, Garcia C. 2015. Effectiveness of {Residential Wood-Burning
@@ -4025,7 +4321,189 @@ malondialdehyde (MDA)}
 
 \newpage
 
-\subsection{Imputation results}\label{imputation-results}
+\subsection{Missing data}\label{missing-data}
+
+\subsubsection{Missingness across imputed
+variables}\label{missingness-across-imputed-variables}
+
+The reasons for missing data differ by variable:
+
+\begin{itemize}
+\item
+  `Valid response' indicates that either the variable is populated or
+  that `missing' is an appropriate response. For example, participants
+  without diagnosed hypertension were not eligible to answer the survey
+  question on whether they were taking BP-lowering medication.
+  Participants without physician-diagnosed hypertension should be
+  missing this variable (i.e., missing is a valid response).
+\item
+  `Non-response' indicates a missing value that should have been
+  populated but was not. For example, we measured weight, height, and
+  waist circumference at the clinic visit rather than during household
+  visits in W1 and W2. The clinic visits took place on a different day
+  than household visits and thus some participants who completed the
+  home visits were away from the village on the day of the clinic visit.
+  Thus, participants with missing ``waist circumference'', ``height'' or
+  ``weight'' are considered `non-responses'. As a second example, if an
+  indoor PM\textsubscript{2.5} monitor was placed in the household but
+  did not collect any data, this counts as a `non-response' since the
+  measurement was attempted but not completed.
+\item
+  `Not sampled' indicates that a value is missing because our protocol
+  was to measure some variables in a sub-sample of participants and the
+  participant was never sampled. For example, indoor
+  PM\textsubscript{2.5} was measured in a 30\% randomly selected
+  sub-sample of households and thus the 70\% of households in each
+  village were `not sampled' for an indoor PM\textsubscript{2.5}
+  measurement.
+\end{itemize}
+
+\begin{table}[H]
+
+\caption{\label{tbl-a-mi}Missing and valid values of variables used in
+multiple imputation.}
+
+\centering{
+
+\centering
+\resizebox{\ifdim\width>\linewidth 0.9\linewidth\else\width\fi}{!}{
+\begin{tblr}[         %% tabularray outer open
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]},
+}                     %% tabularray inner close
+\toprule
+Variable & Valid response & Non-response & Not sampled \\ \midrule %% TinyTableHeader
+Study wave                                                                  & 3082 (100)  &   0 (0)    &   0 (0)     \\
+District                                                                    & 3082 (100)  &   0 (0)    &   0 (0)     \\
+Village                                                                     & 3082 (100)  &   0 (0)    &   0 (0)     \\
+Household ID                                                                & 3082 (100)  &   0 (0)    &   0 (0)     \\
+Participant ID                                                              & 3082 (100)  &   0 (0)    &   0 (0)     \\
+Village-level policy treatment status                                       & 3082 (100)  &   0 (0)    &   0 (0)     \\
+Systolic central BP                                                         & 3081 (100)  &   1 (0)    &   0 (0)     \\
+Diastolic central BP                                                        & 3081 (100)  &   1 (0)    &   0 (0)     \\
+Systolic brachial BP                                                        & 3082 (100)  &   0 (0)    &   0 (0)     \\
+Diastolic brachial BP                                                       & 3082 (100)  &   0 (0)    &   0 (0)     \\
+Participant sex                                                             & 3081 (100)  &   1 (0)    &   0 (0)     \\
+Participant age                                                             & 3078 (99.9) &   4 (0.1)  &   0 (0)     \\
+Exposure to tobacco smoke                                                   & 3081 (100)  &   1 (0)    &   0 (0)     \\
+Frequency of alcohol consumption in the past 12 months                      & 3081 (100)  &   1 (0)    &   0 (0)     \\
+Physician diagnosis of high BP                                              & 3081 (100)  &   1 (0)    &   0 (0)     \\
+Whether participant took medication for high BP                             & 1527 (49.5) &   39 (1.3) & 1516 (49.2) \\
+Waist circumference                                                         & 2568 (83.3) & 514 (16.7) &   0 (0)     \\
+Weight                                                                      & 2614 (84.8) & 468 (15.2) &   0 (0)     \\
+Height                                                                      & 2610 (84.7) & 472 (15.3) &   0 (0)     \\
+Self-reported diagnosis of diabetes                                         & 3082 (100)  &   0 (0)    &   0 (0)     \\
+Self-reported diagnosis of chronic kidney disease                           & 3082 (100)  &   0 (0)    &   0 (0)     \\
+Household wealth index                                                      & 2945 (95.6) & 137 (4.4)  &   0 (0)     \\
+Whether BP was measured in AM or PM                                         & 3082 (100)  &   0 (0)    &   0 (0)     \\
+Right arm circumference                                                     & 3073 (99.7) &   9 (0.3)  &   0 (0)     \\
+Frequency of farming activities in past 6 months                            & 3081 (100)  &   1 (0)    &   0 (0)     \\
+Frequency of exercise in the past 6 months                                  & 3081 (100)  &   1 (0)    &   0 (0)     \\
+If participant snores while sleeping                                        & 3081 (100)  &   1 (0)    &   0 (0)     \\
+If participant quits breathing while sleeping                               & 3081 (100)  &   1 (0)    &   0 (0)     \\
+Marital status                                                              & 3054 (99.1) &   28 (0.9) &   0 (0)     \\
+Self-reported diagnosis for coronary heart disease or myocardial infarction & 3081 (100)  &   1 (0)    &   0 (0)     \\
+Self-reported diagnosis for stroke or transient ischemic attack (TIA)       & 3081 (100)  &   1 (0)    &   0 (0)     \\
+Heating season (Jan 15 to Mar 15) mean indoor PM2.5                         & 493 (16)    & 113 (3.7)  & 2476 (80.3) \\
+Indoor temperature                                                          & 3074 (99.7) &   8 (0.3)  &   0 (0)     \\
+Self-reported health status                                                 & 3081 (100)  &   1 (0)    &   0 (0)     \\
+Blood pressure cuff size                                                    & 3078 (99.9) &   4 (0.1)  &   0 (0)     \\
+Participant's highest level of education                                    & 3059 (99.3) &   23 (0.7) &   0 (0)     \\
+Participant's current occupation                                            & 3053 (99.1) &   29 (0.9) &   0 (0)     \\
+Time-varying binary indicator for enrollment in policy                      & 3082 (100)  &   0 (0)    &   0 (0)     \\
+Year of first treatment with policy                                         & 3082 (100)  &   0 (0)    &   0 (0)     \\
+\bottomrule
+\end{tblr}
+}
+
+}
+
+\end{table}%
+
+\subsubsection{Missing data by enrollment cohort and
+outcome}\label{missing-data-by-enrollment-cohort-and-outcome}
+
+The number (N) and percent (Pct.) of missing observations are displayed
+in the table below by the enrollment cohort and outcome. `Missing'
+indicates that the variable should have been populated for an
+observation but was not. `Valid' indicates that the variable is
+populated. `Not sampled' indicates that a value is missing because our
+protocol was to measure some variables in a sub-sample of participants
+and the participant was never sampled for the variable.
+
+\begin{table}[H]
+
+\caption{\label{tbl-a-mi-cohort}Missing values by enrollment cohort and
+outcome}
+
+\centering{
+
+\centering
+\resizebox{\ifdim\width>\linewidth 0.95\linewidth\else\width\fi}{!}{
+\begin{tblr}[         %% tabularray outer open
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+cell{1}{7}={c=2,}{halign=c,},
+cell{1}{9}={c=2,}{halign=c,},
+row{3}={,cmd=\bfseries,},
+row{16}={,cmd=\bfseries,},
+row{25}={,cmd=\bfseries,},
+row{32}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+&  & Never enrolled (N=1880) &  & Enrolled 2019 (N=642) &  & Enrolled 2020 (N=446) &  & Enrolled 2021 (N=173) &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}\cmidrule[lr]{7-8}\cmidrule[lr]{9-10}
+&    & N & Pct. & N & Pct. & N & Pct. & N & Pct. \\ \midrule %% TinyTableHeader
+Respiratory symptoms:   &             &             &             &            &             &            &             &            &             \\
+Any symptoms            & Missing     & \num{23}   & \num{1.2}  & \num{4}   & \num{0.6}  & \num{5}   & \num{1.1}  & \num{1}   & \num{0.6}  \\
+& Valid       & \num{1857} & \num{98.8} & \num{638} & \num{99.4} & \num{441} & \num{98.9} & \num{172} & \num{99.4} \\
+Cough                   & Missing     & \num{23}   & \num{1.2}  & \num{4}   & \num{0.6}  & \num{5}   & \num{1.1}  & \num{1}   & \num{0.6}  \\
+& Valid       & \num{1857} & \num{98.8} & \num{638} & \num{99.4} & \num{441} & \num{98.9} & \num{172} & \num{99.4} \\
+Phlegm                  & Missing     & \num{23}   & \num{1.2}  & \num{4}   & \num{0.6}  & \num{5}   & \num{1.1}  & \num{1}   & \num{0.6}  \\
+& Valid       & \num{1857} & \num{98.8} & \num{638} & \num{99.4} & \num{441} & \num{98.9} & \num{172} & \num{99.4} \\
+Wheezing                & Missing     & \num{23}   & \num{1.2}  & \num{4}   & \num{0.6}  & \num{5}   & \num{1.1}  & \num{1}   & \num{0.6}  \\
+& Valid       & \num{1857} & \num{98.8} & \num{638} & \num{99.4} & \num{441} & \num{98.9} & \num{172} & \num{99.4} \\
+Shortness of breath     & Missing     & \num{24}   & \num{1.3}  & \num{4}   & \num{0.6}  & \num{5}   & \num{1.1}  & \num{2}   & \num{1.2}  \\
+& Valid       & \num{1856} & \num{98.7} & \num{638} & \num{99.4} & \num{441} & \num{98.9} & \num{171} & \num{98.8} \\
+Chest trouble           & Missing     & \num{24}   & \num{1.3}  & \num{4}   & \num{0.6}  & \num{5}   & \num{1.1}  & \num{1}   & \num{0.6}  \\
+& Valid       & \num{1856} & \num{98.7} & \num{638} & \num{99.4} & \num{441} & \num{98.9} & \num{172} & \num{99.4} \\
+Blood pressure:         &             &             &             &            &             &            &             &            &             \\
+Brachial SBP            & Missing     & \num{29}   & \num{1.5}  & \num{11}  & \num{1.7}  & \num{17}  & \num{3.8}  & \num{1}   & \num{0.6}  \\
+& Valid       & \num{1851} & \num{98.5} & \num{631} & \num{98.3} & \num{429} & \num{96.2} & \num{172} & \num{99.4} \\
+Central SBP             & Missing     & \num{30}   & \num{1.6}  & \num{12}  & \num{1.9}  & \num{17}  & \num{3.8}  & \num{1}   & \num{0.6}  \\
+& Valid       & \num{1850} & \num{98.4} & \num{630} & \num{98.1} & \num{429} & \num{96.2} & \num{172} & \num{99.4} \\
+Brachial DBP            & Missing     & \num{29}   & \num{1.5}  & \num{11}  & \num{1.7}  & \num{17}  & \num{3.8}  & \num{1}   & \num{0.6}  \\
+& Valid       & \num{1851} & \num{98.5} & \num{631} & \num{98.3} & \num{429} & \num{96.2} & \num{172} & \num{99.4} \\
+Central DBP             & Missing     & \num{30}   & \num{1.6}  & \num{12}  & \num{1.9}  & \num{17}  & \num{3.8}  & \num{1}   & \num{0.6}  \\
+& Valid       & \num{1850} & \num{98.4} & \num{630} & \num{98.1} & \num{429} & \num{96.2} & \num{172} & \num{99.4} \\
+Biomarkers:             &             &             &             &            &             &            &             &            &             \\
+IL6                     & Missing     & 8           & 0.6         & 4          & 0.9         & 1          & 0.3         & 0          & 0           \\
+TNF                     & Missing     & 8           & 0.6         & 4          & 0.9         & 1          & 0.3         & 0          & 0           \\
+CRP                     & Missing     & 8           & 0.6         & 4          & 0.9         & 1          & 0.3         & 0          & 0           \\
+MDA                     & Missing     & 11          & 0.9         & 4          & 0.9         & 1          & 0.3         & 0          & 0           \\
+FeNO                    & Missing     & \num{1356} & \num{72.1} & \num{448} & \num{69.8} & \num{383} & \num{85.9} & \num{111} & \num{64.2} \\
+& Valid       & \num{524}  & \num{27.9} & \num{194} & \num{30.2} & \num{63}  & \num{14.1} & \num{62}  & \num{35.8} \\
+Environmental outcomes: &             &             &             &            &             &            &             &            &             \\
+Personal PM             & Missing     & \num{50}   & \num{2.7}  & \num{17}  & \num{2.6}  & \num{12}  & \num{2.7}  & \num{7}   & \num{4.0}  \\
+& Not sampled & \num{985}  & \num{52.4} & \num{343} & \num{53.4} & \num{239} & \num{53.6} & \num{85}  & \num{49.1} \\
+& Valid       & \num{845}  & \num{44.9} & \num{282} & \num{43.9} & \num{195} & \num{43.7} & \num{81}  & \num{46.8} \\
+Indoor PM               & Missing     & \num{53}   & \num{2.8}  & \num{11}  & \num{1.7}  & \num{14}  & \num{3.1}  & \num{4}   & \num{2.3}  \\
+& Not sampled & \num{1512} & \num{80.4} & \num{518} & \num{80.7} & \num{362} & \num{81.2} & \num{137} & \num{79.2} \\
+& Valid       & \num{315}  & \num{16.8} & \num{113} & \num{17.6} & \num{70}  & \num{15.7} & \num{32}  & \num{18.5} \\
+Indoor temperature      & Missing     & \num{33}   & \num{1.8}  & \num{10}  & \num{1.6}  & \num{16}  & \num{3.6}  & \num{1}   & \num{0.6}  \\
+& Valid       & \num{1847} & \num{98.2} & \num{632} & \num{98.4} & \num{430} & \num{96.4} & \num{172} & \num{99.4} \\
+\bottomrule
+\end{tblr}
+}
+
+}
+
+\end{table}%
+
+\subsubsection{Imputation results}\label{imputation-results}
 
 The figures below show density plots for the values of body mass index,
 waist circumference, and indoor PM\textsubscript{2.5} from the multiple
@@ -4045,7 +4523,7 @@ line).}
 
 \centering{
 
-\includegraphics[width=5in,height=\textheight]{images/MI_BMI_density.png}
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/MI_BMI_density.png}
 
 }
 
@@ -4057,7 +4535,7 @@ line).}
 
 \centering{
 
-\includegraphics[width=5in,height=\textheight]{images/MI_waist_circ_density.png}
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/MI_waist_circ_density.png}
 
 }
 
@@ -4069,7 +4547,7 @@ line).}
 
 \centering{
 
-\includegraphics[width=5in,height=\textheight]{images/MI_indoorPM_density.png}
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/MI_indoorPM_density.png}
 
 }
 
@@ -4102,25 +4580,11 @@ the participant, household, and village levels across study years.}
 
 \subsection{Policy uptake}\label{policy-uptake-1}
 
-Figure~\ref{fig-afig-coal} shows trends over time in self-reported coal
-and biomass consumption over each season. Table~\ref{tbl-fuel-did} shows
-results from applying our extended two-way fixed effects models (in
-separate analyses) to coal and biomass consumption.
+Table~\ref{tbl-fuel-did} shows results from applying our extended
+two-way fixed effects models (in separate analyses) to coal and biomass
+consumption.
 
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=1\textwidth,height=\textheight]{images/coal-plot.png}
-
-}
-
-\caption{\label{fig-afig-coal}Trends in self-reported coal and biomass,
-by treatment season.}
-
-\end{figure}%
-
-\begin{table}
+\begin{table}[H]
 
 \caption{\label{tbl-fuel-did}Policy impacts on self-reported fuel use
 (kg)}
@@ -4167,8 +4631,8 @@ Cohort-Time ATTs &&&&& \\
 
 \newpage
 
-\subsection{Heterogeneity in treament
-effects}\label{heterogeneity-in-treament-effects}
+\subsection{Heterogeneity in treatment
+effects}\label{heterogeneity-in-treatment-effects}
 
 \subsubsection{Personal exposure}\label{personal-exposure}
 
@@ -4282,43 +4746,35 @@ temperature}
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
 note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval},
+note{a}={P-value for omnibus test of heterogeneity across cohort time groups.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
-width={1\linewidth},
-colspec={X[0.153846153846154]X[0.0641025641025641]X[0.153846153846154]X[0.0641025641025641]X[0.0641025641025641]X[0.153846153846154]X[0.0641025641025641]X[0.0641025641025641]X[0.153846153846154]X[0.0641025641025641]},
-cell{1}{2}={c=3,}{halign=c,},
-cell{1}{5}={c=3,}{halign=c,},
-cell{1}{8}={c=3,}{halign=c,},
-cell{3}{1}={c=10}{},cell{10}{1}={c=10}{},cell{17}{1}={c=10}{},cell{24}{1}={c=10}{},
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{2}={c=4,}{halign=c,},
+cell{1}{6}={c=4,}{halign=c,},
+cell{1}{10}={c=4,}{halign=c,},
+cell{3}{1}={c=13}{},cell{8}{1}={c=13}{},cell{13}{1}={c=13}{},cell{18}{1}={c=13}{},
 cell{4}{1}={preto={\hspace{1em}}},
 cell{5}{1}={preto={\hspace{1em}}},
 cell{6}{1}={preto={\hspace{1em}}},
 cell{7}{1}={preto={\hspace{1em}}},
-cell{8}{1}={preto={\hspace{1em}}},
 cell{9}{1}={preto={\hspace{1em}}},
+cell{10}{1}={preto={\hspace{1em}}},
 cell{11}{1}={preto={\hspace{1em}}},
 cell{12}{1}={preto={\hspace{1em}}},
-cell{13}{1}={preto={\hspace{1em}}},
 cell{14}{1}={preto={\hspace{1em}}},
 cell{15}{1}={preto={\hspace{1em}}},
 cell{16}{1}={preto={\hspace{1em}}},
-cell{18}{1}={preto={\hspace{1em}}},
+cell{17}{1}={preto={\hspace{1em}}},
 cell{19}{1}={preto={\hspace{1em}}},
 cell{20}{1}={preto={\hspace{1em}}},
 cell{21}{1}={preto={\hspace{1em}}},
 cell{22}{1}={preto={\hspace{1em}}},
 cell{23}{1}={preto={\hspace{1em}}},
-cell{25}{1}={preto={\hspace{1em}}},
-cell{26}{1}={preto={\hspace{1em}}},
-cell{27}{1}={preto={\hspace{1em}}},
-cell{28}{1}={preto={\hspace{1em}}},
-cell{29}{1}={preto={\hspace{1em}}},
-cell{30}{1}={preto={\hspace{1em}}},
-cell{31}{1}={preto={\hspace{1em}}},
-row{3}={halign=c,cmd=\bfseries,},
-row{10}={halign=c,cmd=\bfseries,},
-row{17}={halign=c,cmd=\bfseries,},
-row{24}={halign=c,cmd=\bfseries,},
+row{3}={halign=l,cmd=\bfseries,},
+row{8}={halign=l,cmd=\bfseries,},
+row{13}={halign=l,cmd=\bfseries,},
+row{18}={halign=l,cmd=\bfseries,},
 column{1}={font=\fontsize{0.8em}{1.1em}\selectfont,},
 column{2}={font=\fontsize{0.8em}{1.1em}\selectfont,},
 column{3}={font=\fontsize{0.8em}{1.1em}\selectfont,},
@@ -4329,39 +4785,34 @@ column{7}={font=\fontsize{0.8em}{1.1em}\selectfont,},
 column{8}={font=\fontsize{0.8em}{1.1em}\selectfont,},
 column{9}={font=\fontsize{0.8em}{1.1em}\selectfont,},
 column{10}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{11}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{12}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{13}={font=\fontsize{0.8em}{1.1em}\selectfont,},
 column{1}={halign=l,},
 }                     %% tabularray inner close
 \toprule
-& Point temp (°C) &  &  & Mean temp (°C) &  &  & Min temp (°C) &  &  \\ \cmidrule[lr]{2-4}\cmidrule[lr]{5-7}\cmidrule[lr]{8-10}
-Cohort Time & ATT & (95\% CI) & p-val & ATT & (95\% CI) & p-val & ATT & (95\% CI) & p-val \\ \midrule %% TinyTableHeader
-All times &&&&&&&&& \\
-2019 2019 & 1.77 & (0.66, 2.88) &  & 0.43 & (-0.71, 1.57) &  & 1.96 & ( 0.43, 3.48) &  \\
-2019 2020 &  &  &  & 0.52 & (-0.22, 1.26) &  & 2.42 & (  0.54, 4.3) &  \\
-2019 2021 & 2.29 & (0.51, 4.07) &  & 0.79 & ( 0.00, 1.57) &  & 4.93 & ( 2.28, 7.58) &  \\
-2020 2020 &  &  &  & 0.87 & (-0.20, 1.93) &  & 5.00 & ( 3.22, 6.79) &  \\
-2020 2021 & 2.36 & (0.54, 4.17) &  & 0.58 & (-0.66, 1.82) &  & 6.87 & ( 4.35, 9.39) &  \\
-2021 2021 & 0.64 & (-1.08, 2.35) & 0.440 & 1.06 & ( 0.32, 1.79) & 0.320 & 2.04 & ( 0.08, 4.00) & 0.000 \\
-Daytime &&&&&&&&& \\
-2019 2019 &  &  &  & 0.44 & (-0.96, 1.83) &  &  &  &  \\
-2019 2020 &  &  &  & 1.26 & ( 0.36, 2.17) &  &  &  &  \\
-2019 2021 &  &  &  & 1.50 & ( 0.55, 2.46) &  &  &  &  \\
-2020 2020 &  &  &  & 0.28 & (-1.45, 2.02) &  &  &  &  \\
-2020 2021 &  &  &  & 0.13 & (-1.70, 1.97) &  &  &  &  \\
-2021 2021 &  &  &  & 1.44 & ( 0.64, 2.25) & 0.260 &  &  &  \\
-Daytime heating &&&&&&&&& \\
-2019 2019 &  &  &  & 0.80 & (-0.48, 2.09) &  &  &  &  \\
-2019 2020 &  &  &  & 1.43 & ( 0.04, 2.83) &  &  &  &  \\
-2019 2021 &  &  &  & 2.33 & ( 1.03, 3.62) &  &  &  &  \\
-2020 2020 &  &  &  & 2.63 & ( 1.87, 3.39) &  &  &  &  \\
-2020 2021 &  &  &  & 2.46 & ( 1.46, 3.46) &  &  &  &  \\
-2021 2021 &  &  &  & 2.13 & ( 0.67, 3.59) & 0.000 &  &  &  \\
-Heating season &&&&&&&&& \\
-2019 2019 &  &  &  & 1.05 & (-0.10, 2.20) &  & 1.94 & ( 0.42, 3.47) &  \\
-2019 2020 &  &  &  & 1.23 & (-0.11, 2.58) &  & 2.41 & ( 0.53, 4.30) &  \\
-2019 2021 &  &  &  & 2.07 & ( 0.88, 3.27) &  & 5.34 & ( 2.66, 8.02) &  \\
-2020 2020 &  &  &  & 2.71 & ( 2.04, 3.37) &  & 4.35 & ( 3.17, 5.53) &  \\
-2020 2021 &  &  &  & 2.48 & ( 1.33, 3.62) &  & 6.27 & ( 3.73, 8.81) &  \\
-2021 2021 &  &  &  & 1.97 & ( 0.53, 3.41) & 0.000 & 2.23 & ( 0.26, 4.21) & 0.000 \\
+& Point temp (°C) &  &  &  & Mean temp (°C) &  &  &  & Min temp (°C) &  &  &  \\ \cmidrule[lr]{2-5}\cmidrule[lr]{6-9}\cmidrule[lr]{10-13}
+Cohort Time & ATT & (95\%CI) & p\textsuperscript{a} & Obs & ATT & (95\%CI) & p\textsuperscript{a} & Obs & ATT & (95\% CI) & p\textsuperscript{a} & Obs \\ \midrule %% TinyTableHeader
+All times &&&&&&&&&&&& \\
+2019 2019 & 1.66 & (0.5, 2.8) &  &  & 0.33 & (-0.8, 1.5) &  &  & 1.96 & (0.5, 3.4) &  &  \\
+2019 2021 & 2.17 & (0.5, 3.9) &  &  & 0.80 & (0.0, 1.6) &  &  & 5.04 & (2.3, 7.8) &  &  \\
+2020 2021 & 2.39 & (0.7, 4.1) &  &  & 0.66 & (-0.5, 1.8) &  &  & 7.27 & (4.6, 9.9) &  &  \\
+2021 2021 & 0.60 & (-1.2, 2.4) & 0.37 & 2999 & 1.60 & (0.5, 2.7) & 0.45 & 1350 & 2.37 & (0.2, 4.5) & 0 & 1350 \\
+Daytime &&&&&&&&&&&& \\
+2019 2019 &  &  &  &  & 0.36 & (-0.8, 1.5) &  &  &  &  &  &  \\
+2019 2021 &  &  &  &  & 0.91 & (0.1, 1.7) &  &  &  &  &  &  \\
+2020 2021 &  &  &  &  & 0.95 & (-0.2, 2.1) &  &  &  &  &  &  \\
+2021 2021 &  &  &  &  & 1.67 & (0.5, 2.8) & 0.48 & 1346 &  &  &  &  \\
+Daytime heating &&&&&&&&&&&& \\
+2019 2019 &  &  &  &  & 0.92 & (-0.2, 2.0) &  &  & 1.94 & (0.5, 3.4) &  &  \\
+2019 2021 &  &  &  &  & 2.02 & (0.9, 3.2) &  &  & 5.46 & (2.7, 8.2) &  &  \\
+2020 2021 &  &  &  &  & 2.63 & (1.5, 3.7) &  &  & 6.69 & (4.2, 9.2) &  &  \\
+2021 2021 &  &  &  &  & 2.72 & (0.8, 4.6) & 0 & 1350 & 2.53 & (0.4, 4.7) & 0 & 1350 \\
+Heating season &&&&&&&&&&&& \\
+2019 2019 &  &  &  &  & 0.95 & (-0.2, 2.1) &  &  &  &  &  &  \\
+2019 2021 &  &  &  &  & 2.18 & (0.9, 3.4) &  &  &  &  &  &  \\
+2020 2021 &  &  &  &  & 2.97 & (1.9, 4.0) &  &  &  &  &  &  \\
+2021 2021 &  &  &  &  & 2.80 & (0.9, 4.7) & 0 & 1346 &  &  &  &  \\
 \bottomrule
 \end{talltblr}
 
@@ -4632,7 +5083,8 @@ Central DBP &&&&& \\
 
 \newpage
 
-\subsubsection{Respiratory outcomes}\label{respiratory-outcomes}
+\subsubsection{Self-reported respiratory
+outcomes}\label{self-reported-respiratory-outcomes}
 
 Appendix tables \ref{tbl-a-het-resp}, \ref{tbl-a-het-cough},
 \ref{tbl-a-het-phlegm}, \ref{tbl-a-het-wheeze}, \ref{tbl-a-het-breath},
@@ -4651,7 +5103,7 @@ self-reported respiratory outcomes: Any respiratory symptom.}
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: Joint test that all ATTs are equal: F(3, 2579)= 1.283, p= 0.278.},
+note{}={Note: Joint test that all ATTs are equal: F(3, 3050)= 0.998, p= 0.393.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 width={0.7\linewidth},
@@ -4669,12 +5121,12 @@ row{4}={,cmd=\bfseries,},
 \toprule
 Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
 Average ATT &&& \\
-All & All & -0.08 & (-0.15, -0.01) \\
+All & All & -7.5 & (-12.7, -2.3) \\
 Cohort-Time ATTs &&& \\
-2019 & 2019 & -0.11 & (-0.20, -0.02) \\
-2019 & 2021 & -0.10 & (-0.21, 0.00) \\
-2020 & 2021 & 0.01 & (-0.10, 0.13) \\
-2021 & 2021 & -0.12 & (-0.22, -0.01) \\
+2019 & 2019 & -11.3 & (-18.4, -4.2) \\
+2019 & 2021 & -9.3 & (-16.7, -1.9) \\
+2020 & 2021 & 0.9 & (-10.8, 12.6) \\
+2021 & 2021 & -6.7 & (-12.7, -0.7) \\
 \bottomrule
 \end{talltblr}
 
@@ -4692,7 +5144,7 @@ self-reported respiratory outcomes: Coughing.}
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: Joint test that all ATTs are equal: F(3, 2579)= 0.732, p= 0.533.},
+note{}={Note: Joint test that all ATTs are equal: F(3, 3050)= 0.482, p= 0.695.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 width={0.7\linewidth},
@@ -4710,12 +5162,12 @@ row{4}={,cmd=\bfseries,},
 \toprule
 Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
 Average ATT &&& \\
-All & All & -0.02 & (-0.07, 0.03) \\
+All & All & -2.7 & (-7.1, 1.7) \\
 Cohort-Time ATTs &&& \\
-2019 & 2019 & -0.04 & (-0.11, 0.03) \\
-2019 & 2021 & 0.01 & (-0.07, 0.08) \\
-2020 & 2021 & -0.03 & (-0.10, 0.05) \\
-2021 & 2021 & -0.04 & (-0.09, 0.02) \\
+2019 & 2019 & -4.9 & (-10.5, 0.7) \\
+2019 & 2021 & -0.8 & (-8.1, 6.5) \\
+2020 & 2021 & -2.2 & (-8.8, 4.3) \\
+2021 & 2021 & -2.3 & (-10.0, 5.4) \\
 \bottomrule
 \end{talltblr}
 
@@ -4733,7 +5185,7 @@ self-reported respiratory outcomes: Phlegm}
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: Joint test that all ATTs are equal: F(3, 2579)= 1.735, p= 0.158.},
+note{}={Note: Joint test that all ATTs are equal: F(3, 3050)= 3.415, p= 0.017.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 width={0.7\linewidth},
@@ -4751,12 +5203,12 @@ row{4}={,cmd=\bfseries,},
 \toprule
 Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
 Average ATT &&& \\
-All & All & -0.02 & (-0.06, 0.03) \\
+All & All & -1.6 & (-5.6, 2.4) \\
 Cohort-Time ATTs &&& \\
-2019 & 2019 & -0.06 & (-0.16, 0.03) \\
-2019 & 2021 & -0.03 & (-0.10, 0.04) \\
-2020 & 2021 & 0.04 & (-0.02, 0.09) \\
-2021 & 2021 & 0.03 & (-0.04, 0.09) \\
+2019 & 2019 & -5.3 & (-13.1, 2.6) \\
+2019 & 2021 & -2.9 & (-8.8, 3.0) \\
+2020 & 2021 & 3.1 & (-2.9, 9.1) \\
+2021 & 2021 & 6.1 & (0.8, 11.5) \\
 \bottomrule
 \end{talltblr}
 
@@ -4774,7 +5226,7 @@ self-reported respiratory outcomes: Wheezing attacks.}
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: Joint test that all ATTs are equal: F(3, 2579)= 2.923, p= 0.033.},
+note{}={Note: Joint test that all ATTs are equal: F(3, 3050)= 2.474, p= 0.06.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 width={0.7\linewidth},
@@ -4792,12 +5244,12 @@ row{4}={,cmd=\bfseries,},
 \toprule
 Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
 Average ATT &&& \\
-All & All & -0.00 & (-0.04, 0.04) \\
+All & All & 1.0 & (-1.9, 3.9) \\
 Cohort-Time ATTs &&& \\
-2019 & 2019 & -0.02 & (-0.06, 0.01) \\
-2019 & 2021 & 0.01 & (-0.04, 0.06) \\
-2020 & 2021 & -0.03 & (-0.11, 0.05) \\
-2021 & 2021 & 0.09 & (-0.00, 0.18) \\
+2019 & 2019 & -0.9 & (-3.5, 1.8) \\
+2019 & 2021 & 2.3 & (-1.7, 6.4) \\
+2020 & 2021 & -1.0 & (-6.8, 4.7) \\
+2021 & 2021 & 8.6 & (-2.3, 19.5) \\
 \bottomrule
 \end{talltblr}
 
@@ -4815,7 +5267,7 @@ self-reported respiratory outcomes: Trouble breathing}
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: Joint test that all ATTs are equal: F(3, 2579)= 0.718, p= 0.541.},
+note{}={Note: Joint test that all ATTs are equal: F(3, 3050)= 0.916, p= 0.432.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 width={0.7\linewidth},
@@ -4833,12 +5285,12 @@ row{4}={,cmd=\bfseries,},
 \toprule
 Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
 Average ATT &&& \\
-All & All & -0.05 & (-0.12, 0.02) \\
+All & All & -3.4 & (-9.2, 2.4) \\
 Cohort-Time ATTs &&& \\
-2019 & 2019 & -0.06 & (-0.16, 0.04) \\
-2019 & 2021 & -0.07 & (-0.16, 0.03) \\
-2020 & 2021 & 0.01 & (-0.09, 0.11) \\
-2021 & 2021 & -0.07 & (-0.20, 0.06) \\
+2019 & 2019 & -5.0 & (-12.6, 2.6) \\
+2019 & 2021 & -5.1 & (-13.1, 2.9) \\
+2020 & 2021 & 2.4 & (-6.4, 11.1) \\
+2021 & 2021 & -5.1 & (-18.7, 8.5) \\
 \bottomrule
 \end{talltblr}
 
@@ -4856,7 +5308,7 @@ self-reported respiratory outcomes: Chest trouble}
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: Joint test that all ATTs are equal: F(3, 2579)= 1.046, p= 0.371.},
+note{}={Note: Joint test that all ATTs are equal: F(3, 3050)= 3.176, p= 0.023.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 width={0.7\linewidth},
@@ -4874,12 +5326,12 @@ row{4}={,cmd=\bfseries,},
 \toprule
 Cohort & Time & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
 Average ATT &&& \\
-All & All & -0.06 & (-0.12, -0.01) \\
+All & All & -3.4 & (-8.1, 1.3) \\
 Cohort-Time ATTs &&& \\
-2019 & 2019 & -0.06 & (-0.13, 0.01) \\
-2019 & 2021 & -0.06 & (-0.15, 0.03) \\
-2020 & 2021 & -0.05 & (-0.16, 0.05) \\
-2021 & 2021 & -0.14 & (-0.22, -0.05) \\
+2019 & 2019 & -2.7 & (-8.9, 3.5) \\
+2019 & 2021 & -2.7 & (-10.2, 4.7) \\
+2020 & 2021 & -2.0 & (-8.3, 4.2) \\
+2021 & 2021 & -11.3 & (-17.5, -5.1) \\
 \bottomrule
 \end{talltblr}
 
@@ -4908,6 +5360,67 @@ the mixed combustion source by treatment year.}
 
 \newpage
 
+\subsection{Impact of sample composition on brachial and central blood
+pressure
+results.}\label{impact-of-sample-composition-on-brachial-and-central-blood-pressure-results.}
+
+\begin{table}[H]
+
+\caption{\label{tbl-a-bp-sample}Effects of excluding later-enrolled
+participants on estimates of the CHP on systolic and diastolic blood
+pressure.}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, BP = blood pressure, CI = confidence interval, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.},
+note{a}={Marginal effect from ETWFE models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Results combined across 30 multiply-imputed datasets.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={1\linewidth},
+colspec={X[0.3]X[0.2]X[0.2]X[0.1]X[0.2]},
+cell{1}{3}={c=3,}{halign=c,},
+cell{3}{1}={c=5}{},cell{8}{1}={c=5}{},
+cell{4}{1}={preto={\hspace{1em}}},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{9}{1}={preto={\hspace{1em}}},
+cell{10}{1}={preto={\hspace{1em}}},
+cell{11}{1}={preto={\hspace{1em}}},
+cell{12}{1}={preto={\hspace{1em}}},
+cell{13}{1}={preto={\hspace{1em}}},
+cell{4}{1}={r=2,}{valign=h,},
+cell{6}{1}={r=2,}{valign=h,},
+cell{9}{1}={r=2,}{valign=h,},
+cell{11}{1}={r=2,}{valign=h,},
+row{3}={,cmd=\bfseries,},
+row{8}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+&  & Adjusted DiD &  &  \\ \cmidrule[lr]{3-5}
+&  & Individuals & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
+All participants &&&& \\
+Systolic BP (mmHg) & Brachial & 1423 & -1.4 & (-3.3, 0.5) \\
+Systolic BP (mmHg) & Central & 1423 & -1.6 & (-3.4, 0.3) \\
+Diastolic BP (mmHg) & Brachial & 1423 & -1.6 & (-3.0, -0.3) \\
+Diastolic BP (mmHg) & Central & 1423 & -1.7 & (-3.0, -0.3) \\
+Excluding participants enrolled after W1 &&&& \\
+Systolic BP (mmHg) & Brachial &  992 & -1.6 & (-3.3, -0.0) \\
+Systolic BP (mmHg) & Central &  992 & -1.6 & (-3.1, -0.1) \\
+Diastolic BP (mmHg) & Brachial &  992 & -1.7 & (-2.9, -0.4) \\
+Diastolic BP (mmHg) & Central &  992 & -1.7 & (-2.9, -0.5) \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\end{table}%
+
+\newpage
+
 \subsection{Impact of sample composition on FeNO
 results}\label{impact-of-sample-composition-on-feno-results}
 
@@ -4918,8 +5431,8 @@ across campaigns.
 
 \begin{table}[H]
 
-\caption{\label{tbl-a-feno}Effects of the CBHP policy on FeNO (ppb)
-based on the number of individuals with repeated measurements.}
+\caption{\label{tbl-a-feno}Effects of the CHP policy on FeNO (ppb) based
+on the number of individuals with repeated measurements.}
 
 \centering{
 
@@ -4944,9 +5457,9 @@ column{7}={halign=c,},
 \toprule
 & All participants &  & Participants with \textgreater{}1 measure &  & Participants with 3 measures &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
 & ATT & (95\% CI) & ATT & (95\% CI) & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
-DiD & 0.17 & (-2.24, 2.58) & 0.13 & (-3.09, 3.35) & -0.57 & (-3.08, 1.94) \\
-Adjusted DiD & 0.55 & (-2.03, 3.13) & 0.24 & (-3.19, 3.67) & 0.27 & (-2.39, 2.92) \\
-Observations & 794 &  & 526 &  & 252 &  \\
+DiD & 0.9 & (-1.6, 3.3) & -0.4 & (-2.9, 2.0) & 0.3 & (-2.8, 3.3) \\
+Adjusted DiD & 0.3 & (-2.2, 2.8) & -0.6 & (-3.2, 2.0) & 0.3 & (-2.9, 3.4) \\
+Observations & 793 &  & 541 &  & 272 &  \\
 \bottomrule
 \end{talltblr}
 
@@ -4994,11 +5507,11 @@ row{5}={,cmd=\bfseries,},
 &  & With Season 3 data &  &  & Without Season 3 data &  &  \\ \cmidrule[lr]{3-5}\cmidrule[lr]{6-8}
 Cohort & Time & Obs & ATT & (95\% CI) & Obs & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
 Average ATT (µg/m3) &&&&&&& \\
-All & All & 545 & -36.2 & (-59.1, -13.3) & 388 & -32.5 & (-57.5, -7.5) \\
+All & All & 545 & -33.8 & (-55.6, -12.1) & 388 & -32.5 & (-57.5, -7.5) \\
 Cohort-Time ATTs (µg/m3) &&&&&&& \\
 2020 & 2020 & 545 & -36.1 & (-60.8, -11.4) &  &  &  \\
-2020 & 2021 & 545 & -32.2 & (-66.0, 1.5) & 388 & -28.9 & (-63.0, 5.2) \\
-2021 & 2021 & 545 & -44.1 & (-56.3, -32.0) & 388 & -39.7 & (-58.3, -21.1) \\
+2020 & 2021 & 545 & -28.8 & (-59.1, 1.4) & 388 & -28.9 & (-63.0, 5.2) \\
+2021 & 2021 & 545 & -38.2 & (-51.8, -24.6) & 388 & -39.7 & (-58.3, -21.1) \\
 \bottomrule
 \end{talltblr}
 
@@ -5012,9 +5525,9 @@ PM\textsubscript{2.5}.
 
 \begin{figure}[H]
 
-\caption{\label{fig-afig-did-opm-w3}Effects of the CBHP policy on
-outdoor seasonal PM\textsubscript{2.5} based on whether Season 3 data
-are included vs.~excluded.}
+\caption{\label{fig-afig-did-opm-w3}Effects of the CHP policy on outdoor
+seasonal PM\textsubscript{2.5} based on whether Season 3 data are
+included vs.~excluded.}
 
 \centering{
 
@@ -5025,6 +5538,186 @@ are included vs.~excluded.}
 \end{figure}%
 
 \newpage
+
+\subsection{Alternative PMF analyses}\label{alternative-pmf-analyses}
+
+\subsubsection{Personal exposure sample
+analysis}\label{personal-exposure-sample-analysis}
+
+For the personal exposure samples, Figure~\ref{fig-pmf-personal} shows
+results for the 3-, 4-, and 5-factor solutions, and
+Table~\ref{tbl-pmf-personal} shows diagnostics for the PMF analysis.
+
+For the 3-factor solution, Factor 1, represented in red, is interpreted
+as transported dust. This conclusion is supported by moderate loadings
+of mineral dust-related species such as silicon (Si) and water-soluble
+calcium (Ca). Calcium and aluminum are typically associated with crustal
+materials, especially in arid or semi-arid regions like the Gobi Desert
+and the Taklamakan Desert, which are known sources of transported dust
+to northern China, including Beijing. Factor 2, represented in blue,
+likely represents local dust, with significant contributions from metals
+typically associated with crustal materials. Factor 3, represented in
+green, is interpreted as a mixture of combustion-related sources, with
+contributions from elemental and organic carbon, as well as evidence of
+secondary particulate matter formation. This includes carbon species
+indicative of combustion, contributions from Pb and water-soluble
+potassium (K), and secondary formation markers such as sulfate (SO₄²⁻).
+
+In the 4-factor solution, Factor 1 (red) remains identified as
+transported dust. Factor 2 (blue) continues to represent local dust.
+Factor 3 (green) now represents mixed combustion, capturing
+contributions from both biomass and coal-related sources. A new Factor 4
+(yellow) is interpreted as secondary sulfur, given its strong
+association with sulfate and ammonium (NH₄⁺), both markers for secondary
+particulate matter formation.
+
+In the 5-factor solution, Factor 1 (red) continues to represent
+transported dust. Factor 2 (blue) shifts its primary attribution to
+secondary sulfur. Factor 3 (green) is interpreted as mixed combustion,
+now dominated by biomass burning contributions. Factor 4 (yellow) likely
+represents coal combustion, based on species such as arsenic (As) and
+selenium (Se), which are typically associated with coal burning.
+Finally, Factor 5 (orange) represents local dust, primarily associated
+with crustal elements.
+
+\begin{figure}[H]
+
+\caption{\label{fig-pmf-personal}3-, 4-, and 5- factor solutions for
+personal exposure samples.}
+
+\centering{
+
+\includegraphics[width=0.9\textwidth,height=\textheight]{outputs/pmf-personal-3-factor.png}
+
+}
+
+\end{figure}%
+
+\begin{table}[H]
+
+\caption{\label{tbl-pmf-personal}PMF error estimation diagnostics for
+personal exposure samples.}
+
+\centering{
+
+\centering
+\begin{tblr}[         %% tabularray outer open
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={1\linewidth},
+colspec={X[0.142857142857143]X[0.214285714285714]X[0.214285714285714]X[0.214285714285714]X[0.214285714285714]},
+cell{1}{2}={c=4,}{halign=c,},
+column{1}={halign=c,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+row{2}={halign=c,},
+cell{7}{1}={}{halign=l,},
+cell{10}{1}={}{halign=l,},
+cell{7}{2}={}{halign=l,},
+cell{10}{2}={}{halign=l,},
+cell{7}{3}={}{halign=l,},
+cell{10}{3}={}{halign=l,},
+cell{7}{4}={}{halign=l,},
+cell{10}{4}={}{halign=l,},
+cell{7}{5}={}{halign=l,},
+cell{10}{5}={}{halign=l,},
+}                     %% tabularray inner close
+\toprule
+& Potential Factor Solution &  &  &  \\ \cmidrule[lr]{2-5}
+Diagnostic & 3 & 4 & 5 & 6 \\ \midrule %% TinyTableHeader
+Qexp & 17301 & 16126 & 14951 & 13776 \\
+Qtrue & 1225294 & 101524 & 84622 & 70122 \\
+Qrobust & 117329 & 96215 & 80219 & 66865 \\
+Qr/Qexp & 6.78 & 5.97 & 5.37 & 4.85 \\
+Q/Qexp >6 & ns-S, NH3, NO3, SO4, ws-Na, Al, Cl, Pb & ns-S, ws-Na, Al, Cl, Pb & NO3, ws-Na, Al, Cl & NO3, ws-Na, Al, ws-K \\
+DISP \% dQ & <0.01\% & <0.01\% & <0.01\% & <0.01\% \\
+DISP Swaps & 0 & 0 & 0 & 0 \\
+Bootstrap mapping < 100\% & mixed combustion - 95\% & sulfur secondary - 85\% & coal - 80\% & chloride - 45\% \\
+\bottomrule
+\end{tblr}
+
+}
+
+\end{table}%
+
+\subsubsection{Outdoor exposure sample
+analysis}\label{outdoor-exposure-sample-analysis}
+
+For the outdoor exposure sample, Figure~\ref{fig-pmf-outdoor} shows
+results for the 3-, 4-, and 5-factor solutions, and
+Table~\ref{tbl-pmf-outdoor} shows diagnostics for the PMF analysis for
+personal exposure samples.
+
+\begin{figure}[H]
+
+\caption{\label{fig-pmf-outdoor}3-, 4-, and 5- factor solutions for
+outdoor exposure samples.}
+
+\centering{
+
+\includegraphics[width=0.9\textwidth,height=\textheight]{outputs/pmf-outdoor-3-factor.png}
+
+}
+
+\end{figure}%
+
+\begin{table}[H]
+
+\caption{\label{tbl-pmf-outdoor}PMF error estimation diagnostics for
+outdoor samples.}
+
+\centering{
+
+\centering
+\begin{tblr}[         %% tabularray outer open
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+width={1\linewidth},
+colspec={X[0.142857142857143]X[0.214285714285714]X[0.214285714285714]X[0.214285714285714]X[0.214285714285714]},
+cell{1}{2}={c=4,}{halign=c,},
+column{1}={halign=c,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+row{2}={halign=c,},
+cell{7}{1}={}{halign=l,},
+cell{10}{1}={}{halign=l,},
+cell{7}{2}={}{halign=l,},
+cell{10}{2}={}{halign=l,},
+cell{7}{3}={}{halign=l,},
+cell{10}{3}={}{halign=l,},
+cell{7}{4}={}{halign=l,},
+cell{10}{4}={}{halign=l,},
+cell{7}{5}={}{halign=l,},
+cell{10}{5}={}{halign=l,},
+}                     %% tabularray inner close
+\toprule
+& Potential Factor Solution &  &  &  \\ \cmidrule[lr]{2-5}
+Diagnostic & 3 & 4 & 5 & 6 \\ \midrule %% TinyTableHeader
+Qexp & 10716 & 9980 & 9244 & 8508 \\
+Qtrue & 43280 & 34603 & 28467 & 21947 \\
+Qrobust & 41521 & 33209 & 26432 & 21347 \\
+Qr/Qexp & 3.87 & 3.33 & 2.86 & 2.51 \\
+Q/Qexp >6 & ws-Ca, Cl & Cl & Pb & None \\
+DISP \% dQ & <0.01\% & <0.01\% & <0.01\% & <0.01\% \\
+DISP Swaps & 0 & 0 & 0 & 0 \\
+Bootstrap mapping < 100\% & None & sulfur secondary - 55\% & None & coal - 90\%, EC + OC - 90\%, chloride - 90\% \\
+\bottomrule
+\end{tblr}
+
+}
+
+\end{table}%
+
+\subsubsection{PMF results disaggregated by day and by
+month}\label{pmf-results-disaggregated-by-day-and-by-month}
+
+are shown in , where the results are further color-coded by district.
+Note: due to yearly field campaign schedules, where sampling was
+occurring by village and by district was correlated in time.
 
 \subsection{Pre-trends}\label{pre-trends}
 
@@ -5038,7 +5731,7 @@ treated later.}
 
 \centering{
 
-\includegraphics[width=13in,height=\textheight]{images/BP-pretrends_FT20orFT21.png}
+\includegraphics[width=0.95\textwidth,height=\textheight]{images/BP-pretrends_FT20orFT21.png}
 
 }
 
@@ -5062,7 +5755,7 @@ treated and villages treated later.}
 \end{figure}%
 
 \subsubsection{Self-reported respiratory
-outcomes}\label{self-reported-respiratory-outcomes}
+outcomes}\label{self-reported-respiratory-outcomes-1}
 
 \begin{figure}[H]
 
@@ -5088,7 +5781,7 @@ and time fixed effects to the model for personal exposure.
 
 \begin{table}[H]
 
-\caption{\label{tbl-a-fe}Effects of the CBHP policy on personal exposure
+\caption{\label{tbl-a-fe}Effects of the CHP policy on personal exposure
 (\(\mu g / m^{3}\)) with variations in fixed effects for treatment group
 and time.}
 
@@ -5109,9 +5802,9 @@ column{5}={halign=c,},
 }                     %% tabularray inner close
 \toprule
 & Adjusted DiD & No time FE & No group FE & No FE \\ \midrule %% TinyTableHeader
-ATT & 1.95 & -31.43 & -5.91 & -24.13 \\
-& [-23.34, 27.23] & [-49.42, -13.44] & [-24.36, 12.54] & [-41.42, -6.83] \\
-Observations & 1,281 & 1,281 & 1,281 & 1,281 \\
+ATT & 0.5 & -27.0 & -4.9 & -22.1 \\
+& [-19.1, 20.2] & [-48.6, -5.4] & [-24.0, 14.2] & [-40.0, -4.2] \\
+Observations & 1,263 & 1,263 & 1,263 & 1,263 \\
 Year fixed effects & X &  & X &  \\
 Cohort fixed effects & X & X &  &  \\
 \bottomrule
@@ -5247,8 +5940,66 @@ study design.}
 
 \newpage
 
+\section*{Abbreviations and other
+terms}\label{abbreviations-and-other-terms}
+\addcontentsline{toc}{section}{Abbreviations and other terms}
+
 \section*{About the authors}\label{about-the-authors}
 \addcontentsline{toc}{section}{About the authors}
+
+\textbf{Jill Baumgartner, PhD} is a professor jointly appointed in the
+Department of Equity, Ethics, and Policy and the Department of
+Epidemiology, Biostatistics \& Occupational Health at McGill University.
+Her work focuses on evaluating the health impacts of air pollution,
+household energy use, and climate change and their related interventions
+in low- and middle-income countries.
+
+\textbf{Sam Harper, PhD} is a professor in the Department of
+Epidemiology, Biostatistics \& Occupational Health at McGill University.
+His research focuses on evaluating the impacts of social and economic
+policies on health.
+
+\textbf{Chris Barrington-Leigh, PhD} is an associate professor jointly
+appointed in the Department of Equity, Ethics, and Policy and the Bieler
+School of Environment at McGill University.
+
+\textbf{Collin Brehmer} is\ldots{}
+
+\textbf{Ellison M. Carter} is\ldots{}
+
+\textbf{Xiaoying Li} is\ldots{}
+
+\textbf{Brian E. Robinson}, PhD, is an associate professor in the
+Department of Geography at McGill University who studies how people's
+livelihoods are influenced by ecosystem services and resource use,
+particularly in developing regions. His interdisciplinary research
+explores the interactions between livelihoods, the environment, and the
+institutions that govern resource management.
+
+\textbf{Guofeng Shen, PhD}, is\ldots{}
+
+\textbf{Talia J. Sternbach} is\ldots{}
+
+\textbf{Shu Tao, PhD}, is a professor of environmental science at Peking
+University who focuses on measuring and modeling clean energy
+transition, air pollution emissions, population exposures, and their
+estimated health impacts in China. His research integrates environmental
+science, atmospheric modeling, field measurements, and exposure
+assessment to better understand the sources, distribution, and health
+effects of air pollutants.
+
+\textbf{Kaibing Xue} is\ldots{}
+
+\textbf{Wenlu Yuan} is\ldots{}
+
+\textbf{Xiang Zhang} is\ldots{}
+
+\textbf{Yuanxun Zhang, PhD}, is a professor of atmospheric sciences at
+the University of the Chinese Academy of Sciences with expertise in
+atmospheric chemistry and measurement of air pollution and its chemical
+composition. His research focuses on understanding the chemical
+processes and mechanisms driving the formation of air pollutants and
+their impacts on climate and human health.
 
 \section*{Other publications}\label{other-publications}
 \addcontentsline{toc}{section}{Other publications}

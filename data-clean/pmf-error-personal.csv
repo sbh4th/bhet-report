@@ -1,0 +1,9 @@
+﻿Diagnostic,3,4,5,6
+Qexp,17301,16126,14951,13776
+Qtrue,1225294,101524,84622,70122
+Qrobust,117329,96215,80219,66865
+Qr/Qexp,6.78,5.97,5.37,4.85
+Q/Qexp >6,"ns-S, NH3, NO3, SO4, ws-Na, Al, Cl, Pb","ns-S, ws-Na, Al, Cl, Pb","NO3, ws-Na, Al, Cl","NO3, ws-Na, Al, ws-K"
+DISP % dQ,<0.01%,<0.01%,<0.01%,<0.01%
+DISP Swaps,0,0,0,0
+Bootstrap mapping < 100%,mixed combustion - 95%,sulfur secondary - 85%,coal - 80%,chloride - 45%

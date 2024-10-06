@@ -3,7 +3,7 @@
 #  input:    bhet-master
 #  output:   
 #  project:  BHET
-#  author:   sam harper \ 2024-10-04
+#  author:   sam harper \ 2024-10-05
 
 # packages to load
 pkgs <- c('here', 'tidyverse', 'modelsummary', 
@@ -19,9 +19,10 @@ dresp <- read_rds(here("data-clean",
 
 # limit to sample with mediators and measures of PM
 dr_med <- dresp %>%
-  filter(PM25_exp_remove == 1) %>% 
+  filter(p_usable_pm == 1) %>% 
   drop_na(ppm25, temp) %>%
-  mutate(ppm25 = ppm25 / 10)
+  mutate(ppm25 = ppm25 / 10,
+         ctemp = temp - mean(temp))
 
 
 
@@ -134,7 +135,7 @@ mv_temp <- dr_med %>%
 # create dataset setting value of mediator
 cde_temp <- 
     subset(dr_med, treat == 1) %>%
-    mutate(temp = mv_temp)
+    mutate(ctemp = mv_temp)
 
 # marginal effect for CDE
 logit_me_meda2 <- lapply(
@@ -173,8 +174,8 @@ cde_t1 <- logit_me_meda %>% {
     stderror = map_dbl(., "std.error") * 100,
     ll = est - 1.96 * stderror,
     ul = est + 1.96 * stderror,
-    ci = paste("(", sprintf("%.2f", ll), ", ",
-      sprintf("%.2f", ul), ")", sep="")
+    ci = paste("(", sprintf("%.1f", ll), ", ",
+      sprintf("%.1f", ul), ")", sep="")
   ) %>%
     select(outcome, est, ci)
 }
@@ -186,8 +187,8 @@ cde_t2 <- logit_me_meda1 %>% {
     stderror1 = map_dbl(., "std.error") * 100,
     ll1 = est1 - 1.96 * stderror1,
     ul1 = est1 + 1.96 * stderror1,
-    ci1 = paste("(", sprintf("%.2f", ll1), ", ",
-      sprintf("%.2f", ul1), ")", sep="")
+    ci1 = paste("(", sprintf("%.1f", ll1), ", ",
+      sprintf("%.1f", ul1), ")", sep="")
   ) %>%
     select(est1, ci1)
 }
@@ -199,8 +200,8 @@ cde_t3 <- logit_me_meda2 %>% {
     stderror2 = map_dbl(., "std.error") * 100,
     ll2 = est2 - 1.96 * stderror2,
     ul2 = est2 + 1.96 * stderror2,
-    ci2 = paste("(", sprintf("%.2f", ll2), ", ",
-      sprintf("%.2f", ul2), ")", sep="")
+    ci2 = paste("(", sprintf("%.1f", ll2), ", ",
+      sprintf("%.1f", ul2), ")", sep="")
   )%>%
     select(est2, ci2)
 }
@@ -212,8 +213,8 @@ cde_t4 <- logit_me_meda3 %>% {
     stderror3 = map_dbl(., "std.error") * 100,
     ll3 = est3 - 1.96 * stderror3,
     ul3 = est3 + 1.96 * stderror3,
-    ci3 = paste("(", sprintf("%.2f", ll3), ", ",
-      sprintf("%.2f", ul3), ")", sep="")
+    ci3 = paste("(", sprintf("%.1f", ll3), ", ",
+      sprintf("%.1f", ul3), ")", sep="")
   ) %>%
     select(est3, ci3)
 }
@@ -227,164 +228,3 @@ cdet <- cbind(cde_t1, cde_t2, cde_t3, cde_t4) %>%
 write_rds(cdet, file = here("outputs", 
   "resp-cdes.rds"))
 
-kable(cdet, digits = 2, 
-  col.names = c("", "ATT", "(95%CI)",
-  "ATT", "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)")) %>%
-  kable_styling() %>%
-  add_header_above(c(" " = 3, 
-  "Indoor PM" = 2, "Indoor Temp" = 2, "PM + Temp" = 2)) %>%
-  add_header_above(c(" " = 1, 
-    "Adjusted Total Effect" = 2,
-    "CDE Mediated By:" = 6))
-
-# table of marginal effects
-modelsummary(list("Any symptom" = logit_me$resp,
-  "Cough" = logit_me$cough, "Phlegm" = logit_me$phlegm,
-  "Wheezing" = logit_me$wheeze,
-  "Shortness of breath" = logit_me$breath,
-  "Chest trouble" = logit_me$nochest,
-  "Any symptom" = logit_mea$resp,
-  "Cough" = logit_mea$cough, "Phlegm" = logit_mea$phlegm,
-  "Wheezing" = logit_mea$wheeze,
-  "Shortness of breath" = logit_mea$breath,
-  "Chest trouble" = logit_mea$nochest),
-  group = model ~ term + statistic,
-  statistic = 'conf.int')
-
-didtable <- modelsummary(list("Any" = logit_me$resp, "Cough" = logit_me$cough), group = model ~ term + statistic,
-  statistic = 'conf.int')
-
-modelsummary(list("Any" = logit_me$resp, "Cough" = logit_me$cough), group =  ~ "" + statistic,
-  statistic = 'conf.int')
-
-didatable <- modelsummary(list("Any" = logit_mea$resp, "Cough" = logit_mea$cough), group = model ~ term + statistic,
-  statistic = 'conf.int')
-
-data_tables <- data.frame(good_table = didtable, 
-                          bad_table = didatable)
-
-
-
-# any respiratory outcome
-resp_het_any <- bind_rows(logit_mea$resp, 
-                          logit_mea_het$resp) %>% 
-  mutate(outcome = "resp") %>%
-  select(outcome, estimate, conf.low, conf.high, 
-         cohort_year, year) %>%
-  mutate_at(vars(c(cohort_year,year)), ~ recode(., 
-         `2019` = "2019",
-         `2020` = "2020",
-         `2021` = "2021",
-         .missing = "All")) %>%
-  relocate(outcome, cohort_year, year) %>%
-  mutate(ci = paste("(", sprintf('%.2f', conf.low), ", ",
-    sprintf('%.2f', conf.high), ")", sep="")) %>%
-  select(-conf.low, -conf.high) 
-
-
-# write table to data
-write_rds(resp_het_any, file = here("outputs", 
-  "resp-het-resp.rds"))
-
-# heterogeneity table for any respiratory outcome
-
-# cough
-resp_het_cough <- bind_rows(logit_mea$cough, 
-                          logit_mea_het$cough) %>% 
-  mutate(outcome = "cough") %>%
-  select(outcome, estimate, conf.low, conf.high, 
-         cohort_year, year) %>%
-  mutate_at(vars(c(cohort_year,year)), ~ recode(., 
-         `2019` = "2019",
-         `2020` = "2020",
-         `2021` = "2021",
-         .missing = "All")) %>%
-  relocate(outcome, cohort_year, year) %>%
-  mutate(ci = paste("(", sprintf('%.2f', conf.low), ", ",
-    sprintf('%.2f', conf.high), ")", sep="")) %>%
-  select(-conf.low, -conf.high) 
-
-# write table to data
-write_rds(resp_het_cough, file = here("outputs", 
-  "resp-het-cough.rds"))
-
-# phlegm
-resp_het_phlegm <- bind_rows(logit_mea$phlegm, 
-                          logit_mea_het$phlegm) %>% 
-  mutate(outcome = "phlegm") %>%
-  select(outcome, estimate, conf.low, conf.high, 
-         cohort_year, year) %>%
-  mutate_at(vars(c(cohort_year,year)), ~ recode(., 
-         `2019` = "2019",
-         `2020` = "2020",
-         `2021` = "2021",
-         .missing = "All")) %>%
-  relocate(outcome, cohort_year, year) %>%
-  mutate(ci = paste("(", sprintf('%.2f', conf.low), ", ",
-    sprintf('%.2f', conf.high), ")", sep="")) %>%
-  select(-conf.low, -conf.high) 
-
-# write table to data
-write_rds(resp_het_phlegm, file = here("outputs", 
-  "resp-het-phlegm.rds"))
-
-
-# wheeze
-resp_het_wheeze <- bind_rows(logit_mea$wheeze, 
-                          logit_mea_het$wheeze) %>% 
-  mutate(outcome = "wheeze") %>%
-  select(outcome, estimate, conf.low, conf.high, 
-         cohort_year, year) %>%
-  mutate_at(vars(c(cohort_year,year)), ~ recode(., 
-         `2019` = "2019",
-         `2020` = "2020",
-         `2021` = "2021",
-         .missing = "All")) %>%
-  relocate(outcome, cohort_year, year) %>%
-  mutate(ci = paste("(", sprintf('%.2f', conf.low), ", ",
-    sprintf('%.2f', conf.high), ")", sep="")) %>%
-  select(-conf.low, -conf.high) 
-
-# write table to data
-write_rds(resp_het_wheeze, file = here("outputs", 
-  "resp-het-wheeze.rds"))
-
-# shortness of breah
-resp_het_breath <- bind_rows(logit_mea$breath, 
-                          logit_mea_het$breath) %>% 
-  mutate(outcome = "breath") %>%
-  select(outcome, estimate, conf.low, conf.high, 
-         cohort_year, year) %>%
-  mutate_at(vars(c(cohort_year,year)), ~ recode(., 
-         `2019` = "2019",
-         `2020` = "2020",
-         `2021` = "2021",
-         .missing = "All")) %>%
-  relocate(outcome, cohort_year, year) %>%
-  mutate(ci = paste("(", sprintf('%.2f', conf.low), ", ",
-    sprintf('%.2f', conf.high), ")", sep="")) %>%
-  select(-conf.low, -conf.high) 
-
-# write table to data
-write_rds(resp_het_breath, file = here("outputs", 
-  "resp-het-breath.rds"))
-
-# no chest trouble
-resp_het_nochest <- bind_rows(logit_mea$nochest, 
-                          logit_mea_het$nochest) %>% 
-  mutate(outcome = "chest") %>%
-  select(outcome, estimate, conf.low, conf.high, 
-         cohort_year, year) %>%
-  mutate_at(vars(c(cohort_year,year)), ~ recode(., 
-         `2019` = "2019",
-         `2020` = "2020",
-         `2021` = "2021",
-         .missing = "All")) %>%
-  relocate(outcome, cohort_year, year) %>%
-  mutate(ci = paste("(", sprintf('%.2f', conf.low), ", ",
-    sprintf('%.2f', conf.high), ")", sep="")) %>%
-  select(-conf.low, -conf.high) 
-
-# write table to data
-write_rds(resp_het_nochest, file = here("outputs", 
-  "resp-het-nochest.rds"))

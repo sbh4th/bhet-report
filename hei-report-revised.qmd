@@ -451,7 +451,7 @@ Appendix @fig-flowchart shows the participation of villages, households, and par
 ```{r, echo=F, message=F, warning=F}
 # read in the data
 ds <- read_csv(here("data-clean", 
-  "BHET_master_data_05Mar2024.csv"),
+  "BHET_master_data_04Oct2024.csv"),
   col_select = c("wave", "gender_health", "age_health",
     "smoking", "waist_circ", "height", "ptc_id", 
     "weight", "lived_with_smoker", "ID_VILLAGE")) %>%
@@ -564,7 +564,7 @@ tt(t3,
 ```{r make_table1, message=FALSE, cache=TRUE, echo=FALSE, eval=T}
 # select variables for table
 d <- read_csv(here("data-clean", 
-  "BHET_master_data_22Jul2024.csv"),
+  "BHET_master_data_04Oct2024.csv"),
   col_select = c("hh_id", "ptc_id", "gender_health",
     "ban_status_no", "age_health", "education_health",
     "smoking", "freq_drink", "sys_brachial", 
@@ -572,8 +572,8 @@ d <- read_csv(here("data-clean",
     "weight", "temp", "wave", "PM25conc_exposureugm3",
     "freq_cough", "freq_phlegm", "freq_wheezing", 
     "freq_breath", "freq_no_chest",
-    "BCconc_exposureugm3", "PM25_exp_remove",
-    "BC_exp_remove"))
+    "BCconc_exposureugm3", "p_usable_pm",
+    "p_usable_bc"))
 
 # data for wealth index
 dwi <- read_csv(here("data-clean", 
@@ -635,15 +635,15 @@ dt <- d %>%
       freq_no_chest < 3, 100, 0),
     `Temperature (°C)` = temp,
     pe = case_when(
-      PM25conc_exposureugm3 <= 0 ~ NA,
-      PM25_exp_remove == 1 ~ PM25conc_exposureugm3,
-      PM25_exp_remove == 0 ~ NA,
-      PM25_exp_remove == -1 ~ NA),
+      p_usable_pm <= 0 ~ NA,
+      p_usable_pm == 1 ~ PM25conc_exposureugm3,
+      p_usable_pm == 0 ~ NA,
+      p_usable_pm == -1 ~ NA),
     bc = case_when(
       BCconc_exposureugm3 <= 0 ~ NA,
-      BC_exp_remove == 1 ~ BCconc_exposureugm3,
-      BC_exp_remove == 0 ~ NA,
-      BC_exp_remove == 2 ~ NA),
+      p_usable_bc == 1 ~ BCconc_exposureugm3,
+      p_usable_bc == 0 ~ NA,
+      p_usable_bc == 2 ~ NA),
     `Personal PM2.5 (ug/m3)` = pe,
     `Black carbon (ug/m3)` = bc) %>%
   select(et, `Age (years)`, `Female (%)`, `No education (%)`, 
@@ -906,17 +906,25 @@ feno_table <- tibble(
   ci_2 = "(-2.2, 2.8)"
 )
 
-inf_table <- tibble(
-  category = "Measured (%)", 
-  outcome = c("IL6", "TNF-alpha",	"CRP",	"MDA"),
-  nobs = c(1:4),
-  estimate_1 = c(6.8, 24.3, 2.7, 7.6),
-  ci_1 = c("(-12.2, 30.0)", "(-1.3, 56.4)", 
-           "(-19.8, 31.6)", "(-8.7, 26.9)"),
-  estimate_2 = c(5.9, 24.7, 3.8, 6.5),
-  ci_2 = c("(-13.8, 30.2)", "(-0.9, 54.2)", 
-           "(-19.4, 33.6)", "(-9.7, 25.5)")
-)
+inf_table <- read_xlsx(here("outputs",
+  "Infla_DID.xlsx")) %>% 
+  select(biomarker, model, estimate, conf.low, conf.high) %>%
+  mutate(
+    ci = paste("(", sprintf('%.1f', conf.low), ", ",
+      sprintf('%.1f', conf.high), ")", sep=""),
+    model2 = case_when(
+      model == "unadj" ~ 1,
+      model == "adj" ~ 2
+    )) %>%
+  select(biomarker, model2, estimate, ci) %>%
+  pivot_wider(names_from = model2, 
+    values_from = c(estimate, ci)) %>%
+  mutate(category = "Measured (ng/ml)", 
+    outcome = c("IL6", "TNF-alpha",	"CRP",	"MDA"),
+    nobs = c(1:4)) %>%
+  select(-biomarker) %>%
+  relocate(category, outcome, nobs, 
+    estimate_1, ci_1, estimate_2, ci_2)
 
 # join tables
 op_table <- bind_rows(bp_policy_t, r_table, 
@@ -1076,7 +1084,7 @@ tt(t_pmf,
 
 The source profiles for the four-factor solution are presented in @fig-source-figure. We sought to develop a defensible source analysis solution, which we found to have four factors and, then identified and named those sources. The pooled PMF analysis combined both outdoor and personal exposure samples, leading to a more robust factor solution due to the increased number of samples. This pooled analysis determined that the optimum solution was a 4-factor model, which identified the major sources as dust, transported dust, secondary sulfur, and a combustion mixture of coal and biomass burning, and possibly some tobacco smoking. The pooled approach was found to be stable, with high bootstrap (BS) mapping and no factor swaps during the displacement tests, indicating the reliability of the factor solutions.
 
-We also ran disaggregated analyses for personal and outdoor samples separately (details in the Appendix). We found some differences in the number of factors and source attributions, but the core findings remained largely consistent with the pooled results. For the personal exposure samples (Appendix @fig-pmf-personal and Appendix @tbl-pmf-personal), the 3-factor solution identified dust, transported dust, and mixed combustion (a combination of biomass burning and secondary PM), while the 5-factor solution further split the mixed combustion factor into distinct coal combustion and sulfur secondary factors. Similarly, for the outdoor PM samples (Appendix @fig-pmf-outdoor, and Appendix @tbl-pmf-outdoor), the 3-factor solution identified mixed combustion, secondary PM, and dust, while the 5-factor solution introduced transported dust and a refined characterization of secondary species contributions. Despite these differences in the disaggregated analysis, the primary sources of pollution--dust, secondary sulfur, and mixed combustion--were consistent across both the pooled and separate analyses, demonstrating that the main findings are robust.
+We also ran disaggregated analyses for personal and outdoor samples separately (details in the Appendix). We found some differences in the number of factors and source attributions, but the core findings remained largely consistent with the pooled results. For the personal exposure samples (Appendix @fig-pmf-sup and Appendix @tbl-pmf-personal), the 3-factor solution identified dust, transported dust, and mixed combustion (a combination of biomass burning and secondary PM), while the 5-factor solution further split the mixed combustion factor into distinct coal combustion and sulfur secondary factors. Similarly, for the outdoor PM samples (Appendix @fig-pmf-sup, and Appendix @tbl-pmf-outdoor), the 3-factor solution identified mixed combustion, secondary PM, and dust, while the 5-factor solution introduced transported dust and a refined characterization of secondary species contributions. Despite these differences in the disaggregated analysis, the primary sources of pollution--dust, secondary sulfur, and mixed combustion--were consistent across both the pooled and separate analyses, demonstrating that the main findings are robust.
 
 Although separating the samples for analysis provides additional granularity, it does not fundamentally change the identification of the key pollution sources that we observed in the pooled analysis. The dust, secondary sulfur, and mixed combustion factors, which are central to our findings, are present in both approaches, further confirming the robustness of the pooled results.
 
@@ -1264,7 +1272,7 @@ Fourth, respiratory symptoms were self-reported and thus our estimated effects o
 
 Finally, some remarks concerning power and uncertainty. We do not distinguish our results based on traditional notions of "statistical significance" [@wasserstein2019], but given the large number of outcomes and wide range of reported estimates and uncertainties, questions about the power of our design are relevant. However, using observed effect sizes to ask questions about power (sometimes called 'post-hoc power calculations') is illogical given the direct relationship between power and observed p-values or confidence limits [@hoenig2001]. Instead we aim to put our results in context using a retrospective design analysis (@gelman2014). Retrospective design analyses use plausible values for hypothetical effect sizes to ask about the strength of evidence a replicated study with our design and level of precision would be likely to provide. The main quantities for a design analysis include the probability that the replicated estimate would be "statistically significant" (power), the probability that the replicated estimate would have the wrong sign ("S-bias"), and the ratio of the replicated estimate divided by the true effect size (the "exaggeration ratio" or "M-bias"). We report these values for a range of conservative, but plausible effect sizes below.  
 
-For blood pressure we used a value of a 1.5 mmHg decrease in systolic or a 1 mmHg decrease in diastolic [maybe cite Jill's 2022 paper in Am J Hypertension?]. *Not sure exactly what makes sense for PP or BP Amp*. For self-reported respiratory outcomes we assumed hypothetical effects on the order of a 10% decline for each outcome (translated into absolute percentage point declines), and for inflammatory markers we hypothesized a true effect of a decline of roughly 2 percentage points. 
+For blood pressure we used a value of a 1.5 mmHg decrease in systolic or a 1 mmHg decrease in diastolic [@baumgartner2011; @steenland2018] [maybe cite Jill's 2022 paper in Am J Hypertension?]. *Not sure exactly what makes sense for PP or BP Amp*. For self-reported respiratory outcomes we assumed hypothetical effects on the order of a 10% decline for each outcome (translated into absolute percentage point declines), and for inflammatory markers we hypothesized a true effect of a decline of roughly 2 percentage points. 
 
 The full results for all health outcomes are shown in the Supplement (@tbl-rd). As an example, consider our estimate of the 8.1 percentage point decrease in any respiratory symptom (95% CI 2.9, 13.3). Assuming that the true effect of the policy was a reduction of 5 percentage points, a replicated estimate with our design features and precision would have virtually no chance of reporting the wrong sign (S-bias = 0), and in expectation the estimated effect will be only 1.4 times too high. Similarly, if the true effect of the policy on brachial systolic BP was a small reduction of 1.5 mmHg, a replication of our study design would have roughly 34% power, a 9% chance of having the wrong sign, and an average exaggeration ratio of just 0.7, meaning it would be unlikely to exaggerate the true effect.
 
@@ -1486,6 +1494,7 @@ tt(fuel_table,
 ## Heterogeneity in treatment effects 
 
 ### Personal exposure 
+
 Table @tbl-a-het-personal shows limited evidence that the $ATT$s across cohorts and time demonstrate meaningful heterogeneity.
 
 ```{r}
@@ -1766,6 +1775,7 @@ tt(bp_het_table,
 \newpage
 
 ### Mediation analyses for blood pressure
+
 @tbl-a-bp-med-het shows the cohort-time treatment effects for the mediation model for blood pressure.
 
 
@@ -1874,7 +1884,7 @@ colnames(bp_mmed_het_table) <- c("Cohort",
   "F-Statistic", "p-value")
 
 tt(bp_mmed_het_table,
-   digits = 2, width = 0.7,
+   digits = 2,
    notes = 
      list("Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences, CDE = Controlled Direct Effect.", 
      a = list(i=0, j=3, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."),
@@ -2270,8 +2280,35 @@ knitr::include_graphics(here("images",
 \newpage
 ## Alternative PMF analyses
 
-### Personal exposure sample analysis
-For the personal exposure samples, @fig-pmf-personal shows results for the 3-, 4-, and 5-factor solutions, and @tbl-pmf-personal shows diagnostics for the PMF analysis. 
+### PMF results disaggregated by day
+
+```{r, out.width = "90%"}
+#| echo: FALSE
+#| label: fig-pmf-sup-day
+#| fig-cap-location: top
+#| fig-cap: Mass concentrations (ug/m3) of contributions to PM2.5 mass by each of the four named sources identified in the source analysis. From left to right, the source contributions represented are ‘sulfur secondary’, ‘mixed combustion’, ‘dust’, and ‘transported dust’. Source contribution mass concentrations are shown by day and color-coded by district, with purple for Fangshan, blue for Huairou, green for Mentougou, and yellow for Miyun.
+
+
+knitr::include_graphics(here("images",
+  "pe_time_all_fig.png"))
+```
+
+### PMF results disaggregated by month
+
+```{r, out.width = "90%"}
+#| echo: FALSE
+#| label: fig-pmf-sup-month
+#| fig-cap-location: top
+#| fig-cap: Mass concentrations (ug/m3) of contributions to PM2.5 mass by each of the four named sources identified in the source analysis. From left to right, the source contributions represented are ‘sulfur secondary’, ‘mixed combustion’, ‘dust’, and ‘transported dust’. Source contribution mass concentrations are shown by month (November, December, January) and color-coded by district, with purple for Fangshan, blue for Huairou, green for Mentougou, and yellow for Miyun. 
+
+
+knitr::include_graphics(here("images",
+  "out_time_all_fig.png"))
+```
+
+### Disaggregated analyses
+
+@fig-pmf-sup shows results for the 3-, 4-, and 5-factor solutions for both personal and outdoor exposure samples.
 
 For the 3-factor solution, Factor 1, represented in red, is interpreted as transported dust. This conclusion is supported by moderate loadings of mineral dust-related species such as silicon (Si) and water-soluble calcium (Ca). Calcium and aluminum are typically associated with crustal materials, especially in arid or semi-arid regions like the Gobi Desert and the Taklamakan Desert, which are known sources of transported dust to northern China, including Beijing. Factor 2, represented in blue, likely represents local dust, with significant contributions from metals typically associated with crustal materials. Factor 3, represented in green, is interpreted as a mixture of combustion-related sources, with contributions from elemental and organic carbon, as well as evidence of secondary particulate matter formation. This includes carbon species indicative of combustion, contributions from Pb and water-soluble potassium (K), and secondary formation markers such as sulfate (SO₄²⁻).
 
@@ -2281,15 +2318,19 @@ In the 5-factor solution, Factor 1 (red) continues to represent transported dust
 
 ```{r, out.width = "90%"}
 #| echo: FALSE
-#| label: fig-pmf-personal
+#| label: fig-pmf-sup
 #| fig-cap-location: top
 #| fig-cap: 3-, 4-, and 5- factor solutions for personal exposure samples.
 
 
-knitr::include_graphics(here("outputs",
-  "pmf-personal-3-factor.png"))
+knitr::include_graphics(here("images",
+  "sp_sup_fig.png"))
 
 ```
+
+### Personal exposure sample diagnostics
+
+@tbl-pmf-personal shows diagnostics for the PMF analysis for outdoor exposure samples.
 
 ```{r, message=F, warning=F}
 #| echo: FALSE
@@ -2313,21 +2354,9 @@ tt(t_pmf,
   format_tt(escape = TRUE)
 ```
 
-### Outdoor exposure sample analysis
+### Outdoor exposure sample diagnostics
 
-For the outdoor exposure sample, @fig-pmf-outdoor shows results for the 3-, 4-, and 5-factor solutions, and @tbl-pmf-outdoor shows diagnostics for the PMF analysis for personal exposure samples.
-
-```{r, out.width = "90%"}
-#| echo: FALSE
-#| label: fig-pmf-outdoor
-#| fig-cap-location: top
-#| fig-cap: 3-, 4-, and 5- factor solutions for outdoor exposure samples.
-
-
-knitr::include_graphics(here("outputs",
-  "pmf-outdoor-3-factor.png"))
-
-```
+@tbl-pmf-outdoor shows diagnostics for the PMF analysis for outdoor exposure samples.
 
 ```{r, message=F, warning=F}
 #| echo: FALSE
@@ -2467,8 +2496,8 @@ colnames(rp_table) <- c(" ", " ", "Estimate", "SE",
 
 tt(rp_table,
    notes = list("Note: BP = Blood Pressure, pp = percentage points, ppb = parts per billion, SE = Standard Error", 
-  a = list(i=0, j=7, text = "Assuming the true effect size and our study design and precision, the probability that an observed estimate will have the wrong sign."), 
-  b = list(i=0, j=8, text = "Assuming the true effect size and our study design and precision, the ratio by which an observed estimate will exaggerate the true effect.")
+  a = list(i=0, j=7, text = "Assuming the true effect size and our study design and precision, the probability that an observed estimate from a replication will have the wrong sign."), 
+  b = list(i=0, j=8, text = "Assuming the true effect size and our study design and precision, the ratio by which an observed estimate from a replication will exaggerate the true effect.")
   )) %>%
   group_tt(
     j = list("Observed Results" = 3:4, 

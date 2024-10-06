@@ -33,7 +33,7 @@ library(modelsummary)
 
 ## 1 Read in dataset, limit to resp vars ----
 d <- read_csv(here("data-clean", 
-                   "BHET_master_data_22Jul2024.csv"), 
+                   "BHET_master_data_04Oct2024.csv"), 
   col_select= c(hh_id, ptc_id, wave, ID_VILLAGE, ID_COUNTY, 
                 ban_status_2019, ban_status_2020, 
                 ban_status_2021, ban_status_no, 
@@ -42,7 +42,7 @@ d <- read_csv(here("data-clean",
                 freq_wheezing, freq_breath,
                 freq_no_chest, height, weight, 
                 age_health, gender_health,
-                smoking, temp, PM25_exp_remove, 
+                smoking, temp, p_usable_pm, 
                 PM25conc_exposureugm3,
                 lived_with_smoker, years_with_smoker,
                 height, weight, occupation,
@@ -161,9 +161,8 @@ d2 <- d1 %>%
                          cohort_year),
     ppm25 = case_when(
       PM25conc_exposureugm3 <= 0 ~ NA,
-      PM25_exp_remove == 1 ~ PM25conc_exposureugm3,
-      PM25_exp_remove == 0 ~ NA,
-      PM25_exp_remove == -1 ~ NA)) %>%
+      p_usable_pm == 1 ~ PM25conc_exposureugm3,
+      p_usable_pm== 0 ~ NA)) %>%
     rename(district = ID_COUNTY) %>%
   
   # add dummies for district

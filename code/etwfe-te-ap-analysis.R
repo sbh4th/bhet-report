@@ -3,7 +3,7 @@
 #  input:    various .rds files
 #  output:   various tables
 #  project:  BHET
-#  author:   sam harper \ 2024-09-24
+#  author:   sam harper \ 2024-10-05
 
 
 ## 0 Load needed packages ----
@@ -423,7 +423,7 @@ m_is_s3_meh <- slopes(
   
 
 # estimates without Season 3
-m_is_nos3 <- fixest::feols(
+m_is_nos3 <- fixest::feglm(
   is ~ treat:cohort_year_2020:year_2020 + 
     treat:cohort_year_2020:year_2021 +
     treat:cohort_year_2021:year_2021 + cohort_year_2020 + 

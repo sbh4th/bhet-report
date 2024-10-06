@@ -3,7 +3,7 @@
 #  input:    various .rds files
 #  output:   various figures for pre-trends
 #  project:  BHET
-#  author:   sam harper \ 2024-08-22
+#  author:   sam harper \ 2024-10-05
 
 
 ## 0 Load needed packages ----

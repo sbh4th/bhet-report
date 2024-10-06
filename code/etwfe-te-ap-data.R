@@ -4,7 +4,7 @@
 #  output:   d_personal.rds, d_bc.rds, d_ind_24h.rds
 #            d_ind_seasonal.rds, d_is_s3_add.rds
 #  project:  BHET
-#  author:   sam harper \ 2024-04-15
+#  author:   sam harper \ 2024-10-05
 
 
 ## 0 Load needed packages ----
@@ -28,11 +28,10 @@ library(modeldb)
 # read in air pollution data from OSF
 # restrict to specific variables
 ap_data <- read_csv(here("data-clean", 
-  "BHET_master_data_22Jul2024.csv"),
+  "BHET_master_data_04Oct2024.csv"),
   col_select = c(ptc_id, hh_id, ID_VILLAGE, wave, 
-    PM25conc_exposureugm3, PM25_exp_remove, 
-    BCconc_exposureugm3, BC_exp_remove,
-    usable_indoor_filter, BC_indoor_remove,
+    PM25conc_exposureugm3, p_usable_pm, 
+    BCconc_exposureugm3, p_usable_bc,
     indoor_filter_type, indoor_filter_id, 
     house_area, PM25_indoor_24h_sensor,
     PM25_indoor_seasonal_hs,
@@ -113,14 +112,12 @@ d_personal <- ap_data %>%
   # rename outcomes
   mutate(pe = case_when(
     PM25conc_exposureugm3 <= 0 ~ NA,
-    PM25_exp_remove == 1 ~ PM25conc_exposureugm3,
-    PM25_exp_remove == 0 ~ NA,
-    PM25_exp_remove == -1 ~ NA),
+    p_usable_pm == 1 ~ PM25conc_exposureugm3,
+    p_usable_pm == 0 ~ NA),
     bc = case_when(
       BCconc_exposureugm3 <= 0 ~ NA,
-      BC_exp_remove == 1 ~ BCconc_exposureugm3,
-      BC_exp_remove == 0 ~ NA,
-      BC_exp_remove == 2 ~ NA)) %>%
+      p_usable_bc == 1 ~ BCconc_exposureugm3,
+      p_usable_bc == 0 ~ NA)) %>%
   # rename meteorological variables
   # for consistency across analyses
   rename(out_temp = out_temp_24h,

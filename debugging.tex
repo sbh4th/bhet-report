@@ -67,46 +67,6 @@
 \fi
 \makeatother
 
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{241,243,245}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
-\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
@@ -327,66 +287,45 @@ outdoor air pollution, as well as heating behaviors and health outcomes.
 Table \textbf{?@tbl-a-het-personal} shows limited evidence that the
 \(ATT\)s across cohorts and time demonstrate meaningful heterogeneity.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{temp\_table }\OtherTok{\textless{}{-}} \FunctionTok{read\_xlsx}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"outputs"}\NormalTok{,}
-  \StringTok{"chemical composition tables.xlsx"}\NormalTok{), }\AttributeTok{sheet =} \StringTok{"outdoor"}\NormalTok{)}
-
-\NormalTok{temp\_table\_out }\OtherTok{\textless{}{-}}\NormalTok{ temp\_table }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \SpecialCharTok{{-}}\NormalTok{wave) }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{separate\_wider\_delim}\NormalTok{(value, }
-    \AttributeTok{delim =} \StringTok{"("}\NormalTok{, }\AttributeTok{names =} \FunctionTok{c}\NormalTok{(}\StringTok{"conc"}\NormalTok{, }\StringTok{"ci"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{ci =} \FunctionTok{paste}\NormalTok{(}\StringTok{"("}\NormalTok{, ci, }\AttributeTok{sep =} \StringTok{""}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ wave, }
-    \AttributeTok{values\_from =} \FunctionTok{c}\NormalTok{(conc, ci), }
-    \AttributeTok{names\_vary =} \StringTok{"slowest"}\NormalTok{)}
-
-\FunctionTok{colnames}\NormalTok{(temp\_table\_out) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Name"}\NormalTok{, }\StringTok{"Mean"}\NormalTok{, }\StringTok{"95\% CI"}\NormalTok{, }
-  \StringTok{"Mean"}\NormalTok{, }\StringTok{"95\% CI"}\NormalTok{, }\StringTok{"Mean"}\NormalTok{, }\StringTok{"95\% CI"}\NormalTok{)}
-
-\FunctionTok{tt}\NormalTok{(temp\_table\_out) }\SpecialCharTok{\%\textgreater{}\%}
-    \FunctionTok{group\_tt}\NormalTok{(}\AttributeTok{j =} \FunctionTok{list}\NormalTok{(}
-    \StringTok{"Wave 1"} \OtherTok{=} \DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{,}
-    \StringTok{"Wave 2"} \OtherTok{=} \DecValTok{4}\SpecialCharTok{:}\DecValTok{5}\NormalTok{,}
-    \StringTok{"Wave 4"} \OtherTok{=} \DecValTok{6}\SpecialCharTok{:}\DecValTok{7}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{format\_tt}\NormalTok{(}\AttributeTok{escape =} \ConstantTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{table}
+
+\caption{\label{tbl-each-campaign}Demographic and health characteristics
+of participants in each study wave.}
+
+\centering{
+
 \centering
-\begin{tblr}[         %% tabularray outer open
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{a}={Chi-square test for categorical and F-test for continuous characteristics.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
-colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
-cell{1}{2}={c=2,}{halign=c,},
-cell{1}{4}={c=2,}{halign=c,},
-cell{1}{6}={c=2,}{halign=c,},
+width={1\linewidth},
+colspec={X[0.380952380952381]X[0.142857142857143]X[0.142857142857143]X[0.142857142857143]X[0.0952380952380952]X[0.0952380952380952]},
+cell{1}{1}={c=1,}{halign=c,},
+cell{1}{2}={c=3,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+column{1}={halign=l,},
+column{2}={halign=l,},
+column{3}={halign=l,},
+column{4}={halign=l,},
 }                     %% tabularray inner close
 \toprule
-& Wave 1 &  & Wave 2 &  & Wave 4 &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
-Name & Mean & 95\% CI & Mean & 95\% CI & Mean & 95\% CI \\ \midrule %% TinyTableHeader
-Al & 110  & (108-113) & 66.7  & (65.5-67.8) & 60.9  & (59.8-62.1) \\
-Fe & 85.2  & (82.9-87.5) & 57.9  & (57-58.9) & 64.1  & (63-65.2) \\
-Pb & 6.26  & (5.82-6.71) & 4.32  & (4.06-4.57) & 7.69  & (7.27-8.11) \\
-Si & 139  & (136-142) & 76.7  & (75.4-77.9) & 128  & (126-129) \\
-Chloride & 56.1  & (54.5-57.8) & 32.2  & (31.5-32.9) & 15.6  & (14.9-16.4) \\
-EC & 123  & (121-125) & 112  & (111-113) & 103  & (101-104) \\
-ws-Na & 11.4  & (10.8-12) & 9.28  & (8.88-9.68) & 9.23  & (8.76-9.7) \\
-Ammonium & 136  & (133-138) & 152  & (151-154) & 78.3  & (77.3-79.4) \\
-Nitrate & 225  & (222-227) & 259  & (257-261) & 146  & (145-148) \\
-ns-S & 87  & (85.3-88.7) & 70  & (69.2-70.9) & 75.9  & (74.9-76.9) \\
-OC & 1080  & (1070-1080) & 901  & (898-904) & 649  & (645-653) \\
-Sulfate & 223  & (220-225) & 206  & (205-208) & 132  & (131-134) \\
-wi-Ca & 79.4  & (77.2-81.7) & 40.7  & (39.8-41.6) & 79  & (77.6-80.4) \\
-wi-K & 81.4  & (79.5-83.3) & 33.7  & (33-34.3) & 37.8  & (37-38.6) \\
-wi-Mg & 39.8  & (38.6-41) & 21.2  & (20.6-21.7) & 38.6  & (37.7-39.4) \\
-ws-Ca & 33.5  & (32.5-34.5) & 23.5  & (22.8-24.2) & 15.1  & (14.3-15.9) \\
-ws-K & 52.4  & (50.8-54) & 25.4  & (24.9-25.9) & 17.9  & (17.4-18.4) \\
-ws-Mg & 6.98  & (6.41-7.55) & 3.19  & (2.97-3.41) & 2.96  & (2.72-3.2) \\
+& Estimates &  &  & Test for Equality &  \\ \cmidrule[lr]{1-1}\cmidrule[lr]{2-4}\cmidrule[lr]{5-6}
+Characteristic & Wave 1 (2018-19) N=1003 & Wave 2 (2019-20) N=1110 & Wave 4 (2021-22) N=1028 & Statistic\textsuperscript{a} & p-value \\ \midrule %% TinyTableHeader
+Female, n (\%) & 597 (59.5) & 654 (58.9) & 617 (60.0) & 0.270 & 0.874 \\
+Current smoker, n (\%) & 257 (25.6) & 295 (26.6) & 265 (25.8) & 0.292 & 0.864 \\
+Passive smoke exposure, n (\%) & 486 (48.4) & 538 (48.5) & 486 (47.3) & 0.234 & 0.890 \\
+Any smoke exposure, n (\%) & 795 (79.3) & 898 (80.9) & 857 (83.4) & 5.616 & 0.060 \\
+Age in years, Mean (SD) & 60.1 (9.3) & 61.1 (9.1) & 63.3 (9.0) & 31.980 & 0.000 \\
+BMI (kg/m2), Mean (SD) & 26.1 (3.7) & 25.7 (3.5) & 26.2 (3.8) & 4.209 & 0.030 \\
+Waist circumference (cm), Mean (SD) & 86.8 (10.2) & 87.4 (9.4) & 91.3 (10.4) & 54.171 & 0.000 \\
 \bottomrule
-\end{tblr}
-\end{table}
+\end{talltblr}
+
+}
+
+\end{table}%
 
 \newpage
 

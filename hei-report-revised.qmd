@@ -459,10 +459,12 @@ ds <- read_csv(here("data-clean",
     female = if_else(gender_health == 2 & !is.na(gender_health),
       1, 0),
     csmoke = if_else(smoking==1 & !is.na(smoking), 1, 0),
+    psmoke = if_else(lived_with_smoker==3, 1, 0),
     asmoke = if_else(smoking < 3, 1, 
       if_else(smoking==3 & lived_with_smoker %in% 
                                     c(2,3), 1, 0))) %>%
-  mutate(across(c(female, csmoke, asmoke), as.integer))
+  mutate(across(c(female, csmoke, psmoke, 
+    asmoke), as.integer))
 ```
 
 ```{r, warning=F, message=F}
@@ -472,8 +474,7 @@ ds <- read_csv(here("data-clean",
 #| eval: TRUE
   
 # Columns of interest
-columns_of_interest <- c("female", "csmoke", "asmoke", 
-  "age_health", "bmi", "waist_circ")
+columns_of_interest <- c("female", "csmoke", "psmoke", "asmoke", "age_health", "bmi", "waist_circ")
 
 # Apply the function to the data set
 result <- process_columns(ds, columns_of_interest)
@@ -482,6 +483,7 @@ t2 <- result %>%
   mutate(char = c(
     "Female, n (%)", 
     "Current smoker, n (%)",
+    "Passive smoke exposure, n (%)",
     "Any smoke exposure, n (%)",
     "Age in years, Mean (SD)",
     "BMI (kg/m2), Mean (SD)",
@@ -523,8 +525,8 @@ ds <- ds %>%
 
 # apply function across selected columns
 # Columns of interest
-columns_of_interest <- c("female", "csmoke", "asmoke", 
-  "bmi", "age_health", "waist_circ")
+columns_of_interest <- c("female", "csmoke", "psmoke",
+  "asmoke", "bmi", "age_health", "waist_circ")
 
 # Apply the function to the data set
 result <- process_columns(ds, columns_of_interest)
@@ -533,6 +535,7 @@ t3 <- result %>%
   mutate(char = c(
     "Female, n (%)", 
     "Current smoker, n (%)",
+    "Passive smoke exposure, n (%)",
     "Any smoke exposure, n (%)", 
     "Age in years, Mean (SD)",
     "BMI (kg/m2), Mean (SD)", 

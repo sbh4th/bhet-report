@@ -67,6 +67,46 @@
 \fi
 \makeatother
 
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
@@ -161,6 +201,7 @@
    {\end@float}
  \makeatother
 \usepackage{changes}
+\AfterTOCHead[toc]{\sffamily}
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
@@ -237,7 +278,7 @@ Sternbach\textsuperscript{1} \and Shu
 Tao\textsuperscript{3} \and Kaibing Xue\textsuperscript{4} \and Wenlu
 Yuan\textsuperscript{1} \and Xiang Zhang\textsuperscript{1} \and Yuanxun
 Zhang\textsuperscript{4}}
-\date{2024-10-05}
+\date{2024-10-07}
 
 \begin{document}
 \maketitle
@@ -283,158 +324,69 @@ outdoor air pollution, as well as heating behaviors and health outcomes.
 
 \subsubsection{Personal exposure}\label{personal-exposure}
 
-Table Table~\ref{tbl-a-het-personal} shows limited evidence that the
+Table \textbf{?@tbl-a-het-personal} shows limited evidence that the
 \(ATT\)s across cohorts and time demonstrate meaningful heterogeneity.
 
-\begin{table}[H]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{temp\_table }\OtherTok{\textless{}{-}} \FunctionTok{read\_xlsx}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"outputs"}\NormalTok{,}
+  \StringTok{"chemical composition tables.xlsx"}\NormalTok{), }\AttributeTok{sheet =} \StringTok{"outdoor"}\NormalTok{)}
 
-\caption{\label{tbl-a-het-personal}Heterogenous treatment effects:
-Personal exposures}
+\NormalTok{temp\_table\_out }\OtherTok{\textless{}{-}}\NormalTok{ temp\_table }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \SpecialCharTok{{-}}\NormalTok{wave) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{separate\_wider\_delim}\NormalTok{(value, }
+    \AttributeTok{delim =} \StringTok{"("}\NormalTok{, }\AttributeTok{names =} \FunctionTok{c}\NormalTok{(}\StringTok{"conc"}\NormalTok{, }\StringTok{"ci"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{ci =} \FunctionTok{paste}\NormalTok{(}\StringTok{"("}\NormalTok{, ci, }\AttributeTok{sep =} \StringTok{""}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ wave, }
+    \AttributeTok{values\_from =} \FunctionTok{c}\NormalTok{(conc, ci), }
+    \AttributeTok{names\_vary =} \StringTok{"slowest"}\NormalTok{)}
 
-\centering{
+\FunctionTok{colnames}\NormalTok{(temp\_table\_out) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Name"}\NormalTok{, }\StringTok{"Mean"}\NormalTok{, }\StringTok{"95\% CI"}\NormalTok{, }
+  \StringTok{"Mean"}\NormalTok{, }\StringTok{"95\% CI"}\NormalTok{, }\StringTok{"Mean"}\NormalTok{, }\StringTok{"95\% CI"}\NormalTok{)}
 
+\FunctionTok{tt}\NormalTok{(temp\_table\_out) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{group\_tt}\NormalTok{(}\AttributeTok{j =} \FunctionTok{list}\NormalTok{(}
+    \StringTok{"Wave 1"} \OtherTok{=} \DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{,}
+    \StringTok{"Wave 2"} \OtherTok{=} \DecValTok{4}\SpecialCharTok{:}\DecValTok{5}\NormalTok{,}
+    \StringTok{"Wave 4"} \OtherTok{=} \DecValTok{6}\SpecialCharTok{:}\DecValTok{7}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{format\_tt}\NormalTok{(}\AttributeTok{escape =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
 \centering
-\begin{talltblr}[         %% tabularray outer open
-entry=none,label=none,
-note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval},
-note{a}={Joint test that all cohort-time ATTs are equal: F(3, 1260)= 0.501, p= 0.682},
-note{b}={Joint test that all cohort-time ATTs are equal: F(3, 1151)= 0.965, p= 0.408},
+\begin{tblr}[         %% tabularray outer open
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
-colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
-cell{1}{3}={c=2,}{halign=c,},
-cell{1}{5}={c=2,}{halign=c,},
-cell{3}{1}={c=6}{},cell{5}{1}={c=6}{},
-cell{4}{1}={preto={\hspace{1em}}},
-cell{6}{1}={preto={\hspace{1em}}},
-cell{7}{1}={preto={\hspace{1em}}},
-cell{8}{1}={preto={\hspace{1em}}},
-cell{9}{1}={preto={\hspace{1em}}},
-cell{10}{1}={preto={\hspace{1em}}},
-row{3}={,cmd=\bfseries,},
-row{5}={,cmd=\bfseries,},
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=2,}{halign=c,},
+cell{1}{6}={c=2,}{halign=c,},
 }                     %% tabularray inner close
 \toprule
-&  & PM2.5 &  & Black carbon &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
-Cohort & Time & ATT\textsuperscript{a} & (95\% CI) & ATT\textsuperscript{b} & (95\% CI) \\ \midrule %% TinyTableHeader
-Average ATT &&&&& \\
-All & All &   0.17 & (-19.6, 19.9) & -0.43 & (-1.5, 0.6) \\
-Cohort-Time ATTs &&&&& \\
-2019 & 2019 &   7.43 & (-24.4, 39.2) & -0.86 & (-1.9, 0.2) \\
-2019 & 2021 & -12.97 & (-36.6, 10.6) & -0.38 & (-2, 1.2) \\
-2020 & 2021 &  15.73 & (-34.8, 66.3) & -0.14 & (-1.8, 1.5) \\
-2021 & 2021 & -13.68 & (-36.6, 9.3) &  0.13 & (-1.4, 1.6) \\
+& Wave 1 &  & Wave 2 &  & Wave 4 &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
+Name & Mean & 95\% CI & Mean & 95\% CI & Mean & 95\% CI \\ \midrule %% TinyTableHeader
+Al & 110  & (108-113) & 66.7  & (65.5-67.8) & 60.9  & (59.8-62.1) \\
+Fe & 85.2  & (82.9-87.5) & 57.9  & (57-58.9) & 64.1  & (63-65.2) \\
+Pb & 6.26  & (5.82-6.71) & 4.32  & (4.06-4.57) & 7.69  & (7.27-8.11) \\
+Si & 139  & (136-142) & 76.7  & (75.4-77.9) & 128  & (126-129) \\
+Chloride & 56.1  & (54.5-57.8) & 32.2  & (31.5-32.9) & 15.6  & (14.9-16.4) \\
+EC & 123  & (121-125) & 112  & (111-113) & 103  & (101-104) \\
+ws-Na & 11.4  & (10.8-12) & 9.28  & (8.88-9.68) & 9.23  & (8.76-9.7) \\
+Ammonium & 136  & (133-138) & 152  & (151-154) & 78.3  & (77.3-79.4) \\
+Nitrate & 225  & (222-227) & 259  & (257-261) & 146  & (145-148) \\
+ns-S & 87  & (85.3-88.7) & 70  & (69.2-70.9) & 75.9  & (74.9-76.9) \\
+OC & 1080  & (1070-1080) & 901  & (898-904) & 649  & (645-653) \\
+Sulfate & 223  & (220-225) & 206  & (205-208) & 132  & (131-134) \\
+wi-Ca & 79.4  & (77.2-81.7) & 40.7  & (39.8-41.6) & 79  & (77.6-80.4) \\
+wi-K & 81.4  & (79.5-83.3) & 33.7  & (33-34.3) & 37.8  & (37-38.6) \\
+wi-Mg & 39.8  & (38.6-41) & 21.2  & (20.6-21.7) & 38.6  & (37.7-39.4) \\
+ws-Ca & 33.5  & (32.5-34.5) & 23.5  & (22.8-24.2) & 15.1  & (14.3-15.9) \\
+ws-K & 52.4  & (50.8-54) & 25.4  & (24.9-25.9) & 17.9  & (17.4-18.4) \\
+ws-Mg & 6.98  & (6.41-7.55) & 3.19  & (2.97-3.41) & 2.96  & (2.72-3.2) \\
 \bottomrule
-\end{talltblr}
-
-}
-
-\end{table}%
-
-\newpage
-
-\subsubsection{Mediation analyses for blood
-pressure}\label{mediation-analyses-for-blood-pressure}
-
-Table~\ref{tbl-a-bp-med-het} shows the cohort-time treatment effects for
-the mediation model for blood pressure.
-
-\begin{table}[b]
-
-\caption{\label{tbl-a-bp-med-het}Heterogenous treatment effects for
-blood pressure mediation model.}
-
-\centering{
-
-\centering
-\resizebox{\ifdim\width>\linewidth 0.5\linewidth\else\width\fi}{!}{
-\begin{talltblr}[         %% tabularray outer open
-entry=none,label=none,
-note{}={Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.},
-note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
-note{b}={Mediators were set to the mean value for untreated participants at baseline.},
-]                     %% tabularray outer close
-{                     %% tabularray inner open
-colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
-cell{2}{5}={c=2,}{halign=c,},
-cell{2}{7}={c=2,}{halign=c,},
-cell{2}{9}={c=2,}{halign=c,},
-cell{1}{3}={c=2,}{halign=c,},
-cell{1}{5}={c=6,}{halign=c,},
-cell{4}{1}={c=10}{},cell{9}{1}={c=10}{},cell{14}{1}={c=10}{},cell{19}{1}={c=10}{},
-cell{5}{1}={preto={\hspace{1em}}},
-cell{6}{1}={preto={\hspace{1em}}},
-cell{7}{1}={preto={\hspace{1em}}},
-cell{8}{1}={preto={\hspace{1em}}},
-cell{10}{1}={preto={\hspace{1em}}},
-cell{11}{1}={preto={\hspace{1em}}},
-cell{12}{1}={preto={\hspace{1em}}},
-cell{13}{1}={preto={\hspace{1em}}},
-cell{15}{1}={preto={\hspace{1em}}},
-cell{16}{1}={preto={\hspace{1em}}},
-cell{17}{1}={preto={\hspace{1em}}},
-cell{18}{1}={preto={\hspace{1em}}},
-cell{20}{1}={preto={\hspace{1em}}},
-cell{21}{1}={preto={\hspace{1em}}},
-cell{22}{1}={preto={\hspace{1em}}},
-cell{23}{1}={preto={\hspace{1em}}},
-cell{24}{1}={preto={\hspace{1em}}},
-column{1}={halign=l,},
-column{2}={halign=l,},
-column{3}={halign=c,},
-column{4}={halign=c,},
-column{5}={halign=c,},
-column{6}={halign=c,},
-column{7}={halign=c,},
-column{8}={halign=c,},
-column{9}={halign=c,},
-column{10}={halign=c,},
-column{1}={font=\fontsize{0.8em}{1.1em}\selectfont,},
-column{2}={font=\fontsize{0.8em}{1.1em}\selectfont,},
-column{3}={font=\fontsize{0.8em}{1.1em}\selectfont,},
-column{4}={font=\fontsize{0.8em}{1.1em}\selectfont,},
-column{5}={font=\fontsize{0.8em}{1.1em}\selectfont,},
-column{6}={font=\fontsize{0.8em}{1.1em}\selectfont,},
-column{7}={font=\fontsize{0.8em}{1.1em}\selectfont,},
-column{8}={font=\fontsize{0.8em}{1.1em}\selectfont,},
-column{9}={font=\fontsize{0.8em}{1.1em}\selectfont,},
-column{10}={font=\fontsize{0.8em}{1.1em}\selectfont,},
-row{4}={,cmd=\bfseries,},
-row{9}={,cmd=\bfseries,},
-row{14}={,cmd=\bfseries,},
-row{19}={,cmd=\bfseries,},
-}                     %% tabularray inner close
-\toprule
-&  & Adjusted Total Effect &  & CDE Mediated By: &  &  &  &  &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-10}
-&  &  &  & Indoor PM &  & Indoor Temp &  & PM + Temp &  \\ \cmidrule[lr]{5-6}\cmidrule[lr]{7-8}\cmidrule[lr]{9-10}
-Cohort & Time & ATT\textsuperscript{a} & (95\% CI) & ATT\textsuperscript{b} & (95\% CI) & ATT\textsuperscript{b} & (95\% CI) & ATT\textsuperscript{b} & (95\% CI) \\ \midrule %% TinyTableHeader
-Brachial SBP &&&&&&&&& \\
-2019 & 2019 & -2.36 & (-5.23, 0.50) & -2.15 & (-5.14, 0.84) & -1.69 & (-4.54, 1.15) & -1.24 & (-4.20, 1.72) \\
-2019 & 2021 & -1.51 & (-4.01, 0.98) & -1.27 & (-4.01, 1.47) & -0.41 & (-2.92, 2.10) & 0.01 & (-2.71, 2.74) \\
-2020 & 2021 & -1.26 & (-4.97, 2.45) & -0.54 & (-4.25, 3.17) & 0.43 & (-2.86, 3.73) & 1.04 & (-2.59, 4.67) \\
-2021 & 2021 & 2.39 & (-0.49, 5.28) & 2.68 & (-0.42, 5.79) & 1.95 & (-1.74, 5.64) & 1.88 & (-1.92, 5.67) \\
-Central SBP &&&&&&&&& \\
-2019 & 2019 & -2.03 & (-4.69, 0.63) & -1.75 & (-4.61, 1.11) & -1.40 & (-4.06, 1.27) & -0.89 & (-3.73, 1.95) \\
-2019 & 2021 & -1.96 & (-4.45, 0.52) & -1.65 & (-4.40, 1.11) & -0.93 & (-3.18, 1.32) & -0.44 & (-2.95, 2.07) \\
-2020 & 2021 & -1.78 & (-5.07, 1.52) & -1.00 & (-4.36, 2.36) & -0.15 & (-3.18, 2.88) & 0.47 & (-2.95, 3.89) \\
-2021 & 2021 & 2.11 & (-1.09, 5.31) & 2.45 & (-0.83, 5.73) & 1.66 & (-1.73, 5.05) & 1.63 & (-1.82, 5.08) \\
-Brachial DBP &&&&&&&&& \\
-2019 & 2019 & -2.66 & (-4.67, -0.65) & -2.47 & (-4.70, -0.25) & -2.29 & (-4.18, -0.40) & -1.94 & (-4.03, 0.14) \\
-2019 & 2021 & -2.37 & (-4.01, -0.72) & -2.10 & (-4.09, -0.11) & -1.81 & (-3.21, -0.41) & -1.50 & (-3.28, 0.27) \\
-2020 & 2021 & 0.20 & (-1.54, 1.94) & 0.31 & (-1.43, 2.04) & 1.14 & (-0.65, 2.94) & 1.23 & (-0.70, 3.15) \\
-2021 & 2021 & 0.78 & (-0.48, 2.05) & 1.05 & (-0.59, 2.69) & 0.20 & (-1.21, 1.62) & 0.36 & (-1.34, 2.06) \\
-Central DBP &&&&&&&&& \\
-2019 & 2019 & -2.67 & (-4.57, -0.78) & -2.43 & (-4.58, -0.28) & -2.52 & (-4.34, -0.70) & -2.13 & (-4.18, -0.08) \\
-2019 & 2021 & -2.55 & (-4.15, -0.94) & -2.20 & (-4.18, -0.22) & -2.18 & (-3.60, -0.76) & -1.80 & (-3.58, -0.03) \\
-2020 & 2021 & 0.11 & (-1.67, 1.90) & 0.22 & (-1.58, 2.01) & 1.07 & (-0.74, 2.87) & 1.16 & (-0.80, 3.13) \\
-2021 & 2021 & 1.09 & (-0.06, 2.23) & 1.39 & (-0.16, 2.94) & 0.51 & (-0.80, 1.82) & 0.70 & (-0.94, 2.34) \\
-\bottomrule
-\end{talltblr}
-}
-
-}
-
-\end{table}%
+\end{tblr}
+\end{table}
 
 \newpage
 

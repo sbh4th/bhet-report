@@ -161,6 +161,7 @@
    {\end@float}
  \makeatother
 \usepackage{changes}
+\AfterTOCHead[toc]{\sffamily}
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
@@ -237,7 +238,7 @@ Sternbach\textsuperscript{1} \and Shu
 Tao\textsuperscript{3} \and Kaibing Xue\textsuperscript{4} \and Wenlu
 Yuan\textsuperscript{1} \and Xiang Zhang\textsuperscript{1} \and Yuanxun
 Zhang\textsuperscript{4}}
-\date{2024-10-06}
+\date{2024-10-07}
 
 \begin{document}
 \maketitle
@@ -875,13 +876,13 @@ determined by distributions of the mass data) were excluded. Third,
 samples that were missing the information required to determine the
 sampling volume, and thus the PM2.5 concentration, were excluded.
 Finally, any filters that suffered damage in the field such as
-punctures, tears, or holes were excluded. Thus, the final count of PM2.5
-samples that met our criteria for inclusion in analysis is as follows in
-the table below:
+punctures, tears, or holes were excluded. The final count of total
+PM\textsubscript{2.5} samples and those that met our criteria for
+inclusion in the analysis is as follows in Table~\ref{tbl-filters}.
 
 \begin{table}[H]
 
-\caption{\label{tbl-blanks}Count of total outdoor and personal exposure
+\caption{\label{tbl-filters}Count of total outdoor and personal exposure
 PM\textsubscript{2.5} samples (filters) collected over the course of the
 project and number included for analysis.}
 
@@ -1570,7 +1571,7 @@ DiD strategy help to reduce the potential for unmeasured confounding of
 the mediator-outcome effect (Keele et al. 2015). Given the large number
 of outcomes of interest in this study, as well as the potential for
 heterogeneous treatment effects, we limited the mediation analysis to
-health outcomes for which we observed a total effect of the CHP policy.
+health outcomes for which we observed a total effect of the CHP.
 
 \subsection{Identification of potential confounders and model
 covariates}\label{identification-of-potential-confounders-and-model-covariates}
@@ -1655,8 +1656,8 @@ each of the 30 datasets. We then used Rubin's Rules to combine point
 estimates and standard errors while accounting for both within- and
 between-dataset variances (Rubin 1987).
 
-Appendix \comment{EC 2a, 2b} Table~\ref{tbl-a-mi} shows that overall
-most measures had no or \textless1\% missing data, with the exception of
+Appendix \comment{EC 2a, 2b} Table~\ref{tbl-a-mi} shows that most
+measures had no or \textless1\% missing data, with the exception of
 measured waist circumference, height and weight (all around 15\%
 missing). Appendix Table~\ref{tbl-a-mi-cohort} also shows the number and
 percent of missing observations by treatment enrollment cohort and
@@ -5592,37 +5593,38 @@ for Miyun.}
 Figure~\ref{fig-pmf-sup} shows results for the 3-, 4-, and 5-factor
 solutions for both personal and outdoor exposure samples.
 
-For the 3-factor solution, Factor 1, represented in red, is interpreted
-as transported dust. This conclusion is supported by moderate loadings
-of mineral dust-related species such as silicon (Si) and water-soluble
-calcium (Ca). Calcium and aluminum are typically associated with crustal
-materials, especially in arid or semi-arid regions like the Gobi Desert
-and the Taklamakan Desert, which are known sources of transported dust
-to northern China, including Beijing. Factor 2, represented in blue,
-likely represents local dust, with significant contributions from metals
-typically associated with crustal materials. Factor 3, represented in
-green, is interpreted as a mixture of combustion-related sources, with
-contributions from elemental and organic carbon, as well as evidence of
-secondary particulate matter formation. This includes carbon species
-indicative of combustion, contributions from Pb and water-soluble
-potassium (K), and secondary formation markers such as sulfate (SO₄²⁻).
+For the 3-factor solution, Factor 1, represented in dark pink, is
+interpreted as transported dust. This conclusion is supported by
+moderate loadings of mineral dust-related species such as silicon (Si)
+and water-soluble calcium (Ca). Calcium and aluminum are typically
+associated with crustal materials, especially in arid or semi-arid
+regions like the Gobi Desert and the Taklamakan Desert, which are known
+sources of transported dust to northern China, including Beijing. Factor
+2, represented in light pink, likely represents local dust, with
+significant contributions from metals typically associated with crustal
+materials. Factor 3, represented in beige, is interpreted as a mixture
+of combustion-related sources, with contributions from elemental and
+organic carbon, as well as evidence of secondary particulate matter
+formation. This includes carbon species indicative of combustion,
+contributions from Pb and water-soluble potassium (K), and secondary
+formation markers such as sulfate (SO₄²⁻).
 
-In the 4-factor solution, Factor 1 (red) remains identified as
-transported dust. Factor 2 (blue) continues to represent local dust.
-Factor 3 (green) now represents mixed combustion, capturing
+In the 4-factor solution, Factor 1 (dark pink) remains identified as
+transported dust. Factor 2 (light pink) continues to represent local
+dust. Factor 3 (beige) now represents mixed combustion, capturing
 contributions from both biomass and coal-related sources. A new Factor 4
-(yellow) is interpreted as secondary sulfur, given its strong
+(light green) is interpreted as secondary sulfur, given its strong
 association with sulfate and ammonium (NH₄⁺), both markers for secondary
 particulate matter formation.
 
-In the 5-factor solution, Factor 1 (red) continues to represent
-transported dust. Factor 2 (blue) shifts its primary attribution to
-secondary sulfur. Factor 3 (green) is interpreted as mixed combustion,
-now dominated by biomass burning contributions. Factor 4 (yellow) likely
-represents coal combustion, based on species such as arsenic (As) and
-selenium (Se), which are typically associated with coal burning.
-Finally, Factor 5 (orange) represents local dust, primarily associated
-with crustal elements.
+In the 5-factor solution, Factor 1 (dark pink) continues to represent
+transported dust. Factor 2 (light pink) shifts its primary attribution
+to secondary sulfur. Factor 3 (beige) is interpreted as mixed
+combustion, now dominated by biomass burning contributions. Factor 4
+(light green) likely represents coal combustion, based on species such
+as arsenic (As) and selenium (Se), which are typically associated with
+coal burning. Finally, Factor 5 (dark green) represents local dust,
+primarily associated with crustal elements.
 
 \begin{figure}[H]
 
@@ -5740,6 +5742,104 @@ Q/Qexp >6 & ws-Ca, Cl & Cl & Pb & None \\
 DISP \% dQ & <0.01\% & <0.01\% & <0.01\% & <0.01\% \\
 DISP Swaps & 0 & 0 & 0 & 0 \\
 Bootstrap mapping < 100\% & None & sulfur secondary - 55\% & None & coal - 90\%, EC + OC - 90\%, chloride - 90\% \\
+\bottomrule
+\end{tblr}
+
+}
+
+\end{table}%
+
+\subsubsection{\texorpdfstring{PM\textsubscript{2.5} constituents for
+outdoor
+samples}{PM2.5 constituents for outdoor samples}}\label{pm2.5-constituents-for-outdoor-samples}
+
+\begin{table}[H]
+
+\caption{\label{tbl-species-outdoor}Mean (95\% confidence interval)
+species concentrations (x100 µg/m\textsuperscript{3}) for outdoor
+samples included in PMF.}
+
+\centering{
+
+\centering
+\begin{tblr}[         %% tabularray outer open
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=2,}{halign=c,},
+cell{1}{6}={c=2,}{halign=c,},
+}                     %% tabularray inner close
+\toprule
+& Wave 1 &  & Wave 2 &  & Wave 4 &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
+Species & Mean & 95\% CI & Mean & 95\% CI & Mean & 95\% CI \\ \midrule %% TinyTableHeader
+Al & 110  & (108-113) & 66.7  & (65.5-67.8) & 60.9  & (59.8-62.1) \\
+Fe & 85.2  & (82.9-87.5) & 57.9  & (57-58.9) & 64.1  & (63-65.2) \\
+Pb & 6.26  & (5.82-6.71) & 4.32  & (4.06-4.57) & 7.69  & (7.27-8.11) \\
+Si & 139  & (136-142) & 76.7  & (75.4-77.9) & 128  & (126-129) \\
+Chloride & 56.1  & (54.5-57.8) & 32.2  & (31.5-32.9) & 15.6  & (14.9-16.4) \\
+EC & 123  & (121-125) & 112  & (111-113) & 103  & (101-104) \\
+ws-Na & 11.4  & (10.8-12) & 9.28  & (8.88-9.68) & 9.23  & (8.76-9.7) \\
+Ammonium & 136  & (133-138) & 152  & (151-154) & 78.3  & (77.3-79.4) \\
+Nitrate & 225  & (222-227) & 259  & (257-261) & 146  & (145-148) \\
+ns-S & 87  & (85.3-88.7) & 70  & (69.2-70.9) & 75.9  & (74.9-76.9) \\
+OC & 1080  & (1070-1080) & 901  & (898-904) & 649  & (645-653) \\
+Sulfate & 223  & (220-225) & 206  & (205-208) & 132  & (131-134) \\
+wi-Ca & 79.4  & (77.2-81.7) & 40.7  & (39.8-41.6) & 79  & (77.6-80.4) \\
+wi-K & 81.4  & (79.5-83.3) & 33.7  & (33-34.3) & 37.8  & (37-38.6) \\
+wi-Mg & 39.8  & (38.6-41) & 21.2  & (20.6-21.7) & 38.6  & (37.7-39.4) \\
+ws-Ca & 33.5  & (32.5-34.5) & 23.5  & (22.8-24.2) & 15.1  & (14.3-15.9) \\
+ws-K & 52.4  & (50.8-54) & 25.4  & (24.9-25.9) & 17.9  & (17.4-18.4) \\
+ws-Mg & 6.98  & (6.41-7.55) & 3.19  & (2.97-3.41) & 2.96  & (2.72-3.2) \\
+\bottomrule
+\end{tblr}
+
+}
+
+\end{table}%
+
+\subsubsection{\texorpdfstring{PM\textsubscript{2.5} constituents for
+personal
+samples}{PM2.5 constituents for personal samples}}\label{pm2.5-constituents-for-personal-samples}
+
+\begin{table}[H]
+
+\caption{\label{tbl-species-personal}Mean (95\% confidence interval)
+species concentrations (x100 µg/m\textsuperscript{3}) for personal
+samples included in PMF.}
+
+\centering{
+
+\centering
+\begin{tblr}[         %% tabularray outer open
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=2,}{halign=c,},
+cell{1}{6}={c=2,}{halign=c,},
+}                     %% tabularray inner close
+\toprule
+& Wave 1 &  & Wave 2 &  & Wave 4 &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
+Species & Mean & 95\% CI & Mean & 95\% CI & Mean & 95\% CI \\ \midrule %% TinyTableHeader
+Al & 203  & (202-204) & 213  & (212-214) & 27.4  & (26.7-28.1) \\
+Fe & 40  & (39.4-40.6) & 57.1  & (55.9-58.4) & 33.6  & (32.9-34.3) \\
+Pb & 15.8  & (15.4-16.1) & 13.7  & (13.5-14) & 12.8  & (12.4-13.1) \\
+Si & 77.2  & (75.9-78.4) & 93.5  & (92-95) & 52.1  & (51.2-53) \\
+Chloride & 70.2  & (69-71.5) & 43.8  & (42.7-45) & 34.6  & (33.6-35.5) \\
+EC & 241  & (239-243) & 219  & (218-221) & 194  & (192-196) \\
+ws-Na & 8.75  & (8.36-9.14) & 12.3  & (11.8-12.7) & 10.8  & (10.3-11.2) \\
+Ammonium & 60.5  & (59.5-61.5) & 87.8  & (86.4-89.1) & 31.1  & (30.2-31.9) \\
+Nitrate & 151  & (149-152) & 235  & (232-237) & 59.1  & (58.1-60.1) \\
+ns-S & 46.3  & (45.4-47.2) & 44.1  & (43.2-45) & 27.5  & (26.7-28.3) \\
+OC & 3740  & (3730-3740) & 3430  & (3420-3440) & 2680  & (2680-2690) \\
+Sulfate & 129  & (127-130) & 126  & (125-128) & 77.6  & (76.5-78.7) \\
+wi-Ca & 46.8  & (45.7-47.9) & 81.6  & (79.8-83.5) & 48.4  & (47.6-49.2) \\
+wi-K & 88.2  & (87-89.4) & 72.8  & (71.6-74) & 67.7  & (66.5-68.9) \\
+wi-Mg & 25.6  & (25-26.2) & 30.4  & (29.7-31.1) & 26.5  & (26-27) \\
+ws-Ca & 57.1  & (56.4-57.9) & 42.8  & (41.9-43.8) & 15.7  & (15.1-16.2) \\
+ws-K & 49  & (48-50) & 43.8  & (42.9-44.7) & 28.7  & (27.9-29.5) \\
+ws-Mg & 4  & (3.75-4.24) & 3.77  & (3.49-4.04) & 2.06  & (1.81-2.3) \\
 \bottomrule
 \end{tblr}
 

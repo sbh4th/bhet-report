@@ -102,68 +102,12 @@ China is deploying an ambitious policy to transition up to 70% of households in 
 
 Table @tbl-a-het-personal shows limited evidence that the $ATT$s across cohorts and time demonstrate meaningful heterogeneity.
 
-```{r, echo=F, message=F, warning=F}
-# read in the data
-ds <- read_csv(here("data-clean", 
-  "BHET_master_data_04Oct2024.csv"),
-  col_select = c("wave", "gender_health", "age_health",
-    "smoking", "waist_circ", "height", "ptc_id", 
-    "weight", "lived_with_smoker", "ID_VILLAGE")) %>%
-  filter(wave != 3) %>%
-  mutate(catvar = recode_factor(wave, 
-    `1` = "1", `2` = "2", `4` = "3"),
-    bmi = (weight / (height/100)^2),
-    female = if_else(gender_health == 2 & !is.na(gender_health),
-      1, 0),
-    csmoke = if_else(smoking==1 & !is.na(smoking), 1, 0),
-    psmoke = if_else(lived_with_smoker==3, 1, 0),
-    asmoke = if_else(smoking < 3, 1, 
-      if_else(smoking==3 & lived_with_smoker %in% 
-                                    c(2,3), 1, 0))) %>%
-  mutate(across(c(female, csmoke, psmoke, asmoke), as.integer))
+```{r, out.width = "70%"}
+
+knitr::include_graphics(here("images",
+  "dag.png"))
+
 ```
-
-```{r, warning=F, message=F}
-#| echo: FALSE
-#| tbl-cap: Demographic and health characteristics of participants in each study wave.
-#| label: tbl-each-campaign
-#| eval: TRUE
-  
-# Columns of interest
-columns_of_interest <- c("female", "csmoke", "psmoke", 
-  "asmoke", "age_health", "bmi", "waist_circ")
-
-# Apply the function to the data set
-result <- process_columns(ds, columns_of_interest)
-
-t2 <- result %>%
-  mutate(char = c(
-    "Female, n (%)", 
-    "Current smoker, n (%)",
-    "Passive smoke exposure, n (%)",
-    "Any smoke exposure, n (%)",
-    "Age in years, Mean (SD)",
-    "BMI (kg/m2), Mean (SD)",
-    "Waist circumference (cm), Mean (SD)")) %>%
-  rename("Characteristic" = char)
-
-colnames(t2) <- c("Characteristic", 
-  "Wave 1 (2018-19) N=1003", "Wave 2 (2019-20) N=1110",
-  "Wave 4 (2021-22) N=1028", "Statistic", "p-value")
-
-tt(t2,
-   width = c(.4, .15, .15, .15, .1, .1),
-   notes = list(a = list(i=0, j=5,
-     text = "Chi-square test for categorical and F-test for continuous characteristics."))) |>
-  group_tt(
-    j = list(
-      " " = 1,
-      "Estimates" = 2:4,
-      "Test for Equality" = 5:6)) |>
-  format_tt(escape = TRUE) |>
-  style_tt(j = 1:4, align = "llll")
-```
-
 
 
     

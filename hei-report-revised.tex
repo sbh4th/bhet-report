@@ -839,21 +839,25 @@ from their body and place within 2 meters while sleeping, sitting, or
 bathing. Field blanks for personal air pollution exposure measurements
 were collected at a rate of \textasciitilde10\% in each village.
 
-To summarize, for outdoor sampling, in Wave 1, we aimed to deploy one to
-three PM sensors to measure community PM in each village at distinct
-locations: one near the center of the village and the others at least
-500 meters away, and finally we set up one to three outdoor monitoring
-sites in 44 villages. Starting from Wave 2, two PM sensors were set up
-in each village. Sensors were positioned at least 1.5 meters above the
-ground and away from visible sources of PM. Filter-based
-PM\textsubscript{2.5} samples were collected weekly for chemical
-analysis and sensor calibration, with UPAS samplers rotated between
-sensor locations. Sampling took place over multiple waves. In total, we
-collected 126, 371, and 289 outdoor PM\textsubscript{2.5} samples in
-Waves 1, 2, and 4, respectively. We also collected quartz filters
-co-located with a subset of Teflon filter samples to quantify organic
-and elemental carbon fractions in selected waves (23 in Wave 2 and 11 in
-Wave 4).
+\paragraph{\texorpdfstring{Summary of outdoor and personal
+PM\textsubscript{2.5} sampling and
+sensing}{Summary of outdoor and personal PM2.5 sampling and sensing}}\label{summary-of-outdoor-and-personal-pm2.5-sampling-and-sensing}
+
+To summarize, \comment{EC 5b} for outdoor sampling, in Wave 1, we aimed
+to deploy one to three PM sensors to measure community PM in each
+village at distinct locations: one near the center of the village and
+the others at least 500 meters away, and finally we set up one to three
+outdoor monitoring sites in 44 villages. Starting from Wave 2, two PM
+sensors were set up in each village. Sensors were positioned at least
+1.5 meters above the ground and away from visible sources of PM.
+Filter-based PM\textsubscript{2.5} samples were collected weekly for
+chemical analysis and sensor calibration, with UPAS samplers rotated
+between sensor locations. Sampling took place over multiple waves. In
+total, we collected 126, 371, and 289 outdoor PM\textsubscript{2.5}
+samples in Waves 1, 2, and 4, respectively. We also collected quartz
+filters co-located with a subset of Teflon filter samples to quantify
+organic and elemental carbon fractions in selected waves (23 in Wave 2
+and 11 in Wave 4).
 
 For personal air pollution sampling, we used Ultrasonic Personal Aerosol
 Samplers (UPAS) and Personal Exposure Monitors (PEM) to measure personal
@@ -1616,19 +1620,18 @@ whether or not they lived with a smoker; whether or not the household
 reported using wood (i.e., biomass) for household energy activities, and
 if so, self-reported quantity of wood. Potential non-linearity between
 continuous covariates and our study outcomes were evaluated using
-natural cubic splines with different degrees of freedom. Ultimately, the
-following covariates were included in the final DiD models for outdoor,
-indoor, and personal exposures to air pollution, based on whether
-measurable changes in the covariate were observed over time. For the
-final adjusted DiD model for personal exposure source contributions due
-to mixed combustion of solid fuels (hereafter `mixed combustion'), we
-adjusted for: temperature (represented by a spline with 2 degrees of
-freedom); participant smoking status; and whether or not the household
-reported using biomass fuel. For the final adjusted DiD model for
-outdoor (community) `mixed combustion' source contributions, the
-following covariates were included: total number of households in the
-village; village population; and ambient relative humidity (represented
-by a spline with 2 degrees of freedom).
+natural cubic splines with different degrees of freedom. Ultimately, we
+included the following measured time-varying covariates in the final DiD
+models for outdoor, indoor, and personal exposures to air pollution. For
+personal exposure source contributions due to mixed combustion of solid
+fuels (hereafter `mixed combustion'), we adjusted for: temperature
+(represented by a spline with 2 degrees of freedom); participant smoking
+status; and whether or not the household reported using biomass fuel.
+For the final adjusted DiD model for outdoor (community) `mixed
+combustion' source contributions, the following covariates were
+included: total number of households in the village; village population;
+and ambient relative humidity (represented by a spline with 2 degrees of
+freedom).
 
 \subsection{\texorpdfstring{Multiple imputation for covariates and
 indoor PM\textsubscript{2.5} in analyses with BP
@@ -2485,24 +2488,28 @@ contributions}\label{aim-2-source-contributions}
 Source analysis for this study was conducted using data from all
 eligible outdoor PM and personal PM samples. Eligible samples were those
 for which PM\textsubscript{2.5} mass and chemical components were
-quantified. We evaluated factors contributing to community-outdoor and
-personal exposure to PM\textsubscript{2.5} using the U.S. EPA's source
-apportionment model PMF (positive matrix factorization) 5.0, which has
-been widely used for similar analyses in China (Gao et al.~2018; Liu et
-al.~2017; Tao et al.~2017). As an optimum PMF result depends on the
-appropriate number of input factors, sensitivity analysis using a range
-of factors (e.g., range of 3 to 7 factors, based on a combination of the
-species that we have and our field-based observations and sources that
-have been identified previously in our study region) were conducted to
-examine the impact of a different number of factors on the model
-results. Detailed information on the procedures of PMF analysis can be
-found elsewhere (Wang et al.~2016; Zíková et al.~2016). Briefly, the
-scree plot from our principal component analysis indicated that
-solutions of between 3 and 5 factors (+/- 1) would be most appropriate,
-further supporting our evaluation of 3 to 6 factor solutions from PMF.
-As there was no indication that even moving from five to six factors
-would improve our solution; therefore, a seven factor solution would not
-make sense to investigate further (Figure~\ref{fig-source-figure}).
+quantified. Individual chemical species concentrations (means and 95\%
+confidence intervals) for outdoor and personal samples by study wave are
+provided in Appendix tbl-species-outdoor and tbl-species-personal,
+respectively. \comment{EC 6} We evaluated factors contributing to
+community-outdoor and personal exposure to PM\textsubscript{2.5} using
+the U.S. EPA's source apportionment model PMF (positive matrix
+factorization) 5.0, which has been widely used for similar analyses in
+China (Gao et al.~2018; Liu et al.~2017; Tao et al.~2017). As an optimum
+PMF result depends on the appropriate number of input factors,
+sensitivity analysis using a range of factors (e.g., range of 3 to 7
+factors, based on a combination of the species that we have and our
+field-based observations and sources that have been identified
+previously in our study region) were conducted to examine the impact of
+a different number of factors on the model results. Detailed information
+on the procedures of PMF analysis can be found elsewhere (Wang et
+al.~2016; Zíková et al.~2016). Briefly, the scree plot from our
+principal component analysis indicated that solutions of between 3 and 5
+factors (+/- 1) would be most appropriate, further supporting our
+evaluation of 3 to 6 factor solutions from PMF. As there was no
+indication that even moving from five to six factors would improve our
+solution; therefore, a seven factor solution would not make sense to
+investigate further (Figure~\ref{fig-source-figure}).
 
 The chemical analysis data used as the inputs for the PMF model were
 dispersion normalized prior to inclusion in the model. PMF works by

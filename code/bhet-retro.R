@@ -3,7 +3,7 @@
 #  input:    
 #  output:   bhet-retro.rds
 #  project:  BHET
-#  author:   sam harper \ 2024-09-06
+#  author:   sam harper \ 2024-10-08
 
 
 ##  0 Load needed packages ----
@@ -26,9 +26,9 @@ obs_table <- readRDS(here("outputs",
     significant = if_else(
      abs(estimate_2) > 1.96 * se, 1, 0),
     # table of hypothetical effect sizes
-    es = c(-1.5, -1.5, -1, -1, 0.5, 0.5, 
+    es = c(-2.5, -2.5, -2, -2, 0.5, 0.5, 
     0.1, 0.1, -5, -2, -3, -1, -3, -1, -0.5,
-    -2, -2, -2, -2)) |>
+    -0.1, -0.4, -2, -2)) |>
   # select needed columns
   select(category, outcome, significant,
          estimate_2, se, es)

@@ -85,25 +85,25 @@ bhet_master_data %>%
 
 ### Introduction {.unnumbered .unlisted}
 
-Since 2015, thousands of villages across Beijing and northern China have been treated by a Coal Ban and Heat Pump (CHP) subsidy policy that banned household coal burning and subsidized the cost of replacement with electric heaters and electricity. Whether this large-scale policy was successful in improving air quality and health remains an important and unresolved question. We estimated the effects of the CBHP policy on air quality and cardiopulmonary health in Beijing villages, and quantified how much of the policy’s effects on health were mediated by changes in air pollution and indoor temperature. 
+Since 2015, thousands of rural and peri-urban villages across Beijing and northern China have been treated by a household Clean Heating Policy (CHP) that banned household coal burning and subsidized the costs of electric heaters and electricity. Whether this large-scale policy was successful in improving air quality and health remains an important and unresolved question. We estimated the effects of the CHP policy on air quality and cardiopulmonary health in Beijing villages, and quantified how much of the policy’s effects on health were mediated by changes in air pollution and indoor temperature.  
 
 ### Methods {.unnumbered .unlisted}
 
-In winter 2018-19 we enrolled 1003 participants in 50 Beijing villages that were eligible for, but not currently treated by, the CBHP policy and followed them over four consecutive winter data collection waves. In waves 1, 2 and 4, we administered questionnaires and measured participants’ anthropometrics, blood pressure (BP), airway inflammation (FeNO), and 24-h personal exposure to fine particulate matter (PM~2.5~). Fasting whole blood samples were obtained at clinic visits in waves 1 and 2 for analysis of glucose, lipid profile, and markers of inflammation and oxidative stress. Wintertime outdoor PM~2.5~ was measured in all 4 waves, and wintertime indoor temperature and PM~2.5~ were measured in waves 2, 3 and 4. The PM~2.5~ filters were analyzed for mass and chemical composition, which were used for source apportionment. To estimate the impacts of the policy we used a difference-in-differences design that accommodated the staggered rollout of the CHP. We used 'extended' two-way fixed effects models and marginal effects to quantify the effect of the policy on air pollution and health. We further evaluated whether villages treated by the policy in different years respond differently to the policy, and if any of the observed health impacts of the policy were mediated through changes in air pollution or home (indoor) temperature.
+In winter 2018-19 we enrolled 1003 participants in 50 Beijing villages that were eligible for, but not currently treated by, the CHP and followed them over four consecutive winter data collection waves. In waves 1, 2 and 4, we administered questionnaires and measured participants’ anthropometrics, blood pressure (BP), airway inflammation (FeNO), and 24-h personal exposure to fine particulate matter (PM~2.5~). Fasting whole blood samples were obtained at clinic visits in waves 1 and 2 for analysis of glucose, lipid profile, and markers of inflammation and oxidative stress. Wintertime outdoor PM~2.5~ was measured in all 4 waves, and wintertime indoor temperature and indoor PM~2.5~ were measured in waves 2, 3 and 4. The PM~2.5~ filters were analyzed for their mass, black carbon, and chemical composition, which were used for source apportionment. To estimate the impacts of the policy we used a difference-in-differences design that accommodated the staggered rollout of the CHP. We used 'extended' two-way fixed effects models and marginal effects to quantify the effect of the policy on air pollution and health outcomes. We further evaluated whether villages treated by the policy in different years respond differently to the policy, and whether the observed health impacts of the policy were mediated through changes in air pollution or home (indoor) temperature.
 
 ### Results {.unnumbered .unlisted}
 
-At baseline (wave 1), mean participant age was 60 y (SD=9.2), 60% were female, and most (63%) worked in agriculture. Geometric mean personal exposures to PM~2.5~ were twice as high as outdoor PM~2.5~ (72 versus 36 µg/m^3^), and the main source contributors were local and transported dust, regional and domestic coal and biomass burning, and aerosols that form through secondary formation. By waves 2, 3, and 4 there were a cumulative total of 10, 17, and 20 (out of 50 total) villages exposed to the CHP. Uptake and adherence to the policy was high: among villages treated in wave 2, the proportion of households using heat pumps and coal heaters, respectively, changed from 3% and 97% in wave 1 to 94% and 3% in wave 4, with similar transitions in villages exposed to the policy in later waves. Marginal effects derived from multivariable extended two-way fixed effects models showed that exposure to the policy increased indoor temperature by 1-2°C and reduced indoor seasonal PM~2.5~ by approximately 36 µg/m^3^. Exposure to the policy also reduced contributions to PM~2.5~ from solid fuel sources,  including household coal burning, and improved blood pressure (~1.5 mmHg lower systolic and diastolic) and self-reported respiratory symptoms (~7 percentage point reduction in any symptoms). There was notable heterogeneity in effects across treatment cohorts, with larger benefits to indoor PM~2.5~ and health in villages treated in earlier relative to later years. In the mediation analysis, indoor PM~2.5~ and indoor temperature explained most of the total effect of the policy on systolic BP and roughly half of the total effect on diastolic BP, but did not explain improvements in self-reported respiratory symptoms. The policy did not show evidence of meaningful effects on outdoor or personal exposure to PM~2.5~, or on biomarkers of inflammation and oxidative stress. 
+At baseline (wave 1), mean participant age was 60 y (SD=9.2), 60% were female, and most (63%) worked in agriculture. Geometric mean personal exposures to PM~2.5~ were twice as high as outdoor PM~2.5~ (72 versus 36 µg/m^3^), and the main source contributors were local and transported dust, regional and domestic coal and biomass burning, and secondary pollutants. By waves 2, 3, and 4 there were a cumulative total of 10, 17, and 20 villages (out of 50 total) exposed to the CHP. Uptake and adherence to the policy was high: among villages treated in wave 2, the proportion of households using heat pumps and coal heaters, respectively, changed from 3% and 97% in wave 1 to 94% and 3% in wave 4, with similar clean energy transitions in villages exposed to the policy in later waves. Marginal effects derived from multivariable extended two-way fixed effects models showed that exposure to the policy increased indoor temperature by 1-2°C and reduced indoor seasonal PM~2.5~ by approximately 20 µg/m^3^. Treatment by the policy also reduced contributions to PM~2.5~ from solid fuel sources,  including household coal burning, and improved blood pressure (~1.5 mmHg lower systolic and diastolic) and self-reported respiratory symptoms (~8 percentage point reduction in any symptoms). There was notable heterogeneity in effects across treatment cohorts, with larger benefits to indoor PM~2.5~ and health in villages treated in earlier relative to later years. In the mediation analysis, indoor PM~2.5~ and indoor temperature explained most of the total effect of the policy on systolic BP and roughly half of the total effect on diastolic BP, but did not explain improvements in self-reported respiratory symptoms. We did not find evidence of meaningful effects of the policy on outdoor or personal exposure to PM~2.5~, or on biomarkers of inflammation and oxidative stress. 
 
 ### Conclusions {.unnumbered .unlisted}
 
-In this comprehensive field-based assessment of a real-world household energy policy in Beijing, we observed high fidelity and compliance with the CHP. Exposure to the policy reduced blood pressure and self-reported chronic respiratory symptoms, and the effects for blood pressure were mediated by reductions in indoor PM~2.5~ and improvements in home temperature, providing empirical evidence that clean energy policies can provide population health benefits. 
+In this comprehensive field-based assessment of a large-scale household energy policy in Beijing, we observed high fidelity and compliance with the CHP. Exposure to the policy reduced blood pressure and self-reported chronic respiratory symptoms, and the effects for blood pressure were mediated by reductions in indoor PM~2.5~ and improvements in home temperature, providing empirical evidence that clean household energy policies can provide population health benefits. 
 
 \newpage
 
 # Introduction
 
-China is deploying an ambitious clean energy policy to transition up to 70% of households in northern China from residential coal heating to electric or gas “clean” space heating, including a large-scale roll out across rural and peri-urban Beijing villages, referred to in this document as the Clean Heating Policy (CHP). To meet this target the Beijing municipal government announced a two-pronged program that designates coal-restricted areas and simultaneously offers subsidies to night-time electricity rates and for the purchase and installation of electric-powered heat pumps to replace traditional coal-heating stoves. The policy was piloted in 2015 and, starting in 2016, was rolled out on a village-by-village basis. The variability in when the policy was applied to each village allowed us to treat the roll-out of the program as a quasi-randomized intervention and evaluate its impacts on air quality and health. Household air pollution is a well-established risk factor for adverse health outcomes over the entire lifecourse, yet there is no consensus that clean energy interventions can improve these health outcomes based on evidence from randomized trials [@lai2024]. Households may be differentially affected by the CHP due to factors such as financial constraints and user preferences, and there is uncertainty about whether and how the policy may affect indoor and outdoor air pollution, as well as heating behaviors and health outcomes.
+China is deploying an ambitious clean energy policy to transition up to 70% of households in northern China from residential coal heating to electric or gas "clean" space heating, including a large-scale roll out across rural and peri-urban Beijing villages, referred to in this document as the Clean Heating Policy (CHP). To meet this target the Beijing municipal government announced a two-pronged program that designates coal-restricted areas and simultaneously offers subsidies to night-time electricity rates and for the purchase and installation of electric-powered heat pumps to replace traditional coal-heating stoves. The policy was piloted in 2015 and, starting in 2016, was rolled out on a village-by-village basis. The variability in when the policy was applied to each village allowed us to treat the roll-out of the program as a quasi-randomized intervention and evaluate its impacts on air quality and health. Household air pollution is a well-established risk factor for adverse health outcomes over the entire lifecourse, yet there is no consensus that clean energy interventions can improve these health outcomes based on evidence from randomized trials [@lai2024]. Households may be differentially affected by the CHP due to factors such as financial constraints and user preferences, and there is uncertainty about whether and how the policy may affect indoor and outdoor air pollution, as well as heating behaviors and health outcomes.
 
 # Background
 
@@ -389,13 +389,26 @@ When multiple groups are treated at different time periods, the most common appr
 
 ## Measuring pathways and mechanisms
 
-To estimate how much of the CHP intervention may work through different mechanisms, we used causal mediation analysis. Causal approaches to mediation attempt to discern between, and clarify the necessary assumptions for identifying, different kinds of mediated effects. Taking as an example the directed acyclic graph (DAG) in @fig-dag1, with $T$ as the policy, $X$ as a set of pre-treatment covariates, $M_{1}$ as PM~2.5~, $M_{2}$ as indoor temperature, and $Y$ as systolic blood pressure, we can define the controlled direct effect ($CDE$) as the effect of the CBHP policy on systolic blood pressure if we fix the values of PM~2.5~ and indoor temperature to a fixed reference level for the entire population. For example, we can estimate the impact of the policy on health outcomes while holding PM~2.5~ and indoor temperature at uniform levels of average background exposure, or some other hypothetical level.
+To estimate how much of the CHP intervention may work through different mechanisms, we used causal mediation analysis. Causal approaches to mediation attempt to discern between, and clarify the necessary assumptions for identifying, different kinds of mediated effects. @fig-dag1 shows directed acyclic graphs (DAGs) to illustrate the total effect (a) and the potential direct and indirect effects of the CHP (b), with $T$ as the policy, $X$ as a set of pre-treatment covariates, and $Y$ as systolic blood pressure. The ‘total effect’ of the policy is an estimate of how much the overall environmental and health outcomes ($Y$) would change for a change in exposure (versus no exposure) to the CHP ($T$). Part (b) of @fig-dag1 adds $M_{1}$ as PM~2.5~, $M_{2}$ as indoor temperature as potential mediators affected by the policy, and we can define the controlled direct effect ($CDE$) as the effect of the CHP on systolic blood pressure if we fix the values of PM~2.5~ and indoor temperature to a fixed reference level for the entire population. For example, we can estimate the impact of the policy on health outcomes while holding PM~2.5~ and indoor temperature at uniform levels of average background exposure, or some other hypothetical level [@vanderweele2015].
 
-```{r dag1, echo=F, out.width="60%", eval=T}
+```{r dag1, out.width="60%", eval=T}
+#| echo: FALSE
+#| fig-cap-location: top
 #| label: fig-dag1
-#| fig-cap: 'Hypothetical Directed Acyclic Graph showing direct and indirect effects with outcome ($Y$), pre-treatment covariates ($X$), policy ($T$), multiple mediators ($M_{1},M_{2}$), as well as covariates for the mediators ($W$).'
+#| fig-cap: Hypothetical Directed Acyclic Graphs (DAGs) showing (a) total effect and (b) direct and indirect effects with outcome ($Y$), pre-treatment covariates ($X$), policy ($T$), multiple mediators ($M_{1},M_{2}$), as well as covariates for the mediators ($W$).
+#| fig-width: 6
+#| fig-subcap: 
+#|   - "DAG for Total effect"
+#|   - "DAG for direct and indirect effects"
+#|   - ""
+#| layout-nrow: 2
+#| fig-pos: H
 
-knitr::include_graphics(here("images", "dag1.png"))
+knitr::include_graphics(here("images", 
+  "dag_te.png"))
+  
+knitr::include_graphics(here("images",
+  "dag1.png"))
 ```
 
 Although other mediated effects such as “natural” direct and indirect effects are theoretically estimable [@vanderweele2015], they involve challenging "cross-world" assumptions that are difficult to anchor in policy [@naimi2014]. Other approaches to mechanisms have focused on principal stratification [e.g., @zigler2016], although conceptual difficulties with identifying the (unverifiable) principal strata make it challenging for questions of mediation. Because controlled direct effects are considered more directly policy relevant for public health, we focused on estimating these mediated quantities.
@@ -575,7 +588,7 @@ d <- read_csv(here("data-clean",
     "freq_cough", "freq_phlegm", "freq_wheezing", 
     "freq_breath", "freq_no_chest",
     "BCconc_exposureugm3", "p_usable_pm",
-    "p_usable_bc"))
+    "p_usable_bc", "lived_with_smoker"))
 
 # data for wealth index
 dwi <- read_csv(here("data-clean", 
@@ -608,7 +621,8 @@ dt <- d %>%
     `Wealth index (25-50%)` = ifelse(wq==2, 100, 0),
     `Wealth index (50-75%)` = ifelse(wq==3, 100, 0),
     `Wealth index (top 25%)` = ifelse(wq==4, 100, 0),
-    `Never smoker (%)` = ifelse(smoking==3, 100, 0),
+    `Never smoker (%)` = ifelse(smoking==3 & lived_with_smoker==1, 100, 0),
+    `Passive smoker (%)` = ifelse(smoking==3 & lived_with_smoker %in% c(2,3), 100, 0),
     `Former smoker (%)` = ifelse(smoking==2, 100, 0),
     `Current smoker (%)` = ifelse(smoking==1, 100, 0),
     `Never drinker (%)` = ifelse(freq_drink==1, 100, 0),
@@ -653,6 +667,7 @@ dt <- d %>%
     `Wealth index (bottom 25%)`, `Wealth index (25-50%)`,
     `Wealth index (50-75%)`, `Wealth index (top 25%)`,
     `Never smoker (%)`, `Former smoker (%)`, 
+    `Passive smoker (%)`, 
     `Current smoker (%)`, `Never drinker (%)`, 
     `Occasional drinker (%)`, `Daily drinker (%)`,
     `Systolic (mmHg)`, `Diastolic (mmHg)`,
@@ -871,9 +886,22 @@ With respect to the other potential mediator of temperature, @tbl-did-med shows 
 #| eval: TRUE
 
 # bp results
-bp_policy_t <- read_xlsx(here("outputs",
+bp_policy <- read_xlsx(here("outputs",
   "overall_effects-table-2024Mar26.xlsx")) %>% 
-  select(bp, type, theta_bar, lower_95CI, upper_95CI) %>%
+  mutate(order = row_number()) %>%
+  select(order, bp, type, theta_bar, 
+         lower_95CI, upper_95CI) 
+
+# multiply BP Amplification values by 10
+bp_policy_amp <- bp_policy %>% 
+  filter(str_detect(bp, "Amplification")) %>%
+  mutate_at(c("theta_bar", "lower_95CI", 
+    "upper_95CI"), function(x) (x * 10))
+
+bp_policy_t <- bp_policy %>%
+  filter(!str_detect(bp, "Amplification")) %>%
+  bind_rows(bp_policy_amp) %>%
+  arrange(order)%>%
   rename(estimate = theta_bar) %>%
   mutate(
     ci = paste("(", sprintf('%.1f', lower_95CI), ", ",
@@ -921,9 +949,9 @@ inf_table <- read_xlsx(here("outputs",
   select(biomarker, model2, estimate, ci) %>%
   pivot_wider(names_from = model2, 
     values_from = c(estimate, ci)) %>%
-  mutate(category = "Measured (ng/ml)", 
-    outcome = c("IL6", "TNF-alpha",	"CRP",	"MDA"),
-    nobs = c(1:4)) %>%
+  mutate(category = "Measured", 
+    outcome = c("IL6 (pg/mL)", "TNF-alpha (pg/mL)",	"CRP (mg/L)",	"MDA (µM)"),
+    nobs = rep(1603, times = 4)) %>%
   select(-biomarker) %>%
   relocate(category, outcome, nobs, 
     estimate_1, ci_1, estimate_2, ci_2)
@@ -961,7 +989,7 @@ tt(op_table,
 
 ```
 
-@tbl-did-health shows the impacts of the policy on blood pressure in basic ETWFE models and models further adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Overall exposure to the CHP demonstrated reductions in blood pressure of approximately 1.5 mmHg for both systolic and diastolic BP, but we found little evidence of a meaningful impact on pulse pressure or BP amplification. The effects of the policy on brachial and central blood pressures were similar, and were consistent \comment{EC 2e} when restricted to only those participants enrolled in W1 (i.e., excluding participants recruited in later waves, see Appendix @tbl-a-bp-sample). However, the average effects in @tbl-did-health conceal a fair amount of heterogeneity in treatment effects for blood pressure across treatment cohorts and time. Appendix @tbl-bp-het shows that treatment impacts were considerably stronger for the earlier compared to the later-treated cohorts. For example, the CHP reduced central DBP in the year of treatment by -2.7 mmHg (95%CI: -4.6, -0.8) for the villages first treated in wave 2, but increased central DBP by 1.1 mmHg (95%CI: -0.1, 2.2) for the villages treated in wave 4 (*p*-value for heterogeneity <0.0001).   
+@tbl-did-health shows the impacts of the policy on blood pressure in basic ETWFE models and models further adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Overall exposure to the CHP demonstrated reductions in blood pressure of approximately 1.5 mmHg for both systolic and diastolic BP, but we found little evidence of a meaningful impact on pulse pressure or BP amplification. The effects of the policy on brachial and central blood pressures were similar, and were consistent \comment{EC 2e} when restricted to only those participants enrolled in w1 (i.e., excluding participants recruited in later waves, see Appendix @tbl-a-bp-sample). However, the average effects in @tbl-did-health conceal a fair amount of heterogeneity in treatment effects for blood pressure across treatment cohorts and time. Appendix @tbl-bp-het shows that treatment impacts were considerably stronger for the earlier compared to the later-treated cohorts. For example, the CHP reduced central DBP in the year of treatment by -2.7 mmHg (95%CI: -4.6, -0.8) for the villages first treated in wave 2, but increased central DBP by 1.1 mmHg (95%CI: -0.1, 2.2) for the villages treated in wave 4 (*p*-value for heterogeneity <0.0001).   
 
 @tbl-did-health shows the impacts on self-reported chronic respiratory symptoms categorized as any symptoms and separately for each individual symptom type. In both basic and covariate-adjusted ETWFE models, exposure to the CBHP policy reduced self-report of any poor respiratory symptoms by around 7 percentage points (95%CI: -14, -1). This was largely through reductions in reports of having chest trouble or difficulty breathing on several or most days of the week. Appendix tables [-@tbl-a-het-resp], [-@tbl-a-het-cough], [-@tbl-a-het-phlegm], [-@tbl-a-het-wheeze], [-@tbl-a-het-breath], [-@tbl-a-het-nochest] show little evidence of any systematic heterogeneity in the cohort-time treatment effects across the different respiratory outcomes.   
 
@@ -969,7 +997,7 @@ tt(op_table,
 
 ### Mediated impact on health outcomes
 
-As noted above, we aimed to assess whether any health impacts of the CBHP policy may work specifically through pathways involving changes in PM~2.5~ and indoor temperature. Below we show results from several mediation models. We evaluated potential mediation for each mediator (indoor temperature and exposure to indoor PM~2.5~) separately and in a single model accounting for multiple mediators, and we set the values of both mediators to the  mean value for untreated participants at baseline (wave 1). For mediation analysis, we focused on BP outcomes for which we observed an effect of the policy. In @tbl-bp-med we show that conditioning on indoor PM~2.5~ and indoor temperature largely explains the entire total effect of the CBHP policy on blood pressure for systolic BP, as the CDE conditional on both mediators was reduced to 0.03 (95%CI: -2.0, 2.0) for brachial SBP. The CDE for diastolic BP was roughly half the value of the total effect. 
+As noted above, we aimed to assess whether any health impacts of the CBHP policy may work specifically through pathways involving changes in PM~2.5~ and indoor temperature. Below we show results from several mediation models. We evaluated potential mediation for each mediator (indoor temperature and exposure to indoor PM~2.5~) separately and in a single model accounting for multiple mediators, and we set the values of both mediators to the  mean value for untreated participants at baseline (wave 1). For mediation analysis, we focused on BP outcomes for which we observed an effect of the policy. In @tbl-bp-med we show estimates of the CDEs for different sets of potential mediators. \comment{OC 2d} The first column shows the total effect of the CHP on blood pressure outcomes (e.g., a 1.6 mmHg decrease in central DBP). The second column shows the CDE, i.e., the effect of exposure (vs. no exposure) to the CHP on blood pressure, in a counterfactual population where we intervene to fix the value of indoor PM~2.5~ to the average value for untreated participants at baseline. This CDE is still -1.4 (95% CI -3.0, 0.0) not particularly different from the total effect of -1.6, demonstrating that, under the assumptions outlined in Section 5.2, little of the total effect is mediated by the impact of the policy on indoor PM~2.5~. On the other hand, the estimated CDE when holding constant the value of indoor temp to that of the untreated participants was smaller (-1.1, 95% CI: -2.3, 0.1) suggesting a somewhat stronger role for indoor temperature in mediating the total effect of the CHP on central DBP. Finally, the last two columns show an even further reduced CDE of -0.9 (95% CI: -2.3, 0.5) when setting both indoor PM~2.5~ and indoor temperature to their respective pre-treatment means. Thus, interventions to fix the values of indoor PM~2.5~ and indoor temperature to the levels in the untreated group at baseline would explain roughly 44% of the total effect of the CHP on central DBP. Overall the results in @tbl-bp-med indicate that conditioning on indoor PM~2.5~ and indoor temperature largely explains the entire total effect of the CBHP policy on blood pressure for systolic BP, as the CDE conditional on both mediators was reduced to -0.0 (95%CI: -2.0, 2.0) for brachial SBP. The CDE for diastolic BP was roughly half the value of the total effect. 
 
 ```{r, message=F, warning=F}
 #| echo: FALSE
@@ -996,8 +1024,8 @@ otmm <- read_xlsx(here("data-clean",
 otm <- bind_rows(ot, otmp, otmt, otmm) %>%
   rename(est = theta_bar, ll = lower_95CI,
          ul = upper_95CI) %>%
-  mutate(ci = paste("(", sprintf('%.2f', ll), ", ",
-    sprintf('%.2f', ul), ")", sep="")) %>%
+  mutate(ci = paste("(", sprintf('%.1f', ll), ", ",
+    sprintf('%.1f', ul), ")", sep="")) %>%
   select(bp, model, est, ci) %>%
   pivot_wider(names_from = model, 
     values_from = c(est, ci), names_vary = "slowest")
@@ -1006,7 +1034,7 @@ colnames(otm) <- c("", "ATT", "(95%CI)", "ATT",
   "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)")
 
 tt(otm,
-   digits = 2,
+   digits = 1,
    #width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
    notes = list("Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, CI = Confidence Interval, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.", a = list(i=0, j=2, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), b = list(i=0, j=c(4,6,8), text = "Mediators were set to the mean value for untreated participants at baseline."))) %>%
   group_tt(
@@ -1019,7 +1047,7 @@ tt(otm,
   style_tt(j = 1:9, align = "lcccccccc") %>%
   style_tt(j=1:9, fontsize = 0.9) %>%
   format_tt(escape = TRUE) %>%
-  format_tt(j=c(2,4,6,8), sprintf = "%.2f") 
+  format_tt(j=c(2,4,6,8), sprintf = "%.1f") 
 ```
 
 @tbl-resp-med shows estimates from similar analyses for the CDE of the policy on respiratory outcomes. For respiratory outcomes we focus on mediation by personal exposure to PM~2.5~ and point temperature and therefore these estimates are derived for the subset of individuals with measures of personal exposure. Thus the total adjusted $ATT$s in @tbl-resp-med are not directly comparable with those in @tbl-did-health. We estimate the CDEs holding the values of both mediators to the average levels for never treated households at baseline. Overall we find no evidence that any of the total effects we observed for self-reported respiratory outcomes in @tbl-did-health were mediated by personal exposure to PM~2.5~ or indoor temperature. Generally the CDEs for all of the outcomes are statistically indistinguishable from the total effects estimated without controlling for mediators. 
@@ -1274,9 +1302,9 @@ Third, like any field-based study, we had a number of constraints with data coll
 
 Fourth, respiratory symptoms were self-reported and thus our estimated effects on respiratory symptoms must be interpreted with caution. Participants in our study were aware of their treatment status, and knowledge of being treated by a policy aimed at reducing local air pollution may have affected their reporting of the perceived health benefits of intervention [@peel2015]. Previous trials of improved biomass stoves, for example, noted a tendency of participants to report favorable response to the stove regardless of its physiologic efficacy [@burwen2012; @smith-sivertsen2009]. Such reporting bias could have inaccurately increased the estimated effect of the policy, though we did not observe consistent effects across all respiratory outcomes or treatment cohorts, which one might expect if treated participants were inclined to give more favorable responses. Our study also benefited from co-measurement of BP, an objective measure that is less likely to be biased by participant or staff awareness of treatment status because our staff consistently followed strict quality control guidelines for measurement across all study villages and homes, regardless of treatment status.  
 
-Finally, some remarks concerning power and uncertainty. We do not distinguish our results based on traditional notions of "statistical significance" [@wasserstein2019], but given the large number of outcomes and wide range of reported estimates and uncertainties, questions about the power of our design are relevant. However, using observed effect sizes to ask questions about power (sometimes called 'post-hoc power calculations') is illogical given the direct relationship between power and observed p-values or confidence limits [@hoenig2001]. Instead we aim to put our results in context using a retrospective design analysis (@gelman2014). Retrospective design analyses use plausible values for hypothetical effect sizes to ask about the strength of evidence a replicated study with our design and level of precision would be likely to provide. The main quantities for a design analysis include the probability that the replicated estimate would be "statistically significant" (power), the probability that the replicated estimate would have the wrong sign ("S-bias"), and the ratio of the replicated estimate divided by the true effect size (the "exaggeration ratio" or "M-bias"). We report these values for a range of conservative, but plausible effect sizes below.  
+Finally, \comment{EC 7} some remarks concerning power and uncertainty. We do not distinguish our results based on traditional notions of "statistical significance" [@wasserstein2019], but given the large number of outcomes and wide range of reported estimates and uncertainties, questions about the power of our design are relevant. However, using observed effect sizes to ask questions about power (sometimes called 'post-hoc power calculations') is illogical given the direct relationship between power and observed p-values or confidence limits [@hoenig2001]. Instead we aim to put our results in context using a retrospective design analysis [@gelman2014]. Retrospective design analyses use plausible values for hypothetical effect sizes to ask about the strength of evidence a replicated study with our design and level of precision would be likely to provide. The main quantities for a design analysis include the probability that the replicated estimate would be "statistically significant" (power), the probability that the replicated estimate would have the wrong sign ("S-bias"), and the ratio of the replicated estimate divided by the true effect size (the "exaggeration ratio" or "M-bias"). We report these values for a range of conservative, but plausible effect sizes below.  
 
-For blood pressure we used a value of a 1.5 mmHg decrease in systolic or a 1 mmHg decrease in diastolic [@baumgartner2011; @steenland2018] [maybe cite Jill's 2022 paper in Am J Hypertension?]. *Not sure exactly what makes sense for PP or BP Amp*. For self-reported respiratory outcomes we assumed hypothetical effects on the order of a 10% decline for each outcome (translated into absolute percentage point declines), and for inflammatory markers we hypothesized a true effect of a decline of roughly 2 percentage points. 
+For blood pressure we used a value of a 2.5 mmHg decrease in systolic or a 2 mmHg decrease in diastolic [@baumgartner2011; @steenland2018]. For self-reported respiratory outcomes we assumed hypothetical effects on the order of a 10% decline for each outcome (translated into absolute percentage point declines), and for inflammatory markers we hypothesized true effects of a roughly 5% decline, again translated into absolute terms.  
 
 The full results for all health outcomes are shown in the Supplement (@tbl-rd). As an example, consider our estimate of the 8.1 percentage point decrease in any respiratory symptom (95% CI 2.9, 13.3). Assuming that the true effect of the policy was a reduction of 5 percentage points, a replicated estimate with our design features and precision would have virtually no chance of reporting the wrong sign (S-bias = 0), and in expectation the estimated effect will be only 1.4 times too high. Similarly, if the true effect of the policy on brachial systolic BP was a small reduction of 1.5 mmHg, a replication of our study design would have roughly 34% power, a 9% chance of having the wrong sign, and an average exaggeration ratio of just 0.7, meaning it would be unlikely to exaggerate the true effect.
 
@@ -1323,7 +1351,7 @@ Below we show boxplots for the logged values of the blood inflammatory and oxida
 ```{r mi-plots, echo=FALSE, out.width = "90%"}
 #| fig-cap-location: top
 #| label: fig-afig-biomarkers
-#| fig-cap: "Boxplots for markers of systemic inflammation including C-reactive protein (CRP), interleukin-6 (IL-6), tumour necrosis factor alpha (TNF-$\\alpha$) and markers of oxidative stress including 8-hydroxy-2'-deoxyguanosine (8-OHdG) and malondialdehyde (MDA)"
+#| fig-cap: "Boxplots for markers of systemic inflammation including C-reactive protein (CRP), interleukin-6 (IL-6), tumour necrosis factor alpha (TNF-$\\alpha$) and malondialdehyde (MDA)"
 
 knitr::include_graphics(here("images", 
   "biomarker-boxplot-log.jpg"))
@@ -1370,19 +1398,19 @@ The number (N) and percent (Pct.) of missing observations are displayed in the t
 #| tbl-pos: H
 
 # load data for missing outcomes
-mi_table <- read_rds(here("outputs", "mi-by-trt.rds"))
+mi_table <- read_rds(here("outputs", "mi-by-trt-r.rds"))
 
 nr <- read_rds(here("outputs", "mi-table-nr.rds"))
 
 ## placement in table
-attr(nr, 'position') <- c(1, 14, 23, 24, 25, 26, 27, 30)
+attr(nr, 'position') <- c(1, 14, 23, 24, 25, 26, 27, 31)
 
 tinyt <- datasummary_balance(~trt, 
                              data = mi_table, 
                              add_rows = nr, 
                              align = "lccccccccc") %>%
   style_tt(j = 1:10, fontsize = 0.75) %>%
-  style_tt(i = c(1, 14, 23, 30), bold = TRUE) %>%
+  style_tt(i = c(1, 14, 23, 31), bold = TRUE) %>%
   theme_tt("multipage", rowhead = 2)
 
 tt(tinyt@table_dataframe) %>%
@@ -1390,7 +1418,7 @@ tt(tinyt@table_dataframe) %>%
                     `Enrolled 2019 (N=642)` = 5:6,
                     `Enrolled 2020 (N=446)` = 7:8,
                     `Enrolled 2021 (N=173)` = 9:10)) %>%
-  style_tt(i = c(1, 14, 23, 30), 
+  style_tt(i = c(1, 14, 23, 31), 
            bold=TRUE) %>%
   theme_tt("resize", width = 0.95)
 ```
@@ -2608,36 +2636,43 @@ knitr::include_graphics(here("images",
 \newpage
 
 # Abbreviations and other terms {.unnumbered}
+```{r, echo=FALSE, message = FALSE, warning = FALSE}
+abb <- read_csv(here("data-clean",
+  "abbreviations.csv"), col_names = FALSE)
+colnames(abb) <- c(" ", " ")
 
+tt(abb) %>%
+  theme_tt("multipage")
+```
 # About the authors {.unnumbered}
 
-**Jill Baumgartner, PhD** is a professor jointly appointed in the Department of Equity, Ethics, and Policy and the Department of Epidemiology, Biostatistics & Occupational Health at McGill University. Her work focuses on evaluating the health impacts of air pollution, household energy use, and climate change and their related interventions in low- and middle-income countries. 
+**Jill Baumgartner, PhD** is a professor jointly appointed in the Department of Equity, Ethics, and Policy and the Department of Epidemiology, Biostatistics & Occupational Health at McGill University. Her work evaluates the health impacts of air pollution, household energy use, and climate change.. 
 
 **Sam Harper, PhD** is a professor in the Department of Epidemiology, Biostatistics & Occupational Health at McGill University. His research focuses on evaluating the impacts of social and economic policies on health.
 
-**Chris Barrington-Leigh, PhD** is an associate professor jointly appointed in the Department of Equity, Ethics, and Policy and the Bieler School of Environment at McGill University. 
+**Chris Barrington-Leigh, PhD** is an associate professor jointly appointed in the Department of Equity, Ethics, and Policy and the Bieler School of Environment at McGill University.  His research evaluates  
 
-**Collin Brehmer** is…
+**Collin Brehmer** is a PhD student in the Department of Civil and Environmental Engineering at Colorado State University. 
 
-**Ellison M. Carter** is…
+**Ellison M. Carter, PhD** is an associate professor appointed in the Department of Civil and Environmental Engineering at Colorado State University. Her research combines interests and expertise in air quality, exposure science, and chemistry and aims to answer questions relevant to energy policy and their impacts on air pollution exposures and human health.
 
-**Xiaoying Li** is…
+**Xiaoying Li, PhD** is a Research Scientist in the Department of Mechanical Engineering at Colorado State University and formerly a postdoctoral fellow at McGill University. Her research interests include investigating the interactions of indoor, outdoor air pollution, and personal exposures to air pollution and evaluating the impacts of clean energy interventions on air quality and human health.
 
-**Brian E. Robinson**, PhD, is an associate professor in the Department of Geography at McGill University who studies how people’s livelihoods are influenced by ecosystem services and resource use, particularly in developing regions. His interdisciplinary research explores the interactions between livelihoods, the environment, and the institutions that govern resource management.
+**Brian E. Robinson, PhD** is an associate professor in the Department of Geography at McGill University who studies how people’s livelihoods are influenced by ecosystem services and resource use, particularly in developing regions. His interdisciplinary research explores the interactions between livelihoods, the environment, and the institutions that govern resource management.
 
-**Guofeng Shen, PhD**, is…
+**Guofeng Shen, PhD** is an assistant professor of environmental science at Peking University. His research interests and experiences are in sustainable household energy and environment, largely focusing on fates, impacts and controls of hazardous pollutants produced from indoor solid fuel use that is an important indicator of sustainable development. 
 
-**Talia J. Sternbach** is…
+**Talia J. Sternbach** is a PhD student in the Department of Epidemiology, Biostatistics & Occupational Health at McGill University. 
 
 **Shu Tao, PhD**, is a professor of environmental science at Peking University who focuses on measuring and modeling clean energy transition, air pollution emissions, population exposures, and their estimated health impacts in China. His research integrates environmental science, atmospheric modeling, field measurements, and exposure assessment to better understand the sources, distribution, and health effects of air pollutants.
 
-**Kaibing Xue** is…
+**Kaibing Xue** is a PhD student in atmospheric science at the University of the Chinese Academy of Sciences
 
-**Wenlu Yuan** is…
+**Wenlu Yuan** is a PhD student in the Department of Epidemiology, Biostatistics & Occupational Health at McGill University. 
 
-**Xiang Zhang** is…
+**Xiang Zhang** is a PhD student in the Department of Geography at McGill University.
 
-**Yuanxun Zhang, PhD**, is a professor of atmospheric sciences at the University of the Chinese Academy of Sciences with expertise in atmospheric chemistry and measurement of air pollution and its chemical composition. His research focuses on understanding the chemical processes and mechanisms driving the formation of air pollutants and their impacts on climate and human health.
+**Yuanxun Zhang, PhD**, is a professor of atmospheric sciences at the University of the Chinese Academy of Sciences and directs the Yanshan Earth Critical Zone at the National Observation and Research Station in China. He has expertise in atmospheric chemistry and measurement of air pollution and its chemical composition. His research focuses on understanding the chemical processes and mechanisms driving the formation of air pollutants and their impacts on climate and human health.
 
 
 

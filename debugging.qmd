@@ -100,12 +100,55 @@ China is deploying an ambitious policy to transition up to 70% of households in 
 
 ### Personal exposure 
 
+
+
+
+
 Table @tbl-a-het-personal shows limited evidence that the $ATT$s across cohorts and time demonstrate meaningful heterogeneity.
 
-```{r, out.width = "70%"}
+```{r}
+#| echo: FALSE
+#| label: tbl-a-mi-cohort
+#| tbl-cap: "Missing values by enrollment cohort and outcome"
+#| tbl-pos: H
 
-knitr::include_graphics(here("images",
-  "dag.png"))
+# load data for missing outcomes
+mi_table <- read_rds(here("outputs", "mi-by-trt-r.rds"))
+
+nr <- read_rds(here("outputs", "mi-table-nr.rds"))
+
+## placement in table
+attr(nr, 'position') <- c(1, 14, 23, 24, 25, 26, 27, 31)
+
+tinyt <- datasummary_balance(~trt, 
+                             data = mi_table, 
+                             add_rows = nr, 
+                             align = "lccccccccc") %>%
+  style_tt(j = 1:10, fontsize = 0.75) %>%
+  style_tt(i = c(1, 14, 23, 31), bold = TRUE) %>%
+  theme_tt("multipage", rowhead = 2)
+
+tt(tinyt@table_dataframe) %>%
+    group_tt(j = list(`Never enrolled (N=1880)` = 3:4, 
+                    `Enrolled 2019 (N=642)` = 5:6,
+                    `Enrolled 2020 (N=446)` = 7:8,
+                    `Enrolled 2021 (N=173)` = 9:10)) %>%
+  style_tt(i = c(1, 14, 23, 31), 
+           bold=TRUE) %>%
+  theme_tt("resize", width = 0.95)
+
+# customt <- tt(tinyt@table_dataframe,
+#    width = c(.2, .2, .1, .1, .1, .1, .1, .1, .1, .1)) %>%
+#   style_tt(j = 1:10, fontsize = 0.75, align = "lccccccccc") %>%
+#   style_tt(i = c(1, 14, 23, 31), 
+#            bold=TRUE) %>%
+#   group_tt(j = list(`Never enrolled (N=1880)` = 3:4, 
+#                     `Enrolled 2019 (N=642)` = 5:6,
+#                     `Enrolled 2020 (N=446)` = 7:8,
+#                     `Enrolled 2021 (N=173)` = 9:10)) %>% 
+#   theme_tt("resize", rowhead=2)
+# 
+# customt
 
 ```
 

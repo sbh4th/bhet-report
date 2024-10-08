@@ -67,46 +67,6 @@
 \fi
 \makeatother
 
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{241,243,245}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
-\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
@@ -180,6 +140,14 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
+\usepackage{tabularray}
+\usepackage[normalem]{ulem}
+\usepackage{graphicx}
+\UseTblrLibrary{booktabs}
+\UseTblrLibrary{siunitx}
+\NewTableCommand{\tinytableDefineColor}[3]{\definecolor{#1}{#2}{#3}}
+\newcommand{\tinytableTabularrayUnderline}[1]{\underline{#1}}
+\newcommand{\tinytableTabularrayStrikeout}[1]{\sout{#1}}
 \usepackage{wrapfig}
 \usepackage{colortbl}
  \makeatletter
@@ -270,7 +238,7 @@ Sternbach\textsuperscript{1} \and Shu
 Tao\textsuperscript{3} \and Kaibing Xue\textsuperscript{4} \and Wenlu
 Yuan\textsuperscript{1} \and Xiang Zhang\textsuperscript{1} \and Yuanxun
 Zhang\textsuperscript{4}}
-\date{2024-10-07}
+\date{2024-10-08}
 
 \begin{document}
 \maketitle
@@ -319,14 +287,77 @@ outdoor air pollution, as well as heating behaviors and health outcomes.
 Table \textbf{?@tbl-a-het-personal} shows limited evidence that the
 \(ATT\)s across cohorts and time demonstrate meaningful heterogeneity.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\FunctionTok{here}\NormalTok{(}\StringTok{"images"}\NormalTok{,}
-  \StringTok{"dag.png"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}[H]
 
-\includegraphics[width=0.7\textwidth,height=\textheight]{images/dag.png}
+\caption{\label{tbl-a-mi-cohort}Missing values by enrollment cohort and
+outcome}
+
+\centering{
+
+\centering
+\resizebox{\ifdim\width>\linewidth 0.95\linewidth\else\width\fi}{!}{
+\begin{tblr}[         %% tabularray outer open
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+cell{1}{7}={c=2,}{halign=c,},
+cell{1}{9}={c=2,}{halign=c,},
+row{3}={,cmd=\bfseries,},
+row{16}={,cmd=\bfseries,},
+row{25}={,cmd=\bfseries,},
+row{33}={,cmd=\bfseries,},
+}                     %% tabularray inner close
+\toprule
+&  & Never enrolled (N=1880) &  & Enrolled 2019 (N=642) &  & Enrolled 2020 (N=446) &  & Enrolled 2021 (N=173) &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}\cmidrule[lr]{7-8}\cmidrule[lr]{9-10}
+&    & N & Pct. & N & Pct. & N & Pct. & N & Pct. \\ \midrule %% TinyTableHeader
+Respiratory symptoms:   &                &             &             &            &             &            &             &            &             \\
+Any symptoms            & Missing        & \num{23}   & \num{1.2}  & \num{4}   & \num{0.6}  & \num{5}   & \num{1.1}  & \num{1}   & \num{0.6}  \\
+& Valid response & \num{1857} & \num{98.8} & \num{638} & \num{99.4} & \num{441} & \num{98.9} & \num{172} & \num{99.4} \\
+Cough                   & Missing        & \num{23}   & \num{1.2}  & \num{4}   & \num{0.6}  & \num{5}   & \num{1.1}  & \num{1}   & \num{0.6}  \\
+& Valid response & \num{1857} & \num{98.8} & \num{638} & \num{99.4} & \num{441} & \num{98.9} & \num{172} & \num{99.4} \\
+Phlegm                  & Missing        & \num{23}   & \num{1.2}  & \num{4}   & \num{0.6}  & \num{5}   & \num{1.1}  & \num{1}   & \num{0.6}  \\
+& Valid response & \num{1857} & \num{98.8} & \num{638} & \num{99.4} & \num{441} & \num{98.9} & \num{172} & \num{99.4} \\
+Wheezing                & Missing        & \num{23}   & \num{1.2}  & \num{4}   & \num{0.6}  & \num{5}   & \num{1.1}  & \num{1}   & \num{0.6}  \\
+& Valid response & \num{1857} & \num{98.8} & \num{638} & \num{99.4} & \num{441} & \num{98.9} & \num{172} & \num{99.4} \\
+Shortness of breath     & Missing        & \num{24}   & \num{1.3}  & \num{4}   & \num{0.6}  & \num{5}   & \num{1.1}  & \num{2}   & \num{1.2}  \\
+& Valid response & \num{1856} & \num{98.7} & \num{638} & \num{99.4} & \num{441} & \num{98.9} & \num{171} & \num{98.8} \\
+Chest trouble           & Missing        & \num{24}   & \num{1.3}  & \num{4}   & \num{0.6}  & \num{5}   & \num{1.1}  & \num{1}   & \num{0.6}  \\
+& Valid response & \num{1856} & \num{98.7} & \num{638} & \num{99.4} & \num{441} & \num{98.9} & \num{172} & \num{99.4} \\
+Blood pressure:         &                &             &             &            &             &            &             &            &             \\
+Brachial SBP            & Missing        & \num{30}   & \num{1.6}  & \num{11}  & \num{1.7}  & \num{17}  & \num{3.8}  & \num{1}   & \num{0.6}  \\
+& Valid response & \num{1850} & \num{98.4} & \num{631} & \num{98.3} & \num{429} & \num{96.2} & \num{172} & \num{99.4} \\
+Central SBP             & Missing        & \num{30}   & \num{1.6}  & \num{12}  & \num{1.9}  & \num{17}  & \num{3.8}  & \num{1}   & \num{0.6}  \\
+& Valid response & \num{1850} & \num{98.4} & \num{630} & \num{98.1} & \num{429} & \num{96.2} & \num{172} & \num{99.4} \\
+Brachial DBP            & Missing        & \num{30}   & \num{1.6}  & \num{11}  & \num{1.7}  & \num{17}  & \num{3.8}  & \num{1}   & \num{0.6}  \\
+& Valid response & \num{1850} & \num{98.4} & \num{631} & \num{98.3} & \num{429} & \num{96.2} & \num{172} & \num{99.4} \\
+Central DBP             & Missing        & \num{30}   & \num{1.6}  & \num{12}  & \num{1.9}  & \num{17}  & \num{3.8}  & \num{1}   & \num{0.6}  \\
+& Valid response & \num{1850} & \num{98.4} & \num{630} & \num{98.1} & \num{429} & \num{96.2} & \num{172} & \num{99.4} \\
+Biomarkers:             &                &             &             &            &             &            &             &            &             \\
+IL6                     & Missing        & 8           & 0.6         & 4          & 0.9         & 1          & 0.3         & 0          & 0           \\
+TNF                     & Missing        & 8           & 0.6         & 4          & 0.9         & 1          & 0.3         & 0          & 0           \\
+CRP                     & Missing        & 8           & 0.6         & 4          & 0.9         & 1          & 0.3         & 0          & 0           \\
+MDA                     & Missing        & 11          & 0.9         & 4          & 0.9         & 1          & 0.3         & 0          & 0           \\
+FeNO                    & Missing        & \num{15}   & \num{0.8}  & \num{0}   & \num{0.0}  & \num{0}   & \num{0.0}  & \num{0}   & \num{0.0}  \\
+& Not sampled    & \num{1341} & \num{71.3} & \num{448} & \num{69.8} & \num{383} & \num{85.9} & \num{111} & \num{64.2} \\
+& Valid response & \num{524}  & \num{27.9} & \num{194} & \num{30.2} & \num{63}  & \num{14.1} & \num{62}  & \num{35.8} \\
+Environmental outcomes: &                &             &             &            &             &            &             &            &             \\
+Personal PM             & Missing        & \num{13}   & \num{0.7}  & \num{4}   & \num{0.6}  & \num{6}   & \num{1.3}  & \num{0}   & \num{0.0}  \\
+& Not sampled    & \num{984}  & \num{52.3} & \num{343} & \num{53.4} & \num{239} & \num{53.6} & \num{84}  & \num{48.6} \\
+& Valid response & \num{883}  & \num{47.0} & \num{295} & \num{46.0} & \num{201} & \num{45.1} & \num{89}  & \num{51.4} \\
+Indoor PM               & Missing        & \num{60}   & \num{3.2}  & \num{11}  & \num{1.7}  & \num{16}  & \num{3.6}  & \num{4}   & \num{2.3}  \\
+& Not sampled    & \num{1502} & \num{79.9} & \num{518} & \num{80.7} & \num{360} & \num{80.7} & \num{135} & \num{78.0} \\
+& Valid response & \num{318}  & \num{16.9} & \num{113} & \num{17.6} & \num{70}  & \num{15.7} & \num{34}  & \num{19.7} \\
+Indoor temperature      & Missing        & \num{33}   & \num{1.8}  & \num{10}  & \num{1.6}  & \num{16}  & \num{3.6}  & \num{1}   & \num{0.6}  \\
+& Valid response & \num{1847} & \num{98.2} & \num{632} & \num{98.4} & \num{430} & \num{96.4} & \num{172} & \num{99.4} \\
+\bottomrule
+\end{tblr}
+}
+
+}
+
+\end{table}%
 
 \newpage
 

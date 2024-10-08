@@ -14,7 +14,8 @@ library(pandoc); library(estimatr)
 ## Load data & select variables
 
 ```{r, echo=F, message = F}
-d <- read_csv(here("data-clean", "BHET_master_data_29Aug2024.csv"),
+feno_nr <- read_xlsx(here("data-clean", "BHET_FeNO refuse and could not.xlsx"))
+d <- read_csv(here("data-clean", "BHET_master_data_04Oct2024.csv"),
               col_select = c("hh_id", "ptc_id", "wave", "ban_status_composite", 
                              "freq_cough", "freq_phlegm", "freq_wheezing", 
                              "freq_breath", "freq_no_chest", "sys_brachial", 
@@ -28,7 +29,21 @@ d <- read_csv(here("data-clean", "BHET_master_data_29Aug2024.csv"),
   # clean FeNO variable
   mutate(FeNO_num = ifelse(FeNO == "<5", "2.5", FeNO),
          FeNO_num = ifelse(FeNO_num == ".", "", FeNO_num),
-         FeNO_num = as.numeric(FeNO_num))
+         FeNO_num = as.numeric(FeNO_num)) %>%
+  
+  # add non-response feno data
+  left_join(feno_nr, by = c("wave", "ptc_id" = "ptc")) %>%
+  
+  # create feno missingness indicator
+  mutate(
+    feno_m = case_when(
+      # if there is a populated feno value THEN valid response
+      !is.na(FeNO_num) ~ 1,
+      # if missing feno AND there is a note about completion THEN non-response
+      is.na(FeNO_num) & (!is.na(notes)|notes != "") ~ 2,
+      # if missing feno AND no note about completion THEN not sampled
+      is.na(FeNO_num) & (is.na(notes)|notes == "") ~ 3,
+      TRUE ~ NA))
 ```
 
 ## Format data for table 1
@@ -66,61 +81,62 @@ outcomes_by_trt_levels <- d %>%
          
          `Any symptoms` = recode_factor(ifelse(is.na(resp), 0, 1),
                                                        `0` = "Missing",
-                                                       `1` = "Valid"),
+                                                       `1` = "Valid response"),
          
          Cough = recode_factor(ifelse(is.na(freq_cough), 0, 1),
                                `0` = "Missing",
-                               `1` = "Valid"),
+                               `1` = "Valid response"),
          
          Phlegm = recode_factor(ifelse(is.na(freq_phlegm), 0, 1),
                                 `0` = "Missing",
-                                `1` = "Valid"),
+                                `1` = "Valid response"),
          
          Wheezing = recode_factor(ifelse(is.na(freq_wheezing), 0, 1),
                                   `0` = "Missing",
-                                  `1` = "Valid"),
+                                  `1` = "Valid response"),
          
          `Shortness of breath` = recode_factor(ifelse(is.na(freq_breath), 0, 1),
                                              `0` = "Missing",
-                                             `1` = "Valid"),
+                                             `1` = "Valid response"),
          
          `Chest trouble` = recode_factor(ifelse(is.na(freq_no_chest), 0, 1),
                                              `0` = "Missing",
-                                             `1` = "Valid"),
+                                             `1` = "Valid response"),
          
          `Brachial SBP` = recode_factor(ifelse(is.na(sys_brachial), 0, 1),
                                         `0` = "Missing",
-                                        `1` = "Valid"),
+                                        `1` = "Valid response"),
          
          `Central SBP` = recode_factor(ifelse(is.na(sys_central), 0, 1),
                                        `0` = "Missing",
-                                       `1` = "Valid"),
+                                       `1` = "Valid response"),
          
          `Brachial DBP` = recode_factor(ifelse(is.na(dia_brachial), 0, 1),
                                         `0` = "Missing",
-                                        `1` = "Valid"),
+                                        `1` = "Valid response"),
          
          `Central DBP` = recode_factor(ifelse(is.na(dia_central), 0, 1),
                                        `0` = "Missing",
-                                       `1` = "Valid"),
+                                       `1` = "Valid response"),
          
-         FeNO = recode_factor(ifelse(is.na(FeNO_num), 0, 1),
-                                `0` = "Missing",
-                                `1` = "Valid"),
+         FeNO = case_when(feno_m == 1 ~ 'Valid response',
+                          feno_m == 2 ~ 'Missing',
+                          feno_m == 3 ~ 'Not sampled',
+                          TRUE ~ ""),
          
-         `Personal PM` = case_when(personal_pm25_m == 1 ~ 'Valid',
+         `Personal PM` = case_when(personal_pm25_m == 1 ~ 'Valid response',
                                    personal_pm25_m == 2 ~ 'Missing',
                                    personal_pm25_m == 3 ~ 'Not sampled',
                                    TRUE ~ ""),
          
-         `Indoor PM` = case_when(PM25_indoor_seasonal_hs_m == 1 ~ 'Valid',
+         `Indoor PM` = case_when(PM25_indoor_seasonal_hs_m == 1 ~ 'Valid response',
                                  PM25_indoor_seasonal_hs_m == 2 ~ 'Missing',
                                  PM25_indoor_seasonal_hs_m == 3 ~ 'Not sampled',
                                  TRUE ~ ""),
          
          `Indoor temperature` = recode_factor(ifelse(is.na(temp), 0, 1),
                                               `0` = "Missing",
-                                              `1` = "Valid")) %>%
+                                              `1` = "Valid response")) %>%
   
   select(trt, `Any symptoms`, Cough, Phlegm, Wheezing, 
          `Shortness of breath`, `Chest trouble`, `Brachial SBP`, `Central SBP`,
@@ -132,7 +148,7 @@ outcomes_by_trt_levels <- d %>%
 
 ```{r, echo=F, message = F}
 d_b <- read_xlsx(here("data-clean", 
-                      "missing_outcomes_by_trt.xlsx")) %>% 
+  "missing_outcomes_by_trt.xlsx")) %>% 
   select(-c(1, ban_status_composite, n)) %>%
   t() %>%
   as.data.frame() %>%
@@ -191,7 +207,7 @@ nr[is.na(nr)] <- " "
 nr
 
 ## placement in table
-attr(nr, 'position') <- c(1, 14, 23, 24, 25, 26, 27, 30)
+attr(nr, 'position') <- c(1, 14, 23, 24, 25, 26, 27, 31)
 
 options(modelsummary_format_numeric_latex = "plain")
 
@@ -204,7 +220,7 @@ tbl <- datasummary_balance(~trt,
                            )
 tbl %>%
   kable_styling(font_size = 10) %>%
-  row_spec(c(1, 14, 23, 30), bold = T)
+  row_spec(c(1, 14, 23, 31), bold = T)
 
 ```
 
@@ -215,7 +231,7 @@ tinyt <- datasummary_balance(~trt,
                              add_rows = nr, 
                              align = "lccccccccc") %>%
   style_tt(j = 1:10, fontsize = 0.75) %>%
-  style_tt(i = c(1, 14, 23, 30), bold = TRUE) %>%
+  style_tt(i = c(1, 14, 23, 31), bold = TRUE) %>%
   theme_tt("multipage", rowhead = 2)
 
 tinyt
@@ -225,7 +241,7 @@ tinyt
 customt <- tt(tinyt@table_dataframe,
    width = c(.2, .2, .1, .1, .1, .1, .1, .1, .1, .1)) %>%
   style_tt(j = 1:10, fontsize = 0.75, align = "lccccccccc") %>%
-  style_tt(i = c(1, 14, 23, 30), 
+  style_tt(i = c(1, 14, 23, 31), 
            bold=TRUE) %>%
   group_tt(j = list(`Never enrolled (N=1880)` = 3:4, 
                     `Enrolled 2019 (N=642)` = 5:6,
@@ -236,10 +252,10 @@ customt <- tt(tinyt@table_dataframe,
 customt
 ```
 
-```{r}
-customt %>% save_tt("trt-outcome-missingness.pdf", overwrite = TRUE)
+```{r, eval=F}
+customt %>% save_tt(here("HEI-report", "trt-outcome-missingness.pdf"), overwrite = TRUE)
 ```
 
-```{r}
-customt %>% save_tt("trt-outcome-missingness.docx", overwrite = TRUE)
+```{r, eval = F}
+customt %>% save_tt(here("HEI-report", "trt-outcome-missingness.docx"), overwrite = TRUE)
 ```

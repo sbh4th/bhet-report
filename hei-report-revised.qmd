@@ -1739,7 +1739,7 @@ tt(ctt_temp_table,
 ```{r}
 #| echo: FALSE
 #| label: tbl-bp-het
-#| tbl-cap: Heterogenous treatment effects for the total effect of the CBHP policy on blood pressure.
+#| tbl-cap: Heterogenous treatment effects for the total effect of the CHP on blood pressure.
 
 options(knitr.kable.NA = " ")
 temp_table <- read_xlsx(here("outputs",
@@ -1813,34 +1813,25 @@ tt(bp_het_table,
 #| tbl-cap: Heterogenous treatment effects for blood pressure mediation model.
 #| tbl-pos: H
 
-ctot <- read_xlsx(here("data-clean", 
-  "ct_total_effect_adjusted.xlsx")) %>%
-  mutate(model = 1)
-
-ctotmp <- read_xlsx(here("data-clean", 
-  "ct_pm_mediation_adjusted.xlsx")) %>%
-  mutate(model = 2)
-
-ctotmt <- read_xlsx(here("data-clean", 
-  "ct_temp_mediation_adjusted.xlsx")) %>%
-  mutate(model = 3)
-
-ctotmm <- read_xlsx(here("data-clean", 
-  "ct_mult_mediation_adjusted.xlsx")) %>%
-  mutate(model = 4)
-
-ctotm <- bind_rows(ctot, ctotmp, ctotmt, ctotmm) %>%
-  rename(est = theta_bar, ll = lower_95CI,
-         ul = upper_95CI) %>%
-  mutate(ci = paste("(", sprintf('%.2f', ll), ", ",
-    sprintf('%.2f', ul), ")", sep=""),
+ctotm <- read_xlsx(here("outputs",
+  "adjusted_CT_results.xlsx")) %>%
+  filter(str_detect(bp, "PP", 
+                    negate = TRUE)) %>%
+  filter(str_detect(bp, "amplification", 
+                    negate = TRUE)) %>%
+  mutate(ci = paste("(", sprintf('%.1f', 
+    lower_95CI), ", ", sprintf('%.1f', 
+    upper_95CI), ")", sep=""),
     cohort = rep(c(2019,2019,2020,2021),
                       times = 16),
          time = rep(c(2019,2021,2021,2021),
                     times = 16)) %>%
-  select(bp, cohort, time, model, est, ci) %>%
+  rename(est = theta_bar) %>%
+  select(model, cohort, 
+         time, bp, est, ci) %>%
   pivot_wider(names_from = model, 
-    values_from = c(est, ci), names_vary = "slowest") %>%
+    values_from = c(est, ci), 
+    names_vary = "slowest") %>%
   select(-bp)
 
 colnames(ctotm) <- c("Cohort", "Time", 
@@ -1870,67 +1861,7 @@ tt(ctotm,
         "Brachial DBP" = 9,
         "Central DBP" = 13)) %>%
   style_tt(i = c(1,6,11,16), bold = TRUE)
-```
 
-```{r, message=F}
-#| echo: FALSE
-#| label: tbl-a-bp-med-het-tests
-#| tbl-cap: Heterogenous treatment effects and tests for cohort-time heterogeneity across CDEs for multiple mediation blood pressure mediation model.
-#| tbl-pos: H
-
-mhet_model <- read_xlsx(here("data-clean", 
-  "ct_mult_mediation_adjusted.xlsx")) %>%
-  rename(est = theta_bar, ll = lower_95CI,
-         ul = upper_95CI) %>%
-  mutate(ci = paste("(", sprintf('%.2f', ll), ", ",
-    sprintf('%.2f', ul), ")", sep=""),
-  cohort = rep(c(2019,2019,2020,2021),
-                      times = 4),
-  time = rep(c(2019,2021,2021,2021),
-                    times = 4)) %>%
-  select(bp, cohort, time, est, ci) 
-
-mhet_stats <- read_xlsx(here("data-clean",
-  "heterogeneity_test_results.xlsx")) %>%
-  filter(analysis == "Multiple mediation") %>%
-  rename(test = `median_fstat`,
-         pval = `median_p`) %>%
-  mutate(bp = c("Brachial SBP", "Central SBP",
-                "Brachial DBP", "Central DBP"),
-         test = sprintf("%.1f", test),
-         pval = sprintf("%.3f", pval),
-         cohort = 2021,
-         time = 2021) %>%
-  select(bp, cohort, time, test, pval)
-
-bp_mmed_het_table <- mhet_model %>% 
-  left_join(mhet_stats, join_by(bp, cohort, time)) %>%
-  select(-bp)
-
-colnames(bp_mmed_het_table) <- c("Cohort", 
-  "Time", "ATT", "(95% CI)",
-  "F-Statistic", "p-value")
-
-tt(bp_mmed_het_table,
-   digits = 2,
-   notes = 
-     list("Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences, CDE = Controlled Direct Effect.", 
-     a = list(i=0, j=3, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."),
-     b = list(i=0, j=5, text = "F-statistics and p-values for joint tests of equality across cohort and time ATTs"))) %>%
-  group_tt(
-    j = list(
-      "Adjusted CDE" = 3:4,
-      "Heterogeneity tests" = 5:6)) %>%
-  format_tt(escape = TRUE) %>%
-  format_tt(j=3, sprintf = "%.2f") %>%
-  group_tt(
-    i = list(
-        "Brachial SBP" = 1, 
-        "Central SBP" = 5,
-        "Brachial DBP" = 9,
-        "Central DBP" = 13)) %>%
-  style_tt(i = c(1,6,11,16), bold = TRUE) %>%
-  style_tt(j = 1:6, align = "llcccc")
 ```
 
 \newpage

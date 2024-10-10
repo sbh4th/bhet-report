@@ -112,37 +112,54 @@ Table @tbl-a-het-personal shows limited evidence that the $ATT$s across cohorts 
 #| tbl-cap: Controlled direct effects for the CHP on blood pressure.
 #| eval: TRUE
 
-otm <- read_xlsx(here("outputs",
-  "adjusted_overall_results.xlsx")) %>%
+ctotm <- read_xlsx(here("outputs",
+  "adjusted_CT_results.xlsx")) %>%
   filter(str_detect(bp, "PP", 
                     negate = TRUE)) %>%
   filter(str_detect(bp, "amplification", 
                     negate = TRUE)) %>%
   mutate(ci = paste("(", sprintf('%.1f', 
     lower_95CI), ", ", sprintf('%.1f', 
-    upper_95CI), ")", sep="")) %>%
+    upper_95CI), ")", sep=""),
+    cohort = rep(c(2019,2019,2020,2021),
+                      times = 16),
+         time = rep(c(2019,2021,2021,2021),
+                    times = 16)) %>%
   rename(est = theta_bar) %>%
-  select(model, bp, est, ci) %>%
+  select(model, cohort, 
+         time, bp, est, ci) %>%
   pivot_wider(names_from = model, 
     values_from = c(est, ci), 
-    names_vary = "slowest")
+    names_vary = "slowest") %>%
+  select(-bp)
 
-colnames(otm) <- c("", "ATT", "(95%CI)", "ATT", 
-  "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)")
+colnames(ctotm) <- c("Cohort", "Time", 
+  "ATT", "(95% CI)", "ATT", "(95% CI)", 
+  "ATT", "(95% CI)", "ATT", "(95% CI)")
 
-tt(otm,
-   notes = list("Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, CI = Confidence Interval, DBP = Diastolic blood pressure, PM = Particulate matter, SBP = Systolic blood pressure.", a = list(i=0, j=2, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), b = list(i=0, j=c(4,6,8), text = "Mediators were set to the mean value for untreated participants at baseline."))) %>%
+tt(ctotm,
+   digits = 2,
+   notes = list("Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.", 
+     a = list(i=0, j=3, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), 
+     b = list(i=0, j=c(5,7,9), text = "Mediators were set to the mean value for untreated participants at baseline."))) %>%
   group_tt(
-    j = list("Indoor PM" = 4:5,
-             "Indoor Temp" = 6:7,
-             "PM + Temp" = 8:9)) %>%
+    j = list("Indoor PM" = 5:6,
+             "Indoor Temp" = 7:8,
+             "PM + Temp" = 9:10)) %>%
   group_tt(
-    j = list("Adjusted Total Effect" = 2:3,
-             "CDE Mediated By:" = 4:9)) %>%
-  style_tt(j = 1:9, align = "lcccccccc") %>%
-  style_tt(j=1:9, fontsize = 0.9) %>%
+    j = list("Adjusted Total Effect" = 3:4,
+             "CDE Mediated By:" = 5:10)) %>%
+  style_tt(j = 1:10, align = "llcccccccc") %>%
+  style_tt(j=1:10, fontsize = 0.8) %>%
   format_tt(escape = TRUE) %>%
-  format_tt(j=c(2,4,6,8), sprintf = "%.1f") 
+  format_tt(j=c(3,5,7,9), sprintf = "%.2f") %>%
+  group_tt(
+    i = list(
+        "Brachial SBP" = 1, 
+        "Central SBP" = 5,
+        "Brachial DBP" = 9,
+        "Central DBP" = 13)) %>%
+  style_tt(i = c(1,6,11,16), bold = TRUE)
 
 ```
 

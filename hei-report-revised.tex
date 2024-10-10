@@ -238,7 +238,7 @@ Sternbach\textsuperscript{1} \and Shu
 Tao\textsuperscript{3} \and Kaibing Xue\textsuperscript{4} \and Wenlu
 Yuan\textsuperscript{1} \and Xiang Zhang\textsuperscript{1} \and Yuanxun
 Zhang\textsuperscript{4}}
-\date{2024-10-08}
+\date{2024-10-10}
 
 \begin{document}
 \maketitle
@@ -1545,7 +1545,7 @@ For binary and count outcomes we used logit and Poisson models,
 respectively, and for skewed outcomes (e.g., black carbon,
 PM\textsubscript{2.5}) we used generalized linear models with a Gamma
 distribution and a log link, based on the specification tests
-recommended by Manning and Mullahy (2001). For all models we cluster
+recommended by Manning and Mullahy (2001). For all models we clustered
 standard errors at the village level, consistent with the unit of
 treatment assignment (Cameron and Miller 2015). The ETWFE and other
 approaches that allow for several (potentially heterogeneous) treatment
@@ -1644,20 +1644,23 @@ humidity, wind direction, wind speed, boundary layer height; home area
 and home area heated; home insulation; smoking status of participant and
 whether or not they lived with a smoker; whether or not the household
 reported using wood (i.e., biomass) for household energy activities, and
-if so, self-reported quantity of wood. Potential non-linearity between
-continuous covariates and our study outcomes were evaluated using
-natural cubic splines with different degrees of freedom. Ultimately, we
-included the following measured time-varying covariates in the final DiD
-models for outdoor, indoor, and personal exposures to air pollution. For
-personal exposure source contributions due to mixed combustion of solid
-fuels (hereafter `mixed combustion'), we adjusted for: temperature
-(represented by a spline with 2 degrees of freedom); participant smoking
-status; and whether or not the household reported using biomass fuel.
-For the final adjusted DiD model for outdoor (community) `mixed
-combustion' source contributions, the following covariates were
-included: total number of households in the village; village population;
-and ambient relative humidity (represented by a spline with 2 degrees of
-freedom).
+if so, self-reported quantity of wood. For exposure to tobacco smoking,
+we used responses to several survey questions to develop four distinct
+categories: current smoker, former smoker, never smoker who has lived
+with a smoker (i.e., passive smoking exposure); and never smoker.
+Potential non-linearity between continuous covariates and our study
+outcomes were evaluated using natural cubic splines with different
+degrees of freedom. Ultimately, we included the following measured
+time-varying covariates in the final DiD models for outdoor, indoor, and
+personal exposures to air pollution. For personal exposure source
+contributions due to mixed combustion of solid fuels (hereafter `mixed
+combustion'), we adjusted for: temperature (represented by a spline with
+2 degrees of freedom); participant smoking status; and whether or not
+the household reported using biomass fuel. For the final adjusted DiD
+model for outdoor (community) `mixed combustion' source contributions,
+the following covariates were included: total number of households in
+the village; village population; and ambient relative humidity
+(represented by a spline with 2 degrees of freedom).
 
 \subsection{\texorpdfstring{Multiple imputation for covariates and
 indoor PM\textsubscript{2.5} in analyses with BP
@@ -1847,7 +1850,7 @@ column{6}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
 column{7}={font=\fontsize{0.9em}{1.2em}\selectfont,halign=r,},
 row{3}={,cmd=\bfseries,},
 row{13}={,cmd=\bfseries,},
-row{30}={,cmd=\bfseries,},
+row{31}={,cmd=\bfseries,},
 rowsep={.1em},
 }                     %% tabularray inner close
 \toprule
@@ -1880,8 +1883,8 @@ Frequency of phlegm (\%)     & \num{27.6}  & \num{44.7}  & \num{23.7}  & \num{42
 Frequency of wheezing (\%)   & \num{6.2}   & \num{24.2}  & \num{6.6}   & \num{24.8}  & \num{0.3}   & \num{1.6}  \\
 Shortness of breath (\%)     & \num{29.2}  & \num{45.5}  & \num{34.3}  & \num{47.5}  & \num{5.1}   & \num{3.0}  \\
 Chest trouble (\%)           & \num{11.6}  & \num{32.0}  & \num{14.1}  & \num{34.9}  & \num{2.5}   & \num{2.2}  \\
-Environmental measures:       &              &              &              &              &              &             \\
 Any respiratory problem (\%) & \num{50.6}  & \num{50.0}  & \num{54.3}  & \num{49.9}  & \num{3.7}   & \num{3.2}  \\
+Environmental measures:       &              &              &              &              &              &             \\
 Temperature (°C)              & \num{13.8}  & \num{3.6}   & \num{13.5}  & \num{3.3}   & \num{-0.3}  & \num{0.2}  \\
 Personal PM2.5 (ug/m3)        & \num{127.1} & \num{145.3} & \num{102.3} & \num{105.5} & \num{-24.7} & \num{11.9} \\
 Black carbon (ug/m3)          & \num{4.4}   & \num{5.3}   & \num{3.3}   & \num{3.4}   & \num{-1.1}  & \num{0.4}  \\
@@ -2108,9 +2111,9 @@ from 30\% in w1 to 7\% in w4.
 \subsection{Aim 1: Policy impacts and potential
 mediation}\label{aim-1-policy-impacts-and-potential-mediation}
 
-\subsubsection{Impact of policy on potential mediators (air pollution
+\subsubsection{Impact of policy on potential mediators of air pollution
 and indoor
-temperature)}\label{impact-of-policy-on-potential-mediators-air-pollution-and-indoor-temperature}
+temperature}\label{impact-of-policy-on-potential-mediators-of-air-pollution-and-indoor-temperature}
 
 The average marginal effect (\(ATT\)) from the basic ETWFE model
 (Table~\ref{tbl-did-med}) shows that exposure to the CHP reduced 24h
@@ -2225,8 +2228,8 @@ adjusting models for the number of rooms and wintertime occupants in the
 household, age of the primary respondent, and wealth index had little
 impact on the average \(ATTs\)
 
-\subsubsection{Impact of the CHP on health
-outcomes}\label{impact-of-the-chp-on-health-outcomes}
+\subsubsection{Impact of the policy on health
+outcomes}\label{impact-of-the-policy-on-health-outcomes}
 
 \begin{table}
 
@@ -2294,8 +2297,8 @@ Diastolic BP (mmHg) & Brachial & 3082 & -1.3 & (-2.6, 0.0) & -1.6 & (-3.0, -0.2)
 Diastolic BP (mmHg) & Central & 3081 & -1.4 & (-2.7, -0.0) & -1.7 & (-3.0, -0.3) \\
 Pulse Pressure & Brachial & 3082 & 0.5 & (-0.7, 1.7) & 0.2 & (-1.0, 1.4) \\
 Pulse Pressure & Central & 3081 & 0.3 & (-0.8, 1.5) & 0.1 & (-1.0, 1.2) \\
-BP Amplification x10 & Pulse pressure & 3081 & 0.0 & (-0.1, 0.1) & -0.0 & (-0.1, 0.1) \\
-BP Amplification x10 & Systolic BP & 3081 & 0.0 & (-0.0, 0.0) & 0.0 & (-0.0, 0.0) \\
+BP Amplification x100 & Pulse pressure & 3081 & 0.1 & (-1.1, 1.4) & -0.0 & (-1.2, 1.2) \\
+BP Amplification x100 & Systolic BP & 3081 & 0.2 & (-0.2, 0.5) & 0.1 & (-0.2, 0.4) \\
 Respiratory outcomes &&&&&& \\
 Self-reported (pp) & Any symptom & 3076 & -7.7 & (-12.8, -2.5) & -7.5 & (-12.7, -2.3) \\
 Self-reported (pp) & Coughing & 3076 & -2.6 & (-7.2, 2.0) & -2.7 & (-7.1, 1.7) \\
@@ -2325,7 +2328,7 @@ diastolic BP, but we found little evidence of a meaningful impact on
 pulse pressure or BP amplification. The effects of the policy on
 brachial and central blood pressures were similar, and were consistent
 \comment{EC 2e} when restricted to only those participants enrolled in
-w1 (i.e., excluding participants recruited in later waves, see Appendix
+W1 (i.e., excluding participants recruited in later waves, see Appendix
 Table~\ref{tbl-a-bp-sample}). However, the average effects in
 Table~\ref{tbl-did-health} conceal a fair amount of heterogeneity in
 treatment effects for blood pressure across treatment cohorts and time.
@@ -2350,9 +2353,9 @@ tables \ref{tbl-a-het-resp}, \ref{tbl-a-het-cough},
 heterogeneity in the cohort-time treatment effects across the different
 respiratory outcomes.
 
-Table~\ref{tbl-did-health} also shows the impacts of the CBHP policy on
-FeNO, which was conducted in a sub-sample of 511 participants, including
-274 participants with one measurement, 142 with two measurements, 95
+Table~\ref{tbl-did-health} also shows the impacts of the CHP on FeNO,
+which was conducted in a sub-sample of 511 participants, including 274
+participants with one measurement, 142 with two measurements, 95
 participants with 3 measurements. We did not find evidence that the
 policy affected changes in FeNO in the covariate-adjusted ETWFE model
 (0.5 ppb, 95\%CI: -2.1, 3.1). There was some evidence of heterogeneity
@@ -2363,46 +2366,56 @@ analyses that limited the analysis to participants with at least two
 repeated measurements and to those who participated in all three waves
 (Appendix Table~\ref{tbl-a-feno})
 
+We \comment{EC 9a} also did not find strong evidence of an impact of the
+CHP on markers of inflammation or oxidative stress. The basic DiD
+analyses showed an increase of 1.0 (95\% CI: 0.1, 1.8) in TNF-alpha but
+this estimate was reduced to 0.8 (-0.1, 1.7) after adjustment for waist
+circumference, occupation, wealth index quantile, frequency of drinking,
+tobacco smoking, and frequency of farming. Adjusted estimates for IL-6,
+CRP, and MDA were also generally small and measured with limited
+precision.
+
 \subsubsection{Mediated impact on health
 outcomes}\label{mediated-impact-on-health-outcomes}
 
-As noted above, we aimed to assess whether any health impacts of the
-CBHP policy may work specifically through pathways involving changes in
+As noted above, we aimed to assess whether any health impacts of the CHP
+may work specifically through pathways involving changes in
 PM\textsubscript{2.5} and indoor temperature. Below we show results from
-several mediation models. We evaluated potential mediation for each
-mediator (indoor temperature and exposure to indoor
+several mediation models. We focus the mediation analysis on the BP and
+respiratory outcomes for which we observed stronger evidence of a total
+controlled direct effects of the policy. We evaluated potential
+mediation for each mediator (indoor temperature and exposure to indoor
 PM\textsubscript{2.5}) separately and in a single model accounting for
 multiple mediators, and we set the values of both mediators to the mean
-value for untreated participants at baseline (wave 1). For mediation
-analysis, we focused on BP outcomes for which we observed an effect of
-the policy. In Table~\ref{tbl-bp-med} we show estimates of the CDEs for
-different sets of potential mediators. \comment{OC 2d} The first column
-shows the total effect of the CHP on blood pressure outcomes (e.g., a
-1.6 mmHg decrease in central DBP). The second column shows the CDE,
-i.e., the effect of exposure (vs.~no exposure) to the CHP on blood
-pressure, in a counterfactual population where we intervene to fix the
-value of indoor PM\textsubscript{2.5} to the average value for untreated
-participants at baseline. This CDE is still -1.4 (95\% CI -3.0, 0.0) not
-particularly different from the total effect of -1.6, demonstrating
-that, under the assumptions outlined in Section 5.2, little of the total
-effect is mediated by the impact of the policy on indoor
-PM\textsubscript{2.5}. On the other hand, the estimated CDE when holding
-constant the value of indoor temp to that of the untreated participants
-was smaller (-1.1, 95\% CI: -2.3, 0.1) suggesting a somewhat stronger
-role for indoor temperature in mediating the total effect of the CHP on
-central DBP. Finally, the last two columns show an even further reduced
-CDE of -0.9 (95\% CI: -2.3, 0.5) when setting both indoor
-PM\textsubscript{2.5} and indoor temperature to their respective
-pre-treatment means. Thus, interventions to fix the values of indoor
-PM\textsubscript{2.5} and indoor temperature to the levels in the
-untreated group at baseline would explain roughly 44\% of the total
-effect of the CHP on central DBP. Overall the results in
-Table~\ref{tbl-bp-med} indicate that conditioning on indoor
-PM\textsubscript{2.5} and indoor temperature largely explains the entire
-total effect of the CBHP policy on blood pressure for systolic BP, as
-the CDE conditional on both mediators was reduced to -0.0 (95\%CI: -2.0,
-2.0) for brachial SBP. The CDE for diastolic BP was roughly half the
-value of the total effect.
+value for untreated participants at baseline (wave 1).
+
+In Table~\ref{tbl-bp-med} we show estimates of the CDEs for different
+sets of potential mediators. \comment{OC 2d} The first column shows the
+total effect of the CHP on blood pressure outcomes (e.g., a 1.6 mmHg
+decrease in central DBP). The second column shows the CDE, i.e., the
+effect of exposure (vs.~no exposure) to the CHP on blood pressure, in a
+counterfactual population where we intervene to fix the value of indoor
+PM\textsubscript{2.5} to the average value for untreated participants at
+baseline. This CDE is still -1.4 (95\% CI -3.0, 0.0) not particularly
+different from the total effect of -1.6, demonstrating that, under the
+assumptions outlined in Section 5.2, little of the total effect is
+mediated by the impact of the policy on indoor PM\textsubscript{2.5}. On
+the other hand, the estimated CDE when holding constant the value of
+indoor temp to that of the untreated participants was smaller (-1.1,
+95\% CI: -2.3, 0.1) suggesting a somewhat stronger role for indoor
+temperature in mediating the total effect of the CHP on central DBP.
+Finally, the last two columns show an even further reduced CDE of -0.9
+(95\% CI: -2.3, 0.5) when setting both indoor PM\textsubscript{2.5} and
+indoor temperature to their respective pre-treatment means. Thus,
+interventions to fix the values of indoor PM\textsubscript{2.5} and
+indoor temperature to the levels in the untreated group at baseline
+would explain roughly 44\% of the total effect of the CHP on central
+DBP. Overall the results in Table~\ref{tbl-bp-med} indicate that
+conditioning on indoor PM\textsubscript{2.5} and indoor temperature
+largely explains the entire total effect of the CBHP policy on blood
+pressure for systolic BP, as the CDE conditional on both mediators was
+reduced to -0.0 (95\%CI: -2.0, 2.0) for brachial SBP. The CDE for
+diastolic BP was roughly half the value of the total effect.
 
 \begin{table}
 
@@ -4372,7 +4385,7 @@ tumour necrosis factor alpha (TNF-\(\alpha\)) and malondialdehyde (MDA)}
 
 \centering{
 
-\includegraphics[width=0.9\textwidth,height=\textheight]{images/biomarker-boxplot-log.jpg}
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/Biomarker boxplot.jpg}
 
 }
 
@@ -5400,6 +5413,25 @@ Cohort-Time ATTs &&& \\
 
 \newpage
 
+\subsubsection{FeNO}\label{feno}
+
+Figure~\ref{fig-feno-het} shows the cohort-time treatment effects for
+FeNO for both basic and covariate-adjusted DiD models.
+
+\begin{figure}[H]
+
+\caption{\label{fig-feno-het}Heterogenous treatment effects for FeNO.}
+
+\centering{
+
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/ETWFE cohort-time results.png}
+
+}
+
+\end{figure}%
+
+\newpage
+
 \subsubsection{Outdoor and personal mixed
 combustion}\label{outdoor-and-personal-mixed-combustion}
 
@@ -5407,7 +5439,7 @@ combustion}\label{outdoor-and-personal-mixed-combustion}
 
 \centering{
 
-\includegraphics[width=4.55in,height=\textheight]{images/did-mixed-ct-wave.png}
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/did-mixed-ct-wave.png}
 
 }
 
@@ -5471,54 +5503,6 @@ Systolic BP (mmHg) & Brachial &  992 & -1.6 & (-3.3, -0.0) \\
 Systolic BP (mmHg) & Central &  992 & -1.6 & (-3.1, -0.1) \\
 Diastolic BP (mmHg) & Brachial &  992 & -1.7 & (-2.9, -0.4) \\
 Diastolic BP (mmHg) & Central &  992 & -1.7 & (-2.9, -0.5) \\
-\bottomrule
-\end{talltblr}
-
-}
-
-\end{table}%
-
-\newpage
-
-\subsection{Impact of sample composition on FeNO
-results}\label{impact-of-sample-composition-on-feno-results}
-
-Table~\ref{tbl-a-feno} shows differences in the \(ATT\)s for the impact
-of the CBHP policy on FeNO depending on whether the estimation sample
-includes all individuals or is limited to those with repeated measures
-across campaigns.
-
-\begin{table}[H]
-
-\caption{\label{tbl-a-feno}Effects of the CHP on FeNO (ppb) based on the
-number of individuals with repeated measurements.}
-
-\centering{
-
-\centering
-\begin{talltblr}[         %% tabularray outer open
-entry=none,label=none,
-note{}={Note: ATT = Average Treatment Effect on the Treated, CI = Confidence Interval, DiD = Difference-in-Differences},
-]                     %% tabularray outer close
-{                     %% tabularray inner open
-colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
-cell{1}{2}={c=2,}{halign=c,},
-cell{1}{4}={c=2,}{halign=c,},
-cell{1}{6}={c=2,}{halign=c,},
-column{1}={halign=l,},
-column{2}={halign=c,},
-column{3}={halign=c,},
-column{4}={halign=c,},
-column{5}={halign=c,},
-column{6}={halign=c,},
-column{7}={halign=c,},
-}                     %% tabularray inner close
-\toprule
-& All participants &  & Participants with \textgreater{}1 measure &  & Participants with 3 measures &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
-& ATT & (95\% CI) & ATT & (95\% CI) & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
-DiD & 0.9 & (-1.6, 3.3) & -0.4 & (-2.9, 2.0) & 0.3 & (-2.8, 3.3) \\
-Adjusted DiD & 0.3 & (-2.2, 2.8) & -0.6 & (-3.2, 2.0) & 0.3 & (-2.9, 3.4) \\
-Observations & 793 &  & 541 &  & 272 &  \\
 \bottomrule
 \end{talltblr}
 
@@ -5595,6 +5579,52 @@ included vs.~excluded.}
 }
 
 \end{figure}%
+
+\subsection{Impact of sample composition on FeNO
+results}\label{impact-of-sample-composition-on-feno-results}
+
+Table~\ref{tbl-a-feno} shows differences in the \(ATT\)s for the impact
+of the CBHP policy on FeNO depending on whether the estimation sample
+includes all individuals or is limited to those with repeated measures
+across campaigns.
+
+\begin{table}[H]
+
+\caption{\label{tbl-a-feno}Effects of the CHP on FeNO (ppb) based on the
+number of individuals with repeated measurements.}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: ATT = Average Treatment Effect on the Treated, CI = Confidence Interval, DiD = Difference-in-Differences},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=2,}{halign=c,},
+cell{1}{6}={c=2,}{halign=c,},
+column{1}={halign=l,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+column{7}={halign=c,},
+}                     %% tabularray inner close
+\toprule
+& All participants &  & Participants with \textgreater{}1 measure &  & Participants with 3 measures &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
+& ATT & (95\% CI) & ATT & (95\% CI) & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+DiD & 0.9 & (-1.6, 3.3) & -0.4 & (-2.9, 2.0) & 0.3 & (-2.8, 3.3) \\
+Adjusted DiD & 0.3 & (-2.2, 2.8) & -0.6 & (-3.2, 2.0) & 0.3 & (-2.9, 3.4) \\
+Observations & 793 &  & 541 &  & 272 &  \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\end{table}%
 
 \newpage
 

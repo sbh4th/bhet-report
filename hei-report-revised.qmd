@@ -422,7 +422,7 @@ To estimate the total effect of the policy we used a DiD analysis that accommoda
 
 $$Y_{ijt}=g(\mu_{ijt}) = \alpha + \sum_{r=q}^{T} \beta_{r} d_{r} + \sum_{s=r}^{T} \gamma_{s} fs_{t}+ \sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rs} (d_{r} \times fs_{t}) + \varepsilon_{ijt}$$ {#eq-etwfe}
 
-where $Y_{ijt}$ is the outcome for individual $i$ in village $j$ at time $t$, $d_{r}$ represent treatment cohort dummies, i.e., fixed effects for each cohort of villages $r$ that were first exposed to the policy at the same time $q$ (e.g., in 2019, 2020, or 2021), $fs_{t}$ are fixed effects for each time period $s$ corresponding to different winter data collection waves (2018-19, 2019-20, or 2021-22), and $\tau_{rs}$ are the cohort-time $ATT$s in the context of a linear model. For non-linear outcomes the cohort-time $ATT$s are derived by estimating marginal effects from non-linear models [@arel-bundock2024]. For binary and count outcomes we used logit and Poisson models, respectively, and for skewed outcomes (e.g., black carbon, PM~2.5~) we used generalized linear models with a Gamma distribution and a log link, based on the specification tests recommended by Manning and Mullahy [-@manning2001]. For all models we cluster standard errors at the village level, consistent with the unit of treatment assignment [@cameron2015]. The ETWFE and other approaches that allow for several (potentially heterogeneous) treatment effects may also be averaged to provide a weighted summary $ATT$. Several potential possibilities are feasible, including weighting by treatment cohorts or time since policy adoption [@goin2023]. We generally focus on two types of $ATT$s for this report: simple averages across all treatment cohorts and the full set of cohort-time $ATT$s to evaluate heterogeneous treatment effects. Although we primarily focus on reporting the simple average $ATT$ for most outcomes, we also used omnibus joint *F*-tests to assess whether there was sufficient evidence to reject the assumption of homogeneity across the $ATT$s.
+where $Y_{ijt}$ is the outcome for individual $i$ in village $j$ at time $t$, $d_{r}$ represent treatment cohort dummies, i.e., fixed effects for each cohort of villages $r$ that were first exposed to the policy at the same time $q$ (e.g., in 2019, 2020, or 2021), $fs_{t}$ are fixed effects for each time period $s$ corresponding to different winter data collection waves (2018-19, 2019-20, or 2021-22), and $\tau_{rs}$ are the cohort-time $ATT$s in the context of a linear model. For non-linear outcomes the cohort-time $ATT$s are derived by estimating marginal effects from non-linear models [@arel-bundock2024]. For binary and count outcomes we used logit and Poisson models, respectively, and for skewed outcomes (e.g., black carbon, PM~2.5~) we used generalized linear models with a Gamma distribution and a log link, based on the specification tests recommended by Manning and Mullahy [-@manning2001]. For all models we clustered standard errors at the village level, consistent with the unit of treatment assignment [@cameron2015]. The ETWFE and other approaches that allow for several (potentially heterogeneous) treatment effects may also be averaged to provide a weighted summary $ATT$. Several potential possibilities are feasible, including weighting by treatment cohorts or time since policy adoption [@goin2023]. We generally focus on two types of $ATT$s for this report: simple averages across all treatment cohorts and the full set of cohort-time $ATT$s to evaluate heterogeneous treatment effects. Although we primarily focus on reporting the simple average $ATT$ for most outcomes, we also used omnibus joint *F*-tests to assess whether there was sufficient evidence to reject the assumption of homogeneity across the $ATT$s.
 
 ## Mediation Analysis
 As noted above, with respect to the mediation analysis we are chiefly interested in the $CDE$, which can be derived by adding relevant mediators $M$ to @eq-etwfe. If we also allow for exposure-mediator interaction and potentially allow for adjustment for confounders $W$ of the mediator-outcome effect, we can extend equation @eq-etwfe as follows:
@@ -443,7 +443,7 @@ In contrast to typical analytic approaches such as regression adjustment or prop
 
 For models estimating the effect of the policy on indoor temperature and health outcomes, we used DAGs [@pearl2000] to identify potential time-varying causes of both treatment by the policy and our study outcome(s) that could differ between treatment groups, and adjusted for those potential confounders in the regression models. For the mediation analysis, we identified potential mediator-outcome confounders using the same approach. These variables were identified from the relevant peer-reviewed literature and our team’s substantive knowledge about the CHP. In the multivariable models, we also adjusted for strong predictors of the outcome that were not affected by treatment, and thus not confounders, to improve model precision. The covariates included in each of the models for blood pressure and respiratory health outcomes are provided in the tables. 
 
-For air pollution outcomes, the evidence on predictors of personal exposures and indoor air pollution in rural China is inconsistent. We considered the following covariates that could potentially be determinants of air pollution in our study setting: village population and total number of households in the village; temperature, relative humidity, wind direction, wind speed, boundary layer height; home area and home area heated; home insulation; smoking status of participant and whether or not they lived with a smoker; whether or not the household reported using wood (i.e., biomass) for household energy activities, and if so, self-reported quantity of wood. Potential non-linearity between continuous covariates and our study outcomes were evaluated using natural cubic splines with different degrees of freedom. Ultimately, we included the following measured time-varying covariates in the final DiD models for outdoor, indoor, and personal exposures to air pollution. For personal exposure source contributions due to mixed combustion of solid fuels (hereafter ‘mixed combustion’), we adjusted for: temperature (represented by a spline with 2 degrees of freedom); participant smoking status; and whether or not the household reported using biomass fuel. For the final adjusted DiD model for outdoor (community) ‘mixed combustion’ source contributions, the following covariates were included: total number of households in the village; village population; and ambient relative humidity (represented by a spline with 2 degrees of freedom). 
+For air pollution outcomes, the evidence on predictors of personal exposures and indoor air pollution in rural China is inconsistent. We considered the following covariates that could potentially be determinants of air pollution in our study setting: village population and total number of households in the village; temperature, relative humidity, wind direction, wind speed, boundary layer height; home area and home area heated; home insulation; smoking status of participant and whether or not they lived with a smoker; whether or not the household reported using wood (i.e., biomass) for household energy activities, and if so, self-reported quantity of wood. For exposure to tobacco smoking, we used responses to several survey questions to develop four distinct categories: current smoker, former smoker, never smoker who has lived with a smoker (i.e., passive smoking exposure); and never smoker. Potential non-linearity between continuous covariates and our study outcomes were evaluated using natural cubic splines with different degrees of freedom. Ultimately, we included the following measured time-varying covariates in the final DiD models for outdoor, indoor, and personal exposures to air pollution. For personal exposure source contributions due to mixed combustion of solid fuels (hereafter ‘mixed combustion’), we adjusted for: temperature (represented by a spline with 2 degrees of freedom); participant smoking status; and whether or not the household reported using biomass fuel. For the final adjusted DiD model for outdoor (community) ‘mixed combustion’ source contributions, the following covariates were included: total number of households in the village; village population; and ambient relative humidity (represented by a spline with 2 degrees of freedom). 
 
 ##  Multiple imputation for covariates and indoor PM~2.5~ in analyses with BP outcomes
 
@@ -693,7 +693,7 @@ nr <- data.frame(matrix(ncol = 7, nrow = length(nrn)))
 nr$X1 <- nrn
 nr[is.na(nr)] <- " "
 # placement in table
-attr(nr, 'position') <- c(1, 11, 28)
+attr(nr, 'position') <- c(1, 11, 29)
 options(modelsummary_format_numeric_latex = "plain")
 ```
 
@@ -708,7 +708,7 @@ t1 <- datasummary_balance(~et, data = dt,
 
 t1f <- tt(t1@table_dataframe) %>%
   style_tt(j = 1:7, fontsize = 0.9, align = "lrrrrrr") %>%
-  style_tt(i = c(1,11,28), bold=TRUE) %>%
+  style_tt(i = c(1,11,29), bold=TRUE) %>%
   group_tt(j = list(`Never enrolled (N=603)` = 2:3, 
     `Ever enrolled (N=400)` = 4:5)) %>%
   style_tt(tabularray_inner = "rowsep={.1em}") %>%
@@ -799,7 +799,7 @@ In never treated villages, we also observed a transition to clean energy over th
 
 ## Aim 1: Policy impacts and potential mediation
 
-### Impact of policy on potential mediators (air pollution and indoor temperature)
+### Impact of policy on potential mediators of air pollution and indoor temperature
 
 The average marginal effect ($ATT$) from the basic ETWFE model (@tbl-did-med) shows that exposure to the CHP reduced 24h indoor PM~2.5~ by -19 µg/m^3^ (95%CI: -56, 18). After adjusting outdoor temperature, dewpoint, household smoking status, and the number of residents in each household, the $ATT$ was -20 µg/m^3^ (95%CI: -46, 6). The basic DiD impact was stronger on seasonal indoor PM~2.5~, with an average $ATT$ of -31 µg/m^3^ (95%CI: -53, -9). After adjustment the average $ATT$ on seasonal indoor PM~2.5~ was -20 µg/m^3^ (95%CI: -38, -3). This finding likely reflects the direct benefit of the policy in replacing coal stoves and air quality improvement. We found little evidence of heterogeneity in $ATT$s across cohort and time (all p-values > 0.4 for tests of heterogeneity, see Appendix @tbl-a-het-indoor).
 
@@ -877,7 +877,7 @@ Overall we found little evidence of an impact of the CHP on 24-h and seasonal ou
 
 With respect to the other potential mediator of temperature, @tbl-did-med shows that exposure to the CHP increased mean household point temperature by around 2°C (95%CI: 1, 3), with similar impacts on mean seasonal temperatures during the heating season. The CHP had considerably stronger impacts on average seasonal minimum temperatures, which increased by 4.2°C (95%CI: 2.3, 6.0). Additionally adjusting models for the number of rooms and wintertime occupants in the household, age of the primary respondent, and wealth index had little impact on the average $ATTs$
 
-### Impact of the CHP on health outcomes
+### Impact of the policy on health outcomes
 
 ```{r, message=F, warning=F}
 #| echo: FALSE
@@ -896,7 +896,7 @@ bp_policy <- read_xlsx(here("outputs",
 bp_policy_amp <- bp_policy %>% 
   filter(str_detect(bp, "Amplification")) %>%
   mutate_at(c("theta_bar", "lower_95CI", 
-    "upper_95CI"), function(x) (x * 10))
+    "upper_95CI"), function(x) (x * 100))
 
 bp_policy_t <- bp_policy %>%
   filter(!str_detect(bp, "Amplification")) %>%
@@ -915,7 +915,7 @@ bp_policy_t <- bp_policy %>%
     values_from = c(estimate, ci)) %>%
   mutate(category = rep(c("Systolic BP (mmHg)", 
     "Diastolic BP (mmHg)", "Pulse Pressure", 
-    "BP Amplification x10"), each=2),
+    "BP Amplification x100"), each=2),
   outcome = c("Brachial","Central","Brachial",
     "Central", "Brachial","Central", "Pulse pressure",
     "Systolic BP"),
@@ -989,15 +989,19 @@ tt(op_table,
 
 ```
 
-@tbl-did-health shows the impacts of the policy on blood pressure in basic ETWFE models and models further adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Overall exposure to the CHP demonstrated reductions in blood pressure of approximately 1.5 mmHg for both systolic and diastolic BP, but we found little evidence of a meaningful impact on pulse pressure or BP amplification. The effects of the policy on brachial and central blood pressures were similar, and were consistent \comment{EC 2e} when restricted to only those participants enrolled in w1 (i.e., excluding participants recruited in later waves, see Appendix @tbl-a-bp-sample). However, the average effects in @tbl-did-health conceal a fair amount of heterogeneity in treatment effects for blood pressure across treatment cohorts and time. Appendix @tbl-bp-het shows that treatment impacts were considerably stronger for the earlier compared to the later-treated cohorts. For example, the CHP reduced central DBP in the year of treatment by -2.7 mmHg (95%CI: -4.6, -0.8) for the villages first treated in wave 2, but increased central DBP by 1.1 mmHg (95%CI: -0.1, 2.2) for the villages treated in wave 4 (*p*-value for heterogeneity <0.0001).   
+@tbl-did-health shows the impacts of the policy on blood pressure in basic ETWFE models and models further adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Overall exposure to the CHP demonstrated reductions in blood pressure of approximately 1.5 mmHg for both systolic and diastolic BP, but we found little evidence of a meaningful impact on pulse pressure or BP amplification. The effects of the policy on brachial and central blood pressures were similar, and were consistent \comment{EC 2e} when restricted to only those participants enrolled in W1 (i.e., excluding participants recruited in later waves, see Appendix @tbl-a-bp-sample). However, the average effects in @tbl-did-health conceal a fair amount of heterogeneity in treatment effects for blood pressure across treatment cohorts and time. Appendix @tbl-bp-het shows that treatment impacts were considerably stronger for the earlier compared to the later-treated cohorts. For example, the CHP reduced central DBP in the year of treatment by -2.7 mmHg (95%CI: -4.6, -0.8) for the villages first treated in wave 2, but increased central DBP by 1.1 mmHg (95%CI: -0.1, 2.2) for the villages treated in wave 4 (*p*-value for heterogeneity <0.0001).   
 
 @tbl-did-health shows the impacts on self-reported chronic respiratory symptoms categorized as any symptoms and separately for each individual symptom type. In both basic and covariate-adjusted ETWFE models, exposure to the CBHP policy reduced self-report of any poor respiratory symptoms by around 7 percentage points (95%CI: -14, -1). This was largely through reductions in reports of having chest trouble or difficulty breathing on several or most days of the week. Appendix tables [-@tbl-a-het-resp], [-@tbl-a-het-cough], [-@tbl-a-het-phlegm], [-@tbl-a-het-wheeze], [-@tbl-a-het-breath], [-@tbl-a-het-nochest] show little evidence of any systematic heterogeneity in the cohort-time treatment effects across the different respiratory outcomes.   
 
-@tbl-did-health also shows the impacts of the CBHP policy on FeNO, which was conducted in a sub-sample of 511 participants, including 274 participants with one measurement, 142 with two measurements, 95 participants with 3 measurements. We did not find evidence that the policy affected changes in FeNO in the covariate-adjusted ETWFE model (0.5 ppb, 95%CI: -2.1, 3.1). There was some evidence of heterogeneity in the FeNO effects of the policy by treatment cohort, though the confidence intervals for each of the cohort-specific effects were large and overlapping (Appendix . Our results did not change with sensitivity analyses that limited the analysis to participants with at least two repeated measurements and to those who participated in all three waves (Appendix @tbl-a-feno) 
+@tbl-did-health also shows the impacts of the CHP on FeNO, which was conducted in a sub-sample of 511 participants, including 274 participants with one measurement, 142 with two measurements, 95 participants with 3 measurements. We did not find evidence that the policy affected changes in FeNO in the covariate-adjusted ETWFE model (0.5 ppb, 95%CI: -2.1, 3.1). There was some evidence of heterogeneity in the FeNO effects of the policy by treatment cohort, though the confidence intervals for each of the cohort-specific effects were large and overlapping (Appendix . Our results did not change with sensitivity analyses that limited the analysis to participants with at least two repeated measurements and to those who participated in all three waves (Appendix @tbl-a-feno) 
+
+We \comment{EC 9a} also did not find strong evidence of an impact of the CHP on markers of inflammation or oxidative stress. The basic DiD analyses showed an increase of 1.0 (95% CI: 0.1, 1.8) in TNF-alpha but this estimate was reduced to 0.8 (-0.1, 1.7) after adjustment for waist circumference, occupation, wealth index quantile, frequency of drinking, tobacco smoking, and frequency of farming. Adjusted estimates for IL-6, CRP, and MDA were also generally small and measured with limited precision.
 
 ### Mediated impact on health outcomes
 
-As noted above, we aimed to assess whether any health impacts of the CBHP policy may work specifically through pathways involving changes in PM~2.5~ and indoor temperature. Below we show results from several mediation models. We evaluated potential mediation for each mediator (indoor temperature and exposure to indoor PM~2.5~) separately and in a single model accounting for multiple mediators, and we set the values of both mediators to the  mean value for untreated participants at baseline (wave 1). For mediation analysis, we focused on BP outcomes for which we observed an effect of the policy. In @tbl-bp-med we show estimates of the CDEs for different sets of potential mediators. \comment{OC 2d} The first column shows the total effect of the CHP on blood pressure outcomes (e.g., a 1.6 mmHg decrease in central DBP). The second column shows the CDE, i.e., the effect of exposure (vs. no exposure) to the CHP on blood pressure, in a counterfactual population where we intervene to fix the value of indoor PM~2.5~ to the average value for untreated participants at baseline. This CDE is still -1.4 (95% CI -3.0, 0.0) not particularly different from the total effect of -1.6, demonstrating that, under the assumptions outlined in Section 5.2, little of the total effect is mediated by the impact of the policy on indoor PM~2.5~. On the other hand, the estimated CDE when holding constant the value of indoor temp to that of the untreated participants was smaller (-1.1, 95% CI: -2.3, 0.1) suggesting a somewhat stronger role for indoor temperature in mediating the total effect of the CHP on central DBP. Finally, the last two columns show an even further reduced CDE of -0.9 (95% CI: -2.3, 0.5) when setting both indoor PM~2.5~ and indoor temperature to their respective pre-treatment means. Thus, interventions to fix the values of indoor PM~2.5~ and indoor temperature to the levels in the untreated group at baseline would explain roughly 44% of the total effect of the CHP on central DBP. Overall the results in @tbl-bp-med indicate that conditioning on indoor PM~2.5~ and indoor temperature largely explains the entire total effect of the CBHP policy on blood pressure for systolic BP, as the CDE conditional on both mediators was reduced to -0.0 (95%CI: -2.0, 2.0) for brachial SBP. The CDE for diastolic BP was roughly half the value of the total effect. 
+As noted above, we aimed to assess whether any health impacts of the CHP may work specifically through pathways involving changes in PM~2.5~ and indoor temperature. Below we show results from several mediation models. We focus the mediation analysis on the BP and respiratory outcomes for which we observed stronger evidence of a total controlled direct effects of the policy. We evaluated potential mediation for each mediator (indoor temperature and exposure to indoor PM~2.5~) separately and in a single model accounting for multiple mediators, and we set the values of both mediators to the mean value for untreated participants at baseline (wave 1).
+
+In @tbl-bp-med we show estimates of the CDEs for different sets of potential mediators. \comment{OC 2d} The first column shows the total effect of the CHP on blood pressure outcomes (e.g., a 1.6 mmHg decrease in central DBP). The second column shows the CDE, i.e., the effect of exposure (vs. no exposure) to the CHP on blood pressure, in a counterfactual population where we intervene to fix the value of indoor PM~2.5~ to the average value for untreated participants at baseline. This CDE is still -1.4 (95% CI -3.0, 0.0) not particularly different from the total effect of -1.6, demonstrating that, under the assumptions outlined in Section 5.2, little of the total effect is mediated by the impact of the policy on indoor PM~2.5~. On the other hand, the estimated CDE when holding constant the value of indoor temp to that of the untreated participants was smaller (-1.1, 95% CI: -2.3, 0.1) suggesting a somewhat stronger role for indoor temperature in mediating the total effect of the CHP on central DBP. Finally, the last two columns show an even further reduced CDE of -0.9 (95% CI: -2.3, 0.5) when setting both indoor PM~2.5~ and indoor temperature to their respective pre-treatment means. Thus, interventions to fix the values of indoor PM~2.5~ and indoor temperature to the levels in the untreated group at baseline would explain roughly 44% of the total effect of the CHP on central DBP. Overall the results in @tbl-bp-med indicate that conditioning on indoor PM~2.5~ and indoor temperature largely explains the entire total effect of the CBHP policy on blood pressure for systolic BP, as the CDE conditional on both mediators was reduced to -0.0 (95%CI: -2.0, 2.0) for brachial SBP. The CDE for diastolic BP was roughly half the value of the total effect. 
 
 ```{r, message=F, warning=F}
 #| echo: FALSE
@@ -1354,7 +1358,7 @@ Below we show boxplots for the logged values of the blood inflammatory and oxida
 #| fig-cap: "Boxplots for markers of systemic inflammation including C-reactive protein (CRP), interleukin-6 (IL-6), tumour necrosis factor alpha (TNF-$\\alpha$) and malondialdehyde (MDA)"
 
 knitr::include_graphics(here("images", 
-  "biomarker-boxplot-log.jpg"))
+  "Biomarker boxplot.jpg"))
 ```
 
 \newpage 
@@ -2165,13 +2169,28 @@ tt(resp_nochest_table,
 
 \newpage
 
+### FeNO
+@fig-feno-het shows the cohort-time treatment effects for FeNO for both basic and covariate-adjusted DiD models. 
+
+```{r, out.width = "90%"}
+#| echo: FALSE
+#| label: fig-feno-het
+#| fig-cap: Heterogenous treatment effects for FeNO.
+#| fig-cap-location: top
+
+knitr::include_graphics(here("images", 
+  "ETWFE cohort-time results.png"))
+```
+
+
+\newpage
+
 ### Outdoor and personal mixed combustion
 
-```{r}
+```{r, out.width = "90%"}
 #| echo: FALSE
 #| label: fig-afig-mixed-ct
 #| fig-cap: Adjusted and unadjusted treatment effect for outdoor and personal exposure (µg/m^3^) to the mixed combustion source by treatment year.
-#| fig-width: 6
 
 knitr::include_graphics(here("images", 
   "did-mixed-ct-wave.png"))
@@ -2231,42 +2250,8 @@ tt(bp_results,
 
 \newpage
 
-## Impact of sample composition on FeNO results
-@tbl-a-feno shows differences in the $ATT$s for the impact of the CBHP policy on FeNO depending on whether the estimation sample includes all individuals or is limited to those with repeated measures across campaigns.
-
-```{r}
-#| echo: FALSE
-#| label: tbl-a-feno
-#| tbl-cap: Effects of the CHP on FeNO (ppb) based on the number of individuals with repeated measurements.
-#| tbl-pos: H
-
-tx <- tibble(
-  p = c("DiD", "Adjusted DiD", "Observations"),
-  est1 =c("0.9", "0.3", "793"), 
-  ci1 = c("(-1.6, 3.3)", "(-2.2, 2.8)", ""),
-  est2 = c("-0.4", "-0.6", "541"),
-  ci2 = c("(-2.9, 2.0)", "(-3.2, 2.0)", ""),
-  est3 = c("0.3", "0.3", "272"),
-  ci3 = c("(-2.8, 3.3)", "(-2.9, 3.4)", "")
-)
-
-colnames(tx) <- c("", "ATT", "(95% CI)", 
-    "ATT", "(95% CI)", "ATT", "(95% CI)")
-
-tt(tx, digits = 2,
-   notes = "Note: ATT = Average Treatment Effect on the Treated, CI = Confidence Interval, DiD = Difference-in-Differences") %>%
-  group_tt(j = list(
-    "All participants" = 2:3,
-    "Participants with >1 measure" = 4:5,
-    "Participants with 3 measures" = 6:7)) %>%
-  style_tt(j=1:7, align = 'lcccccc') %>%
-  format_tt(escape = TRUE)
-
-```
-
-\newpage
-
 ## Impact of including Season 3 data 
+
 @tbl-a-ind-s3 shows differences in the $ATT$s for the impact of seasonal indoor PM~2.5~ when season 3 data (collected in 41 villages during COVID-19) are included versus excluded. 
 
 ```{r}
@@ -2309,6 +2294,40 @@ tt(a_is3_table,
 
 knitr::include_graphics(here("images", 
  "did-outdoor-w3.png"))
+
+```
+
+## Impact of sample composition on FeNO results
+
+@tbl-a-feno shows differences in the $ATT$s for the impact of the CBHP policy on FeNO depending on whether the estimation sample includes all individuals or is limited to those with repeated measures across campaigns.
+
+```{r}
+#| echo: FALSE
+#| label: tbl-a-feno
+#| tbl-cap: Effects of the CHP on FeNO (ppb) based on the number of individuals with repeated measurements.
+#| tbl-pos: H
+
+tx <- tibble(
+  p = c("DiD", "Adjusted DiD", "Observations"),
+  est1 =c("0.9", "0.3", "793"), 
+  ci1 = c("(-1.6, 3.3)", "(-2.2, 2.8)", ""),
+  est2 = c("-0.4", "-0.6", "541"),
+  ci2 = c("(-2.9, 2.0)", "(-3.2, 2.0)", ""),
+  est3 = c("0.3", "0.3", "272"),
+  ci3 = c("(-2.8, 3.3)", "(-2.9, 3.4)", "")
+)
+
+colnames(tx) <- c("", "ATT", "(95% CI)", 
+    "ATT", "(95% CI)", "ATT", "(95% CI)")
+
+tt(tx, digits = 2,
+   notes = "Note: ATT = Average Treatment Effect on the Treated, CI = Confidence Interval, DiD = Difference-in-Differences") %>%
+  group_tt(j = list(
+    "All participants" = 2:3,
+    "Participants with >1 measure" = 4:5,
+    "Participants with 3 measures" = 6:7)) %>%
+  style_tt(j=1:7, align = 'lcccccc') %>%
+  format_tt(escape = TRUE)
 
 ```
 

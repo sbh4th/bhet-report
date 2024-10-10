@@ -2390,44 +2390,46 @@ multiple mediators, and we set the values of both mediators to the mean
 value for untreated participants at baseline (wave 1).
 
 In Table~\ref{tbl-bp-med} we show estimates of the CDEs for different
-sets of potential mediators. \comment{OC 2d} The first column shows the
-total effect of the CHP on blood pressure outcomes (e.g., a 1.6 mmHg
-decrease in central DBP). The second column shows the CDE, i.e., the
-effect of exposure (vs.~no exposure) to the CHP on blood pressure, in a
+sets of potential mediators. \comment{OC 2d} The first column of the
+first panel shows the covariate-adjusted total \(ATT\) of the CHP on
+brachial SBP (i.e., a 1.4 mmHg decrease as seen in
+Table~\ref{tbl-did-health} above). The second panel shows the CDE, i.e.,
+the effect of exposure (vs.~no exposure) to the CHP on brachial SBP in a
 counterfactual population where we intervene to fix the value of indoor
 PM\textsubscript{2.5} to the average value for untreated participants at
-baseline. This CDE is still -1.4 (95\% CI -3.0, 0.0) not particularly
-different from the total effect of -1.6, demonstrating that, under the
-assumptions outlined in Section 5.2, little of the total effect is
-mediated by the impact of the policy on indoor PM\textsubscript{2.5}. On
-the other hand, the estimated CDE when holding constant the value of
-indoor temp to that of the untreated participants was smaller (-1.1,
-95\% CI: -2.3, 0.1) suggesting a somewhat stronger role for indoor
-temperature in mediating the total effect of the CHP on central DBP.
-Finally, the last two columns show an even further reduced CDE of -0.9
-(95\% CI: -2.3, 0.5) when setting both indoor PM\textsubscript{2.5} and
-indoor temperature to their respective pre-treatment means. Thus,
-interventions to fix the values of indoor PM\textsubscript{2.5} and
-indoor temperature to the levels in the untreated group at baseline
-would explain roughly 44\% of the total effect of the CHP on central
-DBP. Overall the results in Table~\ref{tbl-bp-med} indicate that
-conditioning on indoor PM\textsubscript{2.5} and indoor temperature
-largely explains the entire total effect of the CBHP policy on blood
-pressure for systolic BP, as the CDE conditional on both mediators was
-reduced to -0.0 (95\%CI: -2.0, 2.0) for brachial SBP. The CDE for
-diastolic BP was roughly half the value of the total effect.
+baseline. The CDE is -0.8 mmHg (95\% CI -2.9, 1.3), demonstrating that,
+under the assumptions outlined in Section 5.2, roughly 40\% of the total
+effect of the CHP is mediated by the impact of the policy on indoor
+PM\textsubscript{2.5}. The third panel shows the estimated CDE when
+holding constant the value of indoor temp (without simultaneous
+adjustment for PM\textsubscript{2.5}) to that of the untreated
+participants. This CDE is even smaller (-0.3 mmHg, 95\%CI -2.2, 1.6)
+suggesting a somewhat stronger role for indoor temperature in mediating
+the total effect of the CHP on brachial SBP. Finally, the last panel
+shows a similar CDE of -0.3 mmHg (95\% CI: -1.9, 2.5) when setting both
+indoor PM\textsubscript{2.5} and indoor temperature to their respective
+pre-treatment means. Thus, interventions to fix the values of indoor
+PM\textsubscript{2.5} and indoor temperature to the levels in the
+untreated group at baseline would explain roughly 79\% ({[}-1.4 -
+-0.3{]} / -1.4) of the total effect of the CHP on brachial SBP. Overall
+the results in Table~\ref{tbl-bp-med} indicate that conditioning on
+indoor PM\textsubscript{2.5} and indoor temperature largely explain the
+entire total effect of the CHP on blood pressure for systolic BP, as the
+CDE conditional on both mediators was reduced to 0.03 (95\%CI: -2.0,
+2.0) for brachial SBP. The CDEs for brachial and central DBP were
+roughly half the value of the total effect.
 
 \begin{table}
 
-\caption{\label{tbl-bp-med}Controlled direct effects for the CBHP policy
-on blood pressure.}
+\caption{\label{tbl-bp-med}Controlled direct effects for the CHP on
+blood pressure.}
 
 \centering{
 
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, CI = Confidence Interval, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.},
+note{}={Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, CI = Confidence Interval, DBP = Diastolic blood pressure, PM = Particulate matter, SBP = Systolic blood pressure.},
 note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
 note{b}={Mediators were set to the mean value for untreated participants at baseline.},
 ]                     %% tabularray outer close
@@ -2461,10 +2463,10 @@ column{9}={font=\fontsize{0.9em}{1.2em}\selectfont,},
 & Adjusted Total Effect &  & CDE Mediated By: &  &  &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-9}
 &  &  & Indoor PM &  & Indoor Temp &  & PM + Temp &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}
 & ATT\textsuperscript{a} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) \\ \midrule %% TinyTableHeader
-Brachial SBP & -1.4 & (-3.3, 0.5) & -1.1 & (-3.1, 1.0) & -0.5 & (-2.3, 1.4) & -0.0 & (-2.0, 2.0) \\
-Central SBP & -1.6 & (-3.4, 0.3) & -1.2 & (-3.2, 0.9) & -0.7 & (-2.4, 1.0) & -0.2 & (-2.1, 1.7) \\
-Brachial DBP & -1.6 & (-3.0, -0.2) & -1.4 & (-3.0, 0.2) & -1.1 & (-2.3, 0.1) & -0.9 & (-2.3, 0.5) \\
-Central DBP & -1.7 & (-3.0, -0.3) & -1.4 & (-3.0, 0.2) & -1.3 & (-2.5, -0.1) & -1.0 & (-2.5, 0.4) \\
+Brachial SBP & -1.4 & (-3.3, 0.5) & -0.8 & (-2.9, 1.3) & -0.3 & (-2.2, 1.6) & 0.3 & (-1.9, 2.5) \\
+Central SBP & -1.4 & (-3.3, 0.4) & -0.8 & (-2.9, 1.3) & -0.4 & (-2.2, 1.3) & 0.2 & (-1.9, 2.4) \\
+Brachial DBP & -1.6 & (-2.9, -0.3) & -1.1 & (-2.7, 0.5) & -1.1 & (-2.3, 0.1) & -0.6 & (-2.1, 0.9) \\
+Central DBP & -1.6 & (-2.9, -0.3) & -1.1 & (-2.7, 0.6) & -1.2 & (-2.4, -0.0) & -0.7 & (-2.2, 0.9) \\
 \bottomrule
 \end{talltblr}
 

@@ -108,47 +108,41 @@ Table @tbl-a-het-personal shows limited evidence that the $ATT$s across cohorts 
 
 ```{r}
 #| echo: FALSE
-#| label: tbl-a-mi-cohort
-#| tbl-cap: "Missing values by enrollment cohort and outcome"
-#| tbl-pos: H
+#| label: tbl-bp-med
+#| tbl-cap: Controlled direct effects for the CHP on blood pressure.
+#| eval: TRUE
 
-# load data for missing outcomes
-mi_table <- read_rds(here("outputs", "mi-by-trt-r.rds"))
+otm <- read_xlsx(here("outputs",
+  "adjusted_overall_results.xlsx")) %>%
+  filter(str_detect(bp, "PP", 
+                    negate = TRUE)) %>%
+  filter(str_detect(bp, "amplification", 
+                    negate = TRUE)) %>%
+  mutate(ci = paste("(", sprintf('%.1f', 
+    lower_95CI), ", ", sprintf('%.1f', 
+    upper_95CI), ")", sep="")) %>%
+  rename(est = theta_bar) %>%
+  select(model, bp, est, ci) %>%
+  pivot_wider(names_from = model, 
+    values_from = c(est, ci), 
+    names_vary = "slowest")
 
-nr <- read_rds(here("outputs", "mi-table-nr.rds"))
+colnames(otm) <- c("", "ATT", "(95%CI)", "ATT", 
+  "(95%CI)", "ATT", "(95%CI)", "ATT", "(95%CI)")
 
-## placement in table
-attr(nr, 'position') <- c(1, 14, 23, 24, 25, 26, 27, 31)
-
-tinyt <- datasummary_balance(~trt, 
-                             data = mi_table, 
-                             add_rows = nr, 
-                             align = "lccccccccc") %>%
-  style_tt(j = 1:10, fontsize = 0.75) %>%
-  style_tt(i = c(1, 14, 23, 31), bold = TRUE) %>%
-  theme_tt("multipage", rowhead = 2)
-
-tt(tinyt@table_dataframe) %>%
-    group_tt(j = list(`Never enrolled (N=1880)` = 3:4, 
-                    `Enrolled 2019 (N=642)` = 5:6,
-                    `Enrolled 2020 (N=446)` = 7:8,
-                    `Enrolled 2021 (N=173)` = 9:10)) %>%
-  style_tt(i = c(1, 14, 23, 31), 
-           bold=TRUE) %>%
-  theme_tt("resize", width = 0.95)
-
-# customt <- tt(tinyt@table_dataframe,
-#    width = c(.2, .2, .1, .1, .1, .1, .1, .1, .1, .1)) %>%
-#   style_tt(j = 1:10, fontsize = 0.75, align = "lccccccccc") %>%
-#   style_tt(i = c(1, 14, 23, 31), 
-#            bold=TRUE) %>%
-#   group_tt(j = list(`Never enrolled (N=1880)` = 3:4, 
-#                     `Enrolled 2019 (N=642)` = 5:6,
-#                     `Enrolled 2020 (N=446)` = 7:8,
-#                     `Enrolled 2021 (N=173)` = 9:10)) %>% 
-#   theme_tt("resize", rowhead=2)
-# 
-# customt
+tt(otm,
+   notes = list("Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, CI = Confidence Interval, DBP = Diastolic blood pressure, PM = Particulate matter, SBP = Systolic blood pressure.", a = list(i=0, j=2, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), b = list(i=0, j=c(4,6,8), text = "Mediators were set to the mean value for untreated participants at baseline."))) %>%
+  group_tt(
+    j = list("Indoor PM" = 4:5,
+             "Indoor Temp" = 6:7,
+             "PM + Temp" = 8:9)) %>%
+  group_tt(
+    j = list("Adjusted Total Effect" = 2:3,
+             "CDE Mediated By:" = 4:9)) %>%
+  style_tt(j = 1:9, align = "lcccccccc") %>%
+  style_tt(j=1:9, fontsize = 0.9) %>%
+  format_tt(escape = TRUE) %>%
+  format_tt(j=c(2,4,6,8), sprintf = "%.1f") 
 
 ```
 

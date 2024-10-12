@@ -1,7 +1,7 @@
-type,att,model
-Overall ATT,"-0.43 (-3.48, 2.62)",Total effect cSBP
-Overall ATT,"-1.61 (-5.03, 1.82)","Total effect cSBP, adjusted"
-Overall ATT,"-0.58 (-2.59, 1.43)",Total effect cDBP
-Overall ATT,"-1.26 (-3.38, 0.87)","Total effect cDBP, adjusted"
-Overall ATT,"-1.50 (-4.94, 1.94)","Policy-mixed-cSBP mediation, adjusted"
-Overall ATT,"-1.37 (-3.69, 0.96)","Policy-mixed-cDBP mediation, adjusted"
+type,n,att,model
+Overall ATT,942,"-1.56 (-5.31, 2.18)",Total effect cSBP
+Overall ATT,942,"-1.51 (-5.02, 1.99)","Total effect cSBP, adjusted"
+Overall ATT,942,"-0.91 (-3.3, 1.47)",Total effect cDBP
+Overall ATT,942,"-1.15 (-3.22, 0.92)","Total effect cDBP, adjusted"
+Overall ATT,942,"-1.49 (-5.05, 2.06)","Policy-mixed-cSBP mediation, adjusted"
+Overall ATT,942,"-1.32 (-3.59, 0.95)","Policy-mixed-cDBP mediation, adjusted"

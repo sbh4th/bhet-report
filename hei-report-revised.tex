@@ -238,7 +238,7 @@ Sternbach\textsuperscript{1} \and Shu
 Tao\textsuperscript{3} \and Kaibing Xue\textsuperscript{4} \and Wenlu
 Yuan\textsuperscript{1} \and Xiang Zhang\textsuperscript{1} \and Yuanxun
 Zhang\textsuperscript{4}}
-\date{2024-10-11}
+\date{2024-10-12}
 
 \begin{document}
 \maketitle
@@ -2917,10 +2917,10 @@ note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumptio
 note{b}={Further adjusted for mediation by mixed combustion source (coal and biomass)},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
-colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
-cell{1}{2}={c=2,}{halign=c,},
-cell{1}{4}={c=2,}{halign=c,},
-cell{1}{6}={c=2,}{halign=c,},
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
+cell{1}{7}={c=2,}{halign=c,},
 column{1}={halign=l,},
 column{2}={halign=c,},
 column{3}={halign=c,},
@@ -2928,12 +2928,13 @@ column{4}={halign=c,},
 column{5}={halign=c,},
 column{6}={halign=c,},
 column{7}={halign=c,},
+column{8}={halign=c,},
 }                     %% tabularray inner close
 \toprule
-& DiD &  & Adjusted DiD &  & Adjusted CDE &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
-& ATT & (95\%CI) & ATT\textsuperscript{a} & (95\%CI) & ATT\textsuperscript{b} & (95\%CI) \\ \midrule %% TinyTableHeader
-Central SBP & -0.43  & (-3.48, 2.62) & -1.61  & (-5.03, 1.82) & -1.50  & (-4.94, 1.94) \\
-Central DBP & -0.58  & (-2.59, 1.43) & -1.26  & (-3.38, 0.87) & -1.37  & (-3.69, 0.96) \\
+&  & DiD &  & Adjusted DiD &  & Adjusted CDE &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}\cmidrule[lr]{7-8}
+& Obs & ATT & (95\% CI)\textsuperscript{a} & ATT & (95\% CI)\textsuperscript{b} & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+Central SBP & 942 & -1.6 & (-5.3, 2.2) & -1.5 & (-5.0, 2.0) & -1.5 & (-5.0, 2.1) \\
+Central DBP & 942 & -0.9 & (-3.3, 1.5) & -1.1 & (-3.2, 0.9) & -1.3 & (-3.6, 0.9) \\
 \bottomrule
 \end{talltblr}
 

@@ -1193,51 +1193,39 @@ When the average treatment effects of the CBHP policy on community outdoor level
 #| eval: TRUE
 
 # read in mediation by source results
-med_source <- read_csv(here("outputs", 
-  "mixed_med_table_overall.csv")) 
+med_source_t <- read_csv(here("outputs",
+  "mixed_med_table_overall.csv")) %>%
+    mutate(
+    o = c("Central SBP", "Central SBP", "Central DBP",
+          "Central DBP", "Central SBP", "Central DBP"),
+    m = c(1,2,1,2,3,3),
+    # Extract mean
+    est = (
+      as.double(str_extract(att, "^[^\\(]+"))),            # Extract lower bound
+    ci_lower = (
+      as.double(str_extract(att, "(?<=\\().+?(?=,)"))),    # Extract upper bound
+    ci_upper = (
+      as.double(str_extract(att, "(?<=, ).+?(?=\\))"))),
+    ci = paste("(", sprintf('%.1f', ci_lower), ", ",
+      sprintf('%.1f', ci_upper), ")", sep="")) %>% 
+  select(-model, -att, -type, -ci_lower, -ci_upper) %>%
+  pivot_wider(names_from = "m", 
+    values_from = c("est", "ci"),
+    names_vary = "slowest") %>%
+  relocate(o, n)
 
-med_source_t <- med_source %>%
-  select(-type, -model) %>%
-  mutate(outcome = c("Central SBP", "Central SBP",  
-    "Central DBP", "Central DBP", "Central SBP",
-    "Central DBP"),
-    model = c(1,2,1,2,3,3)) %>%
-  separate_wider_delim(att, delim = "(", 
-    names = c("att", "attci"), cols_remove = TRUE) %>% 
-  mutate(attci = paste("(", attci, sep="")) %>% 
-  pivot_wider(names_from = "model", 
-    values_from = c("att", "attci"), names_vary = "slowest")
-
-colnames(med_source_t) = c("", "ATT", 
-  "(95%CI)", "ATT", "(95%CI)", 
-  "ATT", "(95%CI)")
+colnames(med_source_t) =c(" ", "Obs", "ATT", "(95% CI)", 
+   "ATT", "(95% CI)", "ATT", "(95% CI)")
 
 tt(med_source_t, 
-   digits = 2, 
    notes = list("Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences, CDE = Controlled Direct Effect, DBP = Diastolic Blood Pressure, SBP = Systolic Blood Pressure.", a = list(i = 0, j = 4, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), b = list(i =0, j = 6, text = "Further adjusted for mediation by mixed combustion source (coal and biomass)"))) %>%
   group_tt(j = list(
-     "DiD" = 2:3,
-     "Adjusted DiD" = 4:5,
-     "Adjusted CDE" = 6:7)) %>%
+     "DiD" = 3:4,
+     "Adjusted DiD" = 5:6,
+     "Adjusted CDE" = 7:8)) %>%
   format_tt(escape = TRUE) %>%
-  style_tt(j = 1:7, align = 'lcccccc')
-
-# kable(med_source_t,
-#   col.names =c("", "ATT", "(95%CI)", "ATT", "(95%CI)",
-#    "ATT", "(95%CI)"), 
-#    # "latex", booktabs = T,
-#   linesep = "", align = 'lcccccc') %>%
-#   kable_styling(full_width = F,
-#     latex_options = "HOLD_position") %>%
-#   add_header_above(c(" " = 1, 
-#     "DiD" = 2, 
-#     "Adjusted DiD\\\\textsuperscript{a}" = 2,
-#     "Adjusted CDE\\\\textsuperscript{b}" = 2),
-#     escape = F) %>%
-#   footnote(
-#     general = "\\\\small{Note: ATT = Average Treatment Effect on # the Treated, DiD = Difference-in-Differences, CDE = Controlled # Direct Effect, DBP = Diastolic Blood Pressure, SBP = Systolic # Blood Pressure.}",
-#     alphabet = c("\\\\small{Adjusted for age, sex, waist # circumference, smoking, alcohol consumption, and use of blood # pressure medication.}", "\\\\small{Further adjusted for mediation # by mixed combustion source (coal and biomass)}"), 
-#     general_title = "", threeparttable = T, escape = F)
+  format_tt(j=c(3,5,7), sprintf = "%.1f") %>%
+  style_tt(j = 1:8, align = 'lccccccc')
 ```
 
 # Discussion and Conclusions

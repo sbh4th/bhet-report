@@ -106,48 +106,66 @@ China is deploying an ambitious policy to transition up to 70% of households in 
 
 Table @tbl-a-het-personal shows limited evidence that the $ATT$s across cohorts and time demonstrate meaningful heterogeneity.
 
-```{r}
+```{r, message = FALSE}
 #| echo: FALSE
-#| label: tbl-bp-med
-#| tbl-cap: Controlled direct effects for the CHP on blood pressure.
-#| eval: TRUE
+#| label: tbl-a-mi
+#| tbl-cap: "Missing and valid values of variables used in multiple imputation."
+#| tbl-pos: H
 
-med_source_t <- read_csv(here("outputs",
-  "mixed_med_table_overall.csv")) %>%
-    mutate(
-    o = c("Central SBP", "Central SBP", "Central DBP",
-          "Central DBP", "Central SBP", "Central DBP"),
-    m = c(1,2,1,2,3,3),
-    # Extract mean
-    est = (
-      as.double(str_extract(att, "^[^\\(]+"))),            # Extract lower bound
-    ci_lower = (
-      as.double(str_extract(att, "(?<=\\().+?(?=,)"))),    # Extract upper bound
-    ci_upper = (
-      as.double(str_extract(att, "(?<=, ).+?(?=\\))"))),
-    ci = paste("(", sprintf('%.1f', ci_lower), ", ",
-      sprintf('%.1f', ci_upper), ")", sep="")) %>% 
-  select(-model, -att, -type, -ci_lower, -ci_upper) %>%
-  pivot_wider(names_from = "m", 
-    values_from = c("est", "ci"),
-    names_vary = "slowest") %>%
-  relocate(o, n)
+## Missing
+# load data for missing outcomes
+mi_r <- read_xlsx(here("outputs", 
+  "perc_missing_formatted_2024-10-13.xlsx")) %>%
+  select(-var)
 
-colnames(med_source_t) =c(" ", "Obs", "ATT", "(95% CI)", 
-   "ATT", "(95% CI)", "ATT", "(95% CI)")
+colnames(mi_r) <- c("Variable", "Valid (%)", 
+  "Non-response (%)", "Not sampled (%)")
 
-tt(med_source_t, 
-   notes = list("Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences, CDE = Controlled Direct Effect, DBP = Diastolic Blood Pressure, SBP = Systolic Blood Pressure.", a = list(i = 0, j = 4, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), b = list(i =0, j = 6, text = "Further adjusted for mediation by mixed combustion source (coal and biomass)"))) %>%
-  group_tt(j = list(
-     "DiD" = 3:4,
-     "Adjusted DiD" = 5:6,
-     "Adjusted CDE" = 7:8)) %>%
-  format_tt(escape = TRUE) %>%
-  format_tt(j=c(3,5,7), sprintf = "%.1f") %>%
-  style_tt(j = 1:8, align = 'lccccccc')
-
+tt(mi_r) %>%
+  theme_tt("resize", width = 0.9) %>%
+  format_tt(escape = TRUE)
 ```
 
+| |   |
+|-|---|
+| ANMB | 	absolute normalized mean bias |   
+| ATT	 | Average Treatment Effect on the Treated | 
+| BAM	 | Beta Attenuation Monitor | 
+| BC	 | Black carbon | 
+| BP	 | Blood pressure | 
+| CI	 | Confidence Interval | 
+| CIE	 | International Commission on Illumination | 
+| CHP	 | Clean Heating Policy | 
+| cDBP | 	Central diastolic blood pressure | 
+| CRP	| C-reactive protein | 
+| cSBP | 	Central systolic blood pressure | 
+| DAG | 	Directed acyclic graph | 
+| DiD | 	Difference-in-Differences | 
+| EC | 	Elemental carbon | 
+| EDXRF | 	Evo energy-dispersive X-ray fluorescence | 
+| ETWFE | 	Extended Two-Way Fixed Effects | 
+| FEM | 	Federal equivalent method | 
+| FID | 	Flame ionization detector | 
+| FeNO | 	Fractional exhaled nitric oxide | 
+| HAPIN | 	Household Air Pollution Intervention Network | 
+| HPLC | High-performance liquid chromatography | 
+| IL-6 | 	Interleukin-6 | 
+| MDA | 	Malondialdehyde | 
+| NISP | 	National Improved Stove Program | 
+| NIST | 	National Institute of Standards and Technology | 
+| ns-S | 	Non-Sulfate Sulfur | 
+| OC | 	Organic Carbon | 
+| OD  | Optic densities | 
+| PKU | 	Peking University | 
+| PM~2.5~  | Particulate matter less than 2.5 microns in aerodynamic diameter | 
+| RMSE | Root mean square error  | 
+| SRM | Standard reference material | 
+| TNF-$\alpha$ | Tumour necrosis factor alpha | 
+| UCAS | University of Chinese Academy of Sciences | 
+| UPAS | Ultrasonic Personal Aerosol Samplers | 
+| W1, W2, W3, W4 | 	Wave 1, Wave 2, Wave 3, Wave 4 | 
+| wi |	Water Insoluble Species | 
+| ws |	Water Soluble Species | 
 
     
 \newpage

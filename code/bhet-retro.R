@@ -28,7 +28,7 @@ obs_table <- readRDS(here("outputs",
     # table of hypothetical effect sizes
     es = c(-2.5, -2.5, -2, -2, 0.5, 0.5, 
     0.1, 0.1, -5, -2, -3, -1, -3, -1, -0.5,
-    -0.1, -0.4, -2, -2)) |>
+    -0.17, -0.42, -0.10, -0.17)) |>
   # select needed columns
   select(category, outcome, significant,
          estimate_2, se, es)

@@ -2042,6 +2042,8 @@ column{9}={font=\fontsize{0.8em}{1.1em}\selectfont,},
 column{10}={font=\fontsize{0.8em}{1.1em}\selectfont,},
 column{11}={font=\fontsize{0.8em}{1.1em}\selectfont,},
 row{2}={halign=c,},
+hline{6,11,13,18,20}={2,3,4,5,6,7,8,9,10,11}{solid, 0.1em, gray},
+hline{8,15}={1,2,3,4,5,6,7,8,9,10,11}{solid, 0.1em, gray},
 }                     %% tabularray inner close
 \toprule
 &  &  & Wave 1 &  & Wave 2 &  & Wave 3 &  & Wave 4 &  \\ \cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}\cmidrule[lr]{10-11}
@@ -4487,46 +4489,46 @@ multiple imputation.}
 colspec={Q[]Q[]Q[]Q[]},
 }                     %% tabularray inner close
 \toprule
-Variable & Valid response & Non-response & Not sampled \\ \midrule %% TinyTableHeader
-Study wave                                                                  & 3082 (100)  &   0 (0)    &   0 (0)     \\
-District                                                                    & 3082 (100)  &   0 (0)    &   0 (0)     \\
-Village                                                                     & 3082 (100)  &   0 (0)    &   0 (0)     \\
-Household ID                                                                & 3082 (100)  &   0 (0)    &   0 (0)     \\
-Participant ID                                                              & 3082 (100)  &   0 (0)    &   0 (0)     \\
-Village-level policy treatment status                                       & 3082 (100)  &   0 (0)    &   0 (0)     \\
-Systolic central BP                                                         & 3081 (100)  &   1 (0)    &   0 (0)     \\
-Diastolic central BP                                                        & 3081 (100)  &   1 (0)    &   0 (0)     \\
-Systolic brachial BP                                                        & 3082 (100)  &   0 (0)    &   0 (0)     \\
-Diastolic brachial BP                                                       & 3082 (100)  &   0 (0)    &   0 (0)     \\
-Participant sex                                                             & 3081 (100)  &   1 (0)    &   0 (0)     \\
-Participant age                                                             & 3078 (99.9) &   4 (0.1)  &   0 (0)     \\
-Exposure to tobacco smoke                                                   & 3081 (100)  &   1 (0)    &   0 (0)     \\
-Frequency of alcohol consumption in the past 12 months                      & 3081 (100)  &   1 (0)    &   0 (0)     \\
-Physician diagnosis of high BP                                              & 3081 (100)  &   1 (0)    &   0 (0)     \\
-Whether participant took medication for high BP                             & 1527 (49.5) &   39 (1.3) & 1516 (49.2) \\
-Waist circumference                                                         & 2568 (83.3) & 514 (16.7) &   0 (0)     \\
-Weight                                                                      & 2614 (84.8) & 468 (15.2) &   0 (0)     \\
-Height                                                                      & 2610 (84.7) & 472 (15.3) &   0 (0)     \\
-Self-reported diagnosis of diabetes                                         & 3082 (100)  &   0 (0)    &   0 (0)     \\
-Self-reported diagnosis of chronic kidney disease                           & 3082 (100)  &   0 (0)    &   0 (0)     \\
-Household wealth index                                                      & 2945 (95.6) & 137 (4.4)  &   0 (0)     \\
-Whether BP was measured in AM or PM                                         & 3082 (100)  &   0 (0)    &   0 (0)     \\
-Right arm circumference                                                     & 3073 (99.7) &   9 (0.3)  &   0 (0)     \\
-Frequency of farming activities in past 6 months                            & 3081 (100)  &   1 (0)    &   0 (0)     \\
-Frequency of exercise in the past 6 months                                  & 3081 (100)  &   1 (0)    &   0 (0)     \\
-If participant snores while sleeping                                        & 3081 (100)  &   1 (0)    &   0 (0)     \\
-If participant quits breathing while sleeping                               & 3081 (100)  &   1 (0)    &   0 (0)     \\
-Marital status                                                              & 3054 (99.1) &   28 (0.9) &   0 (0)     \\
-Self-reported diagnosis for coronary heart disease or myocardial infarction & 3081 (100)  &   1 (0)    &   0 (0)     \\
-Self-reported diagnosis for stroke or transient ischemic attack (TIA)       & 3081 (100)  &   1 (0)    &   0 (0)     \\
-Heating season (Jan 15 to Mar 15) mean indoor PM2.5                         & 493 (16)    & 113 (3.7)  & 2476 (80.3) \\
-Indoor temperature                                                          & 3074 (99.7) &   8 (0.3)  &   0 (0)     \\
-Self-reported health status                                                 & 3081 (100)  &   1 (0)    &   0 (0)     \\
-Blood pressure cuff size                                                    & 3078 (99.9) &   4 (0.1)  &   0 (0)     \\
-Participant's highest level of education                                    & 3059 (99.3) &   23 (0.7) &   0 (0)     \\
-Participant's current occupation                                            & 3053 (99.1) &   29 (0.9) &   0 (0)     \\
-Time-varying binary indicator for enrollment in policy                      & 3082 (100)  &   0 (0)    &   0 (0)     \\
-Year of first treatment with policy                                         & 3082 (100)  &   0 (0)    &   0 (0)     \\
+Variable & Valid (\%) & Non-response (\%) & Not sampled (\%) \\ \midrule %% TinyTableHeader
+Study wave & 3082 (100) & 0 (0) & 0 (0) \\
+District & 3082 (100) & 0 (0) & 0 (0) \\
+Village & 3082 (100) & 0 (0) & 0 (0) \\
+Household ID & 3082 (100) & 0 (0) & 0 (0) \\
+Participant ID & 3082 (100) & 0 (0) & 0 (0) \\
+Village-level policy treatment status & 3082 (100) & 0 (0) & 0 (0) \\
+Systolic central BP & 3081 (100) & 1 (0) & 0 (0) \\
+Diastolic central BP & 3081 (100) & 1 (0) & 0 (0) \\
+Systolic brachial BP & 3082 (100) & 0 (0) & 0 (0) \\
+Diastolic brachial BP & 3082 (100) & 0 (0) & 0 (0) \\
+Participant sex & 3081 (100) & 1 (0) & 0 (0) \\
+Participant age & 3078 (99.9) & 4 (0.1) & 0 (0) \\
+Exposure to tobacco smoke & 3081 (100) & 1 (0) & 0 (0) \\
+Frequency of alcohol consumption in the past 12 months & 3081 (100) & 1 (0) & 0 (0) \\
+Physician diagnosis of high BP & 3081 (100) & 1 (0) & 0 (0) \\
+Whether participant took medication for high BP & 1527 (49.5) & 39 (1.3) & 1516 (49.2) \\
+Waist circumference & 2568 (83.3) & 514 (16.7) & 0 (0) \\
+Weight & 2614 (84.8) & 468 (15.2) & 0 (0) \\
+Height & 2610 (84.7) & 472 (15.3) & 0 (0) \\
+Self-reported diagnosis of diabetes & 3082 (100) & 0 (0) & 0 (0) \\
+Self-reported diagnosis of chronic kidney disease & 3082 (100) & 0 (0) & 0 (0) \\
+Household wealth index & 2945 (95.6) & 137 (4.4) & 0 (0) \\
+Whether BP was measured in AM or PM & 3082 (100) & 0 (0) & 0 (0) \\
+Right arm circumference & 3073 (99.7) & 9 (0.3) & 0 (0) \\
+Frequency of farming activities in past 6 months & 3081 (100) & 1 (0) & 0 (0) \\
+Frequency of exercise in the past 6 months & 3081 (100) & 1 (0) & 0 (0) \\
+If participant snores while sleeping & 3081 (100) & 1 (0) & 0 (0) \\
+If participant quits breathing while sleeping & 3081 (100) & 1 (0) & 0 (0) \\
+Marital status & 3054 (99.1) & 28 (0.9) & 0 (0) \\
+Self-reported diagnosis for coronary heart disease or myocardial infarction & 3081 (100) & 1 (0) & 0 (0) \\
+Self-reported diagnosis for stroke or transient ischemic attack (TIA) & 3081 (100) & 1 (0) & 0 (0) \\
+Heating season (Jan 15 to Mar 15) mean indoor PM2.5 & 494 (16) & 122 (4) & 2466 (80) \\
+Indoor temperature & 3074 (99.7) & 8 (0.3) & 0 (0) \\
+Self-reported health status & 3081 (100) & 1 (0) & 0 (0) \\
+Blood pressure cuff size & 3078 (99.9) & 4 (0.1) & 0 (0) \\
+Participant's highest level of education & 3059 (99.3) & 23 (0.7) & 0 (0) \\
+Participant's current occupation & 3053 (99.1) & 29 (0.9) & 0 (0) \\
+Time-varying binary indicator for enrollment in policy & 3082 (100) & 0 (0) & 0 (0) \\
+Year of first treatment with policy & 3082 (100) & 0 (0) & 0 (0) \\
 \bottomrule
 \end{tblr}
 }
@@ -4696,7 +4698,7 @@ the participant, household, and village levels across study years.}
 \begin{table}[H]
 
 \caption{\label{tbl-samples}Sample sizes for health and environmental
-measurements.}
+measurements for participants (P), households (HH), and villages (V).}
 
 \centering{
 

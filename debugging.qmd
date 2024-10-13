@@ -106,24 +106,59 @@ China is deploying an ambitious policy to transition up to 70% of households in 
 
 Table @tbl-a-het-personal shows limited evidence that the $ATT$s across cohorts and time demonstrate meaningful heterogeneity.
 
-```{r, message = FALSE}
+
+```{r, message = F, warning=F}
 #| echo: FALSE
-#| label: tbl-a-mi
-#| tbl-cap: "Missing and valid values of variables used in multiple imputation."
-#| tbl-pos: H
+#| tbl-cap: Arithmetic and geometric means for air pollutant concentrations (micrograms per cubic meter) by wave.
+#| label: tbl-pm-season
+#| eval: TRUE
 
-## Missing
-# load data for missing outcomes
-mi_r <- read_xlsx(here("outputs", 
-  "perc_missing_formatted_2024-10-13.xlsx")) %>%
-  select(-var)
+ ap_season <- read_csv(here("data-clean", 
+   "ap-conc-season.csv"))
 
-colnames(mi_r) <- c("Variable", "Valid (%)", 
-  "Non-response (%)", "Not sampled (%)")
 
-tt(mi_r) %>%
-  theme_tt("resize", width = 0.9) %>%
-  format_tt(escape = TRUE)
+tap <- ap_season %>%
+  select(-time, -substance) %>%
+  pivot_longer(
+    cols = Mean_S1:GM_S4,
+    names_to = c("avg", ".value"),
+    names_pattern = "(.*)_S(.)") %>%
+  pivot_wider(
+    names_from = metric,
+    values_from = c(`1`, `2`, `3`, `4`)
+  ) %>%
+  select(-category)
+
+colnames(tap) <- c("", "", "",  
+                         "Est.", "CI", "Est.", "CI", "Est.", "CI", 
+                         "Est.", "CI")
+tt(tap, 
+  width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
+  notes = "Note: Est. = Estimate, CI = 95 percent confidence interval, GM = Geometric Mean") %>%
+  format_tt(replace = "") %>%
+  group_tt(
+    j = list("Wave 1" = 4:5, "Wave 2" = 6:7,
+      "Wave 3" = 8:9, "Wave 4" = 10:11),
+    i = list("Personal measurements" = 1, 
+             "Indoor measurements" = 5,
+             "Outdoor measurements" = 11)) %>%
+  style_tt(i = c(1, 6, 13), align = "l", bold=T) %>%
+  style_tt(
+    i = c(2, 4, 7, 9, 11, 14, 16, 18), j = 2, 
+    rowspan = 2, alignv = "t") %>%
+  style_tt(
+    i = c(2, 9, 16), j = 1, rowspan = 4, alignv = "t") %>%
+  style_tt(
+    i = c(7, 14), j = 1, rowspan = 2, alignv = "t") %>%
+  style_tt(j=1:11, fontsize = 0.8) %>%
+  style_tt(i = 0, align = "c") %>%
+  style_tt(i = c(3,8,10,15,17), j = 2:11, 
+           line = "b", line_width = 0.1,
+           line_color = "gray") %>%
+  style_tt(i = c(5,12), j = 1:11, 
+           line = "b", line_width = 0.1,
+           line_color = "gray")
+
 ```
 
 | |   |

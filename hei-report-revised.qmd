@@ -754,6 +754,7 @@ tap <- ap_season %>%
 colnames(tap) <- c("", "", "",  
                          "Est.", "CI", "Est.", "CI", "Est.", "CI", 
                          "Est.", "CI")
+
 tt(tap, 
   width = c(3.5, 3, 1, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2),
   notes = "Note: Est. = Estimate, CI = 95 percent confidence interval, GM = Geometric Mean") %>%
@@ -773,7 +774,13 @@ tt(tap,
   style_tt(
     i = c(7, 14), j = 1, rowspan = 2, alignv = "t") %>%
   style_tt(j=1:11, fontsize = 0.8) %>%
-  style_tt(i = 0, align = "c")
+  style_tt(i = 0, align = "c") %>%
+  style_tt(i = c(3,8,10,15,17), j = 2:11, 
+           line = "b", line_width = 0.1,
+           line_color = "gray") %>%
+  style_tt(i = c(5,12), j = 1:11, 
+           line = "b", line_width = 0.1,
+           line_color = "gray")
 
 ```
 

@@ -267,20 +267,22 @@ We used four main criteria that were used to exclude filters from additional che
 #| tbl-pos: H
 
 total_table <- tibble(
-  sample = c(1,1,1),
-  type = c("Outdoor", "Personal", "Blank"),
-  wave1 = c(138, 494, 52),
-  wave2 = c(374, 498, 56),
-  wave4 = c(295, 499, 101)
+  sample = c(1,1,1,1),
+  type = c("Outdoor", "Indoor", 
+           "Personal", "Blank"),
+  wave1 = c(138, NA, 494, 52),
+  wave2 = c(374, 150, 498, 56),
+  wave4 = c(295, 151, 499, 101)
 )
 
 
 included_table <- tibble(
-  sample = c(2,2,2),
-  type = c("Outdoor", "Personal", "Blank"),
-  wave1 = c(126, 448, 52),
-  wave2 = c(363, 410, 56),
-  wave4 = c(266, 410, 95)
+  sample = c(2,2,2,2),
+  type = c("Outdoor", "Indoor", 
+           "Personal", "Blank"),
+  wave1 = c(126, NA, 448, 52),
+  wave2 = c(363, 150, 429, 56),
+  wave4 = c(266, 138, 418, 95)
 )
 
 samples <- bind_rows(total_table, included_table) %>%
@@ -297,7 +299,8 @@ tt(samples,
   group_tt(j = list(
     "Wave 1" = 2:3,
     "Wave 2" = 4:5,
-    "Wave 4" = 6:7))
+    "Wave 4" = 6:7)) %>%
+  format_tt()
 
 ```
 

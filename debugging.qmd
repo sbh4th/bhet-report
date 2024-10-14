@@ -19,9 +19,7 @@ author:
 thanks: Affiliations [1] McGill Univeristy; [2] Colorado State University; [3] Peking University; [4] University of the Chinese Academy of Sciences
 date: today
 
-#format: 
-# html:
-#   keep-md: true
+format: typst
 
 # format:
 #  docx: 
@@ -29,33 +27,34 @@ date: today
 #    number-sections: true
 #    number-depth: 3
 
-format:
- pdf:
-   toc: true
-   keep-tex: true
-   number-sections: true
-   number-depth: 3
-   include-in-header:
-      - text: |
-         \usepackage{wrapfig}
-         \usepackage{colortbl}
-          \makeatletter
-          \renewenvironment{table}%
-            {\renewcommand\familydefault\sfdefault
-             \@float{table}}
-            {\end@float}
-          \renewenvironment{figure}%
-            {\renewcommand\familydefault\sfdefault
-             \@float{figure}}
-            {\end@float}
-          \makeatother
-         \usepackage{changes}
-         \AfterTOCHead[toc]{\sffamily}
-   geometry: 
-      - right=1in
-      - left=1in
-   fig-pos: H
+#format:
+# pdf:
+#   toc: true
+#   keep-tex: true
+#   number-sections: true
+#   number-depth: 3
+#   include-in-header:
+#      - text: |
+#         \usepackage{wrapfig}
+#         \usepackage{colortbl}
+#          \makeatletter
+#          \renewenvironment{table}%
+#            {\renewcommand\familydefault\sfdefault
+#             \@float{table}}
+#            {\end@float}
+#          \renewenvironment{figure}%
+#            {\renewcommand\familydefault\sfdefault
+#             \@float{figure}}
+#            {\end@float}
+#          \makeatother
+#         \usepackage{changes}
+#         \AfterTOCHead[toc]{\sffamily}
+#   geometry: 
+#      - right=1in
+#      - left=1in
+#   fig-pos: H
 bibliography: hei-report.bib
+citeproc: true
 csl: environmental-health-perspectives.csl
 ---
 ```{r packages, echo=FALSE, message = FALSE, warning = FALSE}

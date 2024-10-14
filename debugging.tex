@@ -239,7 +239,7 @@ Sternbach\textsuperscript{1} \and Shu
 Tao\textsuperscript{3} \and Kaibing Xue\textsuperscript{4} \and Wenlu
 Yuan\textsuperscript{1} \and Xiang Zhang\textsuperscript{1} \and Yuanxun
 Zhang\textsuperscript{4}}
-\date{2024-10-13}
+\date{2024-10-14}
 
 \begin{document}
 \maketitle
@@ -285,41 +285,93 @@ outdoor air pollution, as well as heating behaviors and health outcomes.
 
 \subsubsection{Personal exposure}\label{personal-exposure}
 
-Table \textbf{?@tbl-a-het-personal} shows limited evidence that the
-\(ATT\)s across cohorts and time demonstrate meaningful heterogeneity.
-
 \begin{table}[H]
 
-\caption{\label{tbl-filters}Count of total outdoor and personal exposure
-PM\textsubscript{2.5} samples (filters) collected over the course of the
-project and number included for analysis.}
+\caption{\label{tbl-dist-stats}Descriptive characteristics by district.}
 
 \centering{
 
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{a}={Number of samples that met inclusion criteria for analysis (see text).},
+note{}={Note: Number of villages given in parenthesis. SD = Standard deviation},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
-colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+width={1\linewidth},
+colspec={X[0.4]X[0.075]X[0.075]X[0.075]X[0.075]X[0.075]X[0.075]X[0.075]X[0.075]},
 cell{1}{2}={c=2,}{halign=c,},
 cell{1}{4}={c=2,}{halign=c,},
 cell{1}{6}={c=2,}{halign=c,},
+cell{1}{8}={c=2,}{halign=c,},
+row{1}={,cmd=\bfseries,},
+column{1}={halign=l,},
 }                     %% tabularray inner close
 \toprule
-& Wave 1 &  & Wave 2 &  & Wave 4 &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}
-PM2.5 sample type & Total & Included\textsuperscript{a} & Total & Included\textsuperscript{a} & Total & Included\textsuperscript{a} \\ \midrule %% TinyTableHeader
-Outdoor & 138 & 126 & 374 & 363 & 295 & 266 \\
-Indoor &  &  & 150 & 150 & 151 & 138 \\
-Personal & 494 & 448 & 498 & 429 & 499 & 418 \\
-Blank &  52 &  52 &  56 &  56 & 101 &  95 \\
+& Fangshan (n=11) &  & Huairo (n=18) &  & Miyun (n=12) &  & Mentougou (n=9) &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}
+& Mean & SD & Mean & SD & Mean & SD & Mean & SD \\ \midrule %% TinyTableHeader
+Number of households & 699.1 & 514.4 & 163.1 & 111.6 & 274.4 & 198.8 & 204.3 &   73.20 \\
+Per capita income (RMB, 1000s) & 7.2 & 1.4 & 20.0 & 2.8 & 17.3 & 2.8 & 11.3 &    2.30 \\
+Distance to Beijing center (km) & 67.2 & 2.3 & 88.6 & 8.9 & 83.0 & 3.7 & 45.0 &    5.70 \\
+Altitude (m) & 146.0 & 36.9 & 353.9 & 121.3 & 283.1 & 85.9 & 312.4 &  133.90 \\
+Winter briquette quantity (tonnes) & 3.7 & 1.2 & 4.0 & 1.6 & 2.8 & 1.2 & 2.4 &    1.00 \\
+Winter wood quantity (kilograms) & 1180.0 & 1192.0 & 2411.0 & 3845.0 & 2309.0 & 1997.0 & 1493.0 & 3144.00 \\
+Participant age & 59.0 & 9.1 & 60.0 & 8.8 & 60.0 & 8.9 & 62.0 &    9.70 \\
+Education (0-None or primary school; 1-secondary +) & 0.4 & 0.5 & 0.3 & 0.5 & 0.3 & 0.4 & 0.3 &    0.46 \\
+Participant weight & 69.0 & 11.0 & 66.0 & 11.0 & 65.0 & 10.0 & 68.0 &   11.00 \\
+Participant height & 161.0 & 8.6 & 161.0 & 8.2 & 159.0 & 8.4 & 161.0 &    8.60 \\
 \bottomrule
 \end{talltblr}
 
 }
 
 \end{table}%
+
+\begin{table}[H]
+
+\caption{\label{tbl-dist-fe}Impact of adding district-level fixed
+effects to models for personal and indoor air pollution.}
+
+\centering{
+
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={Note: (a) excludes and (b) includes district fixed effects. All models adjusted for household size, smoking, outdoor temperature, and outdoor dewpoint. Standard errors (in parenthesis) clustered by village.},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{2}={c=2,}{halign=c,},
+cell{1}{4}={c=2,}{halign=c,},
+cell{1}{6}={c=2,}{halign=c,},
+cell{1}{8}={c=2,}{halign=c,},
+row{1}={,cmd=\bfseries,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+column{6}={halign=c,},
+column{7}={halign=c,},
+column{8}={halign=c,},
+column{9}={halign=c,},
+}                     %% tabularray inner close
+\toprule
+& Personal PM2.5 &  & Black carbon &  & 24-hr indoor &  & Seasonal indoor &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}
+& (a) & (b) & (a)  & (b)  & (a)   & (b)   & (a)    & (b)    \\ \midrule %% TinyTableHeader
+ATT & 0.2 & 0.0 & -0.4 & -0.3 & -20.0 & -21.8 & -20.3 & -22.0 \\
+& (10.1) & (9.4) & (0.5) & (0.5) & (12.4) & (13.3) & (7.8) & (8.6) \\
+Observations & 1,270 & 1,270 & 1,161 & 1,161 & 399 & 399 & 366 & 366 \\
+Year fixed effects & X & X & X & X & X & X & X & X \\
+Cohort fixed effects & X & X & X & X & X & X & X & X \\
+District fixed effects &  & X &  & X &  & X &  & X \\
+\bottomrule
+\end{talltblr}
+
+}
+
+\end{table}%
+
+Table \textbf{?@tbl-a-het-personal} shows limited evidence that the
+\(ATT\)s across cohorts and time demonstrate meaningful heterogeneity.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.2500}}

@@ -19,42 +19,39 @@ author:
 thanks: Affiliations [1] McGill Univeristy; [2] Colorado State University; [3] Peking University; [4] University of the Chinese Academy of Sciences
 date: today
 
-format: typst
-
 # format:
 #  docx: 
 #    toc: true
 #    number-sections: true
 #    number-depth: 3
 
-#format:
-# pdf:
-#   toc: true
-#   keep-tex: true
-#   number-sections: true
-#   number-depth: 3
-#   include-in-header:
-#      - text: |
-#         \usepackage{wrapfig}
-#         \usepackage{colortbl}
-#          \makeatletter
-#          \renewenvironment{table}%
-#            {\renewcommand\familydefault\sfdefault
-#             \@float{table}}
-#            {\end@float}
-#          \renewenvironment{figure}%
-#            {\renewcommand\familydefault\sfdefault
-#             \@float{figure}}
-#            {\end@float}
-#          \makeatother
-#         \usepackage{changes}
-#         \AfterTOCHead[toc]{\sffamily}
-#   geometry: 
-#      - right=1in
-#      - left=1in
-#   fig-pos: H
+format:
+ pdf:
+   toc: true
+   keep-tex: true
+   number-sections: true
+   number-depth: 3
+   include-in-header:
+      - text: |
+         \usepackage{wrapfig}
+         \usepackage{colortbl}
+          \makeatletter
+          \renewenvironment{table}%
+            {\renewcommand\familydefault\sfdefault
+             \@float{table}}
+            {\end@float}
+          \renewenvironment{figure}%
+            {\renewcommand\familydefault\sfdefault
+             \@float{figure}}
+            {\end@float}
+          \makeatother
+         \usepackage{changes}
+         \AfterTOCHead[toc]{\sffamily}
+   geometry: 
+      - right=1in
+      - left=1in
+   fig-pos: H
 bibliography: hei-report.bib
-citeproc: true
 csl: environmental-health-perspectives.csl
 ---
 ```{r packages, echo=FALSE, message = FALSE, warning = FALSE}
@@ -99,56 +96,66 @@ China is deploying an ambitious policy to transition up to 70% of households in 
 
 ### Personal exposure 
 
+```{r, message = F, warning = F}
+#| echo: FALSE
+#| label: tbl-dist-stats
+#| tbl-cap: Descriptive characteristics by district.
+#| tbl-pos: H
 
+
+dstats <- read_csv(here("outputs",
+  "dist-stats.csv"), col_names = FALSE) %>%
+  mutate(across(X2:X5, list(
+    mean = ~ as.double(str_extract(., "^[^\\(]+")),
+    sd = ~ as.double(str_extract(., "(?<=\\().+?(?=\\))"))
+  ), .names = "{.col}_{.fn}")) %>%
+  select(-c(X2:X5))
+
+colnames(dstats) <- c(" ", "Mean", "SD", "Mean", "SD", 
+  "Mean", "SD", "Mean", "SD")
+
+tt(dstats,
+   width = c(.4, .075, .075, .075, .075, .075, .075, .075, .075),
+   notes = "Note: Number of villages given in parenthesis. SD = Standard deviation") %>%
+  group_tt(j = list(
+    "Fangshan (n=11)" = 2:3,
+    "Huairo (n=18)" = 4:5,
+    "Miyun (n=12)" = 6:7,
+    "Mentougou (n=9)" = 8:9)) %>%
+  style_tt(i = -1, bold = TRUE) %>%
+  style_tt(j = 1, align = "l") %>%
+  format_tt(j = 2:8, sprintf = "%.1f") %>%
+  format_tt(escape = TRUE)
+```
+
+```{r, message = F, warning = F}
+#| echo: FALSE
+#| label: tbl-dist-fe
+#| tbl-cap: Impact of adding district-level fixed effects to models for personal and indoor air pollution.
+#| tbl-pos: H
+
+temp_t <- readRDS(here("outputs/models", 
+  "ap-district-fe.rds"))
+
+tt(temp_t@data,
+   notes = list("Note: (a) excludes and (b) includes district fixed effects. All models adjusted for household size, smoking, outdoor temperature, and outdoor dewpoint. Standard errors (in parenthesis) clustered by village.")) %>%
+  group_tt(j = list(
+    "Personal PM2.5" = 2:3,
+    "Black carbon" = 4:5,
+    "24-hr indoor" = 6:7,
+    "Seasonal indoor" = 8:9)) %>%
+  style_tt(i=-1, bold = TRUE) %>%
+  style_tt(j = 2:9, align = "c") %>%
+  format_tt(escape = TRUE)
+
+```
 
 
 
 Table @tbl-a-het-personal shows limited evidence that the $ATT$s across cohorts and time demonstrate meaningful heterogeneity.
 
 
-```{r}
-#| echo: FALSE
-#| label: tbl-filters
-#| tbl-cap: Count of total outdoor and personal exposure PM~2.5~ samples (filters) collected over the course of the project and number included for analysis.
-#| tbl-pos: H
 
-total_table <- tibble(
-  sample = c(1,1,1,1),
-  type = c("Outdoor", "Indoor", 
-           "Personal", "Blank"),
-  wave1 = c(138, NA, 494, 52),
-  wave2 = c(374, 150, 498, 56),
-  wave4 = c(295, 151, 499, 101)
-)
-
-
-included_table <- tibble(
-  sample = c(2,2,2,2),
-  type = c("Outdoor", "Indoor", 
-           "Personal", "Blank"),
-  wave1 = c(126, NA, 448, 52),
-  wave2 = c(363, 150, 429, 56),
-  wave4 = c(266, 138, 418, 95)
-)
-
-samples <- bind_rows(total_table, included_table) %>%
-  pivot_wider(names_from = sample, 
-    values_from = c(wave1, wave2, wave4))
-
-colnames(samples) <- c("PM2.5 sample type",
-  "Total", "Included", "Total", "Included",
-  "Total", "Included")
-
-tt(samples,
-   notes = list(a = list(i=0, j=c(3,5,7),
-     text = "Number of samples that met inclusion criteria for analysis (see text)."))) %>%
-  group_tt(j = list(
-    "Wave 1" = 2:3,
-    "Wave 2" = 4:5,
-    "Wave 4" = 6:7)) %>%
-  format_tt()
-
-```
 
 | |   |
 |-|---|

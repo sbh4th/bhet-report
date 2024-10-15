@@ -341,7 +341,7 @@ tt(m_table,
 # tables of results by outcome for personal
 ap_table_ph <- bind_rows(m_ppm$me_2, m_ppm$meh_2) %>% 
   mutate(outcome = "PM2.5")
-
+  
 ap_table_bch <- bind_rows(m_pbc$me_2, m_pbc$meh_2) %>% 
   mutate(outcome = "Black carbon")
 
@@ -354,8 +354,8 @@ aph_table <- bind_rows(ap_table_ph, ap_table_bch) %>%
          `2021` = "2021",
          .missing = "All")) %>%
   relocate(outcome, cohort_year, year) %>%
-  mutate(ci = paste("(", round(conf.low, 1), ", ",
-    round(conf.high, 1), ")", sep="")) %>%
+  mutate(ci = paste("(", sprintf("%.1f", conf.low), ", ",
+    sprintf("%.1f", conf.high), ")", sep="")) %>%
   select(-conf.low, -conf.high) %>%
   pivot_wider(names_from = outcome, values_from = 
     c(estimate, ci), names_vary = "slowest")
@@ -379,8 +379,8 @@ aph_table_i <- bind_rows(ap_table_i24h, ap_table_ish) %>%
          `2021` = "2021",
          .missing = "All")) %>%
   relocate(outcome, cohort_year, year) %>%
-  mutate(ci = paste("(", round(conf.low, 2), ", ",
-    round(conf.high, 2), ")", sep="")) %>%
+  mutate(ci = paste("(", sprintf("%.1f", conf.low), ", ",
+    sprintf("%.1f", conf.high), ")", sep="")) %>%
   select(-conf.low, -conf.high) %>%
   pivot_wider(names_from = outcome, values_from = 
     c(estimate, ci), names_vary = "slowest")
@@ -556,4 +556,56 @@ pe_etwfe_nfe_me <- slopes(pe_etwfe_nfe,
 # put the results together in a table
 write_rds(pe_etwfe_nfe_me, file = here("outputs/models", 
   "pe_etwfe_nfe_me.rds"))
+
+
+
+
+
+# ETWFE plus covariates
+rhs_didia <- c(rhs_didi, "hh_num", "ets_former",
+  "ets_lived", "ets_none",
+  "ns(out_temp, df=2)", 
+  "ns(out_dew, df=2)")
+
+
+## X Adjustment for district ----
+
+# adding district
+rhs_didiad <- c(rhs_didi, "hh_num", "ets_former",
+  "ets_lived", "ets_none",
+  "ns(out_temp, df=2)", 
+  "ns(out_dew, df=2)", "factor(ID_COUNTY)")
+
+# personal PM
+m_ppm_d <- estimate_etwfe(lhs="pe", 
+  rhs1=rhs_dida, rhs2=rhs_didiad, 
+  data=d_p)
+
+# ETWFE and adjusted ETWFE models for black carbon
+m_pbc_d <- estimate_etwfe(lhs="bc", 
+  rhs1=rhs_dida, rhs2=rhs_didiad, 
+  data=d_bc)
+
+# ETWFE and adjusted ETWFE models for indoor daily
+m_i24_d <- estimate_etwfe(lhs="i24", 
+  rhs1=rhs_didia, rhs2=rhs_didiad, 
+  data=d_i24)
+
+# ETWFE and adjusted ETWFE models for indoor seasonal
+m_is_d <- estimate_etwfe(lhs="is", 
+  rhs1=rhs_didia, rhs2=rhs_didiad, 
+  data=d_is)
+
+# write model results to output folder
+write_rds(m_ppm, file = here("outputs/models",
+  "m_ppm.rds"))
+
+write_rds(m_pbc, file = here("outputs/models",
+  "m_pbc.rds"))
+
+write_rds(m_i24, file = here("outputs/models",
+  "m_i24.rds"))
+
+write_rds(m_is, file = here("outputs/models",
+  "m_is.rds"))
 

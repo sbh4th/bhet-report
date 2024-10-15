@@ -1,0 +1,9 @@
+﻿Pollutant,Category,Sample,Effect,Estimate,CI_low,CI_upper
+Daily,Outdoor,S1-S4,DiD,-2.15,-6.48,2.17
+Daily,Outdoor,S1-S4,Adjusted DiD,-1.49,-6.54,3.57
+Seasonal,Outdoor,S1-S4,DiD,3.14,-3.1,9.38
+Seasonal,Outdoor,S1-S4,Adjusted DiD,0.779,-4.48,6.04
+Daily,Outdoor,No S3,DiD,-0.519,-5.45,4.42
+Daily,Outdoor,No S3,Adjusted DiD,-2.09,-9.96,5.78
+Seasonal,Outdoor,No S3,DiD,1.66,-3.35,6.67
+Seasonal,Outdoor,No S3,Adjusted DiD,0.533,-4.85,5.92

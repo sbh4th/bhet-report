@@ -1,0 +1,99 @@
+\contentsline {section}{\numberline {1}Introduction}{6}{section.1}%
+\contentsline {section}{\numberline {2}Background}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Context for the policy}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Prior evidence on household energy interventions and air pollution}{7}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Prior evidence on clean energy interventions and cardiovascular outcomes}{8}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Evaluating the mechanisms through which policies may affect health outcomes.}{9}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Specific Aims and Overarching Approach}{10}{section.3}%
+\contentsline {section}{\numberline {4}Study Design and Methods}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Study area}{10}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Location and participant recruitment and enrolment}{10}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Data Collection Overview}{12}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Air Pollution}{12}{subsubsection.4.3.1}%
+\contentsline {paragraph}{\nonumberline Outdoor air pollution}{12}{paragraph*.14}%
+\contentsline {paragraph}{\nonumberline Indoor PM\textsubscript {2.5}}{14}{paragraph*.19}%
+\contentsline {paragraph}{\nonumberline Personal exposure to PM\textsubscript {2.5} and black carbon}{16}{paragraph*.22}%
+\contentsline {paragraph}{\nonumberline Gravimetric analyses of PTFE filter-based PM\textsubscript {2.5} samples}{17}{paragraph*.25}%
+\contentsline {paragraph}{\nonumberline Adjusting sensor-based PM\textsubscript {2.5} using filter-based gravimetric measurements}{17}{paragraph*.28}%
+\contentsline {paragraph}{\nonumberline \DIFdelbegin {\color {red}\sout@orig {Chemical analysis of PM mass}}\DIFdelend \DIFaddbegin Optical properties and chemical analysis of PM\textsubscript {2.5} mass\DIFaddend }{19}{paragraph*.35}%
+\contentsline {subsubsection}{\numberline {4.3.2}Outdoor and indoor (household) air temperature}{23}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}Objective measurement of household stove use using sensors}{23}{subsubsection.4.3.3}%
+\contentsline {subsubsection}{\numberline {4.3.4}Questionnaires}{24}{subsubsection.4.3.4}%
+\contentsline {subsubsection}{\numberline {4.3.5}Blood pressure}{25}{subsubsection.4.3.5}%
+\contentsline {subsubsection}{\numberline {4.3.6}Self-reported respiratory symptoms and airway inflammation}{25}{subsubsection.4.3.6}%
+\contentsline {subsubsection}{\numberline {4.3.7}Blood inflammatory and oxidative stress markers}{26}{subsubsection.4.3.7}%
+\contentsline {subsubsection}{\numberline {4.3.8}Anthropometric measurements.}{27}{subsubsection.4.3.8}%
+\contentsline {subsection}{\numberline {4.4}Measuring policy impacts}{27}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Measuring pathways and mechanisms}{29}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Data Analysis}{31}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Total Effect}{31}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Mediation Analysis}{32}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Identification of potential confounders and model covariates}{32}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Multiple imputation for covariates and indoor PM\textsubscript {2.5} in analyses with BP outcomes}{34}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Results}{35}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Description of study sample \DIFaddbegin {\color {blue}\uwave {by treatment}}\DIFaddend }{36}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Summary of PM and BC measurements}{37}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Policy uptake}{40}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Aim 1: Policy impacts and potential mediation}{41}{subsection.6.4}%
+\contentsline {subsubsection}{\numberline {6.4.1}Impact of \DIFdelbegin {\color {red}\sout@orig {the CBHP }}\DIFdelend policy on potential mediators \DIFaddbegin {\color {blue}\uwave {of air pollution and indoor temperature}}\DIFaddend }{41}{subsubsection.6.4.1}%
+\contentsline {subsubsection}{\numberline {6.4.2}Impact of the \DIFdelbegin {\color {red}\sout@orig {CBHP }}\DIFdelend policy on health outcomes}{42}{subsubsection.6.4.2}%
+\contentsline {subsubsection}{\numberline {6.4.3}Mediated impact on health outcomes}{45}{subsubsection.6.4.3}%
+\contentsline {subsection}{\numberline {6.5}Aim 2: Source contributions}{46}{subsection.6.5}%
+\contentsline {subsubsection}{\numberline {6.5.1}{\color {blue}\uwave {Source analysis using positive matrix factorization}}}{48}{subsubsection.6.5.1}%
+\contentsline {subsubsection}{\numberline {6.5.2}Description of PM\textsubscript {2.5} sources identified}{51}{subsubsection.6.5.2}%
+\contentsline {subsubsection}{\numberline {6.5.3}{\color {blue}\uwave {Impact of policy on outdoor and personal exposure to the mixed combustion source}}}{54}{subsubsection.6.5.3}%
+\contentsline {subsection}{\numberline {6.6}Aim 3: Mediation by source contribution}{55}{subsection.6.6}%
+\contentsline {section}{\numberline {7}Discussion and Conclusions}{56}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Adoption of the heat pump technology and adherence to the policy}{56}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Impacts of the policy on health}{57}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Impacts of the policy on air pollution and its sources}{59}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Assumptions, strengths, and limitations}{62}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Implications of Findings}{66}{section.8}%
+\contentsline {section}{\numberline {9}Data Availability Statement}{67}{section.9}%
+\contentsline {section}{\numberline {10}Acknowledgements}{67}{section.10}%
+\contentsline {section}{\numberline {11}References}{67}{section.11}%
+\contentsline {section}{\numberline {A}Appendices}{81}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Biomarker descriptives}{81}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}\DIFdelbegin {\color {red}\sout@orig {Imputation results}}\DIFdelend \DIFaddbegin {\color {blue}\uwave {Missing data}}\DIFaddend }{82}{subsection.A.2}%
+\contentsline {subsubsection}{\numberline {A.2.1}{\color {blue}\uwave {Missingness across imputed variables}}}{82}{subsubsection.A.2.1}%
+\contentsline {subsubsection}{\numberline {A.2.2}{\color {blue}\uwave {Missing data by enrollment cohort and outcome}}}{84}{subsubsection.A.2.2}%
+\contentsline {subsubsection}{\numberline {A.2.3}{\color {blue}\uwave {Imputation results}}}{86}{subsubsection.A.2.3}%
+\contentsline {subsection}{\numberline {A.3}Participant flow diagram}{87}{subsection.A.3}%
+\contentsline {subsection}{\numberline {A.4}{\color {blue}\uwave {Sample sizes}}}{88}{subsection.A.4}%
+\contentsline {subsection}{\numberline {A.5}{\color {blue}\uwave {District-level statistics}}}{89}{subsection.A.5}%
+\contentsline {subsection}{\numberline {A.6}Policy uptake}{90}{subsection.A.6}%
+\contentsline {subsection}{\numberline {A.7}Heterogeneity in \DIFdelbegin {\color {red}\sout@orig {treament }}\DIFdelend \DIFaddbegin {\color {blue}\uwave {treatment }}\DIFaddend effects}{91}{subsection.A.7}%
+\contentsline {subsubsection}{\numberline {A.7.1}Personal exposure}{91}{subsubsection.A.7.1}%
+\contentsline {subsubsection}{\numberline {A.7.2}Indoor PM\textsubscript {2.5}}{92}{subsubsection.A.7.2}%
+\contentsline {subsubsection}{\numberline {A.7.3}Indoor temperature}{93}{subsubsection.A.7.3}%
+\contentsline {subsubsection}{\numberline {A.7.4}Blood pressure outcomes}{94}{subsubsection.A.7.4}%
+\contentsline {subsubsection}{\numberline {A.7.5}Mediation analyses for blood pressure}{96}{subsubsection.A.7.5}%
+\contentsline {subsubsection}{\numberline {A.7.6}\DIFdelbegin {\color {red}\sout@orig {Respiratory }}\DIFdelend \DIFaddbegin {\color {blue}\uwave {Self-reported respiratory }}\DIFaddend outcomes}{98}{subsubsection.A.7.6}%
+\contentsline {subsubsection}{\numberline {A.7.7}{\color {blue}\uwave {FeNO}}}{101}{subsubsection.A.7.7}%
+\contentsline {subsubsection}{\numberline {A.7.8}Outdoor and personal mixed combustion}{102}{subsubsection.A.7.8}%
+\contentsline {subsection}{\numberline {A.8}{\color {red}\sout@orig {Impact of sample composition on FeNO results}}}{103}{subsection.A.8}%
+\contentsline {subsection}{\numberline {A.8}{\color {blue}\uwave {Impact of adjustment for district on air pollution estimates}}}{103}{subsection.A.8}%
+\contentsline {subsection}{\numberline {A.9}{\color {blue}\uwave {Impact of sample composition on brachial and central blood pressure results.}}}{104}{subsection.A.9}%
+\contentsline {subsection}{\numberline {A.10}Impact of including Season 3 data}{105}{subsection.A.10}%
+\contentsline {subsection}{\numberline {A.11}{\color {blue}\uwave {Impact of sample composition on FeNO results}}}{106}{subsection.A.11}%
+\contentsline {subsection}{\numberline {A.12}{\color {blue}\uwave {Alternative PMF analyses}}}{107}{subsection.A.12}%
+\contentsline {subsubsection}{\numberline {A.12.1}{\color {blue}\uwave {Disaggregated analyses}}}{107}{subsubsection.A.12.1}%
+\contentsline {subsubsection}{\numberline {A.12.2}{\color {blue}\uwave {PMF results disaggregated by day}}}{109}{subsubsection.A.12.2}%
+\contentsline {subsubsection}{\numberline {A.12.3}{\color {blue}\uwave {PMF results disaggregated by month}}}{110}{subsubsection.A.12.3}%
+\contentsline {subsection}{\numberline {A.13}{\color {red}\sout@orig {Pre-trends for blood pressure}}}{111}{subsection.A.13}%
+\contentsline {subsubsection}{\numberline {A.12.1}{\color {blue}\uwave {Personal exposure sample diagnostics}}}{111}{subsubsection.A.12.1}%
+\contentsline {subsubsection}{\numberline {A.12.2}{\color {blue}\uwave {Outdoor exposure sample diagnostics}}}{112}{subsubsection.A.12.2}%
+\contentsline {subsubsection}{\numberline {A.12.3}PM\textsubscript {2.5} constituents for outdoor samples}{113}{subsubsection.A.12.3}%
+\contentsline {subsubsection}{\numberline {A.12.4}PM\textsubscript {2.5} constituents for personal samples}{114}{subsubsection.A.12.4}%
+\contentsline {subsection}{\numberline {A.13}{\color {blue}\uwave {Pre-trends}}}{115}{subsection.A.13}%
+\contentsline {subsubsection}{\numberline {A.13.1}{\color {blue}\uwave {Blood pressure}}}{115}{subsubsection.A.13.1}%
+\contentsline {subsubsection}{\numberline {A.13.2}{\color {blue}\uwave {Personal exposure and black carbon}}}{117}{subsubsection.A.13.2}%
+\contentsline {subsubsection}{\numberline {A.13.3}{\color {blue}\uwave {Self-reported respiratory outcomes}}}{119}{subsubsection.A.13.3}%
+\contentsline {subsection}{\numberline {A.14}Impact of group and time fixed effects}{120}{subsection.A.14}%
+\contentsline {subsection}{\numberline {A.15}{\color {blue}\uwave {Retrospective design analysis}}}{121}{subsection.A.15}%
+\contentsline {subsubsection}{\numberline {A.15.1}{\color {blue}\uwave {All outcomes}}}{121}{subsubsection.A.15.1}%
+\contentsline {subsubsection}{\numberline {A.15.2}{\color {blue}\uwave {Blood pressure}}}{122}{subsubsection.A.15.2}%
+\contentsline {section}{{\color {blue}\uwave {Abbreviations and other terms}}}{123}{section*.130}%
+\contentsline {section}{About the authors}{124}{section*.131}%
+\contentsline {section}{Other publications}{126}{section*.132}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

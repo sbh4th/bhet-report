@@ -29,8 +29,8 @@ library(modeldb)
 # restrict to specific variables
 ap_data <- read_csv(here("data-clean", 
   "BHET_master_data_04Oct2024.csv"),
-  col_select = c(ptc_id, hh_id, ID_VILLAGE, wave, 
-    PM25conc_exposureugm3, p_usable_pm, 
+  col_select = c(ptc_id, hh_id, ID_VILLAGE, ID_COUNTY,
+    wave, PM25conc_exposureugm3, p_usable_pm, 
     BCconc_exposureugm3, p_usable_bc,
     indoor_filter_type, indoor_filter_id, 
     house_area, PM25_indoor_24h_sensor,
@@ -176,11 +176,11 @@ write_rds(d_ind_seasonal, file = here("data-clean",
 
 # indoor exposure (seasonal) including season 3
 # bring in season 3 seasonal data from OSF
-aim_1 %>%
-  osf_ls_files("Air pollution",
-    pattern = "indoor_pm_S3.csv") %>%
-  osf_download(path = here("data-clean"),
-               conflicts = "overwrite")
+# aim_1 %>%
+#   osf_ls_files("Air pollution",
+#     pattern = "indoor_pm_S3.csv") %>%
+#   osf_download(path = here("data-clean"),
+#                conflicts = "overwrite")
 
 # read in season 3 data
 d_ind_s3 <- read_csv(here("data-clean", 

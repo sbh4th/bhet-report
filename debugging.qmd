@@ -99,60 +99,41 @@ China is deploying an ambitious policy to transition up to 70% of households in 
 
 @tbl-a-bp-med-het shows the cohort-time treatment effects for the mediation model for blood pressure.
 
-
-```{r, message=F}
+```{r, message = F, warning = F}
 #| echo: FALSE
-#| label: tbl-a-bp-med-het
-#| tbl-cap: Heterogenous treatment effects for blood pressure mediation model.
+#| label: tbl-a-ind-s3
+#| tbl-cap: Effects of the CHP policy on outdoor 24-hr and seasonal PM~2.5~ based on whether Season 3 data are included vs. excluded.
+#| tbl-pos: H
 
-ctotm <- read_xlsx(here("outputs",
-  "adjusted_CT_results.xlsx")) %>%
-  filter(str_detect(bp, "PP", 
-                    negate = TRUE)) %>%
-  filter(str_detect(bp, "amplification", 
-                    negate = TRUE)) %>%
-  mutate(ci = paste("(", sprintf('%.1f', 
-    lower_95CI), ", ", sprintf('%.1f', 
-    upper_95CI), ")", sep=""),
-    cohort = rep(c(2019,2019,2020,2021),
-                      times = 16),
-         time = rep(c(2019,2021,2021,2021),
-                    times = 16)) %>%
-  rename(est = theta_bar) %>%
-  select(model, cohort, 
-         time, bp, est, ci) %>%
-  pivot_wider(names_from = model, 
-    values_from = c(est, ci), 
-    names_vary = "slowest") %>%
-  select(-bp)
 
-colnames(ctotm) <- c("Cohort", "Time", 
-  "ATT", "(95% CI)", "ATT", "(95% CI)", 
-  "ATT", "(95% CI)", "ATT", "(95% CI)")
+ap_table_s3 <- read_csv(here("outputs", 
+  "DID_air_pollution_gamma.csv")) %>%
+  filter(`Effect` == "Adjusted DiD") %>%
+  select(-Category) %>%
+  mutate(Pollutant = c("24-hr PM2.5",
+    "Seasonal PM2.5",
+    "24-hr PM2.5",
+    "Seasonal PM2.5")) %>%
+  rename_at(c("Pollutant", "Sample", "Estimate"), 
+    .funs = tolower) %>%
+  mutate(model = c(1,1,2,2),
+    ci = paste("(", sprintf("%.1f", `CI_low`), ", ",
+    sprintf("%.1f", `CI_upper`), ")", sep=""), 
+    nobs = c(11174, 139, 11174, 139)) %>%
+  select(-Effect, -CI_low, -CI_upper, -sample) %>%
+  relocate(pollutant, nobs) %>%
+  pivot_wider(names_from = model, values_from = 
+    c(nobs, estimate, ci), names_vary = "slowest")
 
-tt(ctotm,
-   digits = 2,
-   notes = list("Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.", 
-     a = list(i=0, j=3, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), 
-     b = list(i=0, j=c(5,7,9), text = "Mediators were set to the mean value for untreated participants at baseline."))) %>%
-  group_tt(
-    j = list("Indoor PM" = 5:6,
-             "Indoor Temp" = 7:8,
-             "PM + Temp" = 9:10)) %>%
-  group_tt(
-    j = list("Adjusted Total Effect" = 3:4,
-             "CDE Mediated By:" = 5:10)) %>%
-  style_tt(j = 1:10, align = "llcccccccc") %>%
-  style_tt(j=1:10, fontsize = 0.8) %>%
-  format_tt(escape = TRUE) %>%
-  format_tt(j=c(3,5,7,9), sprintf = "%.2f") %>%
-  group_tt(
-    i = list(
-        "Brachial SBP" = 1, 
-        "Central SBP" = 5,
-        "Brachial DBP" = 9,
-        "Central DBP" = 13)) %>%
-  style_tt(i = c(1,6,11,16), bold = TRUE) %>%
-  theme_tt("resize", width = 0.99)
+colnames(ap_table_s3) <- c(" ", "Obs", 
+  "ATT", "(95% CI)", "Obs", "ATT", "(95% CI)")
 
+tt(ap_table_s3,
+   notes = "Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval.") %>%
+  group_tt(j = list(
+    "With Season 3 data" = 2:4,
+    "Without Season 3 data" = 5:7)) %>%
+  format_tt(j=c(3,6), sprintf = "%.1f") %>%
+  format_tt(escape = TRUE)
+ 
 ```

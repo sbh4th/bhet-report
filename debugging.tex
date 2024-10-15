@@ -239,7 +239,7 @@ Sternbach\textsuperscript{1} \and Shu
 Tao\textsuperscript{3} \and Kaibing Xue\textsuperscript{4} \and Wenlu
 Yuan\textsuperscript{1} \and Xiang Zhang\textsuperscript{1} \and Yuanxun
 Zhang\textsuperscript{4}}
-\date{2024-10-14}
+\date{2024-10-15}
 
 \begin{document}
 \maketitle
@@ -283,69 +283,54 @@ outdoor air pollution, as well as heating behaviors and health outcomes.
 
 \newpage
 
-\subsubsection{Personal exposure}\label{personal-exposure}
+\subsubsection{Mediation analyses for blood
+pressure}\label{mediation-analyses-for-blood-pressure}
 
-\begin{table}[H]
+Table~\ref{tbl-a-bp-med-het} shows the cohort-time treatment effects for
+the mediation model for blood pressure.
 
-\caption{\label{tbl-dist-stats}Descriptive characteristics by district.}
+\begin{table}
+
+\caption{\label{tbl-a-bp-med-het}Heterogenous treatment effects for
+blood pressure mediation model.}
 
 \centering{
 
 \centering
+\resizebox{\ifdim\width>\linewidth 0.99\linewidth\else\width\fi}{!}{
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: Number of villages given in parenthesis. SD = Standard deviation},
+note{}={Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.},
+note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
+note{b}={Mediators were set to the mean value for untreated participants at baseline.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
-width={1\linewidth},
-colspec={X[0.4]X[0.075]X[0.075]X[0.075]X[0.075]X[0.075]X[0.075]X[0.075]X[0.075]},
-cell{1}{2}={c=2,}{halign=c,},
-cell{1}{4}={c=2,}{halign=c,},
-cell{1}{6}={c=2,}{halign=c,},
-cell{1}{8}={c=2,}{halign=c,},
-row{1}={,cmd=\bfseries,},
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{2}{5}={c=2,}{halign=c,},
+cell{2}{7}={c=2,}{halign=c,},
+cell{2}{9}={c=2,}{halign=c,},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=6,}{halign=c,},
+cell{4}{1}={c=10}{},cell{9}{1}={c=10}{},cell{14}{1}={c=10}{},cell{19}{1}={c=10}{},
+cell{5}{1}={preto={\hspace{1em}}},
+cell{6}{1}={preto={\hspace{1em}}},
+cell{7}{1}={preto={\hspace{1em}}},
+cell{8}{1}={preto={\hspace{1em}}},
+cell{10}{1}={preto={\hspace{1em}}},
+cell{11}{1}={preto={\hspace{1em}}},
+cell{12}{1}={preto={\hspace{1em}}},
+cell{13}{1}={preto={\hspace{1em}}},
+cell{15}{1}={preto={\hspace{1em}}},
+cell{16}{1}={preto={\hspace{1em}}},
+cell{17}{1}={preto={\hspace{1em}}},
+cell{18}{1}={preto={\hspace{1em}}},
+cell{20}{1}={preto={\hspace{1em}}},
+cell{21}{1}={preto={\hspace{1em}}},
+cell{22}{1}={preto={\hspace{1em}}},
+cell{23}{1}={preto={\hspace{1em}}},
+cell{24}{1}={preto={\hspace{1em}}},
 column{1}={halign=l,},
-}                     %% tabularray inner close
-\toprule
-& Fangshan (n=11) &  & Huairo (n=18) &  & Miyun (n=12) &  & Mentougou (n=9) &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}
-& Mean & SD & Mean & SD & Mean & SD & Mean & SD \\ \midrule %% TinyTableHeader
-Number of households & 699.1 & 514.4 & 163.1 & 111.6 & 274.4 & 198.8 & 204.3 &   73.20 \\
-Per capita income (RMB, 1000s) & 7.2 & 1.4 & 20.0 & 2.8 & 17.3 & 2.8 & 11.3 &    2.30 \\
-Distance to Beijing center (km) & 67.2 & 2.3 & 88.6 & 8.9 & 83.0 & 3.7 & 45.0 &    5.70 \\
-Altitude (m) & 146.0 & 36.9 & 353.9 & 121.3 & 283.1 & 85.9 & 312.4 &  133.90 \\
-Winter briquette quantity (tonnes) & 3.7 & 1.2 & 4.0 & 1.6 & 2.8 & 1.2 & 2.4 &    1.00 \\
-Winter wood quantity (kilograms) & 1180.0 & 1192.0 & 2411.0 & 3845.0 & 2309.0 & 1997.0 & 1493.0 & 3144.00 \\
-Participant age & 59.0 & 9.1 & 60.0 & 8.8 & 60.0 & 8.9 & 62.0 &    9.70 \\
-Education (0-None or primary school; 1-secondary +) & 0.4 & 0.5 & 0.3 & 0.5 & 0.3 & 0.4 & 0.3 &    0.46 \\
-Participant weight & 69.0 & 11.0 & 66.0 & 11.0 & 65.0 & 10.0 & 68.0 &   11.00 \\
-Participant height & 161.0 & 8.6 & 161.0 & 8.2 & 159.0 & 8.4 & 161.0 &    8.60 \\
-\bottomrule
-\end{talltblr}
-
-}
-
-\end{table}%
-
-\begin{table}[H]
-
-\caption{\label{tbl-dist-fe}Impact of adding district-level fixed
-effects to models for personal and indoor air pollution.}
-
-\centering{
-
-\centering
-\begin{talltblr}[         %% tabularray outer open
-entry=none,label=none,
-note{}={Note: (a) excludes and (b) includes district fixed effects. All models adjusted for household size, smoking, outdoor temperature, and outdoor dewpoint. Standard errors (in parenthesis) clustered by village.},
-]                     %% tabularray outer close
-{                     %% tabularray inner open
-colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
-cell{1}{2}={c=2,}{halign=c,},
-cell{1}{4}={c=2,}{halign=c,},
-cell{1}{6}={c=2,}{halign=c,},
-cell{1}{8}={c=2,}{halign=c,},
-row{1}={,cmd=\bfseries,},
-column{2}={halign=c,},
+column{2}={halign=l,},
 column{3}={halign=c,},
 column{4}={halign=c,},
 column{5}={halign=c,},
@@ -353,81 +338,53 @@ column{6}={halign=c,},
 column{7}={halign=c,},
 column{8}={halign=c,},
 column{9}={halign=c,},
+column{10}={halign=c,},
+column{1}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{2}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{3}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{4}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{5}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{6}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{7}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{8}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{9}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+column{10}={font=\fontsize{0.8em}{1.1em}\selectfont,},
+row{4}={,cmd=\bfseries,},
+row{9}={,cmd=\bfseries,},
+row{14}={,cmd=\bfseries,},
+row{19}={,cmd=\bfseries,},
 }                     %% tabularray inner close
 \toprule
-& Personal PM2.5 &  & Black carbon &  & 24-hr indoor &  & Seasonal indoor &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}\cmidrule[lr]{6-7}\cmidrule[lr]{8-9}
-& (a) & (b) & (a)  & (b)  & (a)   & (b)   & (a)    & (b)    \\ \midrule %% TinyTableHeader
-ATT & 0.2 & 0.0 & -0.4 & -0.3 & -20.0 & -21.8 & -20.3 & -22.0 \\
-& (10.1) & (9.4) & (0.5) & (0.5) & (12.4) & (13.3) & (7.8) & (8.6) \\
-Observations & 1,270 & 1,270 & 1,161 & 1,161 & 399 & 399 & 366 & 366 \\
-Year fixed effects & X & X & X & X & X & X & X & X \\
-Cohort fixed effects & X & X & X & X & X & X & X & X \\
-District fixed effects &  & X &  & X &  & X &  & X \\
+&  & Adjusted Total Effect &  & CDE Mediated By: &  &  &  &  &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-10}
+&  &  &  & Indoor PM &  & Indoor Temp &  & PM + Temp &  \\ \cmidrule[lr]{5-6}\cmidrule[lr]{7-8}\cmidrule[lr]{9-10}
+Cohort & Time & ATT\textsuperscript{a} & (95\% CI) & ATT\textsuperscript{b} & (95\% CI) & ATT\textsuperscript{b} & (95\% CI) & ATT\textsuperscript{b} & (95\% CI) \\ \midrule %% TinyTableHeader
+Brachial SBP &&&&&&&&& \\
+2019 & 2019 & -2.16 & (-5.0, 0.7) & -1.67 & (-4.7, 1.3) & -1.17 & (-4.1, 1.8) & -0.63 & (-3.7, 2.5) \\
+2019 & 2021 & -1.54 & (-4.0, 1.0) & -0.86 & (-3.6, 1.9) & -0.13 & (-2.7, 2.5) & 0.56 & (-2.4, 3.5) \\
+2020 & 2021 & -1.45 & (-5.2, 2.3) & -0.68 & (-4.6, 3.2) & -0.01 & (-3.6, 3.6) & 0.83 & (-3.2, 4.9) \\
+2021 & 2021 & 2.28 & (-0.5, 5.1) & 2.48 & (-0.8, 5.8) & 1.55 & (-2.1, 5.2) & 1.76 & (-2.2, 5.7) \\
+Central SBP &&&&&&&&& \\
+2019 & 2019 & -1.81 & (-4.4, 0.8) & -1.21 & (-4.1, 1.7) & -0.83 & (-3.6, 1.9) & -0.19 & (-3.2, 2.8) \\
+2019 & 2021 & -1.82 & (-4.3, 0.7) & -1.05 & (-3.9, 1.8) & -0.47 & (-2.8, 1.9) & 0.31 & (-2.5, 3.1) \\
+2020 & 2021 & -1.85 & (-5.2, 1.5) & -1.12 & (-4.7, 2.5) & -0.52 & (-3.9, 2.8) & 0.28 & (-3.6, 4.2) \\
+2021 & 2021 & 2.15 & (-1.0, 5.3) & 2.32 & (-1.2, 5.9) & 1.37 & (-2.1, 4.8) & 1.57 & (-2.2, 5.3) \\
+Brachial DBP &&&&&&&&& \\
+2019 & 2019 & -2.51 & (-4.5, -0.6) & -2.03 & (-4.2, 0.2) & -2.01 & (-3.9, -0.1) & -1.47 & (-3.6, 0.7) \\
+2019 & 2021 & -2.34 & (-3.9, -0.7) & -1.71 & (-3.8, 0.4) & -1.74 & (-3.2, -0.3) & -1.08 & (-3.0, 0.9) \\
+2020 & 2021 & 0.08 & (-1.7, 1.8) & 0.23 & (-1.6, 2.1) & 0.92 & (-1.0, 2.8) & 1.12 & (-1.0, 3.2) \\
+2021 & 2021 & 0.73 & (-0.5, 1.9) & 1.08 & (-0.7, 2.8) & 0.11 & (-1.3, 1.5) & 0.47 & (-1.4, 2.3) \\
+Central DBP &&&&&&&&& \\
+2019 & 2019 & -2.54 & (-4.4, -0.7) & -1.97 & (-4.2, 0.2) & -2.26 & (-4.1, -0.4) & -1.62 & (-3.8, 0.5) \\
+2019 & 2021 & -2.45 & (-4.0, -0.9) & -1.72 & (-3.8, 0.4) & -2.05 & (-3.5, -0.6) & -1.29 & (-3.3, 0.7) \\
+2020 & 2021 & 0.08 & (-1.7, 1.9) & 0.23 & (-1.7, 2.2) & 0.94 & (-1.0, 2.9) & 1.14 & (-1.0, 3.3) \\
+2021 & 2021 & 1.12 & (0.0, 2.2) & 1.51 & (-0.1, 3.2) & 0.48 & (-0.8, 1.8) & 0.88 & (-0.9, 2.7) \\
 \bottomrule
 \end{talltblr}
+}
 
 }
 
 \end{table}%
-
-Table \textbf{?@tbl-a-het-personal} shows limited evidence that the
-\(ATT\)s across cohorts and time demonstrate meaningful heterogeneity.
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.7500}}@{}}
-\toprule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-ANMB & absolute normalized mean bias \\
-ATT & Average Treatment Effect on the Treated \\
-BAM & Beta Attenuation Monitor \\
-BC & Black carbon \\
-BP & Blood pressure \\
-CI & Confidence Interval \\
-CIE & International Commission on Illumination \\
-CHP & Clean Heating Policy \\
-cDBP & Central diastolic blood pressure \\
-CRP & C-reactive protein \\
-cSBP & Central systolic blood pressure \\
-DAG & Directed acyclic graph \\
-DiD & Difference-in-Differences \\
-EC & Elemental carbon \\
-EDXRF & Evo energy-dispersive X-ray fluorescence \\
-ETWFE & Extended Two-Way Fixed Effects \\
-FEM & Federal equivalent method \\
-FID & Flame ionization detector \\
-FeNO & Fractional exhaled nitric oxide \\
-HAPIN & Household Air Pollution Intervention Network \\
-HPLC & High-performance liquid chromatography \\
-IL-6 & Interleukin-6 \\
-MDA & Malondialdehyde \\
-NISP & National Improved Stove Program \\
-NIST & National Institute of Standards and Technology \\
-ns-S & Non-Sulfate Sulfur \\
-OC & Organic Carbon \\
-OD & Optic densities \\
-PKU & Peking University \\
-PM\textsubscript{2.5} & Particulate matter less than 2.5 microns in
-aerodynamic diameter \\
-RMSE & Root mean square error \\
-SRM & Standard reference material \\
-TNF-\(\alpha\) & Tumour necrosis factor alpha \\
-UCAS & University of Chinese Academy of Sciences \\
-UPAS & Ultrasonic Personal Aerosol Samplers \\
-W1, W2, W3, W4 & Wave 1, Wave 2, Wave 3, Wave 4 \\
-wi & Water Insoluble Species \\
-ws & Water Soluble Species \\
-\end{longtable}
-
-\newpage
-
-\section*{Abbreviations and other
-terms}\label{abbreviations-and-other-terms}
-\addcontentsline{toc}{section}{Abbreviations and other terms}
-
-ATT
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{1}

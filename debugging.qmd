@@ -94,113 +94,65 @@ China is deploying an ambitious policy to transition up to 70% of households in 
 
 \newpage
 
-### Personal exposure 
 
-```{r, message = F, warning = F}
+### Mediation analyses for blood pressure
+
+@tbl-a-bp-med-het shows the cohort-time treatment effects for the mediation model for blood pressure.
+
+
+```{r, message=F}
 #| echo: FALSE
-#| label: tbl-dist-stats
-#| tbl-cap: Descriptive characteristics by district.
-#| tbl-pos: H
+#| label: tbl-a-bp-med-het
+#| tbl-cap: Heterogenous treatment effects for blood pressure mediation model.
 
+ctotm <- read_xlsx(here("outputs",
+  "adjusted_CT_results.xlsx")) %>%
+  filter(str_detect(bp, "PP", 
+                    negate = TRUE)) %>%
+  filter(str_detect(bp, "amplification", 
+                    negate = TRUE)) %>%
+  mutate(ci = paste("(", sprintf('%.1f', 
+    lower_95CI), ", ", sprintf('%.1f', 
+    upper_95CI), ")", sep=""),
+    cohort = rep(c(2019,2019,2020,2021),
+                      times = 16),
+         time = rep(c(2019,2021,2021,2021),
+                    times = 16)) %>%
+  rename(est = theta_bar) %>%
+  select(model, cohort, 
+         time, bp, est, ci) %>%
+  pivot_wider(names_from = model, 
+    values_from = c(est, ci), 
+    names_vary = "slowest") %>%
+  select(-bp)
 
-dstats <- read_csv(here("outputs",
-  "dist-stats.csv"), col_names = FALSE) %>%
-  mutate(across(X2:X5, list(
-    mean = ~ as.double(str_extract(., "^[^\\(]+")),
-    sd = ~ as.double(str_extract(., "(?<=\\().+?(?=\\))"))
-  ), .names = "{.col}_{.fn}")) %>%
-  select(-c(X2:X5))
+colnames(ctotm) <- c("Cohort", "Time", 
+  "ATT", "(95% CI)", "ATT", "(95% CI)", 
+  "ATT", "(95% CI)", "ATT", "(95% CI)")
 
-colnames(dstats) <- c(" ", "Mean", "SD", "Mean", "SD", 
-  "Mean", "SD", "Mean", "SD")
+tt(ctotm,
+   digits = 2,
+   notes = list("Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.", 
+     a = list(i=0, j=3, text = "Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication."), 
+     b = list(i=0, j=c(5,7,9), text = "Mediators were set to the mean value for untreated participants at baseline."))) %>%
+  group_tt(
+    j = list("Indoor PM" = 5:6,
+             "Indoor Temp" = 7:8,
+             "PM + Temp" = 9:10)) %>%
+  group_tt(
+    j = list("Adjusted Total Effect" = 3:4,
+             "CDE Mediated By:" = 5:10)) %>%
+  style_tt(j = 1:10, align = "llcccccccc") %>%
+  style_tt(j=1:10, fontsize = 0.8) %>%
+  format_tt(escape = TRUE) %>%
+  format_tt(j=c(3,5,7,9), sprintf = "%.2f") %>%
+  group_tt(
+    i = list(
+        "Brachial SBP" = 1, 
+        "Central SBP" = 5,
+        "Brachial DBP" = 9,
+        "Central DBP" = 13)) %>%
+  style_tt(i = c(1,6,11,16), bold = TRUE) %>%
+  theme_tt("resize", width = 0.99)
 
-tt(dstats,
-   width = c(.4, .075, .075, .075, .075, .075, .075, .075, .075),
-   notes = "Note: Number of villages given in parenthesis. SD = Standard deviation") %>%
-  group_tt(j = list(
-    "Fangshan (n=11)" = 2:3,
-    "Huairo (n=18)" = 4:5,
-    "Miyun (n=12)" = 6:7,
-    "Mentougou (n=9)" = 8:9)) %>%
-  style_tt(i = -1, bold = TRUE) %>%
-  style_tt(j = 1, align = "l") %>%
-  format_tt(j = 2:8, sprintf = "%.1f") %>%
-  format_tt(escape = TRUE)
 ```
-
-```{r, message = F, warning = F}
-#| echo: FALSE
-#| label: tbl-dist-fe
-#| tbl-cap: Impact of adding district-level fixed effects to models for personal and indoor air pollution.
-#| tbl-pos: H
-
-temp_t <- readRDS(here("outputs/models", 
-  "ap-district-fe.rds"))
-
-tt(temp_t@data,
-   notes = list("Note: (a) excludes and (b) includes district fixed effects. All models adjusted for household size, smoking, outdoor temperature, and outdoor dewpoint. Standard errors (in parenthesis) clustered by village.")) %>%
-  group_tt(j = list(
-    "Personal PM2.5" = 2:3,
-    "Black carbon" = 4:5,
-    "24-hr indoor" = 6:7,
-    "Seasonal indoor" = 8:9)) %>%
-  style_tt(i=-1, bold = TRUE) %>%
-  style_tt(j = 2:9, align = "c") %>%
-  format_tt(escape = TRUE)
-
-```
-
-
-
-Table @tbl-a-het-personal shows limited evidence that the $ATT$s across cohorts and time demonstrate meaningful heterogeneity.
-
-
-
-
-| |   |
-|-|---|
-| ANMB | 	absolute normalized mean bias |   
-| ATT	 | Average Treatment Effect on the Treated | 
-| BAM	 | Beta Attenuation Monitor | 
-| BC	 | Black carbon | 
-| BP	 | Blood pressure | 
-| CI	 | Confidence Interval | 
-| CIE	 | International Commission on Illumination | 
-| CHP	 | Clean Heating Policy | 
-| cDBP | 	Central diastolic blood pressure | 
-| CRP	| C-reactive protein | 
-| cSBP | 	Central systolic blood pressure | 
-| DAG | 	Directed acyclic graph | 
-| DiD | 	Difference-in-Differences | 
-| EC | 	Elemental carbon | 
-| EDXRF | 	Evo energy-dispersive X-ray fluorescence | 
-| ETWFE | 	Extended Two-Way Fixed Effects | 
-| FEM | 	Federal equivalent method | 
-| FID | 	Flame ionization detector | 
-| FeNO | 	Fractional exhaled nitric oxide | 
-| HAPIN | 	Household Air Pollution Intervention Network | 
-| HPLC | High-performance liquid chromatography | 
-| IL-6 | 	Interleukin-6 | 
-| MDA | 	Malondialdehyde | 
-| NISP | 	National Improved Stove Program | 
-| NIST | 	National Institute of Standards and Technology | 
-| ns-S | 	Non-Sulfate Sulfur | 
-| OC | 	Organic Carbon | 
-| OD  | Optic densities | 
-| PKU | 	Peking University | 
-| PM~2.5~  | Particulate matter less than 2.5 microns in aerodynamic diameter | 
-| RMSE | Root mean square error  | 
-| SRM | Standard reference material | 
-| TNF-$\alpha$ | Tumour necrosis factor alpha | 
-| UCAS | University of Chinese Academy of Sciences | 
-| UPAS | Ultrasonic Personal Aerosol Samplers | 
-| W1, W2, W3, W4 | 	Wave 1, Wave 2, Wave 3, Wave 4 | 
-| wi |	Water Insoluble Species | 
-| ws |	Water Soluble Species | 
-
-    
-\newpage
-
-# Abbreviations and other terms {.unnumbered}
-
-ATT

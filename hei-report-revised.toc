@@ -1,0 +1,97 @@
+\contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
+\contentsline {section}{\numberline {2}Background}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Context for the policy}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Prior evidence on household energy interventions and air pollution}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Prior evidence on clean energy interventions and cardiovascular outcomes}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Evaluating the mechanisms through which policies may affect health outcomes.}{7}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Specific Aims and Overarching Approach}{7}{section.3}%
+\contentsline {section}{\numberline {4}Study Design and Methods}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Study area}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Location and participant recruitment and enrolment}{8}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Data Collection Overview}{10}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Air Pollution}{10}{subsubsection.4.3.1}%
+\contentsline {paragraph}{\nonumberline Outdoor air pollution}{10}{paragraph*.14}%
+\contentsline {paragraph}{\nonumberline Indoor PM\textsubscript {2.5}}{12}{paragraph*.19}%
+\contentsline {paragraph}{\nonumberline Personal exposure to PM\textsubscript {2.5} and black carbon}{13}{paragraph*.22}%
+\contentsline {paragraph}{\nonumberline Gravimetric analyses of PTFE filter-based PM\textsubscript {2.5} samples}{14}{paragraph*.25}%
+\contentsline {paragraph}{\nonumberline Adjusting sensor-based PM\textsubscript {2.5} using filter-based gravimetric measurements}{15}{paragraph*.28}%
+\contentsline {paragraph}{\nonumberline Optical properties and chemical analysis of PM\textsubscript {2.5} mass}{16}{paragraph*.35}%
+\contentsline {subsubsection}{\numberline {4.3.2}Outdoor and indoor (household) air temperature}{19}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}Objective measurement of household stove use using sensors}{19}{subsubsection.4.3.3}%
+\contentsline {subsubsection}{\numberline {4.3.4}Questionnaires}{20}{subsubsection.4.3.4}%
+\contentsline {subsubsection}{\numberline {4.3.5}Blood pressure}{21}{subsubsection.4.3.5}%
+\contentsline {subsubsection}{\numberline {4.3.6}Self-reported respiratory symptoms and airway inflammation}{21}{subsubsection.4.3.6}%
+\contentsline {subsubsection}{\numberline {4.3.7}Blood inflammatory and oxidative stress markers}{22}{subsubsection.4.3.7}%
+\contentsline {subsubsection}{\numberline {4.3.8}Anthropometric measurements.}{23}{subsubsection.4.3.8}%
+\contentsline {subsection}{\numberline {4.4}Measuring policy impacts}{23}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Measuring pathways and mechanisms}{25}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Data Analysis}{26}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Total Effect}{27}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Mediation Analysis}{27}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Identification of potential confounders and model covariates}{28}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Multiple imputation for covariates and indoor PM\textsubscript {2.5} in analyses with BP outcomes}{30}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Results}{30}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Description of study sample by treatment}{31}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Summary of PM and BC measurements}{34}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Policy uptake}{34}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Aim 1: Policy impacts and potential mediation}{37}{subsection.6.4}%
+\contentsline {subsubsection}{\numberline {6.4.1}Impact of policy on potential mediators of air pollution and indoor temperature}{37}{subsubsection.6.4.1}%
+\contentsline {subsubsection}{\numberline {6.4.2}Impact of the policy on health outcomes}{37}{subsubsection.6.4.2}%
+\contentsline {subsubsection}{\numberline {6.4.3}Mediated impact on health outcomes}{40}{subsubsection.6.4.3}%
+\contentsline {subsection}{\numberline {6.5}Aim 2: Source contributions}{43}{subsection.6.5}%
+\contentsline {subsubsection}{\numberline {6.5.1}Source analysis using positive matrix factorization}{43}{subsubsection.6.5.1}%
+\contentsline {subsubsection}{\numberline {6.5.2}Description of PM\textsubscript {2.5} sources identified}{46}{subsubsection.6.5.2}%
+\contentsline {subsubsection}{\numberline {6.5.3}Impact of policy on outdoor and personal exposure to the mixed combustion source}{48}{subsubsection.6.5.3}%
+\contentsline {subsection}{\numberline {6.6}Aim 3: Mediation by source contribution}{49}{subsection.6.6}%
+\contentsline {section}{\numberline {7}Discussion and Conclusions}{49}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Adoption of the heat pump technology and adherence to the policy}{50}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Impacts of the policy on health}{51}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Impacts of the policy on air pollution and its sources}{53}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Assumptions, strengths, and limitations}{55}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Implications of Findings}{59}{section.8}%
+\contentsline {section}{\numberline {9}Data Availability Statement}{60}{section.9}%
+\contentsline {section}{\numberline {10}Acknowledgements}{60}{section.10}%
+\contentsline {section}{\numberline {11}References}{60}{section.11}%
+\contentsline {section}{\numberline {A}Appendices}{74}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Biomarker descriptives}{74}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}Missing data}{75}{subsection.A.2}%
+\contentsline {subsubsection}{\numberline {A.2.1}Missingness across imputed variables}{75}{subsubsection.A.2.1}%
+\contentsline {subsubsection}{\numberline {A.2.2}Missing data by enrollment cohort and outcome}{77}{subsubsection.A.2.2}%
+\contentsline {subsubsection}{\numberline {A.2.3}Imputation results}{79}{subsubsection.A.2.3}%
+\contentsline {subsection}{\numberline {A.3}Participant flow diagram}{80}{subsection.A.3}%
+\contentsline {subsection}{\numberline {A.4}Sample sizes}{81}{subsection.A.4}%
+\contentsline {subsection}{\numberline {A.5}District-level statistics}{82}{subsection.A.5}%
+\contentsline {subsection}{\numberline {A.6}Policy uptake}{83}{subsection.A.6}%
+\contentsline {subsection}{\numberline {A.7}Heterogeneity in treatment effects}{84}{subsection.A.7}%
+\contentsline {subsubsection}{\numberline {A.7.1}Personal exposure}{84}{subsubsection.A.7.1}%
+\contentsline {subsubsection}{\numberline {A.7.2}Indoor PM\textsubscript {2.5}}{85}{subsubsection.A.7.2}%
+\contentsline {subsubsection}{\numberline {A.7.3}Indoor temperature}{86}{subsubsection.A.7.3}%
+\contentsline {subsubsection}{\numberline {A.7.4}Blood pressure outcomes}{88}{subsubsection.A.7.4}%
+\contentsline {subsubsection}{\numberline {A.7.5}Mediation analyses for blood pressure}{90}{subsubsection.A.7.5}%
+\contentsline {subsubsection}{\numberline {A.7.6}Self-reported respiratory outcomes}{92}{subsubsection.A.7.6}%
+\contentsline {subsubsection}{\numberline {A.7.7}FeNO}{95}{subsubsection.A.7.7}%
+\contentsline {subsubsection}{\numberline {A.7.8}Outdoor and personal mixed combustion}{96}{subsubsection.A.7.8}%
+\contentsline {subsection}{\numberline {A.8}Impact of adjustment for district on air pollution estimates}{97}{subsection.A.8}%
+\contentsline {subsection}{\numberline {A.9}Impact of sample composition on brachial and central blood pressure results.}{98}{subsection.A.9}%
+\contentsline {subsection}{\numberline {A.10}Impact of including Season 3 data}{99}{subsection.A.10}%
+\contentsline {subsection}{\numberline {A.11}Impact of sample composition on FeNO results}{100}{subsection.A.11}%
+\contentsline {subsection}{\numberline {A.12}Alternative PMF analyses}{101}{subsection.A.12}%
+\contentsline {subsubsection}{\numberline {A.12.1}Disaggregated analyses}{101}{subsubsection.A.12.1}%
+\contentsline {subsubsection}{\numberline {A.12.2}PMF results disaggregated by day}{103}{subsubsection.A.12.2}%
+\contentsline {subsubsection}{\numberline {A.12.3}PMF results disaggregated by month}{104}{subsubsection.A.12.3}%
+\contentsline {subsubsection}{\numberline {A.12.4}Personal exposure sample diagnostics}{105}{subsubsection.A.12.4}%
+\contentsline {subsubsection}{\numberline {A.12.5}Outdoor exposure sample diagnostics}{106}{subsubsection.A.12.5}%
+\contentsline {subsubsection}{\numberline {A.12.6}PM\textsubscript {2.5} constituents for outdoor samples}{107}{subsubsection.A.12.6}%
+\contentsline {subsubsection}{\numberline {A.12.7}PM\textsubscript {2.5} constituents for personal samples}{108}{subsubsection.A.12.7}%
+\contentsline {subsection}{\numberline {A.13}Pre-trends}{109}{subsection.A.13}%
+\contentsline {subsubsection}{\numberline {A.13.1}Blood pressure}{109}{subsubsection.A.13.1}%
+\contentsline {subsubsection}{\numberline {A.13.2}Personal exposure and black carbon}{111}{subsubsection.A.13.2}%
+\contentsline {subsubsection}{\numberline {A.13.3}Self-reported respiratory outcomes}{113}{subsubsection.A.13.3}%
+\contentsline {subsection}{\numberline {A.14}Impact of group and time fixed effects}{114}{subsection.A.14}%
+\contentsline {subsection}{\numberline {A.15}Retrospective design analysis}{115}{subsection.A.15}%
+\contentsline {subsubsection}{\numberline {A.15.1}All outcomes}{115}{subsubsection.A.15.1}%
+\contentsline {subsubsection}{\numberline {A.15.2}Blood pressure}{116}{subsubsection.A.15.2}%
+\contentsline {section}{Abbreviations and other terms}{117}{section*.129}%
+\contentsline {section}{About the authors}{118}{section*.130}%
+\contentsline {section}{Other publications}{119}{section*.131}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -1702,20 +1702,21 @@ household reported residential wood (i.e., biomass) burning, and if so,
 self-reported quantity used.
 
 Exposure to tobacco smoke is important for both air pollution and health
-outcomes, and we used the responses to survey questions related to
-current smoking status (i.e., is the participant a current smoker,
-former smoker, or never smoker) and passive smoking (i.e., has the
-participant ever lived with a smoker in the same house for at least 6
-months, with possible responses of never, yes but not currently, and yes
-at present). We used these survey responses to create two types of
-categories. For models estimating the effect of the policy on health
-outcomes, current and previous tobacco smoking and, for never smokers,
-the presence of a current smoker in the household to create four
-distinct tobacco smoking categories: current smoker, former smoker,
-never smoker who is living or has lived with a smoker; and never smoker.
-For air pollution outcomes, we created the following three tobacco
-smoking categories: current smoker; lives with smoker (i.e., `passive'
-smoker) but not a current smoker; never or former smoker.
+outcomes, and we used the participant responses to survey questions
+related to their current smoking status (i.e., is the participant a
+current smoker, former smoker, or never smoker) and, for never smokers,
+history of passive smoking (i.e., has the participant ever lived with a
+smoker in the same house for at least 6 months, with possible responses
+of never, yes but not currently, and yes at present). The survey
+responses were used to create the following four distinct tobacco
+smoking categories: current smoker defined as currently smoking at the
+time of survey; former smoker defined as previously smoking but no
+longer smoking at the time of the survey (not accounting for duration of
+cessation); never smoker with a history of living with a smoker defined
+as a never smoker who is currently living with a smoker or has
+previously lived with a smoker for at least 6 months (i.e., `passive'
+smoking exposure); and never smoker defined as no history of smoking and
+no history of living with a smoker for more than 6 months.
 
 Ultimately, we included the following measured time-varying covariates
 in the final DiD models for each outcome-specific model. Models for air
@@ -2464,7 +2465,7 @@ which was conducted in a sub-sample of 511 participants, including 274
 participants with one measurement, 142 with two measurements, 95
 participants with 3 measurements. We did not find evidence that the
 policy affected changes in FeNO in the covariate-adjusted ETWFE
-\comment{EC 9b} model (0.3 ppb, 95\%CI: -2.2, 2.8). There was some
+\comment{EC 9b}model (0.3 ppb, 95\%CI: -2.2, 2.8). There was some
 evidence of heterogeneity in the FeNO effects of the policy by treatment
 cohort Appendix~\ref{fig-feno-het}, though the confidence intervals for
 each of the cohort-specific effects were wide and overlapping. Our
@@ -2473,14 +2474,14 @@ analysis to participants with at least two repeated measurements and to
 those who participated in all three waves (Appendix
 Table~\ref{tbl-a-feno})
 
-We also \comment{EC 9a} did not find strong evidence of an impact of the
-CHP on markers of inflammation or oxidative stress. The basic DiD
-analyses showed an increase of 1.0 (95\% CI: 0.1, 1.8) in TNF-\(\alpha\)
-but this estimate was reduced to 0.8 (-0.1, 1.7) after adjustment for
-waist circumference, occupation, wealth index quantile, frequency of
-drinking, tobacco smoking, and frequency of farming. The adjusted
-estimates for the effect of the policy on IL-6, CRP, and MDA were also
-generally small and measured with limited precision.
+We also \comment{EC 9a}found limited evidence of an impact of the CHP on
+markers of inflammation or oxidative stress. The basic DiD analyses
+showed an increase of 1.0 (95\% CI: 0.1, 1.8) in TNF-\(\alpha\) but this
+estimate was reduced to 0.8 (-0.1, 1.7) after adjustment for waist
+circumference, occupation, wealth index quantile, frequency of drinking,
+tobacco smoking, and frequency of farming. The adjusted estimates for
+the effect of the policy on IL-6, CRP, and MDA were also generally small
+and measured with limited precision.
 
 \subsubsection{Mediated impact on health
 outcomes}\label{mediated-impact-on-health-outcomes}
@@ -2525,7 +2526,10 @@ on indoor PM\textsubscript{2.5} and indoor temperature largely explain
 the entire total effect of the CHP on blood pressure for systolic BP, as
 the CDE conditional on both mediators was reduced to 0.03 for brachial
 SBP. The CDEs for brachial and central DBP were roughly half the value
-of the total effect.
+of the total effect. Appendix Table~\ref{tbl-a-bp-med-het} shows
+heterogeneous treatment effects for the mediation models for SBP and DBP
+and are generally consistent with the patterns of mediation for the
+overall \(CDE\)s.
 
 \begin{table}
 
@@ -2537,7 +2541,7 @@ blood pressure.}
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, CI = Confidence Interval, DBP = Diastolic blood pressure, PM = Particulate matter, SBP = Systolic blood pressure.},
+note{}={Note: Results combined across 30 multiply-imputed datasets (average of 3082 observations per dataset). ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, CI = Confidence Interval, DBP = Diastolic blood pressure, PM = Particulate matter, SBP = Systolic blood pressure.},
 note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
 note{b}={Mediators were set to the mean value for untreated participants at baseline.},
 ]                     %% tabularray outer close
@@ -2681,6 +2685,9 @@ component analysis indicated that solutions of between 3 and 5 factors
 3 to 6 factor solutions from PMF. As there was no indication that even
 moving from 5 to 6 factors would improve our solution, we did not
 further investigate 7 factors (Figure~\ref{fig-source-figure}).
+
+\subsubsection{Source analysis using positive matrix
+factorization}\label{source-analysis-using-positive-matrix-factorization}
 
 The chemical analysis data used in the PMF model were dispersion
 normalized prior to their inclusion. PMF uses the covariance of
@@ -2918,6 +2925,10 @@ by year the group received treatment.}
 
 \end{figure}%
 
+\subsubsection{Impact of policy on outdoor and personal exposure to the
+mixed combustion
+source}\label{impact-of-policy-on-outdoor-and-personal-exposure-to-the-mixed-combustion-source}
+
 Overall, Table~\ref{tbl-source-did} shows that the average treatment
 effect of the CHP on outdoor (community) levels and personal exposure
 levels of the mixed combustion source was statistically
@@ -2945,9 +2956,9 @@ note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence int
 note{a}={Personal exposure model adjusted for temperature (represented by a spline with 2 degrees of freedom), participant smoking status, and household reported using biomass fuel. Outdoor model adjusted for the total number of households in the village, total village population, and ambient relative humidity (represented by a spline with 2 degrees of freedom).},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
-colspec={Q[]Q[]Q[]Q[]Q[]},
-cell{1}{2}={c=2,}{halign=c,},
-cell{1}{4}={c=2,}{halign=c,},
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
+cell{1}{3}={c=2,}{halign=c,},
+cell{1}{5}={c=2,}{halign=c,},
 column{1}={halign=l,},
 column{2}={halign=c,},
 column{3}={halign=c,},
@@ -2955,10 +2966,10 @@ column{4}={halign=c,},
 column{5}={halign=c,},
 }                     %% tabularray inner close
 \toprule
-& DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}
-& ATT & (95\% CI) & ATT\textsuperscript{a} & (95\% CI) \\ \midrule %% TinyTableHeader
-Outdoor & 1.07 & (-4.90, 7.04) & 1.53 & (-4.19, 7.26) \\
-Personal exposure & -5.60 & (-13.70, 2.54) & -5.39 & (-13.1, 2.35) \\
+&  & DiD &  & Adjusted DiD &  \\ \cmidrule[lr]{3-4}\cmidrule[lr]{5-6}
+& Obs & ATT & (95\% CI)\textsuperscript{a} & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
+Outdoor & 942 & 1.07 & (-4.90, 7.04) & 1.53 & (-4.19, 7.26) \\
+Personal exposure & 942 & -5.60 & (-13.70, 2.54) & -5.39 & (-13.1, 2.35) \\
 \bottomrule
 \end{talltblr}
 
@@ -3229,16 +3240,13 @@ The primary aim of the CHP was to reduce air pollution emissions and
 improve regional air quality, and it specifically targeted coal-burning
 stoves in northern China. Our evaluation of the CHP indicates a
 substantial improvement in indoor air quality, with a reduction of
-roughly -36 µg/m\textsuperscript{3} (95\%CI: -61, -12) in wintertime
-indoor PM\textsubscript{2.5} resulting in geometric mean indoor
-PM\textsubscript{2.5} levels of 49 µg/m\textsuperscript{3} (95\%CI: 43,
-57) in treated households in W4. At baseline, indoor
-PM\textsubscript{2.5} levels in treated households were aligned with the
-WHO's IT-1 (annual and 24-h means: 35 and 75 µg/m\textsuperscript{3}),
-which is the first stepping stone in high-pollution areas towards
-achieving cleaner air (World Health Organization 2021). Following the
-policy, indoor PM\textsubscript{2.5} levels were reduced to align with
-IT-2 (annual and 24-h means: 25 and 50 µg/m\textsuperscript{3}).
+roughly -20 µg/m\textsuperscript{3} (95\%CI: -38, -3) in wintertime
+indoor PM\textsubscript{2.5} levels. Still there is considerable room
+for indoor air quality improvement given that the indoor
+PM\textsubscript{2.5} levels in treated households in W4 (GM=49
+µg/m\textsuperscript{3}, 95\%CI: 42, 52) were still \textasciitilde10
+times higher than the annual WHO annual air quality guideline (5
+µg/m\textsuperscript{3}) (World Health Organization 2021).
 
 Similar to our indoor results, several recent randomized trials with
 high compliance (exclusive or near exclusive) in the use of LPG stoves
@@ -3249,12 +3257,11 @@ PM\textsubscript{2.5} (32-69\%) in the intervention group compared with
 controls using traditional solid fuel stoves, but even in these
 relatively low pollution settings, post-intervention mean exposures
 (range: 24 to 52 µg/m\textsuperscript{3} ) were still well-above the
-WHO's annual air quality guideline (5 µg/m\textsuperscript{3}) and, like
-our study, aligned with the IT-2. A trial in urban and peri-urban
-Nigeria, a high pollution setting more similar to our Beijing sites, did
-not observe an air pollution benefit of ethanol stoves but did observe
-improved birth and pregnancy outcomes and blood pressure (Alexander et
-al. 2018; Alexander et al. 2017).
+WHO's annual air quality guideline (5 µg/m\textsuperscript{3}). A trial
+in urban and peri-urban Nigeria, a high pollution setting more similar
+to our Beijing sites, did not observe an air pollution benefit of
+ethanol stoves but did observe improved birth and pregnancy outcomes and
+blood pressure (Alexander et al. 2018; Alexander et al. 2017).
 
 Nonetheless, comparisons of the indoor PM\textsubscript{2.5} benefits of
 the CHP in our study with previous assessments of household energy
@@ -3534,7 +3541,7 @@ hypothetical effects on the order of a 10\% decline for each outcome
 inflammatory markers we hypothesized true effects of a roughly 5\%
 decline {[}pop2004; tang2020{]}, again translated into absolute terms.
 
-The full results for all health outcomes are shown in the Supplement
+The full results for all health outcomes are shown in the Appendix
 (Table~\ref{tbl-rd}). As an example, consider our estimate of the 8.1
 percentage point decrease in any respiratory symptom (95\% CI 2.9,
 13.3). Assuming that the true effect of the policy was a reduction of 5
@@ -3567,17 +3574,17 @@ exaggerated effects.
 Because of the inherent uncertainty surrounding hypothesized ``true''
 effects, it often makes sense to conduct retrospective design analyses
 for a range of effect sizes. We show estimates for BP reductions of 0 to
-4 mmHg in \textbf{?@fig-rd}. The HEI-funded objectives of this study
-were designed based on pre-study power calculations for blood pressure
-reductions of roughly 0.25 standard deviations (roughly 4 mmHg for older
-rural population with an average SD of 16 mmHg). \textbf{?@fig-rd} shows
-that if the true effect of the policy were similar to our pre-study
-estimates of 0.25 SD difference in systolic BP, a study with our level
-of precision would have \textgreater90\% power, virtually no chance of
-reporting an estimate with the wrong sign, and an average exaggeration
-ratio of just 1.04. This suggests that our design was well-powered to
-detect clinically meaningful effects (Rahimi et al. 2021) on blood
-pressure.
+4 mmHg in Appendix Figure~\ref{fig-rd-bp}. The HEI-funded objectives of
+this study were designed based on pre-study power calculations for blood
+pressure reductions of roughly 0.25 standard deviations (roughly 4 mmHg
+for older rural population with an average SD of 16 mmHg). Appendix
+Figure~\ref{fig-rd-bp} shows that if the true effect of the policy were
+similar to our pre-study estimates of 0.25 SD difference in systolic BP,
+a study with our level of precision would have \textgreater90\% power,
+virtually no chance of reporting an estimate with the wrong sign, and an
+average exaggeration ratio of just 1.04. This suggests that our design
+was well-powered to detect clinically meaningful effects (Rahimi et al.
+2021) on blood pressure.
 
 \section{Implications of Findings}\label{implications-of-findings}
 
@@ -5267,7 +5274,7 @@ blood pressure mediation model.}
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure.},
+note{}={Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure. Median p-values for heterogeneity tests for multiple mediation models: bSBP = 0.78, cSBP = 0.85, bDBP = 0.11, cDBP = 0.04.},
 note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
 note{b}={Mediators were set to the mean value for untreated participants at baseline.},
 ]                     %% tabularray outer close

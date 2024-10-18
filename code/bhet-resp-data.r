@@ -166,9 +166,13 @@ d2 <- d1 %>%
     rename(district = ID_COUNTY) %>%
   
   # add dummies for district
-  add_dummy_variables(district,
-  values = c(1,2,3,4),
-  remove_original = T) %>%
+  mutate(
+    district_2 = if_else(
+      district==24576, 1, 0),
+    district_3 = if_else(
+      district==38376, 1, 0),
+    district_4 = if_else(
+      district==23494, 1, 0)) %>%
   # relabel last cohort year 
   # treatment cohort dummies
   add_dummy_variables(cohort_year, 

@@ -240,17 +240,17 @@ ap_table1 <- bind_rows(ap_table_p, ap_table_bc,
 
 # now grab outdoor estimates
 # download from OSF
-aim_1 <- osf_retrieve_node("qsmbr")
-aim_1 %>%
-  osf_ls_files("Air pollution",
-    pattern = "DID_air_pollution.csv") %>%
-  osf_download(path = here("data-clean"),
-               conflicts = "overwrite")
+# aim_1 <- osf_retrieve_node("qsmbr")
+# aim_1 %>%
+#   osf_ls_files("Air pollution",
+#     pattern = "DID_air_pollution.csv") %>%
+#   osf_download(path = here("data-clean"),
+#                conflicts = "overwrite")
 
-ap_table2 <- read_csv(here("data-clean", 
-  "DID_air_pollution.csv")) %>%
-  filter(`Category` == "Outdoor" & `Effect` !=
-           "DiD with S3") %>%
+ap_table2 <- read_csv(here("outputs", 
+  "DID_air_pollution_gamma.csv")) %>%
+  filter(`Category` == "Outdoor" & `Sample` ==
+           "No S3") %>%
   mutate(Pollutant = c("24-hr PM2.5",
     "24-hr PM2.5", 
     "Seasonal PM2.5",
@@ -259,10 +259,10 @@ ap_table2 <- read_csv(here("data-clean",
     .funs = tolower) %>%
   rename("outcome" = `pollutant`) %>%
   mutate(model = rep(c(1,2), times = 2),
-    ci = paste("(", `CI_low`, ", ",
-    `CI_upper`, ")", sep=""), 
+    ci = paste("(", sprintf("%.1f", `CI_low`), ", ",
+    sprintf("%.1f", `CI_upper`), ")", sep=""), 
     nobs = c(11174, 11174, 139, 139)) %>%
-  select(-Effect, -CI_low, -CI_upper) %>%
+  select(-Effect, -CI_low, -CI_upper, -Sample) %>%
   relocate(category, outcome) %>%
   pivot_wider(names_from = model, values_from = 
     c(estimate, ci), names_vary = "slowest")

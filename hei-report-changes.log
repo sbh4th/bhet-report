@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.10.7)  15 OCT 2024 21:52
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.10.7)  16 OCT 2024 12:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1606,11 +1606,11 @@ File: images/dag1.png Graphic file (type bmp)
 
 [33]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 2117.
+(Font)              scaled to size 8.0pt on input line 2121.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00073pt on input line 2117.
+(Font)              scaled to size 8.00073pt on input line 2121.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 2117.
+(Font)              scaled to size 7.99915pt on input line 2121.
 
 
 [34]
@@ -1634,18 +1634,18 @@ LaTeX Warning: Marginpar on page 36 moved.
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 2272--2272
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2276--2276
 []\TU/lmss/m/n/10.95 Statistic$[]$ 
  []
 
 
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 2272--2272
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2276--2276
 []\TU/lmss/m/n/10.95 Statistic$[]$ 
  []
 
 > Step: build the whole table.
 
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 2272--2272
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2276--2276
 []\TU/lmss/m/n/10.95 Statistic$[]$ 
  []
 
@@ -1657,52 +1657,52 @@ Overfull \hbox (4.02856pt too wide) in paragraph at lines 2272--2272
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 2343--2343
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2347--2347
 []\TU/lmss/m/n/10.95 Statistic$[]$ 
  []
 
 
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 2343--2343
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2347--2347
 []\TU/lmss/m/n/10.95 Statistic$[]$ 
  []
 
 > Step: build the whole table.
 
-Overfull \hbox (4.02856pt too wide) in paragraph at lines 2343--2343
+Overfull \hbox (4.02856pt too wide) in paragraph at lines 2347--2347
 []\TU/lmss/m/n/10.95 Statistic$[]$ 
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 2351.
+(hyperref)                removing `\<let>-command' on input line 2355.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 2351.
+(hyperref)                removing `\includegraphics' on input line 2355.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFaddincludegraphics' on input line 2351.
+(hyperref)                removing `\DIFaddincludegraphics' on input line 2355.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 2351.
+(hyperref)                removing `\@ifnextchar' on input line 2355.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 2351.
+(hyperref)                removing `\uwave' on input line 2355.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 2351.
+(hyperref)                removing `\<let>-command' on input line 2355.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 2351.
+(hyperref)                removing `\includegraphics' on input line 2355.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFOincludegraphics' on input line 2351.
+(hyperref)                removing `\DIFOincludegraphics' on input line 2355.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -1711,25 +1711,25 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 > Step: parse table inner spec.
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
-LaTeX Font Info:    Calculating math sizes for size <9.85492> on input line 2486.
+LaTeX Font Info:    Calculating math sizes for size <9.85492> on input line 2490.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 9.85492pt on input line 2486.
+(Font)              scaled to size 9.85492pt on input line 2490.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.8984pt on input line 2486.
+(Font)              scaled to size 6.8984pt on input line 2490.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 4.92746pt on input line 2486.
+(Font)              scaled to size 4.92746pt on input line 2490.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 9.85582pt on input line 2486.
+(Font)              scaled to size 9.85582pt on input line 2490.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.89903pt on input line 2486.
+(Font)              scaled to size 6.89903pt on input line 2490.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 4.9279pt on input line 2486.
+(Font)              scaled to size 4.9279pt on input line 2490.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.85387pt on input line 2486.
+(Font)              scaled to size 9.85387pt on input line 2490.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.89766pt on input line 2486.
+(Font)              scaled to size 6.89766pt on input line 2490.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.92693pt on input line 2486.
+(Font)              scaled to size 4.92693pt on input line 2490.
 > Step: build the whole table.
 
 
@@ -1742,493 +1742,493 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2628--2628
+Underfull \hbox (badness 10000) in paragraph at lines 2632--2632
 [] \TU/lmss/m/n/8.76003 Sensor-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2628--2628
+Underfull \hbox (badness 10000) in paragraph at lines 2632--2632
 [] \TU/lmss/m/n/8.76003 Sensor-
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2632--2632
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2632--2632
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2632--2632
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2632--2632
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (3.86003pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (3.86003pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 117 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 3.9 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 3.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 3.7 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 2.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.9 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.7 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2628--2628
+Underfull \hbox (badness 10000) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 2.7 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 2.9 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2628--2628
+Underfull \hbox (badness 10000) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2628--2628
+Underfull \hbox (badness 10000) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.5 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.4 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.2 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.3 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.1 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.0 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2632--2632
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2632--2632
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2632--2632
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2632--2632
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (3.86003pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (3.86003pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 117 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 3.9 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 3.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 3.7 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 2.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.9 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.7 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2628--2628
+Underfull \hbox (badness 10000) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 2.7 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 2.9 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2628--2628
+Underfull \hbox (badness 10000) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2628--2628
+Underfull \hbox (badness 10000) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.5 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.4 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.2 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.3 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.1 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.0 
  []
 
 > Step: build the whole table.
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2632--2632
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2632--2632
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2632--2632
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (4.96379pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (4.96379pt too wide) in paragraph at lines 2632--2632
  []\TU/lmss/m/n/8.76003 Est. 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (3.86003pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (3.86003pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 117 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 3.9 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 3.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 3.7 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 2.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.9 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.7 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2628--2628
+Underfull \hbox (badness 10000) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 2.7 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 2.9 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.6 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2628--2628
+Underfull \hbox (badness 10000) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2628--2628
+Underfull \hbox (badness 10000) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Seasonal
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.54784pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.54784pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 Mean 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.5 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.4 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.2 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.3 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.1 
  []
 
 
-Overfull \hbox (1.86273pt too wide) in paragraph at lines 2628--2628
+Overfull \hbox (1.86273pt too wide) in paragraph at lines 2632--2632
 []\TU/lmss/m/n/8.76003 1.0 
  []
 
@@ -2243,12 +2243,12 @@ File: images/sanky.jpg Graphic file (type bmp)
 <images/sanky.jpg>
 
 
-LaTeX Warning: Reference `fig-afig-coal' on page 40 undefined on input line 2676.
+LaTeX Warning: Reference `fig-afig-coal' on page 40 undefined on input line 2680.
 
 File: images/coal-plot.png Graphic file (type bmp)
 <images/coal-plot.png>
 
-Overfull \hbox (6.80858pt too wide) in paragraph at lines 2689--2690
+Overfull \hbox (6.80858pt too wide) in paragraph at lines 2693--2694
  [][][] 
  []
 
@@ -2257,67 +2257,67 @@ Overfull \hbox (6.80858pt too wide) in paragraph at lines 2689--2690
 [40]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 2717.
+(hyperref)                removing `\<let>-command' on input line 2721.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 2717.
+(hyperref)                removing `\includegraphics' on input line 2721.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFdelincludegraphics' on input line 2717.
+(hyperref)                removing `\DIFdelincludegraphics' on input line 2721.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 2717.
+(hyperref)                removing `\@ifnextchar' on input line 2721.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sout@orig' on input line 2717.
+(hyperref)                removing `\sout@orig' on input line 2721.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 2717.
+(hyperref)                removing `\<let>-command' on input line 2721.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 2717.
+(hyperref)                removing `\includegraphics' on input line 2721.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFOincludegraphics' on input line 2717.
+(hyperref)                removing `\DIFOincludegraphics' on input line 2721.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 2717.
+(hyperref)                removing `\<let>-command' on input line 2721.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 2717.
+(hyperref)                removing `\includegraphics' on input line 2721.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFaddincludegraphics' on input line 2717.
+(hyperref)                removing `\DIFaddincludegraphics' on input line 2721.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 2717.
+(hyperref)                removing `\@ifnextchar' on input line 2721.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 2717.
+(hyperref)                removing `\uwave' on input line 2721.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 2717.
+(hyperref)                removing `\<let>-command' on input line 2721.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 2717.
+(hyperref)                removing `\includegraphics' on input line 2721.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFOincludegraphics' on input line 2717.
+(hyperref)                removing `\DIFOincludegraphics' on input line 2721.
 
 
 
@@ -2336,35 +2336,35 @@ Package tabularray Warning: Table width is too small, need 0.19583pt more!
 > Step: build the whole table.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 2861.
+(hyperref)                removing `\<let>-command' on input line 2865.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 2861.
+(hyperref)                removing `\includegraphics' on input line 2865.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFdelincludegraphics' on input line 2861.
+(hyperref)                removing `\DIFdelincludegraphics' on input line 2865.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 2861.
+(hyperref)                removing `\@ifnextchar' on input line 2865.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sout@orig' on input line 2861.
+(hyperref)                removing `\sout@orig' on input line 2865.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 2861.
+(hyperref)                removing `\<let>-command' on input line 2865.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 2861.
+(hyperref)                removing `\includegraphics' on input line 2865.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFOincludegraphics' on input line 2861.
+(hyperref)                removing `\DIFOincludegraphics' on input line 2865.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -2378,12 +2378,12 @@ Package tabularray Warning: Table width is too small, need 2.6815pt more!
 
 > Step: build the whole table.
 
-Overfull \hbox (2.6815pt too wide) in paragraph at lines 2947--2948
+Overfull \hbox (2.6815pt too wide) in paragraph at lines 2951--2952
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 44.12672pt on input line 2951.
+LaTeX Warning: Float too large for page by 44.12672pt on input line 2955.
 
 
 
@@ -2412,25 +2412,25 @@ LaTeX Warning: Marginpar on page 46 moved.
 > Step: parse table inner spec.
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
-LaTeX Font Info:    Calculating math sizes for size <8.76003> on input line 3195.
+LaTeX Font Info:    Calculating math sizes for size <8.76003> on input line 3200.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.76003pt on input line 3195.
+(Font)              scaled to size 8.76003pt on input line 3200.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.13199pt on input line 3195.
+(Font)              scaled to size 6.13199pt on input line 3200.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 4.38pt on input line 3195.
+(Font)              scaled to size 4.38pt on input line 3200.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.76082pt on input line 3195.
+(Font)              scaled to size 8.76082pt on input line 3200.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.13254pt on input line 3195.
+(Font)              scaled to size 6.13254pt on input line 3200.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 4.3804pt on input line 3195.
+(Font)              scaled to size 4.3804pt on input line 3200.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.75908pt on input line 3195.
+(Font)              scaled to size 8.75908pt on input line 3200.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.13133pt on input line 3195.
+(Font)              scaled to size 6.13133pt on input line 3200.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.37953pt on input line 3195.
+(Font)              scaled to size 4.37953pt on input line 3200.
 > Step: build the whole table.
 
 
@@ -2439,11 +2439,11 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 [47]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 3232.
+(hyperref)                removing `\@ifnextchar' on input line 3237.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 3232.
+(hyperref)                removing `\uwave' on input line 3237.
 
 
 
@@ -2456,18 +2456,18 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Overfull \hbox (1.1958pt too wide) in paragraph at lines 3350--3350
+Overfull \hbox (1.1958pt too wide) in paragraph at lines 3353--3353
 []\TU/lmss/m/n/10.95 BS_mapping  
  []
 
 
-Overfull \hbox (1.1958pt too wide) in paragraph at lines 3350--3350
+Overfull \hbox (1.1958pt too wide) in paragraph at lines 3353--3353
 []\TU/lmss/m/n/10.95 BS_mapping  
  []
 
 > Step: build the whole table.
 
-Overfull \hbox (1.1958pt too wide) in paragraph at lines 3350--3350
+Overfull \hbox (1.1958pt too wide) in paragraph at lines 3353--3353
 []\TU/lmss/m/n/10.95 BS_mapping  
  []
 
@@ -2490,11 +2490,11 @@ File: images/source-season2.png Graphic file (type bmp)
 [53]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 3492.
+(hyperref)                removing `\@ifnextchar' on input line 3495.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 3492.
+(hyperref)                removing `\uwave' on input line 3495.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -2536,10 +2536,10 @@ Missing character: There is no μ (U+03BC) in font [lmroman10-regular]:mapping=t
 
 [61]
 
-LaTeX Warning: Reference `fig-afig-pt3' on page 62 undefined on input line 3981.
+LaTeX Warning: Reference `fig-afig-pt3' on page 62 undefined on input line 3984.
 
 
-LaTeX Warning: Reference `fig-afig-pt4' on page 62 undefined on input line 3981.
+LaTeX Warning: Reference `fig-afig-pt4' on page 62 undefined on input line 3984.
 
 
 
@@ -2554,7 +2554,7 @@ LaTeX Warning: Reference `fig-afig-pt4' on page 62 undefined on input line 3981.
 [66]
 
 [67]
-Overfull \hbox (21.6371pt too wide) in paragraph at lines 4321--4325
+Overfull \hbox (21.6371pt too wide) in paragraph at lines 4324--4328
 \TU/lmr/m/n/10.95 differences estimates? Journal of Financial Economics 144:370–395; doi:[][]10.1016/j.jfineco.2022.01.004[][]. 
  []
 
@@ -2596,53 +2596,53 @@ Missing character: There is no 究 (U+7A76) in font [lmroman10-regular]:mapping=
 Missing character: There is no 报 (U+62A5) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 告 (U+544A) in font [lmroman10-regular]:mapping=tex-text;!
 
-Underfull \hbox (badness 1694) in paragraph at lines 4482--4487
+Underfull \hbox (badness 1694) in paragraph at lines 4485--4490
 \TU/lmr/m/n/10.95 Related Human Activity Patterns Survey (CEERHAPS). Applied Energy 136:692–703;
  []
 
 
 
 [70]
-Underfull \hbox (badness 1005) in paragraph at lines 4509--4514
+Underfull \hbox (badness 1005) in paragraph at lines 4512--4517
 |   []   |   []   |   []   |   []   [][]|   [][][]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (70.14558pt too wide) in paragraph at lines 4509--4514
+Overfull \hbox (70.14558pt too wide) in paragraph at lines 4512--4517
 [][]|   [][] []|   []   |   []   [][]|   [][][]|   []   |   []   |   []   |   []   |   [][][][][]|   [][][][][]|   []
  []
 
 
-Overfull \hbox (25.65575pt too wide) in paragraph at lines 4520--4525
+Overfull \hbox (25.65575pt too wide) in paragraph at lines 4523--4528
 []|   [][][]|   [][][]|   []   [][]|   [][][]|   []   |   []   |   []   |   []   |   []   |   []   |   [][][][][]|   [][][][][]|   []
  []
 
 
-Underfull \hbox (badness 1072) in paragraph at lines 4560--4565
+Underfull \hbox (badness 1072) in paragraph at lines 4563--4568
 \TU/lmr/m/n/10.95 Network Randomized Controlled Trial. Environmental Health Perspectives 130:097005;
  []
 
 
 
 [71]
-Underfull \hbox (badness 1648) in paragraph at lines 4600--4605
+Underfull \hbox (badness 1648) in paragraph at lines 4603--4608
 \TU/lmr/m/n/10.95 color space sensing system to quantify elemental and organic carbon in atmospheric
  []
 
 
-Underfull \hbox (badness 1147) in paragraph at lines 4600--4605
+Underfull \hbox (badness 1147) in paragraph at lines 4603--4608
 \TU/lmr/m/n/10.95 particulate matter on Teflon and quartz filters. Atmospheric Environment 149:84–94;
  []
 
 
-Underfull \hbox (badness 2818) in paragraph at lines 4621--4635
+Underfull \hbox (badness 2818) in paragraph at lines 4624--4638
 [][]|   [][][]|   []   [][]|   []   |   []   |   [][][]|   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
 
 [72]
-Underfull \hbox (badness 2181) in paragraph at lines 4695--4699
+Underfull \hbox (badness 2181) in paragraph at lines 4698--4702
 \TU/lmr/m/n/10.95 elderly in the cold region of China. Indoor and Built Environment 31:2482–2498;
  []
 
@@ -2651,26 +2651,26 @@ Underfull \hbox (badness 2181) in paragraph at lines 4695--4699
 [73]
 
 [74]
-Underfull \hbox (badness 1546) in paragraph at lines 4807--4809
+Underfull \hbox (badness 1546) in paragraph at lines 4810--4812
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
 
 [75]
-Overfull \hbox (23.37817pt too wide) in paragraph at lines 4876--4880
+Overfull \hbox (23.37817pt too wide) in paragraph at lines 4879--4883
 \TU/lmr/m/n/10.95 Stove Use Monitors (SUMs). Biomass and Bioenergy 57:136–148; doi:[][]10.1016/j.biombioe.2013.07.002[][]. 
  []
 
 
 
 [76]
-Underfull \hbox (badness 3333) in paragraph at lines 4953--4957
+Underfull \hbox (badness 3333) in paragraph at lines 4956--4960
 |   []   |   []   |   [][][]|   [][][]|   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Underfull \hbox (badness 1472) in paragraph at lines 4959--4964
+Underfull \hbox (badness 1472) in paragraph at lines 4962--4967
 \TU/lmr/m/n/10.95 tertime longitudinal study of Chinese adults. Journal of Hypertension 40:1950–1959;
  []
 
@@ -2679,7 +2679,7 @@ Underfull \hbox (badness 1472) in paragraph at lines 4959--4964
 [77]
 
 [78]
-Overfull \hbox (34.4255pt too wide) in paragraph at lines 5094--5098
+Overfull \hbox (34.4255pt too wide) in paragraph at lines 5097--5101
 \TU/lmr/m/n/10.95 China Prospective (ICP) study. Wellcome Open Research 4:154; doi:[][]10.12688/wellcomeopenres.15470.2[][]. 
  []
 
@@ -2711,14 +2711,14 @@ Missing character: There is no 网 (U+7F51) in font [lmroman10-regular]:mapping=
 
 
 [79]
-Overfull \hbox (6.87651pt too wide) in paragraph at lines 5174--5178
+Overfull \hbox (6.87651pt too wide) in paragraph at lines 5177--5181
 |   [][][]|   []   |   []   |   []   |   []   |   []   |   [][][][][]|   [][][][][]|   []
  []
 
 
 
 [80]
-Underfull \hbox (badness 1648) in paragraph at lines 5201--5201
+Underfull \hbox (badness 1648) in paragraph at lines 5204--5204
 [][][]|[]\TU/lmss/m/n/10.95 Boxplots for markers of systemic inflammation including C-reactive protein (CRP),
  []
 
@@ -2729,67 +2729,47 @@ File: images/Biomarker boxplot.jpg Graphic file (type bmp)
 [81]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 5222.
+(hyperref)                removing `\<let>-command' on input line 5225.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 5222.
+(hyperref)                removing `\includegraphics' on input line 5225.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFdelincludegraphics' on input line 5222.
+(hyperref)                removing `\DIFdelincludegraphics' on input line 5225.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 5222.
+(hyperref)                removing `\@ifnextchar' on input line 5225.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sout@orig' on input line 5222.
+(hyperref)                removing `\sout@orig' on input line 5225.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 5222.
+(hyperref)                removing `\<let>-command' on input line 5225.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 5222.
+(hyperref)                removing `\includegraphics' on input line 5225.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFOincludegraphics' on input line 5222.
+(hyperref)                removing `\DIFOincludegraphics' on input line 5225.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 5222.
+(hyperref)                removing `\<let>-command' on input line 5225.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 5222.
+(hyperref)                removing `\includegraphics' on input line 5225.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFaddincludegraphics' on input line 5222.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 5222.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 5222.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 5222.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 5222.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFOincludegraphics' on input line 5222.
+(hyperref)                removing `\DIFaddincludegraphics' on input line 5225.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -2798,6 +2778,26 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\uwave' on input line 5225.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<let>-command' on input line 5225.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\includegraphics' on input line 5225.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\DIFOincludegraphics' on input line 5225.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 5228.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\uwave' on input line 5228.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -2815,11 +2815,11 @@ Package tabularray Warning: Table width is too small, need 129.01884pt more!
 [82]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 5324.
+(hyperref)                removing `\@ifnextchar' on input line 5327.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 5324.
+(hyperref)                removing `\uwave' on input line 5327.
 
 
 
@@ -2839,11 +2839,11 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [85]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 5409.
+(hyperref)                removing `\@ifnextchar' on input line 5412.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 5409.
+(hyperref)                removing `\uwave' on input line 5412.
 
 File: images/MI_BMI_density.png Graphic file (type bmp)
 <images/MI_BMI_density.png>
@@ -2861,11 +2861,11 @@ File: images/Participation-flowchart-Apr12.png Graphic file (type bmp)
 [87]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 5519.
+(hyperref)                removing `\@ifnextchar' on input line 5522.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 5519.
+(hyperref)                removing `\uwave' on input line 5522.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -2883,11 +2883,11 @@ Package tabularray Warning: Table width is too small, need 89.18665pt more!
 [88]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 5607.
+(hyperref)                removing `\@ifnextchar' on input line 5610.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 5607.
+(hyperref)                removing `\uwave' on input line 5610.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -2897,93 +2897,93 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Overfull \hbox (3.014pt too wide) in paragraph at lines 5644--5644
+Overfull \hbox (3.014pt too wide) in paragraph at lines 5647--5647
 []\TU/lmss/m/n/10.95 133.90 
  []
 
 
-Overfull \hbox (3.014pt too wide) in paragraph at lines 5644--5644
+Overfull \hbox (3.014pt too wide) in paragraph at lines 5647--5647
 []\TU/lmss/m/n/10.95 1180.0 
  []
 
 
-Overfull \hbox (3.014pt too wide) in paragraph at lines 5644--5644
+Overfull \hbox (3.014pt too wide) in paragraph at lines 5647--5647
 []\TU/lmss/m/n/10.95 1192.0 
  []
 
 
-Overfull \hbox (3.28775pt too wide) in paragraph at lines 5644--5644
+Overfull \hbox (3.28775pt too wide) in paragraph at lines 5647--5647
 []\TU/lmss/m/n/10.95 2411.0 
  []
 
 
-Overfull \hbox (3.28775pt too wide) in paragraph at lines 5644--5644
+Overfull \hbox (3.28775pt too wide) in paragraph at lines 5647--5647
 []\TU/lmss/m/n/10.95 3845.0 
  []
 
 
-Overfull \hbox (3.28775pt too wide) in paragraph at lines 5644--5644
+Overfull \hbox (3.28775pt too wide) in paragraph at lines 5647--5647
 []\TU/lmss/m/n/10.95 2309.0 
  []
 
 
-Overfull \hbox (3.014pt too wide) in paragraph at lines 5644--5644
+Overfull \hbox (3.014pt too wide) in paragraph at lines 5647--5647
 []\TU/lmss/m/n/10.95 1997.0 
  []
 
 
-Overfull \hbox (3.014pt too wide) in paragraph at lines 5644--5644
+Overfull \hbox (3.014pt too wide) in paragraph at lines 5647--5647
 []\TU/lmss/m/n/10.95 1493.0 
  []
 
 
-Overfull \hbox (8.76274pt too wide) in paragraph at lines 5644--5644
+Overfull \hbox (8.76274pt too wide) in paragraph at lines 5647--5647
 []\TU/lmss/m/n/10.95 3144.00 
  []
 
 
-Overfull \hbox (3.014pt too wide) in paragraph at lines 5644--5644
+Overfull \hbox (3.014pt too wide) in paragraph at lines 5647--5647
 []\TU/lmss/m/n/10.95 1180.0 
  []
 
 
-Overfull \hbox (3.28775pt too wide) in paragraph at lines 5644--5644
+Overfull \hbox (3.28775pt too wide) in paragraph at lines 5647--5647
 []\TU/lmss/m/n/10.95 2411.0 
  []
 
 
-Overfull \hbox (3.28775pt too wide) in paragraph at lines 5644--5644
+Overfull \hbox (3.28775pt too wide) in paragraph at lines 5647--5647
 []\TU/lmss/m/n/10.95 2309.0 
  []
 
 
-Overfull \hbox (3.014pt too wide) in paragraph at lines 5644--5644
+Overfull \hbox (3.014pt too wide) in paragraph at lines 5647--5647
 []\TU/lmss/m/n/10.95 1493.0 
  []
 
 > Step: build the whole table.
 
-Overfull \hbox (3.014pt too wide) in paragraph at lines 5644--5644
+Overfull \hbox (3.014pt too wide) in paragraph at lines 5647--5647
 []\TU/lmss/m/n/10.95 1180.0 
  []
 
 
-Overfull \hbox (3.28775pt too wide) in paragraph at lines 5644--5644
+Overfull \hbox (3.28775pt too wide) in paragraph at lines 5647--5647
 []\TU/lmss/m/n/10.95 2411.0 
  []
 
 
-Overfull \hbox (3.28775pt too wide) in paragraph at lines 5644--5644
+Overfull \hbox (3.28775pt too wide) in paragraph at lines 5647--5647
 []\TU/lmss/m/n/10.95 2309.0 
  []
 
 
-Overfull \hbox (3.014pt too wide) in paragraph at lines 5644--5644
+Overfull \hbox (3.014pt too wide) in paragraph at lines 5647--5647
 []\TU/lmss/m/n/10.95 1493.0 
  []
 
 
-Overfull \hbox (61.64238pt too wide) in paragraph at lines 5644--5645
+Overfull \hbox (61.64238pt too wide) in paragraph at lines 5647--5648
  [][] 
  []
 
@@ -2991,7 +2991,7 @@ Overfull \hbox (61.64238pt too wide) in paragraph at lines 5644--5645
 
 [89]
 
-LaTeX Warning: Reference `fig-afig-coal' on page 90 undefined on input line 5655.
+LaTeX Warning: Reference `fig-afig-coal' on page 90 undefined on input line 5658.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -3006,67 +3006,67 @@ LaTeX Warning: Reference `fig-afig-coal' on page 90 undefined on input line 5655
 [90]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 5728.
+(hyperref)                removing `\<let>-command' on input line 5731.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 5728.
+(hyperref)                removing `\includegraphics' on input line 5731.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFdelincludegraphics' on input line 5728.
+(hyperref)                removing `\DIFdelincludegraphics' on input line 5731.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 5728.
+(hyperref)                removing `\@ifnextchar' on input line 5731.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sout@orig' on input line 5728.
+(hyperref)                removing `\sout@orig' on input line 5731.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 5728.
+(hyperref)                removing `\<let>-command' on input line 5731.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 5728.
+(hyperref)                removing `\includegraphics' on input line 5731.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFOincludegraphics' on input line 5728.
+(hyperref)                removing `\DIFOincludegraphics' on input line 5731.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 5728.
+(hyperref)                removing `\<let>-command' on input line 5731.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 5728.
+(hyperref)                removing `\includegraphics' on input line 5731.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFaddincludegraphics' on input line 5728.
+(hyperref)                removing `\DIFaddincludegraphics' on input line 5731.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 5728.
+(hyperref)                removing `\@ifnextchar' on input line 5731.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 5728.
+(hyperref)                removing `\uwave' on input line 5731.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 5728.
+(hyperref)                removing `\<let>-command' on input line 5731.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 5728.
+(hyperref)                removing `\includegraphics' on input line 5731.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFOincludegraphics' on input line 5728.
+(hyperref)                removing `\DIFOincludegraphics' on input line 5731.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -3129,67 +3129,67 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [97]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 6106.
+(hyperref)                removing `\<let>-command' on input line 6109.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 6106.
+(hyperref)                removing `\includegraphics' on input line 6109.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFdelincludegraphics' on input line 6106.
+(hyperref)                removing `\DIFdelincludegraphics' on input line 6109.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6106.
+(hyperref)                removing `\@ifnextchar' on input line 6109.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sout@orig' on input line 6106.
+(hyperref)                removing `\sout@orig' on input line 6109.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 6106.
+(hyperref)                removing `\<let>-command' on input line 6109.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 6106.
+(hyperref)                removing `\includegraphics' on input line 6109.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFOincludegraphics' on input line 6106.
+(hyperref)                removing `\DIFOincludegraphics' on input line 6109.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 6106.
+(hyperref)                removing `\<let>-command' on input line 6109.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 6106.
+(hyperref)                removing `\includegraphics' on input line 6109.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFaddincludegraphics' on input line 6106.
+(hyperref)                removing `\DIFaddincludegraphics' on input line 6109.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6106.
+(hyperref)                removing `\@ifnextchar' on input line 6109.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6106.
+(hyperref)                removing `\uwave' on input line 6109.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 6106.
+(hyperref)                removing `\<let>-command' on input line 6109.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\includegraphics' on input line 6106.
+(hyperref)                removing `\includegraphics' on input line 6109.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\DIFOincludegraphics' on input line 6106.
+(hyperref)                removing `\DIFOincludegraphics' on input line 6109.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -3249,11 +3249,11 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [100]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6366.
+(hyperref)                removing `\@ifnextchar' on input line 6369.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6366.
+(hyperref)                removing `\uwave' on input line 6369.
 
 File: images/ETWFE cohort-time results.png Graphic file (type bmp)
 <images/ETWFE cohort-time results.png>
@@ -3267,19 +3267,19 @@ File: images/did-mixed-ct-wave.png Graphic file (type bmp)
 [102]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6415.
+(hyperref)                removing `\@ifnextchar' on input line 6418.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sout@orig' on input line 6415.
+(hyperref)                removing `\sout@orig' on input line 6418.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6420.
+(hyperref)                removing `\@ifnextchar' on input line 6423.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6420.
+(hyperref)                removing `\uwave' on input line 6423.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -3294,11 +3294,11 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [103]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6477.
+(hyperref)                removing `\@ifnextchar' on input line 6480.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6477.
+(hyperref)                removing `\uwave' on input line 6480.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -3312,7 +3312,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 [104]
 
-LaTeX Warning: Reference `fig-afig-did-opm-w3' on page 105 undefined on input line 6543.
+LaTeX Warning: Reference `fig-afig-did-opm-w3' on page 105 undefined on input line 6546.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -3335,11 +3335,11 @@ LaTeX Warning: Reference `fig-afig-did-opm-w3' on page 105 undefined on input li
 [105]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6623.
+(hyperref)                removing `\@ifnextchar' on input line 6626.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6623.
+(hyperref)                removing `\uwave' on input line 6626.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -3354,19 +3354,19 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [106]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6671.
+(hyperref)                removing `\@ifnextchar' on input line 6674.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6671.
+(hyperref)                removing `\uwave' on input line 6674.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6673.
+(hyperref)                removing `\@ifnextchar' on input line 6676.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6673.
+(hyperref)                removing `\uwave' on input line 6676.
 
 File: images/sp_sup_fig.png Graphic file (type bmp)
 <images/sp_sup_fig.png>
@@ -3375,11 +3375,11 @@ File: images/sp_sup_fig.png Graphic file (type bmp)
 [107]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6743.
+(hyperref)                removing `\@ifnextchar' on input line 6746.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6743.
+(hyperref)                removing `\uwave' on input line 6746.
 
 File: images/pe_time_all_fig.png Graphic file (type bmp)
 <images/pe_time_all_fig.png>
@@ -3388,11 +3388,11 @@ File: images/pe_time_all_fig.png Graphic file (type bmp)
 [108]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6764.
+(hyperref)                removing `\@ifnextchar' on input line 6767.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6764.
+(hyperref)                removing `\uwave' on input line 6767.
 
 File: images/out_time_all_fig.png Graphic file (type bmp)
 <images/out_time_all_fig.png>
@@ -3403,19 +3403,19 @@ File: images/out_time_all_fig.png Graphic file (type bmp)
 [110]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6788.
+(hyperref)                removing `\@ifnextchar' on input line 6791.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sout@orig' on input line 6788.
+(hyperref)                removing `\sout@orig' on input line 6791.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6793.
+(hyperref)                removing `\@ifnextchar' on input line 6796.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6793.
+(hyperref)                removing `\uwave' on input line 6796.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -3430,11 +3430,11 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [111]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 6852.
+(hyperref)                removing `\@ifnextchar' on input line 6855.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 6852.
+(hyperref)                removing `\uwave' on input line 6855.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -3471,29 +3471,29 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [114]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 7015.
+(hyperref)                removing `\@ifnextchar' on input line 7018.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 7015.
+(hyperref)                removing `\uwave' on input line 7018.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 7017.
+(hyperref)                removing `\@ifnextchar' on input line 7020.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 7017.
+(hyperref)                removing `\uwave' on input line 7020.
 
 File: images/BP-pretrends_FT20orFT21.png Graphic file (type bmp)
 <images/BP-pretrends_FT20orFT21.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 7044.
+(hyperref)                removing `\@ifnextchar' on input line 7047.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 7044.
+(hyperref)                removing `\uwave' on input line 7047.
 
 File: images/pe-bc-pretrends.png Graphic file (type bmp)
 <images/pe-bc-pretrends.png>
@@ -3509,11 +3509,11 @@ Overfull \vbox (55.04834pt too high) has occurred while \output is active []
 [117]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 7073.
+(hyperref)                removing `\@ifnextchar' on input line 7076.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 7073.
+(hyperref)                removing `\uwave' on input line 7076.
 
 File: images/resp-pretrends.png Graphic file (type bmp)
 <images/resp-pretrends.png>
@@ -3538,19 +3538,19 @@ Overfull \vbox (68.22649pt too high) has occurred while \output is active []
 [120]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 7137.
+(hyperref)                removing `\@ifnextchar' on input line 7140.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 7137.
+(hyperref)                removing `\uwave' on input line 7140.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 7139.
+(hyperref)                removing `\@ifnextchar' on input line 7142.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 7139.
+(hyperref)                removing `\uwave' on input line 7142.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -3568,11 +3568,11 @@ Package tabularray Warning: Table width is too small, need 30.97467pt more!
 [121]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 7238.
+(hyperref)                removing `\@ifnextchar' on input line 7241.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 7238.
+(hyperref)                removing `\uwave' on input line 7241.
 
 File: images/rd-plot.png Graphic file (type bmp)
 <images/rd-plot.png>
@@ -3581,11 +3581,11 @@ File: images/rd-plot.png Graphic file (type bmp)
 [122]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 7264.
+(hyperref)                removing `\@ifnextchar' on input line 7267.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\uwave' on input line 7264.
+(hyperref)                removing `\uwave' on input line 7267.
 
 [123]
 

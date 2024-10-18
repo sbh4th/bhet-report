@@ -225,7 +225,7 @@
 
 
 \title{How Do Household Energy Transitions Work?\thanks{Affiliations
-{[}1{]} McGill Univeristy; {[}2{]} Colorado State University; {[}3{]}
+{[}1{]} McGill University; {[}2{]} Colorado State University; {[}3{]}
 Peking University; {[}4{]} University of the Chinese Academy of
 Sciences}}
 \author{Jill Baumgartner (Co-PI)\textsuperscript{1} \and Sam Harper
@@ -239,7 +239,7 @@ Sternbach\textsuperscript{1} \and Shu
 Tao\textsuperscript{3} \and Kaibing Xue\textsuperscript{4} \and Wenlu
 Yuan\textsuperscript{1} \and Xiang Zhang\textsuperscript{1} \and Yuanxun
 Zhang\textsuperscript{4}}
-\date{2024-10-15}
+\date{2024-10-16}
 
 \begin{document}
 \maketitle
@@ -1049,19 +1049,19 @@ the corresponding study wave.
 
 Following gravimetric analysis, all PTFE filters were analyzed
 non-destructively for black carbon (BC) using an optical transmissometer
-data acquisition system (SootScan\^{}TM OT21 Optical Transmissometer;
-Magee Scientific, Berkeley, CA, USA). Light attenuation through each
-filter was measured before and after deployment in the field campaign.
-To calculate BC mass, the difference between the pre- and post- light
-attenuation was converted to a mass surface loading using the classical
-Magee mass absorption cross-sections of 16.6 m\textsuperscript{2}/g for
-the 880 nm channel optical BC (Ahmed et al. 2009). BC concentrations
-were calculated by multiplying surface loadings by the sampled surface
-area of the filters (8.6 cm\textsuperscript{2} for UPAS-collected
-filters; 7.1 cm\textsuperscript{2} for PEM-collected filters),
-correcting for the field blank mass using the median value of blanks
-(0.31 μg for UPAS-collected filters; 0.01 μg for PEM-collected filters),
-and finally dividing by the sampled air volume.
+data acquisition system (SootScan\textsuperscript{TM} OT21 Optical
+Transmissometer; Magee Scientific, Berkeley, CA, USA). Light attenuation
+through each filter was measured before and after deployment in the
+field campaign. To calculate BC mass, the difference between the pre-
+and post- light attenuation was converted to a mass surface loading
+using the classical Magee mass absorption cross-sections of 16.6
+m\textsuperscript{2}/g for the 880 nm channel optical BC (Ahmed et al.
+2009). BC concentrations were calculated by multiplying surface loadings
+by the sampled surface area of the filters (8.6 cm\textsuperscript{2}
+for UPAS-collected filters; 7.1 cm\textsuperscript{2} for PEM-collected
+filters), correcting for the field blank mass using the median value of
+blanks (0.31 μg for UPAS-collected filters; 0.01 μg for PEM-collected
+filters), and finally dividing by the sampled air volume.
 
 Organic (OC) and elemental carbon (EC) on PTFE filters were
 non-destructively measured using an optical color space sensing system.
@@ -1393,7 +1393,9 @@ ensure the stability of standard curves. Standards and controls for MDA
 were measured in duplicate and samples were measured once due to high
 precision in our \comment{OC 1f}pre-analysis pilot study with duplicate
 testing and evidence from many previous studies showing high stability
-in measurement (Food and Drug Administration 2018).
+in measurement (Food and Drug Administration 2018). Boxplots showing
+distributions of the inflammatory and oxidative stress markers are
+provided in Appendix Figure~\ref{fig-afig-biomarkers}.
 
 \subsubsection{Anthropometric
 measurements.}\label{anthropometric-measurements.}
@@ -1596,13 +1598,13 @@ effects for each cohort of villages \(r\) that were first exposed to the
 policy at the same time \(q\) (e.g., in 2019, 2020, or 2021), \(fs_{t}\)
 are fixed effects for each time period \(s\) corresponding to different
 winter data collection waves (2018-19, 2019-20, or 2021-22), and
-\(\tau_{rs}\) are the cohort-time \(ATT\)s in the context of a linear
-model. For non-linear outcomes the cohort-time \(ATT\)s are derived by
-estimating marginal effects from non-linear models (Arel-Bundock 2024).
-For binary and count outcomes we used logit and Poisson models,
-respectively, and for skewed outcomes (e.g., black carbon,
-PM\textsubscript{2.5}, inflammatory markers) we used generalized linear
-models with a Gamma distribution and a log link, based on the
+\(\tau_{rs}\) are the treatment cohort-time \(ATT\)s in the context of a
+linear model. For non-linear outcomes the cohort-time \(ATT\)s are
+derived by estimating average marginal effects from non-linear models
+(Arel-Bundock 2024). For binary and count outcomes we used logit and
+Poisson models, respectively, and for skewed outcomes (e.g., black
+carbon, PM\textsubscript{2.5}, inflammatory markers) we used generalized
+linear models with a Gamma distribution and a log link, based on the
 specification tests recommended by Manning and Mullahy (2001). For all
 models we clustered standard errors at the village level, consistent
 with the unit of treatment assignment (Cameron and Miller 2015). The
@@ -1647,7 +1649,7 @@ also have several \(CDE\)s that can be averaged to make inferences about
 the extent to which the policy's impact is mediated by
 PM\textsubscript{2.5} or temperature. Based on the setup in
 Equation~\ref{eq-etwfem} the \(CDE\) is estimated as:
-\(\delta + \eta_{rt}MT\). In the absence of interaction between the
+\(\tau_{rs} + \eta_{rs}M\). In the absence of interaction between the
 exposure and the mediator (i.e., \(\eta_{rs}=0\)) the \(CDE\) will
 simply be the estimated treatment effects
 \(\sum_{r=q}^{T} \sum_{s=r}^{T} \tau_{rs}\), i.e., the effect of the
@@ -1708,20 +1710,21 @@ history of passive smoking (i.e., has the participant ever lived with a
 smoker in the same house for at least 6 months, with possible responses
 of never, yes but not currently, and yes at present). The survey
 responses were used to create the following four distinct tobacco
-smoking categories: current smoker defined as currently smoking at the
-time of survey; former smoker defined as previously smoking but no
-longer smoking at the time of the survey (not accounting for duration of
-cessation); never smoker with a history of living with a smoker defined
-as a never smoker who is currently living with a smoker or has
-previously lived with a smoker for at least 6 months (i.e., `passive'
-smoking exposure); and never smoker defined as no history of smoking and
-no history of living with a smoker for more than 6 months.
+smoking categories: \emph{current smoker}, defined as currently smoking
+at the time of survey; \emph{former smoker}, defined as previously
+smoking but no longer smoking at the time of the survey (not accounting
+for duration of cessation); \emph{never smoker with a history of living
+with a smoker}, defined as a never smoker who is currently living with a
+smoker or has previously lived with a smoker for at least 6 months
+(i.e., `passive' smoking exposure); and \emph{never smoker}, defined as
+no history of smoking and no history of living with a smoker for more
+than 6 months.
 
 Ultimately, we included the following measured time-varying covariates
 in the final DiD models for each outcome-specific model. Models for air
 pollution outcomes were adjusted for household size, tobacco smoking,
-outdoor temperature, and outdoor humidity. As a sensitivity analysis, we
-additionally adjusted for district of residence given the baseline
+outdoor temperature, and outdoor dew point. As a sensitivity analysis,
+we additionally adjusted for district of residence given the baseline
 district-level differences in energy use, socioeconomic status and
 altitude, especially for villages in Fangshan compared with the other
 three districts. Temperature models were adjusted for the number of
@@ -1737,7 +1740,7 @@ exercise, occupation, time of measurement. Inflammatory marker outcome
 models were adjusted for age, waist circumference, occupation, wealth
 index quantile, frequency of drinking, tobacco smoking, and frequency of
 farming. For the final covariate-adjusted DiD model for personal
-exposure `mixed combustion' source contributions, we adjusted for:
+exposure `mixed combustion' source contributions, we adjusted for
 temperature (represented by a spline with 2 degrees of freedom), tobacco
 smoking, and whether or not the household reported using biomass fuel.
 For the final covariate-adjusted DiD model for outdoor (community)
@@ -1757,7 +1760,7 @@ information for individuals who were unable to attend the clinic visits
 (\textasciitilde15-20\% of participants in each wave). Additionally,
 since we only measured indoor PM\textsubscript{2.5} in a subsample of
 300 homes in W2 and W4, we were missing indoor PM\textsubscript{2.5} for
-all participants in w1 with BP measures, as well as for a sub-sample of
+all participants in W1 with BP measures, as well as for a sub-sample of
 participants in W2 and W4. To prepare data for the BP outcomes analysis
 we used multiple imputation with chained equations (MICE) to impute
 missing indoor PM\textsubscript{2.5} and missing covariate data values
@@ -1820,8 +1823,8 @@ demographic characteristics by district. We conducted measurements in
 over 1000 participants in each of the three measurement waves that
 included individual-level measurements. In total, we enrolled
 \comment{EC 3a}1438 participants into the study, of which 630 (43\%)
-individuals contributed 1890 observations across all the three waves
-where health measurements were conducted, 443 (31\%) individuals
+individuals contributed 1890 observations across all the three waves in
+which health measurements were conducted, 443 (31\%) individuals
 contributed 886 observations across two waves and 365 (25\%) individuals
 participated in a single wave. Table~\ref{tbl-each-campaign} shows
 selected demographic characteristics and health behaviors between
@@ -2005,7 +2008,7 @@ in villages that were eventually treated.
 \subsection{Summary of PM and BC
 measurements}\label{summary-of-pm-and-bc-measurements}
 
-At baseline before the policy was rolled-out in any study villages,
+At baseline before the policy was rolled out in any study villages,
 PM\textsubscript{2.5} and BC concentrations were higher, on average, for
 personal exposures compared with outdoor concentrations. From W2 onward,
 with the inclusion of indoor air pollution measurements, personal
@@ -2472,11 +2475,11 @@ participants with 3 measurements. We did not find evidence that the
 policy affected changes in FeNO in the covariate-adjusted ETWFE
 \comment{EC 9b}model (0.3 ppb, 95\%CI: -2.2, 2.8). There was some
 evidence of heterogeneity in the FeNO effects of the policy by treatment
-cohort Appendix~\ref{fig-feno-het}, though the confidence intervals for
-each of the cohort-specific effects were wide and overlapping. Our
-results did not change with sensitivity analyses that limited the
-analysis to participants with at least two repeated measurements and to
-those who participated in all three waves (Appendix
+cohort Appendix Figure~\ref{fig-feno-het}, though the confidence
+intervals for each of the cohort-specific effects were wide and
+overlapping. Our results did not change with sensitivity analyses that
+limited the analysis to participants with at least two repeated
+measurements and to those who participated in all three waves (Appendix
 Table~\ref{tbl-a-feno})
 
 We also \comment{EC 9a}found limited evidence of an impact of the CHP on
@@ -2526,7 +2529,7 @@ of PM\textsubscript{2.5} and indoor temperature at pre-intervention
 values effectively eliminates these pathways by which the CHP can effect
 BP, so the small value of the \(CDE\) adjusting for both mediators
 suggests that the CHP effect on BP would be effectively null were it not
-for the impact on the mediators. Overall the results in
+for its impact on the mediators. Overall the results in
 Table~\ref{tbl-bp-med} indicate that conditioning on indoor
 PM\textsubscript{2.5} and indoor temperature largely explain the entire
 total effect of the CHP on blood pressure for systolic BP, as the
@@ -2618,7 +2621,7 @@ self-reported respiratory outcomes}
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
 note{}={Note: Estimated for the subset of individuals with measured personal exposure (n=1270). ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, CI = Confidence Interval.},
-note{a}={Adjusted for age, gender, smoking, occupation, freqency of drinking, frequency of farming.},
+note{a}={Adjusted for age, gender, smoking, occupation, frequency of drinking, frequency of farming.},
 note{b}={Mediators were set to the mean value for untreated participants at baseline.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
@@ -2672,25 +2675,26 @@ eligible outdoor and personal exposure PM\textsubscript{2.5} samples.
 Eligible samples were those for which both PM\textsubscript{2.5} mass
 and chemical components were quantified. Individual chemical species
 concentrations (means and 95\% confidence intervals) for outdoor and
-personal samples by study wave are provided in Appendix
-tbl-species-outdoor and tbl-species-personal, respectively.
-\comment{EC 6}We evaluated factors contributing to community-outdoor and
-personal exposure PM\textsubscript{2.5} using the U.S. EPA's source
-apportionment model PMF (positive matrix factorization) 5.0, which has
-been widely used for air pollution analyses in China (Gao et al. 2018;
-Liu et al. 2017; Tao et al. 2017). As an optimum PMF result depends on
-the appropriate number of input factors, sensitivity analysis using a
-range of factors (e.g., 3 to 7, based on a combination of the measured
-chemical species, field observations, and sources previously identified
-in our study region) were conducted to examine the impact of a different
-number of factors on the model results. Detailed information on the
-procedures of PMF analysis can be found elsewhere (Wang et al. 2016;
-Zíková et al. 2016). Briefly, the scree plot from our principal
-component analysis indicated that solutions of between 3 and 5 factors
-(+/- 1) would be most appropriate, further supporting our evaluation of
-3 to 6 factor solutions from PMF. As there was no indication that even
-moving from 5 to 6 factors would improve our solution, we did not
-further investigate 7 factors (Figure~\ref{fig-source-figure}).
+personal samples by study wave are provided in Appendix Tables
+Table~\ref{tbl-species-outdoor} and Table~\ref{tbl-species-personal},
+respectively. \comment{EC 6}We evaluated factors contributing to
+community-outdoor and personal exposure PM\textsubscript{2.5} using the
+U.S. EPA's source apportionment model PMF (positive matrix
+factorization) 5.0, which has been widely used for air pollution
+analyses in China (Gao et al. 2018; Liu et al. 2017; Tao et al. 2017).
+As an optimum PMF result depends on the appropriate number of input
+factors, sensitivity analysis using a range of factors (e.g., 3 to 7,
+based on a combination of the measured chemical species, field
+observations, and sources previously identified in our study region)
+were conducted to examine the impact of a different number of factors on
+the model results. Detailed information on the procedures of PMF
+analysis can be found elsewhere (Wang et al. 2016; Zíková et al. 2016).
+Briefly, the scree plot from our principal component analysis indicated
+that solutions of between 3 and 5 factors (+/- 1) would be most
+appropriate, further supporting our evaluation of 3 to 6 factor
+solutions from PMF. As there was no indication that even moving from 5
+to 6 factors would improve our solution, we did not further investigate
+7 factors (Figure~\ref{fig-source-figure}).
 
 \subsubsection{Source analysis using positive matrix
 factorization}\label{source-analysis-using-positive-matrix-factorization}
@@ -2802,9 +2806,7 @@ Qr/Qexp & 6.24 & 5.37 & 4.84 & 4.3 \\
 Q/Qexp > 6 & wi-Ca, ns-S, ws-Na, ws-Ca, Al, Cl, Pb & ns-S, Na, Al, Cl, Pb, Nitrate & Nitrate, ws-Na, Al, Chloride & Nitrate, ws-Na, Al \\
 DISP \% dQ & <0.1\% & <0.1\% & <0.1\% & <0.1\% \\
 DISP swaps & 0 & 0 & 0 & 0 \\
-BS\_mapping & Dust- 98.5\% & Transported dust- 95\%, Dust- 96.5\%, Sulfur secondary- 97.5\%, Mixed combustion- 96.5\% & Transported dust- 86\%, Mixed combustion- 87\%, Dust- 86\%, Lead- 55\% & Transported dust- 84\%, Mixed combustion- 87.5\%, Dust- 81.5\%, Lead- 72\%
-Chloride- 61.5\%
-Sulfur secondary- 98.5\% \\
+BS\_mapping & Dust- 98.5\% & Transported dust- 95\%, Dust- 96.5\%, Sulfur secondary- 97.5\%, Mixed combustion- 96.5\% & Transported dust- 86\%, Mixed combustion- 87\%, Dust- 86\%, Lead- 55\% & Transported dust- 84\%, Mixed combustion- 87.5\%, Dust- 81.5\%, Lead- 72\%, Chloride- 61.5\%, Sulfur secondary- 98.5\% \\
 \bottomrule
 \end{tblr}
 
@@ -5857,8 +5859,8 @@ cell{1}{5}={c=3,}{halign=c,},
 \toprule
 & With Season 3 data &  &  & Without Season 3 data &  &  \\ \cmidrule[lr]{2-4}\cmidrule[lr]{5-7}
 & Obs & ATT & (95\% CI) & Obs & ATT & (95\% CI) \\ \midrule %% TinyTableHeader
-24-hr PM2.5 & 11174 & -1.5 & (-6.5, 3.6) & 11174 & -2.1 & (-10.0, 5.8) \\
-Seasonal PM2.5 &   139 & 0.8 & (-4.5, 6.0) &   139 & 0.5 & (-4.8, 5.9) \\
+24-hr PM2.5 & 14831 & -1.5 & (-6.5, 3.6) & 11174 & -2.1 & (-10.0, 5.8) \\
+Seasonal PM2.5 &   189 & 0.8 & (-4.5, 6.0) &   139 & 0.5 & (-4.8, 5.9) \\
 \bottomrule
 \end{talltblr}
 

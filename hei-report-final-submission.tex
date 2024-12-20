@@ -798,10 +798,10 @@ cell{1}{5}={c=4,}{halign=c,},
 \toprule
 & Overall &  &  & Indoor &  &  &  \\ \cmidrule[lr]{1-1}\cmidrule[lr]{2-4}\cmidrule[lr]{5-8}
 Sample & Wave 1 & Wave 2 & Wave 4 & Wave 1 & Wave 2 & Wave 3 & Wave 4 \\ \midrule %% TinyTableHeader
-New recruitment & 977 &  196 &   68 &  0 & 300 &   0 &  52 \\
-Wave 1 households & - &  866 &  780 & - &   0 &   0 &   0 \\
+New recruitment & 977 &  189 &   68 &  0 & 300 &   0 &  52 \\
+Wave 1 households & - &  866 &  782 & - &   0 &   0 &   0 \\
 Wave 2 households & - & - &  162 & - & - & 246 & 248 \\
-Total recruitment & 977 & 1062 & 1010 &  0 & 300 & 246 & 300 \\
+Total recruitment & 977 & 1055 & 1012 &  0 & 300 & 246 & 300 \\
 \bottomrule
 \end{tblr}
 
@@ -1520,10 +1520,11 @@ identifying, different kinds of mediated effects. Figure~\ref{fig-dag1}
 shows directed acyclic graphs (DAGs) to illustrate the total effect (a)
 and the potential direct and indirect effects of the CHP (b), with \(T\)
 as the policy, \(X\) as a set of pre-treatment covariates, and \(Y\) as
-systolic blood pressure as an example outcome. The `total effect' of the
-policy \comment{OC 2c}is an estimate of how much the overall outcomes
-(\(Y\)) would change for a change in exposure (versus no exposure) to
-the CHP (\(T\)). Part (b) of Figure~\ref{fig-dag1} adds \(M_{1}\) as
+systolic blood pressure as an example outcome (DAGs for other outcomes
+are given in the Appendix). The `total effect' of the policy
+\comment{OC 2c}is an estimate of how much the overall outcomes (\(Y\))
+would change for a change in exposure (versus no exposure) to the CHP
+(\(T\)). Part (b) of Figure~\ref{fig-dag1} adds \(M_{1}\) as
 PM\textsubscript{2.5} and \(M_{2}\) as indoor temperature as potential
 mediators that are affected by the policy, and we can define the
 controlled direct effect (\(CDE\)) as the effect of the CHP on systolic
@@ -2907,6 +2908,47 @@ naming the factor as ``mixed combustion''. It is not surprising that
 residential coal and biomass emissions were difficult to fully separate,
 being unable to analyze samples for organic tracers.
 
+Northern China, including the Beijing region, regularly experiences
+large-scale dust storms that transport significant amounts of dust from
+distant desert regions such as the Gobi and Taklamakan Deserts,
+particularly in the spring. These dust storms, driven by strong winds
+from the northwest, often carry mineral dust high in silicon (Si) and
+iron (Fe) over thousands of kilometers. Satellite data and
+meteorological models consistently show that these dust storms result in
+long-range transport of desert particles, which then settle over Beijing
+and surrounding areas, significantly impacting local air quality. For
+example, the 2021 dust storm (which overlapped with one of our field
+campaigns) was one of the strongest in recent memory, blanketing
+northern China with dust originating from the Taklamakan Desert and
+highlighted the magnitude and distinct nature of these transported dust
+events compared to local dust sources (NASA Earth Observatory 2021).
+
+Our ground-based observations and sensor network data corroborate the
+occurrence of such transported dust events. During these periods, we
+observed elevated levels of PM that could be traced to these
+long-distance sources, as indicated by chemical analysis. These dust
+storms bring particles that are chemically and physically distinct from
+those generated locally, as local dust tends to have higher
+contributions from anthropogenic activities and nearer-surface sources
+of crustal materials.
+
+While both local and transported dust can contain elements like Si and
+Fe, the transported dust's origin from vast desert regions gives it a
+unique composition and larger-scale influence. Studies of these storms
+have shown that transported dust often contains different proportions of
+these elements, shaped by the arid conditions and long-distance
+transport (Zhang et al. 2024a).
+
+To further address the reviewer's suggestion, we provided a time series
+for each factor, as suggested, to examine if transported dust only
+appears when air masses are from northwest of Beijing. However, based on
+our data and ground truth experience, we believe that distinguishing
+transported dust from local dust is valid and reflective of the
+real-world processes impacting air quality in the region. Moreover,
+previous studies have highlighted the importance of transboundary dust
+transport in shaping PM compositions in northern China, lending further
+support to our interpretation (Zhang et al. 2024b).
+
 The third source had high percentages of ws-Ca nd Al, which in our study
 region, has been found to be indicative of transported dust from dust
 storms that can occur in the spring. While our samples were collected
@@ -4133,6 +4175,9 @@ Ambiguous clinical and public health interpretations of natural direct
 and indirect effects. International journal of epidemiology 43:1656--61;
 doi:\href{https://doi.org/10.1093/ije/dyu107}{10.1093/ije/dyu107}.
 
+\bibitem[\citeproctext]{ref-nasaearthobservatory2021}
+NASA Earth Observatory. 2021. Early {Season Dust Storm Hits Beijing}.
+
 \bibitem[\citeproctext]{ref-ni2016}
 Ni K, Carter E, Schauer JJ, Ezzati M, Zhang Y, Niu H, et al. 2016.
 Seasonal variation in outdoor, indoor, and personal air pollution
@@ -4534,11 +4579,24 @@ to 2017. Proceedings of the National Academy of Sciences
 116:24463--24469;
 doi:\href{https://doi.org/10.1073/pnas.1907956116}{10.1073/pnas.1907956116}.
 
+\bibitem[\citeproctext]{ref-zhang2024}
+Zhang S, Wu J, Yao J, Quan X, Zhai H, Lu Q, et al. 2024a. Dust
+{Monitoring} and {Three-Dimensional Transport Characteristics} of {Dust
+Aerosol} in {Beijing}, {Tianjin}, and {Hebei}. Atmosphere 15:1212;
+doi:\href{https://doi.org/10.3390/atmos15101212}{10.3390/atmos15101212}.
+
 \bibitem[\citeproctext]{ref-zhang2023}
 Zhang W, Xu H, Yu X, Li J, Zhang Y, Dai R, et al. 2023. Rigorous
 {Regional Air Quality Standards} for {Substantial Health Benefits}.
 Earth's Future 11:e2023EF003860;
 doi:\href{https://doi.org/10.1029/2023EF003860}{10.1029/2023EF003860}.
+
+\bibitem[\citeproctext]{ref-zhang2024a}
+Zhang Z, Kuang Z, Yu C, Wu D, Shi Q, Zhang S, et al. 2024b.
+Trans-{Boundary Dust Transport} of {Dust Storms} in {Northern China}: {A
+Study Utilizing Ground-Based Lidar Network} and {CALIPSO Satellite}.
+Remote Sensing 16:1196;
+doi:\href{https://doi.org/10.3390/rs16071196}{10.3390/rs16071196}.
 
 \bibitem[\citeproctext]{ref-zhuang2009}
 Zhuang Z, Li Y, Chen B, Guo J. 2009. Chinese kang as a domestic heating
@@ -4585,6 +4643,103 @@ tumour necrosis factor alpha (TNF-\(\alpha\)) and malondialdehyde (MDA)}
 \includegraphics[width=0.9\textwidth,height=\textheight]{images/Biomarker boxplot.jpg}
 
 }
+
+\end{figure}%
+
+\newpage
+
+\subsection{Directed Acyclic Graphs
+(DAGs)}\label{directed-acyclic-graphs-dags}
+
+\subsubsection{DAG for effect of CHP on indoor
+temperature}\label{dag-for-effect-of-chp-on-indoor-temperature}
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/dag-policy-temp.png}
+
+}
+
+\caption{\label{fig-afig-dag-temp}Directed acyclic graph for impact of
+CHP on indoor temperature}
+
+\end{figure}%
+
+\newpage
+
+\subsubsection{DAG for effect of CHP on blood
+pressure}\label{dag-for-effect-of-chp-on-blood-pressure}
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/dag-policy-bp.png}
+
+}
+
+\caption{\label{fig-afig-dag-bp}Directed acyclic graph for impact of CHP
+on blood pressure}
+
+\end{figure}%
+
+\newpage
+
+\subsubsection{DAG for effect of CHP on respiratory
+symptoms}\label{dag-for-effect-of-chp-on-respiratory-symptoms}
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/dag-policy-resp.png}
+
+}
+
+\caption{\label{fig-afig-dag-resp}Directed acyclic graph for impact of
+CHP on respiratory symptoms}
+
+\end{figure}%
+
+\newpage
+
+\subsubsection{\texorpdfstring{DAG for mediation of CHP on blood
+pressure by indoor air pollution and indoor
+PM\textsubscript{2.5}}{DAG for mediation of CHP on blood pressure by indoor air pollution and indoor PM2.5}}\label{dag-for-mediation-of-chp-on-blood-pressure-by-indoor-air-pollution-and-indoor-pm2.5}
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/dag-bp-med.png}
+
+}
+
+\caption{\label{fig-afig-dag-bp-med}Directed acyclic graph for mediation
+of the effect of CHP on blood pressure by indoor temperature and indoor
+air pollution.}
+
+\end{figure}%
+
+\newpage
+
+\subsubsection{DAG for mediation of CHP on blood pressure by mixed
+combustion
+source}\label{dag-for-mediation-of-chp-on-blood-pressure-by-mixed-combustion-source}
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=0.9\textwidth,height=\textheight]{images/dag-med-mixed.png}
+
+}
+
+\caption{\label{fig-afig-dag-mixed-med}Directed acyclic graph for
+mediation of the effect of CHP on blood pressure by indoor temperature
+and indoor air pollution.}
 
 \end{figure}%
 
@@ -6584,7 +6739,9 @@ policies on health.
 
 \textbf{Chris Barrington-Leigh, PhD} is an associate professor jointly
 appointed in the Department of Equity, Ethics, and Policy and the Bieler
-School of Environment at McGill University. His research evaluates
+School of Environment at McGill University. His research investigates
+well-being, happiness, and sustainability, focusing on the socioeconomic
+and environmental factors that contribute to quality of life.
 
 \textbf{Collin Brehmer} is a PhD student in the Department of Civil and
 Environmental Engineering at Colorado State University.
@@ -6649,6 +6806,8 @@ health.
 \section*{Other publications}\label{other-publications}
 \addcontentsline{toc}{section}{Other publications}
 
+\subsection{Published}\label{published}
+
 Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G,
 et al.~2022a. Socioeconomic and Demographic Associations with Wintertime
 Air Pollution Exposures at Household, Community, and District Scales in
@@ -6664,6 +6823,50 @@ Sternbach TJ, Harper S, Li X, Zhang X, Carter E, Zhang Y, et al.~2022.
 Effects of indoor and outdoor temperatures on blood pressure and central
 hemodynamics in a wintertime longitudinal study of Chinese adults. J
 Hypertension 40:1950--1959; doi:10.1097/HJH.0000000000003198.
+
+\subsection{In preparation}\label{in-preparation}
+
+Brehmer C et al., Impacts of a clean heating program on stacked heating
+stove usage in Northern China
+
+Brehmer C and Li X et al., Multi-year, field-based assessment on the
+impacts of a Coal-to-Clean Energy policy on indoor, outdoor, and
+personal exposure to PM\textsubscript{2.5} in Beijing, China
+
+Brehmer C et al., Source contributions as an outcome for evaluating the
+impact of a household energy transition: an example from a Coal-to-Clean
+Energy policy in Beijing, China
+
+Li X et al., Performance of a low-cost sensor (LCS) network for
+long-term indoor and outdoor PM\textsubscript{2.5} in rural communities
+in Beijing, China
+
+Sternbach TJ, et al.~China's clean heating policy and effects on blood
+pressure.
+
+Sternbach TJ, et al.~Mediated impacts of China's clean heating policy on
+blood pressure by indoor air pollution and indoor temperature
+
+Sternbach TJ, et al.~Impact of China's clean heating policy on indoor
+temperature
+
+Xue K and Yuan W et al., A Difference-in-Differences analysis evaluating
+the impact of a clean heating policy on inflammatory and oxidative
+stress biomarkers among predominately rural Beijing adults
+
+Yuan W et al., Effects of outdoor and household air pollution on hand
+grip strength in a longitudinal study of predominantly rural Beijing
+adults.
+
+Yuan W et al., Exposure-response relationships of outdoor and household
+air pollution with biomarkers of inflammation and oxidative stress in
+rural Chinese adults.
+
+Zhang X et al., Expenditure versus comfort: distributional impacts on
+household space heating energy transition program in rural China
+
+Zhang X et al., Household energy transition and subjective well-being: A
+difference-in-differences estimate of outcomes in rural northern China
 
 
 

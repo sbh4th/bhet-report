@@ -215,8 +215,8 @@ tx <- tibble(
   "Total recruitment")),
   g = c(1,1,1,1,2,2,2,2),
   s1 = c(977,NA,NA,977, 0,NA,NA,0),
-  s2 = c(196,866,NA, 1062, 300, 0,NA, 300),
-  s4 = c(68, 780, 162, 1010, 52, 0, 248, 300)
+  s2 = c(189,866,NA, 1055, 300, 0,NA, 300),
+  s4 = c(68, 782, 162, 1012, 52, 0, 248, 300)
 )
 tx2 <- tx %>% pivot_wider(names_from = g,
   values_from = c(s1, s2, s4), 
@@ -401,7 +401,7 @@ When multiple groups are treated at different time periods, as with the CHP, the
 
 ## Measuring pathways and mechanisms
 
-To estimate how much of the CHP may work through different mechanisms, we used causal mediation analysis. Causal approaches to mediation attempt to discern between, and clarify the necessary assumptions for identifying, different kinds of mediated effects. @fig-dag1 shows directed acyclic graphs (DAGs) to illustrate the total effect (a) and the potential direct and indirect effects of the CHP (b), with $T$ as the policy, $X$ as a set of pre-treatment covariates, and $Y$ as systolic blood pressure as an example outcome. The ‘total effect’ of the policy \comment{OC 2c}is an estimate of how much the overall outcomes ($Y$) would change for a change in exposure (versus no exposure) to the CHP ($T$). Part (b) of @fig-dag1 adds $M_{1}$ as PM~2.5~ and $M_{2}$ as indoor temperature as potential mediators that are affected by the policy, and we can define the controlled direct effect ($CDE$) as the effect of the CHP on systolic blood pressure if we fix the values of PM~2.5~ and indoor temperature to a fixed reference level for the entire population. For example, we can estimate the impact of the policy on health outcomes while holding PM~2.5~ and indoor temperature at uniform levels of average background exposure, or some other hypothetical level [@vanderweele2015].
+To estimate how much of the CHP may work through different mechanisms, we used causal mediation analysis. Causal approaches to mediation attempt to discern between, and clarify the necessary assumptions for identifying, different kinds of mediated effects. @fig-dag1 shows directed acyclic graphs (DAGs) to illustrate the total effect (a) and the potential direct and indirect effects of the CHP (b), with $T$ as the policy, $X$ as a set of pre-treatment covariates, and $Y$ as systolic blood pressure as an example outcome (DAGs for other outcomes are given in the Appendix). The ‘total effect’ of the policy \comment{OC 2c}is an estimate of how much the overall outcomes ($Y$) would change for a change in exposure (versus no exposure) to the CHP ($T$). Part (b) of @fig-dag1 adds $M_{1}$ as PM~2.5~ and $M_{2}$ as indoor temperature as potential mediators that are affected by the policy, and we can define the controlled direct effect ($CDE$) as the effect of the CHP on systolic blood pressure if we fix the values of PM~2.5~ and indoor temperature to a fixed reference level for the entire population. For example, we can estimate the impact of the policy on health outcomes while holding PM~2.5~ and indoor temperature at uniform levels of average background exposure, or some other hypothetical level [@vanderweele2015].
 
 ```{r dag1, out.width="60%", eval=T}
 #| echo: FALSE
@@ -1140,6 +1140,14 @@ Thus, we concluded that the pooled analysis was the most parsimonious and interp
 
 The first source was identified as dust, characterized by high percentages of crustal elements like wi-Ca, Si, and wi-Mg. The second source contained non-sulfate sulfur and secondary inorganic ions (ammonium, nitrate, and sulfate). Non-sulfate sulfur is a tracer for primary coal combustion, while secondary inorganic ions indicate a secondary source. Given the industrial coal burning in our study area, the secondary source likely combines primary and secondary emissions from coal and other sulfurous fuel combustion. Additionally, the higher outdoor concentrations of the secondary source compared with personal exposures support its identification as ‘sulfur secondary’ due to its sunlight-driven secondary formation. The factor named “sulfur secondary” was intended to reflect the contribution of sulfur, as measured by the XRF analysis, that was not associated with sulfate. Had this contribution been coupled with other species associated with direct air pollutant emissions from coal, and had those species not clustered with any other factors, we may have named this source a “household coal combustion” source.  However, some species that are typical of direct air emissions from coal combustion are also clustered with species that are typical of direct air emissions from biomass burning, leading to naming the factor as “mixed combustion”. It is not surprising that residential coal and biomass emissions were difficult to fully separate, being unable to analyze samples for organic tracers. 
 
+Northern China, including the Beijing region, regularly experiences large-scale dust storms that transport significant amounts of dust from distant desert regions such as the Gobi and Taklamakan Deserts, particularly in the spring. These dust storms, driven by strong winds from the northwest, often carry mineral dust high in silicon (Si) and iron (Fe) over thousands of kilometers. Satellite data and meteorological models consistently show that these dust storms result in long-range transport of desert particles, which then settle over Beijing and surrounding areas, significantly impacting local air quality. For example, the 2021 dust storm (which overlapped with one of our field campaigns) was one of the strongest in recent memory, blanketing northern China with dust originating from the Taklamakan Desert and highlighted the magnitude and distinct nature of these transported dust events compared to local dust sources [@nasaearthobservatory2021].
+ 
+Our ground-based observations and sensor network data corroborate the occurrence of such transported dust events. During these periods, we observed elevated levels of PM that could be traced to these long-distance sources, as indicated by chemical analysis. These dust storms bring particles that are chemically and physically distinct from those generated locally, as local dust tends to have higher contributions from anthropogenic activities and nearer-surface sources of crustal materials.
+ 
+While both local and transported dust can contain elements like Si and Fe, the transported dust's origin from vast desert regions gives it a unique composition and larger-scale influence. Studies of these storms have shown that transported dust often contains different proportions of these elements, shaped by the arid conditions and long-distance transport [@zhang2024].
+ 
+To further address the reviewer’s suggestion, we provided a time series for each factor, as suggested, to examine if transported dust only appears when air masses are from northwest of Beijing. However, based on our data and ground truth experience, we believe that distinguishing transported dust from local dust is valid and reflective of the real-world processes impacting air quality in the region. Moreover, previous studies have highlighted the importance of transboundary dust transport in shaping PM compositions in northern China, lending further support to our interpretation [@zhang2024a].
+
 The third source had high percentages of ws-Ca nd Al, which in our study region, has been found to be indicative of transported dust from dust storms that can occur in the spring. While our samples were collected during winter months only, it is possible that transported dust from previous years still remained. The fourth source was characterized by high percentages of tracers for both coal (OC, wi-K, chloride, Pb) and biomass combustion (EC, ws-K). Coal and biomass combustion are anticipated sources of PM~2.5~ pollution in our study setting, particularly from domestic cooking and heating activities, so this source is likely a mixture of PM emitted from these two household combustion sources. We extend the source profiles across the different treatment cohorts in @fig-source-season.
 
 ```{r, message=F, warning=F, out.width="90%"}
@@ -1280,7 +1288,7 @@ To comprehensively evaluate a large-scale policy like the CHP, our study’s mea
 
 ## Assumptions, strengths, and limitations
 
-The validity of our DiD approach is subject to two key assumptions [@callaway2021; @wooldridge2021]. First, no anticipation: we assume that anticipation of the CHP did not affect outcomes prior to policy implementation and did not differ between treated and untreated villages. We selected villages that were eligible for the policy but not currently treated. It was generally understood that the policy would first be implemented in the plains areas with more updated electric grids and then gradually expand into more remote and mountainous areas of Beijing, though most of our study villages were far from Beijing's urban core. In addition to these geographical parameters, some of our study villages were assigned to the policy whereas others applied to the local government, but they were generally unaware of if or when they would be treated at the time of enrollment. Second, parallel trends: our analysis assumes that in the absence of the policy the trends in air quality and health in treated and untreated villages would have remained the same over time. Because the parallel trends assumption is based on a counterfactual it cannot be empirically verified (similar to the assumption of no unmeasured confounding). However, \comment{EC 4a}given that we had two pre-intervention periods prior to the 2020 and 2021 cohorts being treated, we assessed the similarity of pre-intervention trends between W1 and W2 for the never treated group and the groups eventually treated in 2020 and 2021. Estimates and 95% CIs for the difference in pre-trends are given in the Appendix for BP outcomes (@fig-afig-pt-bp), personal exposure to PM~2.5~ and black carbon (@fig-afig-pt-pe-bc), and self-reported respiratory outcomes (@fig-afig-pt-resp). We did not find strong evidence for systematic differences in the pre-policy trends for any outcome, but some estimates were imprecise and tests for pre-trends are generally considered to have low power [@roth2022]. In particular we found some evidence that pre-trends in personal PM~2.5~ were decreasing for never treated villages but (imprecisely) increasing for the cohorts treated in 2020 and 2021. However, given that the (imprecise) cohort-specific ATTs for these two cohorts were in opposing directions (@tbl-a-het-personal), diverging pre-trends seem an unlikely explanation for the estimated treatment effects. Similarly, we found some evidence for differences in pre-trends for self-reported symptoms of coughing and chest trouble. In both cases these symptoms appeared to be increasing between 2018 and 2019 somewhat faster for the cohort treated in 2021 relative to the never treated group. This would lead to increases in the probability of these outcomes among the treated group, a pattern that is inconsistent with the negative cohort-specific ATTs reported in the Appendix. We also adjusted for relevant time-varying confounders in estimating total effects and in mediation analyses, which aims to improve the credibility of parallel trends assumption. 
+The validity of our DiD approach is subject to two key assumptions [@callaway2021; @wooldridge2021]. First, no anticipation: we assume that anticipation of the CHP did not affect outcomes prior to policy implementation and did not differ between treated and untreated villages. We selected villages that were eligible for the policy but not currently treated. It was generally understood that the policy would first be implemented in the plains areas with more updated electric grids and then gradually expand into more remote and mountainous areas of Beijing, though most of our study villages were far from Beijing's urban core. In addition to these geographical parameters, some of our study villages were assigned to the policy whereas others applied to the local government, but they were generally unaware of if or when they would be treated at the time of enrollment. Second, parallel trends: our analysis assumes that in the absence of the policy the trends in air quality and health in treated and untreated villages would have remained the same over time. Because the parallel trends assumption is based on a counterfactual it cannot be empirically verified (similar to the assumption of no unmeasured confounding). However, \comment{EC 4a}given that we had two pre-intervention periods prior to the 2020 and 2021 cohorts being treated, we assessed the similarity of pre-intervention trends between W1 and W2 for the never treated group and the groups eventually treated in 2020 and 2021. Estimates and 95% CIs for the difference in pre-trends are given in the Appendix for BP outcomes (@fig-afig-pt-bp), personal exposure to PM~2.5~ and black carbon (@fig-afig-pt-pe-bc), and self-reported respiratory outcomes (@fig-afig-pt-resp). We did not find strong evidence for systematic differences in the pre-policy trends for any outcome, but some estimates were imprecise and tests for pre-trends are generally considered to have low power [@roth2022]. In particular we found some evidence that pre-trends in personal PM~2.5~ were decreasing for never treated villages but (imprecisely) increasing for the cohorts treated in 2020 and 2021. However, given that the (imprecise) cohort-specific ATTs for these two cohorts were in opposing directions (@tbl-a-het-personal), diverging pre-trends seem an unlikely explanation for the (imprecisely) estimated heterogeneous treatment effects. Similarly, we found some evidence for differences in pre-trends for self-reported symptoms of coughing and chest trouble. In both cases these symptoms appeared to be increasing between 2018 and 2019 somewhat faster for the cohort treated in 2021 relative to the never treated group. This would lead to increases in the probability of these outcomes among the treated group, a pattern that is inconsistent with the negative cohort-specific ATTs reported in the Appendix. In addition, we also adjusted for relevant time-varying confounders in estimating total effects and in mediation analyses, which aims to improve the credibility of parallel trends assumption. 
 
 We also note that, in general, the addition of covariates to our “basic” ETWFE models did not meaningfully change our estimates. Nevertheless, we cannot entirely rule out the possibility that other programs or policies differentially affected air quality or health in treated and untreated villages, which could lead to over- or under-estimation of its effects. To investigate this possibility we surveyed a member of each village committee about other rural development or health policies and programs in their villages throughout our four-year study period and did not identify any co-implemented programs that would differentially impact villages by treatment status and affect outcomes or mediators. Though \comment{EC 1}a number of municipality- and district-level COVID-19-related preventative measures were implemented during the pandemic (e.g., lockdowns, travel restrictions), our study villages were not differentially exposed to any such measures. Finally, our mediation analysis assumes no residual time-varying confounding between our mediators (air pollution and temperature) and our health outcomes. Although we measured and evaluated a large number of time-varying risk factors for BP, we cannot entirely eliminate the possibility of potential residual confounding which could over-or under-estimate the mediating effects of indoor environmental factors.
  
@@ -1346,6 +1354,73 @@ Below we show boxplots for the blood inflammatory and oxidative stress markers.
 
 knitr::include_graphics(here("images", 
   "Biomarker boxplot.jpg"))
+```
+
+\newpage 
+
+## Directed Acyclic Graphs (DAGs)
+
+### DAG for effect of CHP on indoor temperature
+
+```{r, echo=FALSE, out.width = "90%"}
+#| label: fig-afig-dag-temp
+#| fig-cap: "Directed acyclic graph for impact of CHP on indoor temperature"
+
+
+knitr::include_graphics(here("images", 
+  "dag-policy-temp.png"))
+```
+
+\newpage 
+
+### DAG for effect of CHP on blood pressure
+
+```{r, echo=FALSE, out.width = "90%"}
+#| label: fig-afig-dag-bp
+#| fig-cap: "Directed acyclic graph for impact of CHP on blood pressure"
+
+
+knitr::include_graphics(here("images", 
+  "dag-policy-bp.png"))
+```
+
+\newpage 
+
+### DAG for effect of CHP on respiratory symptoms
+
+```{r, echo=FALSE, out.width = "90%"}
+#| label: fig-afig-dag-resp
+#| fig-cap: "Directed acyclic graph for impact of CHP on respiratory symptoms"
+
+
+knitr::include_graphics(here("images", 
+  "dag-policy-resp.png"))
+```
+
+\newpage 
+
+### DAG for mediation of CHP on blood pressure by indoor air pollution and indoor PM~2.5~
+
+```{r, echo=FALSE, out.width = "90%"}
+#| label: fig-afig-dag-bp-med
+#| fig-cap: "Directed acyclic graph for mediation of the effect of CHP on blood pressure by indoor temperature and indoor air pollution."
+
+
+knitr::include_graphics(here("images", 
+  "dag-bp-med.png"))
+```
+
+\newpage 
+
+### DAG for mediation of CHP on blood pressure by mixed combustion source
+
+```{r, echo=FALSE, out.width = "90%"}
+#| label: fig-afig-dag-mixed-med
+#| fig-cap: "Directed acyclic graph for mediation of the effect of CHP on blood pressure by indoor temperature and indoor air pollution."
+
+
+knitr::include_graphics(here("images", 
+  "dag-med-mixed.png"))
 ```
 
 \newpage 
@@ -2794,7 +2869,7 @@ knitr::include_graphics(here("images",
 
 **Sam Harper, PhD** is a professor in the Department of Epidemiology, Biostatistics & Occupational Health at McGill University. His research focuses on evaluating the impacts of social and economic policies on health.
 
-**Chris Barrington-Leigh, PhD** is an associate professor jointly appointed in the Department of Equity, Ethics, and Policy and the Bieler School of Environment at McGill University. His research investigates well-being, happiness, and sustainability, focusing on the socio-economic and environmental factors that contribute to quality of life. 
+**Chris Barrington-Leigh, PhD** is an associate professor jointly appointed in the Department of Equity, Ethics, and Policy and the Bieler School of Environment at McGill University. His research investigates well-being, happiness, and sustainability, focusing on the socioeconomic and environmental factors that contribute to quality of life. 
 
 **Collin Brehmer** is a PhD student in the Department of Civil and Environmental Engineering at Colorado State University. 
 
@@ -2822,8 +2897,37 @@ knitr::include_graphics(here("images",
 
 # Other publications {.unnumbered}
 
+## Published
+
 Li X, Baumgartner J, Barrington-Leigh C, Harper S, Robinson B, Shen G, et al. 2022a. Socioeconomic and Demographic Associations with Wintertime Air Pollution Exposures at Household, Community, and District Scales in Rural Beijing, China. Environ Sci Technol 56:8308–8318; doi:10.1021/acs.est.1c07402.
 
 Li X, Baumgartner J, Harper S, Zhang X, Sternbach T, Barrington-Leigh C, et al. 2022b. Field measurements of indoor and community air quality in rural Beijing before, during, and after the COVID-19 lockdown. Indoor Air 32:e13095; doi:10.1111/ina.13095.
 
 Sternbach TJ, Harper S, Li X, Zhang X, Carter E, Zhang Y, et al. 2022. Effects of indoor and outdoor temperatures on blood pressure and central hemodynamics in a wintertime longitudinal study of Chinese adults. J Hypertension 40:1950–1959; doi:10.1097/HJH.0000000000003198.
+
+## In preparation
+
+Brehmer C et al., Impacts of a clean heating program on stacked heating stove usage in Northern China
+
+Brehmer C and Li X et al., Multi-year, field-based assessment on the impacts of a Coal-to-Clean Energy policy on indoor, outdoor, and personal exposure to PM~2.5~ in Beijing, China
+
+Brehmer C et al., Source contributions as an outcome for evaluating the impact of a household energy transition: an example from a Coal-to-Clean Energy policy in Beijing, China
+
+Li X et al., Performance of a low-cost sensor (LCS) network for long-term indoor and outdoor PM~2.5~ in rural communities in Beijing, China 
+
+Sternbach TJ, et al. China’s clean heating policy and effects on blood pressure.  
+
+Sternbach TJ, et al. Mediated impacts of China’s clean heating policy on blood pressure by indoor air pollution and indoor temperature
+
+Sternbach TJ, et al. Impact of China’s clean heating policy on indoor temperature
+
+Xue K and Yuan W et al., A Difference-in-Differences analysis evaluating the impact of a clean heating policy on inflammatory and oxidative stress biomarkers among predominately rural Beijing adults 
+
+Yuan W et al., Effects of outdoor and household air pollution on hand grip strength in a longitudinal study of predominantly rural Beijing adults.
+
+Yuan W et al., Exposure-response relationships of outdoor and household air pollution with biomarkers of inflammation and oxidative stress in rural Chinese adults.
+
+Zhang X et al., Expenditure versus comfort: distributional impacts on household space heating energy transition program in rural China
+
+Zhang X et al., Household energy transition and subjective well-being: A difference-in-differences estimate of outcomes in rural northern China
+

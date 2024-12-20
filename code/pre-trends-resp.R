@@ -31,7 +31,10 @@ dresp <- read_rds(here("data-clean",
 # create data frame for analysis
 drpt <- dresp %>% 
   # limit to complete cases as for models
-  drop_na(b_out, age_health, male, csmoke, fsmoke) %>%
+  # drop_na(resp, cough, phlegm, wheeze, 
+  #   breath, nochest, age_health, male, 
+  #   csmoke, fsmoke) %>%
+  drop_na(cresp:farm_4, -bmi) %>%
   # limited to pre-intervention years and
   # post-intervention cohorts
   filter(year < 2021 & cohort_year_2019==0) %>%
@@ -102,14 +105,6 @@ run_analysis <- function(outcome, data,
 b_out <- c("resp", "cough", "phlegm", "wheeze", 
            "breath", "nochest")
 
-# Corresponding descriptive y-axis labels
-y_labels <- c("Probability of any symptom", 
-              "Probability of coughing", 
-              "Probability of phlegm", 
-              "Probability of wheezing", 
-              "Probability of breathlessness", 
-              "Probability of no chest symptoms")
-
 # Apply the function across all outcomes and store results
 results <- lapply(b_out, 
   function(outcome) run_analysis(outcome, data = drpt))
@@ -119,6 +114,14 @@ plots <- lapply(results, function(res) res$plot)
 models <- lapply(results, function(res) res$model)
 comparisons <- lapply(results, function(res) res$comparisons)
 tests <- lapply(results, function(res) res$test_text)
+
+# Fix y-axis labels
+plots[[1]]$labels$y <- "Probability of any symptom"
+plots[[2]]$labels$y <- "Probability of coughing"
+plots[[3]]$labels$y <- "Probability of phlegm"
+plots[[4]]$labels$y <- "Probability of wheezing attacks"
+plots[[5]]$labels$y <- "Probability of trouble breathing"
+plots[[6]]$labels$y <- "Probability of chest trouble"
 
 combined_plot <- wrap_plots(plots) + 
   plot_layout(ncol = 2, guides = "collect") &

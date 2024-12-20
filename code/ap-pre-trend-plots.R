@@ -41,7 +41,7 @@ d_bc <- read_rds(here("data-clean",
 ### Personal exposure
 
 # Limit to pre-intervention years/cohort
-d_p_r <- d_personal %>% 
+d_p_r <- d_p %>% 
   filter(year < 2021 & cohort_year_2019==0) %>%
   mutate(tc = factor(ban_status_composite, 
     labels = c("Never", "2020", "2021")))

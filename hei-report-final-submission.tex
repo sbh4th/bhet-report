@@ -1731,32 +1731,32 @@ than 6 months.
 
 Ultimately, we included the following measured time-varying covariates
 in the final DiD models for each outcome-specific model. Models for air
-pollution outcomes were adjusted for household size, tobacco smoking,
-outdoor temperature, and outdoor dew point. As a sensitivity analysis,
-we additionally adjusted for district of residence given the baseline
-district-level differences in energy use, socioeconomic status and
-altitude, especially for villages in Fangshan compared with the other
-three districts. Temperature models were adjusted for the number of
-rooms, wintertime occupants in the household, age of the primary
+pollution outcomes were adjusted for household size, tobacco smoking
+category, outdoor temperature, and outdoor dew point. As a sensitivity
+analysis, we additionally adjusted for district of residence given the
+baseline district-level differences in energy use, socioeconomic status
+and altitude, especially for villages in Fangshan compared with the
+other three districts. Temperature models were adjusted for the number
+of rooms, wintertime occupants in the household, age of the primary
 respondent, and wealth index. Models for blood pressure were adjusted
-for age, sex, waist circumference, tobacco smoking, alcohol consumption,
-and use of blood pressure medication. For self-reported respiratory
-outcomes we adjusted for age, gender, tobacco smoking, occupation,
-frequency of drinking, frequency of farming. Measured respiratory
-outcome (FeNO) models included adjustment for age, gender, body mass
-index, frequency of drinking, tobacco smoking, and frequency of
-exercise, occupation, time of measurement. Inflammatory marker outcome
-models were adjusted for age, waist circumference, occupation, wealth
-index quantile, frequency of drinking, tobacco smoking, and frequency of
-farming. For the final covariate-adjusted DiD model for personal
-exposure `mixed combustion' source contributions, we adjusted for
-temperature (represented by a spline with 2 degrees of freedom), tobacco
-smoking, and whether or not the household reported using biomass fuel.
-For the final covariate-adjusted DiD model for outdoor (community)
-`mixed combustion' source contributions, the following covariates were
-included: total number of households in the village, village population,
-and ambient relative humidity (represented by a spline with 2 degrees of
-freedom).
+for age, sex, waist circumference, tobacco smoking category, alcohol
+consumption, and use of blood pressure medication. For self-reported
+respiratory outcomes we adjusted for age, gender, tobacco smoking
+category, occupation, frequency of drinking, frequency of farming.
+Measured respiratory outcome (FeNO) models included adjustment for age,
+gender, body mass index, frequency of drinking, tobacco smoking
+category, and frequency of exercise, occupation, time of measurement.
+Inflammatory marker outcome models were adjusted for age, waist
+circumference, occupation, wealth index quantile, frequency of drinking,
+tobacco smoking category, and frequency of farming. For the final
+covariate-adjusted DiD model for personal exposure `mixed combustion'
+source contributions, we adjusted for temperature (represented by a
+spline with 2 degrees of freedom), tobacco smoking category, and whether
+or not the household reported using biomass fuel. For the final
+covariate-adjusted DiD model for outdoor (community) `mixed combustion'
+source contributions, the following covariates were included: total
+number of households in the village, village population, and ambient
+relative humidity (represented by a spline with 2 degrees of freedom).
 
 \subsection{\texorpdfstring{Multiple imputation for covariates and
 indoor PM\textsubscript{2.5} in analyses with BP
@@ -2237,8 +2237,8 @@ The average marginal effect (\(ATT\)) from the basic ETWFE model
 (Table~\ref{tbl-did-med}) shows that exposure to the CHP reduced 24-h
 indoor PM\textsubscript{2.5} by -18.9 µg/m\textsuperscript{3} (95\%CI:
 -56.1, 18.4). After adjusting for outdoor temperature, dew point,
-household smoking status, and the number of residents in each household,
-the \(ATT\) was -20.0 µg/m\textsuperscript{3} (95\%CI: -45.6, 5.5). The
+smoking category, and the number of residents in each household, the
+\(ATT\) was -20.0 µg/m\textsuperscript{3} (95\%CI: -45.6, 5.5). The
 basic DiD impact was stronger on seasonal indoor PM\textsubscript{2.5},
 with an average \(ATT\) of -30.9 µg/m\textsuperscript{3} (95\%CI: -53.2,
 -8.7). After adjustment the average \(ATT\) on seasonal indoor
@@ -2285,7 +2285,7 @@ Mar.~15th.}
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
 note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.},
-note{a}={ETWFE models for air pollution outcomes were adjusted for household size, smoking, outdoor temperature, and outdoor dewpoint. Temperature models adjusted for the number of rooms and wintertime occupants in the household, age of the primary respondent, and wealth index},
+note{a}={ETWFE models for air pollution outcomes were adjusted for household size, smoking category, outdoor temperature, and outdoor dewpoint. Temperature models adjusted for the number of rooms and wintertime occupants in the household, age of the primary respondent, and wealth index},
 note{b}={The indoor 24-hr PM2.5 concentration was determined over the time period concurrent with when the personal PM2.5 concentration was determined.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
@@ -2370,7 +2370,7 @@ pressure, respiratory outcomes, inflammatory markers and MDA.}
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
 note{}={Note: ATT = Average Treatment Effect on the Treated, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects, Obs = observations, pp = percentage points, ppb = parts per billion.},
-note{a}={ETWFE models for blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Self-reported respiratory outcomes adjusted for age, gender, smoking, occupation, frequency of drinking, frequency of farming. Measured respiratory outcome (FeNO) adjusted age, gender, body mass index, frequency of drinking, smoking, and frequency of exercise, occupation, time of measurement. Inflammatory marker and MDA outcome models adjusted for age, waist circumference, occupation, wealth index quantile, frequency of drinking, tobacco smoking, and frequency of farming.},
+note{a}={ETWFE models for blood pressure models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Self-reported respiratory outcomes adjusted for age, gender, smoking, occupation, frequency of drinking, frequency of farming. Measured respiratory outcome (FeNO) adjusted age, gender, body mass index, frequency of drinking, smoking category, and frequency of exercise, occupation, time of measurement. Inflammatory marker and MDA outcome models adjusted for age, waist circumference, occupation, wealth index quantile, frequency of drinking, smoking category, and frequency of farming.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
@@ -2448,10 +2448,10 @@ Measured & MDA (µM) & 1603 & 0.3 & (-0.1, 0.8) & 0.2 & (-0.2, 0.6) \\
 
 Table~\ref{tbl-did-health} shows the impacts of the policy on blood
 pressure in basic ETWFE models and models further adjusted for age, sex,
-waist circumference, smoking, alcohol consumption, and use of blood
-pressure medication. Overall exposure to the CHP demonstrated reductions
-in blood pressure of approximately 1.5 mmHg for both systolic and
-diastolic BP, but we found little evidence of a meaningful impact on
+waist circumference, smoking category, alcohol consumption, and use of
+blood pressure medication. Overall exposure to the CHP demonstrated
+reductions in blood pressure of approximately 1.5 mmHg for both systolic
+and diastolic BP, but we found little evidence of a meaningful impact on
 pulse pressure or BP amplification. The effects of the policy on
 brachial and central blood pressures were similar, and were consistent
 \comment{EC 2e}when restricted to only those participants enrolled in W1
@@ -2504,7 +2504,7 @@ markers of inflammation or oxidative stress. The basic DiD analyses
 showed an increase of 1.0 (95\% CI: 0.1, 1.8) in TNF-\(\alpha\) but this
 estimate was reduced to 0.8 (-0.1, 1.7) after adjustment for waist
 circumference, occupation, wealth index quantile, frequency of drinking,
-tobacco smoking, and frequency of farming. The adjusted estimates for
+smoking category, and frequency of farming. The adjusted estimates for
 the effect of the policy on IL-6, CRP, and MDA were also generally small
 and measured with limited precision.
 
@@ -2568,7 +2568,7 @@ blood pressure.}
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
 note{}={Note: Results combined across 30 multiply-imputed datasets (average of 3082 observations per dataset). ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, CI = Confidence Interval, DBP = Diastolic blood pressure, PM = Particulate matter, SBP = Systolic blood pressure.},
-note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
+note{a}={Adjusted for age, sex, waist circumference, smoking category, alcohol consumption, and use of blood pressure medication.},
 note{b}={Mediators were set to the mean value for untreated participants at baseline.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
@@ -2638,7 +2638,7 @@ self-reported respiratory outcomes}
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
 note{}={Note: Estimated for the subset of individuals with measured personal exposure (n=1270). ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, CI = Confidence Interval.},
-note{a}={Adjusted for age, gender, smoking, occupation, frequency of drinking, frequency of farming.},
+note{a}={Adjusted for age, gender, smoking category, occupation, frequency of drinking, frequency of farming.},
 note{b}={Mediators were set to the mean value for untreated participants at baseline.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
@@ -2979,7 +2979,7 @@ combustion source.}
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
 note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences.},
-note{a}={Personal exposure model adjusted for temperature (represented by a spline with 2 degrees of freedom), participant smoking status, and household reported using biomass fuel. Outdoor model adjusted for the total number of households in the village, total village population, and ambient relative humidity (represented by a spline with 2 degrees of freedom).},
+note{a}={Personal exposure model adjusted for temperature (represented by a spline with 2 degrees of freedom), participant smoking category, and whether the household reported using biomass fuel. Outdoor model adjusted for the total number of households in the village, total village population, and ambient relative humidity (represented by a spline with 2 degrees of freedom).},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]Q[]Q[]Q[]},
@@ -3055,7 +3055,7 @@ pressure with mixed combustion source as the potential mediator.}
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
 note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences, CDE = Controlled Direct Effect, DBP = Diastolic Blood Pressure, SBP = Systolic Blood Pressure.},
-note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
+note{a}={Adjusted for age, sex, waist circumference, smoking category, alcohol consumption, and use of blood pressure medication.},
 note{b}={Further adjusted for mediation by mixed combustion source (coal and biomass)},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
@@ -3647,8 +3647,8 @@ observed respiratory symptoms and BP benefits of the policy in a
 sensitivity analysis limited to the same participants. Still,
 \comment{EC 9d}our overall findings indicate that this ambitious policy
 achieved its goals in dramatically reducing residential coal burning and
-improving indoor environmental quality, which provided modest benefits
-to health.
+improving indoor air quality and temperature, which provided modest
+benefits to health.
 
 Our results showing an indoor environment and cardio-respiratory health
 benefit of a real-world, large-scale clean energy policy are timely, as
@@ -5268,7 +5268,7 @@ effect of the CHP on blood pressure.}
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
 note{}={Note: ATT = Average Treatment Effect on the Treated, CI = confidence interval, DiD = Difference-in-Differences.},
-note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
+note{a}={Adjusted for age, sex, waist circumference, smoking category, alcohol consumption, and use of blood pressure medication.},
 note{b}={F-statistics and p-values for joint tests of equality across cohort and time ATTs},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
@@ -5348,7 +5348,7 @@ blood pressure mediation model.}
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
 note{}={Note: Results combined across 30 multiply-imputed datasets. ATT = Average Treatment Effect on the Treated, CDE = Controlled Direct Effect, DBP = Diastolic blood pressure, SBP = Systolic blood pressure. Median p-values for heterogeneity tests for multiple mediation models: bSBP = 0.78, cSBP = 0.85, bDBP = 0.11, cDBP = 0.04.},
-note{a}={Adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication.},
+note{a}={Adjusted for age, sex, waist circumference, smoking category, alcohol consumption, and use of blood pressure medication.},
 note{b}={Mediators were set to the mean value for untreated participants at baseline.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
@@ -5442,7 +5442,7 @@ Appendix tables \ref{tbl-a-het-resp}, \ref{tbl-a-het-cough},
 \ref{tbl-a-het-nochest} below show Average Treatment Effect on the
 Treated (\(ATT\)s) by treatment cohort and time. ATTs are derived from
 estimating marginal effects from extended two-way fixed effects models
-with additional adjustment for age, sex, and smoking status.
+with additional adjustment for age, sex, and smoking category.
 
 \begin{table}[H]
 
@@ -5743,7 +5743,7 @@ effects to models for personal and indoor air pollution.}
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: (a) excludes and (b) includes district fixed effects. All models adjusted for household size, smoking, outdoor temperature, and outdoor dewpoint. Standard errors (in parenthesis) clustered by village.},
+note{}={Note: (a) excludes and (b) includes district fixed effects. All models adjusted for household size, smoking category, outdoor temperature, and outdoor dewpoint. Standard errors (in parenthesis) clustered by village.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
@@ -5795,7 +5795,7 @@ pressure.}
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
 note{}={Note: ATT = Average Treatment Effect on the Treated, BP = blood pressure, CI = confidence interval, DiD = Difference-in-Differences, ETWFE = Extended Two-Way Fixed Effects.},
-note{a}={Marginal effect from ETWFE models adjusted for age, sex, waist circumference, smoking, alcohol consumption, and use of blood pressure medication. Results combined across 30 multiply-imputed datasets.},
+note{a}={Marginal effect from ETWFE models adjusted for age, sex, waist circumference, smoking category, alcohol consumption, and use of blood pressure medication. Results combined across 30 multiply-imputed datasets.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 width={1\linewidth},
@@ -6365,7 +6365,7 @@ and time.}
 \centering
 \begin{talltblr}[         %% tabularray outer open
 entry=none,label=none,
-note{}={Note: DiD = Difference-in-Differences.  FE = Fixed effects. All models adjusted for household size, smoking, outdoor temperature, and outdoor humidity. Standard errors clustered by village and 95\% confidence intervals shown in brackets.},
+note{}={Note: DiD = Difference-in-Differences.  FE = Fixed effects. All models adjusted for household size, smoking category, outdoor temperature, and outdoor humidity. Standard errors clustered by village and 95\% confidence intervals shown in brackets.},
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]Q[]Q[]},

@@ -2794,7 +2794,7 @@ knitr::include_graphics(here("images",
 
 **Sam Harper, PhD** is a professor in the Department of Epidemiology, Biostatistics & Occupational Health at McGill University. His research focuses on evaluating the impacts of social and economic policies on health.
 
-**Chris Barrington-Leigh, PhD** is an associate professor jointly appointed in the Department of Equity, Ethics, and Policy and the Bieler School of Environment at McGill University.  His research evaluates  
+**Chris Barrington-Leigh, PhD** is an associate professor jointly appointed in the Department of Equity, Ethics, and Policy and the Bieler School of Environment at McGill University. His research investigates well-being, happiness, and sustainability, focusing on the socio-economic and environmental factors that contribute to quality of life. 
 
 **Collin Brehmer** is a PhD student in the Department of Civil and Environmental Engineering at Colorado State University. 
 

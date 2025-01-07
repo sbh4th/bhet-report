@@ -20,38 +20,38 @@ thanks: Affiliations [1] McGill University; [2] Colorado State University; [3] P
 
 date: today
 
-#format: 
-# docx:
-#   toc: true
-#   number-sections: true
-#   number-depth: 3
-
 format: 
- pdf:
-  toc: true
-  keep-tex: true
-  number-sections: true
-  number-depth: 3
-  include-in-header:
-     - text: |
-        \usepackage{wrapfig}
-        \usepackage{colortbl}
-        \makeatletter
-         \renewenvironment{table}%
-           {\renewcommand\familydefault\sfdefault
-            \@float{table}}
-           {\end@float}
-         \renewenvironment{figure}%
-           {\renewcommand\familydefault\sfdefault
-            \@float{figure}}
-           {\end@float}
-         \makeatother
-        \usepackage[final]{changes}
-        \AfterTOCHead[toc]{\sffamily}
-  geometry: 
-     - right=1in
-     - left=1in
-  fig-pos: H
+ docx:
+   toc: true
+   number-sections: true
+   number-depth: 3
+
+#format: 
+# pdf:
+#  toc: true
+#  keep-tex: true
+#  number-sections: true
+#  number-depth: 3
+#  include-in-header:
+#     - text: |
+#        \usepackage{wrapfig}
+#        \usepackage{colortbl}
+#        \makeatletter
+#         \renewenvironment{table}%
+#           {\renewcommand\familydefault\sfdefault
+#            \@float{table}}
+#           {\end@float}
+#         \renewenvironment{figure}%
+#           {\renewcommand\familydefault\sfdefault
+#            \@float{figure}}
+#           {\end@float}
+#         \makeatother
+#        \usepackage[final]{changes}
+#        \AfterTOCHead[toc]{\sffamily}
+#  geometry: 
+#     - right=1in
+#     - left=1in
+#  fig-pos: H
 bibliography: hei-report.bib
 csl: environmental-health-perspectives.csl
 ---

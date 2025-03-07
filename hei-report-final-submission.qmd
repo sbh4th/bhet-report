@@ -20,38 +20,38 @@ thanks: Affiliations [1] McGill University; [2] Colorado State University; [3] P
 
 date: today
 
-format: 
- docx:
-   toc: true
-   number-sections: true
-   number-depth: 3
-
 #format: 
-# pdf:
-#  toc: true
-#  keep-tex: true
-#  number-sections: true
-#  number-depth: 3
-#  include-in-header:
-#     - text: |
-#        \usepackage{wrapfig}
-#        \usepackage{colortbl}
-#        \makeatletter
-#         \renewenvironment{table}%
-#           {\renewcommand\familydefault\sfdefault
-#            \@float{table}}
-#           {\end@float}
-#         \renewenvironment{figure}%
-#           {\renewcommand\familydefault\sfdefault
-#            \@float{figure}}
-#           {\end@float}
-#         \makeatother
-#        \usepackage[final]{changes}
-#        \AfterTOCHead[toc]{\sffamily}
-#  geometry: 
-#     - right=1in
-#     - left=1in
-#  fig-pos: H
+# docx:
+#   toc: true
+#   number-sections: true
+#   number-depth: 3
+
+format: 
+ pdf:
+  toc: true
+  keep-tex: true
+  number-sections: true
+  number-depth: 3
+  include-in-header:
+     - text: |
+        \usepackage{wrapfig}
+        \usepackage{colortbl}
+        \makeatletter
+         \renewenvironment{table}%
+           {\renewcommand\familydefault\sfdefault
+            \@float{table}}
+           {\end@float}
+         \renewenvironment{figure}%
+           {\renewcommand\familydefault\sfdefault
+            \@float{figure}}
+           {\end@float}
+         \makeatother
+        \usepackage[final]{changes}
+        \AfterTOCHead[toc]{\sffamily}
+  geometry: 
+     - right=1in
+     - left=1in
+  fig-pos: H
 bibliography: hei-report.bib
 csl: environmental-health-perspectives.csl
 ---
@@ -555,7 +555,7 @@ ds <- ds %>%
 # apply function across selected columns
 # Columns of interest
 columns_of_interest <- c("female", "csmoke", "psmoke",
-  "asmoke", "bmi", "age_health", "waist_circ")
+  "asmoke", "age_health", "bmi", "waist_circ")
 
 # Apply the function to the data set
 result <- process_columns(ds, columns_of_interest)
@@ -1742,7 +1742,7 @@ tt(aph_table,
 \newpage
 
 ### Indoor PM~2.5~
-Table @tbl-a-het-indoor shows estimates for cohort-time $ATT$s for 24-hr and seasonal indoor PM~2.5~.
+@tbl-a-het-indoor shows estimates for cohort-time $ATT$s for 24-hr and seasonal indoor PM~2.5~.
 
 ```{r, echo=F}
 #| echo: FALSE

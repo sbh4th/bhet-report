@@ -1,0 +1,163 @@
+---
+title: "Simple Ordinal Logit DiD"
+format: html
+---
+### 1. Load some needed packages:
+
+```{r}
+#| label: startup
+#| message: false
+
+
+library(here)
+library(tidyverse)
+library(marginaleffects)
+library(modelsummary)
+library(tinytable)
+library(MASS)
+```
+
+### 2. Load data
+
+```{r}
+#| label: data
+#| message: false
+
+data <- read_csv(here("data-clean", 
+  "BHET_master_data_04Oct2024.csv"),
+  col_select = c(ptc_id, hh_id, ID_VILLAGE, ID_COUNTY,
+    wave, ban_status_composite, smoking))
+
+datasummary_skim(data)
+```
+
+### 3. Create variables
+
+```{r}
+#| label: vars
+
+data <- data %>%
+  mutate(
+    smk_cat = factor(smoking, levels = c(1,2,3),
+      labels = c("Current", "Former", "Never")),
+    year = if_else(wave==1, 2018, 
+      if_else(wave==2, 2019,
+      if_else(wave==3, 2020,
+      if_else(wave==4, 2021, 0)))),
+    cohort_year = if_else(
+      ban_status_composite==1, 2019, 
+      if_else(ban_status_composite==2, 2020, 
+              if_else(ban_status_composite==3, 2021, 2022))),
+    treat = ifelse(year >= cohort_year, 1, 0),
+    # relabel last cohort year 
+    cohort_year = ifelse(cohort_year == 2022,-Inf, 
+                         cohort_year),
+
+    # add dummies
+    year_2019 = if_else(
+      year==2019, 1, 0),
+    year_2020 = if_else(
+      year==2020, 1, 0),
+    year_2021 = if_else(
+      year==2021, 1, 0),
+    cohort_year_2019 = if_else(
+      cohort_year==2019, 1, 0),
+    cohort_year_2020 = if_else(
+      cohort_year==2020, 1, 0),
+    cohort_year_2021 = if_else(
+      cohort_year==2021, 1, 0)) %>%
+
+# add village identifier
+  group_by(ID_VILLAGE) %>%
+  mutate(v_id = cur_group_id()) %>%
+  ungroup()
+```
+
+### 4. Model
+
+Run the ordered logit model with the categorical smoking outcome (note that this does not account for clustered standard errors, which has to be done later using `marginaleffects`):
+
+```{r}
+#| label: model
+
+ol_model <- polr(smk_cat ~ 
+  treat:cohort_year_2019:year_2019 +
+  treat:cohort_year_2019:year_2021 +
+  treat:cohort_year_2020:year_2021 +
+  treat:cohort_year_2021:year_2021 +
+  cohort_year_2019 + cohort_year_2020 +
+  cohort_year_2021 + year_2019 + year_2021,
+  data = data, Hess = TRUE)
+
+modelsummary(ol_model)
+```
+
+### 4. Summarize
+Get the marginal predictions and contrasts and make a table of the effects for each category:
+
+
+```{r}
+#| label: results
+
+ol_predictions <- avg_predictions( 
+  ol_model,
+  newdata = subset(data, treat==1), 
+  variables = "treat", by = "treat",
+  vcov = ~ v_id)
+
+ol_effects <- slopes( 
+  ol_model,
+  newdata = subset(data, treat==1), 
+  variables = "treat", by = "treat",
+  vcov = ~ v_id)
+
+# grab estimates and SEs from marginal predictions
+ologit_tab1 <- ol_predictions %>%
+  mutate(
+    category = group,
+    treat = treat,
+    est = estimate * 100,
+    se = std.error * 100,
+    ll = est - 1.96 * se,
+    ul = est + 1.96 * se,
+    ci = paste("(", sprintf('%.1f', ll), ", ",
+    sprintf('%.1f', ul), ")", sep="")) %>%
+  
+  # keep relevant columns
+  dplyr::select(category, 
+    treat, est, ci) %>%
+  
+  # reshape exposure to wide
+  pivot_wider(names_from = "treat",
+    values_from = c("est", "ci"),
+    names_vary = "slowest")
+
+# now for marginal effects
+ologit_tab2 <- ol_effects %>%
+  mutate(
+    category = group,
+    est = estimate * 100,
+    se = std.error * 100,
+    ll = est - 1.96 * se,
+    ul = est + 1.96 * se,
+    ci = paste("(", sprintf('%.1f', ll), ", ",
+      sprintf('%.1f', ul), ")", sep="")) %>%
+  
+    # keep relevant columns
+  dplyr::select(category, 
+    est, ci) 
+
+ologit_table <- ologit_tab1 %>%
+  left_join(ologit_tab2, join_by(category)) %>%
+  mutate(across(c(est_0, est_1, est), ~ round(.x, 1)))
+
+colnames(ologit_table) <- c("Category", "%", "(95% CI)", 
+  "%", "95% CI", "ATT (%)", "95% CI")
+
+tt(ologit_table,
+   notes = "Note: Average marginal predictions and ATT from ETWFE ordered logit models without covariates.") %>%
+  group_tt(
+    j = list("Treated" = 2:3, 
+             "Untreated" = 4:5,
+             "Difference" = 6:7))
+```
